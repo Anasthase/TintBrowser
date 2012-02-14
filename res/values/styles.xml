@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ApplicationTheme" parent="@android:style/Theme.Holo">
+    </style>
+    
+    <style name="ApplicationTheme.ListMainItem">
+		<item name="android:textSize">16sp</item>
+	</style>
+    
+    <style name="ApplicationTheme.Overlay" parent="@android:style/Theme.Holo">
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:actionBarStyle">@style/ActionBarTheme</item>
+    </style>
+    
+    <style name="ActionBarTheme" parent="android:style/Widget.Holo.ActionBar">        
+        <item name="android:background">@drawable/ab_top_background</item>        
+    </style>
+    
+<!--     <style name="ActionBarTabStyle" parent="android:style/Widget.Holo.Light.ActionBar.TabBar"> -->
+<!--         <item name="android:background">@drawable/tab_indicator</item> -->
+<!--         <item name="android:minWidth">80dip</item> -->
+<!--     </style> -->
+    
+    <style name="RowSmall">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>    
+    
+    <style name="RowVerySmall">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#bebebe</item>
+    </style>
+    
+    <style name="RowSmallLight">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+    
+    <style name="RowVerySmallLight">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#787878</item>
+    </style>
+    
+</resources>

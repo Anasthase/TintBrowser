@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+        android:id="@+id/UrlBarLeftLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_alignParentLeft="true"
+        android:layout_alignBottom="@+id/UrlBarUrlLayout">
+        
+        <ImageView
+    	    android:id="@+id/UrlBarGoBack"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="match_parent"
+    	    android:layout_gravity="center_vertical"
+    	    android:background="?android:attr/selectableItemBackground"
+    	    android:contentDescription="android:contentDescription"
+    	    android:focusable="true"
+    	    android:paddingLeft="8dip"
+    	    android:paddingRight="8dip"
+    	    android:src="@drawable/ic_back" />
+        
+        <ImageView
+    	    android:id="@+id/UrlBarGoForward"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="match_parent"
+    	    android:layout_gravity="center_vertical"
+    	    android:background="?android:attr/selectableItemBackground"
+    	    android:contentDescription="android:contentDescription"
+    	    android:focusable="true"
+    	    android:paddingLeft="8dip"
+    	    android:paddingRight="8dip"
+    	    android:src="@drawable/ic_forward" />
+        
+        <ImageView
+    	    android:id="@+id/UrlBarHome"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="match_parent"
+    	    android:layout_gravity="center_vertical"
+    	    android:background="?android:attr/selectableItemBackground"
+    	    android:contentDescription="android:contentDescription"
+    	    android:focusable="true"
+    	    android:paddingLeft="8dip"
+    	    android:paddingRight="8dip"
+    	    android:src="@drawable/ic_home" />
+        
+    </LinearLayout>
+        
+    <LinearLayout
+        android:id="@+id/UrlBarUrlLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_toRightOf="@+id/UrlBarLeftLayout"
+        android:layout_toLeftOf="@+id/UrlBarRightLayout">
+        
+    	<AutoCompleteTextView
+        	android:id="@+id/UrlBarUrlEdit"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:hint="@string/UrlBarUrlHint"
+        	android:inputType="textUri"
+        	android:selectAllOnFocus="true" >
+    	</AutoCompleteTextView>    	    	
+    	
+	</LinearLayout>    
+	
+    <LinearLayout
+        android:id="@+id/UrlBarRightLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@+id/UrlBarUrlLayout">
+    	
+        <ImageView
+            android:id="@+id/UrlBarGoStopReload"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/UrlBarUrlLayout"
+            android:layout_gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="android:contentDescription"
+            android:focusable="true"
+            android:paddingLeft="8dip"
+            android:paddingRight="8dip"
+            android:src="@drawable/ic_go" />
+        
+        <ImageView
+    	    android:id="@+id/UrlBarBookmarks"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="match_parent"
+    	    android:layout_gravity="center_vertical"
+    	    android:background="?android:attr/selectableItemBackground"
+    	    android:contentDescription="android:contentDescription"
+    	    android:focusable="true"
+    	    android:paddingLeft="8dip"
+    	    android:paddingRight="8dip"
+    	    android:src="@drawable/ic_bookmarks" />
+    	
+	</LinearLayout>
+
+</RelativeLayout>

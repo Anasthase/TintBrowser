@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >    
+    
+    <LinearLayout
+        android:id="@+id/WebViewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/UrlBar" >
+    </LinearLayout>
+    
+    <org.tint.ui.views.TabletUrlBar
+        android:id="@+id/UrlBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+    
+    <ProgressBar
+        android:id="@+id/WebViewProgress"
+        style="@android:style/Widget.Holo.ProgressBar.Horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dip"
+        android:layout_marginRight="0dip"
+        android:layout_marginBottom="0dip"
+        android:indeterminate="false"
+        android:maxHeight="5px"
+        android:minHeight="5px"
+        android:layout_below="@+id/UrlBar">
+    </ProgressBar>
+
+</RelativeLayout>

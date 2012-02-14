@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >        
+    
+    <item
+	    android:id="@+id/MainActivity.MenuAddBookmark"
+	    android:title="@string/AddBookmark"
+	    android:icon="@android:drawable/ic_menu_preferences"/>
+    
+    <item
+	    android:id="@+id/MainActivity.MenuBookmarks"
+	    android:title="@string/Bookmarks"
+	    android:icon="@android:drawable/ic_menu_preferences"/>
+    
+    <group android:id="@+id/MainActivity.DisabledOnStartPageMenuGroup">
+    	<item
+    	    android:id="@+id/MainActivity.MenuSharePage"
+    	    android:icon="@android:drawable/ic_menu_share"
+    	    android:title="@string/SharePage"/>
+    	<item
+    	    android:id="@+id/MainActivity.MenuSearch"
+    	    android:icon="@android:drawable/ic_menu_search"
+    	    android:title="@string/Search"/>
+    </group>
+    
+    <group
+        android:id="@+id/MainActivity.AddonsMenuGroup"
+        android:orderInCategory="1" />
+    
+	<item
+	    android:id="@+id/MainActivity.MenuPreferences"
+	    android:title="@string/Preferences"
+	    android:icon="@android:drawable/ic_menu_preferences"
+	    android:orderInCategory="2" />
+    
+</menu>

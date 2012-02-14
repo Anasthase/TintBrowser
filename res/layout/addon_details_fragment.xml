@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/AddonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dip"
+        android:text="@+id/AddonName"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/AddonShortDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dip"
+        android:text="@+id/AddonShortDesc"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Switch
+            android:id="@+id/AddonEnabled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:textOn="@string/On"
+        	android:textOff="@string/Off" />
+
+        <Button
+            android:id="@+id/AddonPreferences"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="@string/Preferences" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/AddonLongDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="10dip"
+        android:text="@+id/AddonLongDesc"
+        android:autoLink="web"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/AddonContactEMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@+id/AddonContactEMail"
+        android:autoLink="email"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/AddonContactWebsite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@+id/AddonContactWebsite"
+        android:autoLink="web"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:text="@string/AddonDetailsUsedCallbacks"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/AddonCallbacks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@+id/AddonCallbacks"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</LinearLayout>

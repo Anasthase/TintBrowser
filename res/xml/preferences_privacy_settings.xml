@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <org.tint.ui.preferences.ClearPreference
+            android:title="@string/PreferencePrivacyClearCacheTitle"
+            android:summary="@string/PreferencePrivacyClearCacheSummary"
+            android:dialogTitle="@string/Clear"
+            android:dialogMessage="@string/ClearCacheMessage"            
+            android:positiveButtonText="@string/OK"
+            android:negativeButtonText="@string/Cancel"            
+            android:key="PREFERENCE_CLEAR_CACHE" />
+    
+    <PreferenceScreen            
+            android:title="@string/PreferencePrivacyWebsitesSettingsTitle"
+            android:summary="@string/PreferencePrivacyWebsitesSettingsSummary"
+            android:key="PREFERENCE_WEBSITES_SETTINGS" />
+    
+    <PreferenceCategory android:title="@string/PreferenceCategoryHistoryTitle">
+        
+        <EditTextPreference
+			android:title="@string/PreferencePrivacyHistorySizeTitle"			
+			android:summary="@string/PreferencePrivacyHistorySizeSummary"
+			android:defaultValue="90"
+			android:numeric="integer"
+			android:key="PREFERENCE_HISTORY_SIZE" />
+        
+        <org.tint.ui.preferences.ClearPreference
+            android:title="@string/PreferencePrivacyClearHistoryTitle"
+            android:summary="@string/PreferencePrivacyClearHistorySummary"
+            android:dialogTitle="@string/Clear"
+            android:dialogMessage="@string/ClearHistoryMessage"            
+            android:positiveButtonText="@string/OK"
+            android:negativeButtonText="@string/Cancel"            
+            android:key="PREFERENCE_CLEAR_HISTORY" />
+        
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="@string/PreferenceCategoryCookiesTitle">
+        
+        <CheckBoxPreference
+			android:title="@string/PreferencePrivacyAcceptCookiesTitle"			
+			android:summary="@string/PreferencePrivacyAcceptCookiesSummary"
+			android:defaultValue="true"
+			android:key="PREFERENCE_ACCEPT_COOKIES" />
+        
+        <org.tint.ui.preferences.ClearPreference
+            android:title="@string/PreferencePrivacyClearCookiesTitle"
+            android:summary="@string/PreferencePrivacyClearCookiesSummary"
+            android:dialogTitle="@string/Clear"
+            android:dialogMessage="@string/ClearCookiesMessage"            
+            android:positiveButtonText="@string/OK"
+            android:negativeButtonText="@string/Cancel"            
+            android:key="PREFERENCE_CLEAR_COOKIES" />
+        
+    </PreferenceCategory>
+    
+	<PreferenceCategory android:title="@string/PreferenceCategoryFormDataTitle">
+        
+        <CheckBoxPreference
+			android:title="@string/PreferencePrivacyRememberFormDataTitle"			
+			android:summary="@string/PreferencePrivacyRememberFormDataSummary"
+			android:defaultValue="true"
+			android:key="PREFERENCE_REMEMBER_FORM_DATA" />
+        
+        <org.tint.ui.preferences.ClearPreference
+            android:title="@string/PreferencePrivacyClearFormDataTitle"
+            android:summary="@string/PreferencePrivacyClearFormDataSummary"
+            android:dialogIcon="@android:drawable/ic_dialog_alert"
+            android:dialogTitle="@string/Clear"
+            android:dialogMessage="@string/ClearFormDataMessage"            
+            android:positiveButtonText="@string/OK"
+            android:negativeButtonText="@string/Cancel"            
+            android:key="PREFERENCE_CLEAR_FORM_DATA" />
+        
+    </PreferenceCategory>
+    
+	<PreferenceCategory android:title="@string/PreferenceCategoryGeolocationTitle">
+        
+        <CheckBoxPreference
+			android:title="@string/PreferencePrivacyEnableGeolocationTitle"			
+			android:summary="@string/PreferencePrivacyEnableGeolocationSummary"
+			android:defaultValue="true"
+			android:key="PREFERENCE_ENABLE_GEOLOCATION" />
+        
+        <org.tint.ui.preferences.ClearPreference
+            android:title="@string/PreferencePrivacyClearGeolocationTitle"
+            android:summary="@string/PreferencePrivacyClearGeolocationSummary"
+            android:dialogTitle="@string/Clear"
+            android:dialogMessage="@string/ClearGeolocationMessage"            
+            android:positiveButtonText="@string/OK"
+            android:negativeButtonText="@string/Cancel"            
+            android:key="PREFERENCE_CLEAR_GEOLOCATION" />
+        
+    </PreferenceCategory>
+    
+	<PreferenceCategory android:title="@string/PreferenceCategoryPasswordsTitle">
+        
+        <CheckBoxPreference
+			android:title="@string/PreferencePrivacyRememberPasswordsTitle"			
+			android:summary="@string/PreferencePrivacyRememberPasswordsSummary"
+			android:defaultValue="true"
+			android:key="PREFERENCE_REMEMBER_PASSWORDS" />
+        
+        <org.tint.ui.preferences.ClearPreference
+            android:title="@string/PreferencePrivacyClearPasswordsTitle"
+            android:summary="@string/PreferencePrivacyClearPasswordsSummary"
+            android:dialogIcon="@android:drawable/ic_dialog_alert"
+            android:dialogTitle="@string/Clear"
+            android:dialogMessage="@string/ClearPasswordsMessage"            
+            android:positiveButtonText="@string/OK"
+            android:negativeButtonText="@string/Cancel"            
+            android:key="PREFERENCE_CLEAR_PASSWORDS" />
+        
+    </PreferenceCategory>	
+
+</PreferenceScreen>

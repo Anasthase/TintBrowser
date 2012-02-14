@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridView xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:id="@+id/BookmarksGridView"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+    android:layout_marginTop="@dimen/bookmarks_fragment_margin_top_bottom"
+    android:layout_marginBottom="@dimen/bookmarks_fragment_margin_top_bottom"
+    android:layout_marginLeft="@dimen/bookmarks_fragment_margin_left_right"
+    android:layout_marginRight="@dimen/bookmarks_fragment_margin_left_right"
+    android:columnWidth="@dimen/bookmarks_fragment_column_width"    
+    android:verticalSpacing="@dimen/bookmarks_fragment_vertical_spacing"
+    android:horizontalSpacing="@dimen/bookmarks_fragment_horizontal_spacing"
+    android:numColumns="auto_fit"
+    android:stretchMode="columnWidth"
+    android:gravity="center" />

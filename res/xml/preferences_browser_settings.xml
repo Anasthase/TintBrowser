@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <CheckBoxPreference
+			android:title="@string/PreferenceEnableJavascriptTitle"			
+			android:summaryOn="@string/PreferenceEnableJavascriptSummaryOn"
+			android:summaryOff="@string/PreferenceEnableJavascriptSummaryOff"
+			android:defaultValue="true"
+			android:key="PREFERENCE_ENABLE_JAVASCRIPT" />
+    
+    <CheckBoxPreference
+			android:title="@string/PreferenceEnableImagesTitle"			
+			android:summary="@string/PreferenceEnableImagesSummary"
+			android:defaultValue="true"
+			android:key="PREFERENCE_ENABLE_IMAGES" />
+    
+    <ListPreference android:title="@string/PreferencePluginsTitle"			
+			android:summary="@string/PreferencePluginsSummary"
+			android:entries="@array/PreferencePluginsEntries"
+			android:entryValues="@array/PreferencePluginsValues"
+			android:defaultValue="ON_DEMAND"
+			android:key="PREFERENCE_PLUGINS" />
+    
+    <org.tint.ui.preferences.UserAgentSpinnerPreference
+            android:title="@string/PreferenceUserAgentTitle"
+            android:summary="@string/PreferenceUserAgentSummary"
+            android:dialogTitle="@string/PreferenceUserAgentDialogTitle"            
+            android:positiveButtonText="@string/OK"
+            android:negativeButtonText="@string/Cancel"            
+            android:key="PREFERENCE_USER_AGENT" />
+    
+    <CheckBoxPreference
+			android:title="@string/PreferenceLoadPagesWithOverviewTitle"			
+			android:summary="@string/PreferenceLoadPagesWithOverviewSummary"
+			android:defaultValue="false"
+			android:key="PREFERENCE_LOAD_WITH_OVERVIEW" />
+    
+    <CheckBoxPreference
+			android:title="@string/PreferenceUseWideViewportTitle"			
+			android:summary="@string/PreferenceUseWideViewportSummary"
+			android:defaultValue="true"
+			android:key="PREFERENCE_USE_WIDE_VIEWPORT" />
+
+</PreferenceScreen>

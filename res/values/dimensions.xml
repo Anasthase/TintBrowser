@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <dimen name="list_favicon_padding">5dip</dimen>
+    <dimen name="list_favicon_corner_radius">3dip</dimen>
+    
+    <dimen name="bookmarks_fragment_margin_top_bottom">10dip</dimen>
+    <dimen name="bookmarks_fragment_margin_left_right">10dip</dimen>
+    
+    <dimen name="bookmarks_fragment_column_width">90dip</dimen>
+    <dimen name="bookmarks_fragment_vertical_spacing">10dip</dimen>
+    <dimen name="bookmarks_fragment_horizontal_spacing">10dip</dimen>
+    
+    <dimen name="startpage_fragment_column_width">90dip</dimen>
+    <dimen name="startpage_fragment_vertical_spacing">5dip</dimen>
+    <dimen name="startpage_fragment_horizontal_spacing">10dip</dimen>
+</resources>

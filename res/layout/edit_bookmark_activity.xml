@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            
+            <TableLayout android:id="@+id/default_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="1"
+                android:shrinkColumns="1"
+                android:paddingTop="10dip"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip" >
+                
+                <TableRow android:layout_marginBottom="10dip">
+                    <TextView
+                        android:id="@+id/EditBookmarkActivity.LabelText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/BookmarkText"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <EditText
+                        android:id="@+id/EditBookmarkActivity.LabelEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dip"
+                        android:ellipsize="end"
+                        android:inputType="textCapSentences|textNoSuggestions"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+				</TableRow>
+              
+                <TableRow
+                    android:id="@+id/row_address"
+                    android:layout_marginBottom="10dip" >
+
+                    <TextView
+                        android:id="@+id/EditBookmarkActivity.UrlText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/UrlText"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <EditText
+                        android:id="@+id/EditBookmarkActivity.UrlEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dip"
+                        android:ellipsize="end"
+                        android:hint="@string/UrlHint"
+                        android:inputType="textUri"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </TableRow>
+			</TableLayout>            
+        </ScrollView>
+    </FrameLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        style="?android:attr/buttonBarStyle">
+        <Button android:id="@+id/EditBookmarkActivity.Cancel"
+            android:text="@string/Cancel"
+            android:layout_width="0dip"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:maxLines="2"
+            android:layout_height="wrap_content"
+            style="?android:attr/buttonBarButtonStyle" />
+        <Button android:id="@+id/EditBookmarkActivity.OK"
+            android:text="@string/OK"
+            android:layout_width="0dip"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:maxLines="2"
+            android:layout_height="wrap_content"
+            style="?android:attr/buttonBarButtonStyle" />
+    </LinearLayout>
+    
+
+</LinearLayout>

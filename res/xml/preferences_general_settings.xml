@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <org.tint.ui.preferences.HomepageSpinnerPreference
+            android:title="@string/PreferenceGeneralHomepageTitle"
+            android:summary="@string/PreferenceGeneralHomepageSummary"
+            android:dialogTitle="@string/PreferenceHomePageDialogTitle"            
+            android:positiveButtonText="@string/OK"
+            android:negativeButtonText="@string/Cancel"            
+            android:key="PREFERENCE_HOME_PAGE" />
+    
+    <org.tint.ui.preferences.SearchUrlSpinnerPreference
+            android:title="@string/PreferenceGeneralSearchUrlTitle"
+            android:summary="@string/PreferenceGeneralSearchUrlSummary"
+            android:dialogTitle="@string/PreferenceSearchUrlDialogTitle"            
+            android:positiveButtonText="@string/OK"
+            android:negativeButtonText="@string/Cancel"            
+            android:key="PREFERENCE_SEARCH_URL" />
+    
+    <PreferenceCategory android:title="@string/PreferenceCategoryStartPageTitle">
+        
+        <EditTextPreference
+			android:title="@string/PreferenceGeneralStartPageLimitTitle"			
+			android:summary="@string/PreferenceGeneralStartPageLimitSummary"
+			android:defaultValue="9"
+			android:numeric="integer"
+			android:key="PREFERENCE_START_PAGE_LIMIT" />
+        
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="@string/PreferenceCategoryUITitle">
+        
+        <ListPreference android:title="@string/PreferenceBubblePositionTitle"			
+			android:summary="@string/PreferenceBubblePositionSummary"
+			android:entries="@array/PreferenceBubblePositionEntries"
+			android:entryValues="@array/PreferenceBubblePositionValues"
+			android:defaultValue="RIGHT"
+			android:key="PREFERENCE_BUBBLE_POSITION" />
+        
+        <EditTextPreference
+			android:title="@string/PreferenceToolbarsAutoHideDurationTitle"			
+			android:summary="@string/PreferenceToolbarsAutoHideDurationSummary"
+			android:defaultValue="3"
+			android:numeric="integer"
+			android:key="PREFERENCE_TOOLBARS_AUTOHIDE_DURATION" />
+        
+        <ListPreference android:title="@string/PreferenceSwitchTabsMethodTitle"			
+			android:summary="@string/PreferenceSwitchTabsMethodSummary"
+			android:entries="@array/PreferenceSwitchTabsMethodEntries"
+			android:entryValues="@array/PreferenceSwitchTabsMethodValues"
+			android:defaultValue="BUTTONS"
+			android:key="PREFERENCES_SWITCH_TABS_METHOD" />
+        
+    </PreferenceCategory>
+
+</PreferenceScreen>

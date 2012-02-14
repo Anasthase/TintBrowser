@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">    
+    <dimen name="bookmarks_fragment_margin_top_bottom">100dip</dimen>
+    <dimen name="bookmarks_fragment_margin_left_right">150dip</dimen>
+    
+    <dimen name="bookmarks_fragment_column_width">125dip</dimen>
+    <dimen name="bookmarks_fragment_vertical_spacing">25dip</dimen>
+    <dimen name="bookmarks_fragment_horizontal_spacing">25dip</dimen>
+</resources>

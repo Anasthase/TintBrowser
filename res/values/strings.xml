@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="ApplicationName">Tint Browser</string>
+    <string name="ApplicationDescription">Tint Browser is an open-source browser for Android.</string>
+    
+    <string name="AboutVersionText">Version: %1$s (%2$s)</string>
+    <string name="AboutLicenseText">License: GPLv3</string>
+    <string name="AboutUrlText">http://www.todo.org/</string>
+    
+    <string name="OK">OK</string>
+    <string name="Cancel">Cancel</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+    <string name="On">ON</string>
+    <string name="Off">OFF</string>
+    <string name="Clear">Clear</string>
+    <string name="Continue">Continue</string>
+    <string name="Proceed">Proceed</string>
+    <string name="VideoLoading">Loading video\u2026</string>
+    <string name="History">History</string>
+    <string name="All">All</string>
+    <string name="Bookmarks">Bookmarks</string>
+    <string name="Preferences">Settings</string>
+    <string name="CannotBeUndone">This cannot be undone.</string>
+    
+    <string name="UrlBarUrlDefaultSubTitle">Click to enter an URL</string>
+    <string name="UrlBarUrlHint">Search or type URL</string>
+    
+    <string name="ShareChooserTitle">Share via</string>
+    <string name="FileChooserPrompt">Choose file for upload</string>
+    
+    <string name="DownloadStart">Downloading %1$s&#8230;</string>
+    <string name="DownloadComplete">Download complete.</string>
+    <string name="DownloadFailed">Download failed.</string>
+    <string name="DownloadFailedWithErrorMessage">Download failed: %1$s.</string>
+    <string name="DownloadErrorDisk">Disk error, check if you have a storage media, and if it has enough space left</string>
+    <string name="DownloadErrorHttp">HTTP error</string>
+    <string name="DownloadErrorRedirection">Too many redirections</string>
+    <string name="DownloadErrorUnknown">Unknown error</string>
+    
+    <string name="ContextMenuOpen">Open</string>
+    <string name="ContextMenuOpenNewTab">Open in a new tab</string>
+    <string name="ContextMenuCopyLinkUrl">Copy link URL</string>
+    <string name="ContextMenuDownload">Download</string>
+    <string name="ContextMenuShareLinkUrl">Share link</string>
+    
+    <string name="ContextMenuViewImage">View image</string>
+    <string name="ContextMenuCopyImageUrl">Copy image url</string>
+    <string name="ContextMenuDownloadImage">Download image</string>
+    <string name="ContextMenuShareImageUrl">Share image</string>
+    
+    <string name="ContextMenuSendEmail">Send email</string>
+    <string name="ContextMenuCopyEmailUrl">Copy email url</string>
+    <string name="ContextMenuShareEmailUrl">Share email</string>
+    
+    <string name="UrlCopyToastMessage">Url copied to clipboard.</string>
+    <string name="ContextMenuShareUrl">Share</string>
+    
+    <string name="JavaScriptAlertDialog">JavaScript alert dialog</string>
+    <string name="JavaScriptConfirmDialog">JavaScript confirm dialog</string>
+    <string name="JavaScriptPromptDialog">JavaScript prompt dialog</string>    
+	
+	<string name="SslWarning">Security warning</string>
+	<string name="SslWarningsHeader">There are problems with the security certificate for this site.</string>
+	<string name="SslUntrusted">This certificate is not from a trusted authority.</string>
+	<string name="SslIDMismatch">The name of the site does not match the name on the certificate.</string>
+	<string name="SslExpired">This certificate has expired.</string>
+	<string name="SslNotYetValid">This certificate is not valid yet.</string>    
+        
+    <string name="NewTab">New tab</string>
+        
+    <string name="AddBookmark">Add bookmark</string>
+    <string name="SharePage">Share page</string>
+    <string name="Search">Find on page</string>
+    
+    <string name="BookmarksTitle">Bookmarks &amp; History</string>
+    <string name="BookmarksTabTitle">Bookmarks</string>
+    <string name="HistoryTabTitle">History</string>
+    <string name="BookmarksEmpty">You do not have any bookmarks.</string>
+    
+    <string name="AddBookmarkTitle">Add bookmark</string>
+    <string name="BookmarkText">Label</string>
+    <string name="UrlText">Address</string>
+    <string name="UrlHint">http://</string>
+    <string name="AddBookmarkLabelOrUrlEmpty">Please provide a valid label and url.</string>
+    
+    <string name="OpenInTab">Open in a new tab</string>
+    <string name="EditBookmark">Edit bookmark</string>
+    <string name="CopyUrl">Copy url</string>
+    <string name="DeleteBookmark">Delete bookmark</string>
+    <string name="DeleteHistoryItem">Delete record</string>
+    
+    <string name="PreferencesActivityTitle">Settings</string>
+        
+    <string name="PreferenceHeaderGeneralSettingsTitle">General settings</string>
+    
+    <string name="PreferenceGeneralHomepageTitle">Home page</string>
+    <string name="PreferenceGeneralHomepageSummary">Set the home page to load when opening a new tab, etc.</string>
+    <string name="PreferenceHomePageDialogTitle">Home page</string>
+    
+    <string name="PreferenceGeneralSearchUrlTitle">Search engine</string>
+    <string name="PreferenceGeneralSearchUrlSummary">Set the search engine used to make default search from the url bar.</string>
+    <string name="PreferenceSearchUrlDialogTitle">Search engine</string>
+    
+    <string name="PreferenceCategoryStartPageTitle">Start page</string>
+    <string name="PreferenceGeneralStartPageLimitTitle">Number of items</string>
+    <string name="PreferenceGeneralStartPageLimitSummary">Set the number of items to show in the start page.</string>
+    
+    <string name="PreferenceCategoryUITitle">User interface</string>
+        
+    <string name="PreferenceBubblePositionTitle">Bubble position</string>
+    <string name="PreferenceBubblePositionSummary">Position of the bubble allowing to show the toolbars.</string>
+    
+    <string name="PreferenceBubblePositionRight">Right</string>
+    <string name="PreferenceBubblePositionLeft">Left</string>
+    <string name="PreferenceBubblePositionBoth">Both</string>
+    
+    <string-array name="PreferenceBubblePositionEntries">
+		<item>@string/PreferenceBubblePositionRight</item>
+		<item>@string/PreferenceBubblePositionLeft</item>
+		<item>@string/PreferenceBubblePositionBoth</item>
+	</string-array>
+	
+    <string-array name="PreferenceBubblePositionValues">
+		<item>RIGHT</item>
+		<item>LEFT</item>
+		<item>BOTH</item>
+	</string-array>
+	
+    <string name="PreferenceToolbarsAutoHideDurationTitle">Toolbars display duration</string>
+    <string name="PreferenceToolbarsAutoHideDurationSummary">Set how long toolbars are shown, in seconds.</string>
+    
+    <string name="PreferenceSwitchTabsMethodTitle">Switch tabs method</string>
+    <string name="PreferenceSwitchTabsMethodSummary">Set how you can switch between tabs.</string>
+    
+    <string name="PreferenceSwitchTabsMethodButtons">Buttons</string>
+    <string name="PreferenceSwitchTabsMethodFling">Fling</string>
+    <string name="PreferenceSwitchTabsMethodBoth">Both</string>
+    
+    <string-array name="PreferenceSwitchTabsMethodEntries">
+		<item>@string/PreferenceSwitchTabsMethodButtons</item>
+		<item>@string/PreferenceSwitchTabsMethodFling</item>
+		<item>@string/PreferenceSwitchTabsMethodBoth</item>
+	</string-array>
+	
+    <string-array name="PreferenceSwitchTabsMethodValues">
+		<item>BUTTONS</item>
+		<item>FLING</item>
+		<item>BOTH</item>
+	</string-array>
+    
+    <string name="PreferenceHeaderBrowserSettingsTitle">Browser settings</string>
+    
+    <string name="PreferenceEnableJavascriptTitle">Enable JavaScript</string>
+    <string name="PreferenceEnableJavascriptSummaryOn">JavaScript is enabled.</string>
+    <string name="PreferenceEnableJavascriptSummaryOff">JavaScript is disabled.</string>
+    <string name="PreferenceEnableImagesTitle">Enable images</string>
+    <string name="PreferenceEnableImagesSummary">Check if you want to load images.</string>
+    <string name="PreferenceUseWideViewportTitle">Use wide view port</string>
+    <string name="PreferenceUseWideViewportSummary">If checked, browser will use a viewport similar to desktop browsers.</string>
+    <string name="PreferenceLoadPagesWithOverviewTitle">Load pages with overview</string>
+    <string name="PreferenceLoadPagesWithOverviewSummary">Check if you want to load pages zoomed out to show an overview of the page.</string>
+    <string name="PreferencePluginsTitle">Enable plugins</string>
+    <string name="PreferencePluginsSummary">Choose how to manage plugins.</string>
+    
+    <string name="PreferencePluginsAlwaysOff">Always off</string>
+    <string name="PreferencePluginsOnDemand">On demand</string>
+    <string name="PreferencePluginsAlwaysOn">Always on</string>
+    
+    <string-array name="PreferencePluginsEntries">
+		<item>@string/PreferencePluginsAlwaysOff</item>
+		<item>@string/PreferencePluginsOnDemand</item>
+		<item>@string/PreferencePluginsAlwaysOn</item>
+	</string-array>
+	
+    <string-array name="PreferencePluginsValues">
+		<item>OFF</item>
+		<item>ON_DEMAND</item>
+		<item>ON</item>
+	</string-array>
+	
+    <string name="PreferenceUserAgentTitle">User-agent</string>
+    <string name="PreferenceUserAgentSummary">Set the user-agent string used by the browser.</string>
+    <string name="PreferenceUserAgentDialogTitle">User-agent</string>
+    
+    <string name="PreferenceHeaderPrivacySettingsTitle">Privacy &amp; security settings</string>
+    
+    <string name="PreferencePrivacyClearCacheTitle">Clear cache</string>
+    <string name="PreferencePrivacyClearCacheSummary">Clear locally cached content and databases.</string>
+        
+    <string name="PreferenceCategoryHistoryTitle">History</string>
+    <string name="PreferencePrivacyHistorySizeTitle">History size</string>
+    <string name="PreferencePrivacyHistorySizeSummary">Define the history size, in days.</string>
+    <string name="PreferencePrivacyClearHistoryTitle">Clear history</string>
+    <string name="PreferencePrivacyClearHistorySummary">Clear the browser navigation history.</string>
+        
+    <string name="PreferenceCategoryCookiesTitle">Cookies</string>
+    <string name="PreferencePrivacyAcceptCookiesTitle">Accept cookies</string>
+    <string name="PreferencePrivacyAcceptCookiesSummary">Allow sites to save and read cookie data.</string>
+    <string name="PreferencePrivacyClearCookiesTitle">Clear cookies</string>
+    <string name="PreferencePrivacyClearCookiesSummary">Clear all browser cookies.</string>
+    
+    <string name="PreferenceCategoryGeolocationTitle">Location</string>
+    <string name="PreferencePrivacyEnableGeolocationTitle">Enable location</string>
+    <string name="PreferencePrivacyEnableGeolocationSummary">Allow sites to request access to your location.</string>
+    <string name="PreferencePrivacyClearGeolocationTitle">Clear location access</string>
+    <string name="PreferencePrivacyClearGeolocationSummary">Clear location access for all websites.</string>
+    
+    <string name="PreferenceCategoryFormDataTitle">Form Data</string>
+    <string name="PreferencePrivacyRememberFormDataTitle">Remember form data</string>
+    <string name="PreferencePrivacyRememberFormDataSummary">Remember data i type in forms for later use.</string>
+    <string name="PreferencePrivacyClearFormDataTitle">Clear form data</string>
+    <string name="PreferencePrivacyClearFormDataSummary">Clear all saved form data.</string>
+    
+    <string name="PreferenceCategoryPasswordsTitle">Passwords</string>
+    <string name="PreferencePrivacyRememberPasswordsTitle">Remember passwords</string>
+    <string name="PreferencePrivacyRememberPasswordsSummary">Save usernames and passwords for websites.</string>
+    <string name="PreferencePrivacyClearPasswordsTitle">Clear passwords</string>
+    <string name="PreferencePrivacyClearPasswordsSummary">Clear all saved passwords.</string>
+    
+    <string name="PreferencePrivacyWebsitesSettingsTitle">Websites settings</string>
+    <string name="PreferencePrivacyWebsitesSettingsSummary">Advanced settings for individual websites.</string>
+    
+    <string name="PreferenceHeaderAdvancedSettingsTitle">Advanced settings</string>
+    
+    <string name="PreferenceCategoryHistoryBookmarksTitle">Bookmarks &amp; history management</string>
+    <string name="PreferenceClearHistoryBookmarksTitle">Clear history and/or bookmarks</string>
+    <string name="PreferenceClearHistoryBookmarksSummary">Use with caution, as it cannot be undone.</string>
+    <string name="PreferenceImportHistoryBookmarksTitle">Import history and bookmarks</string>
+    <string name="PreferenceImportHistoryBookmarksSummary">Import history and bookmarks from a file, previously saved on the device\'s external storage.</string>
+    <string name="PreferenceExportHistoryBookmarksTitle">Export history and bookmarks</string>
+    <string name="PreferenceExportHistoryBookmarksSummary">Export history and bookmarks to a file on the device\'s external storage.</string>
+    
+    <string name="HistoryToday">Today</string>
+    <string name="HistoryYesterday">Yesterday</string>
+    <string name="HistoryLastSevenDays">Last 7 days</string>
+    <string name="HistoryLastMonth">Last month</string>
+    <string name="HistoryOlder">Older</string>
+    
+    <string name="ClearCacheMessage">Delete locally cached content and databases?</string>
+    <string name="ClearHistoryMessage">Delete the browser navigation history?</string>
+    <string name="ClearCookiesMessage">Delete all cookies?</string>
+    <string name="ClearGeolocationMessage">Clear websites location access?</string>
+    <string name="ClearFormDataMessage">Delete all saved form data?</string>
+    <string name="ClearPasswordsMessage">Delete all saved passwords?</string>
+    
+    <string name="PreferenceHomepageStart">Start page</string>
+    <string name="PreferenceHomepageBlank">Blank page</string>
+    <string name="PreferenceHomepageCustom">Custom page</string>
+    
+    <string-array name="HomepageTitles">
+        <item>@string/PreferenceHomepageStart</item>
+        <item>@string/PreferenceHomepageBlank</item>
+        <item>@string/PreferenceHomepageCustom</item>
+    </string-array>
+    
+    <string name="PreferenceSearchUrlGoogle">Google</string>
+    <string name="PreferenceSearchUrlWikipedia">Wikipedia</string>
+    <string name="PreferenceSearchUrlOther">Other</string>
+    
+    <string-array name="SearchUrlTitles">
+        <item>@string/PreferenceSearchUrlGoogle</item>
+        <item>@string/PreferenceSearchUrlWikipedia</item>
+        <item>@string/PreferenceSearchUrlOther</item>
+    </string-array>
+    
+    <string name="PreferenceUserAgentAndroid">Android</string>
+    <string name="PreferenceUserAgentDesktop">Desktop</string>
+    <string name="PreferenceUserAgentOther">Other</string>
+    
+    <string-array name="UserAgentsTitles">
+        <item>@string/PreferenceUserAgentAndroid</item>
+        <item>@string/PreferenceUserAgentDesktop</item>
+        <item>@string/PreferenceUserAgentOther</item>
+    </string-array>
+    
+    <string name="SearchUrlGoogle">http://www.google.com/m?hl=en&amp;gl=us&amp;client=ms-null&amp;source=android-browser-key&amp;q=%s</string>
+    <string name="SearchUrlWikipedia">http://en.wikipedia.org/w/index.php?search=%s&amp;go=Go</string>
+    
+    <string name="StartPageWelcome">Welcome</string>
+    <string name="StartPageBookmarks">Most used bookmarks</string>
+    <string name="StartPageHistory">Recent history</string>
+    
+    <string name="PreferenceHeaderAddonsTitle">Addons</string>
+    
+    <string name="PreferenceHeaderAboutTitle">About</string>
+    
+    <string name="HttpAuthenticationDialogDialogTitle">Sign in to %1$s - %2$s</string>
+    <string name="HttpAuthenticationDialogUserName">Name</string>
+    <string name="HttpAuthenticationDialogPassword">Password</string>
+    
+    <string name="FormResubmitTitle">Form resubmission</string>
+    <string name="FormResubmitMessage">The page you\'re trying to view contains data that has already been submitted (\"POSTDATA\"). If you resend the data, any action the form on the page carried out (such as a search or online purchase) will be repeated.</string>
+    
+    <string name="BookmarkAdded">Added to bookmarks.</string>
+    <string name="BookmarkRemoved">Removed from bookmarks.</string>
+    
+    <string name="SDCardErrorNoSDMsg">No SD Card found.</string>
+    <string name="SDCardErrorSDUnavailable">SD Card is not available.</string>
+    
+    <string name="HistoryBookmarksClearTitle">Clear</string>
+    
+    <string-array name="ClearHistoryBookmarksChoice">
+        <item>@string/History</item>
+        <item>@string/Bookmarks</item>
+        <item>@string/All</item>
+    </string-array>
+    
+    <string name="HistoryBookmarksImportSourceTitle">Import file</string>
+    <string name="HistoryBookmarksImportFileUnavailable">Unavailable file, either it does not exists or is unreadable.</string>
+    <string name="HistoryBookmarksImportTitle">History &amp; bookmarks import</string>
+    <string name="HistoryBookmarksImportInitialMessage">Importing history &amp; bookmarks&#8230;</string>
+    <string name="HistoryBookmarksImportReadingFile">Reading file&#8230;</string>
+    <string name="HistoryBookmarksImportParsingFile">Parsing file&#8230;</string>
+    <string name="HistoryBookmarksImportProgressMessage">Importing item %1$s of %2$s.</string>
+    <string name="HistoryBookmarksImportErrorTitle">Error during import</string>
+    <string name="HistoryBookmarksImportErrorMessage">An error occurred during history &amp; bookmarks import: %s</string>
+    
+    <string name="HistoryBookmarksExportTitle">History &amp; bookmarks export</string>
+    <string name="HistoryBookmarksExportInitialMessage">Exporting history &amp; bookmarks&#8230;</string>
+    <string name="HistoryBookmarksExportCheckCardMessage">Checking external storage&#8230;</string>
+    <string name="HistoryBookmarksExportProgressMessage">Exporting item %1$s of %2$s.</string>
+    <string name="HistoryBookmarksExportErrorTitle">Error during export</string>
+    <string name="HistoryBookmarksExportErrorMessage">An error occurred during history &amp; bookmarks export: %s</string>
+    
+    <string name="GeolocationTitle">Location request</string>
+    <string name="GeolocationMessage">Website %s request access to your location.</string>
+    <string name="GeolocationRemember">Remember my choice</string>
+    <string name="GeolocationAccept">Accept</string>
+    <string name="GeolocationDecline">Decline</string>
+    
+    <string name="WebsitesSettingsEmpty">No settings for websites.</string>
+    
+    <string name="WebsitesSettingsSiteTitle">Settings for %s</string>
+    
+    <string name="WebsitesSettingsDataUsage">%s MB stored on your device.</string>
+    <string name="WebsitesSettingsDataClickToClear">Click to clear stored data.</string>
+    <string name="WebsitesSettingsCleatDataDialogTitle">Delete data</string>
+    <string name="WebsitesSettingsCleatDataDialogMessage">Delete all data stored by this website?</string>
+    
+    <string name="WebsitesSettingsGeolocationClickToClear">Click to clear location access.</string>
+    <string name="WebsitesSettingsGeolocationAllowed">This site can access to your location.</string>
+    <string name="WebsitesSettingsGeolocationNotAllowed">This site cannot access to your location.</string>
+    <string name="WebsitesSettingsGeolocationPageDialogTitle">Clear location access</string>
+    <string name="WebsitesSettingsGeolocationPageDialogMessage">Clear location access for this website?</string>
+    
+    <string name="AdblockerWhiteListEmpty">The adblocker white list is empty.</string>
+    <string name="AdblockerWhiteListMenuAdd">Add</string>
+    <string name="AdblockerWhiteListMenuClear">Clear</string>
+    <string name="AdblockerWhiteListMenuReset">Reset to default values</string>
+    <string name="AdblockerWhiteListDialogAddTitle">Add to white list</string>
+    <string name="AdblockerWhiteListDialogClearTitle">Clear white list</string>
+    <string name="AdblockerWhiteListDialogResetTitle">Reset to default values</string>
+    <string name="AdblockerWhiteListDialogRemoveItemTitle">Remove this item?</string>
+    
+    <string name="AddonDetailsContactEMail">e-mail: %s</string>
+    <string name="AddonDetailsContactWebsite">Website: %s</string>
+    <string name="AddonDetailsUsedCallbacks">This addon:</string>
+    
+    <string name="AddonCallbackPageStarted">Is notified when a page starts loading.</string>
+    <string name="AddonCallbackPageFinished">Is notified when a page finish loading.</string>
+    <string name="AddonCallbackHasPreferencesPage">Has a preferences page.</string>
+    <string name="AddonCallbackContributeMainMenu">Can contribute to the main menu.</string>
+    <string name="AddonCallbackContributeLinkContextMenu">Can contribute to the link context menu.</string>
+    <string name="AddonCallbackContributeHistoryBookmarksMenu">Can contribute to the history &amp; bookmarks menu.</string>
+    <string name="AddonCallbackContributeBookmarkContextMenu">Can contribute to the bookmark context menu.</string>
+    <string name="AddonCallbackContributeHistoryContextMenu">Can contribute to the history context menu.</string>
+    
+    <string name="ContentDescriptionSuggestionIcon">Suggestion favicon</string>
+
+</resources>
