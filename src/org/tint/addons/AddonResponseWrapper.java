@@ -15,14 +15,16 @@
 
 package org.tint.addons;
 
-import org.tint.addons.framework.AddonResponse;
+import java.util.List;
+
+import org.tint.addons.framework.Action;
 
 public class AddonResponseWrapper {
 
 	private Addon mAddon;
-	private AddonResponse mResponse;
+	private List<Action> mResponse;
 	
-	public AddonResponseWrapper(Addon addon, AddonResponse response) {
+	public AddonResponseWrapper(Addon addon, List<Action> response) {
 		mAddon = addon;
 		mResponse = response;
 	}
@@ -31,7 +33,7 @@ public class AddonResponseWrapper {
 		return mAddon;
 	}
 	
-	public AddonResponse getResponse() {
+	public List<Action> getResponse() {
 		return mResponse;
 	}
 	

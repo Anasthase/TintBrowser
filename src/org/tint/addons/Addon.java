@@ -20,8 +20,8 @@ import java.util.List;
 
 import org.tint.R;
 import org.tint.addons.AddonServiceConnection.AddonServiceConnectionListener;
-import org.tint.addons.framework.AddonCallbacks;
-import org.tint.addons.framework.AddonResponse;
+import org.tint.addons.framework.Action;
+import org.tint.addons.framework.Callbacks;
 import org.tint.utils.Constants;
 
 import android.content.Context;
@@ -129,7 +129,7 @@ public class Addon {
 	}
 	
 	public boolean hasPreferencePage() {
-		return (mCallbacks & AddonCallbacks.HAS_PREFERENCES_PAGE) == AddonCallbacks.HAS_PREFERENCES_PAGE;
+		return (mCallbacks & Callbacks.HAS_PREFERENCES_PAGE) == Callbacks.HAS_PREFERENCES_PAGE;
 	}
 	
 	public void setEnabled(boolean value) {
@@ -147,16 +147,16 @@ public class Addon {
 		mContext.unbindService(mServiceConnection);
 	}
 	
-	public AddonResponse onPageStarted(String url) {
-		if (makeCall(AddonCallbacks.PAGE_STARTED)) {
+	public List<Action> onPageStarted(String url) {
+		if (makeCall(Callbacks.PAGE_STARTED)) {
 			return mServiceConnection.onPageStarted(url);
 		} else {
 			return null;
 		}
 	}
 	
-	public AddonResponse onPageFinished(String url) {
-		if (makeCall(AddonCallbacks.PAGE_FINISHED)) {
+	public List<Action> onPageFinished(String url) {
+		if (makeCall(Callbacks.PAGE_FINISHED)) {
 			return mServiceConnection.onPageFinished(url);
 		} else {
 			return null;
@@ -164,7 +164,7 @@ public class Addon {
 	}
 	
 	public String getContributedMainMenuItem() {
-		if (makeCall(AddonCallbacks.CONTRIBUTE_MAIN_MENU)) {
+		if (makeCall(Callbacks.CONTRIBUTE_MAIN_MENU)) {
 			if (mContributedMainMenu == null) {
 				mContributedMainMenu = mServiceConnection.getContributedMainMenuItem(); 
 			}
@@ -175,18 +175,18 @@ public class Addon {
 		}
 	}
 	
-	public AddonResponse onContributedMainMenuItemSelected(String currentTitle, String currentUrl) {
-		if (makeCall(AddonCallbacks.CONTRIBUTE_MAIN_MENU)) {
+	public List<Action> onContributedMainMenuItemSelected(String currentTitle, String currentUrl) {
+		if (makeCall(Callbacks.CONTRIBUTE_MAIN_MENU)) {
 			return mServiceConnection.onContributedMainMenuItemSelected(currentTitle, currentUrl);
 		} else {
 			return null;
 		}
 	}
 	
-	public String getContributedLinkContextMenuItem() {
-		if (makeCall(AddonCallbacks.CONTRIBUTE_LINK_CONTEXT_MENU)) {
+	public String getContributedLinkContextMenuItem(int hitTestResult, String url) {
+		if (makeCall(Callbacks.CONTRIBUTE_LINK_CONTEXT_MENU)) {
 			if (mContributedLinkContextMenu == null) {
-				mContributedLinkContextMenu = mServiceConnection.getContributedLinkContextMenuItem();
+				mContributedLinkContextMenu = mServiceConnection.getContributedLinkContextMenuItem(hitTestResult, url);
 			}
 			
 			return mContributedLinkContextMenu;
@@ -195,8 +195,8 @@ public class Addon {
 		}
 	}
 	
-	public AddonResponse onContributedLinkContextMenuItemSelected(int hitTestResult, String url) {
-		if (makeCall(AddonCallbacks.CONTRIBUTE_LINK_CONTEXT_MENU)) {
+	public List<Action> onContributedLinkContextMenuItemSelected(int hitTestResult, String url) {
+		if (makeCall(Callbacks.CONTRIBUTE_LINK_CONTEXT_MENU)) {
 			return mServiceConnection.onContributedLinkContextMenuItemSelected(hitTestResult, url);
 		} else {
 			return null;
@@ -204,7 +204,7 @@ public class Addon {
 	}
 	
 	public String getContributedHistoryBookmarksMenuItem() {
-		if (makeCall(AddonCallbacks.CONTRIBUTE_HISTORY_BOOKMARKS_MENU)) {
+		if (makeCall(Callbacks.CONTRIBUTE_HISTORY_BOOKMARKS_MENU)) {
 			if (mContributedHistoryBookmarksMenu == null) {
 				mContributedHistoryBookmarksMenu = mServiceConnection.getContributedHistoryBookmarksMenuItem(); 
 			}
@@ -215,8 +215,8 @@ public class Addon {
 		}
 	}
 	
-	public AddonResponse onContributedHistoryBookmarksMenuItemSelected() {
-		if (makeCall(AddonCallbacks.CONTRIBUTE_HISTORY_BOOKMARKS_MENU)) {
+	public List<Action> onContributedHistoryBookmarksMenuItemSelected() {
+		if (makeCall(Callbacks.CONTRIBUTE_HISTORY_BOOKMARKS_MENU)) {
 			return mServiceConnection.onContributedHistoryBookmarksMenuItemSelected();
 		} else {
 			return null;
@@ -224,7 +224,7 @@ public class Addon {
 	}
 	
 	public String getContributedBookmarkContextMenuItem() {
-		if (makeCall(AddonCallbacks.CONTRIBUTE_BOOKMARK_CONTEXT_MENU)) {
+		if (makeCall(Callbacks.CONTRIBUTE_BOOKMARK_CONTEXT_MENU)) {
 			if (mContributedBookmarkContextMenu == null) {
 				mContributedBookmarkContextMenu = mServiceConnection.getContributedBookmarkContextMenuItem();
 			}
@@ -235,8 +235,8 @@ public class Addon {
 		}
 	}
 	
-	public AddonResponse onContributedBookmarkContextMenuItemSelected(String title, String url) {
-		if (makeCall(AddonCallbacks.CONTRIBUTE_BOOKMARK_CONTEXT_MENU)) {
+	public List<Action> onContributedBookmarkContextMenuItemSelected(String title, String url) {
+		if (makeCall(Callbacks.CONTRIBUTE_BOOKMARK_CONTEXT_MENU)) {
 			return mServiceConnection.onContributedBookmarkContextMenuItemSelected(title, url);
 		} else {
 			return null;
@@ -244,7 +244,7 @@ public class Addon {
 	}
 	
 	public String getContributedHistoryContextMenuItem() {
-		if (makeCall(AddonCallbacks.CONTRIBUTE_HISTORY_CONTEXT_MENU)) {
+		if (makeCall(Callbacks.CONTRIBUTE_HISTORY_CONTEXT_MENU)) {
 			if (mContributedHistoryContextMenu == null) {
 				mContributedHistoryContextMenu = mServiceConnection.getContributedHistoryContextMenuItem();
 			}
@@ -255,15 +255,15 @@ public class Addon {
 		}
 	}
 	
-	public AddonResponse onContributedHistoryContextMenuItemSelected(String title, String url) {
-		if (makeCall(AddonCallbacks.CONTRIBUTE_HISTORY_CONTEXT_MENU)) {
+	public List<Action> onContributedHistoryContextMenuItemSelected(String title, String url) {
+		if (makeCall(Callbacks.CONTRIBUTE_HISTORY_CONTEXT_MENU)) {
 			return mServiceConnection.onContributedHistoryContextMenuItemSelected(title, url);
 		} else {
 			return null;
 		}
 	}
 	
-	public AddonResponse onUserAnswerQuestion(String questionId, boolean positiveAnswer) {
+	public List<Action> onUserAnswerQuestion(String questionId, boolean positiveAnswer) {
 		if (makeCallWithoutSpecificCallback()) {
 			return mServiceConnection.onUserAnswerQuestion(questionId, positiveAnswer);
 		} else {
@@ -272,7 +272,7 @@ public class Addon {
 	}
 	
 	public void showAddonPreferenceActivity() {
-		if (makeCallEvenDisabled(AddonCallbacks.HAS_PREFERENCES_PAGE)) {
+		if (makeCallEvenDisabled(Callbacks.HAS_PREFERENCES_PAGE)) {
 			mServiceConnection.showAddonPreferenceActivity();
 		}
 	}
@@ -280,35 +280,35 @@ public class Addon {
 	public List<String> getUserReadbleCallbacks() {
 		List<String> results = new ArrayList<String>();
 		
-		if ((mCallbacks & AddonCallbacks.PAGE_STARTED) == AddonCallbacks.PAGE_STARTED) {
+		if ((mCallbacks & Callbacks.PAGE_STARTED) == Callbacks.PAGE_STARTED) {
 			results.add(mContext.getString(R.string.AddonCallbackPageStarted));
 		}
 		
-		if ((mCallbacks & AddonCallbacks.PAGE_FINISHED) == AddonCallbacks.PAGE_FINISHED) {
+		if ((mCallbacks & Callbacks.PAGE_FINISHED) == Callbacks.PAGE_FINISHED) {
 			results.add(mContext.getString(R.string.AddonCallbackPageFinished));
 		}		
 
-		if ((mCallbacks & AddonCallbacks.CONTRIBUTE_MAIN_MENU) == AddonCallbacks.CONTRIBUTE_MAIN_MENU) {
+		if ((mCallbacks & Callbacks.CONTRIBUTE_MAIN_MENU) == Callbacks.CONTRIBUTE_MAIN_MENU) {
 			results.add(mContext.getString(R.string.AddonCallbackContributeMainMenu));
 		}
 		
-		if ((mCallbacks & AddonCallbacks.CONTRIBUTE_LINK_CONTEXT_MENU) == AddonCallbacks.CONTRIBUTE_LINK_CONTEXT_MENU) {
+		if ((mCallbacks & Callbacks.CONTRIBUTE_LINK_CONTEXT_MENU) == Callbacks.CONTRIBUTE_LINK_CONTEXT_MENU) {
 			results.add(mContext.getString(R.string.AddonCallbackContributeLinkContextMenu));
 		}
 		
-		if ((mCallbacks & AddonCallbacks.CONTRIBUTE_HISTORY_BOOKMARKS_MENU) == AddonCallbacks.CONTRIBUTE_HISTORY_BOOKMARKS_MENU) {
+		if ((mCallbacks & Callbacks.CONTRIBUTE_HISTORY_BOOKMARKS_MENU) == Callbacks.CONTRIBUTE_HISTORY_BOOKMARKS_MENU) {
 			results.add(mContext.getString(R.string.AddonCallbackContributeHistoryBookmarksMenu));
 		}
 		
-		if ((mCallbacks & AddonCallbacks.CONTRIBUTE_BOOKMARK_CONTEXT_MENU) == AddonCallbacks.CONTRIBUTE_BOOKMARK_CONTEXT_MENU) {
+		if ((mCallbacks & Callbacks.CONTRIBUTE_BOOKMARK_CONTEXT_MENU) == Callbacks.CONTRIBUTE_BOOKMARK_CONTEXT_MENU) {
 			results.add(mContext.getString(R.string.AddonCallbackContributeBookmarkContextMenu));
 		}
 		
-		if ((mCallbacks & AddonCallbacks.CONTRIBUTE_HISTORY_CONTEXT_MENU) == AddonCallbacks.CONTRIBUTE_HISTORY_CONTEXT_MENU) {
+		if ((mCallbacks & Callbacks.CONTRIBUTE_HISTORY_CONTEXT_MENU) == Callbacks.CONTRIBUTE_HISTORY_CONTEXT_MENU) {
 			results.add(mContext.getString(R.string.AddonCallbackContributeHistoryContextMenu));
 		}
 		
-		if ((mCallbacks & AddonCallbacks.HAS_PREFERENCES_PAGE) == AddonCallbacks.HAS_PREFERENCES_PAGE) {
+		if ((mCallbacks & Callbacks.HAS_PREFERENCES_PAGE) == Callbacks.HAS_PREFERENCES_PAGE) {
 			results.add(mContext.getString(R.string.AddonCallbackHasPreferencesPage));
 		}
 		

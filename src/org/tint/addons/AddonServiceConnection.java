@@ -15,7 +15,9 @@
 
 package org.tint.addons;
 
-import org.tint.addons.framework.AddonResponse;
+import java.util.List;
+
+import org.tint.addons.framework.Action;
 import org.tint.addons.framework.IAddon;
 
 import android.content.ComponentName;
@@ -131,7 +133,7 @@ public class AddonServiceConnection implements ServiceConnection {
 		}
 	}
 	
-	public AddonResponse onPageStarted(String url) {
+	public List<Action> onPageStarted(String url) {
 		try {
 			return mAddon.onPageStarted(url);
 		} catch (RemoteException e) {
@@ -140,7 +142,7 @@ public class AddonServiceConnection implements ServiceConnection {
 		}
 	}
 	
-	public AddonResponse onPageFinished(String url) {
+	public List<Action> onPageFinished(String url) {
 		try {
 			return mAddon.onPageFinished(url);
 		} catch (RemoteException e) {
@@ -158,7 +160,7 @@ public class AddonServiceConnection implements ServiceConnection {
 		}
 	}
 	
-	public AddonResponse onContributedMainMenuItemSelected(String currentTitle, String currentUrl) {
+	public List<Action> onContributedMainMenuItemSelected(String currentTitle, String currentUrl) {
 		try {
 			return mAddon.onContributedMainMenuItemSelected(currentTitle, currentUrl);
 		} catch (RemoteException e) {
@@ -167,16 +169,16 @@ public class AddonServiceConnection implements ServiceConnection {
 		}
 	}
 	
-	public String getContributedLinkContextMenuItem() {
+	public String getContributedLinkContextMenuItem(int hitTestResult, String url) {
 		try {
-			return mAddon.getContributedLinkContextMenuItem();
+			return mAddon.getContributedLinkContextMenuItem(hitTestResult, url);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	public AddonResponse onContributedLinkContextMenuItemSelected(int hitTestResult, String url) {
+	public List<Action> onContributedLinkContextMenuItemSelected(int hitTestResult, String url) {
 		try {
 			return mAddon.onContributedLinkContextMenuItemSelected(hitTestResult, url);
 		} catch (RemoteException e) {
@@ -194,7 +196,7 @@ public class AddonServiceConnection implements ServiceConnection {
 		}
 	}
 	
-	public AddonResponse onContributedHistoryBookmarksMenuItemSelected() {
+	public List<Action> onContributedHistoryBookmarksMenuItemSelected() {
 		try {
 			return mAddon.onContributedHistoryBookmarksMenuItemSelected();
 		} catch (RemoteException e) {
@@ -212,7 +214,7 @@ public class AddonServiceConnection implements ServiceConnection {
 		}
 	}
 	
-	public AddonResponse onContributedBookmarkContextMenuItemSelected(String title, String url) {
+	public List<Action> onContributedBookmarkContextMenuItemSelected(String title, String url) {
 		try {
 			return mAddon.onContributedBookmarkContextMenuItemSelected(title, url);
 		} catch (RemoteException e) {
@@ -230,7 +232,7 @@ public class AddonServiceConnection implements ServiceConnection {
 		}
 	}
 	
-	public AddonResponse onContributedHistoryContextMenuItemSelected(String title, String url) {
+	public List<Action> onContributedHistoryContextMenuItemSelected(String title, String url) {
 		try {
 			return mAddon.onContributedHistoryContextMenuItemSelected(title, url);
 		} catch (RemoteException e) {
@@ -239,7 +241,7 @@ public class AddonServiceConnection implements ServiceConnection {
 		}
 	}
 	
-	public AddonResponse onUserAnswerQuestion(String questionId, boolean positiveAnswer) {
+	public List<Action> onUserAnswerQuestion(String questionId, boolean positiveAnswer) {
 		try {
 			return mAddon.onUserAnswerQuestion(questionId, positiveAnswer);
 		} catch (RemoteException e) {

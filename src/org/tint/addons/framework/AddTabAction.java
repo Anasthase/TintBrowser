@@ -18,17 +18,37 @@
 
 package org.tint.addons.framework;
 
-public class AddonCallbacks {
+import android.os.Parcel;
+
+public class AddTabAction extends Action {
 	
-	public static final int PAGE_STARTED = 1;
-	public static final int PAGE_FINISHED = 2;
+	private String mUrl;
 	
-	public static final int HAS_PREFERENCES_PAGE = 4;
+	public AddTabAction() {
+		this((String) null);
+	}
 	
-	public static final int CONTRIBUTE_MAIN_MENU = 8;
-	public static final int CONTRIBUTE_LINK_CONTEXT_MENU = 16;
-	public static final int CONTRIBUTE_HISTORY_BOOKMARKS_MENU = 32;
-	public static final int CONTRIBUTE_BOOKMARK_CONTEXT_MENU = 64;
-	public static final int CONTRIBUTE_HISTORY_CONTEXT_MENU = 128;
+	public AddTabAction(String url) {
+		super(ACTION_ADD_TAB);
+		
+		mUrl = url;
+	}
+	
+	public AddTabAction(Parcel in) {
+		super(ACTION_ADD_TAB);
+		
+		mUrl = in.readString();
+	}
+	
+	public String getUrl() {
+		return mUrl;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		super.writeToParcel(dest, flags);
+		
+		dest.writeString(mUrl);
+	}
 
 }

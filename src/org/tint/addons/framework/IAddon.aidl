@@ -18,7 +18,7 @@
 
 package org.tint.addons.framework;
 
-import org.tint.addons.framework.AddonResponse;
+import org.tint.addons.framework.Action;
 
 interface IAddon {
 	void onBind();
@@ -32,25 +32,25 @@ interface IAddon {
 	
 	int getCallbacks();
 	
-	AddonResponse onPageStarted(String url);
-	AddonResponse onPageFinished(String url);
+	List<Action> onPageStarted(String url);
+	List<Action> onPageFinished(String url);
 	
 	String getContributedMainMenuItem();
-	AddonResponse onContributedMainMenuItemSelected(String currentTitle, String currentUrl);
+	List<Action> onContributedMainMenuItemSelected(String currentTitle, String currentUrl);
 	
-	String getContributedLinkContextMenuItem();
-	AddonResponse onContributedLinkContextMenuItemSelected(int hitTestResult, String url);
+	String getContributedLinkContextMenuItem(int hitTestResult, String url);
+	List<Action> onContributedLinkContextMenuItemSelected(int hitTestResult, String url);
 	
 	String getContributedHistoryBookmarksMenuItem();
-	AddonResponse onContributedHistoryBookmarksMenuItemSelected();
+	List<Action> onContributedHistoryBookmarksMenuItemSelected();
 	
 	String getContributedBookmarkContextMenuItem();
-	AddonResponse onContributedBookmarkContextMenuItemSelected(String title, String url);
+	List<Action> onContributedBookmarkContextMenuItemSelected(String title, String url);
 	
 	String getContributedHistoryContextMenuItem();
-	AddonResponse onContributedHistoryContextMenuItemSelected(String title, String url);
+	List<Action> onContributedHistoryContextMenuItemSelected(String title, String url);
 	
-	AddonResponse onUserAnswerQuestion(String questionId, boolean positiveAnswer);
+	List<Action> onUserAnswerQuestion(String questionId, boolean positiveAnswer);
 	
 	void showAddonPreferenceActivity();	
 }

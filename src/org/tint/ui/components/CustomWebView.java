@@ -172,7 +172,7 @@ public class CustomWebView extends WebView implements DownloadListener {
 	private void createContributedContextMenu(ContextMenu menu, int hitTestResult, String url) {
 		MenuItem item;
 		
-		List<AddonMenuItem> contributedItems = Controller.getInstance().getAddonManager().getContributedLinkContextMenuItems();
+		List<AddonMenuItem> contributedItems = Controller.getInstance().getAddonManager().getContributedLinkContextMenuItems(hitTestResult, url);
 		for (AddonMenuItem contribution : contributedItems) {
 			item = menu.add(0, contribution.getAddon().getMenuId(), 0, contribution.getMenuItem());
 			item.setIntent(createIntent(Constants.ACTION_BROWSER_CONTEXT_MENU, contribution.getAddon().getMenuId(), hitTestResult, url));

@@ -18,20 +18,18 @@ package org.tint.addons;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.tint.addons.framework.AddonAction;
-import org.tint.addons.framework.AddonResponse;
+import org.tint.addons.executors.BaseActionExecutor;
+import org.tint.addons.executors.ExecutorFactory;
+import org.tint.addons.framework.Action;
 import org.tint.ui.UIManager;
 import org.tint.ui.components.CustomWebView;
-import org.tint.utils.ApplicationUtils;
 import org.tint.utils.Constants;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.text.TextUtils;
-import android.widget.Toast;
 
 public class AddonManager {
 	
@@ -83,7 +81,7 @@ public class AddonManager {
 		List<AddonResponseWrapper> responses = new ArrayList<AddonResponseWrapper>();
 		
 		for (Addon addon : mAddons) {
-			AddonResponse response = addon.onPageStarted(url);
+			List<Action> response = addon.onPageStarted(url);
 			if (response != null) {
 				responses.add(new AddonResponseWrapper(addon, response));
 			}
@@ -96,7 +94,7 @@ public class AddonManager {
 		List<AddonResponseWrapper> responses = new ArrayList<AddonResponseWrapper>();
 		
 		for (Addon addon : mAddons) {
-			AddonResponse response = addon.onPageFinished(url);
+			List<Action> response = addon.onPageFinished(url);
 			if (response != null) {
 				responses.add(new AddonResponseWrapper(addon, response));
 			}
@@ -127,7 +125,7 @@ public class AddonManager {
 			
 			Addon addon = mAddons.get(addonId);
 			
-			AddonResponse response = addon.onContributedMainMenuItemSelected(currentWebview.getTitle(), currentWebview.getUrl());
+			List<Action> response = addon.onContributedMainMenuItemSelected(currentWebview.getTitle(), currentWebview.getUrl());
 			processOneResponse(context, currentWebview, addon, response);
 
 			return true;
@@ -136,11 +134,11 @@ public class AddonManager {
 		}
 	}
 	
-	public List<AddonMenuItem> getContributedLinkContextMenuItems() {
+	public List<AddonMenuItem> getContributedLinkContextMenuItems(int hitTestResult, String url) {
 		List<AddonMenuItem> result = new ArrayList<AddonMenuItem>();
 		
 		for (Addon addon : mAddons) {
-			String response = addon.getContributedLinkContextMenuItem();
+			String response = addon.getContributedLinkContextMenuItem(hitTestResult, url);
 			
 			if (!TextUtils.isEmpty(response)) {
 				result.add(new AddonMenuItem(addon, response));
@@ -158,7 +156,7 @@ public class AddonManager {
 			
 			Addon addon = mAddons.get(addonId);
 			
-			AddonResponse response = addon.onContributedLinkContextMenuItemSelected(
+			List<Action> response = addon.onContributedLinkContextMenuItemSelected(
 					intent.getIntExtra(Constants.EXTRA_HIT_TEST_RESULT, -1),
 					intent.getStringExtra(Constants.EXTRA_URL));
 			
@@ -188,7 +186,7 @@ public class AddonManager {
 			
 			Addon addon = mAddons.get(addonId);
 			
-			AddonResponse response = addon.onContributedHistoryBookmarksMenuItemSelected();
+			List<Action> response = addon.onContributedHistoryBookmarksMenuItemSelected();
 			processOneResponse(context, currentWebView, addon, response);
 
 			return true;
@@ -219,7 +217,7 @@ public class AddonManager {
 			
 			Addon addon = mAddons.get(addonId);
 			
-			AddonResponse response = addon.onContributedBookmarkContextMenuItemSelected(title, url);
+			List<Action> response = addon.onContributedBookmarkContextMenuItemSelected(title, url);
 			
 			processOneResponse(context, currentWebView, addon, response);
 			
@@ -251,7 +249,7 @@ public class AddonManager {
 			
 			Addon addon = mAddons.get(addonId);
 			
-			AddonResponse response = addon.onContributedHistoryContextMenuItemSelected(title, url);
+			List<Action> response = addon.onContributedHistoryContextMenuItemSelected(title, url);
 			
 			processOneResponse(context, currentWebView, addon, response);
 			
@@ -261,109 +259,123 @@ public class AddonManager {
 		}
 	}
 	
-	private void processOneAction(final Context context, final CustomWebView webView, final Addon addon, final AddonAction action) {
-		String data;
+	public void onUserAnswerQuestion(Context context, CustomWebView currentWebView, Addon addon, String actionId, boolean positiveAnswer) {
+		List<Action> response = addon.onUserAnswerQuestion(actionId, positiveAnswer);
+		processOneResponse(context, currentWebView, addon, response);
+	}
+	
+	private void processOneAction(final Context context, final CustomWebView webView, final Addon addon, final Action addonAction) {
+		BaseActionExecutor executor = ExecutorFactory.getExecutor(addonAction);
 		
-		switch (action.getAction()) {
-		case AddonAction.ACTION_SHOW_TOAST:
-			Toast.makeText(context, action.getData1(), Toast.LENGTH_SHORT).show();
-			break;
-			
-		case AddonAction.ACTION_SHOW_DIALOG:
-			ApplicationUtils.showMessageDialog(context, addon.getName(), action.getData1());
-			break;
-			
-		case AddonAction.ACTION_ASK_USER:
-			ApplicationUtils.showAddonAskUserDialog(
-					context,
-					addon.getName(),
-					action.getData1(),
-					action.getData2(),
-					action.getData3(),
-					new DialogInterface.OnClickListener() {						
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							AddonResponse response = addon.onUserAnswerQuestion(action.getId().toString(), true);
-							processOneResponse(context, webView, addon, response);
-						}
-					},
-					new DialogInterface.OnClickListener() {
-						
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							AddonResponse response = addon.onUserAnswerQuestion(action.getId().toString(), false);
-							processOneResponse(context, webView, addon, response);
-						}
-					});		
-			
-			break;
-			
-		case AddonAction.ACTION_ADD_TAB:
-			data = action.getData1();
-			if (TextUtils.isEmpty(data)) {
-				mUIManager.addTab(true);
-			} else {
-				mUIManager.addTab(action.getData1());
-			}
-			
-			break;
-			
-		case AddonAction.ACTION_CLOSE_CURRENT_TAB:
-			mUIManager.closeCurrentTab();
-			break;
-			
-		case AddonAction.ACTION_LOAD_URL:
-			data = action.getData1();
-			if ((!TextUtils.isEmpty(data)) &&
-					(webView != null)) {
-				webView.loadUrl(data);
-			}
-			
-			break;
-			
-		case AddonAction.ACTION_BROWSE_STOP:
-			if (webView != null) {
-				webView.stopLoading();
-			}
-			
-			break;
-			
-		case AddonAction.ACTION_BROWSE_RELOAD:
-			if (webView != null) {
-				webView.reload();
-			}
-			
-			break;
-			
-		case AddonAction.ACTION_BROWSE_FORWARD:
-			if ((webView != null) &&
-					(webView.canGoForward())) {
-				webView.goForward();
-			}
-			
-			break;
-			
-		case AddonAction.ACTION_BROWSE_BACK:
-			if ((webView != null) &&
-					(webView.canGoBack())) {
-				webView.goBack();
-			}
-			
-			break;
-			
-		default: break;
+		if (executor != null) {
+			executor.init(context, mUIManager, webView, addon, addonAction);
+			executor.execute();
 		}
 	}
 	
+//	private void processOneAction(final Context context, final CustomWebView webView, final Addon addon, final AddonAction action) {
+//		String data;
+//		
+//		switch (action.getAction()) {
+//		case AddonAction.ACTION_SHOW_TOAST:
+//			Toast.makeText(context, action.getData1(), Toast.LENGTH_SHORT).show();
+//			break;
+//			
+//		case AddonAction.ACTION_SHOW_DIALOG:
+//			ApplicationUtils.showMessageDialog(context, addon.getName(), action.getData1());
+//			break;
+//			
+//		case AddonAction.ACTION_ASK_USER:
+//			ApplicationUtils.showAddonAskUserDialog(
+//					context,
+//					addon.getName(),
+//					action.getData1(),
+//					action.getData2(),
+//					action.getData3(),
+//					new DialogInterface.OnClickListener() {						
+//						@Override
+//						public void onClick(DialogInterface dialog, int which) {
+//							AddonResponse response = addon.onUserAnswerQuestion(action.getId().toString(), true);
+//							processOneResponse(context, webView, addon, response);
+//						}
+//					},
+//					new DialogInterface.OnClickListener() {
+//						
+//						@Override
+//						public void onClick(DialogInterface dialog, int which) {
+//							AddonResponse response = addon.onUserAnswerQuestion(action.getId().toString(), false);
+//							processOneResponse(context, webView, addon, response);
+//						}
+//					});		
+//			
+//			break;
+//			
+//		case AddonAction.ACTION_ADD_TAB:
+//			data = action.getData1();
+//			if (TextUtils.isEmpty(data)) {
+//				mUIManager.addTab(true);
+//			} else {
+//				mUIManager.addTab(action.getData1());
+//			}
+//			
+//			break;
+//			
+//		case AddonAction.ACTION_CLOSE_CURRENT_TAB:
+//			mUIManager.closeCurrentTab();
+//			break;
+//			
+//		case AddonAction.ACTION_LOAD_URL:
+//			data = action.getData1();
+//			if ((!TextUtils.isEmpty(data)) &&
+//					(webView != null)) {
+//				webView.loadUrl(data);
+//			}
+//			
+//			break;
+//			
+//		case AddonAction.ACTION_BROWSE_STOP:
+//			if (webView != null) {
+//				webView.stopLoading();
+//			}
+//			
+//			break;
+//			
+//		case AddonAction.ACTION_BROWSE_RELOAD:
+//			if (webView != null) {
+//				webView.reload();
+//			}
+//			
+//			break;
+//			
+//		case AddonAction.ACTION_BROWSE_FORWARD:
+//			if ((webView != null) &&
+//					(webView.canGoForward())) {
+//				webView.goForward();
+//			}
+//			
+//			break;
+//			
+//		case AddonAction.ACTION_BROWSE_BACK:
+//			if ((webView != null) &&
+//					(webView.canGoBack())) {
+//				webView.goBack();
+//			}
+//			
+//			break;
+//			
+//		default: break;
+//		}
+//	}
+	
 	private void processOneResponse(Context context, CustomWebView webView, AddonResponseWrapper responseWrapper) {
 		Addon addon = responseWrapper.getAddon();
-		AddonResponse response = responseWrapper.getResponse();
+		List<Action> response = responseWrapper.getResponse();
 		
 		processOneResponse(context, webView, addon, response);
 	}
 	
-	private void processOneResponse(Context context, CustomWebView webView, Addon addon, AddonResponse response) {
-		for (AddonAction action : response.getActions()) {
+	private void processOneResponse(Context context, CustomWebView webView, Addon addon, List<Action> response) {
+		for (Action action : response) {
 			processOneAction(context, webView, addon, action);
 		}
 	}

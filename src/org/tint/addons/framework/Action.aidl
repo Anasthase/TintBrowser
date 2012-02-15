@@ -18,4 +18,4 @@
 
 package org.tint.addons.framework;
 
-parcelable BaseAddonAction;
+parcelable Action;
