@@ -29,6 +29,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.content.pm.ResolveInfo;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
@@ -55,6 +56,8 @@ public class Addon {
 	
 	private String mPreferenceName;
 	
+	private ResolveInfo mResolveInfo;
+	
 	private boolean mIsEnabled;
 	private int mCallbacks;
 	
@@ -62,9 +65,10 @@ public class Addon {
 	
 	private OnSharedPreferenceChangeListener mPreferenceChangeListener;
 	
-	public Addon(Context context, int id, String category) {
+	public Addon(Context context, int id, ResolveInfo resolveInfo, String category) {
 		mContext = context;
 		mId = id;
+		mResolveInfo = resolveInfo;
 		
 		mIsEnabled = false;
 		mCallbacks = 0;
@@ -90,6 +94,10 @@ public class Addon {
 		});
 		
 		mContext.bindService(i, mServiceConnection, Context.BIND_AUTO_CREATE);				
+	}
+	
+	public ResolveInfo getResolveInfo() {
+		return mResolveInfo;
 	}
 	
 	/**

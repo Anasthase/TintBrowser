@@ -62,7 +62,7 @@ public class AddonManager {
 		for (ResolveInfo addonInfo : addonInfoList) {
 			String category = addonInfo.filter.categoriesIterator().next();
 			
-			Addon addon = new Addon(mMainContext, addonId, category);			
+			Addon addon = new Addon(mMainContext, addonId, addonInfo, category);			
 			mAddons.add(addon);
 			
 			addonId++;

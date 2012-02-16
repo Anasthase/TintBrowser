@@ -29,10 +29,10 @@
 	<header android:fragment="org.tint.ui.preferences.AdvancedPreferencesFragment"            
             android:title="@string/PreferenceHeaderAdvancedSettingsTitle" />
 	
-	<header android:fragment="org.tint.ui.fragments.AddonsFragment"            
+	<header android:fragment="org.tint.ui.preferences.AddonsFragment"            
             android:title="@string/PreferenceHeaderAddonsTitle" />
 	
-	<header android:fragment="org.tint.ui.fragments.AboutFragment"            
+	<header android:fragment="org.tint.ui.preferences.AboutFragment"            
             android:title="@string/PreferenceHeaderAboutTitle" />
     
 </preference-headers>

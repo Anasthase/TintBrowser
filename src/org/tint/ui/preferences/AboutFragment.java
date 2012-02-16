@@ -13,7 +13,7 @@
  * GNU General Public License for more details.
  */
 
-package org.tint.ui.fragments;
+package org.tint.ui.preferences;
 
 import org.tint.R;
 

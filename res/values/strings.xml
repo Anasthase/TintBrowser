@@ -382,7 +382,7 @@
     
     <string name="AddonDetailsContactEMail">e-mail: %s</string>
     <string name="AddonDetailsContactWebsite">Website: %s</string>
-    <string name="AddonDetailsUsedCallbacks">This addon:</string>
+    <string name="AddonDetailsUsedCallbacksTitle">This addon:</string>
     
     <string name="AddonCallbackPageStarted">Is notified when a page starts loading.</string>
     <string name="AddonCallbackPageFinished">Is notified when a page finish loading.</string>
@@ -392,6 +392,10 @@
     <string name="AddonCallbackContributeHistoryBookmarksMenu">Can contribute to the history &amp; bookmarks menu.</string>
     <string name="AddonCallbackContributeBookmarkContextMenu">Can contribute to the bookmark context menu.</string>
     <string name="AddonCallbackContributeHistoryContextMenu">Can contribute to the history context menu.</string>
+    
+    <string name="AddonDetailsUsedPermissionsTitle">Has the following permissions:</string>
+    <string name="AddonDetailsPermissionsNone">None.</string>
+    <string name="AddonDetailsUnableToGetPermissions">Unable to get permissions. Check them with the package manager of your device.</string>
     
     <string name="ContentDescriptionSuggestionIcon">Suggestion favicon</string>
 

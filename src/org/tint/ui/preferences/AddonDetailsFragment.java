@@ -13,7 +13,7 @@
  * GNU General Public License for more details.
  */
 
-package org.tint.ui.fragments;
+package org.tint.ui.preferences;
 
 import java.util.List;
 
@@ -23,6 +23,10 @@ import org.tint.controllers.Controller;
 import org.tint.utils.ApplicationUtils;
 
 import android.app.Fragment;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,6 +56,7 @@ public class AddonDetailsFragment extends Fragment {
 	private Button mPreferences;
 	
 	private TextView mCallbacks;
+	private TextView mPermissions;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -82,6 +87,7 @@ public class AddonDetailsFragment extends Fragment {
 			});
 			
 			mCallbacks = (TextView) mContainer.findViewById(R.id.AddonCallbacks);
+			mPermissions = (TextView) mContainer.findViewById(R.id.AddonPermissions);
 		}
 		
 		Bundle args = getArguments();
@@ -98,6 +104,7 @@ public class AddonDetailsFragment extends Fragment {
 			mPreferences.setEnabled(mAddon.hasPreferencePage());
 			
 			fillCallbacksDetails();
+			fillPackagePermissions();			
 			
 			if (!ApplicationUtils.isTablet(getActivity())) {
         		// The current addon name is currently shown in tablet-type preferences activity / fragments.
@@ -122,6 +129,43 @@ public class AddonDetailsFragment extends Fragment {
 		}
 		
 		mCallbacks.setText(sb.toString());
+	}
+	
+	private void fillPackagePermissions() {
+		ResolveInfo info = mAddon.getResolveInfo();
+		
+		StringBuilder sb = new StringBuilder();
+		
+		if ((info != null) &&
+				(info.serviceInfo != null) &&
+				(info.serviceInfo.packageName != null)) {
+			try {
+				PackageInfo packageInfo = getActivity().getPackageManager().getPackageInfo(info.serviceInfo.packageName, PackageManager.GET_PERMISSIONS);
+				String[] permissions = packageInfo.requestedPermissions;
+				
+				if ((permissions != null) &&
+						(permissions.length > 0)) {
+					for (int i = 0; i < permissions.length; i++) {
+						if (sb.length() > 0) {
+							sb.append('\n');
+						}
+
+						sb.append("• " + permissions[i]);
+					}
+				} else {
+					sb.append(getString(R.string.AddonDetailsPermissionsNone));
+				}
+				
+				mPermissions.setText(sb.toString());
+				
+			} catch (NameNotFoundException e) {
+				sb.append(getString(R.string.AddonDetailsUnableToGetPermissions));
+			}
+		} else {
+			sb.append(getString(R.string.AddonDetailsUnableToGetPermissions));
+		}
+		
+		mPermissions.setText(sb.toString());
 	}
 
 }
