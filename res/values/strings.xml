@@ -95,6 +95,10 @@
     <string name="HistoryTabTitle">History</string>
     <string name="BookmarksEmpty">You do not have any bookmarks.</string>
     
+    <string name="ImportHistoryBookmarks">Import</string>
+    <string name="ExportHistoryBookmarks">Export</string>
+    <string name="ClearHistoryBookmarks">Clear</string>
+    
     <string name="AddBookmarkTitle">Add bookmark</string>
     <string name="BookmarkText">Label</string>
     <string name="UrlText">Address</string>

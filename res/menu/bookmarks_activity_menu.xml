@@ -18,9 +18,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-	    android:id="@+id/BookmarksActivity.MenuAddBookmark"
+	    android:id="@+id/BookmarksActivityMenuAddBookmark"
 	    android:title="@string/AddBookmark"
-	    android:icon="@android:drawable/ic_menu_preferences"/>
+	    android:icon="@android:drawable/ic_menu_add"
+	    android:showAsAction="ifRoom|withText" />
+    
+    <item
+	    android:id="@+id/BookmarksActivityMenuImportHistoryBookmarks"
+	    android:title="@string/ImportHistoryBookmarks" />
+    
+    <item
+	    android:id="@+id/BookmarksActivityMenuExportHistoryBookmarks"
+	    android:title="@string/ExportHistoryBookmarks" />
+    
+    <item
+	    android:id="@+id/BookmarksActivityMenuClearHistoryBookmarks"
+	    android:title="@string/ClearHistoryBookmarks" />
     
     <group
         android:id="@+id/BookmarksActivity.AddonsMenuGroup" />
