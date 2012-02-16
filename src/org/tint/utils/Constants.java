@@ -17,8 +17,6 @@ package org.tint.utils;
 
 public class Constants {
 	
-	//public static final boolean IS_TABLET = false;
-	
 	/**
 	 * Actions.
 	 */

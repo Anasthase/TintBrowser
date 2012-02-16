@@ -27,18 +27,6 @@ import org.tint.addons.framework.ShowToastAction;
 
 public class ExecutorFactory {
 	
-//	private static Map<String, String> sClassMap;
-//	
-//	static {
-//		sClassMap = new HashMap<String, String>();
-//		sClassMap.put(Action.class.getName(), ActionExecutor.class.getName());
-//		sClassMap.put(ShowDialogAction.class.getName(), ShowDialogExecutor.class.getName());
-//		sClassMap.put(LoadUrlAction.class.getName(), LoadUrlExecutor.class.getName());
-//		sClassMap.put(ShowToastAction.class.getName(), ShowToastExecutor.class.getName());
-//		sClassMap.put(AddTabAction.class.getName(), AddTabExecutor.class.getName());
-//		sClassMap.put(AskUserAction.class.getName(), AskUserExecutor.class.getName());
-//	}
-	
 	private static Map<String, BaseActionExecutor> sClassMap;
 	
 	static {
@@ -52,31 +40,7 @@ public class ExecutorFactory {
 	}
 	
 	public static BaseActionExecutor getExecutor(Action addonAction) {
-				
 		return sClassMap.get(addonAction.getClass().getName());
-		
-//		try {
-//			
-//			String className = sClassMap.get(addonAction.getClass().getName());
-//			
-//			if (className != null) {
-//				BaseActionExecutor executor = (BaseActionExecutor) Class.forName(className).newInstance();
-//
-//				return executor;
-//			} else {
-//				return null;
-//			}
-//			
-//		} catch (InstantiationException e) {
-//			e.printStackTrace();
-//			return null;
-//		} catch (IllegalAccessException e) {
-//			e.printStackTrace();
-//			return null;
-//		} catch (ClassNotFoundException e) {
-//			e.printStackTrace();
-//			return null;
-//		}		
 	}
 
 }

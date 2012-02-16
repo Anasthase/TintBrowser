@@ -33,7 +33,7 @@ import android.text.TextUtils;
 
 public class AddonManager {
 	
-	public static final String ACTION_ADDON = "org.tint.intent.action.PICK_ADDON";
+	public static final String ACTION_ADDON = "org.tint.intent.action.ADDON";
 	
 	private Context mMainContext;
 	private UIManager mUIManager;
@@ -271,100 +271,6 @@ public class AddonManager {
 			executor.execute(context, mUIManager, webView, addon, addonAction);
 		}
 	}
-	
-//	private void processOneAction(final Context context, final CustomWebView webView, final Addon addon, final AddonAction action) {
-//		String data;
-//		
-//		switch (action.getAction()) {
-//		case AddonAction.ACTION_SHOW_TOAST:
-//			Toast.makeText(context, action.getData1(), Toast.LENGTH_SHORT).show();
-//			break;
-//			
-//		case AddonAction.ACTION_SHOW_DIALOG:
-//			ApplicationUtils.showMessageDialog(context, addon.getName(), action.getData1());
-//			break;
-//			
-//		case AddonAction.ACTION_ASK_USER:
-//			ApplicationUtils.showAddonAskUserDialog(
-//					context,
-//					addon.getName(),
-//					action.getData1(),
-//					action.getData2(),
-//					action.getData3(),
-//					new DialogInterface.OnClickListener() {						
-//						@Override
-//						public void onClick(DialogInterface dialog, int which) {
-//							AddonResponse response = addon.onUserAnswerQuestion(action.getId().toString(), true);
-//							processOneResponse(context, webView, addon, response);
-//						}
-//					},
-//					new DialogInterface.OnClickListener() {
-//						
-//						@Override
-//						public void onClick(DialogInterface dialog, int which) {
-//							AddonResponse response = addon.onUserAnswerQuestion(action.getId().toString(), false);
-//							processOneResponse(context, webView, addon, response);
-//						}
-//					});		
-//			
-//			break;
-//			
-//		case AddonAction.ACTION_ADD_TAB:
-//			data = action.getData1();
-//			if (TextUtils.isEmpty(data)) {
-//				mUIManager.addTab(true);
-//			} else {
-//				mUIManager.addTab(action.getData1());
-//			}
-//			
-//			break;
-//			
-//		case AddonAction.ACTION_CLOSE_CURRENT_TAB:
-//			mUIManager.closeCurrentTab();
-//			break;
-//			
-//		case AddonAction.ACTION_LOAD_URL:
-//			data = action.getData1();
-//			if ((!TextUtils.isEmpty(data)) &&
-//					(webView != null)) {
-//				webView.loadUrl(data);
-//			}
-//			
-//			break;
-//			
-//		case AddonAction.ACTION_BROWSE_STOP:
-//			if (webView != null) {
-//				webView.stopLoading();
-//			}
-//			
-//			break;
-//			
-//		case AddonAction.ACTION_BROWSE_RELOAD:
-//			if (webView != null) {
-//				webView.reload();
-//			}
-//			
-//			break;
-//			
-//		case AddonAction.ACTION_BROWSE_FORWARD:
-//			if ((webView != null) &&
-//					(webView.canGoForward())) {
-//				webView.goForward();
-//			}
-//			
-//			break;
-//			
-//		case AddonAction.ACTION_BROWSE_BACK:
-//			if ((webView != null) &&
-//					(webView.canGoBack())) {
-//				webView.goBack();
-//			}
-//			
-//			break;
-//			
-//		default: break;
-//		}
-//	}
 	
 	private void processOneResponse(Context context, CustomWebView webView, Addon addon, List<Action> response) {
 		for (Action action : response) {

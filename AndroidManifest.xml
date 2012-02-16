@@ -15,9 +15,10 @@
    GNU General Public License for more details.
  -->
 
-<manifest package="org.tint"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.tint"
     android:versionCode="1"
-    android:versionName="1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    android:versionName="1.0">
 
     <uses-sdk android:minSdkVersion="14" />
     
@@ -30,13 +31,12 @@
         android:label="@string/ApplicationName"
         android:theme="@style/ApplicationTheme" 
         android:hardwareAccelerated="true">
-        <!-- android:theme="@style/ApplicationTheme.Overlay" -->
+
         <activity
             android:label="@string/ApplicationName"
             android:name=".ui.activities.TintBrowserActivity"
             android:launchMode="singleTask"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            >
+            android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
