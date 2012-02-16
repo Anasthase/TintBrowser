@@ -24,6 +24,12 @@
     <string name="AboutLicenseText">License: GPLv3</string>
     <string name="AboutUrlText">http://www.todo.org/</string>
     
+    <string name="PermissionReadBookmarksLabel">Read Tint Browser bookmarks</string>
+    <string name="PermissionReadBookmarksDescription">Allow third-party applications or addons to read Tint Browser\'s history and bookmarks database.</string>
+    
+	<string name="PermissionWriteBookmarksLabel">Write Tint Browser bookmarks</string>
+    <string name="PermissionWriteBookmarksDescription">Allow third-party applications or addons to write Tint Browser\'s history and bookmarks database.</string>    
+    
     <string name="OK">OK</string>
     <string name="Cancel">Cancel</string>
     <string name="Yes">Yes</string>
