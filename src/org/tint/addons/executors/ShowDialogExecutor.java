@@ -15,28 +15,21 @@
 
 package org.tint.addons.executors;
 
-import org.tint.addons.Addon;
 import org.tint.addons.framework.Action;
 import org.tint.addons.framework.ShowDialogAction;
-import org.tint.ui.UIManager;
-import org.tint.ui.components.CustomWebView;
 import org.tint.utils.ApplicationUtils;
-
-import android.content.Context;
 
 public class ShowDialogExecutor extends BaseActionExecutor {
 
 	private ShowDialogAction mAddonAction;
 	
 	@Override
-	public void init(Context context, UIManager uiManager, CustomWebView webView, Addon addon, Action addonAction) {
-		baseInit(context, uiManager, webView, addon);
-	
+	protected void finishInit(Action addonAction) {
 		mAddonAction = (ShowDialogAction) addonAction;
 	}
 
 	@Override
-	public void execute() {
+	protected void internalExecute() {
 		ApplicationUtils.showMessageDialog(mContext, mAddonAction.getTitle(), mAddonAction.getMessage());
 	}
 

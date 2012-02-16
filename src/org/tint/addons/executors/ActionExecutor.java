@@ -15,26 +15,19 @@
 
 package org.tint.addons.executors;
 
-import org.tint.addons.Addon;
 import org.tint.addons.framework.Action;
-import org.tint.ui.UIManager;
-import org.tint.ui.components.CustomWebView;
-
-import android.content.Context;
 
 public class ActionExecutor extends BaseActionExecutor {
 
 	private Action mAddonAction;
 	
 	@Override
-	public void init(Context context, UIManager uiManager, CustomWebView webView, Addon addon, Action addonAction) {
-		baseInit(context, uiManager, webView, addon);
-		
+	protected void finishInit(Action addonAction) {
 		mAddonAction = addonAction;
 	}
 
 	@Override
-	public void execute() {
+	protected void internalExecute() {
 		switch (mAddonAction.getAction()) {
 		case Action.ACTION_CLOSE_CURRENT_TAB:
 			mUIManager.closeCurrentTab();

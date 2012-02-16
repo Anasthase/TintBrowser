@@ -29,22 +29,22 @@ public abstract class BaseActionExecutor {
 	protected CustomWebView mWebView;
 	protected Addon mAddon;
 	
-//	protected BaseAddonActionExecutor(Context context, UIManager uiManager, CustomWebView webView, Addon addon) {
-//		mContext = context;
-//		mUIManager = uiManager;
-//		mWebView = webView;
-//		mAddon = addon;
-//	}
-	
-	protected void baseInit(Context context, UIManager uiManager, CustomWebView webView, Addon addon) {
+	private void init(Context context, UIManager uiManager, CustomWebView webView, Addon addon, Action addonAction) {
 		mContext = context;
 		mUIManager = uiManager;
 		mWebView = webView;
 		mAddon = addon;
+		
+		finishInit(addonAction);
 	}
 	
-	public abstract void init(Context context, UIManager uiManager, CustomWebView webView, Addon addon, Action addonAction);
+	protected abstract void finishInit(Action addonAction);
 	
-	public abstract void execute();
+	protected abstract void internalExecute();
+	
+	public synchronized void execute(Context context, UIManager uiManager, CustomWebView webView, Addon addon, Action addonAction) {
+		init(context, uiManager, webView, addon, addonAction);
+		internalExecute();
+	}
 
 }

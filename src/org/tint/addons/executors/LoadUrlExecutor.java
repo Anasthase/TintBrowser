@@ -15,13 +15,8 @@
 
 package org.tint.addons.executors;
 
-import org.tint.addons.Addon;
 import org.tint.addons.framework.Action;
 import org.tint.addons.framework.LoadUrlAction;
-import org.tint.ui.UIManager;
-import org.tint.ui.components.CustomWebView;
-
-import android.content.Context;
 import android.text.TextUtils;
 
 public class LoadUrlExecutor extends BaseActionExecutor {
@@ -29,14 +24,12 @@ public class LoadUrlExecutor extends BaseActionExecutor {
 	private LoadUrlAction mAddonAction;
 	
 	@Override
-	public void init(Context context, UIManager uiManager, CustomWebView webView, Addon addon, Action addonAction) {
-		baseInit(context, uiManager, webView, addon);
-	
+	protected void finishInit(Action addonAction) {
 		mAddonAction = (LoadUrlAction) addonAction;
 	}
 
 	@Override
-	public void execute() {
+	protected void internalExecute() {
 		if (mWebView != null) {
 			String url = mAddonAction.getUrl();
 			

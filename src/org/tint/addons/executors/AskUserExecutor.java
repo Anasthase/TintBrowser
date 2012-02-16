@@ -15,15 +15,11 @@
 
 package org.tint.addons.executors;
 
-import org.tint.addons.Addon;
 import org.tint.addons.framework.Action;
 import org.tint.addons.framework.AskUserAction;
 import org.tint.controllers.Controller;
-import org.tint.ui.UIManager;
-import org.tint.ui.components.CustomWebView;
 import org.tint.utils.ApplicationUtils;
 
-import android.content.Context;
 import android.content.DialogInterface;
 
 public class AskUserExecutor extends BaseActionExecutor {
@@ -31,14 +27,12 @@ public class AskUserExecutor extends BaseActionExecutor {
 	private AskUserAction mAddonAction;
 	
 	@Override
-	public void init(Context context, UIManager uiManager, CustomWebView webView, Addon addon, Action addonAction) {
-		baseInit(context, uiManager, webView, addon);
-		
+	protected void finishInit(Action addonAction) {
 		mAddonAction = (AskUserAction) addonAction;
 	}
 
 	@Override
-	public void execute() {
+	protected void internalExecute() {
 		ApplicationUtils.showAddonAskUserDialog(
 				mContext,
 				mAddonAction.getTitle(),

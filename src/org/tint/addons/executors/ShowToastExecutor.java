@@ -15,13 +15,8 @@
 
 package org.tint.addons.executors;
 
-import org.tint.addons.Addon;
 import org.tint.addons.framework.Action;
 import org.tint.addons.framework.ShowToastAction;
-import org.tint.ui.UIManager;
-import org.tint.ui.components.CustomWebView;
-
-import android.content.Context;
 import android.widget.Toast;
 
 public class ShowToastExecutor extends BaseActionExecutor {
@@ -29,14 +24,12 @@ public class ShowToastExecutor extends BaseActionExecutor {
 	private ShowToastAction mAddonAction;
 	
 	@Override
-	public void init(Context context, UIManager uiManager, CustomWebView webView, Addon addon, Action addonAction) {
-		baseInit(context, uiManager, webView, addon);
-	
+	protected void finishInit(Action addonAction) {
 		mAddonAction = (ShowToastAction) addonAction;
 	}
 
 	@Override
-	public void execute() {
+	protected void internalExecute() {
 		Toast.makeText(mContext, mAddonAction.getMessage(), mAddonAction.getLength()).show();
 	}
 }
