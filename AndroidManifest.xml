@@ -37,7 +37,6 @@
     <permission android:name="org.tint.permissions.services.ADDONS"
         android:label="@string/PermissionBindAddonServiceLabel"
         android:description="@string/PermissionBindAddonServiceDescription"
-        android:permissionGroup="android.permission-group.PERSONAL_INFO"
         android:protectionLevel="dangerous" />
     
     <uses-permission android:name="org.tint.permissions.services.ADDONS" />
