@@ -30,6 +30,9 @@
 	<string name="PermissionWriteBookmarksLabel">Write Tint Browser bookmarks</string>
     <string name="PermissionWriteBookmarksDescription">Allow third-party applications or addons to write Tint Browser\'s history and bookmarks database.</string>    
     
+    <string name="PermissionBindAddonServiceLabel">Bind Tint Browser addons services</string>
+    <string name="PermissionBindAddonServiceDescription">Allow an application to bind to Tint Browser\'s addons services. Only Tint Browser itself should have this permission.</string>
+    
     <string name="OK">OK</string>
     <string name="Cancel">Cancel</string>
     <string name="Yes">Yes</string>

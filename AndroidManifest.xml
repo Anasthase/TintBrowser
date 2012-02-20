@@ -22,17 +22,25 @@
 
     <uses-sdk android:minSdkVersion="14" />
     
-    <permission android:name="org.tint.providers.bookmarksprovider.READ"
+    <permission android:name="org.tint.permissions.bookmarksprovider.READ"
         android:label="@string/PermissionReadBookmarksLabel"
         android:description="@string/PermissionReadBookmarksDescription"
         android:permissionGroup="android.permission-group.PERSONAL_INFO"
         android:protectionLevel="dangerous" />
     
-    <permission android:name="org.tint.providers.bookmarksprovider.WRITE"
+    <permission android:name="org.tint.permissions.bookmarksprovider.WRITE"
         android:label="@string/PermissionWriteBookmarksLabel"
         android:description="@string/PermissionWriteBookmarksDescription"
         android:permissionGroup="android.permission-group.PERSONAL_INFO"
         android:protectionLevel="dangerous" />
+    
+    <permission android:name="org.tint.permissions.services.ADDONS"
+        android:label="@string/PermissionBindAddonServiceLabel"
+        android:description="@string/PermissionBindAddonServiceDescription"
+        android:permissionGroup="android.permission-group.PERSONAL_INFO"
+        android:protectionLevel="dangerous" />
+    
+    <uses-permission android:name="org.tint.permissions.services.ADDONS" />
     
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
