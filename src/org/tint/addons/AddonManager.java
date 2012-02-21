@@ -81,7 +81,7 @@ public class AddonManager {
 		List<AddonResponseWrapper> responses = new ArrayList<AddonResponseWrapper>();
 		
 		for (Addon addon : mAddons) {
-			List<Action> response = addon.onPageStarted(url);
+			List<Action> response = addon.onPageStarted(webView.getUUID().toString(), url);
 			if (response != null) {
 				responses.add(new AddonResponseWrapper(addon, response));
 			}
@@ -94,7 +94,33 @@ public class AddonManager {
 		List<AddonResponseWrapper> responses = new ArrayList<AddonResponseWrapper>();
 		
 		for (Addon addon : mAddons) {
-			List<Action> response = addon.onPageFinished(url);
+			List<Action> response = addon.onPageFinished(webView.getUUID().toString(), url);
+			if (response != null) {
+				responses.add(new AddonResponseWrapper(addon, response));
+			}
+		}
+		
+		processResponses(context, webView, responses);
+	}
+	
+	public void onTabOpened(Context context, CustomWebView webView) {
+		List<AddonResponseWrapper> responses = new ArrayList<AddonResponseWrapper>();
+		
+		for (Addon addon : mAddons) {
+			List<Action> response = addon.onTabOpened(webView.getUUID().toString());
+			if (response != null) {
+				responses.add(new AddonResponseWrapper(addon, response));
+			}
+		}
+		
+		processResponses(context, webView, responses);
+	}
+	
+	public void onTabClosed(Context context, CustomWebView webView) {
+		List<AddonResponseWrapper> responses = new ArrayList<AddonResponseWrapper>();
+		
+		for (Addon addon : mAddons) {
+			List<Action> response = addon.onTabClosed(webView.getUUID().toString());
 			if (response != null) {
 				responses.add(new AddonResponseWrapper(addon, response));
 			}

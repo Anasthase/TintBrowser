@@ -19,7 +19,6 @@ import org.tint.R;
 import org.tint.ui.UIManagerProvider;
 import android.app.Activity;
 import android.app.ActionBar.Tab;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -67,60 +66,11 @@ public class TabletWebViewFragment extends BaseWebViewFragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
-//		mUrlBar = (TabletUrlBar) mParentView.findViewById(R.id.UrlBar);
-//		
-//		mProgressBar = (ProgressBar) mParentView.findViewById(R.id.WebViewProgress);
-//		mProgressBar.setVisibility(View.GONE);
-//		
-//		mUrlBar.setEventListener(new OnTabletUrlBarEventListener() {
-//			
-//			@Override
-//			public void onUrlValidated() {
-//				// Use the UIManager to load urls, as it perform check on them.
-//				mUIManager.loadCurrentUrl();
-//			}
-//			
-//			@Override
-//			public void onHomeClicked() {
-//				mUIManager.loadHomePage();
-//			}
-//			
-//			@Override
-//			public void onGoStopReloadClicked() {
-//				if (mUrlBar.isUrlChangedByUser()) {
-//					// Use the UIManager to load urls, as it perform check on them.
-//					mUIManager.loadCurrentUrl();
-//				} else if (mWebView.isLoading()) {
-//					mWebView.stopLoading();
-//				} else {
-//					mWebView.reload();
-//				}
-//			}
-//			
-//			@Override
-//			public void onForwardClicked() {
-//				if (mWebView.canGoForward()) {
-//					mWebView.goForward();
-//				}
-//			}
-//			
-//			@Override
-//			public void onBookmarksClicked() {
-//				mUIManager.openBookmarksActivityForResult();
-//			}
-//			
-//			@Override
-//			public void onBackClicked() {
-//				if (mWebView.canGoBack()) {
-//					mWebView.goBack();
-//				}
-//			}
-//		});
-		
-		if (mUrlToLoadWhenReady != null) {
-			mUIManager.loadUrl(mUrlToLoadWhenReady);
-			mUrlToLoadWhenReady = null;
+		if (mWebViewFragmentListener != null) {
+			mWebViewFragmentListener.onFragmentReady(this, mUrlToLoadWhenReady);
 		}
+		
+		mUrlToLoadWhenReady = null;
 	}
 	
 	@Override
@@ -130,44 +80,6 @@ public class TabletWebViewFragment extends BaseWebViewFragment {
 		}
 		
 		return mParentView;
-	}
-	
-	public void onPageStarted(WebView view, String url, Bitmap favicon) {
-		if (view == mWebView) {
-//			mUrlBar.setUrl(url);
-//			
-//			mUrlBar.setGoStopReloadImage(R.drawable.ic_stop);
-//			
-//			mUrlBar.setBackEnabled(view.canGoBack());
-//			mUrlBar.setForwardEnabled(view.canGoForward());
-//			
-//			mProgressBar.setProgress(0);
-//			mProgressBar.setVisibility(View.VISIBLE);
-		}
-	}
-	
-	public void onPageFinished(WebView view, String url) {
-		if (view == mWebView) {
-//			mUrlBar.setUrl(url);
-//			
-//			mUrlBar.setGoStopReloadImage(R.drawable.ic_refresh);
-//			
-//			mUrlBar.setBackEnabled(view.canGoBack());
-//			mUrlBar.setForwardEnabled(view.canGoForward());
-//			
-//			if (PreferenceManager.getDefaultSharedPreferences(mUIManager.getMainActivity()).getBoolean(Constants.PREFERENCE_ENABLE_ADBLOCKER, true)) {
-//				mWebView.loadAdSweepIfNeeded();
-//			}
-//			
-//			mProgressBar.setProgress(100);
-//			mProgressBar.setVisibility(View.GONE);
-		}
-	}
-	
-	public void onProgressChanged(WebView view, int newProgress) {
-		if (view == mWebView) {
-//			mProgressBar.setProgress(newProgress);
-		}
 	}
 	
 	public void onReceivedTitle(WebView view, String title) {

@@ -133,18 +133,36 @@ public class AddonServiceConnection implements ServiceConnection {
 		}
 	}
 	
-	public List<Action> onPageStarted(String url) {
+	public List<Action> onPageStarted(String webViewId, String url) {
 		try {
-			return mAddon.onPageStarted(url);
+			return mAddon.onPageStarted(webViewId, url);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	public List<Action> onPageFinished(String url) {
+	public List<Action> onPageFinished(String webViewId, String url) {
 		try {
-			return mAddon.onPageFinished(url);
+			return mAddon.onPageFinished(webViewId, url);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public List<Action> onTabOpened(String webViewId) {
+		try {
+			return mAddon.onTabOpened(webViewId);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public List<Action> onTabClosed(String webViewId) {
+		try {
+			return mAddon.onTabClosed(webViewId);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;

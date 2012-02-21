@@ -19,6 +19,7 @@ import java.util.Hashtable;
 import java.util.Map;
 
 import org.tint.R;
+import org.tint.controllers.Controller;
 import org.tint.ui.activities.TintBrowserActivity;
 import org.tint.ui.components.CustomWebView;
 import org.tint.ui.fragments.BaseWebViewFragment;
@@ -113,7 +114,7 @@ public class TabletUIManager extends BaseUIManager {
 
 	@Override
 	public CustomWebView getCurrentWebView() {
-		if (mActionBar.getSelectedTab() != null) {
+		if (mActionBar.getSelectedTab() != null) {			
 			return mTabs.get(mActionBar.getSelectedTab()).getWebView();
 		} else {
 			return null;
@@ -141,6 +142,7 @@ public class TabletUIManager extends BaseUIManager {
 		
 		TabletWebViewFragment fragment = new TabletWebViewFragment();
 		
+		fragment.setWebViewFragmentListener(this);
 		fragment.requestUrlToLoadWhenReady(url);
 		
 		tab.setTabListener(new WebViewFragmentTabListener(this, fragment));
@@ -155,6 +157,9 @@ public class TabletUIManager extends BaseUIManager {
 	public void closeCurrentTab() {
 		if (mActionBar.getTabCount() > 1) {
 			Tab tab = mActionBar.getSelectedTab();
+						
+			Controller.getInstance().getAddonManager().onTabClosed(mActivity, mTabs.get(tab).getWebView());
+			
 			mTabs.remove(tab);
 			mActionBar.removeTab(tab);
 		}

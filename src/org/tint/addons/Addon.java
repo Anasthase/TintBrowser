@@ -155,17 +155,33 @@ public class Addon {
 		mContext.unbindService(mServiceConnection);
 	}
 	
-	public List<Action> onPageStarted(String url) {
+	public List<Action> onPageStarted(String webViewId, String url) {
 		if (makeCall(Callbacks.PAGE_STARTED)) {
-			return mServiceConnection.onPageStarted(url);
+			return mServiceConnection.onPageStarted(webViewId, url);
 		} else {
 			return null;
 		}
 	}
 	
-	public List<Action> onPageFinished(String url) {
+	public List<Action> onPageFinished(String webViewId, String url) {
 		if (makeCall(Callbacks.PAGE_FINISHED)) {
-			return mServiceConnection.onPageFinished(url);
+			return mServiceConnection.onPageFinished(webViewId, url);
+		} else {
+			return null;
+		}
+	}
+	
+	public List<Action> onTabOpened(String webViewId) {
+		if (makeCall(Callbacks.TAB_OPENED)) {
+			return mServiceConnection.onTabOpened(webViewId);
+		} else {
+			return null;
+		}
+	}
+	
+	public List<Action> onTabClosed(String webViewId) {
+		if (makeCall(Callbacks.TAB_CLOSED)) {
+			return mServiceConnection.onTabClosed(webViewId);
 		} else {
 			return null;
 		}

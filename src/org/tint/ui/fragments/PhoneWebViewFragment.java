@@ -65,9 +65,10 @@ public class PhoneWebViewFragment extends BaseWebViewFragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
-		if (mUrlToLoadWhenReady != null) {
-			mUIManager.loadUrl(mUrlToLoadWhenReady);
-			mUrlToLoadWhenReady = null;
+		if (mWebViewFragmentListener != null) {
+			mWebViewFragmentListener.onFragmentReady(this, mUrlToLoadWhenReady);
 		}
+		
+		mUrlToLoadWhenReady = null;
 	}
 }

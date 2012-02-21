@@ -16,6 +16,7 @@
 package org.tint.ui.components;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.tint.R;
 import org.tint.addons.AddonMenuItem;
@@ -45,6 +46,7 @@ import android.widget.Toast;
 
 public class CustomWebView extends WebView implements DownloadListener {
 	
+	private UUID mUUID;
 	private Context mContext;
 
 	private boolean mIsLoading = false;
@@ -56,13 +58,19 @@ public class CustomWebView extends WebView implements DownloadListener {
 	public CustomWebView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		
+		mUUID = UUID.randomUUID();
+		
 		mContext = context;
 		
 		if (!isInEditMode()) {
 			loadSettings();
 			setupContextMenu();
 		}
-	}		
+	}
+	
+	public UUID getUUID() {
+		return mUUID;
+	}
 	
 	public boolean isLoading() {
 		return mIsLoading;
@@ -106,7 +114,7 @@ public class CustomWebView extends WebView implements DownloadListener {
     	settings.setDatabaseEnabled(true);
     	settings.setDomStorageEnabled(true);
     	
-    	// HTML5 configuration parametersettings.
+    	// HTML5 configuration settings.
         settings.setAppCacheMaxSize(3 * 1024 * 1024);
         settings.setAppCachePath(mContext.getDir("appcache", 0).getPath());
         settings.setDatabasePath(mContext.getDir("databases", 0).getPath());

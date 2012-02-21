@@ -30,11 +30,17 @@ import android.view.animation.Animation;
 
 public abstract class BaseWebViewFragment extends Fragment {
 	
+	public interface WebViewFragmentListener {
+		void onFragmentReady(BaseWebViewFragment fragment, String urlToLoadWhenReady);
+	}
+	
 	protected UIManager mUIManager;
 	protected View mParentView;
 	protected CustomWebView mWebView;
 	
 	protected String mUrlToLoadWhenReady = null;
+	
+	protected WebViewFragmentListener mWebViewFragmentListener = null;
 	
 	private Animation mShowAnimation;
 	private Animation mHideAnimation;
@@ -114,6 +120,10 @@ public abstract class BaseWebViewFragment extends Fragment {
 	
 	public void setStartPageShown(boolean value) {
 		mIsStartPageShown = value;
+	}
+	
+	public void setWebViewFragmentListener(WebViewFragmentListener listener) {
+		mWebViewFragmentListener = listener;
 	}
 
 }

@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.tint.R;
+import org.tint.controllers.Controller;
 import org.tint.ui.activities.TintBrowserActivity;
 import org.tint.ui.components.CustomWebView;
 import org.tint.ui.fragments.BaseWebViewFragment;
@@ -114,6 +115,7 @@ public class PhoneUIManager extends BaseUIManager {
 		FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
 		PhoneWebViewFragment fragment = new PhoneWebViewFragment();
 		
+		fragment.setWebViewFragmentListener(this);
 		fragment.requestUrlToLoadWhenReady(url);
 		
 		fragmentTransaction.add(R.id.WebViewContainer, fragment);
@@ -130,6 +132,8 @@ public class PhoneUIManager extends BaseUIManager {
 		if (mFragmentsList.size() > 1) {
 			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
 			PhoneWebViewFragment fragment = mFragmentsList.get(mCurrentTabIndex);
+			
+			Controller.getInstance().getAddonManager().onTabClosed(mActivity, fragment.getWebView());
 			
 			if (fragment.isStartPageShown()) {
 				fragmentTransaction.hide(mStartPageFragment);

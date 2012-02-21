@@ -26,6 +26,7 @@ import org.tint.ui.components.CustomWebView;
 import org.tint.ui.dialogs.GeolocationPermissionsDialog;
 import org.tint.ui.fragments.BaseWebViewFragment;
 import org.tint.ui.fragments.StartPageFragment;
+import org.tint.ui.fragments.BaseWebViewFragment.WebViewFragmentListener;
 import org.tint.utils.ApplicationUtils;
 import org.tint.utils.Constants;
 import org.tint.utils.UrlUtils;
@@ -54,7 +55,7 @@ import android.webkit.WebChromeClient.CustomViewCallback;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-public abstract class BaseUIManager implements UIManager {
+public abstract class BaseUIManager implements UIManager, WebViewFragmentListener {
 	
 	protected static final FrameLayout.LayoutParams COVER_SCREEN_PARAMS =
 	        new FrameLayout.LayoutParams(
@@ -316,29 +317,7 @@ public abstract class BaseUIManager implements UIManager {
 	@Override
 	public void onMainActivityResume() {
 		getCurrentWebView().resumeTimers();
-	}
-	
-	private void setFullscreen(boolean enabled) {
-        Window win = mActivity.getWindow();
-        WindowManager.LayoutParams winParams = win.getAttributes();
-        final int bits = WindowManager.LayoutParams.FLAG_FULLSCREEN;
-        if (enabled) {
-            winParams.flags |=  bits;
-            if (mCustomView != null) {
-                mCustomView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
-            } else {
-                //mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
-            }
-        } else {
-            winParams.flags &= ~bits;
-            if (mCustomView != null) {
-                mCustomView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
-            } else {
-                //mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
-            }
-        }
-        win.setAttributes(winParams);
-    }
+	}	
 	
 	@Override
 	public void onShowCustomView(View view, int requestedOrientation, CustomViewCallback callback) {
@@ -395,56 +374,38 @@ public abstract class BaseUIManager implements UIManager {
 		}
 	}
 	
-//	private void showStartPage() {
-//		BaseWebViewFragment current = getCurrentWebViewFragment();
-//		
-//		if ((current != null) &&
-//				(!current.isStartPageShown())) {
-//
-//			current.setStartPageShown(true);			
-//
-//			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-//
-//			if (mStartPageFragment == null) {
-//				mStartPageFragment = new StartPageFragment();
-//				mStartPageFragment.setOnStartPageItemClickedListener(new OnStartPageItemClickedListener() {					
-//					@Override
-//					public void onStartPageItemClicked(String url) {
-//						loadUrl(url);
-//					}
-//				});
-//				
-//				fragmentTransaction.add(R.id.WebViewContainer, mStartPageFragment);
-//			}
-//
-//			fragmentTransaction.hide(current);
-//			fragmentTransaction.show(mStartPageFragment);
-//
-//			fragmentTransaction.commit();
-//			
-//			onShowStartPage();
-//		}
-//	}
-//	
-//	private void hideStartPage() {
-//		BaseWebViewFragment current = getCurrentWebViewFragment();
-//		
-//		if ((current != null) &&
-//				(current.isStartPageShown())) {
-//			
-//			current.setStartPageShown(false);
-//			
-//			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();			
-//
-//			fragmentTransaction.hide(mStartPageFragment);
-//			fragmentTransaction.show(current);
-//
-//			fragmentTransaction.commit();
-//			
-//			onHideStartPage();
-//		}
-//	}
+	@Override
+	public void onFragmentReady(BaseWebViewFragment fragment, String urlToLoadWhenReady) {
+		
+		Controller.getInstance().getAddonManager().onTabOpened(mActivity, fragment.getWebView());
+		
+		if (urlToLoadWhenReady != null) {
+			loadUrl(urlToLoadWhenReady);
+		}
+	}	
 
+	private void setFullscreen(boolean enabled) {
+        Window win = mActivity.getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        final int bits = WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        if (enabled) {
+            winParams.flags |=  bits;
+            if (mCustomView != null) {
+                mCustomView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
+            } else {
+                //mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
+            }
+        } else {
+            winParams.flags &= ~bits;
+            if (mCustomView != null) {
+                mCustomView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+            } else {
+                //mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+            }
+        }
+        win.setAttributes(winParams);
+    }
+	
 	/**
 	 * Check if the current tab can be reused to display an intent request.
 	 * A tab is reusable if it is on the user-defined start page.
