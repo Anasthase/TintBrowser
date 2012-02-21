@@ -138,7 +138,7 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 		        menu.add(0, CONTEXT_MENU_SHARE_URL, 0, R.string.ContextMenuShareUrl);
 		        menu.add(0, CONTEXT_MENU_DELETE_BOOKMARK, 0, R.string.DeleteBookmark);
 		        
-		        List<AddonMenuItem> addonsContributions = Controller.getInstance().getAddonManager().getContributedBookmarkContextMenuItems();
+		        List<AddonMenuItem> addonsContributions = Controller.getInstance().getAddonManager().getContributedBookmarkContextMenuItems(mUIManager.getCurrentWebView());
 		        for (AddonMenuItem item : addonsContributions) {
 		        	menu.add(0, item.getAddon().getMenuId(), 0, item.getMenuItem());
 		        }

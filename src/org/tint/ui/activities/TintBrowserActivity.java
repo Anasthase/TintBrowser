@@ -172,7 +172,7 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 		
 		menu.removeGroup(R.id.MainActivity_AddonsMenuGroup);
 		
-		List<AddonMenuItem> contributedMenuItems = Controller.getInstance().getAddonManager().getContributedMainMenuItems();
+		List<AddonMenuItem> contributedMenuItems = Controller.getInstance().getAddonManager().getContributedMainMenuItems(mUIManager.getCurrentWebView());
 		for (AddonMenuItem item : contributedMenuItems) {
 			menu.add(R.id.MainActivity_AddonsMenuGroup, item.getAddon().getMenuId(), 0, item.getMenuItem());
 		}

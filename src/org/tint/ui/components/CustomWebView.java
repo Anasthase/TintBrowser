@@ -23,6 +23,7 @@ import org.tint.addons.AddonMenuItem;
 import org.tint.controllers.Controller;
 import org.tint.model.DownloadItem;
 import org.tint.ui.activities.TintBrowserActivity;
+import org.tint.ui.fragments.BaseWebViewFragment;
 import org.tint.utils.Constants;
 
 import android.app.DownloadManager;
@@ -46,8 +47,8 @@ import android.widget.Toast;
 
 public class CustomWebView extends WebView implements DownloadListener {
 	
-	private UUID mUUID;
 	private Context mContext;
+	private BaseWebViewFragment mParentFragment;
 
 	private boolean mIsLoading = false;
 	
@@ -58,8 +59,6 @@ public class CustomWebView extends WebView implements DownloadListener {
 	public CustomWebView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		
-		mUUID = UUID.randomUUID();
-		
 		mContext = context;
 		
 		if (!isInEditMode()) {
@@ -68,8 +67,16 @@ public class CustomWebView extends WebView implements DownloadListener {
 		}
 	}
 	
-	public UUID getUUID() {
-		return mUUID;
+	public void setParentFragment(BaseWebViewFragment parentFragment) {
+		mParentFragment = parentFragment;
+	}
+	
+	public BaseWebViewFragment getParentFragment() {
+		return mParentFragment;
+	}
+	
+	public UUID getParentFragmentUUID() {
+		return mParentFragment.getUUID();
 	}
 	
 	public boolean isLoading() {
@@ -180,7 +187,7 @@ public class CustomWebView extends WebView implements DownloadListener {
 	private void createContributedContextMenu(ContextMenu menu, int hitTestResult, String url) {
 		MenuItem item;
 		
-		List<AddonMenuItem> contributedItems = Controller.getInstance().getAddonManager().getContributedLinkContextMenuItems(hitTestResult, url);
+		List<AddonMenuItem> contributedItems = Controller.getInstance().getAddonManager().getContributedLinkContextMenuItems(this, hitTestResult, url);
 		for (AddonMenuItem contribution : contributedItems) {
 			item = menu.add(0, contribution.getAddon().getMenuId(), 0, contribution.getMenuItem());
 			item.setIntent(createIntent(Constants.ACTION_BROWSER_CONTEXT_MENU, contribution.getAddon().getMenuId(), hitTestResult, url));

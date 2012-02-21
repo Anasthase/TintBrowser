@@ -151,7 +151,7 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 				menu.add(0, CONTEXT_MENU_SHARE_URL, 0, R.string.ContextMenuShareUrl);
 				menu.add(0, CONTEXT_MENU_DELETE_HISTORY_ITEM, 0, R.string.DeleteHistoryItem);
 				
-				List<AddonMenuItem> addonsContributions = Controller.getInstance().getAddonManager().getContributedHistoryContextMenuItems();
+				List<AddonMenuItem> addonsContributions = Controller.getInstance().getAddonManager().getContributedHistoryContextMenuItems(mUIManager.getCurrentWebView());
 		        for (AddonMenuItem item : addonsContributions) {
 		        	menu.add(0, item.getAddon().getMenuId(), 0, item.getMenuItem());
 		        }

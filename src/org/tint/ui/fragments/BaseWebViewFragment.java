@@ -15,6 +15,8 @@
 
 package org.tint.ui.fragments;
 
+import java.util.UUID;
+
 import org.tint.R;
 import org.tint.ui.UIManager;
 import org.tint.ui.components.CustomWebChromeClient;
@@ -38,6 +40,8 @@ public abstract class BaseWebViewFragment extends Fragment {
 	protected View mParentView;
 	protected CustomWebView mWebView;
 	
+	protected UUID mUUID;
+	
 	protected String mUrlToLoadWhenReady = null;
 	
 	protected WebViewFragmentListener mWebViewFragmentListener = null;
@@ -52,6 +56,8 @@ public abstract class BaseWebViewFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 		setRetainInstance(true);
 		
+		mUUID = UUID.randomUUID();
+		
 		mShowAnimation = new AlphaAnimation(0, 1);
 		mShowAnimation.setDuration(250);
 		
@@ -64,6 +70,8 @@ public abstract class BaseWebViewFragment extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 		
 		mWebView = (CustomWebView) mParentView.findViewById(R.id.WebView);
+		
+		mWebView.setParentFragment(this);
 		
 		mWebView.setWebChromeClient(new CustomWebChromeClient(mUIManager));
 		mWebView.setWebViewClient(new CustomWebViewClient(mUIManager));
@@ -99,6 +107,10 @@ public abstract class BaseWebViewFragment extends Fragment {
 	public void onResume() {
 		mWebView.onResume();
 		super.onResume();
+	}
+	
+	public UUID getUUID() {
+		return mUUID;
 	}
 
 	public CustomWebView getWebView() {

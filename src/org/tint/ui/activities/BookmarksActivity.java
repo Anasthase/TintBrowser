@@ -99,7 +99,7 @@ public class BookmarksActivity extends Activity implements IHistoryBookmaksExpor
 		
 		menu.removeGroup(R.id.BookmarksActivity_AddonsMenuGroup);
 		
-		List<AddonMenuItem> contributedMenuItems = Controller.getInstance().getAddonManager().getContributedHistoryBookmarksMenuItems();
+		List<AddonMenuItem> contributedMenuItems = Controller.getInstance().getAddonManager().getContributedHistoryBookmarksMenuItems(mUIManager.getCurrentWebView());
 		for (AddonMenuItem item : contributedMenuItems) {
 			menu.add(R.id.BookmarksActivity_AddonsMenuGroup, item.getAddon().getMenuId(), 0, item.getMenuItem());
 		}

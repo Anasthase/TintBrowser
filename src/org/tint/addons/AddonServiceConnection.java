@@ -133,135 +133,135 @@ public class AddonServiceConnection implements ServiceConnection {
 		}
 	}
 	
-	public List<Action> onPageStarted(String webViewId, String url) {
+	public List<Action> onPageStarted(String tabId, String url) {
 		try {
-			return mAddon.onPageStarted(webViewId, url);
+			return mAddon.onPageStarted(tabId, url);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	public List<Action> onPageFinished(String webViewId, String url) {
+	public List<Action> onPageFinished(String tabId, String url) {
 		try {
-			return mAddon.onPageFinished(webViewId, url);
+			return mAddon.onPageFinished(tabId, url);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	public List<Action> onTabOpened(String webViewId) {
+	public List<Action> onTabOpened(String tabId) {
 		try {
-			return mAddon.onTabOpened(webViewId);
+			return mAddon.onTabOpened(tabId);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	public List<Action> onTabClosed(String webViewId) {
+	public List<Action> onTabClosed(String tabId) {
 		try {
-			return mAddon.onTabClosed(webViewId);
+			return mAddon.onTabClosed(tabId);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	public String getContributedMainMenuItem() {
+	public String getContributedMainMenuItem(String currentTabId) {
 		try {
-			return mAddon.getContributedMainMenuItem();
+			return mAddon.getContributedMainMenuItem(currentTabId);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	public List<Action> onContributedMainMenuItemSelected(String currentTitle, String currentUrl) {
+	public List<Action> onContributedMainMenuItemSelected(String currentTabId, String currentTitle, String currentUrl) {
 		try {
-			return mAddon.onContributedMainMenuItemSelected(currentTitle, currentUrl);
+			return mAddon.onContributedMainMenuItemSelected(currentTabId, currentTitle, currentUrl);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	public String getContributedLinkContextMenuItem(int hitTestResult, String url) {
+	public String getContributedLinkContextMenuItem(String currentTabId, int hitTestResult, String url) {
 		try {
-			return mAddon.getContributedLinkContextMenuItem(hitTestResult, url);
+			return mAddon.getContributedLinkContextMenuItem(currentTabId, hitTestResult, url);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	public List<Action> onContributedLinkContextMenuItemSelected(int hitTestResult, String url) {
+	public List<Action> onContributedLinkContextMenuItemSelected(String currentTabId, int hitTestResult, String url) {
 		try {
-			return mAddon.onContributedLinkContextMenuItemSelected(hitTestResult, url);
+			return mAddon.onContributedLinkContextMenuItemSelected(currentTabId, hitTestResult, url);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	public String getContributedHistoryBookmarksMenuItem() {
+	public String getContributedHistoryBookmarksMenuItem(String currentTabId) {
 		try {
-			return mAddon.getContributedHistoryBookmarksMenuItem();
+			return mAddon.getContributedHistoryBookmarksMenuItem(currentTabId);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	public List<Action> onContributedHistoryBookmarksMenuItemSelected() {
+	public List<Action> onContributedHistoryBookmarksMenuItemSelected(String currentTabId) {
 		try {
-			return mAddon.onContributedHistoryBookmarksMenuItemSelected();
+			return mAddon.onContributedHistoryBookmarksMenuItemSelected(currentTabId);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	public String getContributedBookmarkContextMenuItem() {
+	public String getContributedBookmarkContextMenuItem(String currentTabId) {
 		try {
-			return mAddon.getContributedBookmarkContextMenuItem();
+			return mAddon.getContributedBookmarkContextMenuItem(currentTabId);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	public List<Action> onContributedBookmarkContextMenuItemSelected(String title, String url) {
+	public List<Action> onContributedBookmarkContextMenuItemSelected(String currentTabId, String title, String url) {
 		try {
-			return mAddon.onContributedBookmarkContextMenuItemSelected(title, url);
+			return mAddon.onContributedBookmarkContextMenuItemSelected(currentTabId, title, url);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	public String getContributedHistoryContextMenuItem() {
+	public String getContributedHistoryContextMenuItem(String currentTabId) {
 		try {
-			return mAddon.getContributedHistoryContextMenuItem();
+			return mAddon.getContributedHistoryContextMenuItem(currentTabId);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	public List<Action> onContributedHistoryContextMenuItemSelected(String title, String url) {
+	public List<Action> onContributedHistoryContextMenuItemSelected(String currentTabId, String title, String url) {
 		try {
-			return mAddon.onContributedHistoryContextMenuItemSelected(title, url);
+			return mAddon.onContributedHistoryContextMenuItemSelected(currentTabId, title, url);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	public List<Action> onUserAnswerQuestion(String questionId, boolean positiveAnswer) {
+	public List<Action> onUserAnswerQuestion(String currentTabId, String questionId, boolean positiveAnswer) {
 		try {
-			return mAddon.onUserAnswerQuestion(questionId, positiveAnswer);
+			return mAddon.onUserAnswerQuestion(currentTabId, questionId, positiveAnswer);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;

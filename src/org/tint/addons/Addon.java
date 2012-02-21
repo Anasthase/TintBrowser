@@ -155,42 +155,42 @@ public class Addon {
 		mContext.unbindService(mServiceConnection);
 	}
 	
-	public List<Action> onPageStarted(String webViewId, String url) {
+	public List<Action> onPageStarted(String tabId, String url) {
 		if (makeCall(Callbacks.PAGE_STARTED)) {
-			return mServiceConnection.onPageStarted(webViewId, url);
+			return mServiceConnection.onPageStarted(tabId, url);
 		} else {
 			return null;
 		}
 	}
 	
-	public List<Action> onPageFinished(String webViewId, String url) {
+	public List<Action> onPageFinished(String tabId, String url) {
 		if (makeCall(Callbacks.PAGE_FINISHED)) {
-			return mServiceConnection.onPageFinished(webViewId, url);
+			return mServiceConnection.onPageFinished(tabId, url);
 		} else {
 			return null;
 		}
 	}
 	
-	public List<Action> onTabOpened(String webViewId) {
+	public List<Action> onTabOpened(String tabId) {
 		if (makeCall(Callbacks.TAB_OPENED)) {
-			return mServiceConnection.onTabOpened(webViewId);
+			return mServiceConnection.onTabOpened(tabId);
 		} else {
 			return null;
 		}
 	}
 	
-	public List<Action> onTabClosed(String webViewId) {
+	public List<Action> onTabClosed(String tabId) {
 		if (makeCall(Callbacks.TAB_CLOSED)) {
-			return mServiceConnection.onTabClosed(webViewId);
+			return mServiceConnection.onTabClosed(tabId);
 		} else {
 			return null;
 		}
 	}
 	
-	public String getContributedMainMenuItem() {
+	public String getContributedMainMenuItem(String currentTabId) {
 		if (makeCall(Callbacks.CONTRIBUTE_MAIN_MENU)) {
 			if (mContributedMainMenu == null) {
-				mContributedMainMenu = mServiceConnection.getContributedMainMenuItem(); 
+				mContributedMainMenu = mServiceConnection.getContributedMainMenuItem(currentTabId); 
 			}
 			
 			return mContributedMainMenu;
@@ -199,18 +199,18 @@ public class Addon {
 		}
 	}
 	
-	public List<Action> onContributedMainMenuItemSelected(String currentTitle, String currentUrl) {
+	public List<Action> onContributedMainMenuItemSelected(String currentTabId, String currentTitle, String currentUrl) {
 		if (makeCall(Callbacks.CONTRIBUTE_MAIN_MENU)) {
-			return mServiceConnection.onContributedMainMenuItemSelected(currentTitle, currentUrl);
+			return mServiceConnection.onContributedMainMenuItemSelected(currentTabId, currentTitle, currentUrl);
 		} else {
 			return null;
 		}
 	}
 	
-	public String getContributedLinkContextMenuItem(int hitTestResult, String url) {
+	public String getContributedLinkContextMenuItem(String currentTabId, int hitTestResult, String url) {
 		if (makeCall(Callbacks.CONTRIBUTE_LINK_CONTEXT_MENU)) {
 			if (mContributedLinkContextMenu == null) {
-				mContributedLinkContextMenu = mServiceConnection.getContributedLinkContextMenuItem(hitTestResult, url);
+				mContributedLinkContextMenu = mServiceConnection.getContributedLinkContextMenuItem(currentTabId, hitTestResult, url);
 			}
 			
 			return mContributedLinkContextMenu;
@@ -219,18 +219,18 @@ public class Addon {
 		}
 	}
 	
-	public List<Action> onContributedLinkContextMenuItemSelected(int hitTestResult, String url) {
+	public List<Action> onContributedLinkContextMenuItemSelected(String currentTabId, int hitTestResult, String url) {
 		if (makeCall(Callbacks.CONTRIBUTE_LINK_CONTEXT_MENU)) {
-			return mServiceConnection.onContributedLinkContextMenuItemSelected(hitTestResult, url);
+			return mServiceConnection.onContributedLinkContextMenuItemSelected(currentTabId, hitTestResult, url);
 		} else {
 			return null;
 		}
 	}
 	
-	public String getContributedHistoryBookmarksMenuItem() {
+	public String getContributedHistoryBookmarksMenuItem(String currentTabId) {
 		if (makeCall(Callbacks.CONTRIBUTE_HISTORY_BOOKMARKS_MENU)) {
 			if (mContributedHistoryBookmarksMenu == null) {
-				mContributedHistoryBookmarksMenu = mServiceConnection.getContributedHistoryBookmarksMenuItem(); 
+				mContributedHistoryBookmarksMenu = mServiceConnection.getContributedHistoryBookmarksMenuItem(currentTabId); 
 			}
 			
 			return mContributedHistoryBookmarksMenu;
@@ -239,18 +239,18 @@ public class Addon {
 		}
 	}
 	
-	public List<Action> onContributedHistoryBookmarksMenuItemSelected() {
+	public List<Action> onContributedHistoryBookmarksMenuItemSelected(String currentTabId) {
 		if (makeCall(Callbacks.CONTRIBUTE_HISTORY_BOOKMARKS_MENU)) {
-			return mServiceConnection.onContributedHistoryBookmarksMenuItemSelected();
+			return mServiceConnection.onContributedHistoryBookmarksMenuItemSelected(currentTabId);
 		} else {
 			return null;
 		}
 	}
 	
-	public String getContributedBookmarkContextMenuItem() {
+	public String getContributedBookmarkContextMenuItem(String currentTabId) {
 		if (makeCall(Callbacks.CONTRIBUTE_BOOKMARK_CONTEXT_MENU)) {
 			if (mContributedBookmarkContextMenu == null) {
-				mContributedBookmarkContextMenu = mServiceConnection.getContributedBookmarkContextMenuItem();
+				mContributedBookmarkContextMenu = mServiceConnection.getContributedBookmarkContextMenuItem(currentTabId);
 			}
 			
 			return mContributedBookmarkContextMenu;
@@ -259,18 +259,18 @@ public class Addon {
 		}
 	}
 	
-	public List<Action> onContributedBookmarkContextMenuItemSelected(String title, String url) {
+	public List<Action> onContributedBookmarkContextMenuItemSelected(String currentTabId, String title, String url) {
 		if (makeCall(Callbacks.CONTRIBUTE_BOOKMARK_CONTEXT_MENU)) {
-			return mServiceConnection.onContributedBookmarkContextMenuItemSelected(title, url);
+			return mServiceConnection.onContributedBookmarkContextMenuItemSelected(currentTabId, title, url);
 		} else {
 			return null;
 		}
 	}
 	
-	public String getContributedHistoryContextMenuItem() {
+	public String getContributedHistoryContextMenuItem(String currentTabId) {
 		if (makeCall(Callbacks.CONTRIBUTE_HISTORY_CONTEXT_MENU)) {
 			if (mContributedHistoryContextMenu == null) {
-				mContributedHistoryContextMenu = mServiceConnection.getContributedHistoryContextMenuItem();
+				mContributedHistoryContextMenu = mServiceConnection.getContributedHistoryContextMenuItem(currentTabId);
 			}
 			
 			return mContributedHistoryContextMenu;
@@ -279,17 +279,17 @@ public class Addon {
 		}
 	}
 	
-	public List<Action> onContributedHistoryContextMenuItemSelected(String title, String url) {
+	public List<Action> onContributedHistoryContextMenuItemSelected(String currentTabId, String title, String url) {
 		if (makeCall(Callbacks.CONTRIBUTE_HISTORY_CONTEXT_MENU)) {
-			return mServiceConnection.onContributedHistoryContextMenuItemSelected(title, url);
+			return mServiceConnection.onContributedHistoryContextMenuItemSelected(currentTabId, title, url);
 		} else {
 			return null;
 		}
 	}
 	
-	public List<Action> onUserAnswerQuestion(String questionId, boolean positiveAnswer) {
+	public List<Action> onUserAnswerQuestion(String currentTabId, String questionId, boolean positiveAnswer) {
 		if (makeCallWithoutSpecificCallback()) {
-			return mServiceConnection.onUserAnswerQuestion(questionId, positiveAnswer);
+			return mServiceConnection.onUserAnswerQuestion(currentTabId, questionId, positiveAnswer);
 		} else {
 			return null;
 		}

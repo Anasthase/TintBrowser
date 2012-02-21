@@ -81,7 +81,7 @@ public class AddonManager {
 		List<AddonResponseWrapper> responses = new ArrayList<AddonResponseWrapper>();
 		
 		for (Addon addon : mAddons) {
-			List<Action> response = addon.onPageStarted(webView.getUUID().toString(), url);
+			List<Action> response = addon.onPageStarted(webView.getParentFragment().getUUID().toString(), url);
 			if (response != null) {
 				responses.add(new AddonResponseWrapper(addon, response));
 			}
@@ -94,7 +94,7 @@ public class AddonManager {
 		List<AddonResponseWrapper> responses = new ArrayList<AddonResponseWrapper>();
 		
 		for (Addon addon : mAddons) {
-			List<Action> response = addon.onPageFinished(webView.getUUID().toString(), url);
+			List<Action> response = addon.onPageFinished(webView.getParentFragment().getUUID().toString(), url);
 			if (response != null) {
 				responses.add(new AddonResponseWrapper(addon, response));
 			}
@@ -107,7 +107,7 @@ public class AddonManager {
 		List<AddonResponseWrapper> responses = new ArrayList<AddonResponseWrapper>();
 		
 		for (Addon addon : mAddons) {
-			List<Action> response = addon.onTabOpened(webView.getUUID().toString());
+			List<Action> response = addon.onTabOpened(webView.getParentFragmentUUID().toString());
 			if (response != null) {
 				responses.add(new AddonResponseWrapper(addon, response));
 			}
@@ -120,7 +120,7 @@ public class AddonManager {
 		List<AddonResponseWrapper> responses = new ArrayList<AddonResponseWrapper>();
 		
 		for (Addon addon : mAddons) {
-			List<Action> response = addon.onTabClosed(webView.getUUID().toString());
+			List<Action> response = addon.onTabClosed(webView.getParentFragmentUUID().toString());
 			if (response != null) {
 				responses.add(new AddonResponseWrapper(addon, response));
 			}
@@ -129,11 +129,11 @@ public class AddonManager {
 		processResponses(context, webView, responses);
 	}
 	
-	public List<AddonMenuItem> getContributedMainMenuItems() {
+	public List<AddonMenuItem> getContributedMainMenuItems(CustomWebView currentWebview) {
 		List<AddonMenuItem> result = new ArrayList<AddonMenuItem>();
 		
 		for (Addon addon : mAddons) {
-			String response = addon.getContributedMainMenuItem();
+			String response = addon.getContributedMainMenuItem(currentWebview.getParentFragmentUUID().toString());
 			
 			if (!TextUtils.isEmpty(response)) {
 				result.add(new AddonMenuItem(addon, response));
@@ -151,7 +151,11 @@ public class AddonManager {
 			
 			Addon addon = mAddons.get(addonId);
 			
-			List<Action> response = addon.onContributedMainMenuItemSelected(currentWebview.getTitle(), currentWebview.getUrl());
+			List<Action> response = addon.onContributedMainMenuItemSelected(
+					currentWebview.getParentFragmentUUID().toString(),
+					currentWebview.getTitle(),
+					currentWebview.getUrl());
+			
 			processOneResponse(context, currentWebview, addon, response);
 
 			return true;
@@ -160,11 +164,14 @@ public class AddonManager {
 		}
 	}
 	
-	public List<AddonMenuItem> getContributedLinkContextMenuItems(int hitTestResult, String url) {
+	public List<AddonMenuItem> getContributedLinkContextMenuItems(CustomWebView currentWebview, int hitTestResult, String url) {
 		List<AddonMenuItem> result = new ArrayList<AddonMenuItem>();
 		
 		for (Addon addon : mAddons) {
-			String response = addon.getContributedLinkContextMenuItem(hitTestResult, url);
+			String response = addon.getContributedLinkContextMenuItem(
+					currentWebview.getParentFragmentUUID().toString(),
+					hitTestResult,
+					url);
 			
 			if (!TextUtils.isEmpty(response)) {
 				result.add(new AddonMenuItem(addon, response));
@@ -183,6 +190,7 @@ public class AddonManager {
 			Addon addon = mAddons.get(addonId);
 			
 			List<Action> response = addon.onContributedLinkContextMenuItemSelected(
+					currentWebview.getParentFragmentUUID().toString(),
 					intent.getIntExtra(Constants.EXTRA_HIT_TEST_RESULT, -1),
 					intent.getStringExtra(Constants.EXTRA_URL));
 			
@@ -190,11 +198,11 @@ public class AddonManager {
 		}
 	}
 	
-	public List<AddonMenuItem> getContributedHistoryBookmarksMenuItems() {
+	public List<AddonMenuItem> getContributedHistoryBookmarksMenuItems(CustomWebView currentWebview) {
 		List<AddonMenuItem> result = new ArrayList<AddonMenuItem>();
 		
 		for (Addon addon : mAddons) {
-			String response = addon.getContributedHistoryBookmarksMenuItem();
+			String response = addon.getContributedHistoryBookmarksMenuItem(currentWebview.getParentFragmentUUID().toString());
 			
 			if (!TextUtils.isEmpty(response)) {
 				result.add(new AddonMenuItem(addon, response));
@@ -212,7 +220,7 @@ public class AddonManager {
 			
 			Addon addon = mAddons.get(addonId);
 			
-			List<Action> response = addon.onContributedHistoryBookmarksMenuItemSelected();
+			List<Action> response = addon.onContributedHistoryBookmarksMenuItemSelected(currentWebView.getParentFragmentUUID().toString());
 			processOneResponse(context, currentWebView, addon, response);
 
 			return true;
@@ -221,11 +229,11 @@ public class AddonManager {
 		}
 	}
 	
-	public List<AddonMenuItem> getContributedBookmarkContextMenuItems() {
+	public List<AddonMenuItem> getContributedBookmarkContextMenuItems(CustomWebView currentWebview) {
 		List<AddonMenuItem> result = new ArrayList<AddonMenuItem>();
 		
 		for (Addon addon : mAddons) {
-			String response = addon.getContributedBookmarkContextMenuItem();
+			String response = addon.getContributedBookmarkContextMenuItem(currentWebview.getParentFragmentUUID().toString());
 			
 			if (!TextUtils.isEmpty(response)) {
 				result.add(new AddonMenuItem(addon, response));
@@ -243,7 +251,10 @@ public class AddonManager {
 			
 			Addon addon = mAddons.get(addonId);
 			
-			List<Action> response = addon.onContributedBookmarkContextMenuItemSelected(title, url);
+			List<Action> response = addon.onContributedBookmarkContextMenuItemSelected(
+					currentWebView.getParentFragmentUUID().toString(),
+					title,
+					url);
 			
 			processOneResponse(context, currentWebView, addon, response);
 			
@@ -253,11 +264,11 @@ public class AddonManager {
 		}
 	}
 	
-	public List<AddonMenuItem> getContributedHistoryContextMenuItems() {
+	public List<AddonMenuItem> getContributedHistoryContextMenuItems(CustomWebView currentWebview) {
 		List<AddonMenuItem> result = new ArrayList<AddonMenuItem>();
 		
 		for (Addon addon : mAddons) {
-			String response = addon.getContributedHistoryContextMenuItem();
+			String response = addon.getContributedHistoryContextMenuItem(currentWebview.getParentFragmentUUID().toString());
 			
 			if (!TextUtils.isEmpty(response)) {
 				result.add(new AddonMenuItem(addon, response));
@@ -275,7 +286,10 @@ public class AddonManager {
 			
 			Addon addon = mAddons.get(addonId);
 			
-			List<Action> response = addon.onContributedHistoryContextMenuItemSelected(title, url);
+			List<Action> response = addon.onContributedHistoryContextMenuItemSelected(
+					currentWebView.getParentFragmentUUID().toString(),
+					title,
+					url);
 			
 			processOneResponse(context, currentWebView, addon, response);
 			
@@ -286,7 +300,11 @@ public class AddonManager {
 	}
 	
 	public void onUserAnswerQuestion(Context context, CustomWebView currentWebView, Addon addon, String actionId, boolean positiveAnswer) {
-		List<Action> response = addon.onUserAnswerQuestion(actionId, positiveAnswer);
+		List<Action> response = addon.onUserAnswerQuestion(
+				currentWebView.getParentFragmentUUID().toString(),
+				actionId,
+				positiveAnswer);
+		
 		processOneResponse(context, currentWebView, addon, response);
 	}
 	
