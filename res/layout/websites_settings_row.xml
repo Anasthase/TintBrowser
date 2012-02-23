@@ -33,6 +33,7 @@
         android:padding="2dip"
         android:gravity="center_vertical"
 		android:scaleType="fitXY"
+		android:contentDescription="@string/ContentDescriptionFavicon"
         android:src="@drawable/app_web_browser_sm" 
         android:background="@drawable/bookmark_list_favicon_bg" />
     
@@ -69,19 +70,22 @@
             android:id="@+id/WebsitesSettingsLocationIcon"
             android:layout_width="32dip"
             android:layout_height="32dip"
-            android:padding="2dip" />
+            android:padding="2dip"
+            android:contentDescription="@string/ContentDescriptionWebsiteSettingsLocation" />
 
         <ImageView
             android:id="@+id/WebsitesSettingsUsageIcon"
             android:layout_width="32dip"
             android:layout_height="32dip"
-            android:padding="2dip" />
+            android:padding="2dip"
+            android:contentDescription="@string/ContentDescriptionWebsiteSettingsUsage" />
 
         <ImageView
             android:id="@+id/WebsitesSettingsFeatureIcon"
             android:layout_width="32dip"
             android:layout_height="32dip"
-            android:padding="2dip" />
+            android:padding="2dip"
+            android:contentDescription="@string/ContentDescriptionWebsiteSettingsFeature" />
     
     </LinearLayout>
 

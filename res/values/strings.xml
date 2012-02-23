@@ -403,6 +403,25 @@
     <string name="AddonDetailsPermissionsNone">None.</string>
     <string name="AddonDetailsUnableToGetPermissions">Unable to get permissions. Check them with the application manager of your device.</string>
     
+    <string name="ContentDescriptionDivider">divider</string>
+    <string name="ContentDescriptionApplicationIcon">Application icon</string>
     <string name="ContentDescriptionSuggestionIcon">Suggestion favicon</string>
+    <string name="ContentDescriptionBookmarkThumbnail">Bookmark thumbnail</string>
+    <string name="ContentDescriptionFavicon">Website`s favicon</string>
+    <string name="ContentDescriptionGoStopReloadButton">Go / Stop / Reload button</string>
+    <string name="ContentDescriptionMenuButton">Menu button</string>
+    <string name="ContentDescriptionPreviousTabButton">Previous tab button</string>
+    <string name="ContentDescriptionNextTabButton">Next tab button</string>
+    <string name="ContentDescriptionLeftBubble">Left bubble</string>
+    <string name="ContentDescriptionRightBubble">Right bubble</string>
+    <string name="ContentDescriptionBackButton">Back button</string>
+    <string name="ContentDescriptionCloseTabButton">Close tab button</string>
+    <string name="ContentDescriptionBookmarksButton">Bookmarks button</string>
+    <string name="ContentDescriptionNewTabButton">New tab button</string>
+    <string name="ContentDescriptionForwardButton">Forward button</string>
+    <string name="ContentDescriptionHomeButton">Home button</string>
+    <string name="ContentDescriptionWebsiteSettingsLocation">Website location</string>
+    <string name="ContentDescriptionWebsiteSettingsUsage">Website usage</string>
+    <string name="ContentDescriptionWebsiteSettingsFeature">Website feature</string>
 
 </resources>

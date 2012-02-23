@@ -39,6 +39,7 @@
 		    android:background="@drawable/bookmark_list_favicon_bg"
 		    android:gravity="center_vertical"
 		    android:scaleType="fitXY"
+		    android:contentDescription="@string/ContentDescriptionFavicon"
 		    android:src="@drawable/app_web_browser_sm" />
 	
 	</LinearLayout>

@@ -43,8 +43,8 @@
         android:layout_marginRight="0dip"
         android:layout_marginBottom="0dip"
         android:indeterminate="false"
-        android:maxHeight="5px"
-        android:minHeight="5px"
+        android:maxHeight="1dp"
+        android:minHeight="1dp"
         android:layout_below="@+id/UrlBar">
     </ProgressBar>
 

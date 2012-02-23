@@ -27,6 +27,7 @@
 	    android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
 		android:layout_gravity="center_vertical"
+		android:contentDescription="@string/ContentDescriptionBookmarkThumbnail"
 		android:src="@drawable/browser_thumbnail" />
 	
 	<LinearLayout
@@ -42,6 +43,7 @@
 	        android:layout_height="fill_parent"
 	        android:paddingRight="5dip"
 	        android:scaleType="fitXY"
+	        android:contentDescription="@string/ContentDescriptionDivider"
 	        android:src="?android:attr/dividerVertical" />
 	
 		<LinearLayout
