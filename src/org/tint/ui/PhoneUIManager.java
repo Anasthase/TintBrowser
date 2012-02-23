@@ -48,6 +48,7 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 public class PhoneUIManager extends BaseUIManager {
 	
@@ -80,7 +81,7 @@ public class PhoneUIManager extends BaseUIManager {
 	private ImageView mShowPreviousTab;
 	private ImageView mShowNextTab;
 	
-	private LinearLayout mTopBar;
+	private RelativeLayout mTopBar;
 	private LinearLayout mBottomBar;
 	
 	private ProgressBar mProgressBar;
@@ -390,7 +391,7 @@ public class PhoneUIManager extends BaseUIManager {
         
         mFaviconView.setImageDrawable(mDefaultFavicon);
         
-		mTopBar = (LinearLayout) mActivity.findViewById(R.id.TopBar);
+		mTopBar = (RelativeLayout) mActivity.findViewById(R.id.TopBar);
 		mTopBar.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {

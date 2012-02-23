@@ -21,13 +21,13 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.Animator.AnimatorListener;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 public class ToolbarsAnimator {
 	
-	private LinearLayout mTopBar;
-	private LinearLayout mBottomBar;
+	private ViewGroup mTopBar;
+	private ViewGroup mBottomBar;
 	private ImageView mShowPreviousTab;
 	private ImageView mShowNextTab;
 	
@@ -38,7 +38,7 @@ public class ToolbarsAnimator {
 	
 	private boolean mToolbarsVisible;
 	
-	public ToolbarsAnimator(LinearLayout topBar, LinearLayout bottomBar, ImageView showPreviousTab, ImageView showNextTab) {
+	public ToolbarsAnimator(ViewGroup topBar, ViewGroup bottomBar, ImageView showPreviousTab, ImageView showNextTab) {
 		mTopBar = topBar;
 		mBottomBar = bottomBar;
 		mShowPreviousTab = showPreviousTab;
