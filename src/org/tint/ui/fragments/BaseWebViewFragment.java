@@ -51,12 +51,14 @@ public abstract class BaseWebViewFragment extends Fragment {
 	
 	private boolean mIsStartPageShown = false;
 	
+	protected BaseWebViewFragment() {
+		mUUID = UUID.randomUUID();
+	}
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setRetainInstance(true);
-		
-		mUUID = UUID.randomUUID();
 		
 		mShowAnimation = new AlphaAnimation(0, 1);
 		mShowAnimation.setDuration(250);

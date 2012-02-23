@@ -29,6 +29,8 @@ public class PhoneWebViewFragment extends BaseWebViewFragment {
 	private boolean mInitialized;
 	
 	public PhoneWebViewFragment() {
+		super();
+		
 		mUIManager = null;
 		mUrlToLoadWhenReady = null;
 		mParentView = null;

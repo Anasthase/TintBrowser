@@ -16,7 +16,10 @@
 package org.tint.ui;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import org.tint.R;
 import org.tint.controllers.Controller;
@@ -62,6 +65,7 @@ public class PhoneUIManager extends BaseUIManager {
 	private static final int FLIP_TIME_THRESHOLD = 400;
 	
 	private List<PhoneWebViewFragment> mFragmentsList;
+	private Map<UUID, PhoneWebViewFragment> mFragmentsMap;
 	
 	private PhoneUrlBar mUrlBar;
 	
@@ -107,6 +111,7 @@ public class PhoneUIManager extends BaseUIManager {
 		
 		updateSwitchTabsMethod();
 		mFragmentsList = new ArrayList<PhoneWebViewFragment>();
+		mFragmentsMap = new Hashtable<UUID, PhoneWebViewFragment>();
 	}
 
 	@Override
@@ -124,6 +129,7 @@ public class PhoneUIManager extends BaseUIManager {
 		
 		mCurrentTabIndex++;
 		mFragmentsList.add(mCurrentTabIndex, fragment);
+		mFragmentsMap.put(fragment.getUUID(), fragment);
 		
 		showCurrentTab(previousIndex);
 	}
@@ -144,6 +150,7 @@ public class PhoneUIManager extends BaseUIManager {
 			fragmentTransaction.commit();
 			
 			mFragmentsList.remove(mCurrentTabIndex);
+			mFragmentsMap.remove(fragment.getUUID());
 			
 			if (mCurrentTabIndex > 0) {
 				mCurrentTabIndex--;
@@ -515,6 +522,11 @@ public class PhoneUIManager extends BaseUIManager {
 		return mFragmentsList.size();
 	}
 	
+	@Override
+	protected BaseWebViewFragment getWebViewFragmentByUUID(UUID fragmentId) {
+		return mFragmentsMap.get(fragmentId);
+	}
+	
 	public void hideToolbars() {
     	if ((!mUrlBar.isUrlBarVisible()) &&
     			(!getCurrentWebViewFragment().isStartPageShown()) &&
@@ -545,54 +557,58 @@ public class PhoneUIManager extends BaseUIManager {
 	}
 	
 	@Override
-	protected void showStartPage() {
-		BaseWebViewFragment current = getCurrentWebViewFragment();
+	protected void showStartPage(BaseWebViewFragment webViewFragment) {
 		
-		if ((current != null) &&
-				(!current.isStartPageShown())) {
-
-			current.setStartPageShown(true);			
-
-			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-
-			if (mStartPageFragment == null) {
-				mStartPageFragment = new StartPageFragment();
-				mStartPageFragment.setOnStartPageItemClickedListener(new OnStartPageItemClickedListener() {					
-					@Override
-					public void onStartPageItemClicked(String url) {
-						loadUrl(url);
-					}
-				});
-				
-				fragmentTransaction.add(R.id.WebViewContainer, mStartPageFragment);
-			}
-
-			fragmentTransaction.hide(current);
-			fragmentTransaction.show(mStartPageFragment);
-
-			fragmentTransaction.commit();
+		if ((webViewFragment != null) &&
+				(!webViewFragment.isStartPageShown())) {
+		
+			webViewFragment.setStartPageShown(true);
 			
-			onShowStartPage();
+			if (webViewFragment == getCurrentWebViewFragment()) {
+
+				FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+
+				if (mStartPageFragment == null) {
+					mStartPageFragment = new StartPageFragment();
+					mStartPageFragment.setOnStartPageItemClickedListener(new OnStartPageItemClickedListener() {					
+						@Override
+						public void onStartPageItemClicked(String url) {
+							loadUrl(url);
+						}
+					});
+
+					fragmentTransaction.add(R.id.WebViewContainer, mStartPageFragment);
+				}
+
+				fragmentTransaction.hide(webViewFragment);
+				fragmentTransaction.show(mStartPageFragment);
+
+				fragmentTransaction.commit();
+
+				onShowStartPage();
+			}
 		}
 	}
 	
 	@Override
-	protected void hideStartPage() {
-		BaseWebViewFragment current = getCurrentWebViewFragment();
+	protected void hideStartPage(BaseWebViewFragment webViewFragment) {		
 		
-		if ((current != null) &&
-				(current.isStartPageShown())) {
+		if ((webViewFragment != null) &&
+				(webViewFragment.isStartPageShown())) {
+		
+			webViewFragment.setStartPageShown(false);
 			
-			current.setStartPageShown(false);
-			
-			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();			
+			if (webViewFragment == getCurrentWebViewFragment()) {
 
-			fragmentTransaction.hide(mStartPageFragment);
-			fragmentTransaction.show(current);
+				FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();			
 
-			fragmentTransaction.commit();
-			
-			onHideStartPage();
+				fragmentTransaction.hide(mStartPageFragment);
+				fragmentTransaction.show(webViewFragment);
+
+				fragmentTransaction.commit();
+
+				onHideStartPage();
+			}
 		}
 	}
 	

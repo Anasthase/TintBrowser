@@ -33,7 +33,9 @@ public class TabletWebViewFragment extends BaseWebViewFragment {
 	
 	private boolean mInitialized;
 	
-	public TabletWebViewFragment() {		
+	public TabletWebViewFragment() {	
+		super();
+		
 		mUIManager = null;
 		mTab = null;		
 		mParentView = null;

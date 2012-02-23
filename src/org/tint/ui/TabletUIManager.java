@@ -17,6 +17,7 @@ package org.tint.ui;
 
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.UUID;
 
 import org.tint.R;
 import org.tint.controllers.Controller;
@@ -43,6 +44,7 @@ import android.widget.ProgressBar;
 public class TabletUIManager extends BaseUIManager {
 
 	private Map<Tab, TabletWebViewFragment> mTabs;
+	private Map<UUID, TabletWebViewFragment> mFragmentsMap;
 	
 	private TabletUrlBar mUrlBar;
 	private ProgressBar mProgressBar;
@@ -51,6 +53,7 @@ public class TabletUIManager extends BaseUIManager {
 		super(activity);
 		
 		mTabs = new Hashtable<Tab, TabletWebViewFragment>();
+		mFragmentsMap = new Hashtable<UUID, TabletWebViewFragment>();
 	}
 	
 	public void onTabSelected(Tab tab) {
@@ -148,6 +151,7 @@ public class TabletUIManager extends BaseUIManager {
 		tab.setTabListener(new WebViewFragmentTabListener(this, fragment));
 		
 		mTabs.put(tab, fragment);
+		mFragmentsMap.put(fragment.getUUID(), fragment);
 		
 		mActionBar.addTab(tab, mActionBar.getSelectedNavigationIndex() + 1);
 		mActionBar.selectTab(tab);
@@ -157,10 +161,14 @@ public class TabletUIManager extends BaseUIManager {
 	public void closeCurrentTab() {
 		if (mActionBar.getTabCount() > 1) {
 			Tab tab = mActionBar.getSelectedTab();
-						
-			Controller.getInstance().getAddonManager().onTabClosed(mActivity, mTabs.get(tab).getWebView());
+			
+			TabletWebViewFragment oldFragment = mTabs.get(tab);
+			
+			Controller.getInstance().getAddonManager().onTabClosed(mActivity, oldFragment.getWebView());
 			
 			mTabs.remove(tab);
+			mFragmentsMap.remove(oldFragment.getUUID());
+			
 			mActionBar.removeTab(tab);
 		}
 	}
@@ -261,6 +269,11 @@ public class TabletUIManager extends BaseUIManager {
 	}
 	
 	@Override
+	protected BaseWebViewFragment getWebViewFragmentByUUID(UUID fragmentId) {
+		return mFragmentsMap.get(fragmentId);
+	}
+	
+	@Override
 	public void onActionModeStarted(ActionMode mode) { }
 
 	@Override
@@ -271,52 +284,56 @@ public class TabletUIManager extends BaseUIManager {
 	}
 
 	@Override
-	protected void showStartPage() {
-		BaseWebViewFragment current = getCurrentWebViewFragment();
+	protected void showStartPage(BaseWebViewFragment webViewFragment) {
 		
-		if ((current != null) &&
-				(!current.isStartPageShown())) {
-
-			current.setStartPageShown(true);			
-
-			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-
-			if (mStartPageFragment == null) {
-				mStartPageFragment = new StartPageFragment();
-				mStartPageFragment.setOnStartPageItemClickedListener(new OnStartPageItemClickedListener() {					
-					@Override
-					public void onStartPageItemClicked(String url) {
-						loadUrl(url);
-					}
-				});
-			}
-
-			fragmentTransaction.remove(current);
-			fragmentTransaction.add(R.id.WebViewContainer, mStartPageFragment);
-
-			fragmentTransaction.commit();
+		if ((webViewFragment != null) &&
+				(!webViewFragment.isStartPageShown())) {
+		
+			webViewFragment.setStartPageShown(true);
 			
-			onShowStartPage();
+			if (webViewFragment == getCurrentWebViewFragment()) {
+
+				FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+
+				if (mStartPageFragment == null) {
+					mStartPageFragment = new StartPageFragment();
+					mStartPageFragment.setOnStartPageItemClickedListener(new OnStartPageItemClickedListener() {					
+						@Override
+						public void onStartPageItemClicked(String url) {
+							loadUrl(url);
+						}
+					});
+				}
+
+				fragmentTransaction.remove(webViewFragment);
+				fragmentTransaction.add(R.id.WebViewContainer, mStartPageFragment);
+
+				fragmentTransaction.commit();
+
+				onShowStartPage();
+			}
 		}
 	}
 
 	@Override
-	protected void hideStartPage() {
-		BaseWebViewFragment current = getCurrentWebViewFragment();
+	protected void hideStartPage(BaseWebViewFragment webViewFragment) {
 		
-		if ((current != null) &&
-				(current.isStartPageShown())) {
+		if ((webViewFragment != null) &&
+				(webViewFragment.isStartPageShown())) {
+		
+			webViewFragment.setStartPageShown(false);
 			
-			current.setStartPageShown(false);
-			
-			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();			
+			if (webViewFragment == getCurrentWebViewFragment()) {				
 
-			fragmentTransaction.remove(mStartPageFragment);
-			fragmentTransaction.add(R.id.WebViewContainer, current);
+				FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();			
 
-			fragmentTransaction.commit();
-			
-			onHideStartPage();
+				fragmentTransaction.remove(mStartPageFragment);
+				fragmentTransaction.add(R.id.WebViewContainer, webViewFragment);
+
+				fragmentTransaction.commit();
+
+				onHideStartPage();
+		}
 		}
 	}
 	

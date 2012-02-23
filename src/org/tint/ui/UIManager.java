@@ -15,6 +15,8 @@
 
 package org.tint.ui;
 
+import java.util.UUID;
+
 import org.tint.ui.activities.TintBrowserActivity;
 import org.tint.ui.components.CustomWebView;
 import org.tint.ui.fragments.BaseWebViewFragment;
@@ -46,9 +48,15 @@ public interface UIManager extends OnTouchListener {
 
 	void loadUrl(String url);
 	
+	void loadUrl(UUID tabId, String url, boolean loadInCurrentTabIfNotFound);
+	
+	void loadRawUrl(UUID tabId, String url, boolean loadInCurrentTabIfNotFound);
+	
 	void loadCurrentUrl();
 	
 	void loadHomePage();
+	
+	void loadHomePage(UUID tabId, boolean loadInCurrentTabIfNotFound);
 	
 	void openBookmarksActivityForResult();
 	

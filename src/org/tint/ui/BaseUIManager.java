@@ -15,6 +15,8 @@
 
 package org.tint.ui;
 
+import java.util.UUID;
+
 import org.tint.R;
 import org.tint.controllers.Controller;
 import org.tint.model.DownloadItem;
@@ -96,9 +98,11 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 	
 	protected abstract int getTabCount();
 	
-	protected abstract void showStartPage();
+	protected abstract BaseWebViewFragment getWebViewFragmentByUUID(UUID fragmentId);
 	
-	protected abstract void hideStartPage();
+	protected abstract void showStartPage(BaseWebViewFragment webViewFragment);
+	
+	protected abstract void hideStartPage(BaseWebViewFragment webViewFragment);
 	
 	protected void setApplicationButtonImage(Bitmap icon) {
 		BitmapDrawable image = ApplicationUtils.getApplicationButtonImage(mActivity, icon);
@@ -126,37 +130,46 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 	
 	@Override
 	public void loadUrl(String url) {
-		if ((url != null) &&
-    			(url.length() > 0)) {
-			
-			if (UrlUtils.isUrl(url)) {
-    			url = UrlUtils.checkUrl(url);
-    		} else {
-    			url = UrlUtils.getSearchUrl(mActivity, url);
-    		}
-			
-			CustomWebView currentWebView = getCurrentWebView();
-			
-			if (url.equals(Constants.URL_ABOUT_START)) {				
-				showStartPage();
-				
-				currentWebView.clearView();
-				currentWebView.clearHistory();
-			} else {
-				hideStartPage();
-				
-				currentWebView.loadUrl(url);
-			}
-			
-			currentWebView.requestFocus();
-		}
+		loadUrl(getCurrentWebViewFragment(), url);
 	}
 	
+	@Override
+	public void loadUrl(UUID tabId, String url, boolean loadInCurrentTabIfNotFound) {
+		BaseWebViewFragment fragment = getWebViewFragmentByUUID(tabId);
+		if (fragment != null) {
+			loadUrl(fragment, url);
+		} else {
+			if (loadInCurrentTabIfNotFound) {
+				loadUrl(url);
+			}
+		}
+	}
+
+	@Override
+	public void loadRawUrl(UUID tabId, String url,	boolean loadInCurrentTabIfNotFound) {
+		BaseWebViewFragment fragment = getWebViewFragmentByUUID(tabId);
+		if (fragment != null) {
+			fragment.getWebView().loadUrl(url);
+		} else {
+			if (loadInCurrentTabIfNotFound) {
+				getCurrentWebView().loadUrl(url);
+			}
+		}
+	}
+
 	@Override
 	public void loadHomePage() {
 		loadUrl(PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_HOME_PAGE, Constants.URL_ABOUT_START));
 	}
 	
+	@Override
+	public void loadHomePage(UUID tabId, boolean loadInCurrentTabIfNotFound) {
+		loadUrl(
+				tabId,
+				PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_HOME_PAGE, Constants.URL_ABOUT_START),
+				loadInCurrentTabIfNotFound);
+	}
+
 	@Override
 	public void loadCurrentUrl() {
 		loadUrl(getCurrentUrl());
@@ -383,6 +396,33 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 			loadUrl(urlToLoadWhenReady);
 		}
 	}	
+	
+	private void loadUrl(BaseWebViewFragment webViewFragment, String url) {
+		if ((url != null) &&
+    			(url.length() > 0)) {
+			
+			if (UrlUtils.isUrl(url)) {
+    			url = UrlUtils.checkUrl(url);
+    		} else {
+    			url = UrlUtils.getSearchUrl(mActivity, url);
+    		}
+			
+			CustomWebView webView = webViewFragment.getWebView();
+			
+			if (url.equals(Constants.URL_ABOUT_START)) {				
+				showStartPage(webViewFragment);
+				
+				webView.clearView();
+				webView.clearHistory();
+			} else {
+				hideStartPage(webViewFragment);
+				
+				webView.loadUrl(url);
+			}
+			
+			webView.requestFocus();
+		}
+	}
 
 	private void setFullscreen(boolean enabled) {
         Window win = mActivity.getWindow();

@@ -15,6 +15,8 @@
 
 package org.tint.addons.executors;
 
+import java.util.UUID;
+
 import org.tint.addons.framework.Action;
 import org.tint.addons.framework.LoadUrlAction;
 import android.text.TextUtils;
@@ -30,16 +32,42 @@ public class LoadUrlExecutor extends BaseActionExecutor {
 
 	@Override
 	protected void internalExecute() {
-		if (mWebView != null) {
-			String url = mAddonAction.getUrl();
-			
-			if (mAddonAction.getLoadRawUrl()) {
-				mWebView.loadUrl(url);
-			} else {
-				if (TextUtils.isEmpty(url)) {
-					mUIManager.loadHomePage();
+		String tabId = mAddonAction.getTabId();				
+		String url = mAddonAction.getUrl();
+		
+		if (TextUtils.isEmpty(tabId)) {
+			if (mWebView != null) {				
+				
+				if (mAddonAction.getLoadRawUrl()) {
+					mWebView.loadUrl(url);
 				} else {
-					mUIManager.loadUrl(url);
+					if (TextUtils.isEmpty(url)) {
+						mUIManager.loadHomePage();
+					} else {
+						mUIManager.loadUrl(url);
+					}
+				}
+			}
+		} else {
+			
+			UUID id;			
+			try {
+				id = UUID.fromString(tabId);
+			} catch (NullPointerException e) {
+				id = null;
+			} catch (IllegalArgumentException e) {
+				id = null;
+			}
+			
+			if (id != null) {			
+				if (mAddonAction.getLoadRawUrl()) {
+					mUIManager.loadRawUrl(id, url, false);
+				} else {
+					if (TextUtils.isEmpty(url)) {
+						mUIManager.loadHomePage(id, false);
+					} else {
+						mUIManager.loadUrl(id, url, false);
+					}
 				}
 			}
 		}
