@@ -19,6 +19,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
 import org.tint.R;
 
 import android.app.Activity;
@@ -28,6 +29,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ClipboardManager;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
@@ -38,8 +42,6 @@ import android.widget.Toast;
 
 public class ApplicationUtils {
 	
-	private static String sAdSweepString = null;
-	
 	private static int sFaviconSize = -1;
 	private static int sApplicationButtonSize = -1;
 	
@@ -47,6 +49,39 @@ public class ApplicationUtils {
 	
 	public static boolean isTablet(Context context) {
 		return context.getResources().getBoolean(R.bool.isTablet);
+	}
+	
+	/**
+	 * Get the application version code.
+	 * @param context The current context.
+	 * @return The application version code.
+	 */
+	public static int getApplicationVersionCode(Context context) {
+    	
+		int result = -1;
+		
+		try {
+			
+			PackageManager manager = context.getPackageManager();
+			PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);
+			
+			result = info.versionCode;
+			
+		} catch (NameNotFoundException e) {
+			Log.w("ApplicationUtils", "Unable to get application version: " + e.getMessage());
+			result = -1;
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * Load the changelog string.
+	 * @param context The current context.
+	 * @return The changelog string.
+	 */
+	public static String getChangelogString(Context context) {
+		return getStringFromRawResource(context, R.raw.changelog);
 	}
 	
 	public static BitmapDrawable getApplicationButtonImage(Activity activity, Bitmap icon) {
@@ -259,41 +294,39 @@ public class ApplicationUtils {
 	}
 	
 	/**
-	 * Load the AdSweep script if necessary.
+	 * Load a raw string resource.
 	 * @param context The current context.
-	 * @return The AdSweep script.
+	 * @param resourceId The resource id.
+	 * @return The loaded string.
 	 */
-	public static String getAdSweepString(Context context) {
-		if (sAdSweepString == null) {
-			InputStream is = context.getResources().openRawResource(R.raw.adsweep);
-			if (is != null) {
-				StringBuilder sb = new StringBuilder();
-				String line;
+	private static String getStringFromRawResource(Context context, int resourceId) {
+		String result = null;
+		
+		InputStream is = context.getResources().openRawResource(resourceId);
+		if (is != null) {
+			StringBuilder sb = new StringBuilder();
+			String line;
 
-				try {
-					BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-					while ((line = reader.readLine()) != null) {
-						if ((line.length() > 0) &&
-								(!line.startsWith("//"))) {
-							sb.append(line).append("\n");
-						}
-					}
-				} catch (IOException e) {
-					Log.w("AdSweep", "Unable to load AdSweep: " + e.getMessage());
-				} finally {
-					try {
-						is.close();
-					} catch (IOException e) {
-						Log.w("AdSweep", "Unable to load AdSweep: " + e.getMessage());
-					}
+			try {
+				BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+				while ((line = reader.readLine()) != null) {					
+					sb.append(line).append("\n");
 				}
-				sAdSweepString = sb.toString();
-			} else {        
-				sAdSweepString = "";
+			} catch (IOException e) {
+				Log.w("ApplicationUtils", String.format("Unable to load resource %s: %s", resourceId, e.getMessage()));
+			} finally {
+				try {
+					is.close();
+				} catch (IOException e) {
+					Log.w("ApplicationUtils", String.format("Unable to load resource %s: %s", resourceId, e.getMessage()));
+				}
 			}
+			result = sb.toString();
+		} else {        
+			result = "";
 		}
 		
-		return sAdSweepString;
+		return result;
 	}
 
 }

@@ -152,6 +152,28 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 		
 		registerReceiver(mPackagesReceiver, mPackagesFilter);
         
+		boolean firstRun = PreferenceManager.getDefaultSharedPreferences(this).getBoolean(Constants.TECHNICAL_PREFERENCE_FIRST_RUN, true);
+		if (firstRun) {
+			Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+			editor.putBoolean(Constants.TECHNICAL_PREFERENCE_FIRST_RUN, false);
+			editor.putInt(Constants.TECHNICAL_PREFERENCE_LAST_RUN_VERSION_CODE, ApplicationUtils.getApplicationVersionCode(this));
+			editor.commit();
+			
+			// TODO: Do something on first run.
+			
+		} else {
+			int currentVersionCode = ApplicationUtils.getApplicationVersionCode(this);
+			int savedVersionCode = PreferenceManager.getDefaultSharedPreferences(this).getInt(Constants.TECHNICAL_PREFERENCE_LAST_RUN_VERSION_CODE, -1);
+			
+			if (currentVersionCode != savedVersionCode) {
+				Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+				editor.putInt(Constants.TECHNICAL_PREFERENCE_LAST_RUN_VERSION_CODE, currentVersionCode);
+				editor.commit();
+				
+				// TODO: Do something on new version.
+			}
+		}
+		
 		mUIManager.onNewIntent(getIntent());
     }
 

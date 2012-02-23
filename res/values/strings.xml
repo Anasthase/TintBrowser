@@ -23,6 +23,7 @@
     <string name="AboutVersionText">Version: %1$s (%2$s)</string>
     <string name="AboutLicenseText">License: GPLv3</string>
     <string name="AboutUrlText">http://www.todo.org/</string>
+    <string name="AboutChangelogText">Changelog:</string>
     
     <string name="PermissionReadBookmarksLabel">Read Tint Browser bookmarks</string>
     <string name="PermissionReadBookmarksDescription">Allow third-party applications or addons to read Tint Browser\'s history and bookmarks database.</string>

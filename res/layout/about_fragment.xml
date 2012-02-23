@@ -84,6 +84,23 @@
             android:autoLink="web"
             android:text="@string/AboutUrlText"
             android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+        <TextView
+            android:id="@+id/AboutChangelogText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:layout_marginBottom="5dip"
+            android:text="@string/AboutChangelogText"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+        <TextView
+            android:id="@+id/AboutChangelogValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dip"
+            android:text="@+id/AboutChangelogValue"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
     </LinearLayout>
 

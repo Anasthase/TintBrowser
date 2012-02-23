@@ -16,6 +16,7 @@
 package org.tint.ui.preferences;
 
 import org.tint.R;
+import org.tint.utils.ApplicationUtils;
 
 import android.app.Fragment;
 import android.content.pm.PackageInfo;
@@ -36,6 +37,9 @@ public class AboutFragment extends Fragment {
 		
 		TextView versionText = (TextView) v.findViewById(R.id.AboutVersionText);
 		versionText.setText(getVersion());
+		
+		TextView changelogText = (TextView) v.findViewById(R.id.AboutChangelogValue);
+		changelogText.setText(ApplicationUtils.getChangelogString(getActivity()));
 		
 		return v;
 	}
