@@ -15,17 +15,27 @@
 
 package org.tint.ui.components;
 
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.tint.R;
 import org.tint.ui.UIManager;
 import org.tint.utils.ApplicationUtils;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -33,11 +43,18 @@ import android.webkit.HttpAuthHandler;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.webkit.WebView.HitTestResult;
 import android.widget.EditText;
 
 public class CustomWebViewClient extends WebViewClient {
 
+	private static final Pattern ACCEPTED_URI_SCHEMA = Pattern.compile(
+            "(?i)" + // switch on case insensitive matching
+            "(" + // begin group for schema
+            "(?:http|https|file):\\/\\/" +
+            "|(?:inline|data|about|javascript):" +
+            ")" +
+            "(.*)" );
+	
 	private UIManager mUIManager;
 	
 	private Message mDontResend;
@@ -61,13 +78,15 @@ public class CustomWebViewClient extends WebViewClient {
 
 	@Override
 	public boolean shouldOverrideUrlLoading(WebView view, String url) {
-		if (view.getHitTestResult().getType() == HitTestResult.EMAIL_TYPE) {
-			Intent sendMail = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-			mUIManager.getMainActivity().startActivity(sendMail);
-			return true;
-		}
+//		if (view.getHitTestResult().getType() == HitTestResult.EMAIL_TYPE) {
+//			Intent sendMail = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+//			mUIManager.getMainActivity().startActivity(sendMail);
+//			return true;
+//		}
+//		
+//		return false;
 		
-		return false;
+		return checkUrlLoading(url);
 	}
 
 	@Override
@@ -224,5 +243,78 @@ public class CustomWebViewClient extends WebViewClient {
                         }
                     }
                 }).show();
-	}	
+	}
+	
+	/**
+	* Search for intent handlers that are specific to this URL
+	* aka, specialized apps like google maps or youtube
+	*/
+	private boolean isSpecializedHandlerAvailable(Intent intent) {
+		PackageManager pm = mUIManager.getMainActivity().getPackageManager();
+		List<ResolveInfo> handlers = pm.queryIntentActivities(intent, PackageManager.GET_RESOLVED_FILTER);
+		if (handlers == null || handlers.size() == 0) {
+			return false;
+		}
+		
+		for (ResolveInfo resolveInfo : handlers) {
+			IntentFilter filter = resolveInfo.filter;
+			if (filter == null) {
+				// No intent filter matches this intent?
+				// Error on the side of staying in the browser, ignore
+				continue;
+			}
+			
+			if (filter.countDataAuthorities() == 0 || filter.countDataPaths() == 0) {
+				// Generic handler, skip
+				continue;
+			}
+			
+			return true;
+		}
+		
+		return false;
+	}
+	
+	private boolean checkUrlLoading(String url) {
+		Intent intent;
+		
+		try {
+			intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
+		} catch (URISyntaxException e) {
+			Log.w("CustomWebViewClient", "Bad URI " + url + ": " + e.getMessage());
+			return false;
+		}
+		
+		if (mUIManager.getMainActivity().getPackageManager().resolveActivity(intent, 0) == null) {
+			String packagename = intent.getPackage();
+			if (packagename != null) {
+				intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pname:" + packagename));
+				intent.addCategory(Intent.CATEGORY_BROWSABLE);
+				mUIManager.getMainActivity().startActivity(intent);
+			
+				return true;
+			} else {
+				return false;
+			}
+		}
+		
+		intent.addCategory(Intent.CATEGORY_BROWSABLE);
+		intent.setComponent(null);
+		
+		Matcher m = ACCEPTED_URI_SCHEMA.matcher(url);
+		if (m.matches() && !isSpecializedHandlerAvailable(intent)) {
+			return false;
+		}
+		
+		try {
+			if (mUIManager.getMainActivity().startActivityIfNeeded(intent, -1)) {
+				return true;
+			}
+		} catch (ActivityNotFoundException ex) {
+			// ignore the error. If no application can handle the URL,
+			// eg about:blank, assume the browser can handle it.
+		}
+		
+		return false;
+	}
 }
