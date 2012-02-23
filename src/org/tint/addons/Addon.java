@@ -310,7 +310,15 @@ public class Addon {
 		
 		if ((mCallbacks & Callbacks.PAGE_FINISHED) == Callbacks.PAGE_FINISHED) {
 			results.add(mContext.getString(R.string.AddonCallbackPageFinished));
-		}		
+		}
+		
+		if ((mCallbacks & Callbacks.TAB_OPENED) == Callbacks.TAB_OPENED) {
+			results.add(mContext.getString(R.string.AddonCallbackTabOpened));
+		}
+		
+		if ((mCallbacks & Callbacks.TAB_CLOSED) == Callbacks.TAB_CLOSED) {
+			results.add(mContext.getString(R.string.AddonCallbackTabClosed));
+		}
 
 		if ((mCallbacks & Callbacks.CONTRIBUTE_MAIN_MENU) == Callbacks.CONTRIBUTE_MAIN_MENU) {
 			results.add(mContext.getString(R.string.AddonCallbackContributeMainMenu));

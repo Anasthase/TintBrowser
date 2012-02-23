@@ -390,6 +390,8 @@
     
     <string name="AddonCallbackPageStarted">Is notified when a page starts loading.</string>
     <string name="AddonCallbackPageFinished">Is notified when a page finish loading.</string>
+    <string name="AddonCallbackTabOpened">Is notified when a tab is opened.</string>
+    <string name="AddonCallbackTabClosed">Is notified when a tab is closed.</string>
     <string name="AddonCallbackHasPreferencesPage">Has a preferences page.</string>
     <string name="AddonCallbackContributeMainMenu">Can contribute to the main menu.</string>
     <string name="AddonCallbackContributeLinkContextMenu">Can contribute to the link context menu.</string>
@@ -399,7 +401,7 @@
     
     <string name="AddonDetailsUsedPermissionsTitle">Has the following permissions:</string>
     <string name="AddonDetailsPermissionsNone">None.</string>
-    <string name="AddonDetailsUnableToGetPermissions">Unable to get permissions. Check them with the package manager of your device.</string>
+    <string name="AddonDetailsUnableToGetPermissions">Unable to get permissions. Check them with the application manager of your device.</string>
     
     <string name="ContentDescriptionSuggestionIcon">Suggestion favicon</string>
 
