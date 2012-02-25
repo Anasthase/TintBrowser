@@ -38,7 +38,7 @@
         <EditTextPreference
 			android:title="@string/PreferenceGeneralStartPageLimitTitle"			
 			android:summary="@string/PreferenceGeneralStartPageLimitSummary"
-			android:defaultValue="9"
+			android:defaultValue="@integer/default_start_page_items_number"
 			android:numeric="integer"
 			android:key="PREFERENCE_START_PAGE_LIMIT" />
         

@@ -63,7 +63,7 @@ public class CustomWebViewClient extends WebViewClient {
 	public CustomWebViewClient(UIManager uiManager) {
 		mUIManager = uiManager;
 	}
-	
+
 	@Override
 	public void onPageStarted(WebView view, String url, Bitmap favicon) {
 		mUIManager.onPageStarted(view, url, favicon);
@@ -78,14 +78,6 @@ public class CustomWebViewClient extends WebViewClient {
 
 	@Override
 	public boolean shouldOverrideUrlLoading(WebView view, String url) {
-//		if (view.getHitTestResult().getType() == HitTestResult.EMAIL_TYPE) {
-//			Intent sendMail = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-//			mUIManager.getMainActivity().startActivity(sendMail);
-//			return true;
-//		}
-//		
-//		return false;
-		
 		return checkUrlLoading(url);
 	}
 

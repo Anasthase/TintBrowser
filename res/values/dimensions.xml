@@ -26,6 +26,9 @@
     <dimen name="bookmarks_fragment_vertical_spacing">10dip</dimen>
     <dimen name="bookmarks_fragment_horizontal_spacing">10dip</dimen>
     
+    <dimen name="startpage_fragment_margin_top_bottom">5dip</dimen>
+    <dimen name="startpage_fragment_margin_left_right">10dip</dimen>
+    
     <dimen name="startpage_fragment_column_width">90dip</dimen>
     <dimen name="startpage_fragment_vertical_spacing">5dip</dimen>
     <dimen name="startpage_fragment_horizontal_spacing">10dip</dimen>

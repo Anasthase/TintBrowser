@@ -142,9 +142,12 @@ public class StartPageFragment extends Fragment implements LoaderManager.LoaderC
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 		int limit;
 		try {
-			limit = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(Constants.PREFERENCE_START_PAGE_LIMIT, "9"));
+			limit = Integer.parseInt(
+					PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(
+							Constants.PREFERENCE_START_PAGE_LIMIT,
+							Integer.toString(getResources().getInteger(R.integer.default_start_page_items_number))));
 		} catch (Exception e) {
-			limit = 9;
+			limit = getResources().getInteger(R.integer.default_start_page_items_number);
 		}
 		
 		return BookmarksWrapper.getCursorLoaderForStartPage(getActivity(), limit);
