@@ -25,12 +25,16 @@ import android.app.FragmentTransaction;
 
 public class WebViewFragmentTabListener implements ActionBar.TabListener {
 	
-	private TabletUIManager mTabsManager;
-	private TabletWebViewFragment mFragment;	
+	private TabletUIManager mUIManager;
+	private TabletWebViewFragment mFragment;
+	
+	private boolean mFragmentAdded;
 
-	public WebViewFragmentTabListener(TabletUIManager tabsManager, TabletWebViewFragment fragment) {
-		mTabsManager = tabsManager;
+	public WebViewFragmentTabListener(TabletUIManager uiManager, TabletWebViewFragment fragment) {
+		mUIManager = uiManager;
 		mFragment = fragment;
+		
+		mFragmentAdded = false;
 	}
 	
 	@Override
@@ -39,20 +43,25 @@ public class WebViewFragmentTabListener implements ActionBar.TabListener {
 	@Override
 	public void onTabSelected(Tab arg0, FragmentTransaction ft) {
 		if (mFragment.isStartPageShown()) {
-			ft.add(R.id.WebViewContainer, mTabsManager.getStartPageFragment(), null);
+			ft.show(mUIManager.getStartPageFragment());
 		} else {
-			ft.add(R.id.WebViewContainer, mFragment, null);
+			if (!mFragmentAdded) {
+				ft.add(R.id.WebViewContainer, mFragment, null);
+				mFragmentAdded = true;
+			} else {
+				ft.show(mFragment);
+			}
 		}
 		mFragment.onTabSelected(arg0);
-		mTabsManager.onTabSelected(arg0);
+		mUIManager.onTabSelected(arg0);
 	}
 
 	@Override
 	public void onTabUnselected(Tab arg0, FragmentTransaction ft) {
 		if (mFragment.isStartPageShown()) {
-			ft.remove(mTabsManager.getStartPageFragment());
+			ft.hide(mUIManager.getStartPageFragment());
 		} else {
-			ft.remove(mFragment);
+			ft.hide(mFragment);
 		}		
 	}
 

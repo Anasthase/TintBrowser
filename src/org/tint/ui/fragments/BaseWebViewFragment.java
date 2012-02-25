@@ -24,9 +24,8 @@ import org.tint.ui.components.CustomWebView;
 import org.tint.ui.components.CustomWebViewClient;
 import android.app.Fragment;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 
@@ -37,7 +36,7 @@ public abstract class BaseWebViewFragment extends Fragment {
 	}
 	
 	protected UIManager mUIManager;
-	protected View mParentView;
+	protected ViewGroup mParentView;
 	protected CustomWebView mWebView;
 	
 	protected UUID mUUID;
@@ -72,29 +71,11 @@ public abstract class BaseWebViewFragment extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 		
 		mWebView = (CustomWebView) mParentView.findViewById(R.id.WebView);
-		
+
 		mWebView.setParentFragment(this);
 		
 		mWebView.setWebChromeClient(new CustomWebChromeClient(mUIManager));
 		mWebView.setWebViewClient(new CustomWebViewClient(mUIManager));
-		
-		mWebView.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				
-			}		
-		});
-		
-		mWebView.setOnFocusChangeListener(new OnFocusChangeListener() {
-
-			@Override
-			public void onFocusChange(View arg0, boolean arg1) {
-				// TODO Auto-generated method stub
-				
-			}			
-		});
 		
 		mWebView.setOnTouchListener(mUIManager);
 	}
@@ -122,6 +103,26 @@ public abstract class BaseWebViewFragment extends Fragment {
 		}
 		
 		return mWebView;
+	}
+	
+	public void resetWebView() {
+		mParentView.removeView(mWebView);
+		
+		mWebView = new CustomWebView(getActivity());
+		
+		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		mWebView.setLayoutParams(params);
+		
+		mWebView.setId(R.id.WebView);
+		
+		mWebView.setParentFragment(this);
+		
+		mWebView.setWebChromeClient(new CustomWebChromeClient(mUIManager));
+		mWebView.setWebViewClient(new CustomWebViewClient(mUIManager));
+		
+		mWebView.setOnTouchListener(mUIManager);
+		
+		mParentView.addView(mWebView);
 	}
 	
 	public void requestUrlToLoadWhenReady(String url) {

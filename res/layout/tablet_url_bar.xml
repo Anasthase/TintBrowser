@@ -17,9 +17,17 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent"    
     android:background="@drawable/ab_solid_dark_holo"
     android:orientation="vertical" >
+    
+    <LinearLayout
+        android:id="@+id/DummyLayoutToSteelFuckingFocusOnUrlEditText"
+        android:layout_width="0dip"
+        android:layout_height="0dip"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal" />
     
     <LinearLayout
         android:id="@+id/UrlBarLeftLayout"
@@ -72,6 +80,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:paddingTop="5dip"
+    	android:paddingBottom="3dip"
         android:layout_toRightOf="@+id/UrlBarLeftLayout"
         android:layout_toLeftOf="@+id/UrlBarRightLayout">
         

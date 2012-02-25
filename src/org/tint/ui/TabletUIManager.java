@@ -53,7 +53,24 @@ public class TabletUIManager extends BaseUIManager {
 		super(activity);
 		
 		mTabs = new Hashtable<Tab, TabletWebViewFragment>();
-		mFragmentsMap = new Hashtable<UUID, TabletWebViewFragment>();
+		mFragmentsMap = new Hashtable<UUID, TabletWebViewFragment>();		
+
+		if (mStartPageFragment == null) {
+			FragmentTransaction ft = mFragmentManager.beginTransaction();
+			
+			mStartPageFragment = new StartPageFragment();
+			mStartPageFragment.setOnStartPageItemClickedListener(new OnStartPageItemClickedListener() {					
+				@Override
+				public void onStartPageItemClicked(String url) {
+					loadUrl(url);
+				}
+			});
+			
+			ft.add(R.id.WebViewContainer, mStartPageFragment);
+			ft.hide(mStartPageFragment);
+			
+			ft.commit();
+		}
 	}
 	
 	public void onTabSelected(Tab tab) {
@@ -293,22 +310,12 @@ public class TabletUIManager extends BaseUIManager {
 			
 			if (webViewFragment == getCurrentWebViewFragment()) {
 
-				FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+				FragmentTransaction ft = mFragmentManager.beginTransaction();
+				
+				ft.hide(webViewFragment);
+				ft.show(mStartPageFragment);
 
-				if (mStartPageFragment == null) {
-					mStartPageFragment = new StartPageFragment();
-					mStartPageFragment.setOnStartPageItemClickedListener(new OnStartPageItemClickedListener() {					
-						@Override
-						public void onStartPageItemClicked(String url) {
-							loadUrl(url);
-						}
-					});
-				}
-
-				fragmentTransaction.remove(webViewFragment);
-				fragmentTransaction.add(R.id.WebViewContainer, mStartPageFragment);
-
-				fragmentTransaction.commit();
+				ft.commit();
 
 				onShowStartPage();
 			}
@@ -325,12 +332,12 @@ public class TabletUIManager extends BaseUIManager {
 			
 			if (webViewFragment == getCurrentWebViewFragment()) {				
 
-				FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();			
+				FragmentTransaction ft = mFragmentManager.beginTransaction();
+				
+				ft.hide(mStartPageFragment);
+				ft.show(webViewFragment);
 
-				fragmentTransaction.remove(mStartPageFragment);
-				fragmentTransaction.add(R.id.WebViewContainer, webViewFragment);
-
-				fragmentTransaction.commit();
+				ft.commit();
 
 				onHideStartPage();
 		}

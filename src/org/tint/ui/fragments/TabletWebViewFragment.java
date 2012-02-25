@@ -47,6 +47,10 @@ public class TabletWebViewFragment extends BaseWebViewFragment {
 	
 	public void onTabSelected(Tab tab) {
 		mTab = tab;
+		
+		if (mWebView != null) {
+			mWebView.requestFocus();
+		}
 	}
 	
 	@Override
@@ -78,7 +82,7 @@ public class TabletWebViewFragment extends BaseWebViewFragment {
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		if (mParentView == null) {
-			mParentView = inflater.inflate(R.layout.tablet_webview_fragment, container, false);
+			mParentView = (ViewGroup) inflater.inflate(R.layout.tablet_webview_fragment, container, false);
 		}
 		
 		return mParentView;

@@ -57,7 +57,7 @@ public class PhoneWebViewFragment extends BaseWebViewFragment {
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		if (mParentView == null) {
-			mParentView = inflater.inflate(R.layout.phone_webview_fragment, container, false);
+			mParentView = (ViewGroup) inflater.inflate(R.layout.phone_webview_fragment, container, false);
 		}
 		
 		return mParentView;

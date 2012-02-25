@@ -389,7 +389,6 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 	
 	@Override
 	public void onFragmentReady(BaseWebViewFragment fragment, String urlToLoadWhenReady) {
-		
 		Controller.getInstance().getAddonManager().onTabOpened(mActivity, fragment.getWebView());
 		
 		if (urlToLoadWhenReady != null) {
@@ -409,14 +408,18 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 			
 			CustomWebView webView = webViewFragment.getWebView();
 			
-			if (url.equals(Constants.URL_ABOUT_START)) {				
+			if (url.equals(Constants.URL_ABOUT_START)) {
+//				webView.clearView();
+//				webView.clearHistory();
+								
 				showStartPage(webViewFragment);
 				
-				webView.clearView();
-				webView.clearHistory();
+				// TODO: Check if there is no pb with this.
+				// This recreate a new WebView, because i cannot found a way
+				// to reset completely (history and display) a WebView.
+				webViewFragment.resetWebView();
 			} else {
-				hideStartPage(webViewFragment);
-				
+				hideStartPage(webViewFragment);				
 				webView.loadUrl(url);
 			}
 			
