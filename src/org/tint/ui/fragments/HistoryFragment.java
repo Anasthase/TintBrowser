@@ -33,6 +33,7 @@ import android.app.LoaderManager;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.database.DataSetObserver;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -42,10 +43,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
 import android.widget.CompoundButton;
 import android.widget.ExpandableListView;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ExpandableListView.ExpandableListContextMenuInfo;
 
@@ -60,8 +67,19 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 	
 	private UIManager mUIManager;
 	
-	private ExpandableListView mListView;	
+	private ExpandableListView mListView;
+	
+	private ListView mGroupList;
+	private ListView mChildList;
+	
+	private TextView mChildHeaderText;
+	
 	private HistoryAdapter mAdapter;
+	
+	private HistoryGroupWrapper mGroupAdapter;
+	private HistoryChildWrapper mChildAdapter;
+	
+	private boolean mTwoPaneMode;
 	
 	private OnCheckedChangeListener mBookmarkStarChangeListener;
 	
@@ -91,9 +109,20 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 				mBookmarkStarChangeListener,
 				ApplicationUtils.getFaviconSize(getActivity()));
 		
-		mListView.setAdapter(mAdapter);
-		
-		registerForContextMenu(mListView);
+		if (mTwoPaneMode) {
+			
+			mGroupAdapter = new HistoryGroupWrapper(mAdapter);
+			mGroupList.setAdapter(mGroupAdapter);
+			
+			mChildAdapter = new HistoryChildWrapper(mAdapter);
+			mChildList.setAdapter(mChildAdapter);
+			
+			registerForContextMenu(mChildList);
+			
+		} else {
+			mListView.setAdapter(mAdapter);		
+			registerForContextMenu(mListView);
+		}
 		
 		getLoaderManager().initLoader(0, null, this);
 	}
@@ -102,23 +131,14 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		if (mContainer == null) {
 			mContainer = inflater.inflate(R.layout.history_fragment, container, false);
-			mListView = (ExpandableListView) mContainer.findViewById(R.id.HistoryExpandableList);
 			
-			mListView.setOnChildClickListener(new OnChildClickListener() {
-				
-				@Override
-				public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-					BookmarkHistoryItem item = (BookmarkHistoryItem) mAdapter.getChild(groupPosition, childPosition);
-					Intent result = new Intent();
-					result.putExtra(Constants.EXTRA_NEW_TAB, false);
-					result.putExtra(Constants.EXTRA_URL, item.getUrl());
-					
-					getActivity().setResult(Activity.RESULT_OK, result);
-					getActivity().finish();					
-					
-					return true;
-				}
-			});
+			View stub = mContainer.findViewById(R.id.history_group);
+			
+			if (stub == null) {
+				inflateSinglePane();
+			} else {
+				inflateTwoPane();
+			}
 		}
 		
 		return mContainer;
@@ -128,90 +148,114 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
 		super.onCreateContextMenu(menu, v, menuInfo);
 		
-		ExpandableListView.ExpandableListContextMenuInfo info =	(ExpandableListView.ExpandableListContextMenuInfo) menuInfo;
+		BookmarkHistoryItem selectedItem = null;
 		
-		int type = ExpandableListView.getPackedPositionType(info.packedPosition);
-		
-		if (type == ExpandableListView.PACKED_POSITION_TYPE_CHILD) {
-			int group = ExpandableListView.getPackedPositionGroup(info.packedPosition);
-			int child =	ExpandableListView.getPackedPositionChild(info.packedPosition);
+		if (mTwoPaneMode) {
+			AdapterContextMenuInfo info = (AdapterContextMenuInfo) menuInfo;
 			
-			BookmarkHistoryItem selectedItem = (BookmarkHistoryItem) mAdapter.getChild(group, child);
+			int group = mChildAdapter.getSelectedGroup();
+			int child = info.position;
 			
-			if (selectedItem != null) {
-				BitmapDrawable icon = ApplicationUtils.getApplicationButtonImage(getActivity(), selectedItem.getFavicon());
-				if (icon != null) {
-					menu.setHeaderIcon(icon);
-				}
+			selectedItem = (BookmarkHistoryItem) mAdapter.getChild(group, child);
+		} else {
+			ExpandableListView.ExpandableListContextMenuInfo info =	(ExpandableListView.ExpandableListContextMenuInfo) menuInfo;
 
-				menu.setHeaderTitle(selectedItem.getTitle());
-				
-				menu.add(0, CONTEXT_MENU_OPEN_IN_TAB, 0, R.string.OpenInTab);	
-				menu.add(0, CONTEXT_MENU_COPY_URL, 0, R.string.CopyUrl);
-				menu.add(0, CONTEXT_MENU_SHARE_URL, 0, R.string.ContextMenuShareUrl);
-				menu.add(0, CONTEXT_MENU_DELETE_HISTORY_ITEM, 0, R.string.DeleteHistoryItem);
-				
-				List<AddonMenuItem> addonsContributions = Controller.getInstance().getAddonManager().getContributedHistoryContextMenuItems(mUIManager.getCurrentWebView());
-		        for (AddonMenuItem item : addonsContributions) {
-		        	menu.add(0, item.getAddon().getMenuId(), 0, item.getMenuItem());
-		        }
+			int type = ExpandableListView.getPackedPositionType(info.packedPosition);
+
+			if (type == ExpandableListView.PACKED_POSITION_TYPE_CHILD) {
+				int group = ExpandableListView.getPackedPositionGroup(info.packedPosition);
+				int child =	ExpandableListView.getPackedPositionChild(info.packedPosition);
+
+				selectedItem = (BookmarkHistoryItem) mAdapter.getChild(group, child);
 			}
+		}
+		
+		if (selectedItem != null) {
+			BitmapDrawable icon = ApplicationUtils.getApplicationButtonImage(getActivity(), selectedItem.getFavicon());
+			if (icon != null) {
+				menu.setHeaderIcon(icon);
+			}
+
+			menu.setHeaderTitle(selectedItem.getTitle());
+			
+			menu.add(0, CONTEXT_MENU_OPEN_IN_TAB, 0, R.string.OpenInTab);	
+			menu.add(0, CONTEXT_MENU_COPY_URL, 0, R.string.CopyUrl);
+			menu.add(0, CONTEXT_MENU_SHARE_URL, 0, R.string.ContextMenuShareUrl);
+			menu.add(0, CONTEXT_MENU_DELETE_HISTORY_ITEM, 0, R.string.DeleteHistoryItem);
+			
+			List<AddonMenuItem> addonsContributions = Controller.getInstance().getAddonManager().getContributedHistoryContextMenuItems(mUIManager.getCurrentWebView());
+	        for (AddonMenuItem item : addonsContributions) {
+	        	menu.add(0, item.getAddon().getMenuId(), 0, item.getMenuItem());
+	        }
 		}
 	}
 	
 	@Override
 	public boolean onContextItemSelected(MenuItem menuItem) {
-		ExpandableListContextMenuInfo info = (ExpandableListContextMenuInfo) menuItem.getMenuInfo();
 		
-		int type = ExpandableListView.getPackedPositionType(info.packedPosition);
+		BookmarkHistoryItem selectedItem = null;
 		
-		if (type == ExpandableListView.PACKED_POSITION_TYPE_CHILD) {
-			int group = ExpandableListView.getPackedPositionGroup(info.packedPosition);
-			int child =	ExpandableListView.getPackedPositionChild(info.packedPosition);
+		if (mTwoPaneMode) {
+			AdapterContextMenuInfo info = (AdapterContextMenuInfo) menuItem.getMenuInfo();
 			
-			BookmarkHistoryItem selectedItem = (BookmarkHistoryItem) mAdapter.getChild(group, child);
+			int group = mChildAdapter.getSelectedGroup();
+			int child = info.position;
 			
-			if (selectedItem != null) {
-				switch (menuItem.getItemId()) {
-				case CONTEXT_MENU_OPEN_IN_TAB:
-					Intent result = new Intent();
-					result.putExtra(Constants.EXTRA_NEW_TAB, true);
-					result.putExtra(Constants.EXTRA_URL, selectedItem.getUrl());
-					
-					getActivity().setResult(Activity.RESULT_OK, result);
-					getActivity().finish();
-					
+			selectedItem = (BookmarkHistoryItem) mAdapter.getChild(group, child);
+			
+		} else {
+			ExpandableListContextMenuInfo info = (ExpandableListContextMenuInfo) menuItem.getMenuInfo();
+
+			int type = ExpandableListView.getPackedPositionType(info.packedPosition);
+
+			if (type == ExpandableListView.PACKED_POSITION_TYPE_CHILD) {
+				int group = ExpandableListView.getPackedPositionGroup(info.packedPosition);
+				int child =	ExpandableListView.getPackedPositionChild(info.packedPosition);
+
+				selectedItem = (BookmarkHistoryItem) mAdapter.getChild(group, child);
+			}
+		}
+		
+		if (selectedItem != null) {
+			switch (menuItem.getItemId()) {
+			case CONTEXT_MENU_OPEN_IN_TAB:
+				Intent result = new Intent();
+				result.putExtra(Constants.EXTRA_NEW_TAB, true);
+				result.putExtra(Constants.EXTRA_URL, selectedItem.getUrl());
+				
+				getActivity().setResult(Activity.RESULT_OK, result);
+				getActivity().finish();
+				
+				return true;
+				
+			case CONTEXT_MENU_COPY_URL:
+				if (selectedItem != null) {
+					ApplicationUtils.copyTextToClipboard(getActivity(), selectedItem.getUrl(), getActivity().getResources().getString(R.string.UrlCopyToastMessage));
+				}
+				
+				return true;
+				
+			case CONTEXT_MENU_SHARE_URL:
+				if (selectedItem != null) {
+					ApplicationUtils.sharePage(getActivity(), null, selectedItem.getUrl());						
+				}
+				
+				return true;
+				
+			case CONTEXT_MENU_DELETE_HISTORY_ITEM:
+				BookmarksWrapper.deleteHistoryRecord(getActivity().getContentResolver(), selectedItem.getId());
+				return true;
+				
+			default:
+				if (Controller.getInstance().getAddonManager().onContributedHistoryContextMenuItemSelected(
+						getActivity(),
+						menuItem.getItemId(),
+						selectedItem.getTitle(),
+						selectedItem.getUrl(),
+						mUIManager.getCurrentWebView())) {
 					return true;
-					
-				case CONTEXT_MENU_COPY_URL:
-					if (selectedItem != null) {
-						ApplicationUtils.copyTextToClipboard(getActivity(), selectedItem.getUrl(), getActivity().getResources().getString(R.string.UrlCopyToastMessage));
-					}
-					
-					return true;
-					
-				case CONTEXT_MENU_SHARE_URL:
-					if (selectedItem != null) {
-						ApplicationUtils.sharePage(getActivity(), null, selectedItem.getUrl());						
-					}
-					
-					return true;
-					
-				case CONTEXT_MENU_DELETE_HISTORY_ITEM:
-					BookmarksWrapper.deleteHistoryRecord(getActivity().getContentResolver(), selectedItem.getId());
-					return true;
-					
-				default:
-					if (Controller.getInstance().getAddonManager().onContributedHistoryContextMenuItemSelected(
-							getActivity(),
-							menuItem.getItemId(),
-							selectedItem.getTitle(),
-							selectedItem.getUrl(),
-							mUIManager.getCurrentWebView())) {
-						return true;
-					} else {
-						return super.onContextItemSelected(menuItem);
-					}
+				} else {
+					return super.onContextItemSelected(menuItem);
 				}
 			}
 		}
@@ -229,8 +273,14 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 		mAdapter.changeCursor(data);
 		
 		if (data != null) {
-			if (mAdapter.getGroupCount() > 0) {
-				mListView.expandGroup(0, true);
+			
+			if (!mTwoPaneMode) {
+				if (mAdapter.getGroupCount() > 0) {
+					mListView.expandGroup(0, true);
+				}
+			} else {
+				// Select the first group (Today).
+				selectGroup(mAdapter.getGroupView(0, false, null, null), 0);
 			}
 		}
 	}
@@ -238,6 +288,152 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 	@Override
 	public void onLoaderReset(Loader<Cursor> loader) {
 		mAdapter.changeCursor(null);
+	}
+	
+	private void inflateSinglePane() {
+		mTwoPaneMode = false;
+		
+		mListView = (ExpandableListView) mContainer.findViewById(R.id.HistoryExpandableList);
+		
+		mListView.setOnChildClickListener(new OnChildClickListener() {
+			
+			@Override
+			public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+				openItem(groupPosition, childPosition);
+				
+				return true;
+			}
+		});
+	}
+	
+	private void inflateTwoPane() {
+		mTwoPaneMode = true;
+		
+		mChildHeaderText = (TextView) mContainer.findViewById(R.id.history_child_text);
+		mGroupList = (ListView) mContainer.findViewById(R.id.history_group_list);
+		mChildList = (ListView) mContainer.findViewById(R.id.history_child_list);
+		
+		mGroupList.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				selectGroup(view, position);
+			}
+		});
+		
+		mChildList.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				openItem(mChildAdapter.getSelectedGroup(), position);
+			}
+		});
+	}
+	
+	private void openItem(int groupPosition, int childPosition) {
+		BookmarkHistoryItem item = (BookmarkHistoryItem) mAdapter.getChild(groupPosition, childPosition);
+		Intent result = new Intent();
+		result.putExtra(Constants.EXTRA_NEW_TAB, false);
+		result.putExtra(Constants.EXTRA_URL, item.getUrl());
+		
+		getActivity().setResult(Activity.RESULT_OK, result);
+		getActivity().finish();
+	}
+	
+	private void selectGroup(View view, int position) {
+		CharSequence title = ((TextView) view).getText();
+		mChildHeaderText.setText(title);
+		
+		mChildAdapter.setSelectedGroup(position);
+		mGroupList.setItemChecked(position, true);
+	}
+	
+	private abstract class HistoryWrapper extends BaseAdapter {
+		
+		protected HistoryAdapter mHistoryAdapter;
+		
+		private DataSetObserver mObserver = new DataSetObserver() {
+            @Override
+            public void onChanged() {
+                super.onChanged();
+                notifyDataSetChanged();
+            }
+
+            @Override
+            public void onInvalidated() {
+                super.onInvalidated();
+                notifyDataSetInvalidated();
+            }
+        };
+        
+        public HistoryWrapper(HistoryAdapter adapter) {
+        	mHistoryAdapter = adapter;
+        	mHistoryAdapter.registerDataSetObserver(mObserver);
+        }
+	}
+	
+	private class HistoryGroupWrapper extends HistoryWrapper {
+
+		public HistoryGroupWrapper(HistoryAdapter adapter) {
+			super(adapter);
+		}
+
+		@Override
+		public int getCount() {
+			return mAdapter.getGroupCount();
+		}
+
+		@Override
+		public Object getItem(int position) {
+			return null;
+		}
+
+		@Override
+		public long getItemId(int position) {
+			return position;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+            return mAdapter.getGroupView(position, false, convertView, parent);
+		}
+	}
+	
+	private class HistoryChildWrapper extends HistoryWrapper {
+
+		private int mSelectedGroup;
+		
+		public HistoryChildWrapper(HistoryAdapter adapter) {
+			super(adapter);
+		}
+
+		@Override
+		public int getCount() {
+			return mAdapter.getChildrenCount(mSelectedGroup);
+		}
+
+		@Override
+		public Object getItem(int position) {
+			return null;
+		}
+
+		@Override
+		public long getItemId(int position) {
+			return position;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			return mAdapter.getChildView(mSelectedGroup, position, false, convertView, parent);
+		}
+		
+		public void setSelectedGroup(int groupPosition) {
+            mSelectedGroup = groupPosition;
+            notifyDataSetChanged();
+        }
+		
+		public int getSelectedGroup() {
+			return mSelectedGroup;
+		}
+		
 	}
 
 }

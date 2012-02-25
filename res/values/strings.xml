@@ -50,8 +50,8 @@
     <string name="Preferences">Settings</string>
     <string name="CannotBeUndone">This cannot be undone.</string>
     
-    <string name="UrlBarUrlDefaultSubTitle">Click to enter an URL</string>
-    <string name="UrlBarUrlHint">Search or type URL</string>
+    <string name="UrlBarUrlDefaultSubTitle">Tap to enter an URL or a search term.</string>
+    <string name="UrlBarUrlHint">Enter a search term or an URL</string>
     
     <string name="ShareChooserTitle">Share via</string>
     <string name="FileChooserPrompt">Choose file for upload</string>

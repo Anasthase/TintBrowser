@@ -30,4 +30,7 @@
     <dimen name="startpage_fragment_column_width">125dip</dimen>
     <dimen name="startpage_fragment_vertical_spacing">25dip</dimen>
     <dimen name="startpage_fragment_horizontal_spacing">25dip</dimen>
+    
+    <dimen name="history_row_padding_left_right">20dip</dimen>
+    <dimen name="history_row_padding_top_bottom">10dip</dimen>
 </resources>

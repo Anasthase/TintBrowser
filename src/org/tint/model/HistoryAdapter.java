@@ -283,7 +283,11 @@ public class HistoryAdapter extends BaseExpandableListAdapter {
 
 	@Override
 	public int getChildrenCount(int groupPosition) {
-		return mItemMap[groupPositionToBin(groupPosition)];
+		if (mItemMap != null) {
+			return mItemMap[groupPositionToBin(groupPosition)];
+		} else {
+			return 0;
+		}
 	}
 
 	@Override
