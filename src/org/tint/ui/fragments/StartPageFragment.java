@@ -99,7 +99,7 @@ public class StartPageFragment extends Fragment implements LoaderManager.LoaderC
 				from,
 				to,
 				ApplicationUtils.getBookmarksThumbnailsDimensions(getActivity()),
-				R.drawable.browser_thumbnail_light);
+				R.drawable.browser_thumbnail);
 		
 		mGrid.setAdapter(mAdapter);
 		

@@ -23,12 +23,10 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.DateSorter;
-import android.widget.AbsListView;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -197,24 +195,6 @@ public class HistoryAdapter extends BaseExpandableListAdapter {
     }
 	
 	/**
-	 * Create a new view.
-	 * @return The created view.
-	 */
-	private TextView getGenericView() {
-        // Layout parameters for the ExpandableListView
-        AbsListView.LayoutParams lp = new AbsListView.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, (int) (45 * mContext.getResources().getDisplayMetrics().density));
-
-        TextView textView = new TextView(mContext);
-        textView.setLayoutParams(lp);
-        // Center the text vertically
-        textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
-        // Set the text starting position
-        textView.setPadding((int) (35 * mContext.getResources().getDisplayMetrics().density), 0, 0, 0);
-        
-        return textView;
-    }
-	
-	/**
 	 * Create a new child view.
 	 * @return The created view.
 	 */
@@ -314,11 +294,20 @@ public class HistoryAdapter extends BaseExpandableListAdapter {
 	}
 
 	@Override
-	public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-		TextView textView = getGenericView();
-        textView.setText(getGroup(groupPosition).toString());
+	public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {		
         
-        return textView;
+        TextView item;
+        if ((convertView == null) ||
+        		(!(convertView instanceof TextView))) {
+        	LayoutInflater factory = LayoutInflater.from(mContext);
+        	item = (TextView) factory.inflate(R.layout.history_header, null);
+        } else {
+        	item = (TextView) convertView;
+        }
+        
+        item.setText(getGroup(groupPosition).toString());
+        
+        return item;
 	}
 
 	@Override

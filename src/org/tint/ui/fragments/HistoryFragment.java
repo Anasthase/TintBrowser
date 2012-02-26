@@ -29,6 +29,7 @@ import org.tint.utils.Constants;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentBreadCrumbs;
 import android.app.LoaderManager;
 import android.content.Intent;
 import android.content.Loader;
@@ -43,6 +44,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
@@ -72,7 +74,7 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 	private ListView mGroupList;
 	private ListView mChildList;
 	
-	private TextView mChildHeaderText;
+	private FragmentBreadCrumbs mChildHeader;
 	
 	private HistoryAdapter mAdapter;
 	
@@ -309,9 +311,14 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 	private void inflateTwoPane() {
 		mTwoPaneMode = true;
 		
-		mChildHeaderText = (TextView) mContainer.findViewById(R.id.history_child_text);
+		mChildHeader = (FragmentBreadCrumbs) mContainer.findViewById(R.id.history_child_breadcrumbs);
+		mChildHeader.setMaxVisible(1);
+		mChildHeader.setActivity(getActivity());
+		
 		mGroupList = (ListView) mContainer.findViewById(R.id.history_group_list);
 		mChildList = (ListView) mContainer.findViewById(R.id.history_child_list);
+		
+		mGroupList.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
 		
 		mGroupList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -340,7 +347,7 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 	
 	private void selectGroup(View view, int position) {
 		CharSequence title = ((TextView) view).getText();
-		mChildHeaderText.setText(title);
+		mChildHeader.setTitle(title, title);
 		
 		mChildAdapter.setSelectedGroup(position);
 		mGroupList.setItemChecked(position, true);

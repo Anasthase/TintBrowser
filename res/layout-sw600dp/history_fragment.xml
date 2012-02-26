@@ -27,7 +27,7 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="32dp"
         android:layout_marginLeft="96dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="0dp"
         android:layout_marginTop="32dp"
         android:layout_weight="10"
         android:orientation="vertical" >
@@ -47,27 +47,39 @@
         android:id="@+id/history_child"
         android:layout_width="0px"
         android:layout_height="match_parent"
-        android:layout_marginBottom="32dp"
-        android:layout_marginLeft="10dip"
-        android:layout_marginRight="10dip"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="0dip"
+        android:layout_marginRight="96dp"        
         android:layout_weight="20"
+        android:background="?android:attr/detailsElementBackground"
         android:orientation="vertical" >
         
-        <TextView
-            android:id="@+id/history_child_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dip"
-            android:paddingTop="5dip"
-            android:paddingBottom="5dip"
-            android:text="@+id/history_details_text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <android.app.FragmentBreadCrumbs
+                android:id="@+id/history_child_breadcrumbs"
+                android:layout_height="72dip"
+                android:layout_width="match_parent"
+                android:paddingTop="16dip"
+                android:paddingBottom="8dip"
+                android:gravity="center_vertical|left"
+                android:layout_marginLeft="32dip"
+                android:layout_marginRight="48dip"
+                />
+        
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:paddingLeft="32dip"
+            android:paddingRight="32dip"
+            android:contentDescription="@string/ContentDescriptionDivider"
+            android:src="#404040" />
         
         <ListView
             android:id="@+id/history_child_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"         
+            android:layout_height="match_parent"
+            android:paddingLeft="32dip"
+            android:paddingRight="32dip"
             android:cacheColorHint="@android:color/transparent"
             android:drawSelectorOnTop="false"
             android:listPreferredItemHeight="48dp"

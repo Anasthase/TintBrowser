@@ -80,6 +80,7 @@ public class TabletUIManager extends BaseUIManager {
 	@Override
 	protected void setupUI() {
 		mActionBar.setDisplayShowTitleEnabled(false);
+		mActionBar.setHomeButtonEnabled(false);
 		mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		
 		mProgressBar = (ProgressBar) mActivity.findViewById(R.id.WebViewProgress);
