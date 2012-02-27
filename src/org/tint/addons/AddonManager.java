@@ -129,6 +129,19 @@ public class AddonManager {
 		processResponses(context, webView, responses);
 	}
 	
+	public void onTabSwitched(Context context, CustomWebView webView) {
+		List<AddonResponseWrapper> responses = new ArrayList<AddonResponseWrapper>();
+		
+		for (Addon addon : mAddons) {
+			List<Action> response = addon.onTabSwitched(webView.getParentFragmentUUID().toString());
+			if (response != null) {
+				responses.add(new AddonResponseWrapper(addon, response));
+			}
+		}
+		
+		processResponses(context, webView, responses);
+	}
+	
 	public List<AddonMenuItem> getContributedMainMenuItems(CustomWebView currentWebview) {
 		List<AddonMenuItem> result = new ArrayList<AddonMenuItem>();
 		

@@ -169,6 +169,15 @@ public class AddonServiceConnection implements ServiceConnection {
 		}
 	}
 	
+	public List<Action> onTabSwitched(String tabId) {
+		try {
+			return mAddon.onTabSwitched(tabId);
+		} catch (RemoteException e) {			
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	public String getContributedMainMenuItem(String currentTabId) {
 		try {
 			return mAddon.getContributedMainMenuItem(currentTabId);

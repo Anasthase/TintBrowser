@@ -187,6 +187,14 @@ public class Addon {
 		}
 	}
 	
+	public List<Action> onTabSwitched(String tabId) {
+		if (makeCall(Callbacks.TAB_SWITCHED)) {
+			return mServiceConnection.onTabSwitched(tabId);
+		} else {
+			return null;
+		}
+	}
+	
 	public String getContributedMainMenuItem(String currentTabId) {
 		if (makeCall(Callbacks.CONTRIBUTE_MAIN_MENU)) {
 			if (mContributedMainMenu == null) {
@@ -318,6 +326,10 @@ public class Addon {
 		
 		if ((mCallbacks & Callbacks.TAB_CLOSED) == Callbacks.TAB_CLOSED) {
 			results.add(mContext.getString(R.string.AddonCallbackTabClosed));
+		}
+		
+		if ((mCallbacks & Callbacks.TAB_SWITCHED) == Callbacks.TAB_SWITCHED) {
+			results.add(mContext.getString(R.string.AddonCallbackTabSwitched));
 		}
 
 		if ((mCallbacks & Callbacks.CONTRIBUTE_MAIN_MENU) == Callbacks.CONTRIBUTE_MAIN_MENU) {

@@ -392,6 +392,7 @@
     <string name="AddonCallbackPageFinished">Is notified when a page finish loading.</string>
     <string name="AddonCallbackTabOpened">Is notified when a tab is opened.</string>
     <string name="AddonCallbackTabClosed">Is notified when a tab is closed.</string>
+    <string name="AddonCallbackTabSwitched">Is notified when switching tabs.</string>
     <string name="AddonCallbackHasPreferencesPage">Has a preferences page.</string>
     <string name="AddonCallbackContributeMainMenu">Can contribute to the main menu.</string>
     <string name="AddonCallbackContributeLinkContextMenu">Can contribute to the link context menu.</string>
