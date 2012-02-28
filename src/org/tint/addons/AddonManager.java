@@ -146,7 +146,10 @@ public class AddonManager {
 		List<AddonMenuItem> result = new ArrayList<AddonMenuItem>();
 		
 		for (Addon addon : mAddons) {
-			String response = addon.getContributedMainMenuItem(currentWebview.getParentFragmentUUID().toString());
+			String response = addon.getContributedMainMenuItem(
+					currentWebview.getParentFragmentUUID().toString(),
+					currentWebview.getTitle(),
+					currentWebview.getUrl());
 			
 			if (!TextUtils.isEmpty(response)) {
 				result.add(new AddonMenuItem(addon, response));

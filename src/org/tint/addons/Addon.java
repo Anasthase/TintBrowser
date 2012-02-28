@@ -195,10 +195,10 @@ public class Addon {
 		}
 	}
 	
-	public String getContributedMainMenuItem(String currentTabId) {
+	public String getContributedMainMenuItem(String currentTabId, String currentTitle, String currentUrl) {
 		if (makeCall(Callbacks.CONTRIBUTE_MAIN_MENU)) {
 			if (mContributedMainMenu == null) {
-				mContributedMainMenu = mServiceConnection.getContributedMainMenuItem(currentTabId); 
+				mContributedMainMenu = mServiceConnection.getContributedMainMenuItem(currentTabId, currentTitle, currentUrl); 
 			}
 			
 			return mContributedMainMenu;

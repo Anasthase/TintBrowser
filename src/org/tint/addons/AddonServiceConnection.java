@@ -178,9 +178,9 @@ public class AddonServiceConnection implements ServiceConnection {
 		}
 	}
 	
-	public String getContributedMainMenuItem(String currentTabId) {
+	public String getContributedMainMenuItem(String currentTabId, String currentTitle, String currentUrl) {
 		try {
-			return mAddon.getContributedMainMenuItem(currentTabId);
+			return mAddon.getContributedMainMenuItem(currentTabId, currentTitle, currentUrl);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
