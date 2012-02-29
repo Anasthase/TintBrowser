@@ -282,7 +282,6 @@ public class PhoneUIManager extends BaseUIManager {
 		mUrlBar.hideGoStopReloadButton();
 		
 		mFaviconView.setImageDrawable(mDefaultFavicon);
-		//mFaviconView.setImageResource(R.drawable.ic_launcher);
 					
 		mUrlBar.setUrl(null);
 		mBack.setEnabled(false);
@@ -736,9 +735,6 @@ public class PhoneUIManager extends BaseUIManager {
 
 		updateShowPreviousNextTabButtons();
 		updateUrlBar();
-		
-		// TODO: bug on add tab.
-		//Controller.getInstance().getAddonManager().onTabSwitched(mActivity, getCurrentWebView());
 	}
 	
 	private void showPreviousTab() {
@@ -750,6 +746,8 @@ public class PhoneUIManager extends BaseUIManager {
 			
 			showCurrentTab(previousIndex);
 			startHideToolbarsThread();
+			
+			Controller.getInstance().getAddonManager().onTabSwitched(mActivity, getCurrentWebView());
 		}
 	}
 	
@@ -762,6 +760,8 @@ public class PhoneUIManager extends BaseUIManager {
 			
 			showCurrentTab(previousIndex);
 			startHideToolbarsThread();
+			
+			Controller.getInstance().getAddonManager().onTabSwitched(mActivity, getCurrentWebView());
 		}
 	}
 	

@@ -190,6 +190,8 @@ public class TabletUIManager extends BaseUIManager {
 			mFragmentsMap.remove(oldFragment.getUUID());
 			
 			mActionBar.removeTab(tab);
+		} else {
+			loadHomePage();
 		}
 	}
 	
