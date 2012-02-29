@@ -48,12 +48,6 @@ public class Addon {
 	private String mEMail;
 	private String mWebsite;
 	
-	private String mContributedMainMenu;
-	private String mContributedLinkContextMenu;	
-	private String mContributedHistoryBookmarksMenu;
-	private String mContributedBookmarkContextMenu;
-	private String mContributedHistoryContextMenu;
-	
 	private String mPreferenceName;
 	
 	private ResolveInfo mResolveInfo;
@@ -72,12 +66,6 @@ public class Addon {
 		
 		mIsEnabled = false;
 		mCallbacks = 0;
-		
-		mContributedMainMenu = null;
-		mContributedLinkContextMenu = null;
-		mContributedHistoryBookmarksMenu = null;
-		mContributedBookmarkContextMenu = null;
-		mContributedHistoryContextMenu = null;
 		
 		mPreferenceChangeListener = null;
 		
@@ -197,11 +185,7 @@ public class Addon {
 	
 	public String getContributedMainMenuItem(String currentTabId, String currentTitle, String currentUrl) {
 		if (makeCall(Callbacks.CONTRIBUTE_MAIN_MENU)) {
-			if (mContributedMainMenu == null) {
-				mContributedMainMenu = mServiceConnection.getContributedMainMenuItem(currentTabId, currentTitle, currentUrl); 
-			}
-			
-			return mContributedMainMenu;
+			return mServiceConnection.getContributedMainMenuItem(currentTabId, currentTitle, currentUrl); 
 		} else {
 			return null;
 		}
@@ -217,11 +201,7 @@ public class Addon {
 	
 	public String getContributedLinkContextMenuItem(String currentTabId, int hitTestResult, String url) {
 		if (makeCall(Callbacks.CONTRIBUTE_LINK_CONTEXT_MENU)) {
-			if (mContributedLinkContextMenu == null) {
-				mContributedLinkContextMenu = mServiceConnection.getContributedLinkContextMenuItem(currentTabId, hitTestResult, url);
-			}
-			
-			return mContributedLinkContextMenu;
+				return mServiceConnection.getContributedLinkContextMenuItem(currentTabId, hitTestResult, url);
 		} else {
 			return null;
 		}
@@ -237,31 +217,19 @@ public class Addon {
 	
 	public String getContributedHistoryBookmarksMenuItem(String currentTabId) {
 		if (makeCall(Callbacks.CONTRIBUTE_HISTORY_BOOKMARKS_MENU)) {
-			if (mContributedHistoryBookmarksMenu == null) {
-				mContributedHistoryBookmarksMenu = mServiceConnection.getContributedHistoryBookmarksMenuItem(currentTabId); 
-			}
-			
-			return mContributedHistoryBookmarksMenu;
+			return mServiceConnection.getContributedHistoryBookmarksMenuItem(currentTabId);
 		} else {
 			return null;
 		}
 	}
 	
 	public List<Action> onContributedHistoryBookmarksMenuItemSelected(String currentTabId) {
-		if (makeCall(Callbacks.CONTRIBUTE_HISTORY_BOOKMARKS_MENU)) {
-			return mServiceConnection.onContributedHistoryBookmarksMenuItemSelected(currentTabId);
-		} else {
-			return null;
-		}
+		return mServiceConnection.onContributedHistoryBookmarksMenuItemSelected(currentTabId);
 	}
 	
 	public String getContributedBookmarkContextMenuItem(String currentTabId) {
 		if (makeCall(Callbacks.CONTRIBUTE_BOOKMARK_CONTEXT_MENU)) {
-			if (mContributedBookmarkContextMenu == null) {
-				mContributedBookmarkContextMenu = mServiceConnection.getContributedBookmarkContextMenuItem(currentTabId);
-			}
-			
-			return mContributedBookmarkContextMenu;
+			return mServiceConnection.getContributedBookmarkContextMenuItem(currentTabId);
 		} else {
 			return null;
 		}
@@ -277,11 +245,7 @@ public class Addon {
 	
 	public String getContributedHistoryContextMenuItem(String currentTabId) {
 		if (makeCall(Callbacks.CONTRIBUTE_HISTORY_CONTEXT_MENU)) {
-			if (mContributedHistoryContextMenu == null) {
-				mContributedHistoryContextMenu = mServiceConnection.getContributedHistoryContextMenuItem(currentTabId);
-			}
-			
-			return mContributedHistoryContextMenu;
+			return mServiceConnection.getContributedHistoryContextMenuItem(currentTabId);
 		} else {
 			return null;
 		}
