@@ -331,7 +331,7 @@ public class PhoneUIManager extends BaseUIManager {
 		
 		updateToolbarsDisplayDuration();		
 		
-		int buttonSize = ApplicationUtils.getApplicationButtonSize(mActivity);
+		int buttonSize = mActivity.getResources().getInteger(R.integer.application_button_size);
 		Drawable d = mActivity.getResources().getDrawable(R.drawable.ic_launcher);
 		
 		Bitmap bm = Bitmap.createBitmap(buttonSize, buttonSize, Bitmap.Config.ARGB_8888);

@@ -36,14 +36,10 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.Toast;
 
 public class ApplicationUtils {
-	
-	private static int sFaviconSize = -1;
-	private static int sApplicationButtonSize = -1;
 	
 	private static int[] sBookmarksdimensions = null;
 	
@@ -86,8 +82,8 @@ public class ApplicationUtils {
 	
 	public static BitmapDrawable getApplicationButtonImage(Activity activity, Bitmap icon) {
 		if (icon != null) {
-			int buttonSize = getApplicationButtonSize(activity);
-			int size = getFaviconSize(activity);
+			int buttonSize = activity.getResources().getInteger(R.integer.application_button_size);
+			int size = activity.getResources().getInteger(R.integer.favicon_size);
 			
 			Drawable d = activity.getResources().getDrawable(R.drawable.bookmark_list_favicon_bg);						
 			Bitmap bm = Bitmap.createBitmap(buttonSize, buttonSize, Bitmap.Config.ARGB_8888);
@@ -150,50 +146,6 @@ public class ApplicationUtils {
     		Toast.makeText(context, toastMessage, Toast.LENGTH_SHORT).show();
     	}
     }
-	
-	/**
-	 * Get the required size of the favicon, depending on current screen density.
-	 * @param activity The current activity.
-	 * @return The size of the favicon, in pixels.
-	 */
-	public static int getFaviconSize(Activity activity) {
-		if (sFaviconSize == -1) {
-			DisplayMetrics metrics = new DisplayMetrics();
-			activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-
-			switch (metrics.densityDpi) {
-			case DisplayMetrics.DENSITY_LOW: sFaviconSize = 12; break;
-			case DisplayMetrics.DENSITY_MEDIUM: sFaviconSize = 16; break;
-			case DisplayMetrics.DENSITY_HIGH: sFaviconSize = 24; break;
-			case DisplayMetrics.DENSITY_XHIGH: sFaviconSize = 32; break;
-			default: sFaviconSize = 16;
-			}
-		}
-		
-		return sFaviconSize;
-	}
-	
-	/**
-	 * Get the required size of the application button, depending on current screen density.
-	 * @param activity The current activity.
-	 * @return The size of the application button, in pixels.
-	 */
-	public static int getApplicationButtonSize(Activity activity) {
-		if (sApplicationButtonSize == -1) {
-			DisplayMetrics metrics = new DisplayMetrics();
-			activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-
-			switch (metrics.densityDpi) {
-			case DisplayMetrics.DENSITY_LOW: sApplicationButtonSize = 36; break;
-			case DisplayMetrics.DENSITY_MEDIUM: sApplicationButtonSize = 48; break;
-			case DisplayMetrics.DENSITY_HIGH: sApplicationButtonSize = 60; break;
-			case DisplayMetrics.DENSITY_XHIGH: sApplicationButtonSize = 72; break;
-			default: sApplicationButtonSize = 48;
-			}
-		}
-		
-		return sApplicationButtonSize;
-	}
 	
 	/**
 	 * Display a standard yes / no dialog.

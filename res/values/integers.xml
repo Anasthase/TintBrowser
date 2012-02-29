@@ -19,4 +19,7 @@
     
     <integer name="default_start_page_items_number">9</integer>
     
+    <integer name="favicon_size">20</integer>
+    <integer name="application_button_size">50</integer>
+    
 </resources>
