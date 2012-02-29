@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/AddonsWarningLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:layout_marginBottom="5dip"
+            android:text="@string/AddonsWarningText"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:contentDescription="@string/ContentDescriptionDivider"            
+            android:src="#404040" />
+
+    </LinearLayout>        
+    <ListView
+        android:id="@+id/AddonsList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/AddonsButtonLayout"
+        android:layout_below="@+id/AddonsWarningLayout" >
+    </ListView>
+    
+    <LinearLayout
+        android:id="@+id/AddonsButtonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_alignParentBottom="true" >
+
+        <Button
+            android:id="@+id/AddonsDisableAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/AddonsDisableAll" />
+
+        <Button
+            android:id="@+id/AddonsEnableAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/AddonsEnableAll" />
+
+    </LinearLayout>
+
+</RelativeLayout>

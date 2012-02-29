@@ -372,8 +372,10 @@ public class TabletUIManager extends BaseUIManager {
 			
 			if (currentWebView.isLoading()) {
 				mUrlBar.setGoStopReloadImage(R.drawable.ic_stop);
+				mProgressBar.setVisibility(View.VISIBLE);
 			} else {
 				mUrlBar.setGoStopReloadImage(R.drawable.ic_refresh);
+				mProgressBar.setVisibility(View.GONE);
 			}
 			
 			updateBackForwardEnabled();

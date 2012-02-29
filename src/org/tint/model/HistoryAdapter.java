@@ -247,7 +247,7 @@ public class HistoryAdapter extends BaseExpandableListAdapter {
 		if (favicon != null) {
 			BitmapDrawable icon = new BitmapDrawable(favicon);
 			
-			Bitmap bm = Bitmap.createBitmap(mFaviconSize, mFaviconSize, Bitmap.Config.ARGB_4444);
+			Bitmap bm = Bitmap.createBitmap(mFaviconSize, mFaviconSize, Bitmap.Config.ARGB_8888);
 			Canvas canvas = new Canvas(bm);
 			
 			icon.setBounds(0, 0, mFaviconSize, mFaviconSize);

@@ -737,7 +737,8 @@ public class PhoneUIManager extends BaseUIManager {
 		updateShowPreviousNextTabButtons();
 		updateUrlBar();
 		
-		Controller.getInstance().getAddonManager().onTabSwitched(mActivity, getCurrentWebView());
+		// TODO: bug on add tab.
+		//Controller.getInstance().getAddonManager().onTabSwitched(mActivity, getCurrentWebView());
 	}
 	
 	private void showPreviousTab() {

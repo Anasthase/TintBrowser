@@ -375,14 +375,9 @@
     <string name="WebsitesSettingsGeolocationPageDialogTitle">Clear location access</string>
     <string name="WebsitesSettingsGeolocationPageDialogMessage">Clear location access for this website?</string>
     
-    <string name="AdblockerWhiteListEmpty">The adblocker white list is empty.</string>
-    <string name="AdblockerWhiteListMenuAdd">Add</string>
-    <string name="AdblockerWhiteListMenuClear">Clear</string>
-    <string name="AdblockerWhiteListMenuReset">Reset to default values</string>
-    <string name="AdblockerWhiteListDialogAddTitle">Add to white list</string>
-    <string name="AdblockerWhiteListDialogClearTitle">Clear white list</string>
-    <string name="AdblockerWhiteListDialogResetTitle">Reset to default values</string>
-    <string name="AdblockerWhiteListDialogRemoveItemTitle">Remove this item?</string>
+    <string name="AddonsWarningText">Please install only addons you trust. If you experience weird behaviors, disable all your addons.</string>
+    <string name="AddonsEnableAll">Enable all</string>
+    <string name="AddonsDisableAll">Disable all</string>
     
     <string name="AddonDetailsContactEMail">e-mail: %s</string>
     <string name="AddonDetailsContactWebsite">Website: %s</string>
