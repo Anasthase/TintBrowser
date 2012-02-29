@@ -124,8 +124,8 @@ public class Addon {
 		return mIsEnabled;
 	}
 	
-	public boolean hasPreferencePage() {
-		return (mCallbacks & Callbacks.HAS_PREFERENCES_PAGE) == Callbacks.HAS_PREFERENCES_PAGE;
+	public boolean hasSettingsPage() {
+		return (mCallbacks & Callbacks.HAS_SETTINGS_PAGE) == Callbacks.HAS_SETTINGS_PAGE;
 	}
 	
 	public void setEnabled(boolean value) {
@@ -267,9 +267,9 @@ public class Addon {
 		}
 	}
 	
-	public void showAddonPreferenceActivity() {
-		if (makeCallEvenDisabled(Callbacks.HAS_PREFERENCES_PAGE)) {
-			mServiceConnection.showAddonPreferenceActivity();
+	public void showAddonSettingsActivity() {
+		if (makeCallEvenDisabled(Callbacks.HAS_SETTINGS_PAGE)) {
+			mServiceConnection.showAddonSettingsActivity();
 		}
 	}
 	
@@ -316,7 +316,7 @@ public class Addon {
 			results.add(mContext.getString(R.string.AddonCallbackContributeHistoryContextMenu));
 		}
 		
-		if ((mCallbacks & Callbacks.HAS_PREFERENCES_PAGE) == Callbacks.HAS_PREFERENCES_PAGE) {
+		if ((mCallbacks & Callbacks.HAS_SETTINGS_PAGE) == Callbacks.HAS_SETTINGS_PAGE) {
 			results.add(mContext.getString(R.string.AddonCallbackHasPreferencesPage));
 		}
 		

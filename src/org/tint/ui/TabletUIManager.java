@@ -76,7 +76,10 @@ public class TabletUIManager extends BaseUIManager {
 	public void onTabSelected(Tab tab) {
 		updateUrlBar();
 		
-		Controller.getInstance().getAddonManager().onTabSwitched(mActivity, getCurrentWebView());
+		CustomWebView webView = getCurrentWebView();
+		if (webView != null) {
+			Controller.getInstance().getAddonManager().onTabSwitched(mActivity, webView);
+		}
 	}
 	
 	@Override

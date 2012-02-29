@@ -82,7 +82,7 @@ public class AddonDetailsFragment extends Fragment {
 			mPreferences.setOnClickListener(new OnClickListener() {				
 				@Override
 				public void onClick(View v) {
-					mAddon.showAddonPreferenceActivity();
+					mAddon.showAddonSettingsActivity();
 				}
 			});
 			
@@ -101,7 +101,7 @@ public class AddonDetailsFragment extends Fragment {
 			mWebsite.setText(String.format(getString(R.string.AddonDetailsContactWebsite), mAddon.getWebsite()));
 			
 			mEnabled.setChecked(mAddon.isEnabled());
-			mPreferences.setEnabled(mAddon.hasPreferencePage());
+			mPreferences.setEnabled(mAddon.hasSettingsPage());
 			
 			fillCallbacksDetails();
 			fillPackagePermissions();			
