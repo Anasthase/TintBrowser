@@ -20,6 +20,7 @@ import org.tint.providers.BookmarksWrapper;
 import android.content.ContentResolver;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Picture;
 import android.os.AsyncTask;
 import android.webkit.WebView;
@@ -57,21 +58,21 @@ public class ThumbnailTaker extends AsyncTask<Void, Void, Void> {
 				// Don't care.
 			}
 			
-			Picture p = mWebView.capturePicture();
+			Picture picture = mWebView.capturePicture();
 			
-			if (p != null) {
+			if (picture != null) {
 				Bitmap bm = Bitmap.createBitmap(mCaptureWidth, mCaptureHeight, Bitmap.Config.ARGB_4444);
 
 				Canvas canvas = new Canvas(bm);
 
-				//			Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
-				//			p.setColor(0xFF666666);
-				//			canvas.drawRect(0, 0, mCaptureWidth, mCaptureHeight, p);
+				Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
+				p.setColor(0xFFFFFFFF);
+				canvas.drawRect(0, 0, mCaptureWidth, mCaptureHeight, p);
 
-				float scale = mCaptureWidth / (float) p.getWidth();
+				float scale = mCaptureWidth / (float) picture.getWidth();
 				canvas.scale(scale, scale);
 
-				p.draw(canvas);
+				picture.draw(canvas);
 
 				BookmarksWrapper.updateThumbnail(mContentResolver, mUrl, mOriginalUrl, bm);
 			}

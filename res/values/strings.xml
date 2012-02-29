@@ -96,6 +96,8 @@
         
     <string name="NewTab">New tab</string>
         
+    <string name="AddTab">New tab</string>
+    <string name="CloseTab">Close current tab</string>
     <string name="AddBookmark">Add bookmark</string>
     <string name="SharePage">Share page</string>
     <string name="Search">Find on page</string>

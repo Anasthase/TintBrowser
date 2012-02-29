@@ -16,16 +16,16 @@
  -->
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    
+
     <item
 	    android:id="@+id/MainActivity.MenuCloseTab"
-	    android:title="@string/AddBookmark"
+	    android:title="@string/CloseTab"
 	    android:icon="@android:drawable/ic_menu_close_clear_cancel"
 	    android:showAsAction="always" />
     
     <item
 	    android:id="@+id/MainActivity.MenuAddTab"
-	    android:title="@string/AddBookmark"
+	    android:title="@string/NewTab"
 	    android:icon="@android:drawable/ic_menu_add"
 	    android:showAsAction="always" />
     
