@@ -18,9 +18,11 @@ package org.tint.addons.executors;
 import org.tint.addons.framework.Action;
 import org.tint.addons.framework.AskUserConfirmationAction;
 import org.tint.controllers.Controller;
-import org.tint.utils.ApplicationUtils;
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 
 public class AskUserConfirmationExecutor extends BaseActionExecutor {
 
@@ -33,25 +35,37 @@ public class AskUserConfirmationExecutor extends BaseActionExecutor {
 
 	@Override
 	protected void internalExecute() {
-		ApplicationUtils.showAddonAskUserDialog(
-				mContext,
-				mAddonAction.getTitle(),
-				mAddonAction.getMessage(),
-				mAddonAction.getPositiveButtonCaption(),
-				mAddonAction.getNegativeButtonCaption(),
-				new DialogInterface.OnClickListener() {						
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						Controller.getInstance().getAddonManager().onUserConfirm(mContext, mWebView, mAddon, mAddonAction.getId().toString(), true);
-					}
-				},
-				new DialogInterface.OnClickListener() {
-					
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						Controller.getInstance().getAddonManager().onUserConfirm(mContext, mWebView, mAddon, mAddonAction.getId().toString(), false);
-					}
-				});
+		AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+		
+    	builder.setCancelable(true);
+    	builder.setIcon(android.R.drawable.ic_dialog_info);
+    	builder.setTitle(mAddonAction.getTitle());
+    	builder.setMessage(mAddonAction.getMessage());
+
+    	builder.setInverseBackgroundForced(true);
+    	builder.setPositiveButton(mAddonAction.getPositiveButtonCaption(), new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				Controller.getInstance().getAddonManager().onUserConfirm(mContext, mWebView, mAddon, mAddonAction.getId().toString(), true);
+			}
+		});
+    	
+    	builder.setNegativeButton(mAddonAction.getNegativeButtonCaption(), new OnClickListener() {			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				Controller.getInstance().getAddonManager().onUserConfirm(mContext, mWebView, mAddon, mAddonAction.getId().toString(), false);
+			}
+		});
+    	
+    	builder.setOnCancelListener(new OnCancelListener() {			
+			@Override
+			public void onCancel(DialogInterface dialog) {
+				Controller.getInstance().getAddonManager().onUserConfirm(mContext, mWebView, mAddon, mAddonAction.getId().toString(), false);
+			}
+		});
+    	
+    	AlertDialog alert = builder.create();
+    	alert.show();
 	}
 
 }

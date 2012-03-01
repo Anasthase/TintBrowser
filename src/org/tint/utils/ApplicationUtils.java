@@ -231,20 +231,6 @@ public class ApplicationUtils {
         .show();
 	}
 	
-	public static void showAddonAskUserDialog(Context context, String title, String message, String positiveButtonText, String negativeButtonText, DialogInterface.OnClickListener onPositive, DialogInterface.OnClickListener onNegative) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-    	builder.setCancelable(true);
-    	builder.setIcon(android.R.drawable.ic_dialog_info);
-    	builder.setTitle(title);
-    	builder.setMessage(message);
-
-    	builder.setInverseBackgroundForced(true);
-    	builder.setPositiveButton(positiveButtonText, onPositive);
-    	builder.setNegativeButton(negativeButtonText, onNegative);
-    	AlertDialog alert = builder.create();
-    	alert.show();
-	}
-	
 	/**
 	 * Load a raw string resource.
 	 * @param context The current context.
