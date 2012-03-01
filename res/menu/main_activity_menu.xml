@@ -20,12 +20,12 @@
     <item
 	    android:id="@+id/MainActivity.MenuAddBookmark"
 	    android:title="@string/AddBookmark"
-	    android:icon="@android:drawable/ic_menu_preferences"/>
+	    android:icon="@drawable/ic_add_bookmark"/>
     
     <item
 	    android:id="@+id/MainActivity.MenuBookmarks"
 	    android:title="@string/Bookmarks"
-	    android:icon="@android:drawable/ic_menu_preferences"/>
+	    android:icon="@drawable/ic_bookmarks"/>
     
     <group android:id="@+id/MainActivity.DisabledOnStartPageMenuGroup">
     	<item

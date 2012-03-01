@@ -20,7 +20,7 @@
     <item
 	    android:id="@+id/BookmarksActivityMenuAddBookmark"
 	    android:title="@string/AddBookmark"
-	    android:icon="@android:drawable/ic_menu_add"
+	    android:icon="@drawable/ic_add_bookmark"
 	    android:showAsAction="ifRoom|withText" />
     
     <item
