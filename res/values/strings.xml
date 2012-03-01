@@ -22,7 +22,7 @@
     
     <string name="AboutVersionText">Version: %1$s (%2$s)</string>
     <string name="AboutLicenseText">License: GPLv3</string>
-    <string name="AboutUrlText">http://www.todo.org/</string>
+    <string name="AboutUrlText">https://github.com/Anasthase/TintBrowser</string>
     <string name="AboutChangelogText">Changelog:</string>
     
     <string name="PermissionReadBookmarksLabel">Read Tint Browser bookmarks</string>
@@ -121,7 +121,7 @@
     <string name="EditBookmark">Edit bookmark</string>
     <string name="CopyUrl">Copy url</string>
     <string name="DeleteBookmark">Delete bookmark</string>
-    <string name="DeleteHistoryItem">Delete record</string>
+    <string name="DeleteHistoryItem">Delete from history</string>
     
     <string name="PreferencesActivityTitle">Settings</string>
         
@@ -136,7 +136,7 @@
     <string name="PreferenceSearchUrlDialogTitle">Search engine</string>
     
     <string name="PreferenceCategoryStartPageTitle">Start page</string>
-    <string name="PreferenceGeneralStartPageLimitTitle">Number of items</string>
+    <string name="PreferenceGeneralStartPageLimitTitle">Number of items in the start page</string>
     <string name="PreferenceGeneralStartPageLimitSummary">Set the number of items to show in the start page.</string>
     
     <string name="PreferenceCategoryUITitle">User interface</string>
@@ -256,14 +256,6 @@
     
     <string name="PreferenceHeaderAdvancedSettingsTitle">Advanced settings</string>
     
-    <string name="PreferenceCategoryHistoryBookmarksTitle">Bookmarks &amp; history management</string>
-    <string name="PreferenceClearHistoryBookmarksTitle">Clear history and/or bookmarks</string>
-    <string name="PreferenceClearHistoryBookmarksSummary">Use with caution, as it cannot be undone.</string>
-    <string name="PreferenceImportHistoryBookmarksTitle">Import history and bookmarks</string>
-    <string name="PreferenceImportHistoryBookmarksSummary">Import history and bookmarks from a file, previously saved on the device\'s external storage.</string>
-    <string name="PreferenceExportHistoryBookmarksTitle">Export history and bookmarks</string>
-    <string name="PreferenceExportHistoryBookmarksSummary">Export history and bookmarks to a file on the device\'s external storage.</string>
-    
     <string name="HistoryToday">Today</string>
     <string name="HistoryYesterday">Yesterday</string>
     <string name="HistoryLastSevenDays">Last 7 days</string>
@@ -309,10 +301,6 @@
     
     <string name="SearchUrlGoogle">http://www.google.com/m?hl=en&amp;gl=us&amp;client=ms-null&amp;source=android-browser-key&amp;q=%s</string>
     <string name="SearchUrlWikipedia">http://en.wikipedia.org/w/index.php?search=%s&amp;go=Go</string>
-    
-    <string name="StartPageWelcome">Welcome</string>
-    <string name="StartPageBookmarks">Most used bookmarks</string>
-    <string name="StartPageHistory">Recent history</string>
     
     <string name="PreferenceHeaderAddonsTitle">Addons</string>
     
@@ -390,10 +378,10 @@
     <string name="AddonCallbackTabOpened">Is notified when a tab is opened.</string>
     <string name="AddonCallbackTabClosed">Is notified when a tab is closed.</string>
     <string name="AddonCallbackTabSwitched">Is notified when switching tabs.</string>
-    <string name="AddonCallbackHasPreferencesPage">Has a preferences page.</string>
+    <string name="AddonCallbackHasPreferencesPage">Has a settings page.</string>
     <string name="AddonCallbackContributeMainMenu">Can contribute to the main menu.</string>
     <string name="AddonCallbackContributeLinkContextMenu">Can contribute to the link context menu.</string>
-    <string name="AddonCallbackContributeHistoryBookmarksMenu">Can contribute to the history &amp; bookmarks menu.</string>
+    <string name="AddonCallbackContributeHistoryBookmarksMenu">Can contribute to the bookmarks &amp; history menu.</string>
     <string name="AddonCallbackContributeBookmarkContextMenu">Can contribute to the bookmark context menu.</string>
     <string name="AddonCallbackContributeHistoryContextMenu">Can contribute to the history context menu.</string>
     
