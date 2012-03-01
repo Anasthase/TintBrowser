@@ -268,10 +268,28 @@ public class AddonServiceConnection implements ServiceConnection {
 		}
 	}
 	
-	public List<Action> onUserAnswerQuestion(String currentTabId, String questionId, boolean positiveAnswer) {
+	public List<Action> onUserConfirm(String currentTabId, String questionId, boolean positiveAnswer) {
 		try {
-			return mAddon.onUserAnswerQuestion(currentTabId, questionId, positiveAnswer);
+			return mAddon.onUserConfirm(currentTabId, questionId, positiveAnswer);
 		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public List<Action> onUserInput(String currentTabId, String questionId, boolean cancelled, String userInput) {
+		try {
+			return mAddon.onUserInput(currentTabId, questionId, cancelled, userInput);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public List<Action> onUserChoice(String currentTabId, String questionId, boolean cancelled, int userChoice) {
+		try {
+			return mAddon.onUserChoice(currentTabId, questionId, cancelled, userChoice);
+		} catch (RemoteException e) {			
 			e.printStackTrace();
 			return null;
 		}

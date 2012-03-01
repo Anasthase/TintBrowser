@@ -20,7 +20,9 @@ import java.util.Map;
 
 import org.tint.addons.framework.AddTabAction;
 import org.tint.addons.framework.Action;
-import org.tint.addons.framework.AskUserAction;
+import org.tint.addons.framework.AskUserChoiceAction;
+import org.tint.addons.framework.AskUserConfirmationAction;
+import org.tint.addons.framework.AskUserInputAction;
 import org.tint.addons.framework.LoadUrlAction;
 import org.tint.addons.framework.ShowDialogAction;
 import org.tint.addons.framework.ShowToastAction;
@@ -36,7 +38,9 @@ public class ExecutorFactory {
 		sClassMap.put(LoadUrlAction.class.getName(), new LoadUrlExecutor());
 		sClassMap.put(ShowToastAction.class.getName(), new ShowToastExecutor());
 		sClassMap.put(AddTabAction.class.getName(), new AddTabExecutor());
-		sClassMap.put(AskUserAction.class.getName(), new AskUserExecutor());
+		sClassMap.put(AskUserConfirmationAction.class.getName(), new AskUserConfirmationExecutor());
+		sClassMap.put(AskUserInputAction.class.getName(), new AskUserInputExecutor());
+		sClassMap.put(AskUserChoiceAction.class.getName(), new AskUserChoiceExecutor());
 	}
 	
 	public static BaseActionExecutor getExecutor(Action addonAction) {

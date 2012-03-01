@@ -259,9 +259,25 @@ public class Addon {
 		}
 	}
 	
-	public List<Action> onUserAnswerQuestion(String currentTabId, String questionId, boolean positiveAnswer) {
+	public List<Action> onUserConfirm(String currentTabId, String questionId, boolean positiveAnswer) {
 		if (makeCallWithoutSpecificCallback()) {
-			return mServiceConnection.onUserAnswerQuestion(currentTabId, questionId, positiveAnswer);
+			return mServiceConnection.onUserConfirm(currentTabId, questionId, positiveAnswer);
+		} else {
+			return null;
+		}
+	}
+	
+	public List<Action> onUserInput(String currentTabId, String questionId, boolean cancelled, String userInput) {
+		if (makeCallWithoutSpecificCallback()) {
+			return mServiceConnection.onUserInput(currentTabId, questionId, cancelled, userInput);
+		} else {
+			return null;
+		}
+	}
+	
+	public List<Action> onUserChoice(String currentTabId, String questionId, boolean cancelled, int userChoice) {
+		if (makeCallWithoutSpecificCallback()) {
+			return mServiceConnection.onUserChoice(currentTabId, questionId, cancelled, userChoice);
 		} else {
 			return null;
 		}

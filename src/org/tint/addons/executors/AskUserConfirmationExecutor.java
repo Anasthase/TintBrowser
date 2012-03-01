@@ -17,6 +17,10 @@ package org.tint.addons.executors;
 
 import org.tint.addons.framework.Action;
 import org.tint.addons.framework.AskUserConfirmationAction;
+import org.tint.controllers.Controller;
+import org.tint.utils.ApplicationUtils;
+
+import android.content.DialogInterface;
 
 public class AskUserConfirmationExecutor extends BaseActionExecutor {
 
@@ -29,8 +33,25 @@ public class AskUserConfirmationExecutor extends BaseActionExecutor {
 
 	@Override
 	protected void internalExecute() {
-		// TODO Auto-generated method stub
-		
+		ApplicationUtils.showAddonAskUserDialog(
+				mContext,
+				mAddonAction.getTitle(),
+				mAddonAction.getMessage(),
+				mAddonAction.getPositiveButtonCaption(),
+				mAddonAction.getNegativeButtonCaption(),
+				new DialogInterface.OnClickListener() {						
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						Controller.getInstance().getAddonManager().onUserConfirm(mContext, mWebView, mAddon, mAddonAction.getId().toString(), true);
+					}
+				},
+				new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						Controller.getInstance().getAddonManager().onUserConfirm(mContext, mWebView, mAddon, mAddonAction.getId().toString(), false);
+					}
+				});
 	}
 
 }
