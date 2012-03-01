@@ -277,9 +277,9 @@ public class AddonServiceConnection implements ServiceConnection {
 		}
 	}
 	
-	public void showAddonPreferenceActivity() {
+	public void showAddonSettingsActivity() {
 		try {
-			mAddon.showAddonPreferenceActivity();
+			mAddon.showAddonSettingsActivity();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

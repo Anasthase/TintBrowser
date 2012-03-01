@@ -20,7 +20,7 @@
     android:layout_height="match_parent"
     android:paddingTop="?android:attr/actionBarSize"
     android:paddingBottom="?android:attr/actionBarSize"
-    android:background="@drawable/start_page_bg"
+    android:background="#dcdcdc"
     android:orientation="vertical" >
 
     <GridView

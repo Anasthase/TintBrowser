@@ -109,7 +109,7 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 		
 		mAdapter = new HistoryAdapter(getActivity(),
 				mBookmarkStarChangeListener,
-				ApplicationUtils.getFaviconSize(getActivity()));
+				getActivity().getResources().getInteger(R.integer.favicon_size));
 		
 		if (mTwoPaneMode) {
 			

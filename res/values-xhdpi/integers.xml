@@ -14,10 +14,10 @@
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
  -->
-
-<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
-    android:src="@drawable/start_page_bg_img"
-	android:tileMode="repeat"
-	android:dither="true" >
-
-</bitmap>
+ 
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    
+    <integer name="favicon_size">32</integer>
+    <integer name="application_button_size">72</integer>
+    
+</resources>

@@ -131,7 +131,7 @@ public class PhoneUIManager extends BaseUIManager {
 		mFragmentsList.add(mCurrentTabIndex, fragment);
 		mFragmentsMap.put(fragment.getUUID(), fragment);
 		
-		showCurrentTab(previousIndex);
+		showCurrentTab(previousIndex, false);
 	}
 
 	@Override
@@ -156,7 +156,7 @@ public class PhoneUIManager extends BaseUIManager {
 				mCurrentTabIndex--;
 			}
 			
-			showCurrentTab(-1);
+			showCurrentTab(-1, true);
 		} else {
 			loadHomePage();
 		}
@@ -331,7 +331,7 @@ public class PhoneUIManager extends BaseUIManager {
 		
 		updateToolbarsDisplayDuration();		
 		
-		int buttonSize = ApplicationUtils.getApplicationButtonSize(mActivity);
+		int buttonSize = mActivity.getResources().getInteger(R.integer.application_button_size);
 		Drawable d = mActivity.getResources().getDrawable(R.drawable.ic_launcher);
 		
 		Bitmap bm = Bitmap.createBitmap(buttonSize, buttonSize, Bitmap.Config.ARGB_8888);
@@ -693,7 +693,7 @@ public class PhoneUIManager extends BaseUIManager {
 		}
 	}
 	
-	private void showCurrentTab(int previousIndex) {
+	private void showCurrentTab(int previousIndex, boolean notifyTabSwitched) {
 //		if (previousIndex != -1) {
 //			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
 //			WebViewFragment oldFragment = mFragments.get(previousIndex);
@@ -735,6 +735,10 @@ public class PhoneUIManager extends BaseUIManager {
 
 		updateShowPreviousNextTabButtons();
 		updateUrlBar();
+		
+		if (notifyTabSwitched) {
+			Controller.getInstance().getAddonManager().onTabSwitched(mActivity, getCurrentWebView());
+		}
 	}
 	
 	private void showPreviousTab() {
@@ -744,10 +748,8 @@ public class PhoneUIManager extends BaseUIManager {
 			int previousIndex = mCurrentTabIndex;
 			mCurrentTabIndex--;
 			
-			showCurrentTab(previousIndex);
+			showCurrentTab(previousIndex, true);
 			startHideToolbarsThread();
-			
-			Controller.getInstance().getAddonManager().onTabSwitched(mActivity, getCurrentWebView());
 		}
 	}
 	
@@ -758,10 +760,8 @@ public class PhoneUIManager extends BaseUIManager {
 			int previousIndex = mCurrentTabIndex;
 			mCurrentTabIndex++;
 			
-			showCurrentTab(previousIndex);
+			showCurrentTab(previousIndex, true);
 			startHideToolbarsThread();
-			
-			Controller.getInstance().getAddonManager().onTabSwitched(mActivity, getCurrentWebView());
 		}
 	}
 	
