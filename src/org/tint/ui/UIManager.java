@@ -45,6 +45,8 @@ public interface UIManager extends OnTouchListener {
 	void addTab(boolean loadHomePage);
 	
 	void closeCurrentTab();
+	
+	void closeTab(UUID tabId);
 
 	void loadUrl(String url);
 	
@@ -73,6 +75,8 @@ public interface UIManager extends OnTouchListener {
 	void setHttpAuthUsernamePassword(String host, String realm, String username, String password);
 	
 	CustomWebView getCurrentWebView();
+	
+	CustomWebView getWebViewByTabId(UUID tabId);
 	
 	BaseWebViewFragment getCurrentWebViewFragment();
 	

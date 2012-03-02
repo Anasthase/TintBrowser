@@ -18,14 +18,15 @@ package org.tint.addons.executors;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.tint.addons.framework.AddTabAction;
 import org.tint.addons.framework.Action;
 import org.tint.addons.framework.AskUserChoiceAction;
 import org.tint.addons.framework.AskUserConfirmationAction;
 import org.tint.addons.framework.AskUserInputAction;
 import org.tint.addons.framework.LoadUrlAction;
+import org.tint.addons.framework.OpenTabAction;
 import org.tint.addons.framework.ShowDialogAction;
 import org.tint.addons.framework.ShowToastAction;
+import org.tint.addons.framework.TabAction;
 
 public class ExecutorFactory {
 	
@@ -33,11 +34,11 @@ public class ExecutorFactory {
 	
 	static {
 		sClassMap = new HashMap<String, BaseActionExecutor>();
-		sClassMap.put(Action.class.getName(), new ActionExecutor());
+		sClassMap.put(TabAction.class.getName(), new TabActionExecutor());
 		sClassMap.put(ShowDialogAction.class.getName(), new ShowDialogExecutor());
 		sClassMap.put(LoadUrlAction.class.getName(), new LoadUrlExecutor());
 		sClassMap.put(ShowToastAction.class.getName(), new ShowToastExecutor());
-		sClassMap.put(AddTabAction.class.getName(), new AddTabExecutor());
+		sClassMap.put(OpenTabAction.class.getName(), new OpenTabExecutor());
 		sClassMap.put(AskUserConfirmationAction.class.getName(), new AskUserConfirmationExecutor());
 		sClassMap.put(AskUserInputAction.class.getName(), new AskUserInputExecutor());
 		sClassMap.put(AskUserChoiceAction.class.getName(), new AskUserChoiceExecutor());

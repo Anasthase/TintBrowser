@@ -16,51 +16,28 @@
 package org.tint.addons.executors;
 
 import org.tint.addons.framework.Action;
+import org.tint.addons.framework.OpenTabAction;
 
-public class ActionExecutor extends BaseActionExecutor {
+import android.text.TextUtils;
 
-	private Action mAddonAction;
+public class OpenTabExecutor extends BaseActionExecutor {
+
+	private OpenTabAction mAddonAction;
 	
 	@Override
 	protected void finishInit(Action addonAction) {
-		mAddonAction = addonAction;
+		mAddonAction = (OpenTabAction) addonAction;
 	}
 
 	@Override
 	protected void internalExecute() {
-		switch (mAddonAction.getAction()) {
-		case Action.ACTION_CLOSE_CURRENT_TAB:
-			mUIManager.closeCurrentTab();
-			break;
-			
-		case Action.ACTION_BROWSE_STOP:
-			if (mWebView != null) {
-				mWebView.stopLoading();
-			}
-			break;
-			
-		case Action.ACTION_BROWSE_RELOAD:
-			if (mWebView != null) {
-				mWebView.reload();
-			}
-			break;
-			
-		case Action.ACTION_BROWSE_FORWARD:
-			if ((mWebView != null) &&
-					(mWebView.canGoForward())) {
-				mWebView.goForward();
-			}
-			break;
-			
-		case Action.ACTION_BROWSE_BACK:
-			if ((mWebView != null) &&
-					(mWebView.canGoBack())) {
-				mWebView.goBack();
-			}
-			break;
-			
-		default: break;
+		String url = mAddonAction.getUrl();
+		
+		if (TextUtils.isEmpty(url)) {
+			mUIManager.addTab(true);
+		} else {
+			mUIManager.addTab(url);
 		}
-	}	
+	}
 
 }

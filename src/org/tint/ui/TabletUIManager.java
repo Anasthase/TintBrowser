@@ -183,18 +183,32 @@ public class TabletUIManager extends BaseUIManager {
 	@Override
 	public void closeCurrentTab() {
 		if (mActionBar.getTabCount() > 1) {
-			Tab tab = mActionBar.getSelectedTab();
-			
-			TabletWebViewFragment oldFragment = mTabs.get(tab);
-			
-			Controller.getInstance().getAddonManager().onTabClosed(mActivity, oldFragment.getWebView());
-			
-			mTabs.remove(tab);
-			mFragmentsMap.remove(oldFragment.getUUID());
-			
-			mActionBar.removeTab(tab);
+//			Tab tab = mActionBar.getSelectedTab();
+//			
+//			TabletWebViewFragment oldFragment = mTabs.get(tab);
+//			
+//			Controller.getInstance().getAddonManager().onTabClosed(mActivity, oldFragment.getWebView());
+//			
+//			mTabs.remove(tab);
+//			mFragmentsMap.remove(oldFragment.getUUID());
+//			
+//			mActionBar.removeTab(tab);
+			closeTabByTab(mActionBar.getSelectedTab());
 		} else {
 			loadHomePage();
+		}
+	}
+	
+	@Override
+	public void closeTab(UUID tabId) {
+		if (mActionBar.getTabCount() > 1) {
+			TabletWebViewFragment fragment = (TabletWebViewFragment) getWebViewFragmentByUUID(tabId);
+			if (fragment != null) {
+				Tab tab = fragment.getTab();
+				if (tab != null) {
+					closeTabByTab(tab);
+				}
+			}
 		}
 	}
 	
@@ -349,6 +363,19 @@ public class TabletUIManager extends BaseUIManager {
 
 				onHideStartPage();
 		}
+		}
+	}
+	
+	private void closeTabByTab(Tab tab) {
+		TabletWebViewFragment oldFragment = mTabs.get(tab);
+		
+		if (oldFragment != null) {
+			Controller.getInstance().getAddonManager().onTabClosed(mActivity, oldFragment.getWebView());
+
+			mTabs.remove(tab);
+			mFragmentsMap.remove(oldFragment.getUUID());
+
+			mActionBar.removeTab(tab);
 		}
 	}
 	

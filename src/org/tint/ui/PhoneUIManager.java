@@ -137,27 +137,45 @@ public class PhoneUIManager extends BaseUIManager {
 	@Override
 	public void closeCurrentTab() {
 		if (mFragmentsList.size() > 1) {
-			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-			PhoneWebViewFragment fragment = mFragmentsList.get(mCurrentTabIndex);
-			
-			Controller.getInstance().getAddonManager().onTabClosed(mActivity, fragment.getWebView());
-			
-			if (fragment.isStartPageShown()) {
-				fragmentTransaction.hide(mStartPageFragment);
-			} else {
-				fragmentTransaction.remove(fragment);
-			}
-			fragmentTransaction.commit();
-			
-			mFragmentsList.remove(mCurrentTabIndex);
-			mFragmentsMap.remove(fragment.getUUID());
-			
-			if (mCurrentTabIndex > 0) {
-				mCurrentTabIndex--;
-			}
-			
-			showCurrentTab(-1, true);
+//			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+//			PhoneWebViewFragment fragment = mFragmentsList.get(mCurrentTabIndex);
+//			
+//			Controller.getInstance().getAddonManager().onTabClosed(mActivity, fragment.getWebView());
+//			
+//			if (fragment.isStartPageShown()) {
+//				fragmentTransaction.hide(mStartPageFragment);
+//			} else {
+//				//fragmentTransaction.remove(fragment);
+//			}
+//			// TODO: Check this.
+//			fragmentTransaction.remove(fragment);
+//			
+//			fragmentTransaction.commit();
+//			
+//			mFragmentsList.remove(mCurrentTabIndex);
+//			mFragmentsMap.remove(fragment.getUUID());
+//			
+//			if (mCurrentTabIndex > 0) {
+//				mCurrentTabIndex--;
+//			}
+//			
+//			showCurrentTab(-1, true);
+			closeTabByIndex(mCurrentTabIndex);
 		} else {
+			loadHomePage();
+		}
+	}
+	
+	@Override
+	public void closeTab(UUID tabId) {
+		int index = mFragmentsList.indexOf(getCurrentWebViewFragment());
+		
+		if (mFragmentsList.size() > 1) {			
+			if ((index >= 0) &&
+					(index < mFragmentsList.size())) {
+				closeTabByIndex(index);
+			}
+		} else if (index == mCurrentTabIndex) {
 			loadHomePage();
 		}
 	}
@@ -690,6 +708,40 @@ public class PhoneUIManager extends BaseUIManager {
 		} else {
 			mShowPreviousTab.setVisibility(View.GONE);
 			mShowNextTab.setVisibility(View.GONE);
+		}
+	}
+	
+	private void closeTabByIndex(int index) {
+		boolean currentTab = index == mCurrentTabIndex;		
+		
+		FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+		PhoneWebViewFragment fragment = mFragmentsList.get(index);
+		
+		Controller.getInstance().getAddonManager().onTabClosed(mActivity, fragment.getWebView());
+		
+		if (fragment.isStartPageShown()) {
+			fragmentTransaction.hide(mStartPageFragment);
+		} else {
+			//fragmentTransaction.remove(fragment);
+		}
+		// TODO: Check this.
+		fragmentTransaction.remove(fragment);
+		
+		fragmentTransaction.commit();
+		
+		mFragmentsList.remove(index);
+		mFragmentsMap.remove(fragment.getUUID());
+		
+		if (currentTab) {
+			if (mCurrentTabIndex > 0) {
+				mCurrentTabIndex--;
+			}
+			
+			showCurrentTab(-1, true);
+		} else {
+			if (index < mCurrentTabIndex) {
+				mCurrentTabIndex--;
+			}
 		}
 	}
 	

@@ -53,6 +53,10 @@ public class TabletWebViewFragment extends BaseWebViewFragment {
 		}
 	}
 	
+	public Tab getTab() {
+		return mTab;
+	}
+	
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);

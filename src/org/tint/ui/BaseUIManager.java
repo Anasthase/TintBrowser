@@ -227,6 +227,16 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 	}
 	
 	@Override
+	public CustomWebView getWebViewByTabId(UUID tabId) {
+		BaseWebViewFragment fragment = getWebViewFragmentByUUID(tabId);
+		if (fragment != null) {
+			return fragment.getWebView();			
+		} else {
+			return null;
+		}
+	}
+	
+	@Override
 	public void setUploadMessage(ValueCallback<Uri> uploadMsg) {
 		mUploadMessage = uploadMsg;
 	}
