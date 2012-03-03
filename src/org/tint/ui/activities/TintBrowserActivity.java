@@ -22,6 +22,7 @@ import org.tint.R;
 import org.tint.addons.AddonMenuItem;
 import org.tint.controllers.Controller;
 import org.tint.model.DownloadItem;
+import org.tint.providers.BookmarksWrapper;
 import org.tint.ui.PhoneUIManager;
 import org.tint.ui.TabletUIManager;
 import org.tint.ui.UIManager;
@@ -158,8 +159,11 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 			editor.putBoolean(Constants.TECHNICAL_PREFERENCE_FIRST_RUN, false);
 			editor.putInt(Constants.TECHNICAL_PREFERENCE_LAST_RUN_VERSION_CODE, ApplicationUtils.getApplicationVersionCode(this));
 			editor.commit();
-			
-			// TODO: Do something on first run.
+						
+			BookmarksWrapper.fillDefaultBookmaks(
+					getContentResolver(),
+					getResources().getStringArray(R.array.DefaultBookmarksTitles),
+					getResources().getStringArray(R.array.DefaultBookmarksUrls));
 			
 		} else {
 			int currentVersionCode = ApplicationUtils.getApplicationVersionCode(this);

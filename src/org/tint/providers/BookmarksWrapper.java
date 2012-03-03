@@ -596,6 +596,15 @@ public class BookmarksWrapper {
 		contentResolver.insert(BookmarksProvider.BOOKMARKS_URI, values);
 	}
 	
+	public static void fillDefaultBookmaks(ContentResolver contentResolver, String[] titles, String[] urls) {
+		int size = Math.min(titles.length, urls.length);
+		long currentDate = new Date().getTime();
+		
+		for (int i = 0; i < size; i++) {
+			insertRawRecord(contentResolver, titles[i], urls[i], 0, currentDate, currentDate, 1);
+		}
+	}
+	
 	/**
      * Get a cursor for suggestions, given a search pattern.
      * Search on history and bookmarks, on title and url.

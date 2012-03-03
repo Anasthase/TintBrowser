@@ -409,5 +409,23 @@
     <string name="ContentDescriptionWebsiteSettingsLocation">Website location</string>
     <string name="ContentDescriptionWebsiteSettingsUsage">Website usage</string>
     <string name="ContentDescriptionWebsiteSettingsFeature">Website feature</string>
+    
+    <string-array name="DefaultBookmarksTitles">
+		<item>Google</item>
+		<item>Wikipedia</item>
+		<item>YouTube</item>
+		<item>Yahoo!</item>
+		<item>BBC</item>
+		<item>eBay</item>
+	</string-array>
+	
+    <string-array name="DefaultBookmarksUrls">
+		<item>http://www.google.com/</item>
+		<item>http://en.wikipedia.org/</item>
+		<item>http://www.youtube.com/</item>
+		<item>http://www.yahoo.com/</item>
+		<item>http://www.bbc.co.uk/</item>
+		<item>http://www.ebay.com/</item>
+	</string-array>
 
 </resources>
