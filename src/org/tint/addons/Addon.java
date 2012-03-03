@@ -45,8 +45,7 @@ public class Addon {
 	private String mName;
 	private String mShortDescription;
 	private String mDescription;
-	private String mEMail;
-	private String mWebsite;
+	private String mContact;
 	
 	private String mPreferenceName;
 	
@@ -112,12 +111,8 @@ public class Addon {
 		return mDescription;
 	}
 	
-	public String getEMail() {
-		return mEMail;
-	}
-	
-	public String getWebsite() {
-		return mWebsite;
+	public String getContact() {
+		return mContact;
 	}
 	
 	public boolean isEnabled() {
@@ -360,8 +355,7 @@ public class Addon {
 		mName = mServiceConnection.getName();
 		mShortDescription = mServiceConnection.getShortDescription();
 		mDescription = mServiceConnection.getDescription();
-		mEMail = mServiceConnection.getEMail();
-		mWebsite = mServiceConnection.getWebsite();
+		mContact = mServiceConnection.getContact();
 		
 		if (!TextUtils.isEmpty(mName)) {
 			mPreferenceName = Constants.TECHNICAL_PREFERENCE_ADDON_ENABLED + mName.toUpperCase().replace(" ", "_");

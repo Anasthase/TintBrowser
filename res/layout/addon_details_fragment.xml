@@ -78,19 +78,11 @@
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
-            android:id="@+id/AddonContactEMail"
+            android:id="@+id/AddonContact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:autoLink="email"
-            android:text="@+id/AddonContactEMail"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <TextView
-            android:id="@+id/AddonContactWebsite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autoLink="web"
-            android:text="@+id/AddonContactWebsite"
+            android:autoLink="web|email"
+            android:text="@+id/AddonContact"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView

@@ -49,8 +49,7 @@ public class AddonDetailsFragment extends Fragment {
 	private TextView mName;
 	private TextView mShortDesc;
 	private TextView mLongDesc;
-	private TextView mEMail;
-	private TextView mWebsite;
+	private TextView mContact;
 	
 	private Switch mEnabled;
 	private Button mPreferences;
@@ -66,8 +65,7 @@ public class AddonDetailsFragment extends Fragment {
 			mName = (TextView) mContainer.findViewById(R.id.AddonName);
 			mShortDesc = (TextView) mContainer.findViewById(R.id.AddonShortDesc);
 			mLongDesc = (TextView) mContainer.findViewById(R.id.AddonLongDesc);
-			mEMail = (TextView) mContainer.findViewById(R.id.AddonContactEMail);
-			mWebsite = (TextView) mContainer.findViewById(R.id.AddonContactWebsite);
+			mContact = (TextView) mContainer.findViewById(R.id.AddonContact);
 			
 			mEnabled = (Switch) mContainer.findViewById(R.id.AddonEnabled);
 			mPreferences = (Button) mContainer.findViewById(R.id.AddonPreferences);
@@ -97,8 +95,7 @@ public class AddonDetailsFragment extends Fragment {
 			mName.setText(mAddon.getName());
 			mShortDesc.setText(mAddon.getShortDescription());
 			mLongDesc.setText(mAddon.getDescription());
-			mEMail.setText(String.format(getString(R.string.AddonDetailsContactEMail), mAddon.getEMail()));
-			mWebsite.setText(String.format(getString(R.string.AddonDetailsContactWebsite), mAddon.getWebsite()));
+			mContact.setText(String.format(getString(R.string.AddonDetailsContact), mAddon.getContact()));
 			
 			mEnabled.setChecked(mAddon.isEnabled());
 			mPreferences.setEnabled(mAddon.hasSettingsPage());

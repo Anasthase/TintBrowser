@@ -373,8 +373,7 @@
     <string name="AddonsEnableAll">Tout activer</string>
     <string name="AddonsDisableAll">Tout désactiver</string>
     
-    <string name="AddonDetailsContactEMail">e-mail: %s</string>
-    <string name="AddonDetailsContactWebsite">Website: %s</string>
+    <string name="AddonDetailsContact">Contact : %s</string>
     <string name="AddonDetailsUsedCallbacksTitle">Cet addon :</string>
     
     <string name="AddonCallbackPageStarted">Est notifié quand une page commence à se charger.</string>

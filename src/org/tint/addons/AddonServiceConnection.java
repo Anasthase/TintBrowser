@@ -115,18 +115,9 @@ public class AddonServiceConnection implements ServiceConnection {
 		}
 	}
 	
-	public String getEMail() {
+	public String getContact() {
 		try {
-			return mAddon.getEMail();
-		} catch (RemoteException e) {				
-			e.printStackTrace();
-			return null;
-		}
-	}
-	
-	public String getWebsite() {
-		try {
-			return mAddon.getWebsite();
+			return mAddon.getContact();
 		} catch (RemoteException e) {				
 			e.printStackTrace();
 			return null;
