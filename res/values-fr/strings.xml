@@ -367,6 +367,9 @@
     <string name="WebsitesSettingsGeolocationPageDialogMessage">Clear location access for this website?</string>
     
     <string name="AddonsWarningText">Please install only addons you trust. If you experience weird behaviors, disable all your addons.</string>
+    <string name="AddonsGetAddons"><a href="">Get addons</a></string>
+    <string name="AddonsMarketNotFoundTitle">Android Market non trouvé</string>
+   <string name="AddonsMarketNotFoundMessage">Vous ne semblez pas avoir l\'application Android Market sur votre appareil.</string>
     <string name="AddonsEnableAll">Tout activer</string>
     <string name="AddonsDisableAll">Tout désactiver</string>
     

@@ -20,10 +20,13 @@ import java.util.List;
 import org.tint.R;
 import org.tint.addons.Addon;
 import org.tint.controllers.Controller;
+import org.tint.utils.ApplicationUtils;
 
 import android.app.Fragment;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.view.LayoutInflater;
@@ -54,6 +57,22 @@ public class AddonsFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.addons_fragment, container, false);
+		
+		TextView getAddonsTextView = (TextView) v.findViewById(R.id.AddonsGetAddons);
+		getAddonsTextView.setOnClickListener(new OnClickListener() {			
+			@Override
+			public void onClick(View arg0) {
+				try {
+					Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=Tint Addon"));
+					startActivity(i);
+				} catch (ActivityNotFoundException e) {
+					ApplicationUtils.showMessageDialog(
+							getActivity(),
+							getString(R.string.AddonsMarketNotFoundTitle),
+							getString(R.string.AddonsMarketNotFoundMessage));
+				}
+			}
+		});
 		
 		mListView = (ListView) v.findViewById(R.id.AddonsList);
 		mListView.setOnItemClickListener(new OnItemClickListener() {

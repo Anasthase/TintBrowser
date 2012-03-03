@@ -28,11 +28,20 @@
         android:orientation="vertical" >
 
         <TextView
+            android:id="@+id/AddonsWarningText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dip"
-            android:layout_marginBottom="8dip"
+            android:layout_marginBottom="5dip"
             android:text="@string/AddonsWarningText"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/AddonsGetAddons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/AddonsGetAddons"
+            android:layout_marginBottom="8dip"
             android:textAppearance="?android:attr/textAppearanceSmall" />
         
         <ImageView
@@ -63,12 +72,14 @@
             android:id="@+id/AddonsDisableAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="0.5"
             android:text="@string/AddonsDisableAll" />
 
         <Button
             android:id="@+id/AddonsEnableAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="0.5"
             android:text="@string/AddonsEnableAll" />
 
     </LinearLayout>
