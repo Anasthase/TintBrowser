@@ -25,14 +25,14 @@
     <string name="AboutUrlText">https://github.com/Anasthase/TintBrowser</string>
     <string name="AboutChangelogText">Liste des changements :</string>
     
-    <string name="PermissionReadBookmarksLabel">Read Tint Browser bookmarks</string>
-    <string name="PermissionReadBookmarksDescription">Allow third-party applications or addons to read Tint Browser\'s history and bookmarks database.</string>
+    <string name="PermissionReadBookmarksLabel">Lire les favoris de Tint Browser</string>
+    <string name="PermissionReadBookmarksDescription">Autorise les applications tierces ou les addons à lire l\'historique et les favoris de Tint Browser.</string>
     
-	<string name="PermissionWriteBookmarksLabel">Write Tint Browser bookmarks</string>
-    <string name="PermissionWriteBookmarksDescription">Allow third-party applications or addons to write Tint Browser\'s history and bookmarks database.</string>    
+	<string name="PermissionWriteBookmarksLabel">Ecrire les favoris de Tint Browser</string>
+    <string name="PermissionWriteBookmarksDescription">Autorise les applications tierces ou les addons à écrire dans l\'historique et les favoris de Tint Browser.</string>    
     
-    <string name="PermissionBindAddonServiceLabel">Bind Tint Browser addons services</string>
-    <string name="PermissionBindAddonServiceDescription">Allow an application to bind to Tint Browser\'s addons services. Only Tint Browser itself should have this permission.</string>
+    <string name="PermissionBindAddonServiceLabel">Se connecter aux services des addons de Tint Browser</string>
+    <string name="PermissionBindAddonServiceDescription">Autorise une application à se connecter aux services des addons de Tint Browser. Seulement Tint Browser lui-même devrai utiliser cette permission.</string>
     
     <string name="OK">OK</string>
     <string name="Cancel">Annuler</string>
@@ -42,28 +42,28 @@
     <string name="Off">OFF</string>
     <string name="Clear">Clear</string>
     <string name="Continue">Continuer</string>
-    <string name="Proceed">Proceed</string>
-    <string name="VideoLoading">Loading video\u2026</string>
+    <string name="Proceed">Continuer</string>
+    <string name="VideoLoading">Chargement de la vidéo\u2026</string>
     <string name="History">Historique</string>
-    <string name="All">All</string>
+    <string name="All">Tout</string>
     <string name="Bookmarks">Favoris</string>
     <string name="Preferences">Paramètres</string>
-    <string name="CannotBeUndone">This cannot be undone.</string>
+    <string name="CannotBeUndone">Cette action ne peut être annulée.</string>
     
-    <string name="UrlBarUrlDefaultSubTitle">Tap to enter an URL or a search term.</string>
-    <string name="UrlBarUrlHint">Enter a search term or an URL</string>
+    <string name="UrlBarUrlDefaultSubTitle">Toucher pour rentrer une adresse.</string>
+    <string name="UrlBarUrlHint">Tappez une adresse ou une recherche</string>
     
     <string name="ShareChooserTitle">Partager via</string>
-    <string name="FileChooserPrompt">Choose file for upload</string>
+    <string name="FileChooserPrompt">Choisissez le fichier à uploader</string>
     
-    <string name="DownloadStart">Downloading %1$s&#8230;</string>
-    <string name="DownloadComplete">Download complete.</string>
-    <string name="DownloadFailed">Download failed.</string>
-    <string name="DownloadFailedWithErrorMessage">Download failed: %1$s.</string>
-    <string name="DownloadErrorDisk">Disk error, check if you have a storage media, and if it has enough space left</string>
-    <string name="DownloadErrorHttp">HTTP error</string>
-    <string name="DownloadErrorRedirection">Too many redirections</string>
-    <string name="DownloadErrorUnknown">Unknown error</string>
+    <string name="DownloadStart">Téléchargement %1$s&#8230;</string>
+    <string name="DownloadComplete">Téléchargement terminé.</string>
+    <string name="DownloadFailed">Téléchargement échoué.</string>
+    <string name="DownloadFailedWithErrorMessage">Téléchargement échoué: %1$s.</string>
+    <string name="DownloadErrorDisk">Erreur disque, vérifier si vous avez un espace de stockage, et s\'il n\'est pas plein.</string>
+    <string name="DownloadErrorHttp">Erreur HTTP</string>
+    <string name="DownloadErrorRedirection">Trop de redirections</string>
+    <string name="DownloadErrorUnknown">Erreur inconue</string>
     
     <string name="ContextMenuOpen">Ouvrir</string>
     <string name="ContextMenuOpenNewTab">Ouvrir dans un nouvel onglet</string>
@@ -80,19 +80,19 @@
     <string name="ContextMenuCopyEmailUrl">Copier l\'adresse email</string>
     <string name="ContextMenuShareEmailUrl">Partager l\'adresse email</string>
     
-    <string name="UrlCopyToastMessage">L\'url a été copiée dans le presse-papier..</string>
+    <string name="UrlCopyToastMessage">L\'adresse a été copiée dans le presse-papier..</string>
     <string name="ContextMenuShareUrl">Partager</string>
     
     <string name="JavaScriptAlertDialog">Fenêtre JavaScript</string>
     <string name="JavaScriptConfirmDialog">Fenêtre de confirmation JavaScript</string>
     <string name="JavaScriptPromptDialog">Fenêtre de saisie JavaScript</string>    
 	
-	<string name="SslWarning">Security warning</string>
-	<string name="SslWarningsHeader">There are problems with the security certificate for this site.</string>
-	<string name="SslUntrusted">This certificate is not from a trusted authority.</string>
-	<string name="SslIDMismatch">The name of the site does not match the name on the certificate.</string>
-	<string name="SslExpired">This certificate has expired.</string>
-	<string name="SslNotYetValid">This certificate is not valid yet.</string>    
+	<string name="SslWarning">Avertissement de sécurité</string>
+	<string name="SslWarningsHeader">Il y a des problèmes avec le certificat de sécurité de ce site.</string>
+	<string name="SslUntrusted">Le certificat ne vient pas d\'une autorité certifiée.</string>
+	<string name="SslIDMismatch">Le nom du site ne correspond pas au nom dans le certificat.</string>
+	<string name="SslExpired">Le certificat a expiré.</string>
+	<string name="SslNotYetValid">Le certificat n\'est pas encore valide.</string>    
         
     <string name="NewTab">Nouvel onglet</string>
         
@@ -125,7 +125,7 @@
     
     <string name="PreferencesActivityTitle">Paramètres</string>
         
-    <string name="PreferenceHeaderGeneralSettingsTitle">Paramètres généraux</string>
+    <string name="PreferenceHeaderGeneralSettingsTitle">Généraux</string>
     
     <string name="PreferenceGeneralHomepageTitle">Page d\'accueil</string>
     <string name="PreferenceGeneralHomepageSummary">Définir la page d\'accueil, utilisée lors de l\'ouverture d\'un nouvel onglet, etc.</string>
@@ -182,7 +182,7 @@
 		<item>BOTH</item>
 	</string-array>
     
-    <string name="PreferenceHeaderBrowserSettingsTitle">Paramètres du navigateur</string>
+    <string name="PreferenceHeaderBrowserSettingsTitle">Navigateur</string>
     
     <string name="PreferenceEnableJavascriptTitle">Activer JavaScript</string>
     <string name="PreferenceEnableJavascriptSummaryOn">Le JavaScript est activé.</string>
@@ -254,7 +254,7 @@
     <string name="PreferencePrivacyWebsitesSettingsTitle">Paramètres des sites Web</string>
     <string name="PreferencePrivacyWebsitesSettingsSummary">Paramètres avancés de sites Web individuels.</string>
     
-    <string name="PreferenceHeaderAdvancedSettingsTitle">Advanced settings</string>    
+    <string name="PreferenceHeaderAdvancedSettingsTitle">Avancés</string>    
     
     <string name="HistoryToday">Aujourd\'hui</string>
     <string name="HistoryYesterday">Hier</string>
@@ -262,16 +262,16 @@
     <string name="HistoryLastMonth">Le mois dernier</string>
     <string name="HistoryOlder">Précédemment</string>
     
-    <string name="ClearCacheMessage">Delete locally cached content and databases?</string>
-    <string name="ClearHistoryMessage">Delete the browser navigation history?</string>
-    <string name="ClearCookiesMessage">Delete all cookies?</string>
-    <string name="ClearGeolocationMessage">Clear websites location access?</string>
-    <string name="ClearFormDataMessage">Delete all saved form data?</string>
-    <string name="ClearPasswordsMessage">Delete all saved passwords?</string>
+    <string name="ClearCacheMessage">Supprimer les bases de données et le contenu mis en cache localement ?</string>
+    <string name="ClearHistoryMessage">Supprimer l\'historique de navigation ?</string>
+    <string name="ClearCookiesMessage">Supprimer tous les cookies ?</string>
+    <string name="ClearGeolocationMessage">Supprimer l\'accès des sites aux données de localisation ?</string>
+    <string name="ClearFormDataMessage">Supprimer toutes les données de formulaire enregistrées ?</string>
+    <string name="ClearPasswordsMessage">Supprimer tous les mots de passe enregistrés ?</string>
     
-    <string name="PreferenceHomepageStart">Start page</string>
-    <string name="PreferenceHomepageBlank">Blank page</string>
-    <string name="PreferenceHomepageCustom">Custom page</string>
+    <string name="PreferenceHomepageStart">Page de démarrage</string>
+    <string name="PreferenceHomepageBlank">Page vierge</string>
+    <string name="PreferenceHomepageCustom">Page personalisée</string>
     
     <string-array name="HomepageTitles">
         <item>@string/PreferenceHomepageStart</item>
@@ -306,20 +306,20 @@
     
     <string name="PreferenceHeaderAboutTitle">A propos</string>
     
-    <string name="HttpAuthenticationDialogDialogTitle">Sign in to %1$s - %2$s</string>
-    <string name="HttpAuthenticationDialogUserName">Name</string>
-    <string name="HttpAuthenticationDialogPassword">Password</string>
+    <string name="HttpAuthenticationDialogDialogTitle">Se connecter à %1$s - %2$s</string>
+    <string name="HttpAuthenticationDialogUserName">Nom</string>
+    <string name="HttpAuthenticationDialogPassword">Mot de passe</string>
     
-    <string name="FormResubmitTitle">Form resubmission</string>
-    <string name="FormResubmitMessage">The page you\'re trying to view contains data that has already been submitted (\"POSTDATA\"). If you resend the data, any action the form on the page carried out (such as a search or online purchase) will be repeated.</string>
+    <string name="FormResubmitTitle">Ressoumission de formulaire</string>
+    <string name="FormResubmitMessage">La page que vous essayer de voir contient des données qui ont déjà été soumisent (\"POSTDATA\"). Si vous ré-envoyez ces données, toutes action que la page a effectuée (comme une recherche ou un achat en ligne) sera répétée.</string>
     
-    <string name="BookmarkAdded">Added to bookmarks.</string>
-    <string name="BookmarkRemoved">Removed from bookmarks.</string>
+    <string name="BookmarkAdded">Ajouté aux favoris</string>
+    <string name="BookmarkRemoved">Supprimé des favoris</string>
     
-    <string name="SDCardErrorNoSDMsg">No SD Card found.</string>
-    <string name="SDCardErrorSDUnavailable">SD Card is not available.</string>
+    <string name="SDCardErrorNoSDMsg">Carte SB non trouvée.</string>
+    <string name="SDCardErrorSDUnavailable">Carte SD non disponible.</string>
     
-    <string name="HistoryBookmarksClearTitle">Clear</string>
+    <string name="HistoryBookmarksClearTitle">Purger</string>
     
     <string-array name="ClearHistoryBookmarksChoice">
         <item>@string/History</item>
@@ -327,47 +327,47 @@
         <item>@string/All</item>
     </string-array>
     
-    <string name="HistoryBookmarksImportSourceTitle">Import file</string>
-    <string name="HistoryBookmarksImportFileUnavailable">Unavailable file, either it does not exists or is unreadable.</string>
-    <string name="HistoryBookmarksImportTitle">History &amp; bookmarks import</string>
-    <string name="HistoryBookmarksImportInitialMessage">Importing history &amp; bookmarks&#8230;</string>
-    <string name="HistoryBookmarksImportReadingFile">Reading file&#8230;</string>
-    <string name="HistoryBookmarksImportParsingFile">Parsing file&#8230;</string>
-    <string name="HistoryBookmarksImportProgressMessage">Importing item %1$s of %2$s.</string>
-    <string name="HistoryBookmarksImportInsertMessage">Inserting values&#8230;</string>
-    <string name="HistoryBookmarksImportErrorTitle">Error during import</string>
-    <string name="HistoryBookmarksImportErrorMessage">An error occurred during history &amp; bookmarks import: %s</string>
+    <string name="HistoryBookmarksImportSourceTitle">Importer un fichier</string>
+    <string name="HistoryBookmarksImportFileUnavailable">Fichier inaccessible, soit il n\'existe pas, soit il n\'est pas lisible.</string>
+    <string name="HistoryBookmarksImportTitle">Import de l\'historique et des favoris</string>
+    <string name="HistoryBookmarksImportInitialMessage">Import de l\'historique et des favoris en cours&#8230;</string>
+    <string name="HistoryBookmarksImportReadingFile">Lecture du fichier&#8230;</string>
+    <string name="HistoryBookmarksImportParsingFile">Analyse du fichier&#8230;</string>
+    <string name="HistoryBookmarksImportProgressMessage">Import de l\'élément %1$s sur %2$s.</string>
+    <string name="HistoryBookmarksImportInsertMessage">Insertion des valeurs&#8230;</string>
+    <string name="HistoryBookmarksImportErrorTitle">Erreur pendant l\'import</string>
+    <string name="HistoryBookmarksImportErrorMessage">Une erreur s\'est produite pendant l\'import de l\'historique et des favoris : %s</string>
     
-    <string name="HistoryBookmarksExportTitle">History &amp; bookmarks export</string>
-    <string name="HistoryBookmarksExportInitialMessage">Exporting history &amp; bookmarks&#8230;</string>
-    <string name="HistoryBookmarksExportCheckCardMessage">Checking external storage&#8230;</string>
-    <string name="HistoryBookmarksExportProgressMessage">Exporting item %1$s of %2$s.</string>
-    <string name="HistoryBookmarksExportErrorTitle">Error during export</string>
-    <string name="HistoryBookmarksExportErrorMessage">An error occurred during history &amp; bookmarks export: %s</string>
+    <string name="HistoryBookmarksExportTitle">Export de l\'historique et des favoris</string>
+    <string name="HistoryBookmarksExportInitialMessage">Export de l\'historique et des favoris en cours&#8230;</string>
+    <string name="HistoryBookmarksExportCheckCardMessage">Vérification du stockage externe&#8230;</string>
+    <string name="HistoryBookmarksExportProgressMessage">Export de l\'élément %1$s sur %2$s.</string>
+    <string name="HistoryBookmarksExportErrorTitle">Erreur pendant l\'export</string>
+    <string name="HistoryBookmarksExportErrorMessage">Une erreur s\'est produite pendant l\'export de l\'historique et des favoris : %s</string>
     
-    <string name="GeolocationTitle">Location request</string>
-    <string name="GeolocationMessage">Website %s request access to your location.</string>
-    <string name="GeolocationRemember">Remember my choice</string>
-    <string name="GeolocationAccept">Accept</string>
-    <string name="GeolocationDecline">Decline</string>
+    <string name="GeolocationTitle">Demande de localisation</string>
+    <string name="GeolocationMessage">Le site %s souhaite connêtre votre position géographique.</string>
+    <string name="GeolocationRemember">Mémoriser mon choix</string>
+    <string name="GeolocationAccept">Accepter</string>
+    <string name="GeolocationDecline">Refuser</string>
     
-    <string name="WebsitesSettingsEmpty">No settings for websites.</string>
+    <string name="WebsitesSettingsEmpty">Pas de paramètres pour les sites Web.</string>
     
-    <string name="WebsitesSettingsSiteTitle">Settings for %s</string>
+    <string name="WebsitesSettingsSiteTitle">Paramètres pour %s</string>
     
-    <string name="WebsitesSettingsDataUsage">%s MB stored on your device.</string>
-    <string name="WebsitesSettingsDataClickToClear">Click to clear stored data.</string>
-    <string name="WebsitesSettingsCleatDataDialogTitle">Delete data</string>
-    <string name="WebsitesSettingsCleatDataDialogMessage">Delete all data stored by this website?</string>
+    <string name="WebsitesSettingsDataUsage">%s MB stockés sur votre appareil.</string>
+    <string name="WebsitesSettingsDataClickToClear">Cliquez pour supprimer les données stockées.</string>
+    <string name="WebsitesSettingsCleatDataDialogTitle">Supprimer les données</string>
+    <string name="WebsitesSettingsCleatDataDialogMessage">Supprimer toutes les données stockées par ce site Web ?</string>
     
-    <string name="WebsitesSettingsGeolocationClickToClear">Click to clear location access.</string>
-    <string name="WebsitesSettingsGeolocationAllowed">This site can access to your location.</string>
-    <string name="WebsitesSettingsGeolocationNotAllowed">This site cannot access to your location.</string>
-    <string name="WebsitesSettingsGeolocationPageDialogTitle">Clear location access</string>
-    <string name="WebsitesSettingsGeolocationPageDialogMessage">Clear location access for this website?</string>
+    <string name="WebsitesSettingsGeolocationClickToClear">Cliquez pour supprimer l\'accès aux données de localisation.</string>
+    <string name="WebsitesSettingsGeolocationAllowed">Ce site peut accéder à votre position géographique.</string>
+    <string name="WebsitesSettingsGeolocationNotAllowed">Ce site ne peut pas accéder à votre position géographique.</string>
+    <string name="WebsitesSettingsGeolocationPageDialogTitle">Supprimer l\'accès aux données de localisation</string>
+    <string name="WebsitesSettingsGeolocationPageDialogMessage">Supprimer l\'accès aux données de localisation pour ce site Web ?</string>
     
-    <string name="AddonsWarningText">Please install only addons you trust. If you experience weird behaviors, disable all your addons.</string>
-    <string name="AddonsGetAddons"><a href="">Get addons</a></string>
+    <string name="AddonsWarningText">N\'installez que des addons provenant de développeurs de confiance. Si vous rencontrez des comportements étranges, désactivez tous vos addons.</string>
+    <string name="AddonsGetAddons"><a href="">Obtenir des addons</a></string>
     <string name="AddonsMarketNotFoundTitle">Android Market non trouvé</string>
    <string name="AddonsMarketNotFoundMessage">Vous ne semblez pas avoir l\'application Android Market sur votre appareil.</string>
     <string name="AddonsEnableAll">Tout activer</string>
@@ -385,7 +385,7 @@
     <string name="AddonCallbackHasPreferencesPage">A une page de paramètres.</string>
     <string name="AddonCallbackContributeMainMenu">Peut contribuer au menu principal.</string>
     <string name="AddonCallbackContributeLinkContextMenu">Peut contribuer au menu contextuel d\'un lien.</string>
-    <string name="AddonCallbackContributeHistoryBookmarksMenu">Peut contribuer au menu des favoris et de l\historique.</string>
+    <string name="AddonCallbackContributeHistoryBookmarksMenu">Peut contribuer au menu des favoris et de l\'historique.</string>
     <string name="AddonCallbackContributeBookmarkContextMenu">Peut contribuer au menu contextuel des favoris.</string>
     <string name="AddonCallbackContributeHistoryContextMenu">Peut contribuer au menu contextuel de l\'historique.</string>
     
@@ -394,22 +394,22 @@
    <string name="AddonDetailsUnableToGetPermissions">Impossible de lire les permissions. Vérifier les avec le gestionnaire d\'applications de votre appareil.</string>
     
     <string name="ContentDescriptionDivider">divider</string>
-    <string name="ContentDescriptionApplicationIcon">Application icon</string>
-    <string name="ContentDescriptionSuggestionIcon">Suggestion favicon</string>
-    <string name="ContentDescriptionBookmarkThumbnail">Bookmark thumbnail</string>
-    <string name="ContentDescriptionFavicon">Website`s favicon</string>
-    <string name="ContentDescriptionGoStopReloadButton">Go / Stop / Reload button</string>
-    <string name="ContentDescriptionMenuButton">Menu button</string>
-    <string name="ContentDescriptionPreviousTabButton">Previous tab button</string>
-    <string name="ContentDescriptionNextTabButton">Next tab button</string>
-    <string name="ContentDescriptionLeftBubble">Left bubble</string>
-    <string name="ContentDescriptionRightBubble">Right bubble</string>
-    <string name="ContentDescriptionBackButton">Back button</string>
-    <string name="ContentDescriptionCloseTabButton">Close tab button</string>
-    <string name="ContentDescriptionBookmarksButton">Bookmarks button</string>
-    <string name="ContentDescriptionNewTabButton">New tab button</string>
-    <string name="ContentDescriptionForwardButton">Forward button</string>
-    <string name="ContentDescriptionHomeButton">Home button</string>
+    <string name="ContentDescriptionApplicationIcon">Icône de l\'application</string>
+    <string name="ContentDescriptionSuggestionIcon">Icône de suggestion</string>
+    <string name="ContentDescriptionBookmarkThumbnail">Image de favori</string>
+    <string name="ContentDescriptionFavicon">Icône du site Web</string>
+    <string name="ContentDescriptionGoStopReloadButton">Bouton Aller à / Stop / Recharger</string>
+    <string name="ContentDescriptionMenuButton">Bouton Menu</string>
+    <string name="ContentDescriptionPreviousTabButton">Bouton onglet précédent</string>
+    <string name="ContentDescriptionNextTabButton">Bouton onglet suivant</string>
+    <string name="ContentDescriptionLeftBubble">Bulle gauche</string>
+    <string name="ContentDescriptionRightBubble">Bulle droite</string>
+    <string name="ContentDescriptionBackButton">Bouton précédent</string>
+    <string name="ContentDescriptionCloseTabButton">Bouton fermer l\'onglet</string>
+    <string name="ContentDescriptionBookmarksButton">Bouton des favoris</string>
+    <string name="ContentDescriptionNewTabButton">Bouton nouvel onglet</string>
+    <string name="ContentDescriptionForwardButton">Bouton suivant</string>
+    <string name="ContentDescriptionHomeButton">Bouton home</string>
     <string name="ContentDescriptionWebsiteSettingsLocation">Website location</string>
     <string name="ContentDescriptionWebsiteSettingsUsage">Website usage</string>
     <string name="ContentDescriptionWebsiteSettingsFeature">Website feature</string>

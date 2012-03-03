@@ -50,8 +50,8 @@
     <string name="Preferences">Settings</string>
     <string name="CannotBeUndone">This cannot be undone.</string>
     
-    <string name="UrlBarUrlDefaultSubTitle">Tap to enter an URL or a search term.</string>
-    <string name="UrlBarUrlHint">Enter a search term or an URL</string>
+    <string name="UrlBarUrlDefaultSubTitle">Tap to enter an URL or a search.</string>
+    <string name="UrlBarUrlHint">Enter a search or an URL</string>
     
     <string name="ShareChooserTitle">Share via</string>
     <string name="FileChooserPrompt">Choose file for upload</string>
@@ -60,7 +60,7 @@
     <string name="DownloadComplete">Download complete.</string>
     <string name="DownloadFailed">Download failed.</string>
     <string name="DownloadFailedWithErrorMessage">Download failed: %1$s.</string>
-    <string name="DownloadErrorDisk">Disk error, check if you have a storage media, and if it has enough space left</string>
+    <string name="DownloadErrorDisk">Disk error, check if you have a storage media, and if it has enough space left.</string>
     <string name="DownloadErrorHttp">HTTP error</string>
     <string name="DownloadErrorRedirection">Too many redirections</string>
     <string name="DownloadErrorUnknown">Unknown error</string>
@@ -366,7 +366,7 @@
     <string name="WebsitesSettingsGeolocationPageDialogTitle">Clear location access</string>
     <string name="WebsitesSettingsGeolocationPageDialogMessage">Clear location access for this website?</string>
     
-    <string name="AddonsWarningText">Please install only addons you trust. If you experience weird behaviors, disable all your addons.</string>
+    <string name="AddonsWarningText">Please install only addons from developers you trust. If you experience weird behaviors, disable all your addons.</string>
     <string name="AddonsGetAddons"><a href="">Get addons</a></string>
     <string name="AddonsMarketNotFoundTitle">Android Market not found</string>
     <string name="AddonsMarketNotFoundMessage">You do not seems to have the Android Market application on your device.</string>
