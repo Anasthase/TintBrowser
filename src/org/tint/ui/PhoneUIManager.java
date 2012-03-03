@@ -168,7 +168,7 @@ public class PhoneUIManager extends BaseUIManager {
 	
 	@Override
 	public void closeTab(UUID tabId) {
-		int index = mFragmentsList.indexOf(getCurrentWebViewFragment());
+		int index = mFragmentsList.indexOf(getWebViewFragmentByUUID(tabId));
 		
 		if (mFragmentsList.size() > 1) {			
 			if ((index >= 0) &&
