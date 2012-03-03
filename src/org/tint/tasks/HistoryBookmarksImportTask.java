@@ -18,13 +18,15 @@ package org.tint.tasks;
 import java.io.File;
 import java.io.IOException;
 import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.tint.R;
-import org.tint.providers.BookmarksWrapper;
+import org.tint.providers.BookmarksProvider;
 import org.tint.ui.preferences.IHistoryBookmaksImportListener;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -32,6 +34,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Environment;
@@ -51,6 +54,8 @@ public class HistoryBookmarksImportTask extends AsyncTask<String, Integer, Strin
 		
 		publishProgress(0, 0, 0);
 		
+		List<ContentValues> values = null;
+		
 		File file = new File(Environment.getExternalStorageDirectory(), params[0]);
 		
 		if ((file != null) &&
@@ -60,6 +65,8 @@ public class HistoryBookmarksImportTask extends AsyncTask<String, Integer, Strin
 			try {
 				
 				publishProgress(1, 0, 0);
+				
+				values = new ArrayList<ContentValues>();
 				
 				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();				
 				DocumentBuilder builder;
@@ -134,14 +141,8 @@ public class HistoryBookmarksImportTask extends AsyncTask<String, Integer, Strin
 									}
 								}								
 							}
-						
-							BookmarksWrapper.insertRawRecord(mContext.getContentResolver(),
-									title,
-									url,
-									visits,
-									visitedDate,
-									creationDate,
-									bookmark);
+							
+							values.add(createContentValues(title, url, visits, visitedDate, creationDate, bookmark));
 						}
 												
 						progress++;						
@@ -154,6 +155,11 @@ public class HistoryBookmarksImportTask extends AsyncTask<String, Integer, Strin
 				return e.getMessage();
 			} catch (IOException e) {
 				return e.getMessage();
+			}
+			
+			if (values != null) {
+				publishProgress(3, 0, 0);
+				mContext.getContentResolver().bulkInsert(BookmarksProvider.BOOKMARKS_URI, values.toArray(new ContentValues[values.size()]));
 			}
 			
 		} else {
@@ -190,6 +196,33 @@ public class HistoryBookmarksImportTask extends AsyncTask<String, Integer, Strin
 		}
 
 		return buffer.toString(); 
+	}
+	
+	private ContentValues createContentValues(String title, String url, int visits, long visitedDate, long creationDate, int bookmark) {
+		ContentValues values = new ContentValues();
+		values.put(BookmarksProvider.Columns.TITLE, title);
+		values.put(BookmarksProvider.Columns.URL, url);
+		values.put(BookmarksProvider.Columns.VISITS, visits);
+		
+		if (visitedDate > 0) {
+			values.put(BookmarksProvider.Columns.VISITED_DATE, visitedDate);
+		} else {
+			values.putNull(BookmarksProvider.Columns.VISITED_DATE);
+		}
+		
+		if (creationDate > 0) {
+			values.put(BookmarksProvider.Columns.CREATION_DATE, creationDate);
+		} else {
+			values.putNull(BookmarksProvider.Columns.CREATION_DATE);
+		}
+		
+		if (bookmark > 0) {
+			values.put(BookmarksProvider.Columns.BOOKMARK, 1);
+		} else {
+			values.put(BookmarksProvider.Columns.BOOKMARK, 0);
+		}
+		
+		return values;
 	}
 
 }

@@ -25,7 +25,9 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
+import android.database.sqlite.SQLiteStatement;
 import android.net.Uri;
+import android.text.TextUtils;
 
 public class BookmarksProvider extends ContentProvider {	
 	
@@ -173,6 +175,84 @@ public class BookmarksProvider extends ContentProvider {
 		}
 		
 		return count;
+	}
+	
+	@Override
+	public int bulkInsert(Uri uri, ContentValues[] values) {
+		switch (sUriMatcher.match(uri)) {
+		case BOOKMARKS:
+			int numInserted = 0;
+			
+			mDb.beginTransaction();
+			
+			try {
+				
+				SQLiteStatement insert = mDb.compileStatement(
+						"INSERT INTO " + BOOKMARKS_TABLE + "(" +
+						Columns.TITLE + ", " + 
+						Columns.URL + ", " +
+						Columns.VISITS + ", " + 
+						Columns.CREATION_DATE + ", " +
+						Columns.VISITED_DATE + ", " + 
+						Columns.BOOKMARK +
+						") VALUES (?, ?, ?, ?, ?, ?)");
+				
+				for (ContentValues value : values) {
+					
+					String title = value.getAsString(Columns.TITLE);
+					String url = value.getAsString(Columns.URL);
+					
+					if ((!TextUtils.isEmpty(title)) &&
+							(!TextUtils.isEmpty(url))) {
+					
+						String visits = value.getAsString(Columns.VISITS);
+						String creationDate = value.getAsString(Columns.CREATION_DATE);
+						String visitedDate = value.getAsString(Columns.VISITED_DATE);
+						String bookmark = value.getAsString(Columns.BOOKMARK);
+						
+						insert.bindString(1, title);
+						insert.bindString(2, url);
+						
+						if (!TextUtils.isEmpty(visits)) {
+							insert.bindString(3, visits);
+						} else {
+							insert.bindNull(3);
+						}
+						
+						if (!TextUtils.isEmpty(creationDate)) {
+							insert.bindString(4, creationDate);
+						} else {
+							insert.bindNull(4);
+						}
+						
+						if (!TextUtils.isEmpty(visitedDate)) {
+							insert.bindString(5, visitedDate);
+						} else {
+							insert.bindNull(5);
+						}
+						
+						if (!TextUtils.isEmpty(bookmark)) {
+							insert.bindString(6, bookmark);
+						} else {
+							insert.bindString(6, "0");
+						}
+
+						insert.execute();
+					}
+				}
+				
+				mDb.setTransactionSuccessful();
+				
+				mContext.getContentResolver().notifyChange(uri, null);
+				
+				numInserted = values.length;
+			} finally {
+				mDb.endTransaction();
+			}
+			
+			return numInserted;
+		default: throw new IllegalArgumentException("Unknown URI " + uri);
+		}
 	}
 	
 	private static class DatabaseHelper extends SQLiteOpenHelper {

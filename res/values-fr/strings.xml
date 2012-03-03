@@ -334,6 +334,7 @@
     <string name="HistoryBookmarksImportReadingFile">Reading file&#8230;</string>
     <string name="HistoryBookmarksImportParsingFile">Parsing file&#8230;</string>
     <string name="HistoryBookmarksImportProgressMessage">Importing item %1$s of %2$s.</string>
+    <string name="HistoryBookmarksImportInsertMessage">Inserting values&#8230;</string>
     <string name="HistoryBookmarksImportErrorTitle">Error during import</string>
     <string name="HistoryBookmarksImportErrorMessage">An error occurred during history &amp; bookmarks import: %s</string>
     
