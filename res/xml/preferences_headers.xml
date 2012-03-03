@@ -26,8 +26,10 @@
 	<header android:fragment="org.tint.ui.preferences.PrivacyPreferencesFragment"            
             android:title="@string/PreferenceHeaderPrivacySettingsTitle" />
 	
+	<!--
 	<header android:fragment="org.tint.ui.preferences.AdvancedPreferencesFragment"            
             android:title="@string/PreferenceHeaderAdvancedSettingsTitle" />
+    -->
 	
 	<header android:fragment="org.tint.ui.preferences.AddonsFragment"            
             android:title="@string/PreferenceHeaderAddonsTitle" />

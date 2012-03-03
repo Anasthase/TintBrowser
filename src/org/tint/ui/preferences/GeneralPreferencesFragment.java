@@ -16,8 +16,10 @@
 package org.tint.ui.preferences;
 
 import org.tint.R;
+import org.tint.utils.ApplicationUtils;
 
 import android.os.Bundle;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 
 public class GeneralPreferencesFragment extends PreferenceFragment {
@@ -27,6 +29,11 @@ public class GeneralPreferencesFragment extends PreferenceFragment {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.preferences_general_settings);
+        
+        if (ApplicationUtils.isTablet(getActivity())) {
+        	PreferenceCategory uiCategory = (PreferenceCategory) findPreference("PREFERENCE_CATEGORY_UI");
+        	getPreferenceScreen().removePreference(uiCategory);
+        }
 	}
 
 }

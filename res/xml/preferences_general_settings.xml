@@ -44,7 +44,9 @@
         
     </PreferenceCategory>
     
-    <PreferenceCategory android:title="@string/PreferenceCategoryUITitle">
+    <PreferenceCategory
+        android:key="PREFERENCE_CATEGORY_UI"
+        android:title="@string/PreferenceCategoryUITitle">
         
         <ListPreference android:title="@string/PreferenceBubblePositionTitle"			
 			android:summary="@string/PreferenceBubblePositionSummary"
