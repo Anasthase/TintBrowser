@@ -328,6 +328,7 @@ public class TabletUIManager extends BaseUIManager {
 		if ((webViewFragment != null) &&
 				(!webViewFragment.isStartPageShown())) {
 		
+			webViewFragment.getWebView().onPause();
 			webViewFragment.setStartPageShown(true);
 			
 			if (webViewFragment == getCurrentWebViewFragment()) {
@@ -372,6 +373,8 @@ public class TabletUIManager extends BaseUIManager {
 		if (oldFragment != null) {
 			Controller.getInstance().getAddonManager().onTabClosed(mActivity, oldFragment.getWebView());
 
+			oldFragment.getWebView().onPause();
+			
 			mTabs.remove(tab);
 			mFragmentsMap.remove(oldFragment.getUUID());
 

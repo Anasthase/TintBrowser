@@ -579,6 +579,7 @@ public class PhoneUIManager extends BaseUIManager {
 		if ((webViewFragment != null) &&
 				(!webViewFragment.isStartPageShown())) {
 		
+			webViewFragment.getWebView().onPause();
 			webViewFragment.setStartPageShown(true);
 			
 			if (webViewFragment == getCurrentWebViewFragment()) {
@@ -718,6 +719,8 @@ public class PhoneUIManager extends BaseUIManager {
 		PhoneWebViewFragment fragment = mFragmentsList.get(index);
 		
 		Controller.getInstance().getAddonManager().onTabClosed(mActivity, fragment.getWebView());
+		
+		fragment.getWebView().onPause();
 		
 		if (fragment.isStartPageShown()) {
 			fragmentTransaction.hide(mStartPageFragment);
