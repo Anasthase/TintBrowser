@@ -80,7 +80,7 @@
     <string name="ContextMenuCopyEmailUrl">Copier l\'adresse email</string>
     <string name="ContextMenuShareEmailUrl">Partager l\'adresse email</string>
     
-    <string name="UrlCopyToastMessage">L\'adresse a été copiée dans le presse-papier..</string>
+    <string name="UrlCopyToastMessage">L\'adresse a été copiée dans le presse-papier.</string>
     <string name="ContextMenuShareUrl">Partager</string>
     
     <string name="JavaScriptAlertDialog">Fenêtre JavaScript</string>
