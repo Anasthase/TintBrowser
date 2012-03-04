@@ -15,6 +15,7 @@
 
 package org.tint.ui;
 
+import java.util.HashMap;
 import java.util.UUID;
 
 import org.tint.R;
@@ -41,6 +42,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.MotionEvent;
@@ -54,6 +57,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewDatabase;
 import android.webkit.WebChromeClient.CustomViewCallback;
+import android.webkit.WebView.HitTestResult;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
@@ -63,6 +67,8 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 	        new FrameLayout.LayoutParams(
 	        ViewGroup.LayoutParams.MATCH_PARENT,
 	        ViewGroup.LayoutParams.MATCH_PARENT);
+	
+	private static final int FOCUS_NODE_HREF = 102;
 	
 	private FrameLayout mFullscreenContainer;
     private View mCustomView;
@@ -81,6 +87,8 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 	
 	protected StartPageFragment mStartPageFragment = null;
 	
+	private Handler mHandler;
+	
 	public BaseUIManager(TintBrowserActivity activity) {
 		mActivity = activity;
 		
@@ -90,6 +98,8 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 		mGeolocationPermissionsDialog = null;
 		
 		setupUI();
+		
+		startHandler();
 	}
 	
 	protected abstract void setupUI();
@@ -273,30 +283,59 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 					
 					switch(actionId) {
 					case TintBrowserActivity.CONTEXT_MENU_OPEN:
-						loadUrl(intent.getStringExtra(Constants.EXTRA_URL));
+						if (HitTestResult.SRC_IMAGE_ANCHOR_TYPE == intent.getIntExtra(Constants.EXTRA_HIT_TEST_RESULT, -1)) {
+							requestHrefNode(TintBrowserActivity.CONTEXT_MENU_OPEN);
+						} else {
+							loadUrl(intent.getStringExtra(Constants.EXTRA_URL));
+						}
 						break;
 					case TintBrowserActivity.CONTEXT_MENU_OPEN_IN_NEW_TAB:
-						addTab(intent.getStringExtra(Constants.EXTRA_URL));
+						
+						if (HitTestResult.SRC_IMAGE_ANCHOR_TYPE == intent.getIntExtra(Constants.EXTRA_HIT_TEST_RESULT, -1)) {
+							requestHrefNode(TintBrowserActivity.CONTEXT_MENU_OPEN_IN_NEW_TAB);
+						} else {						
+							addTab(intent.getStringExtra(Constants.EXTRA_URL));
+						}
 						break;
 					case TintBrowserActivity.CONTEXT_MENU_COPY:
-						ApplicationUtils.copyTextToClipboard(mActivity, intent.getStringExtra(Constants.EXTRA_URL), mActivity.getResources().getString(R.string.UrlCopyToastMessage));
+						if (HitTestResult.SRC_IMAGE_ANCHOR_TYPE == intent.getIntExtra(Constants.EXTRA_HIT_TEST_RESULT, -1)) {
+							requestHrefNode(TintBrowserActivity.CONTEXT_MENU_COPY);
+						} else {
+							ApplicationUtils.copyTextToClipboard(mActivity, intent.getStringExtra(Constants.EXTRA_URL), mActivity.getResources().getString(R.string.UrlCopyToastMessage));
+						}
 						break;
 					case TintBrowserActivity.CONTEXT_MENU_DOWNLOAD:
-						DownloadItem item = new DownloadItem(intent.getStringExtra(Constants.EXTRA_URL));
-						
-						long id = ((DownloadManager) mActivity.getSystemService(Context.DOWNLOAD_SERVICE)).enqueue(item);
-						item.setId(id);
-						
-						Controller.getInstance().getDownloadsList().add(item);
-						
-						Toast.makeText(mActivity, String.format(mActivity.getString(R.string.DownloadStart), item.getFileName()), Toast.LENGTH_SHORT).show();
-						
+						if (HitTestResult.SRC_IMAGE_ANCHOR_TYPE == intent.getIntExtra(Constants.EXTRA_HIT_TEST_RESULT, -1)) {
+							requestHrefNode(TintBrowserActivity.CONTEXT_MENU_DOWNLOAD);
+						} else {
+							DownloadItem item = new DownloadItem(intent.getStringExtra(Constants.EXTRA_URL));
+
+							long id = ((DownloadManager) mActivity.getSystemService(Context.DOWNLOAD_SERVICE)).enqueue(item);
+							item.setId(id);
+
+							Controller.getInstance().getDownloadsList().add(item);
+
+							Toast.makeText(mActivity, String.format(mActivity.getString(R.string.DownloadStart), item.getFileName()), Toast.LENGTH_SHORT).show();
+						}
 						break;
 					case TintBrowserActivity.CONTEXT_MENU_SHARE:
-						ApplicationUtils.sharePage(mActivity, null, intent.getStringExtra(Constants.EXTRA_URL));
+						if (HitTestResult.SRC_IMAGE_ANCHOR_TYPE == intent.getIntExtra(Constants.EXTRA_HIT_TEST_RESULT, -1)) {
+							requestHrefNode(TintBrowserActivity.CONTEXT_MENU_SHARE);
+						} else {
+							ApplicationUtils.sharePage(mActivity, null, intent.getStringExtra(Constants.EXTRA_URL));
+						}
 						break;
 					default:
-						Controller.getInstance().getAddonManager().onContributedContextLinkMenuItemSelected(mActivity, actionId, intent, getCurrentWebView());
+						if (HitTestResult.SRC_IMAGE_ANCHOR_TYPE == intent.getIntExtra(Constants.EXTRA_HIT_TEST_RESULT, -1)) {
+							requestHrefNode(actionId);
+						} else {
+							Controller.getInstance().getAddonManager().onContributedContextLinkMenuItemSelected(
+									mActivity,
+									actionId,
+									intent.getIntExtra(Constants.EXTRA_HIT_TEST_RESULT, -1),
+									intent.getStringExtra(Constants.EXTRA_URL),
+									getCurrentWebView());
+						}
 						break;
 					}
 				}
@@ -435,6 +474,84 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 			
 			webView.requestFocus();
 		}
+	}
+	
+	private void startHandler() {
+		mHandler = new Handler() {
+
+			@Override
+			public void handleMessage(Message msg) {
+				switch (msg.what) {
+				case FOCUS_NODE_HREF:
+					String url = (String) msg.getData().get("url");
+                    String src = (String) msg.getData().get("src");
+                    
+                    if (url == "") {
+                    	url = src;
+                    }
+                    
+                    if (TextUtils.isEmpty(url)) {
+                        break;
+                    }
+                    
+                    switch (msg.arg1) {
+                    case TintBrowserActivity.CONTEXT_MENU_OPEN:
+                    	loadUrl(url);
+                    	break;
+                    
+					case TintBrowserActivity.CONTEXT_MENU_OPEN_IN_NEW_TAB:
+						addTab(url);
+						break;
+						
+					case TintBrowserActivity.CONTEXT_MENU_COPY:
+						ApplicationUtils.copyTextToClipboard(mActivity, url, mActivity.getResources().getString(R.string.UrlCopyToastMessage));
+						break;
+						
+					case TintBrowserActivity.CONTEXT_MENU_DOWNLOAD:
+						DownloadItem item = new DownloadItem(url);
+
+						long id = ((DownloadManager) mActivity.getSystemService(Context.DOWNLOAD_SERVICE)).enqueue(item);
+						item.setId(id);
+
+						Controller.getInstance().getDownloadsList().add(item);
+
+						Toast.makeText(mActivity, String.format(mActivity.getString(R.string.DownloadStart), item.getFileName()), Toast.LENGTH_SHORT).show();
+						break;
+						
+					case TintBrowserActivity.CONTEXT_MENU_SHARE:
+						ApplicationUtils.sharePage(mActivity, null, url);
+						break;
+
+					default:
+						Controller.getInstance().getAddonManager().onContributedContextLinkMenuItemSelected(
+								mActivity,
+								msg.arg1,
+								HitTestResult.SRC_IMAGE_ANCHOR_TYPE,
+								url,
+								getCurrentWebView());
+						break;
+					}
+                    					
+					break;
+				default: super.handleMessage(msg);
+				}				
+			}
+			
+		};
+	}
+	
+	private void requestHrefNode(int action) {
+		final HashMap<String, WebView> hrefMap = new HashMap<String, WebView>();
+		WebView webView = getCurrentWebView();
+		hrefMap.put("webview", webView);
+		
+		final Message msg = mHandler.obtainMessage(
+                FOCUS_NODE_HREF,
+                action,
+                0,
+                hrefMap);
+		
+		webView.requestFocusNodeHref(msg);
 	}
 
 	private void setFullscreen(boolean enabled) {

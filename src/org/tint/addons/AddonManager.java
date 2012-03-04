@@ -23,7 +23,6 @@ import org.tint.addons.executors.ExecutorFactory;
 import org.tint.addons.framework.Action;
 import org.tint.ui.UIManager;
 import org.tint.ui.components.CustomWebView;
-import org.tint.utils.Constants;
 
 import android.content.Context;
 import android.content.Intent;
@@ -197,7 +196,7 @@ public class AddonManager {
 		return result;
 	}
 	
-	public void onContributedContextLinkMenuItemSelected(Context context, int addonId, Intent intent, CustomWebView currentWebview) {
+	public void onContributedContextLinkMenuItemSelected(Context context, int addonId, int hitTestResult, String url, CustomWebView currentWebview) {
 		addonId = Math.abs(addonId) - 1000;
 		
 		if ((addonId >= 0) &&
@@ -207,8 +206,8 @@ public class AddonManager {
 			
 			List<Action> response = addon.onContributedLinkContextMenuItemSelected(
 					currentWebview.getParentFragmentUUID().toString(),
-					intent.getIntExtra(Constants.EXTRA_HIT_TEST_RESULT, -1),
-					intent.getStringExtra(Constants.EXTRA_URL));
+					hitTestResult,
+					url);
 			
 			processOneResponse(context, currentWebview, addon, response);
 		}
