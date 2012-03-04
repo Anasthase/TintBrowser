@@ -317,13 +317,19 @@ public class PhoneUrlBar extends LinearLayout implements UrlBar {
 	}
 	
 	public void hideUrl() {
+		hideUrl(true);
+	}
+	
+	public void hideUrl(boolean hideKeyboard) {
 		mUrlLayout.setVisibility(View.GONE);
 		mTitleLayout.setVisibility(View.VISIBLE);
 		
 		mIsUrlBarVisible = false;
 		
-		InputMethodManager mgr = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-		mgr.hideSoftInputFromWindow(mUrl.getWindowToken(), 0);
+		if (hideKeyboard) {
+			InputMethodManager mgr = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+			mgr.hideSoftInputFromWindow(mUrl.getWindowToken(), 0);
+		}
 		
 		triggerOnUrlBarVisibilityChanged();
 	}

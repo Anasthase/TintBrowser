@@ -36,6 +36,7 @@ import org.tint.utils.ApplicationUtils;
 import org.tint.utils.Constants;
 
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -47,6 +48,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -328,6 +330,9 @@ public class PhoneUIManager extends BaseUIManager {
 			if (mToolbarsAnimator.isToolbarsVisible()) {
 				mTopBar.animate().translationY(0);
 			}
+			
+			InputMethodManager mgr = (InputMethodManager) mActivity.getSystemService(Context.INPUT_METHOD_SERVICE);
+			mgr.hideSoftInputFromWindow(null, 0);
 		}
 	}
 
@@ -841,7 +846,7 @@ public class PhoneUIManager extends BaseUIManager {
 					mHideToolbarsRunnable.disable();
 				}
 				
-				mUrlBar.hideUrl();
+				mUrlBar.hideUrl(mActionMode == null);
 				
 				mToolbarsAnimator.startHideAnimation();
 			}
