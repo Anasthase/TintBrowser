@@ -44,6 +44,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.webkit.DateSorter;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
@@ -53,6 +54,8 @@ import android.widget.CompoundButton;
 import android.widget.ExpandableListView;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.ExpandableListView.OnGroupCollapseListener;
+import android.widget.ExpandableListView.OnGroupExpandListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -83,10 +86,21 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 	
 	private boolean mTwoPaneMode;
 	
+	private int mSelectedGroup;	
+	private boolean[] mExpandedGroups = new boolean[DateSorter.DAY_COUNT];
+	
+	private boolean mAfterDelete = false;
+	
 	private OnCheckedChangeListener mBookmarkStarChangeListener;
 	
 	public HistoryFragment() {
 		mUIManager = Controller.getInstance().getUIManager();
+		
+		for (int i = 0; i < mExpandedGroups.length; i++) {
+			mExpandedGroups[i] = false;
+		}
+		
+		mExpandedGroups[0] = true;
 	}
 	
 	@Override
@@ -246,6 +260,7 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 				
 			case CONTEXT_MENU_DELETE_HISTORY_ITEM:
 				BookmarksWrapper.deleteHistoryRecord(getActivity().getContentResolver(), selectedItem.getId());
+				mAfterDelete = true;
 				return true;
 				
 			default:
@@ -267,6 +282,7 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+		mSelectedGroup = 0;
 		return BookmarksWrapper.getCursorLoaderForHistory(getActivity());
 	}
 
@@ -277,12 +293,20 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 		if (data != null) {
 			
 			if (!mTwoPaneMode) {
-				if (mAdapter.getGroupCount() > 0) {
-					mListView.expandGroup(0, true);
+				if (!mAfterDelete) {
+					if (mAdapter.getGroupCount() > 0) {
+						for (int i = 0; i < mExpandedGroups.length; i++) {
+							if (mExpandedGroups[i]) {
+								mListView.expandGroup(i, true);
+							}
+						}
+					}
 				}
+				
+				mAfterDelete = false;
 			} else {
-				// Select the first group (Today).
-				selectGroup(mAdapter.getGroupView(0, false, null, null), 0);
+				// Select previously selected group.
+				selectGroup(mAdapter.getGroupView(mSelectedGroup, false, null, null), mSelectedGroup);
 			}
 		}
 	}
@@ -296,6 +320,20 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 		mTwoPaneMode = false;
 		
 		mListView = (ExpandableListView) mContainer.findViewById(R.id.HistoryExpandableList);
+		
+		mListView.setOnGroupExpandListener(new OnGroupExpandListener() {			
+			@Override
+			public void onGroupExpand(int groupPosition) {
+				mExpandedGroups[groupPosition] = true;
+			}
+		});
+		
+		mListView.setOnGroupCollapseListener(new OnGroupCollapseListener() {			
+			@Override
+			public void onGroupCollapse(int groupPosition) {
+				mExpandedGroups[groupPosition] = false;
+			}
+		});
 		
 		mListView.setOnChildClickListener(new OnChildClickListener() {
 			
@@ -351,6 +389,8 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 		
 		mChildAdapter.setSelectedGroup(position);
 		mGroupList.setItemChecked(position, true);
+		
+		mSelectedGroup = position;
 	}
 	
 	private abstract class HistoryWrapper extends BaseAdapter {
