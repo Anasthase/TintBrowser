@@ -1,1 +1,7 @@
+1.1: Bug fixes:
+- Long-click on image links now work as intended;
+- Stop plugins when closing a tab;
+- keyboard no longer hide along with toolbar during a search in phone mode;
+- Deleting items in history no longer bring back to the first section;
+
 1.0: Initial release.

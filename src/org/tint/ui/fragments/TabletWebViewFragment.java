@@ -28,6 +28,8 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 
 public class TabletWebViewFragment extends BaseWebViewFragment {
+	
+	private static final int TAB_TITLE_LENGTH = 30;
 		
 	private Tab mTab;
 	
@@ -95,11 +97,19 @@ public class TabletWebViewFragment extends BaseWebViewFragment {
 	public void onReceivedTitle(WebView view, String title) {
 		if (view == mWebView) {
 			if (!TextUtils.isEmpty(title)) {
-				mTab.setText(title);
+				mTab.setText(stripTitle(title));
 			} else {
 				mTab.setText(R.string.NewTab);
 			}
 		}
+	}
+	
+	private String stripTitle(String title) {
+		if (title.length() > TAB_TITLE_LENGTH) {
+			title = title.substring(0, TAB_TITLE_LENGTH) + '\u2026';
+		}
+		
+		return title;
 	}
 
 }
