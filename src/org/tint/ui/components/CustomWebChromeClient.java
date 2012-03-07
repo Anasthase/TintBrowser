@@ -59,8 +59,10 @@ public class CustomWebChromeClient extends WebChromeClient {
 	public void onReceivedTitle(WebView view, String title) {
 		mUIManager.onReceivedTitle(view, title);
 		
-		UpdateHistoryTask task = new UpdateHistoryTask(mUIManager.getMainActivity());
-		task.execute(view.getTitle(), view.getUrl(), view.getOriginalUrl());
+		if (!view.isPrivateBrowsingEnabled()) {
+			UpdateHistoryTask task = new UpdateHistoryTask(mUIManager.getMainActivity());
+			task.execute(view.getTitle(), view.getUrl(), view.getOriginalUrl());
+		}
 	}
 
 	@Override
@@ -75,7 +77,9 @@ public class CustomWebChromeClient extends WebChromeClient {
 	public boolean onCreateWindow(WebView view, final boolean dialog, final boolean userGesture, final Message resultMsg) {
 		WebView.WebViewTransport transport = (WebView.WebViewTransport) resultMsg.obj;
 		
-		mUIManager.addTab(false);
+		CustomWebView curentWebView = mUIManager.getCurrentWebView();
+		
+		mUIManager.addTab(false, curentWebView.isPrivateBrowsingEnabled());
 		
 		transport.setWebView(mUIManager.getCurrentWebView());
 		resultMsg.sendToTarget();

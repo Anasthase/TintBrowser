@@ -89,6 +89,8 @@ public class TabletUrlBar extends LinearLayout implements UrlBar {
 		
 		mUrl = (AutoCompleteTextView) v.findViewById(R.id.UrlBarUrlEdit);
 		
+		mUrl.setCompoundDrawablePadding(5);
+		
 		mBack = (ImageView) v.findViewById(R.id.UrlBarGoBack);
 		mBack.setEnabled(false);
 		
@@ -238,6 +240,14 @@ public class TabletUrlBar extends LinearLayout implements UrlBar {
 	
 	public void setEventListener(OnTabletUrlBarEventListener listener) {
 		mEventListener = listener;
+	}
+	
+	public void setPrivateBrowsingIndicator(boolean value) {
+		if (value) {
+			mUrl.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_incognito_holo_dark, 0, 0, 0);
+		} else {
+			mUrl.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+		}
 	}
 	
 	private void triggerOnUrlValidated() {

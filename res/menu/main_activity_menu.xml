@@ -27,6 +27,11 @@
 	    android:title="@string/Bookmarks"
 	    android:icon="@drawable/ic_bookmarks"/>
     
+    <item
+	    android:id="@+id/MainActivity.MenuNewIncognitoTab"
+	    android:title="@string/NewIncognitoTab"
+	    android:icon="@drawable/ic_bookmarks"/>
+    
     <group android:id="@+id/MainActivity.DisabledOnStartPageMenuGroup">
     	<item
     	    android:id="@+id/MainActivity.MenuSharePage"

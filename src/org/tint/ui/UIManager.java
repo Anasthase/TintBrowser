@@ -40,9 +40,9 @@ public interface UIManager extends OnTouchListener {
 	/**
 	 * Browser management.	
 	 */
-	void addTab(String url);
+	void addTab(String url, boolean privateBrowsing);
 	
-	void addTab(boolean loadHomePage);
+	void addTab(boolean loadHomePage, boolean privateBrowsing);
 	
 	void closeCurrentTab();
 	

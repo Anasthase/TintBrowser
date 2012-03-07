@@ -162,7 +162,7 @@ public class TabletUIManager extends BaseUIManager {
 	}
 
 	@Override
-	public void addTab(String url) {
+	public void addTab(String url, boolean privateBrowsing) {
 		Tab tab = mActionBar.newTab();
 		tab.setText(R.string.NewTab);
 		
@@ -170,6 +170,7 @@ public class TabletUIManager extends BaseUIManager {
 		
 		fragment.setWebViewFragmentListener(this);
 		fragment.requestUrlToLoadWhenReady(url);
+		fragment.setPrivateBrowsing(privateBrowsing);
 		
 		tab.setTabListener(new WebViewFragmentTabListener(this, fragment));
 		
@@ -385,26 +386,26 @@ public class TabletUIManager extends BaseUIManager {
 	private void updateUrlBar() {
 		CustomWebView currentWebView;
 		BaseWebViewFragment currentFragment = getCurrentWebViewFragment();
-		
+
 		if ((currentFragment != null) &&
 				(currentFragment.isStartPageShown())) {
-			currentWebView = null;			
+			currentWebView = null;
 		} else {
 			currentWebView = getCurrentWebView();
 		}
-		
+
 		if (currentWebView != null) {
 			String url = currentWebView.getUrl();
-			
+
 			if ((url != null) &&
-					(!url.isEmpty())) {				
+					(!url.isEmpty())) {
 				mUrlBar.setUrl(url);
 			} else {
 				mUrlBar.setUrl(null);
 			}
-			
+
 			setApplicationButtonImage(currentWebView.getFavicon());
-			
+
 			if (currentWebView.isLoading()) {
 				mUrlBar.setGoStopReloadImage(R.drawable.ic_stop);
 				mProgressBar.setVisibility(View.VISIBLE);
@@ -412,15 +413,17 @@ public class TabletUIManager extends BaseUIManager {
 				mUrlBar.setGoStopReloadImage(R.drawable.ic_refresh);
 				mProgressBar.setVisibility(View.GONE);
 			}
-			
+
 			updateBackForwardEnabled();
 		} else {
 			mUrlBar.setUrl(null);
 			mUrlBar.setBackEnabled(false);
 			mUrlBar.setForwardEnabled(false);
-			
+
 			mActionBar.setIcon(R.drawable.ic_launcher);
 		}
+		
+		mUrlBar.setPrivateBrowsingIndicator(currentFragment != null ? currentFragment.isPrivateBrowsingEnabled() : false);
 	}
 	
 	private void updateBackForwardEnabled() {

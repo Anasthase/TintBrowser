@@ -17,11 +17,11 @@ package org.tint.ui.fragments;
 
 import java.util.UUID;
 
-import org.tint.R;
 import org.tint.ui.UIManager;
 import org.tint.ui.components.CustomWebChromeClient;
 import org.tint.ui.components.CustomWebView;
 import org.tint.ui.components.CustomWebViewClient;
+
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.ViewGroup;
@@ -39,6 +39,8 @@ public abstract class BaseWebViewFragment extends Fragment {
 	protected ViewGroup mParentView;
 	protected CustomWebView mWebView;
 	
+	protected boolean mPrivateBrowsing;
+	
 	protected UUID mUUID;
 	
 	protected String mUrlToLoadWhenReady = null;
@@ -52,6 +54,7 @@ public abstract class BaseWebViewFragment extends Fragment {
 	
 	protected BaseWebViewFragment() {
 		mUUID = UUID.randomUUID();
+		mPrivateBrowsing = false;
 	}
 	
 	@Override
@@ -70,14 +73,7 @@ public abstract class BaseWebViewFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
-		mWebView = (CustomWebView) mParentView.findViewById(R.id.WebView);
-
-		mWebView.setParentFragment(this);
-		
-		mWebView.setWebChromeClient(new CustomWebChromeClient(mUIManager));
-		mWebView.setWebViewClient(new CustomWebViewClient(mUIManager));
-		
-		mWebView.setOnTouchListener(mUIManager);
+		createWebView();
 	}
 	
 	@Override
@@ -108,26 +104,20 @@ public abstract class BaseWebViewFragment extends Fragment {
 	public void resetWebView() {
 		mParentView.removeView(mWebView);
 		
-		mWebView = new CustomWebView(getActivity());
-		
-		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-		mWebView.setLayoutParams(params);
-		
-		mWebView.setId(R.id.WebView);
-		
-		mWebView.setParentFragment(this);
-		
-		mWebView.setWebChromeClient(new CustomWebChromeClient(mUIManager));
-		mWebView.setWebViewClient(new CustomWebViewClient(mUIManager));
-		
-		mWebView.setOnTouchListener(mUIManager);
-		
-		mParentView.addView(mWebView);
+		createWebView();
 	}
 	
 	public void requestUrlToLoadWhenReady(String url) {
 		mUrlToLoadWhenReady = url;
-	}	
+	}
+	
+	public void setPrivateBrowsing(boolean privateBrowsing) {
+		mPrivateBrowsing = privateBrowsing;
+	}
+	
+	public boolean isPrivateBrowsingEnabled() {
+		return mPrivateBrowsing;
+	}
 	
 	public boolean isStartPageShown() {
 		return mIsStartPageShown;
@@ -139,6 +129,22 @@ public abstract class BaseWebViewFragment extends Fragment {
 	
 	public void setWebViewFragmentListener(WebViewFragmentListener listener) {
 		mWebViewFragmentListener = listener;
+	}
+	
+	private void createWebView() {
+		mWebView = new CustomWebView(getActivity(), mPrivateBrowsing);
+		
+		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		mWebView.setLayoutParams(params);
+		
+		mWebView.setParentFragment(this);
+		
+		mWebView.setWebChromeClient(new CustomWebChromeClient(mUIManager));
+		mWebView.setWebViewClient(new CustomWebViewClient(mUIManager));
+		
+		mWebView.setOnTouchListener(mUIManager);
+		
+		mParentView.addView(mWebView);
 	}
 
 }

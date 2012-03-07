@@ -31,6 +31,7 @@ public class Constants {
 	public static final String EXTRA_LABEL = "EXTRA_LABEL";
 	public static final String EXTRA_URL = "EXTRA_URL";
 	public static final String EXTRA_HIT_TEST_RESULT = "EXTRA_HIT_TEST_RESULT";
+	public static final String EXTRA_INCOGNITO = "EXTRA_INCOGNITO";
 	
 	/**
 	 * Specials urls.

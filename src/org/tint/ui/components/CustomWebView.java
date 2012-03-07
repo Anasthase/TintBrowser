@@ -52,12 +52,12 @@ public class CustomWebView extends WebView implements DownloadListener {
 
 	private boolean mIsLoading = false;
 	
-	public CustomWebView(Context context) {
-		this(context, null);
+	public CustomWebView(Context context, boolean privateBrowsing) {
+		this(context, null, privateBrowsing);
 	}
 	
-	public CustomWebView(Context context, AttributeSet attrs) {
-		super(context, attrs);
+	public CustomWebView(Context context, AttributeSet attrs, boolean privateBrowsing) {
+		super(context, attrs, android.R.attr.webViewStyle, privateBrowsing);
 		
 		mContext = context;
 		
@@ -180,6 +180,7 @@ public class CustomWebView extends WebView implements DownloadListener {
 		result.putExtra(Constants.EXTRA_ACTION_ID, actionId);
 		result.putExtra(Constants.EXTRA_HIT_TEST_RESULT, hitTestResult);
 		result.putExtra(Constants.EXTRA_URL, url);
+		result.putExtra(Constants.EXTRA_INCOGNITO, isPrivateBrowsingEnabled());
 		
 		return result;
 	}

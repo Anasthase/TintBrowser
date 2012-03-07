@@ -117,7 +117,7 @@ public class PhoneUIManager extends BaseUIManager {
 	}
 
 	@Override
-	public void addTab(String url) {
+	public void addTab(String url, boolean privateBrowsing) {
 		int previousIndex = mCurrentTabIndex;
 		
 		FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
@@ -125,6 +125,7 @@ public class PhoneUIManager extends BaseUIManager {
 		
 		fragment.setWebViewFragmentListener(this);
 		fragment.requestUrlToLoadWhenReady(url);
+		fragment.setPrivateBrowsing(privateBrowsing);
 		
 		fragmentTransaction.add(R.id.WebViewContainer, fragment);
 		fragmentTransaction.commit();
@@ -472,7 +473,7 @@ public class PhoneUIManager extends BaseUIManager {
         mAddTab.setOnClickListener(new OnClickListener() {			
 			@Override
 			public void onClick(View arg0) {
-				addTab(true);
+				addTab(true, false);
 			}
 		});
         
@@ -694,6 +695,8 @@ public class PhoneUIManager extends BaseUIManager {
 			mBack.setEnabled(false);
 			mForward.setEnabled(false);
 		}
+		
+		mUrlBar.setPrivateBrowsingIndicator(currentFragment != null ? currentFragment.isPrivateBrowsingEnabled() : false);
 	}
 	
 	private void updateShowPreviousNextTabButtons() {

@@ -430,5 +430,9 @@
 		<item>http://www.bbc.co.uk/</item>
 		<item>http://www.ebay.com/</item>
 	</string-array>
+	
+    <!-- 1.2 -->
+    <string name="NewIncognitoTab">New incognito tab</string>
+    <string name="ContentDescriptionPrivateBrowsingIndicator">Private browsing indicator</string>
 
 </resources>

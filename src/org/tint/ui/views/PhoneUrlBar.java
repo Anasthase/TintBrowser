@@ -71,8 +71,9 @@ public class PhoneUrlBar extends LinearLayout implements UrlBar {
 	
 	private AutoCompleteTextView mUrl;
 	
-	private ImageView mGoStopReload;
+	private ImageView mPrivateBrowsing;
 	
+	private ImageView mGoStopReload;	
 	private ImageView mMenuButton;
 	
 	private TextWatcher mUrlTextWatcher;
@@ -101,6 +102,8 @@ public class PhoneUrlBar extends LinearLayout implements UrlBar {
 		
 		LayoutInflater layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View v = layoutInflater.inflate(R.layout.phone_url_bar, this);
+		
+		mPrivateBrowsing = (ImageView) v.findViewById(R.id.ImagePrivateBrowsing);
 		
 		mTitleLayout = (LinearLayout) v.findViewById(R.id.UrlBarTitleLayout);
 		mUrlLayout = (LinearLayout) v.findViewById(R.id.UrlBarUrlLayout);
@@ -372,6 +375,14 @@ public class PhoneUrlBar extends LinearLayout implements UrlBar {
 	
 	public boolean isMenuShowing() {
 		return mOverflowMenuShowing;
+	}
+	
+	public void setPrivateBrowsingIndicator(boolean value) {
+		if (value) {
+			mPrivateBrowsing.setVisibility(View.VISIBLE);
+		} else {
+			mPrivateBrowsing.setVisibility(View.GONE);
+		}
 	}
 	
 	private void triggerOnUrlBarVisibilityChanged() {

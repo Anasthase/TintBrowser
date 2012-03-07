@@ -212,7 +212,7 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 		
 	    switch (item.getItemId()) { 
 	        case R.id.MainActivity_MenuAddTab:
-	        	mUIManager.addTab(true);
+	        	mUIManager.addTab(true, false);
 	        	return true;
 	        	
 	        case R.id.MainActivity_MenuCloseTab:
@@ -225,6 +225,10 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 	        	
 	        case R.id.MainActivity_MenuBookmarks:
 	        	mUIManager.openBookmarksActivityForResult();
+	        	return true;
+	        	
+	        case R.id.MainActivity_MenuNewIncognitoTab:
+	        	mUIManager.addTab(true, true);
 	        	return true;
 	        	
 	        case R.id.MainActivity_MenuSharePage:
@@ -262,7 +266,7 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
             		Bundle b = intent.getExtras();
             		if (b != null) {
             			if (b.getBoolean(Constants.EXTRA_NEW_TAB)) {
-            				mUIManager.addTab(false);
+            				mUIManager.addTab(false, false);
             			}
             			
             			mUIManager.loadUrl(b.getString(Constants.EXTRA_URL));

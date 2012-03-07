@@ -130,11 +130,13 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 	}
 	
 	@Override
-	public void addTab(boolean loadHomePage) {
+	public void addTab(boolean loadHomePage, boolean privateBrowsing) {
 		if (loadHomePage) {
-			addTab(PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_HOME_PAGE, Constants.URL_ABOUT_START));
+			addTab(
+					PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_HOME_PAGE, Constants.URL_ABOUT_START),
+					privateBrowsing);
 		} else {
-			addTab(null);
+			addTab(null, privateBrowsing);
 		}
 	}
 	
@@ -266,7 +268,7 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 				
 				if (!TextUtils.isEmpty(url)) {
 					if (!isCurrentTabReusable()) {
-						addTab(url);
+						addTab(url, false);
 					} else {
 						loadUrl(url);
 					}					
@@ -274,7 +276,7 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 					// We do not have an url. Open a new tab if there is no tab currently opened,
 					// else do nothing.
 					if (getTabCount() <= 0) {
-						addTab(true);
+						addTab(true, false);
 					}
 				}
 			} else if (Constants.ACTION_BROWSER_CONTEXT_MENU.equals(intent.getAction())) {
@@ -292,9 +294,9 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 					case TintBrowserActivity.CONTEXT_MENU_OPEN_IN_NEW_TAB:
 						
 						if (HitTestResult.SRC_IMAGE_ANCHOR_TYPE == intent.getIntExtra(Constants.EXTRA_HIT_TEST_RESULT, -1)) {
-							requestHrefNode(TintBrowserActivity.CONTEXT_MENU_OPEN_IN_NEW_TAB);
+							requestHrefNode(TintBrowserActivity.CONTEXT_MENU_OPEN_IN_NEW_TAB, intent.getBooleanExtra(Constants.EXTRA_INCOGNITO, false));
 						} else {						
-							addTab(intent.getStringExtra(Constants.EXTRA_URL));
+							addTab(intent.getStringExtra(Constants.EXTRA_URL), intent.getBooleanExtra(Constants.EXTRA_INCOGNITO, false));
 						}
 						break;
 					case TintBrowserActivity.CONTEXT_MENU_COPY:
@@ -341,7 +343,7 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 				}
 			}
 		} else {
-			addTab(true);
+			addTab(true, false);
 		}
 	}
 	
@@ -500,7 +502,7 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
                     	break;
                     
 					case TintBrowserActivity.CONTEXT_MENU_OPEN_IN_NEW_TAB:
-						addTab(url);
+						addTab(url, msg.arg2 > 0 ? true : false);
 						break;
 						
 					case TintBrowserActivity.CONTEXT_MENU_COPY:
@@ -541,6 +543,10 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 	}
 	
 	private void requestHrefNode(int action) {
+		requestHrefNode(action, false);
+	}
+	
+	private void requestHrefNode(int action, boolean incognito) {
 		final HashMap<String, WebView> hrefMap = new HashMap<String, WebView>();
 		WebView webView = getCurrentWebView();
 		hrefMap.put("webview", webView);
@@ -548,7 +554,7 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 		final Message msg = mHandler.obtainMessage(
                 FOCUS_NODE_HREF,
                 action,
-                0,
+                incognito ? 1 : 0,
                 hrefMap);
 		
 		webView.requestFocusNodeHref(msg);
