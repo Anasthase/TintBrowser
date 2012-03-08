@@ -16,35 +16,19 @@
 package org.tint.ui.fragments;
 
 import org.tint.R;
-import org.tint.ui.UIManagerProvider;
-import android.app.Activity;
+
 import android.app.ActionBar.Tab;
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.WebView;
 
-public class TabletWebViewFragment extends BaseWebViewFragment {
+public class TabletWebViewFragment extends PhoneWebViewFragment {
 	
 	private static final int TAB_TITLE_LENGTH = 30;
-		
-	private Tab mTab;
 	
-	private boolean mInitialized;
+	private Tab mTab;
 	
 	public TabletWebViewFragment() {	
 		super();
-		
-		mUIManager = null;
-		mTab = null;		
-		mParentView = null;
-		mWebView = null;
-		
-		mUrlToLoadWhenReady = null;
-		mInitialized = false;
 	}
 	
 	public void onTabSelected(Tab tab) {
@@ -57,41 +41,6 @@ public class TabletWebViewFragment extends BaseWebViewFragment {
 	
 	public Tab getTab() {
 		return mTab;
-	}
-	
-	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		
-		if (!mInitialized) {
-			try {
-				mUIManager = ((UIManagerProvider) activity).getUIManager();
-			} catch (ClassCastException e) {
-				Log.e("TabletWebViewFragment.onAttach()", e.getMessage());
-			}
-			
-			mInitialized = true;
-		}
-	}
-
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-		
-		if (mWebViewFragmentListener != null) {
-			mWebViewFragmentListener.onFragmentReady(this, mUrlToLoadWhenReady);
-		}
-		
-		mUrlToLoadWhenReady = null;
-	}
-	
-	@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		if (mParentView == null) {
-			mParentView = (ViewGroup) inflater.inflate(R.layout.webview_container_fragment, container, false);
-		}
-		
-		return mParentView;
 	}
 	
 	public void onReceivedTitle(WebView view, String title) {

@@ -123,9 +123,11 @@ public class PhoneUIManager extends BaseUIManager {
 		FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
 		PhoneWebViewFragment fragment = new PhoneWebViewFragment();
 		
-		fragment.setWebViewFragmentListener(this);
-		fragment.requestUrlToLoadWhenReady(url);
-		fragment.setPrivateBrowsing(privateBrowsing);
+//		fragment.setWebViewFragmentListener(this);
+//		fragment.requestUrlToLoadWhenReady(url);
+//		fragment.setPrivateBrowsing(privateBrowsing);
+		
+		fragment.init(this, privateBrowsing, url);
 		
 		fragmentTransaction.add(R.id.WebViewContainer, fragment);
 		fragmentTransaction.commit();

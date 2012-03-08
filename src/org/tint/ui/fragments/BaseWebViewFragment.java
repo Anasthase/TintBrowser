@@ -26,14 +26,10 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
 
 public abstract class BaseWebViewFragment extends Fragment {
 	
-	public interface WebViewFragmentListener {
-		void onFragmentReady(BaseWebViewFragment fragment, String urlToLoadWhenReady);
-	}
+	protected UUID mUUID;
 	
 	protected UIManager mUIManager;
 	protected ViewGroup mParentView;
@@ -41,82 +37,46 @@ public abstract class BaseWebViewFragment extends Fragment {
 	
 	protected boolean mPrivateBrowsing;
 	
-	protected UUID mUUID;
+	private boolean mIsStartPageShown;
+	private boolean mWebViewAddedToParent;
 	
-	protected String mUrlToLoadWhenReady = null;
-	
-	protected WebViewFragmentListener mWebViewFragmentListener = null;
-	
-	private Animation mShowAnimation;
-	private Animation mHideAnimation;
-	
-	private boolean mIsStartPageShown = false;
+	private String mUrlToLoad;
 	
 	protected BaseWebViewFragment() {
 		mUUID = UUID.randomUUID();
 		mPrivateBrowsing = false;
+		mIsStartPageShown = false;
 	}
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setRetainInstance(true);
-		
-		mShowAnimation = new AlphaAnimation(0, 1);
-		mShowAnimation.setDuration(250);
-		
-		mHideAnimation = new AlphaAnimation(1, 0);
-		mHideAnimation.setDuration(250);
-	}
-
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-		
-		createWebView();
 	}
 	
-	@Override
-	public void onPause() {
-		mWebView.onPause();
-		super.onPause();
+	public void init(UIManager uiManager, boolean privateBrowsing, String urlToLoad) {
+		mUIManager = uiManager;
+		mPrivateBrowsing = privateBrowsing;
+		
+		mUrlToLoad = urlToLoad;
+		
+		createWebView(false);
 	}
 	
-	@Override
-	public void onResume() {
-		mWebView.onResume();
-		super.onResume();
+	public void resetWebView() {
+		if (mWebViewAddedToParent) {
+			mParentView.removeView(mWebView);
+		}
+		
+		createWebView(true);
 	}
 	
 	public UUID getUUID() {
 		return mUUID;
 	}
-
+	
 	public CustomWebView getWebView() {
-		if (mWebView == null) {
-			// Force fragment creation if we do not have the WebView yet.
-			this.getFragmentManager().executePendingTransactions();
-		}
-		
 		return mWebView;
-	}
-	
-	public void resetWebView() {
-		mParentView.removeView(mWebView);
-		
-		createWebView();
-	}
-	
-	public void requestUrlToLoadWhenReady(String url) {
-		mUrlToLoadWhenReady = url;
-	}
-	
-	public void setPrivateBrowsing(boolean privateBrowsing) {
-		mPrivateBrowsing = privateBrowsing;
-	}
-	
-	public boolean isPrivateBrowsingEnabled() {
-		return mPrivateBrowsing;
 	}
 	
 	public boolean isStartPageShown() {
@@ -127,12 +87,28 @@ public abstract class BaseWebViewFragment extends Fragment {
 		mIsStartPageShown = value;
 	}
 	
-	public void setWebViewFragmentListener(WebViewFragmentListener listener) {
-		mWebViewFragmentListener = listener;
+	public boolean isPrivateBrowsingEnabled() {
+		return mPrivateBrowsing;
 	}
 	
-	private void createWebView() {
-		mWebView = new CustomWebView(getActivity(), mPrivateBrowsing);
+	public void setPrivateBrowsing(boolean privateBrowsing) {
+		mPrivateBrowsing = privateBrowsing;
+	}
+	
+	protected void onViewCreated() {
+		if (!mWebViewAddedToParent) {
+			mParentView.addView(mWebView);
+			mWebViewAddedToParent = true;
+		}
+		
+		if (mUrlToLoad != null) {
+			mUIManager.loadUrl(this, mUrlToLoad);
+			mUrlToLoad = null;
+		}
+	}
+	
+	private void createWebView(boolean addToParent) {
+		mWebView = new CustomWebView(mUIManager.getMainActivity(), mPrivateBrowsing);
 		
 		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 		mWebView.setLayoutParams(params);
@@ -142,9 +118,15 @@ public abstract class BaseWebViewFragment extends Fragment {
 		mWebView.setWebChromeClient(new CustomWebChromeClient(mUIManager));
 		mWebView.setWebViewClient(new CustomWebViewClient(mUIManager));
 		
-		mWebView.setOnTouchListener(mUIManager);
+		mWebView.setOnTouchListener(mUIManager);		
 		
-		mParentView.addView(mWebView);
+		if ((addToParent) &&
+				(mParentView != null)) {
+			mParentView.addView(mWebView);
+			mWebViewAddedToParent = true;
+		} else {
+			mWebViewAddedToParent = false;
+		}
 	}
 
 }

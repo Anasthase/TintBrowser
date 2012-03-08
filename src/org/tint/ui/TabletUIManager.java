@@ -169,9 +169,11 @@ public class TabletUIManager extends BaseUIManager {
 		
 		TabletWebViewFragment fragment = new TabletWebViewFragment();
 		
-		fragment.setWebViewFragmentListener(this);
-		fragment.requestUrlToLoadWhenReady(url);
-		fragment.setPrivateBrowsing(privateBrowsing);
+//		fragment.setWebViewFragmentListener(this);
+//		fragment.requestUrlToLoadWhenReady(url);
+//		fragment.setPrivateBrowsing(privateBrowsing);
+		
+		fragment.init(this, privateBrowsing, url);
 		
 		tab.setTabListener(new WebViewFragmentTabListener(this, fragment));
 		

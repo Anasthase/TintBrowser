@@ -56,6 +56,8 @@ public interface UIManager extends OnTouchListener {
 	
 	void loadRawUrl(UUID tabId, String url, boolean loadInCurrentTabIfNotFound);
 	
+	void loadUrl(BaseWebViewFragment webViewFragment, String url);
+	
 	void loadCurrentUrl();
 	
 	void loadHomePage();

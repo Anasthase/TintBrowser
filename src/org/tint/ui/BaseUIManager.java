@@ -29,7 +29,6 @@ import org.tint.ui.components.CustomWebView;
 import org.tint.ui.dialogs.GeolocationPermissionsDialog;
 import org.tint.ui.fragments.BaseWebViewFragment;
 import org.tint.ui.fragments.StartPageFragment;
-import org.tint.ui.fragments.BaseWebViewFragment.WebViewFragmentListener;
 import org.tint.utils.ApplicationUtils;
 import org.tint.utils.Constants;
 import org.tint.utils.UrlUtils;
@@ -61,7 +60,7 @@ import android.webkit.WebView.HitTestResult;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-public abstract class BaseUIManager implements UIManager, WebViewFragmentListener {
+public abstract class BaseUIManager implements UIManager {//, WebViewFragmentListener {
 	
 	protected static final FrameLayout.LayoutParams COVER_SCREEN_PARAMS =
 	        new FrameLayout.LayoutParams(
@@ -455,19 +454,20 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 		}
 	}
 	
-	@Override
-	public void onFragmentReady(BaseWebViewFragment fragment, String urlToLoadWhenReady) {
-		CustomWebView webView = fragment.getWebView();
-		if (!webView.isPrivateBrowsingEnabled()) {
-			Controller.getInstance().getAddonManager().onTabOpened(mActivity, webView);
-		}
-		
-		if (urlToLoadWhenReady != null) {
-			loadUrl(urlToLoadWhenReady);
-		}
-	}	
+//	@Override
+//	public void onFragmentReady(BaseWebViewFragment fragment, String urlToLoadWhenReady) {
+//		CustomWebView webView = fragment.getWebView();
+//		if (!webView.isPrivateBrowsingEnabled()) {
+//			Controller.getInstance().getAddonManager().onTabOpened(mActivity, webView);
+//		}
+//		
+//		if (urlToLoadWhenReady != null) {
+//			loadUrl(urlToLoadWhenReady);
+//		}
+//	}	
 	
-	private void loadUrl(BaseWebViewFragment webViewFragment, String url) {
+	@Override
+	public void loadUrl(BaseWebViewFragment webViewFragment, String url) {
 		if ((url != null) &&
     			(url.length() > 0)) {
 			
