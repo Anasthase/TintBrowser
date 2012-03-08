@@ -77,7 +77,8 @@ public class TabletUIManager extends BaseUIManager {
 		updateUrlBar();
 		
 		CustomWebView webView = getCurrentWebView();
-		if (webView != null) {
+		if ((webView != null) &&
+				(!webView.isPrivateBrowsingEnabled())) {
 			Controller.getInstance().getAddonManager().onTabSwitched(mActivity, webView);
 		}
 	}
@@ -351,30 +352,39 @@ public class TabletUIManager extends BaseUIManager {
 		
 		if ((webViewFragment != null) &&
 				(webViewFragment.isStartPageShown())) {
-		
+
 			webViewFragment.setStartPageShown(false);
-			
+
 			if (webViewFragment == getCurrentWebViewFragment()) {				
 
 				FragmentTransaction ft = mFragmentManager.beginTransaction();
-				
+
 				ft.hide(mStartPageFragment);
 				ft.show(webViewFragment);
 
 				ft.commit();
 
 				onHideStartPage();
+			}
 		}
-		}
+	}
+	
+	@Override
+	protected void resetUI() {
+		updateUrlBar();		
 	}
 	
 	private void closeTabByTab(Tab tab) {
 		TabletWebViewFragment oldFragment = mTabs.get(tab);
 		
 		if (oldFragment != null) {
-			Controller.getInstance().getAddonManager().onTabClosed(mActivity, oldFragment.getWebView());
+			CustomWebView webView = oldFragment.getWebView();
+			
+			if (!webView.isPrivateBrowsingEnabled()) {
+				Controller.getInstance().getAddonManager().onTabClosed(mActivity, webView);
+			}
 
-			oldFragment.getWebView().onPause();
+			webView.onPause();
 			
 			mTabs.remove(tab);
 			mFragmentsMap.remove(oldFragment.getUUID());

@@ -432,7 +432,7 @@
 	</string-array>
 	
     <!-- 1.2 -->
-    <string name="NewIncognitoTab">Nouvel onglet navig. privée</string>
+    <string name="IncognitoTab">Onglet incognito</string>
     <string name="ContentDescriptionPrivateBrowsingIndicator">Indicateur de navigation privée</string>
 
 </resources>

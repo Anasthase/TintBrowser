@@ -47,6 +47,8 @@ public interface UIManager extends OnTouchListener {
 	void closeCurrentTab();
 	
 	void closeTab(UUID tabId);
+	
+	void togglePrivateBrowsing();
 
 	void loadUrl(String url);
 	

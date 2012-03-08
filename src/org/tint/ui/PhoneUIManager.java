@@ -636,6 +636,11 @@ public class PhoneUIManager extends BaseUIManager {
 		}
 	}
 	
+	@Override
+	protected void resetUI() {
+		updateUrlBar();		
+	}
+	
 	private void updateUrlBar() {
 		CustomWebView currentWebView;
 		BaseWebViewFragment currentFragment = getCurrentWebViewFragment();
@@ -726,9 +731,13 @@ public class PhoneUIManager extends BaseUIManager {
 		FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
 		PhoneWebViewFragment fragment = mFragmentsList.get(index);
 		
-		Controller.getInstance().getAddonManager().onTabClosed(mActivity, fragment.getWebView());
+		CustomWebView webView = fragment.getWebView();
 		
-		fragment.getWebView().onPause();
+		if (!webView.isPrivateBrowsingEnabled()) {
+			Controller.getInstance().getAddonManager().onTabClosed(mActivity, webView);
+		}
+		
+		webView.onPause();
 		
 		if (fragment.isStartPageShown()) {
 			fragmentTransaction.hide(mStartPageFragment);
@@ -800,7 +809,11 @@ public class PhoneUIManager extends BaseUIManager {
 		updateUrlBar();
 		
 		if (notifyTabSwitched) {
-			Controller.getInstance().getAddonManager().onTabSwitched(mActivity, getCurrentWebView());
+			CustomWebView webView = getCurrentWebView();
+			
+			if (!webView.isPrivateBrowsingEnabled()) {
+				Controller.getInstance().getAddonManager().onTabSwitched(mActivity, webView);
+			}
 		}
 	}
 	

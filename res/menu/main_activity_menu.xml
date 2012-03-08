@@ -28,9 +28,10 @@
 	    android:icon="@drawable/ic_bookmarks"/>
     
     <item
-	    android:id="@+id/MainActivity.MenuNewIncognitoTab"
-	    android:title="@string/NewIncognitoTab"
-	    android:icon="@drawable/ic_bookmarks"/>
+	    android:id="@+id/MainActivity.MenuIncognitoTab"
+	    android:title="@string/IncognitoTab"
+	    android:icon="@drawable/ic_incognito_holo_dark" 
+	    android:checkable="true" />
     
     <group android:id="@+id/MainActivity.DisabledOnStartPageMenuGroup">
     	<item

@@ -86,13 +86,17 @@ public class CustomWebView extends WebView implements DownloadListener {
 	public void onClientPageStarted(String url) {
 		mIsLoading = true;
 		
-		Controller.getInstance().getAddonManager().onPageStarted(mContext, this, url);
+		if (!isPrivateBrowsingEnabled()) {
+			Controller.getInstance().getAddonManager().onPageStarted(mContext, this, url);
+		}
 	}
 	
 	public void onClientPageFinished(String url) {
 		mIsLoading = false;
 		
-		Controller.getInstance().getAddonManager().onPageFinished(mContext, this, url);
+		if (!isPrivateBrowsingEnabled()) {
+			Controller.getInstance().getAddonManager().onPageFinished(mContext, this, url);
+		}
 	}
 	
 	public void loadSettings() {
@@ -186,12 +190,14 @@ public class CustomWebView extends WebView implements DownloadListener {
 	}
 	
 	private void createContributedContextMenu(ContextMenu menu, int hitTestResult, String url) {
-		MenuItem item;
-		
-		List<AddonMenuItem> contributedItems = Controller.getInstance().getAddonManager().getContributedLinkContextMenuItems(this, hitTestResult, url);
-		for (AddonMenuItem contribution : contributedItems) {
-			item = menu.add(0, contribution.getAddon().getMenuId(), 0, contribution.getMenuItem());
-			item.setIntent(createIntent(Constants.ACTION_BROWSER_CONTEXT_MENU, contribution.getAddon().getMenuId(), hitTestResult, url));
+		if (!isPrivateBrowsingEnabled()) {
+			MenuItem item;
+
+			List<AddonMenuItem> contributedItems = Controller.getInstance().getAddonManager().getContributedLinkContextMenuItems(this, hitTestResult, url);
+			for (AddonMenuItem contribution : contributedItems) {
+				item = menu.add(0, contribution.getAddon().getMenuId(), 0, contribution.getMenuItem());
+				item.setIntent(createIntent(Constants.ACTION_BROWSER_CONTEXT_MENU, contribution.getAddon().getMenuId(), hitTestResult, url));
+			}
 		}
 	}
 	

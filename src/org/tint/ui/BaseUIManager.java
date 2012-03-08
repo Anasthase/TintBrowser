@@ -114,6 +114,8 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 	
 	protected abstract void hideStartPage(BaseWebViewFragment webViewFragment);
 	
+	protected abstract void resetUI();
+	
 	protected void setApplicationButtonImage(Bitmap icon) {
 		BitmapDrawable image = ApplicationUtils.getApplicationButtonImage(mActivity, icon);
 		
@@ -137,6 +139,21 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 					privateBrowsing);
 		} else {
 			addTab(null, privateBrowsing);
+		}
+	}
+	
+	@Override
+	public void togglePrivateBrowsing() {
+		BaseWebViewFragment fragment = getCurrentWebViewFragment();
+		if (fragment != null) {
+			CustomWebView webView = fragment.getWebView();
+			String currentUrl = webView.getUrl();
+			
+			fragment.setPrivateBrowsing(!webView.isPrivateBrowsingEnabled());			
+			fragment.resetWebView();
+			
+			resetUI();
+			loadUrl(currentUrl);
 		}
 	}
 	
@@ -440,7 +457,10 @@ public abstract class BaseUIManager implements UIManager, WebViewFragmentListene
 	
 	@Override
 	public void onFragmentReady(BaseWebViewFragment fragment, String urlToLoadWhenReady) {
-		Controller.getInstance().getAddonManager().onTabOpened(mActivity, fragment.getWebView());
+		CustomWebView webView = fragment.getWebView();
+		if (!webView.isPrivateBrowsingEnabled()) {
+			Controller.getInstance().getAddonManager().onTabOpened(mActivity, webView);
+		}
 		
 		if (urlToLoadWhenReady != null) {
 			loadUrl(urlToLoadWhenReady);

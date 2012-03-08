@@ -196,11 +196,17 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 				R.id.MainActivity_DisabledOnStartPageMenuGroup,
 				!mUIManager.getCurrentWebViewFragment().isStartPageShown());
 		
+		boolean privateBrowsing = mUIManager.getCurrentWebView().isPrivateBrowsingEnabled();
+		
+		menu.findItem(R.id.MainActivity_MenuIncognitoTab).setChecked(privateBrowsing);
+		
 		menu.removeGroup(R.id.MainActivity_AddonsMenuGroup);
 		
-		List<AddonMenuItem> contributedMenuItems = Controller.getInstance().getAddonManager().getContributedMainMenuItems(mUIManager.getCurrentWebView());
-		for (AddonMenuItem item : contributedMenuItems) {
-			menu.add(R.id.MainActivity_AddonsMenuGroup, item.getAddon().getMenuId(), 0, item.getMenuItem());
+		if (!privateBrowsing) {
+			List<AddonMenuItem> contributedMenuItems = Controller.getInstance().getAddonManager().getContributedMainMenuItems(mUIManager.getCurrentWebView());
+			for (AddonMenuItem item : contributedMenuItems) {
+				menu.add(R.id.MainActivity_AddonsMenuGroup, item.getAddon().getMenuId(), 0, item.getMenuItem());
+			}
 		}
 		
 		return true;
@@ -227,8 +233,8 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 	        	mUIManager.openBookmarksActivityForResult();
 	        	return true;
 	        	
-	        case R.id.MainActivity_MenuNewIncognitoTab:
-	        	mUIManager.addTab(true, true);
+	        case R.id.MainActivity_MenuIncognitoTab:
+	        	mUIManager.togglePrivateBrowsing();
 	        	return true;
 	        	
 	        case R.id.MainActivity_MenuSharePage:

@@ -432,7 +432,7 @@
 	</string-array>
 	
     <!-- 1.2 -->
-    <string name="NewIncognitoTab">New incognito tab</string>
+    <string name="IncognitoTab">Incognito tab</string>
     <string name="ContentDescriptionPrivateBrowsingIndicator">Private browsing indicator</string>
 
 </resources>
