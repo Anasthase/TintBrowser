@@ -56,7 +56,7 @@
             android:label="@string/ApplicationName"
             android:name=".ui.activities.TintBrowserActivity"
             android:launchMode="singleTask"
-            android:configChanges="keyboardHidden|orientation|screenSize">
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize">
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -76,8 +76,8 @@
         
         <provider android:name=".providers.BookmarksProvider"
             android:authorities="org.tint.providers.bookmarksprovider"
-            android:readPermission="org.tint.providers.bookmarksprovider.READ"
-            android:writePermission="org.tint.providers.bookmarksprovider.WRITE" />                  
+            android:readPermission="org.tint.permissions.bookmarksprovider.READ"
+            android:writePermission="org.tint.permissions.bookmarksprovider.WRITE" />                  
         
     </application>
 

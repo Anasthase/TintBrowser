@@ -352,8 +352,10 @@ public class AddonManager {
 	}
 	
 	private void processOneResponse(Context context, CustomWebView webView, Addon addon, List<Action> response) {
-		for (Action action : response) {
-			processOneAction(context, webView, addon, action);
+		if (response != null) {
+			for (Action action : response) {
+				processOneAction(context, webView, addon, action);
+			}
 		}
 	}
 	
@@ -365,8 +367,10 @@ public class AddonManager {
 	}
 	
 	private void processResponses(Context context, CustomWebView webView, List<AddonResponseWrapper> responses) {
-		for (AddonResponseWrapper response : responses) {
-			processOneResponse(context, webView, response);
+		if (responses != null) {
+			for (AddonResponseWrapper response : responses) {
+				processOneResponse(context, webView, response);
+			}
 		}
 	}
 
