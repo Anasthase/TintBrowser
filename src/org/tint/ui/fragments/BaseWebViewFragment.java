@@ -21,6 +21,7 @@ import org.tint.ui.UIManager;
 import org.tint.ui.components.CustomWebChromeClient;
 import org.tint.ui.components.CustomWebView;
 import org.tint.ui.components.CustomWebViewClient;
+import org.tint.utils.Constants;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -126,6 +127,18 @@ public abstract class BaseWebViewFragment extends Fragment {
 			mWebViewAddedToParent = true;
 		} else {
 			mWebViewAddedToParent = false;
+		}
+		
+		// Little trick here. We must load the url here, in order to
+		// the background loading to work. But if we show the start page
+		// from here, onCreateView() from the inherited class won't be
+		// called (don't know why), and the WebView will never be attached.
+		// So the start page will be loaded when the view has been created,
+		// through onViewCreated().
+		if ((mUrlToLoad != null) &&
+				(!Constants.URL_ABOUT_START.equals(mUrlToLoad))) {
+			mUIManager.loadUrl(this, mUrlToLoad);
+			mUrlToLoad = null;
 		}
 	}
 

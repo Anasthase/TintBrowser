@@ -163,17 +163,13 @@ public class TabletUIManager extends BaseUIManager {
 	}
 
 	@Override
-	public void addTab(String url, boolean privateBrowsing) {
+	public void addTab(String url, boolean openInBackground, boolean privateBrowsing) {
 		Tab tab = mActionBar.newTab();
 		tab.setText(R.string.NewTab);
 		
 		TabletWebViewFragment fragment = new TabletWebViewFragment();
 		
-//		fragment.setWebViewFragmentListener(this);
-//		fragment.requestUrlToLoadWhenReady(url);
-//		fragment.setPrivateBrowsing(privateBrowsing);
-		
-		fragment.init(this, privateBrowsing, url);
+		fragment.init(this, tab, privateBrowsing, url);
 		
 		tab.setTabListener(new WebViewFragmentTabListener(this, fragment));
 		
@@ -181,22 +177,15 @@ public class TabletUIManager extends BaseUIManager {
 		mFragmentsMap.put(fragment.getUUID(), fragment);
 		
 		mActionBar.addTab(tab, mActionBar.getSelectedNavigationIndex() + 1);
-		mActionBar.selectTab(tab);
+		
+		if (!openInBackground) {
+			mActionBar.selectTab(tab);
+		}
 	}
 	
 	@Override
 	public void closeCurrentTab() {
 		if (mActionBar.getTabCount() > 1) {
-//			Tab tab = mActionBar.getSelectedTab();
-//			
-//			TabletWebViewFragment oldFragment = mTabs.get(tab);
-//			
-//			Controller.getInstance().getAddonManager().onTabClosed(mActivity, oldFragment.getWebView());
-//			
-//			mTabs.remove(tab);
-//			mFragmentsMap.remove(oldFragment.getUUID());
-//			
-//			mActionBar.removeTab(tab);
 			closeTabByTab(mActionBar.getSelectedTab());
 		} else {
 			loadHomePage();

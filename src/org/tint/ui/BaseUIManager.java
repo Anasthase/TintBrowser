@@ -135,9 +135,10 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 		if (loadHomePage) {
 			addTab(
 					PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_HOME_PAGE, Constants.URL_ABOUT_START),
+					false,
 					privateBrowsing);
 		} else {
-			addTab(null, privateBrowsing);
+			addTab(null, false, privateBrowsing);
 		}
 	}
 	
@@ -284,7 +285,7 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 				
 				if (!TextUtils.isEmpty(url)) {
 					if (!isCurrentTabReusable()) {
-						addTab(url, false);
+						addTab(url, false, false);
 					} else {
 						loadUrl(url);
 					}					
@@ -307,14 +308,25 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 							loadUrl(intent.getStringExtra(Constants.EXTRA_URL));
 						}
 						break;
+						
 					case TintBrowserActivity.CONTEXT_MENU_OPEN_IN_NEW_TAB:
 						
 						if (HitTestResult.SRC_IMAGE_ANCHOR_TYPE == intent.getIntExtra(Constants.EXTRA_HIT_TEST_RESULT, -1)) {
 							requestHrefNode(TintBrowserActivity.CONTEXT_MENU_OPEN_IN_NEW_TAB, intent.getBooleanExtra(Constants.EXTRA_INCOGNITO, false));
 						} else {						
-							addTab(intent.getStringExtra(Constants.EXTRA_URL), intent.getBooleanExtra(Constants.EXTRA_INCOGNITO, false));
+							addTab(intent.getStringExtra(Constants.EXTRA_URL), false, intent.getBooleanExtra(Constants.EXTRA_INCOGNITO, false));
 						}
 						break;
+						
+					case TintBrowserActivity.CONTEXT_MENU_OPEN_IN_BACKGROUND:
+						
+						if (HitTestResult.SRC_IMAGE_ANCHOR_TYPE == intent.getIntExtra(Constants.EXTRA_HIT_TEST_RESULT, -1)) {
+							requestHrefNode(TintBrowserActivity.CONTEXT_MENU_OPEN_IN_BACKGROUND, intent.getBooleanExtra(Constants.EXTRA_INCOGNITO, false));
+						} else {						
+							addTab(intent.getStringExtra(Constants.EXTRA_URL), true, intent.getBooleanExtra(Constants.EXTRA_INCOGNITO, false));
+						}
+						break;
+						
 					case TintBrowserActivity.CONTEXT_MENU_COPY:
 						if (HitTestResult.SRC_IMAGE_ANCHOR_TYPE == intent.getIntExtra(Constants.EXTRA_HIT_TEST_RESULT, -1)) {
 							requestHrefNode(TintBrowserActivity.CONTEXT_MENU_COPY);
@@ -322,6 +334,7 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 							ApplicationUtils.copyTextToClipboard(mActivity, intent.getStringExtra(Constants.EXTRA_URL), mActivity.getResources().getString(R.string.UrlCopyToastMessage));
 						}
 						break;
+						
 					case TintBrowserActivity.CONTEXT_MENU_DOWNLOAD:
 						if (HitTestResult.SRC_IMAGE_ANCHOR_TYPE == intent.getIntExtra(Constants.EXTRA_HIT_TEST_RESULT, -1)) {
 							requestHrefNode(TintBrowserActivity.CONTEXT_MENU_DOWNLOAD);
@@ -336,6 +349,7 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 							Toast.makeText(mActivity, String.format(mActivity.getString(R.string.DownloadStart), item.getFileName()), Toast.LENGTH_SHORT).show();
 						}
 						break;
+						
 					case TintBrowserActivity.CONTEXT_MENU_SHARE:
 						if (HitTestResult.SRC_IMAGE_ANCHOR_TYPE == intent.getIntExtra(Constants.EXTRA_HIT_TEST_RESULT, -1)) {
 							requestHrefNode(TintBrowserActivity.CONTEXT_MENU_SHARE);
@@ -343,6 +357,7 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 							ApplicationUtils.sharePage(mActivity, null, intent.getStringExtra(Constants.EXTRA_URL));
 						}
 						break;
+						
 					default:
 						if (HitTestResult.SRC_IMAGE_ANCHOR_TYPE == intent.getIntExtra(Constants.EXTRA_HIT_TEST_RESULT, -1)) {
 							requestHrefNode(actionId);
@@ -522,7 +537,11 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
                     	break;
                     
 					case TintBrowserActivity.CONTEXT_MENU_OPEN_IN_NEW_TAB:
-						addTab(url, msg.arg2 > 0 ? true : false);
+						addTab(url, false, msg.arg2 > 0 ? true : false);
+						break;
+						
+					case TintBrowserActivity.CONTEXT_MENU_OPEN_IN_BACKGROUND:
+						addTab(url, true, msg.arg2 > 0 ? true : false);
 						break;
 						
 					case TintBrowserActivity.CONTEXT_MENU_COPY:

@@ -433,6 +433,7 @@
 	
     <!-- 1.2 -->
     <string name="IncognitoTab">Onglet incognito</string>
+    <string name="ContextMenuOpenInBackground">Ouvrir en arrière plan</string>
     <string name="ContentDescriptionPrivateBrowsingIndicator">Indicateur de navigation privée</string>
 
 </resources>

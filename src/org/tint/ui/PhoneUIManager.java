@@ -117,54 +117,30 @@ public class PhoneUIManager extends BaseUIManager {
 	}
 
 	@Override
-	public void addTab(String url, boolean privateBrowsing) {
+	public void addTab(String url, boolean openInBackground, boolean privateBrowsing) {
 		int previousIndex = mCurrentTabIndex;
 		
 		FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
 		PhoneWebViewFragment fragment = new PhoneWebViewFragment();
-		
-//		fragment.setWebViewFragmentListener(this);
-//		fragment.requestUrlToLoadWhenReady(url);
-//		fragment.setPrivateBrowsing(privateBrowsing);
 		
 		fragment.init(this, privateBrowsing, url);
 		
 		fragmentTransaction.add(R.id.WebViewContainer, fragment);
 		fragmentTransaction.commit();
 		
-		mCurrentTabIndex++;
-		mFragmentsList.add(mCurrentTabIndex, fragment);
+		//mCurrentTabIndex++;
+		mFragmentsList.add(mCurrentTabIndex + 1, fragment);
 		mFragmentsMap.put(fragment.getUUID(), fragment);
 		
-		showCurrentTab(previousIndex, false);
+		if (!openInBackground) {
+			mCurrentTabIndex++;
+			showCurrentTab(previousIndex, false);
+		}
 	}
 
 	@Override
 	public void closeCurrentTab() {
 		if (mFragmentsList.size() > 1) {
-//			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-//			PhoneWebViewFragment fragment = mFragmentsList.get(mCurrentTabIndex);
-//			
-//			Controller.getInstance().getAddonManager().onTabClosed(mActivity, fragment.getWebView());
-//			
-//			if (fragment.isStartPageShown()) {
-//				fragmentTransaction.hide(mStartPageFragment);
-//			} else {
-//				//fragmentTransaction.remove(fragment);
-//			}
-//			// TODO: Check this.
-//			fragmentTransaction.remove(fragment);
-//			
-//			fragmentTransaction.commit();
-//			
-//			mFragmentsList.remove(mCurrentTabIndex);
-//			mFragmentsMap.remove(fragment.getUUID());
-//			
-//			if (mCurrentTabIndex > 0) {
-//				mCurrentTabIndex--;
-//			}
-//			
-//			showCurrentTab(-1, true);
 			closeTabByIndex(mCurrentTabIndex);
 		} else {
 			loadHomePage();

@@ -16,6 +16,7 @@
 package org.tint.ui.fragments;
 
 import org.tint.R;
+import org.tint.ui.UIManager;
 
 import android.app.ActionBar.Tab;
 import android.text.TextUtils;
@@ -29,6 +30,11 @@ public class TabletWebViewFragment extends PhoneWebViewFragment {
 	
 	public TabletWebViewFragment() {	
 		super();
+	}
+	
+	public void init(UIManager uiManager, Tab tab, boolean privateBrowsing, String urlToLoad) {
+		mTab = tab;
+		init(uiManager, privateBrowsing, urlToLoad);
 	}
 	
 	public void onTabSelected(Tab tab) {

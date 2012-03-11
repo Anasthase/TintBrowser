@@ -36,7 +36,7 @@ public class OpenTabExecutor extends BaseActionExecutor {
 		if (TextUtils.isEmpty(url)) {
 			mUIManager.addTab(true, false);
 		} else {
-			mUIManager.addTab(url, false);
+			mUIManager.addTab(url, false, false);
 		}
 	}
 
