@@ -1,3 +1,8 @@
+1.2: Features:
+- Incognito mode;
+- Open links in background;
+- Various bug fixes (tabs are no longer lost when docking/undocking keyboard on Asus Transformer(s), ...)
+
 1.1: Bug fixes:
 - Long-click on image links now work as intended;
 - Stop plugins when closing a tab;
