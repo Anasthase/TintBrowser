@@ -226,6 +226,11 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 	        	mUIManager.closeCurrentTab();
 	        	return true;
 	        	
+	        case R.id.MainActivity_MenuTabs:
+	        	i = new Intent(this, TabsActivity.class);
+	        	startActivity(i);
+	        	return true;
+	        
 	        case R.id.MainActivity_MenuAddBookmark:
 	        	mUIManager.addBookmarkFromCurrentPage();
 	        	return true;

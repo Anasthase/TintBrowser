@@ -23,6 +23,7 @@ import java.util.UUID;
 
 import org.tint.R;
 import org.tint.controllers.Controller;
+import org.tint.model.TabItem;
 import org.tint.ui.activities.TintBrowserActivity;
 import org.tint.ui.components.CustomWebView;
 import org.tint.ui.fragments.BaseWebViewFragment;
@@ -931,6 +932,33 @@ public class PhoneUIManager extends BaseUIManager {
 			return super.onFling(e1, e2, velocityX, velocityY);
 		}
 		
+	}
+
+	public List<TabItem> getTabs() {
+		List<TabItem> result = new ArrayList<TabItem>();
+		
+		for (PhoneWebViewFragment fragment : mFragmentsList) {
+			if (fragment.isStartPageShown()) {
+				result.add(new TabItem("StartPage", null, null));
+			} else {
+				WebView wv = fragment.getWebView();
+				if (wv != null) {
+					result.add(new TabItem(wv.getTitle(), wv.getUrl(), wv.capturePicture()));
+				}
+			}
+		}
+		
+		return result;
+	}
+
+	public void selectTab(int index) {
+		int oldIndex = mCurrentTabIndex;
+		mCurrentTabIndex = index;
+		showCurrentTab(oldIndex, true);		
+	}
+	
+	public int getSelectedTabIndex() {
+		return mCurrentTabIndex;
 	}
 
 }
