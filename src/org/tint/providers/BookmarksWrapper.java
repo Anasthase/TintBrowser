@@ -331,71 +331,84 @@ public class BookmarksWrapper {
 	 * @param favicon The favicon.
 	 */
 	public static void updateFavicon(ContentResolver contentResolver, String url, String originalUrl, Bitmap favicon) {
-		String whereClause;
-		
-		if (!url.equals(originalUrl)) {
-			whereClause = BookmarksProvider.Columns.URL + " = \"" + url + "\" OR " + BookmarksProvider.Columns.URL + " = \"" + originalUrl + "\"";
-		} else {
-			whereClause = BookmarksProvider.Columns.URL + " = \"" + url + "\"";
-		}
+		if ((url != null) &&
+				(favicon != null) &&
+				(contentResolver != null)) {
+			String whereClause;
 
-		BitmapDrawable icon = new BitmapDrawable(favicon);
+			if (!url.equals(originalUrl)) {
+				whereClause = BookmarksProvider.Columns.URL + " = \"" + url + "\" OR " + BookmarksProvider.Columns.URL + " = \"" + originalUrl + "\"";
+			} else {
+				whereClause = BookmarksProvider.Columns.URL + " = \"" + url + "\"";
+			}
 
-		ByteArrayOutputStream os = new ByteArrayOutputStream();         
-		icon.getBitmap().compress(Bitmap.CompressFormat.PNG, 100, os);
+			BitmapDrawable icon = new BitmapDrawable(favicon);
 
-		ContentValues values = new ContentValues();
-		values.put(BookmarksProvider.Columns.FAVICON, os.toByteArray());				
+			ByteArrayOutputStream os = new ByteArrayOutputStream();         
+			icon.getBitmap().compress(Bitmap.CompressFormat.PNG, 100, os);
 
-		try {
-			contentResolver.update(BookmarksProvider.BOOKMARKS_URI, values, whereClause, null);
-		} catch (Exception e) {
-			e.printStackTrace();
-			Log.w("BookmarksWrapper", "Unable to update favicon: " + e.getMessage());
+			ContentValues values = new ContentValues();
+			values.put(BookmarksProvider.Columns.FAVICON, os.toByteArray());				
+
+			try {
+				contentResolver.update(BookmarksProvider.BOOKMARKS_URI, values, whereClause, null);
+			} catch (Exception e) {
+				e.printStackTrace();
+				Log.w("BookmarksWrapper", "Unable to update favicon: " + e.getMessage());
+			}
 		}
 	}
 	
 	public static void updateThumbnail(ContentResolver contentResolver, String url, String originalUrl, Bitmap thumbnail) {
-		String whereClause;
-		
-		if (!url.equals(originalUrl)) {
-			whereClause = "(" + BookmarksProvider.Columns.URL + " = \"" + url + "\" OR " + BookmarksProvider.Columns.URL + " = \"" + originalUrl + "\")";
-		} else {
-			whereClause = BookmarksProvider.Columns.URL + " = \"" + url + "\"";
-		}
-		
-		whereClause += " AND " + BookmarksProvider.Columns.BOOKMARK + " = 1";
+		if ((url != null) &&
+				(thumbnail != null) &&
+				(contentResolver != null)) {
+			String whereClause;
 
-		BitmapDrawable icon = new BitmapDrawable(thumbnail);
+			if (!url.equals(originalUrl)) {
+				whereClause = "(" + BookmarksProvider.Columns.URL + " = \"" + url + "\" OR " + BookmarksProvider.Columns.URL + " = \"" + originalUrl + "\")";
+			} else {
+				whereClause = BookmarksProvider.Columns.URL + " = \"" + url + "\"";
+			}
 
-		ByteArrayOutputStream os = new ByteArrayOutputStream();         
-		icon.getBitmap().compress(Bitmap.CompressFormat.PNG, 100, os);
+			whereClause += " AND " + BookmarksProvider.Columns.BOOKMARK + " = 1";
 
-		ContentValues values = new ContentValues();
-		values.put(BookmarksProvider.Columns.THUMBNAIL, os.toByteArray());				
+			BitmapDrawable icon = new BitmapDrawable(thumbnail);
 
-		try {
-			contentResolver.update(BookmarksProvider.BOOKMARKS_URI, values, whereClause, null);
-		} catch (Exception e) {
-			e.printStackTrace();
-			Log.w("BookmarksWrapper", "Unable to update thumbnail: " + e.getMessage());
+			ByteArrayOutputStream os = new ByteArrayOutputStream();         
+			icon.getBitmap().compress(Bitmap.CompressFormat.PNG, 100, os);
+
+			ContentValues values = new ContentValues();
+			values.put(BookmarksProvider.Columns.THUMBNAIL, os.toByteArray());				
+
+			try {
+				contentResolver.update(BookmarksProvider.BOOKMARKS_URI, values, whereClause, null);
+			} catch (Exception e) {
+				e.printStackTrace();
+				Log.w("BookmarksWrapper", "Unable to update thumbnail: " + e.getMessage());
+			}
 		}
 	}
 	
 	public static boolean urlHasBookmark(ContentResolver contentResolver, String url, String originalUrl) {
-		String whereClause;
-		
-		if (!url.equals(originalUrl)) {
-			whereClause = "(" + BookmarksProvider.Columns.URL + " = \"" + url + "\" OR " + BookmarksProvider.Columns.URL + " = \"" + originalUrl + "\")";
+		if ((url != null) &&
+				(contentResolver != null)) {
+			String whereClause;
+
+			if (!url.equals(originalUrl)) {
+				whereClause = "(" + BookmarksProvider.Columns.URL + " = \"" + url + "\" OR " + BookmarksProvider.Columns.URL + " = \"" + originalUrl + "\")";
+			} else {
+				whereClause = BookmarksProvider.Columns.URL + " = \"" + url + "\"";
+			}
+
+			whereClause += " AND " + BookmarksProvider.Columns.BOOKMARK + " = 1";
+
+			Cursor c = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, null);
+
+			return c != null && c.getCount() > 0;
 		} else {
-			whereClause = BookmarksProvider.Columns.URL + " = \"" + url + "\"";
+			return false;
 		}
-		
-		whereClause += " AND " + BookmarksProvider.Columns.BOOKMARK + " = 1";
-		
-		Cursor c = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, null);
-		
-		return c != null && c.getCount() > 0;
 	}
 	
 	public static CursorLoader getBookmarksCursorLoaderWithLimit(Context context, int limit) {
@@ -419,39 +432,12 @@ public class BookmarksWrapper {
 	 * @return A list of BookmarkItem.
 	 */
 	public static List<BookmarkHistoryItem> getBookmarksWithLimit(ContentResolver contentResolver, int limit) {
-//		List<BookmarkItem> result = new ArrayList<BookmarkItem>();
-		
 		String whereClause = BookmarksProvider.Columns.BOOKMARK + " = 1";
 		String orderClause = BookmarksProvider.Columns.VISITS + " DESC";
 				
 		Cursor cursor = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, orderClause);
 		
 		return mapCursorToBookmarkHistoryItemListWithLimit(cursor, limit);
-//		if (cursor != null) {
-//			if (cursor.moveToFirst()) {
-//				
-//				int columnTitle = cursor.getColumnIndex(BookmarksProvider.Columns.TITLE);
-//				int columnUrl = cursor.getColumnIndex(BookmarksProvider.Columns.URL);
-//				
-//				int count = 0;
-//				while (!cursor.isAfterLast() &&
-//						(count < limit)) {
-//					
-//					BookmarkItem item = new BookmarkItem(
-//							cursor.getString(columnTitle),
-//							cursor.getString(columnUrl));
-//					
-//					result.add(item);
-//					
-//					count++;
-//					cursor.moveToNext();
-//				}
-//			}
-//			
-//			cursor.close();
-//		}
-//		
-//		return result;
 	}
 	
 	/**
@@ -461,44 +447,12 @@ public class BookmarksWrapper {
 	 * @return A list of HistoryItem.
 	 */
 	public static List<BookmarkHistoryItem> getHistoryWithLimit(ContentResolver contentResolver, int limit) {
-//		List<BookmarkHistoryItem> result = new ArrayList<BookmarkHistoryItem>();
-		
 		String whereClause = BookmarksProvider.Columns.VISITS + " > 0";
 		String orderClause = BookmarksProvider.Columns.VISITED_DATE + " DESC";
 		
 		Cursor cursor = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, orderClause);
 		
 		return mapCursorToBookmarkHistoryItemListWithLimit(cursor, limit);
-//		if (cursor != null) {
-//			if (cursor.moveToFirst()) {
-//				
-//				int columnId = cursor.getColumnIndex(BookmarksProvider.Columns._ID);
-//				int columnTitle = cursor.getColumnIndex(BookmarksProvider.Columns.TITLE);
-//				int columnUrl = cursor.getColumnIndex(BookmarksProvider.Columns.URL);
-//				int columnBookmark = cursor.getColumnIndex(BookmarksProvider.Columns.BOOKMARK);
-//				
-//				int count = 0;
-//				while (!cursor.isAfterLast() &&
-//						(count < limit)) {
-//					
-//					BookmarkHistoryItem item = new BookmarkHistoryItem(
-//							cursor.getLong(columnId),
-//							cursor.getString(columnTitle),
-//							cursor.getString(columnUrl),
-//							cursor.getInt(columnBookmark) >= 1 ? true : false,
-//							null);
-//					
-//					result.add(item);
-//					
-//					count++;
-//					cursor.moveToNext();
-//				}
-//			}
-//			
-//			cursor.close();
-//		}
-//		
-//		return result;
 	}
 	
 	private static List<BookmarkHistoryItem> mapCursorToBookmarkHistoryItemListWithLimit(Cursor cursor, int limit) {
