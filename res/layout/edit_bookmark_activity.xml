@@ -88,7 +88,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:text="Folder"
+                        android:text="@string/EditBookmarkActivity.Folder"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <Spinner
@@ -102,7 +102,9 @@
                 <EditText
                     android:id="@+id/EditBookmarkActivity.FolderValue"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content"
+                    android:hint="@string/EditBookmarkActivity.NewFolderHint"
+                    android:inputType="text" >
                 </EditText>
                 
 			</TableLayout>            

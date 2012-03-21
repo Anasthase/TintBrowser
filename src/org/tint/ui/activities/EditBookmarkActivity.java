@@ -31,6 +31,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -67,14 +69,28 @@ public class EditBookmarkActivity extends Activity {
 		}
         
 		mFolders = BookmarksWrapper.getFoldersList(getContentResolver());
-		mFolders.add(0, new FolderItem(-1, "RootFolder"));
-		mFolders.add(0, new FolderItem(-2, "NewFolder"));
+		mFolders.add(0, new FolderItem(-1, getString(R.string.EditBookmarkActivity_RootFolder)));
+		mFolders.add(0, new FolderItem(-2, getString(R.string.EditBookmarkActivity_NewFolder)));
 		
         mLabel = (EditText) findViewById(R.id.EditBookmarkActivity_LabelEdit);
         mUrl = (EditText) findViewById(R.id.EditBookmarkActivity_UrlEdit);
         
         mFoldersSpinner = (Spinner) findViewById(R.id.EditBookmarkActivity_FolderSpinner);
         mFoldersSpinner.setAdapter(new FoldersAdapter(this, mFolders));
+        
+        mFoldersSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+				mNewFolderName.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) { }
+		});
+        
+        // Default to root folder.
+        mFoldersSpinner.setSelection(1);
         
         mNewFolderName = (EditText) findViewById(R.id.EditBookmarkActivity_FolderValue);
         
@@ -133,10 +149,25 @@ public class EditBookmarkActivity extends Activity {
 				(!TextUtils.isEmpty(url))) {
 			
 			long folderId = -1;
+			int folderSpinnerSelection = mFoldersSpinner.getSelectedItemPosition();
 			
-			if (!TextUtils.isEmpty(mNewFolderName.getText().toString())) {
-				folderId = BookmarksWrapper.getFolderId(getContentResolver(), mNewFolderName.getText().toString(), true);
-			}
+			switch (folderSpinnerSelection) {
+			case 0:
+				if (TextUtils.isEmpty(mNewFolderName.getText().toString())) {
+					Toast.makeText(this, R.string.EditBookmarkActivity_ProvideNewFolderName, Toast.LENGTH_SHORT).show();
+					return false;
+				} else {
+					folderId = BookmarksWrapper.getFolderId(getContentResolver(), mNewFolderName.getText().toString(), true);
+				}
+				break;
+				
+			case 1:
+				folderId = -1;
+				break;
+			default:
+				folderId = mFolders.get(folderSpinnerSelection).getId();
+				break;
+			}			
 			
 			BookmarksWrapper.setAsBookmark(getContentResolver(), mId, folderId, label, url, true);
 			return true;
@@ -149,12 +180,22 @@ public class EditBookmarkActivity extends Activity {
 	private class FoldersAdapter extends ArrayAdapter<FolderItem> {
 		
 		public FoldersAdapter(Context context, List<FolderItem> values) {
-			super(context, android.R.layout.simple_dropdown_item_1line, android.R.id.text1, values);
+			super(context, android.R.layout.simple_spinner_dropdown_item, android.R.id.text1, values);
 		}
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			View v = super.getView(position, convertView, parent);
+			
+			TextView tv = (TextView) v.findViewById(android.R.id.text1);
+			tv.setText(getItem(position).getTitle());
+			
+			return v;
+		}
+
+		@Override
+		public View getDropDownView(int position, View convertView,	ViewGroup parent) {
+			View v = super.getDropDownView(position, convertView, parent);
 			
 			TextView tv = (TextView) v.findViewById(android.R.id.text1);
 			tv.setText(getItem(position).getTitle());
