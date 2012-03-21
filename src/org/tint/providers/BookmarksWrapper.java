@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.tint.model.BookmarkHistoryItem;
+import org.tint.model.FolderItem;
 import org.tint.model.UrlSuggestionCursorAdapter;
 import org.tint.model.UrlSuggestionItem;
 import org.tint.model.UrlSuggestionItemComparator;
@@ -138,6 +139,29 @@ public class BookmarksWrapper {
 		}
 		
 		contentResolver.delete(BookmarksProvider.BOOKMARKS_URI, whereClause, null);		
+	}
+	
+	public static List<FolderItem> getFoldersList(ContentResolver contentResolver) {
+		List<FolderItem> result = new ArrayList<FolderItem>();
+		
+		String whereClause = BookmarksProvider.Columns.FOLDER + " = 1";
+		String orderClause = BookmarksProvider.Columns.TITLE;
+		
+		Cursor c = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, orderClause);
+		if ((c != null) &&
+				(c.moveToFirst())) {
+			
+			int idIndex = c.getColumnIndex(BookmarksProvider.Columns._ID);
+			int titleIndex = c.getColumnIndex(BookmarksProvider.Columns.TITLE);
+			
+			do {
+				result.add(new FolderItem(c.getLong(idIndex), c.getString(titleIndex)));
+			} while (c.moveToNext());
+			
+			c.close();
+		}
+		
+		return result;
 	}
 	
 	public static long getFolderId(ContentResolver contentResolver, String folderName, boolean createIfNotPresent) {

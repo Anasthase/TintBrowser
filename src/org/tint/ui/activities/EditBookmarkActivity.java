@@ -15,19 +15,27 @@
 
 package org.tint.ui.activities;
 
+import java.util.List;
+
 import org.tint.R;
+import org.tint.model.FolderItem;
 import org.tint.providers.BookmarksWrapper;
 import org.tint.utils.Constants;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class EditBookmarkActivity extends Activity {
@@ -37,10 +45,14 @@ public class EditBookmarkActivity extends Activity {
 	private EditText mLabel;
 	private EditText mUrl;
 	
+	private Spinner mFoldersSpinner;
+	
 	private EditText mNewFolderName;
 	
 	private Button mOk;
 	private Button mCancel;
+	
+	private List<FolderItem> mFolders;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
@@ -54,8 +66,15 @@ public class EditBookmarkActivity extends Activity {
 			actionBar.setDisplayHomeAsUpEnabled(true);
 		}
         
+		mFolders = BookmarksWrapper.getFoldersList(getContentResolver());
+		mFolders.add(0, new FolderItem(-1, "RootFolder"));
+		mFolders.add(0, new FolderItem(-2, "NewFolder"));
+		
         mLabel = (EditText) findViewById(R.id.EditBookmarkActivity_LabelEdit);
         mUrl = (EditText) findViewById(R.id.EditBookmarkActivity_UrlEdit);
+        
+        mFoldersSpinner = (Spinner) findViewById(R.id.EditBookmarkActivity_FolderSpinner);
+        mFoldersSpinner.setAdapter(new FoldersAdapter(this, mFolders));
         
         mNewFolderName = (EditText) findViewById(R.id.EditBookmarkActivity_FolderValue);
         
@@ -125,6 +144,25 @@ public class EditBookmarkActivity extends Activity {
 			Toast.makeText(this, R.string.AddBookmarkLabelOrUrlEmpty, Toast.LENGTH_SHORT).show();
 			return false;
 		}
+	}
+	
+	private class FoldersAdapter extends ArrayAdapter<FolderItem> {
+		
+		public FoldersAdapter(Context context, List<FolderItem> values) {
+			super(context, android.R.layout.simple_dropdown_item_1line, android.R.id.text1, values);
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			View v = super.getView(position, convertView, parent);
+			
+			TextView tv = (TextView) v.findViewById(android.R.id.text1);
+			tv.setText(getItem(position).getTitle());
+			
+			return v;
+		}
+
+				
 	}
 
 }
