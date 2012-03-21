@@ -442,5 +442,7 @@
     <string name="EditBookmarkActivity.RootFolder">Root folder</string>
     <string name="EditBookmarkActivity.NewFolderHint">Name of the new folder</string>
     <string name="EditBookmarkActivity.ProvideNewFolderName">Please provide a name for the new folder, or choose an existing one.</string>
+    
+    <string name="BookmarksBreadCrumbText">%s - Click to go back.</string>
 
 </resources>

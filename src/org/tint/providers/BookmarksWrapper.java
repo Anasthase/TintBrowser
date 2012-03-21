@@ -72,8 +72,8 @@ public class BookmarksWrapper {
 		return new CursorLoader(context, BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, orderClause);
 	}
 	
-	public static CursorLoader getCursorLoaderForBookmarks(Context context) {
-		String whereClause = BookmarksProvider.Columns.BOOKMARK + " = 1 OR " + BookmarksProvider.Columns.FOLDER + " = 1";
+	public static CursorLoader getCursorLoaderForBookmarks(Context context, long parentFolderId) {
+		String whereClause = BookmarksProvider.Columns.FOLDER_ID + " = " + parentFolderId + " AND (" + BookmarksProvider.Columns.BOOKMARK + " = 1 OR " + BookmarksProvider.Columns.FOLDER + " = 1)";
 		String orderClause = BookmarksProvider.Columns.FOLDER + " DESC, " + BookmarksProvider.Columns.VISITS + " DESC, " + BookmarksProvider.Columns.TITLE + " COLLATE NOCASE";
 		
 		return new CursorLoader(context, BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, orderClause);
@@ -107,8 +107,10 @@ public class BookmarksWrapper {
 				String title = c.getString(c.getColumnIndex(BookmarksProvider.Columns.TITLE));
                 String url = c.getString(c.getColumnIndex(BookmarksProvider.Columns.URL));
                 boolean isBookmarks = c.getInt(c.getColumnIndex(BookmarksProvider.Columns.BOOKMARK)) > 0 ? true : false;
+                boolean isFolder = c.getInt(c.getColumnIndex(BookmarksProvider.Columns.FOLDER)) > 0 ? true : false;
+                long folderId = c.getLong(c.getColumnIndex(BookmarksProvider.Columns.FOLDER_ID));
                 byte[] favIcon = c.getBlob(c.getColumnIndex(BookmarksProvider.Columns.FAVICON));
-                result = new BookmarkHistoryItem(id, title, url, isBookmarks, favIcon);
+                result = new BookmarkHistoryItem(id, title, url, isBookmarks, isFolder, folderId, favIcon);
 			}
 			
 			c.close();
@@ -527,6 +529,8 @@ public class BookmarksWrapper {
 				int columnTitle = cursor.getColumnIndex(BookmarksProvider.Columns.TITLE);
 				int columnUrl = cursor.getColumnIndex(BookmarksProvider.Columns.URL);
 				int columnBookmark = cursor.getColumnIndex(BookmarksProvider.Columns.BOOKMARK);
+				int columnFolder = cursor.getColumnIndex(BookmarksProvider.Columns.FOLDER);
+				int columnFolderId = cursor.getColumnIndex(BookmarksProvider.Columns.FOLDER_ID);
 				int columnFavicon = cursor.getColumnIndex(BookmarksProvider.Columns.FAVICON);
 				
 				int count = 0;
@@ -538,6 +542,8 @@ public class BookmarksWrapper {
 							cursor.getString(columnTitle),
 							cursor.getString(columnUrl),
 							cursor.getInt(columnBookmark) >= 1 ? true : false,
+							cursor.getInt(columnFolder) >= 1 ? true : false,
+							cursor.getLong(columnFolderId),
 							cursor.getBlob(columnFavicon));
 					
 					result.add(item);
@@ -564,11 +570,13 @@ public class BookmarksWrapper {
 			ContentValues values = new ContentValues();
 			
 			values.put(BookmarksProvider.Columns.BOOKMARK, bookmark);
+			values.put(BookmarksProvider.Columns.FOLDER_ID, -1);
+			
 			if (bookmark) {
 				values.put(BookmarksProvider.Columns.CREATION_DATE, new Date().getTime());
 			} else {
 				values.putNull(BookmarksProvider.Columns.CREATION_DATE);
-				values.putNull(BookmarksProvider.Columns.THUMBNAIL);
+				values.putNull(BookmarksProvider.Columns.THUMBNAIL);				
 			}
 			
 			contentResolver.update(BookmarksProvider.BOOKMARKS_URI, values, whereClause, null);

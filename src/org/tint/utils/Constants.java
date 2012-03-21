@@ -30,6 +30,7 @@ public class Constants {
 	public static final String EXTRA_NEW_TAB = "EXTRA_NEW_TAB";
 	public static final String EXTRA_LABEL = "EXTRA_LABEL";
 	public static final String EXTRA_URL = "EXTRA_URL";
+	public static final String EXTRA_FOLDER_ID = "EXTRA_FOLDER_ID";
 	public static final String EXTRA_HIT_TEST_RESULT = "EXTRA_HIT_TEST_RESULT";
 	public static final String EXTRA_INCOGNITO = "EXTRA_INCOGNITO";
 	

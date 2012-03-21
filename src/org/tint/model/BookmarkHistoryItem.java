@@ -27,6 +27,8 @@ public class BookmarkHistoryItem {
 	private String mTitle;
 	private String mUrl;
 	private boolean mIsBookmark;
+	private boolean mIsFolder;
+	private long mFolderId;
 	private Bitmap mFavicon;
 
 	/**
@@ -37,11 +39,13 @@ public class BookmarkHistoryItem {
 	 * @param isBookmark True if this item is also a bookmark.
 	 * @param faviconData The favicon.
 	 */
-	public BookmarkHistoryItem(long id, String title, String url, boolean isBookmark, byte[] faviconData) {
+	public BookmarkHistoryItem(long id, String title, String url, boolean isBookmark, boolean isFolder, long folderId, byte[] faviconData) {
 		mId = id;
 		mTitle = title;
 		mUrl = url;
 		mIsBookmark = isBookmark;
+		mIsFolder = isFolder;
+		mFolderId = folderId;
 		
 		if (faviconData != null) {
 			mFavicon = BitmapFactory.decodeByteArray(faviconData, 0, faviconData.length);
@@ -76,6 +80,14 @@ public class BookmarkHistoryItem {
 	
 	public boolean isBookmark() {
 		return mIsBookmark;
+	}
+	
+	public boolean isFolder() {
+		return mIsFolder;
+	}
+	
+	public long getFolderId() {
+		return mFolderId;
 	}
 	
 	/**

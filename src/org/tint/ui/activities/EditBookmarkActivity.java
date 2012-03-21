@@ -126,6 +126,17 @@ public class EditBookmarkActivity extends Activity {
     			mUrl.setText(url);
     		}
     		
+    		// This is a bit dirty...
+    		long folderId = extras.getLong(Constants.EXTRA_FOLDER_ID);
+    		if (folderId != -1) {
+    			for (int i = 0; i < mFolders.size(); i++) {
+    				if (mFolders.get(i).getId() == folderId) {
+    					mFoldersSpinner.setSelection(i);
+    					break;
+    				}
+    			}
+    		}
+    		
     		mId = extras.getLong(Constants.EXTRA_ID);
     	}
 	}
