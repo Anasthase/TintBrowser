@@ -78,6 +78,33 @@
                         android:inputType="textUri"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </TableRow>
+                
+                <TableRow
+                    android:id="@+id/row_folder"
+                    android:layout_marginBottom="10dip" >
+
+                    <TextView
+                        android:id="@+id/EditBookmarkActivity.FolderText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="Folder"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <Spinner
+                        android:id="@+id/EditBookmarkActivity.FolderSpinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dip" />
+                    
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/EditBookmarkActivity.FolderValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+                </EditText>
+                
 			</TableLayout>            
         </ScrollView>
     </FrameLayout>

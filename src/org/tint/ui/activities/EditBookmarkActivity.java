@@ -37,6 +37,8 @@ public class EditBookmarkActivity extends Activity {
 	private EditText mLabel;
 	private EditText mUrl;
 	
+	private EditText mNewFolderName;
+	
 	private Button mOk;
 	private Button mCancel;
 	
@@ -54,6 +56,8 @@ public class EditBookmarkActivity extends Activity {
         
         mLabel = (EditText) findViewById(R.id.EditBookmarkActivity_LabelEdit);
         mUrl = (EditText) findViewById(R.id.EditBookmarkActivity_UrlEdit);
+        
+        mNewFolderName = (EditText) findViewById(R.id.EditBookmarkActivity_FolderValue);
         
         mOk = (Button) findViewById(R.id.EditBookmarkActivity_OK);
         mOk.setOnClickListener(new OnClickListener() {			
@@ -108,7 +112,14 @@ public class EditBookmarkActivity extends Activity {
 		
 		if ((!TextUtils.isEmpty(label)) &&
 				(!TextUtils.isEmpty(url))) {
-			BookmarksWrapper.setAsBookmark(getContentResolver(), mId, label, url, true);
+			
+			long folderId = -1;
+			
+			if (!TextUtils.isEmpty(mNewFolderName.getText().toString())) {
+				folderId = BookmarksWrapper.getFolderId(getContentResolver(), mNewFolderName.getText().toString(), true);
+			}
+			
+			BookmarksWrapper.setAsBookmark(getContentResolver(), mId, folderId, label, url, true);
 			return true;
 		} else {
 			Toast.makeText(this, R.string.AddBookmarkLabelOrUrlEmpty, Toast.LENGTH_SHORT).show();

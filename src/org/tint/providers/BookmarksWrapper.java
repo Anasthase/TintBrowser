@@ -35,6 +35,7 @@ import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.util.Log;
 
 public class BookmarksWrapper {
@@ -47,6 +48,8 @@ public class BookmarksWrapper {
         BookmarksProvider.Columns.CREATION_DATE,
         BookmarksProvider.Columns.VISITED_DATE,
         BookmarksProvider.Columns.BOOKMARK,
+        BookmarksProvider.Columns.FOLDER,
+        BookmarksProvider.Columns.FOLDER_ID,
         BookmarksProvider.Columns.FAVICON,
         BookmarksProvider.Columns.THUMBNAIL };
 	
@@ -69,14 +72,14 @@ public class BookmarksWrapper {
 	}
 	
 	public static CursorLoader getCursorLoaderForBookmarks(Context context) {
-		String whereClause = BookmarksProvider.Columns.BOOKMARK + " = 1";
-		String orderClause = BookmarksProvider.Columns.VISITS + " DESC, " + BookmarksProvider.Columns.TITLE + " COLLATE NOCASE";
+		String whereClause = BookmarksProvider.Columns.BOOKMARK + " = 1 OR " + BookmarksProvider.Columns.FOLDER + " = 1";
+		String orderClause = BookmarksProvider.Columns.FOLDER + " DESC, " + BookmarksProvider.Columns.VISITS + " DESC, " + BookmarksProvider.Columns.TITLE + " COLLATE NOCASE";
 		
 		return new CursorLoader(context, BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, orderClause);
 	}
 	
 	public static CursorLoader getCursorLoaderForHistory(Context context) {
-		String whereClause = BookmarksProvider.Columns.VISITS + " > 0";
+		String whereClause = BookmarksProvider.Columns.VISITS + " > 0 AND " + BookmarksProvider.Columns.FOLDER + " = 0";
 		String orderClause = BookmarksProvider.Columns.VISITED_DATE + " DESC";
 		
 		return new CursorLoader(context, BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, orderClause);
@@ -137,16 +140,49 @@ public class BookmarksWrapper {
 		contentResolver.delete(BookmarksProvider.BOOKMARKS_URI, whereClause, null);		
 	}
 	
+	public static long getFolderId(ContentResolver contentResolver, String folderName, boolean createIfNotPresent) {
+		String whereClause = BookmarksProvider.Columns.TITLE + " = \"" + folderName + "\" AND " + BookmarksProvider.Columns.FOLDER + " = 1";
+		
+		Cursor c = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, null);
+		if ((c != null) &&
+				(c.moveToFirst())) {
+			return c.getLong(c.getColumnIndex(BookmarksProvider.Columns._ID));
+		} else {
+			if (createIfNotPresent) {
+				
+				ContentValues values = new ContentValues();
+				values.put(BookmarksProvider.Columns.TITLE, folderName);
+				values.putNull(BookmarksProvider.Columns.URL);
+				values.put(BookmarksProvider.Columns.BOOKMARK, 0);
+				values.put(BookmarksProvider.Columns.FOLDER, 1);
+				
+				Uri result = contentResolver.insert(BookmarksProvider.BOOKMARKS_URI, values);
+				
+				Cursor inserted = contentResolver.query(result, HISTORY_BOOKMARKS_PROJECTION, null, null, null);
+				if ((inserted != null) &&
+						(inserted.moveToFirst())) {
+					return inserted.getLong(inserted.getColumnIndex(BookmarksProvider.Columns._ID));					
+				} else {
+					return -1;
+				}
+				
+			} else {
+				return -1;
+			}
+		}
+	}
+	
 	/**
 	 * Modify a bookmark/history record. If an id is provided, it look for it and update its values. If not, values will be inserted.
 	 * If no id is provided, it look for a record with the given url. It found, its values are updated. If not, values will be inserted.
 	 * @param contentResolver The content resolver.
 	 * @param id The record id to look for.
+	 * @param folderId The id of the folder in which this bookmarks is.
 	 * @param title The record title.
 	 * @param url The record url.
 	 * @param isBookmark If True, the record will be a bookmark.
 	 */
-	public static void setAsBookmark(ContentResolver contentResolver, long id, String title, String url, boolean isBookmark) {
+	public static void setAsBookmark(ContentResolver contentResolver, long id, long folderId, String title, String url, boolean isBookmark) {
 
 		boolean bookmarkExist = false;
 
@@ -179,8 +215,10 @@ public class BookmarksWrapper {
 		if (isBookmark) {
 			values.put(BookmarksProvider.Columns.BOOKMARK, 1);
 			values.put(BookmarksProvider.Columns.CREATION_DATE, new Date().getTime());
+			values.put(BookmarksProvider.Columns.FOLDER_ID, folderId);
 		} else {
 			values.put(BookmarksProvider.Columns.BOOKMARK, 0);
+			values.put(BookmarksProvider.Columns.FOLDER_ID, -1);
 		}
 
 		if (bookmarkExist) {                                    

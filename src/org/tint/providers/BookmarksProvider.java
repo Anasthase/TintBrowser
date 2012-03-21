@@ -48,11 +48,13 @@ public class BookmarksProvider extends ContentProvider {
 		public static final String VISITED_DATE = "visited_date";
 		public static final String VISITS = "visits";
 		public static final String BOOKMARK = "bookmark";
+		public static final String FOLDER = "folder";
+		public static final String FOLDER_ID = "folder_id";
 		public static final String FAVICON = "favicon";
 		public static final String THUMBNAIL = "thumbnail";
 	}
 	
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 	private static final String DATABASE_NAME = "bookmarks.db";
 	
 	private static final String BOOKMARKS_TABLE_CREATE = "CREATE TABLE " + BOOKMARKS_TABLE + " (" + 
@@ -63,6 +65,8 @@ public class BookmarksProvider extends ContentProvider {
 		Columns.CREATION_DATE + " LONG, " +
 		Columns.VISITED_DATE + " LONG, " +
 		Columns.BOOKMARK + " INTEGER, " +
+		Columns.FOLDER + " INTEGER NOT NULL DEFAULT 0, " +
+		Columns.FOLDER_ID + " INTEGER NOT NULL DEFAULT -1, " +
 		Columns.FAVICON + " BLOB DEFAULT NULL, " + 
 		Columns.THUMBNAIL + " BLOB DEFAULT NULL);";
 	
@@ -267,6 +271,14 @@ public class BookmarksProvider extends ContentProvider {
 		}
 
 		@Override
-		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) { }		
+		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+			switch (oldVersion) {
+			case 1: 
+				db.execSQL("ALTER TABLE " + BOOKMARKS_TABLE + " ADD " + Columns.FOLDER + " INTEGER NOT NULL DEFAULT 0;");
+				db.execSQL("ALTER TABLE " + BOOKMARKS_TABLE + " ADD " + Columns.FOLDER_ID + " INTEGER NOT NULL DEFAULT -1;");
+				break;
+			default: break;
+			}
+		}		
 	}
 }
