@@ -70,15 +70,13 @@
             android:textAppearance="?android:attr/textAppearanceSmall" />
         
         <TextView
-            android:id="@+id/AboutLicenseText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dip"
             android:text="@string/AboutLicenseText"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
-        <TextView
-            android:id="@+id/AboutUrlText"
+        <TextView            
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dip"
@@ -87,7 +85,6 @@
             android:textAppearance="?android:attr/textAppearanceSmall" />
         
         <TextView
-            android:id="@+id/AboutChangelogText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dip"

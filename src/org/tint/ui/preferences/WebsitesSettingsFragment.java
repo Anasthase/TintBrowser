@@ -34,6 +34,7 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.PreferenceActivity;
+import android.util.FloatMath;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -215,7 +216,7 @@ public class WebsitesSettingsFragment extends ListFragment {
                 return "0";
             }
             float megabytes = (float) bytes / (1024.0F * 1024.0F);
-            int truncated = (int) Math.ceil(megabytes * 10.0F);
+            int truncated = (int) FloatMath.ceil(megabytes * 10.0F);
             float result = (float) (truncated / 10.0F);
             return String.valueOf(result);
         }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="AlwaysShowAction">
+        <ignore path="res/menu-sw600dp/main_activity_menu.xml" />
+    </issue>
+    <issue id="IconDuplicatesConfig">
+        <ignore path="res/drawable-mdpi/ab_bottom_solid_dark_holo.9.png" />
+        <ignore path="res/drawable-mdpi/ab_solid_dark_holo.9.png" />
+        <ignore path="res/drawable-mdpi/browser_thumbnail.png" />
+        <ignore path="res/drawable-mdpi/divider_vertical_dark_opaque.9.png" />
+        <ignore path="res/drawable-mdpi/ic_folder.png" />
+    </issue>
+</lint>

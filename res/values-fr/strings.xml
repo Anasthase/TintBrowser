@@ -48,17 +48,15 @@
     <string name="All">Tout</string>
     <string name="Bookmarks">Favoris</string>
     <string name="Preferences">Paramètres</string>
-    <string name="CannotBeUndone">Cette action ne peut être annulée.</string>
     
     <string name="UrlBarUrlDefaultSubTitle">Toucher pour rentrer une adresse.</string>
-    <string name="UrlBarUrlHint">Tappez une adresse ou une recherche</string>
+    <string name="UrlBarUrlHint">Tapez une adresse ou une recherche</string>
     
     <string name="ShareChooserTitle">Partager via</string>
     <string name="FileChooserPrompt">Choisissez le fichier à uploader</string>
     
     <string name="DownloadStart">Téléchargement %1$s&#8230;</string>
     <string name="DownloadComplete">Téléchargement terminé.</string>
-    <string name="DownloadFailed">Téléchargement échoué.</string>
     <string name="DownloadFailedWithErrorMessage">Téléchargement échoué: %1$s.</string>
     <string name="DownloadErrorDisk">Erreur disque, vérifier si vous avez un espace de stockage, et s\'il n\'est pas plein.</string>
     <string name="DownloadErrorHttp">Erreur HTTP</string>
@@ -96,7 +94,6 @@
         
     <string name="NewTab">Nouvel onglet</string>
         
-    <string name="AddTab">Nouvel onglet</string>
     <string name="CloseTab">Fermer l\'onglet courant</string>
     <string name="AddBookmark">Ajouter un favori</string>
     <string name="SharePage">Partager la page</string>
@@ -105,7 +102,6 @@
     <string name="BookmarksTitle">Favoris &amp; Historique</string>
     <string name="BookmarksTabTitle">Favoris</string>
     <string name="HistoryTabTitle">Historique</string>
-    <string name="BookmarksEmpty">Vous n\'avez pas de favoris.</string>
     
     <string name="ImportHistoryBookmarks">Importer</string>
     <string name="ExportHistoryBookmarks">Exporter</string>
@@ -254,7 +250,7 @@
     <string name="PreferencePrivacyWebsitesSettingsTitle">Paramètres des sites Web</string>
     <string name="PreferencePrivacyWebsitesSettingsSummary">Paramètres avancés de sites Web individuels.</string>
     
-    <string name="PreferenceHeaderAdvancedSettingsTitle">Avancés</string>    
+<!--     <string name="PreferenceHeaderAdvancedSettingsTitle">Avancés</string>     -->
     
     <string name="HistoryToday">Aujourd\'hui</string>
     <string name="HistoryYesterday">Hier</string>
@@ -435,5 +431,14 @@
     <string name="IncognitoTab">Onglet incognito</string>
     <string name="ContextMenuOpenInBackground">Ouvrir en arrière plan</string>
     <string name="ContentDescriptionPrivateBrowsingIndicator">Indicateur de navigation privée</string>
+    
+    <!-- 1.4 -->
+    <string name="Folder">Dossier</string>
+    <string name="NewFolder">Nouveau dossier</string>    
+    <string name="NewFolderHint">Nom du nouveau dossier</string>
+    <string name="ProvideNewFolderName">Veillez fournir un nom pour le nouveau dossier, ou choisissez en un existant.</string>
+    
+    <string name="DeleteFolder">Supprimer le dossier</string>
+    <string name="ConfirmDeleteFolderMessage">Supprimer ce dossier et l\'ensemble de son contenu ?</string>
 
 </resources>
