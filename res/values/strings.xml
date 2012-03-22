@@ -443,5 +443,6 @@
     <string name="ProvideNewFolderName">Please provide a name for the new folder, or choose an existing one.</string>
     
     <string name="DeleteFolder">Delete folder</string>
+    <string name="ConfirmDeleteFolderMessage">Delete this folder and all its content?</string>
 
 </resources>

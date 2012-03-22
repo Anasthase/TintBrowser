@@ -30,9 +30,11 @@ import org.tint.utils.ApplicationUtils;
 import org.tint.utils.Constants;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentBreadCrumbs;
 import android.app.LoaderManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
@@ -189,7 +191,7 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 	
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
-		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+		final AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
 		
 		BookmarkHistoryItem selectedItem = BookmarksWrapper.getBookmarkById(getActivity().getContentResolver(), info.id);
 		
@@ -238,7 +240,23 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 			return true;
 			
 		case CONTEXT_MENU_DELETE_FOLDER:
-			BookmarksWrapper.deleteFolder(getActivity().getContentResolver(), info.id);
+			AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+			builder.setCancelable(true);
+			builder.setIcon(android.R.drawable.ic_dialog_info);
+			builder.setTitle(R.string.DeleteFolder);
+			builder.setMessage(R.string.ConfirmDeleteFolderMessage);
+			
+			builder.setPositiveButton(R.string.Yes, new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					BookmarksWrapper.deleteFolder(getActivity().getContentResolver(), info.id);					
+				}				
+			});
+			
+			builder.setNegativeButton(R.string.No, null);
+			
+			builder.create().show();
+						
 			return true;
 		
 		default:

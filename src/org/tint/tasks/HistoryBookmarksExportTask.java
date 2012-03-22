@@ -70,6 +70,7 @@ public class HistoryBookmarksExportTask extends AsyncTask<Cursor, Integer, Strin
 				int visitedDateIndex = c.getColumnIndex(BookmarksProvider.Columns.VISITED_DATE);
 				int visitsIndex = c.getColumnIndex(BookmarksProvider.Columns.VISITS);
 				int bookmarkIndex = c.getColumnIndex(BookmarksProvider.Columns.BOOKMARK);
+				int folderIndex = c.getColumnIndex(BookmarksProvider.Columns.FOLDER);
 				
 				int current = 0;
 				int total = c.getCount();
@@ -78,20 +79,22 @@ public class HistoryBookmarksExportTask extends AsyncTask<Cursor, Integer, Strin
 					
 					publishProgress(1, current, total);
 					
-					writer.write("<item>\n");
-					
-					String title = c.getString(titleIndex);
-					writer.write(String.format("<title>%s</title>\n", title != null ? URLEncoder.encode(title) : ""));
-					
-					String url = c.getString(urlIndex);
-					writer.write(String.format("<url>%s</url>\n", url != null ? URLEncoder.encode(url) : ""));
-					
-					writer.write(String.format("<creationdate>%s</creationdate>\n", c.getLong(creationDateIndex)));
-					writer.write(String.format("<visiteddate>%s</visiteddate>\n", c.getLong(visitedDateIndex)));
-					writer.write(String.format("<visits>%s</visits>\n", c.getInt(visitsIndex)));					
-					writer.write(String.format("<bookmark>%s</bookmark>\n", c.getInt(bookmarkIndex)));
-					
-					writer.write("</item>\n");
+					if (c.getInt(folderIndex) == 0) {
+						writer.write("<item>\n");
+
+						String title = c.getString(titleIndex);
+						writer.write(String.format("<title>%s</title>\n", title != null ? URLEncoder.encode(title) : ""));
+
+						String url = c.getString(urlIndex);
+						writer.write(String.format("<url>%s</url>\n", url != null ? URLEncoder.encode(url) : ""));
+
+						writer.write(String.format("<creationdate>%s</creationdate>\n", c.getLong(creationDateIndex)));
+						writer.write(String.format("<visiteddate>%s</visiteddate>\n", c.getLong(visitedDateIndex)));
+						writer.write(String.format("<visits>%s</visits>\n", c.getInt(visitsIndex)));					
+						writer.write(String.format("<bookmark>%s</bookmark>\n", c.getInt(bookmarkIndex)));
+
+						writer.write("</item>\n");
+					}
 					
 					current++;
 					c.moveToNext();
