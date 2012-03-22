@@ -22,16 +22,14 @@
     android:orientation="vertical" >
     
     <android.app.FragmentBreadCrumbs
-        android:id="@+id/BookmarksBreadCrumb1"
+        android:id="@+id/BookmarksBreadCrumb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dip"
+        android:layout_marginTop="@dimen/bookmarks_fragment_margin_top_bottom"
         android:layout_marginBottom="5dip"
         android:layout_marginLeft="@dimen/bookmarks_fragment_margin_left_right"
         android:layout_marginRight="@dimen/bookmarks_fragment_margin_left_right"
-        android:gravity="center_vertical|left"
-        android:paddingBottom="0dip"
-        android:paddingTop="5dip" />
+        android:gravity="center_vertical|left" />
 
     <GridView
         android:id="@+id/BookmarksGridView"
@@ -40,7 +38,7 @@
         android:layout_marginBottom="@dimen/bookmarks_fragment_margin_top_bottom"
         android:layout_marginLeft="@dimen/bookmarks_fragment_margin_left_right"
         android:layout_marginRight="@dimen/bookmarks_fragment_margin_left_right"
-        android:layout_marginTop="@dimen/bookmarks_fragment_margin_top_bottom"
+        
         android:columnWidth="@dimen/bookmarks_fragment_column_width"
         android:gravity="center"
         android:horizontalSpacing="@dimen/bookmarks_fragment_horizontal_spacing"

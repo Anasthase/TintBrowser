@@ -71,13 +71,15 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 	
 	private long mFolderId = -1;
 	
+	private boolean mIsTablet;
+	
 	public BookmarksFragment() {
 		mUIManager = Controller.getInstance().getUIManager();
 	}
 	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
+		super.onActivityCreated(savedInstanceState);		
 		
 		String[] from = new String[] { BookmarksProvider.Columns.TITLE, BookmarksProvider.Columns.URL };
 		int[] to = new int[] { R.id.BookmarkRow_Title, R.id.BookmarkRow_Url };
@@ -119,10 +121,12 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		mIsTablet = ApplicationUtils.isTablet(getActivity());
+		
 		if (mContainer == null) {
 			mContainer = inflater.inflate(R.layout.bookmarks_fragment, container, false);
 			
-			mFoldersBreadCrumb = (FragmentBreadCrumbs) mContainer.findViewById(R.id.BookmarksBreadCrumb1);
+			mFoldersBreadCrumb = (FragmentBreadCrumbs) mContainer.findViewById(R.id.BookmarksBreadCrumb);
 			mFoldersBreadCrumb.setMaxVisible(2);
 			mFoldersBreadCrumb.setActivity(getActivity());
 
@@ -135,7 +139,9 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 			
 			mBookmarksGrid = (GridView) mContainer.findViewById(R.id.BookmarksGridView);
 			
-			mFoldersBreadCrumb.setVisibility(View.GONE);
+			if (!mIsTablet) {
+				mFoldersBreadCrumb.setVisibility(View.GONE);
+			}
 		}
 		
 		return mContainer;
@@ -256,11 +262,17 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 		getLoaderManager().restartLoader(0, null, this);
 		
 		if (mFolderId == -1) {
-			mFoldersBreadCrumb.setVisibility(View.GONE);
+			if (!mIsTablet) {
+				mFoldersBreadCrumb.setVisibility(View.GONE);
+			}
+			
 			mFoldersBreadCrumb.setTitle(null, null);
 		} else {
 			mFoldersBreadCrumb.setTitle(folderTitle, folderTitle);
-			mFoldersBreadCrumb.setVisibility(View.VISIBLE);						
+			
+			if (!mIsTablet) {
+				mFoldersBreadCrumb.setVisibility(View.VISIBLE);
+			}
 		}		
 	}
 

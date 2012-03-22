@@ -69,14 +69,17 @@ public class EditBookmarkActivity extends Activity {
 		}
         
 		mFolders = BookmarksWrapper.getFoldersList(getContentResolver());
-		mFolders.add(0, new FolderItem(-1, getString(R.string.EditBookmarkActivity_RootFolder)));
+		mFolders.add(0, new FolderItem(-1, getString(R.string.Bookmarks)));
 		mFolders.add(0, new FolderItem(-2, getString(R.string.EditBookmarkActivity_NewFolder)));
 		
         mLabel = (EditText) findViewById(R.id.EditBookmarkActivity_LabelEdit);
         mUrl = (EditText) findViewById(R.id.EditBookmarkActivity_UrlEdit);
         
         mFoldersSpinner = (Spinner) findViewById(R.id.EditBookmarkActivity_FolderSpinner);
-        mFoldersSpinner.setAdapter(new FoldersAdapter(this, mFolders));
+        
+        FoldersAdapter adapter = new FoldersAdapter(this, mFolders);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mFoldersSpinner.setAdapter(adapter);
         
         mFoldersSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 
@@ -191,7 +194,7 @@ public class EditBookmarkActivity extends Activity {
 	private class FoldersAdapter extends ArrayAdapter<FolderItem> {
 		
 		public FoldersAdapter(Context context, List<FolderItem> values) {
-			super(context, android.R.layout.simple_spinner_dropdown_item, android.R.id.text1, values);
+			super(context, android.R.layout.simple_spinner_item, android.R.id.text1, values);
 		}
 
 		@Override
