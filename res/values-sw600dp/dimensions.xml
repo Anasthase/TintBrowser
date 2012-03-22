@@ -19,6 +19,7 @@
     
     <dimen name="bookmarks_fragment_margin_top_bottom">100dip</dimen>
     <dimen name="bookmarks_fragment_margin_left_right">150dip</dimen>
+    <dimen name="bookmarks_fragment_breadcrumb_margin_left_right">145dip</dimen>
     
     <dimen name="bookmarks_fragment_column_width">125dip</dimen>
     <dimen name="bookmarks_fragment_vertical_spacing">25dip</dimen>

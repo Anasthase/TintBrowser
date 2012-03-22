@@ -59,6 +59,8 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 	private static final int CONTEXT_MENU_SHARE_URL = Menu.FIRST + 3;
 	private static final int CONTEXT_MENU_DELETE_BOOKMARK = Menu.FIRST + 4;
 	
+	private static final int CONTEXT_MENU_DELETE_FOLDER = Menu.FIRST + 5;
+	
 	private View mContainer = null;
 	
 	private UIManager mUIManager;
@@ -155,13 +157,14 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 		if (id != -1) {
 			BookmarkHistoryItem selectedItem = BookmarksWrapper.getBookmarkById(getActivity().getContentResolver(), id);
 			if (selectedItem != null) {
+				
+				menu.setHeaderTitle(selectedItem.getTitle());
+				
 				if (!selectedItem.isFolder()) {
 					BitmapDrawable icon = ApplicationUtils.getApplicationButtonImage(getActivity(), selectedItem.getFavicon());
 					if (icon != null) {
 						menu.setHeaderIcon(icon);
-					}
-
-					menu.setHeaderTitle(selectedItem.getTitle());
+					}					
 
 					menu.add(0, CONTEXT_MENU_OPEN_IN_TAB, 0, R.string.OpenInTab);
 					menu.add(0, CONTEXT_MENU_EDIT_BOOKMARK, 0, R.string.EditBookmark);
@@ -169,10 +172,16 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 					menu.add(0, CONTEXT_MENU_SHARE_URL, 0, R.string.ContextMenuShareUrl);
 					menu.add(0, CONTEXT_MENU_DELETE_BOOKMARK, 0, R.string.DeleteBookmark);
 
-					List<AddonMenuItem> addonsContributions = Controller.getInstance().getAddonManager().getContributedBookmarkContextMenuItems(mUIManager.getCurrentWebView());
-					for (AddonMenuItem item : addonsContributions) {
-						menu.add(0, item.getAddon().getMenuId(), 0, item.getMenuItem());
-					}
+					
+				} else {
+				
+					menu.add(0, CONTEXT_MENU_DELETE_FOLDER, 0, R.string.DeleteFolder);
+					
+				}
+				
+				List<AddonMenuItem> addonsContributions = Controller.getInstance().getAddonManager().getContributedBookmarkContextMenuItems(mUIManager.getCurrentWebView());
+				for (AddonMenuItem item : addonsContributions) {
+					menu.add(0, item.getAddon().getMenuId(), 0, item.getMenuItem());
 				}
 			}
 		}
@@ -226,6 +235,10 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 			
 		case CONTEXT_MENU_DELETE_BOOKMARK:
 			BookmarksWrapper.deleteBookmark(getActivity().getContentResolver(), info.id);
+			return true;
+			
+		case CONTEXT_MENU_DELETE_FOLDER:
+			BookmarksWrapper.deleteFolder(getActivity().getContentResolver(), info.id);
 			return true;
 		
 		default:

@@ -239,12 +239,13 @@ public class BookmarksWrapper {
 		}
 
 		if (isBookmark) {
-			values.put(BookmarksProvider.Columns.BOOKMARK, 1);
-			values.put(BookmarksProvider.Columns.CREATION_DATE, new Date().getTime());
+			values.put(BookmarksProvider.Columns.BOOKMARK, 1);			
 			values.put(BookmarksProvider.Columns.FOLDER_ID, folderId);
+			values.put(BookmarksProvider.Columns.CREATION_DATE, new Date().getTime());
 		} else {
 			values.put(BookmarksProvider.Columns.BOOKMARK, 0);
 			values.put(BookmarksProvider.Columns.FOLDER_ID, -1);
+			values.putNull(BookmarksProvider.Columns.CREATION_DATE);
 		}
 
 		if (bookmarkExist) {                                    
@@ -266,6 +267,7 @@ public class BookmarksWrapper {
 						// If this record has been visited, keep it in history, but remove its bookmark flag.
                         ContentValues values = new ContentValues();
                         values.put(BookmarksProvider.Columns.BOOKMARK, 0);
+                        values.put(BookmarksProvider.Columns.FOLDER_ID, -1);
                         values.putNull(BookmarksProvider.Columns.CREATION_DATE);
                         
                         contentResolver.update(BookmarksProvider.BOOKMARKS_URI, values, whereClause, null);
@@ -279,6 +281,41 @@ public class BookmarksWrapper {
 			
 			c.close();
 		}
+	}
+	
+	public static void deleteFolder(ContentResolver contentResolver, long id) {
+		// First delete content of the folder.
+		String whereClause = BookmarksProvider.Columns.FOLDER_ID + " = " + id + " AND " + BookmarksProvider.Columns.BOOKMARK + " > 0";		
+		Cursor c = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, null);
+		if (c != null) {
+			if (c.moveToFirst()) {
+				
+				int idIndex = c.getColumnIndex(BookmarksProvider.Columns._ID);
+				int visitsIndex = c.getColumnIndex(BookmarksProvider.Columns.VISITS);
+				
+				do {
+					long bookmarkId = c.getLong(idIndex);
+					
+					if (c.getInt(visitsIndex) > 0) {
+						// If this record has been visited, keep it in history, but remove its bookmark flag and its folder id.
+                        ContentValues values = new ContentValues();
+                        values.put(BookmarksProvider.Columns.BOOKMARK, 0);
+                        values.put(BookmarksProvider.Columns.FOLDER_ID, -1);
+                        values.putNull(BookmarksProvider.Columns.CREATION_DATE);
+                        
+                        contentResolver.update(BookmarksProvider.BOOKMARKS_URI, values, BookmarksProvider.Columns._ID + " = " + bookmarkId, null);
+					} else {
+						contentResolver.delete(BookmarksProvider.BOOKMARKS_URI, BookmarksProvider.Columns._ID + " = " + bookmarkId, null);
+					}
+					
+				} while (c.moveToNext());
+			}
+			
+			c.close();
+		}
+		
+		// Finally delete the folder.
+		contentResolver.delete(BookmarksProvider.BOOKMARKS_URI, BookmarksProvider.Columns._ID + " = " + id, null);
 	}
 	
 	public static void deleteHistoryRecord(ContentResolver contentResolver, long id) {

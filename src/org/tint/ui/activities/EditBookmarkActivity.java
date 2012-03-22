@@ -70,7 +70,7 @@ public class EditBookmarkActivity extends Activity {
         
 		mFolders = BookmarksWrapper.getFoldersList(getContentResolver());
 		mFolders.add(0, new FolderItem(-1, getString(R.string.Bookmarks)));
-		mFolders.add(0, new FolderItem(-2, getString(R.string.EditBookmarkActivity_NewFolder)));
+		mFolders.add(0, new FolderItem(-2, getString(R.string.NewFolder)));
 		
         mLabel = (EditText) findViewById(R.id.EditBookmarkActivity_LabelEdit);
         mUrl = (EditText) findViewById(R.id.EditBookmarkActivity_UrlEdit);
@@ -168,7 +168,7 @@ public class EditBookmarkActivity extends Activity {
 			switch (folderSpinnerSelection) {
 			case 0:
 				if (TextUtils.isEmpty(mNewFolderName.getText().toString())) {
-					Toast.makeText(this, R.string.EditBookmarkActivity_ProvideNewFolderName, Toast.LENGTH_SHORT).show();
+					Toast.makeText(this, R.string.ProvideNewFolderName, Toast.LENGTH_SHORT).show();
 					return false;
 				} else {
 					folderId = BookmarksWrapper.getFolderId(getContentResolver(), mNewFolderName.getText().toString(), true);

@@ -26,10 +26,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/bookmarks_fragment_margin_top_bottom"
-        android:layout_marginBottom="5dip"
+        android:layout_marginBottom="10dip"
+        android:layout_marginLeft="@dimen/bookmarks_fragment_breadcrumb_margin_left_right"
+        android:layout_marginRight="@dimen/bookmarks_fragment_breadcrumb_margin_left_right"
+        android:gravity="center_vertical|left" />
+    
+    <ImageView
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/ContentDescriptionDivider"
+        android:paddingRight="5dip"
+        android:scaleType="fitXY"
         android:layout_marginLeft="@dimen/bookmarks_fragment_margin_left_right"
         android:layout_marginRight="@dimen/bookmarks_fragment_margin_left_right"
-        android:gravity="center_vertical|left" />
+        android:src="?android:attr/dividerHorizontal" />
 
     <GridView
         android:id="@+id/BookmarksGridView"

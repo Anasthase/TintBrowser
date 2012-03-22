@@ -49,17 +49,12 @@ public class BookmarksAdapter extends SimpleCursorAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View superView = super.getView(position, convertView, parent);
-		
-		TextView tv = (TextView) superView.findViewById(R.id.BookmarkRow_Url);
+				
 		ImageView thumbnailView = (ImageView) superView.findViewById(R.id.BookmarkRow_Thumbnail);
 		
 		boolean isFolder = getCursor().getInt(getCursor().getColumnIndex(BookmarksProvider.Columns.FOLDER)) > 0 ? true : false;
 		
-		if (!isFolder) {
-			if (tv != null) {
-				tv.setVisibility(View.VISIBLE);
-			}
-			
+		if (!isFolder) {			
 			byte[] thumbnail = getCursor().getBlob(getCursor().getColumnIndex(BookmarksProvider.Columns.THUMBNAIL));
 			if (thumbnail != null) {
 				BitmapDrawable icon = new BitmapDrawable(BitmapFactory.decodeByteArray(thumbnail, 0, thumbnail.length));
@@ -74,10 +69,12 @@ public class BookmarksAdapter extends SimpleCursorAdapter {
 			} else {
 				thumbnailView.setImageResource(mDefaultThumbnailId);
 			}
-		} else {			
+		} else {
+			TextView tv = (TextView) superView.findViewById(R.id.BookmarkRow_Url);
 			if (tv != null) {
-				tv.setVisibility(View.GONE);
+				tv.setText(R.string.Folder);
 			}
+			
 			thumbnailView.setImageResource(R.drawable.ic_folder);
 		}
 		

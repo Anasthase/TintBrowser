@@ -437,12 +437,11 @@
     <string name="ContentDescriptionPrivateBrowsingIndicator">Private browsing indicator</string>
     
     <!-- 1.4 -->
-    <string name="EditBookmarkActivity.Folder">Folder</string>
-    <string name="EditBookmarkActivity.NewFolder">New folder</string>
-    <string name="EditBookmarkActivity.RootFolder">Root folder</string>
-    <string name="EditBookmarkActivity.NewFolderHint">Name of the new folder</string>
-    <string name="EditBookmarkActivity.ProvideNewFolderName">Please provide a name for the new folder, or choose an existing one.</string>
+    <string name="Folder">Folder</string>
+    <string name="NewFolder">New folder</string>    
+    <string name="NewFolderHint">Name of the new folder</string>
+    <string name="ProvideNewFolderName">Please provide a name for the new folder, or choose an existing one.</string>
     
-    <string name="BookmarksBreadCrumbText">%s - Click to go back.</string>
+    <string name="DeleteFolder">Delete folder</string>
 
 </resources>
