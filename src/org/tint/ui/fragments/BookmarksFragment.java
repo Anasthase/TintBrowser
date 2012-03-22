@@ -55,6 +55,9 @@ import android.widget.GridView;
 
 public class BookmarksFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 	
+	private static final String EXTRA_CURRENT_FOLDER_ID = "EXTRA_CURRENT_FOLDER_ID";
+	private static final String EXTRA_CURRENT_FOLDER_TITLE = "EXTRA_CURRENT_FOLDER_TITLE";
+	
 	private static final int CONTEXT_MENU_OPEN_IN_TAB = Menu.FIRST;
 	private static final int CONTEXT_MENU_EDIT_BOOKMARK = Menu.FIRST + 1;
 	private static final int CONTEXT_MENU_COPY_URL = Menu.FIRST + 2;
@@ -74,13 +77,14 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 	private BookmarksAdapter mAdapter;
 	
 	private long mFolderId = -1;
+	private String mFolderTitle = null;
 	
 	private boolean mIsTablet;
 	
 	public BookmarksFragment() {
 		mUIManager = Controller.getInstance().getUIManager();
 	}
-	
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);		
@@ -146,9 +150,27 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 			if (!mIsTablet) {
 				mFoldersBreadCrumb.setVisibility(View.GONE);
 			}
+			
+			if ((savedInstanceState != null) && 
+				(savedInstanceState.containsKey(EXTRA_CURRENT_FOLDER_ID))) {				
+				mFolderId = savedInstanceState.getLong(EXTRA_CURRENT_FOLDER_ID);
+				mFolderTitle = savedInstanceState.getString(EXTRA_CURRENT_FOLDER_TITLE);
+			} else {
+				mFolderId = -1;
+				mFolderTitle = null;
+			}
+			
+			setFolderId(mFolderId, mFolderTitle);
 		}
 		
 		return mContainer;
+	}
+	
+	@Override
+	public void onSaveInstanceState(Bundle outState) {		
+		super.onSaveInstanceState(outState);
+		outState.putLong(EXTRA_CURRENT_FOLDER_ID, mFolderId);
+		outState.putString(EXTRA_CURRENT_FOLDER_TITLE, mFolderTitle);
 	}
 	
 	@Override
@@ -290,6 +312,8 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 	
 	private void setFolderId(long folderId, String folderTitle) {
 		mFolderId = folderId;
+		mFolderTitle = folderTitle;
+		
 		getLoaderManager().restartLoader(0, null, this);
 		
 		if (mFolderId == -1) {
@@ -299,7 +323,7 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 			
 			mFoldersBreadCrumb.setTitle(null, null);
 		} else {
-			mFoldersBreadCrumb.setTitle(folderTitle, folderTitle);
+			mFoldersBreadCrumb.setTitle(mFolderTitle, mFolderTitle);
 			
 			if (!mIsTablet) {
 				mFoldersBreadCrumb.setVisibility(View.VISIBLE);

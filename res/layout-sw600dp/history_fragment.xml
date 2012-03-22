@@ -26,7 +26,7 @@
         android:layout_width="0px"
         android:layout_height="match_parent"
         android:layout_marginBottom="32dp"
-        android:layout_marginLeft="96dp"
+        android:layout_marginLeft="@dimen/tablet_history_fragment_header_margin_left"
         android:layout_marginRight="0dp"
         android:layout_marginTop="32dp"
         android:layout_weight="10"
@@ -50,7 +50,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:layout_marginLeft="0dip"
-        android:layout_marginRight="96dp"        
+        android:layout_marginRight="@dimen/tablet_history_fragment_values_margin_right"        
         android:layout_weight="20"
         android:background="?android:attr/detailsElementBackground"
         android:orientation="vertical" >

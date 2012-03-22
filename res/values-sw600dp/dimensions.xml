@@ -17,13 +17,16 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">    
     
-    <dimen name="bookmarks_fragment_margin_top_bottom">100dip</dimen>
+    <dimen name="bookmarks_fragment_margin_top_bottom">75dip</dimen>
     <dimen name="bookmarks_fragment_margin_left_right">150dip</dimen>
     <dimen name="bookmarks_fragment_breadcrumb_margin_left_right">145dip</dimen>
     
     <dimen name="bookmarks_fragment_column_width">125dip</dimen>
     <dimen name="bookmarks_fragment_vertical_spacing">25dip</dimen>
     <dimen name="bookmarks_fragment_horizontal_spacing">25dip</dimen>
+    
+    <dimen name="tablet_history_fragment_header_margin_left">96dp</dimen>
+    <dimen name="tablet_history_fragment_values_margin_right">96dp</dimen>
     
     <dimen name="startpage_fragment_margin_top_bottom">50dip</dimen>
     <dimen name="startpage_fragment_margin_left_right">150dip</dimen>

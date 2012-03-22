@@ -103,6 +103,7 @@
                     android:id="@+id/EditBookmarkActivity.FolderValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
                     android:hint="@string/NewFolderHint"
                     android:inputType="text" >
                 </EditText>

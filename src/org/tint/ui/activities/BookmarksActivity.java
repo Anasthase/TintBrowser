@@ -50,6 +50,8 @@ import android.view.MenuItem;
 
 public class BookmarksActivity extends Activity implements IHistoryBookmaksExportListener, IHistoryBookmaksImportListener {
 	
+	private static final String EXTRA_SELECTED_TAB_INDEX = "EXTRA_SELECTED_TAB_INDEX";
+	
 	private UIManager mUIManager;
 	
 	private ProgressDialog mProgress;
@@ -84,6 +86,22 @@ public class BookmarksActivity extends Activity implements IHistoryBookmaksExpor
         tab.setText(R.string.HistoryTabTitle);
         tab.setTabListener(new GenericTabListener<HistoryFragment>(this, "history", HistoryFragment.class));
         actionBar.addTab(tab);
+        
+        if ((savedInstanceState != null) &&
+        		(savedInstanceState.containsKey(EXTRA_SELECTED_TAB_INDEX))) {
+        	int selectedIndex = savedInstanceState.getInt(EXTRA_SELECTED_TAB_INDEX);
+        	
+        	if ((selectedIndex == 0) ||
+        			(selectedIndex == 1)) {
+        		actionBar.setSelectedNavigationItem(selectedIndex);
+        	}
+        }
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putInt(EXTRA_SELECTED_TAB_INDEX, getActionBar().getSelectedNavigationIndex());
 	}
 
 	@Override

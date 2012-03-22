@@ -85,7 +85,12 @@ public class EditBookmarkActivity extends Activity {
 
 			@Override
 			public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-				mNewFolderName.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
+				if (position == 0) {
+					mNewFolderName.setVisibility(View.VISIBLE);
+					mNewFolderName.requestFocus();
+				} else {
+					mNewFolderName.setVisibility(View.GONE);
+				}
 			}
 
 			@Override
