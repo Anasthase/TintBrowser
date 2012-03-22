@@ -49,8 +49,8 @@ public class BookmarksWrapper {
         BookmarksProvider.Columns.CREATION_DATE,
         BookmarksProvider.Columns.VISITED_DATE,
         BookmarksProvider.Columns.BOOKMARK,
-        BookmarksProvider.Columns.FOLDER,
-        BookmarksProvider.Columns.FOLDER_ID,
+        BookmarksProvider.Columns.IS_FOLDER,
+        BookmarksProvider.Columns.PARENT_FOLDER_ID,
         BookmarksProvider.Columns.FAVICON,
         BookmarksProvider.Columns.THUMBNAIL };
 	
@@ -73,14 +73,14 @@ public class BookmarksWrapper {
 	}
 	
 	public static CursorLoader getCursorLoaderForBookmarks(Context context, long parentFolderId) {
-		String whereClause = BookmarksProvider.Columns.FOLDER_ID + " = " + parentFolderId + " AND (" + BookmarksProvider.Columns.BOOKMARK + " = 1 OR " + BookmarksProvider.Columns.FOLDER + " = 1)";
-		String orderClause = BookmarksProvider.Columns.FOLDER + " DESC, " + BookmarksProvider.Columns.VISITS + " DESC, " + BookmarksProvider.Columns.TITLE + " COLLATE NOCASE";
+		String whereClause = BookmarksProvider.Columns.PARENT_FOLDER_ID + " = " + parentFolderId + " AND (" + BookmarksProvider.Columns.BOOKMARK + " = 1 OR " + BookmarksProvider.Columns.IS_FOLDER + " = 1)";
+		String orderClause = BookmarksProvider.Columns.IS_FOLDER + " DESC, " + BookmarksProvider.Columns.VISITS + " DESC, " + BookmarksProvider.Columns.TITLE + " COLLATE NOCASE";
 		
 		return new CursorLoader(context, BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, orderClause);
 	}
 	
 	public static CursorLoader getCursorLoaderForHistory(Context context) {
-		String whereClause = BookmarksProvider.Columns.VISITS + " > 0 AND " + BookmarksProvider.Columns.FOLDER + " = 0";
+		String whereClause = BookmarksProvider.Columns.VISITS + " > 0 AND " + BookmarksProvider.Columns.IS_FOLDER + " = 0";
 		String orderClause = BookmarksProvider.Columns.VISITED_DATE + " DESC";
 		
 		return new CursorLoader(context, BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, orderClause);
@@ -107,8 +107,8 @@ public class BookmarksWrapper {
 				String title = c.getString(c.getColumnIndex(BookmarksProvider.Columns.TITLE));
                 String url = c.getString(c.getColumnIndex(BookmarksProvider.Columns.URL));
                 boolean isBookmarks = c.getInt(c.getColumnIndex(BookmarksProvider.Columns.BOOKMARK)) > 0 ? true : false;
-                boolean isFolder = c.getInt(c.getColumnIndex(BookmarksProvider.Columns.FOLDER)) > 0 ? true : false;
-                long folderId = c.getLong(c.getColumnIndex(BookmarksProvider.Columns.FOLDER_ID));
+                boolean isFolder = c.getInt(c.getColumnIndex(BookmarksProvider.Columns.IS_FOLDER)) > 0 ? true : false;
+                long folderId = c.getLong(c.getColumnIndex(BookmarksProvider.Columns.PARENT_FOLDER_ID));
                 byte[] favIcon = c.getBlob(c.getColumnIndex(BookmarksProvider.Columns.FAVICON));
                 result = new BookmarkHistoryItem(id, title, url, isBookmarks, isFolder, folderId, favIcon);
 			}
@@ -146,7 +146,7 @@ public class BookmarksWrapper {
 	public static List<FolderItem> getFoldersList(ContentResolver contentResolver) {
 		List<FolderItem> result = new ArrayList<FolderItem>();
 		
-		String whereClause = BookmarksProvider.Columns.FOLDER + " = 1";
+		String whereClause = BookmarksProvider.Columns.IS_FOLDER + " = 1";
 		String orderClause = BookmarksProvider.Columns.TITLE;
 		
 		Cursor c = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, orderClause);
@@ -167,7 +167,7 @@ public class BookmarksWrapper {
 	}
 	
 	public static long getFolderId(ContentResolver contentResolver, String folderName, boolean createIfNotPresent) {
-		String whereClause = BookmarksProvider.Columns.TITLE + " = \"" + folderName + "\" AND " + BookmarksProvider.Columns.FOLDER + " = 1";
+		String whereClause = BookmarksProvider.Columns.TITLE + " = \"" + folderName + "\" AND " + BookmarksProvider.Columns.IS_FOLDER + " = 1";
 		
 		Cursor c = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, null);
 		if ((c != null) &&
@@ -180,7 +180,7 @@ public class BookmarksWrapper {
 				values.put(BookmarksProvider.Columns.TITLE, folderName);
 				values.putNull(BookmarksProvider.Columns.URL);
 				values.put(BookmarksProvider.Columns.BOOKMARK, 0);
-				values.put(BookmarksProvider.Columns.FOLDER, 1);
+				values.put(BookmarksProvider.Columns.IS_FOLDER, 1);
 				
 				Uri result = contentResolver.insert(BookmarksProvider.BOOKMARKS_URI, values);
 				
@@ -240,11 +240,11 @@ public class BookmarksWrapper {
 
 		if (isBookmark) {
 			values.put(BookmarksProvider.Columns.BOOKMARK, 1);			
-			values.put(BookmarksProvider.Columns.FOLDER_ID, folderId);
+			values.put(BookmarksProvider.Columns.PARENT_FOLDER_ID, folderId);
 			values.put(BookmarksProvider.Columns.CREATION_DATE, new Date().getTime());
 		} else {
 			values.put(BookmarksProvider.Columns.BOOKMARK, 0);
-			values.put(BookmarksProvider.Columns.FOLDER_ID, -1);
+			values.put(BookmarksProvider.Columns.PARENT_FOLDER_ID, -1);
 			values.putNull(BookmarksProvider.Columns.CREATION_DATE);
 		}
 
@@ -267,7 +267,7 @@ public class BookmarksWrapper {
 						// If this record has been visited, keep it in history, but remove its bookmark flag.
                         ContentValues values = new ContentValues();
                         values.put(BookmarksProvider.Columns.BOOKMARK, 0);
-                        values.put(BookmarksProvider.Columns.FOLDER_ID, -1);
+                        values.put(BookmarksProvider.Columns.PARENT_FOLDER_ID, -1);
                         values.putNull(BookmarksProvider.Columns.CREATION_DATE);
                         
                         contentResolver.update(BookmarksProvider.BOOKMARKS_URI, values, whereClause, null);
@@ -285,7 +285,7 @@ public class BookmarksWrapper {
 	
 	public static void deleteFolder(ContentResolver contentResolver, long id) {
 		// First delete content of the folder.
-		String whereClause = BookmarksProvider.Columns.FOLDER_ID + " = " + id + " AND " + BookmarksProvider.Columns.BOOKMARK + " > 0";		
+		String whereClause = BookmarksProvider.Columns.PARENT_FOLDER_ID + " = " + id + " AND " + BookmarksProvider.Columns.BOOKMARK + " > 0";		
 		Cursor c = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, null);
 		if (c != null) {
 			if (c.moveToFirst()) {
@@ -300,7 +300,7 @@ public class BookmarksWrapper {
 						// If this record has been visited, keep it in history, but remove its bookmark flag and its folder id.
                         ContentValues values = new ContentValues();
                         values.put(BookmarksProvider.Columns.BOOKMARK, 0);
-                        values.put(BookmarksProvider.Columns.FOLDER_ID, -1);
+                        values.put(BookmarksProvider.Columns.PARENT_FOLDER_ID, -1);
                         values.putNull(BookmarksProvider.Columns.CREATION_DATE);
                         
                         contentResolver.update(BookmarksProvider.BOOKMARKS_URI, values, BookmarksProvider.Columns._ID + " = " + bookmarkId, null);
@@ -566,8 +566,8 @@ public class BookmarksWrapper {
 				int columnTitle = cursor.getColumnIndex(BookmarksProvider.Columns.TITLE);
 				int columnUrl = cursor.getColumnIndex(BookmarksProvider.Columns.URL);
 				int columnBookmark = cursor.getColumnIndex(BookmarksProvider.Columns.BOOKMARK);
-				int columnFolder = cursor.getColumnIndex(BookmarksProvider.Columns.FOLDER);
-				int columnFolderId = cursor.getColumnIndex(BookmarksProvider.Columns.FOLDER_ID);
+				int columnFolder = cursor.getColumnIndex(BookmarksProvider.Columns.IS_FOLDER);
+				int columnFolderId = cursor.getColumnIndex(BookmarksProvider.Columns.PARENT_FOLDER_ID);
 				int columnFavicon = cursor.getColumnIndex(BookmarksProvider.Columns.FAVICON);
 				
 				int count = 0;
@@ -607,7 +607,7 @@ public class BookmarksWrapper {
 			ContentValues values = new ContentValues();
 			
 			values.put(BookmarksProvider.Columns.BOOKMARK, bookmark);
-			values.put(BookmarksProvider.Columns.FOLDER_ID, -1);
+			values.put(BookmarksProvider.Columns.PARENT_FOLDER_ID, -1);
 			
 			if (bookmark) {
 				values.put(BookmarksProvider.Columns.CREATION_DATE, new Date().getTime());

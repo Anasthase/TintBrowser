@@ -52,7 +52,7 @@ public class BookmarksAdapter extends SimpleCursorAdapter {
 				
 		ImageView thumbnailView = (ImageView) superView.findViewById(R.id.BookmarkRow_Thumbnail);
 		
-		boolean isFolder = getCursor().getInt(getCursor().getColumnIndex(BookmarksProvider.Columns.FOLDER)) > 0 ? true : false;
+		boolean isFolder = getCursor().getInt(getCursor().getColumnIndex(BookmarksProvider.Columns.IS_FOLDER)) > 0 ? true : false;
 		
 		if (!isFolder) {			
 			byte[] thumbnail = getCursor().getBlob(getCursor().getColumnIndex(BookmarksProvider.Columns.THUMBNAIL));

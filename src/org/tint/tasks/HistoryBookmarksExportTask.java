@@ -70,7 +70,7 @@ public class HistoryBookmarksExportTask extends AsyncTask<Cursor, Integer, Strin
 				int visitedDateIndex = c.getColumnIndex(BookmarksProvider.Columns.VISITED_DATE);
 				int visitsIndex = c.getColumnIndex(BookmarksProvider.Columns.VISITS);
 				int bookmarkIndex = c.getColumnIndex(BookmarksProvider.Columns.BOOKMARK);
-				int folderIndex = c.getColumnIndex(BookmarksProvider.Columns.FOLDER);
+				int folderIndex = c.getColumnIndex(BookmarksProvider.Columns.IS_FOLDER);
 				
 				int current = 0;
 				int total = c.getCount();

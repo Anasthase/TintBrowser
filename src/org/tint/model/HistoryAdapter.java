@@ -210,8 +210,8 @@ public class HistoryAdapter extends BaseExpandableListAdapter {
 				mCursor.getString(mCursor.getColumnIndex(BookmarksProvider.Columns.TITLE)),
 				mCursor.getString(mCursor.getColumnIndex(BookmarksProvider.Columns.URL)),
 				mCursor.getInt(mCursor.getColumnIndex(BookmarksProvider.Columns.BOOKMARK)) >= 1 ? true : false,
-				mCursor.getInt(mCursor.getColumnIndex(BookmarksProvider.Columns.FOLDER)) >= 1 ? true : false,
-				mCursor.getLong(mCursor.getColumnIndex(BookmarksProvider.Columns.FOLDER_ID)),
+				mCursor.getInt(mCursor.getColumnIndex(BookmarksProvider.Columns.IS_FOLDER)) >= 1 ? true : false,
+				mCursor.getLong(mCursor.getColumnIndex(BookmarksProvider.Columns.PARENT_FOLDER_ID)),
 				mCursor.getBlob(mCursor.getColumnIndex(BookmarksProvider.Columns.FAVICON)));
 	}
 
