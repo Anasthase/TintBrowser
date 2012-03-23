@@ -15,6 +15,7 @@
 
 package org.tint.ui;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.tint.ui.activities.TintBrowserActivity;
@@ -74,7 +75,7 @@ public interface UIManager extends OnTouchListener {
 	
 	void clearFormData();
 	
-	void clearCache();
+	void clearCache();	
 	
 	void setHttpAuthUsernamePassword(String host, String realm, String username, String password);
 	
@@ -83,6 +84,8 @@ public interface UIManager extends OnTouchListener {
 	CustomWebView getWebViewByTabId(UUID tabId);
 	
 	BaseWebViewFragment getCurrentWebViewFragment();
+	
+	List<BaseWebViewFragment> getTabs();
 	
 	void setUploadMessage(ValueCallback<Uri> uploadMsg);
 	

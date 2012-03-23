@@ -73,6 +73,7 @@
         <activity android:name=".ui.preferences.PreferencesActivity" android:label="@string/PreferencesActivityTitle"></activity>
         <activity android:name=".ui.activities.BookmarksActivity"></activity>
         <activity android:name=".ui.activities.EditBookmarkActivity" android:theme="@android:style/Theme.Holo.DialogWhenLarge"></activity>
+        <activity android:name=".ui.activities.TabsActivity" android:theme="@android:style/Theme.Holo.NoActionBar"></activity>
         
         <provider android:name=".providers.BookmarksProvider"
             android:authorities="org.tint.providers.bookmarksprovider"

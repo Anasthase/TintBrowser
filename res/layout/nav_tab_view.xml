@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+   Tint Browser for Android
+  
+   Copyright (C) 2012 - to infinity and beyond J. Devauchelle and contributors.
+ 
+   This program is free software; you can redistribute it and/or
+   modify it under the terms of the GNU General Public License
+   version 3 as published by the Free Software Foundation.
+ 
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+ -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/nav_tab_bg"
+    android:focusable="false">
+    <LinearLayout
+        android:id="@+id/titlebar"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_tab_titleheight"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="8dip" >
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:scrollHorizontally="true"
+            android:drawablePadding="8dip" />
+        <ImageView
+            android:id="@+id/closetab"
+            android:src="@drawable/ic_tab_close"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="16dip"
+            android:contentDescription="ToDoLater"
+            style="@style/HoloButton" />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/tab_view"
+        android:src="@drawable/ic_stop_holo_dark"
+        android:layout_width="@dimen/nav_tab_width"
+        android:layout_height="@dimen/nav_tab_height"
+        android:paddingLeft="2dip"
+        android:paddingRight="2dip"
+        android:focusable="false" />
+</LinearLayout>

@@ -33,6 +33,10 @@
 	    android:icon="@drawable/ic_incognito_holo_dark" 
 	    android:checkable="true" />
     
+    <item
+	    android:id="@+id/MainActivity.MenuTabs"
+	    android:title="Tabs" />
+    
     <group android:id="@+id/MainActivity.DisabledOnStartPageMenuGroup">
     	<item
     	    android:id="@+id/MainActivity.MenuSharePage"

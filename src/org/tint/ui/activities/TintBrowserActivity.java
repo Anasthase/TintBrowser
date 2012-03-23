@@ -238,6 +238,11 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 	        	mUIManager.togglePrivateBrowsing();
 	        	return true;
 	        	
+	        case R.id.MainActivity_MenuTabs:
+	        	i = new Intent(this, TabsActivity.class);
+	        	startActivity(i);
+	        	return true;
+	        	
 	        case R.id.MainActivity_MenuSharePage:
 	        	mUIManager.shareCurrentPage();
 	        	return true;

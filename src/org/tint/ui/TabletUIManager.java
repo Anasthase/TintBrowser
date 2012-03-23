@@ -16,6 +16,7 @@
 package org.tint.ui;
 
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -160,6 +161,12 @@ public class TabletUIManager extends BaseUIManager {
 		} else {
 			return null;
 		}
+	}
+	
+	@Override
+	public List<BaseWebViewFragment> getTabs() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override

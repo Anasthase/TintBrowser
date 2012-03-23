@@ -517,6 +517,11 @@ public class PhoneUIManager extends BaseUIManager {
 			return null;
 		}
 	}
+	
+	@Override
+	public List<BaseWebViewFragment> getTabs() {
+		return new ArrayList<BaseWebViewFragment>(mFragmentsList);
+	}
 
 	@Override
 	protected int getTabCount() {

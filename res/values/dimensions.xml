@@ -36,4 +36,10 @@
     
     <dimen name="history_row_padding_left_right">0dip</dimen>
     <dimen name="history_row_padding_top_bottom">5dip</dimen>
+    
+    <dimen name="nav_tab_width">240dip</dimen>
+    <dimen name="nav_tab_height">160dip</dimen>
+    <dimen name="nav_tab_titleheight">32dip</dimen>
+    <dimen name="nav_tab_text_normal">18sp</dimen>
+    <dimen name="nav_tab_text_small">14sp</dimen>
 </resources>
