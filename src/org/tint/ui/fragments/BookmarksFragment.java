@@ -131,7 +131,21 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 		
 		registerForContextMenu(mBookmarksGrid);
 		
-		getLoaderManager().initLoader(0, null, this);
+		if (!mIsTablet) {
+			mBreadCrumbGroup.setVisibility(View.GONE);
+			mBreadCrumbGroup.setTranslationY(- mBreadCrumbGroup.getHeight());
+		}
+		
+		if ((savedInstanceState != null) && 
+			(savedInstanceState.containsKey(EXTRA_CURRENT_FOLDER_ID))) {				
+			mFolderId = savedInstanceState.getLong(EXTRA_CURRENT_FOLDER_ID);
+			mFolderTitle = savedInstanceState.getString(EXTRA_CURRENT_FOLDER_TITLE);
+		} else {
+			mFolderId = -1;
+			mFolderTitle = null;
+		}
+		
+		setFolderId(mFolderId, mFolderTitle);
 	}	
 	
 	@Override
@@ -141,7 +155,7 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 		if (mContainer == null) {
 			mContainer = inflater.inflate(R.layout.bookmarks_fragment, container, false);
 			
-			mBreadCrumbGroup = (ViewGroup) mContainer.findViewById(R.id.BookmarksBreadCrumbGroup);
+			mBreadCrumbGroup = (ViewGroup) mContainer.findViewById(R.id.BookmarksBreadCrumbGroup);			
 			
 			mFoldersBreadCrumb = (FragmentBreadCrumbs) mContainer.findViewById(R.id.BookmarksBreadCrumb);
 			mFoldersBreadCrumb.setMaxVisible(2);
@@ -163,21 +177,6 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 			});
 			
 			mBookmarksGrid = (GridView) mContainer.findViewById(R.id.BookmarksGridView);
-			
-			if (!mIsTablet) {
-				mBreadCrumbGroup.setVisibility(View.GONE);
-			}
-			
-			if ((savedInstanceState != null) && 
-				(savedInstanceState.containsKey(EXTRA_CURRENT_FOLDER_ID))) {				
-				mFolderId = savedInstanceState.getLong(EXTRA_CURRENT_FOLDER_ID);
-				mFolderTitle = savedInstanceState.getString(EXTRA_CURRENT_FOLDER_TITLE);
-			} else {
-				mFolderId = -1;
-				mFolderTitle = null;
-			}
-			
-			setFolderId(mFolderId, mFolderTitle);
 		}
 		
 		return mContainer;
@@ -337,10 +336,17 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 		
 		if (mFolderId == -1) {
 			if (!mIsTablet) {
-//				mBreadCrumbGroup.setVisibility(View.GONE);
+				
+				// Dirty workaround for the first time the BreadCrumb is shown.
+				// At this time, its size has not been computed, so its height is 0 
+				// and does not show with an animation.
+				int height = mBreadCrumbGroup.getHeight();
+				if (height == 0) {
+					height = 80;
+				}
 				
 				AnimatorSet animator = new AnimatorSet();
-				animator.play(ObjectAnimator.ofFloat(mBreadCrumbGroup, "translationY", - mBreadCrumbGroup.getHeight()));
+				animator.play(ObjectAnimator.ofFloat(mBreadCrumbGroup, "translationY", - height));
 				
 				animator.addListener(new AnimatorListenerAdapter() {
 					@Override
@@ -382,8 +388,6 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 				getLoaderManager().restartLoader(0, null, this);
 			}
 		}
-		
-//		getLoaderManager().restartLoader(0, null, this);
 	}
 
 }
