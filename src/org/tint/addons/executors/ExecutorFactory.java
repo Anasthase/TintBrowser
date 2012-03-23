@@ -45,7 +45,11 @@ public class ExecutorFactory {
 	}
 	
 	public static BaseActionExecutor getExecutor(Action addonAction) {
-		return sClassMap.get(addonAction.getClass().getName());
+		if (addonAction != null) {
+			return sClassMap.get(addonAction.getClass().getName());
+		} else {
+			return null;
+		}
 	}
 
 }

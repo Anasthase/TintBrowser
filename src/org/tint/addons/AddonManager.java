@@ -360,10 +360,12 @@ public class AddonManager {
 	}
 	
 	private void processOneResponse(Context context, CustomWebView webView, AddonResponseWrapper responseWrapper) {
-		Addon addon = responseWrapper.getAddon();
-		List<Action> response = responseWrapper.getResponse();
-		
-		processOneResponse(context, webView, addon, response);
+		if (responseWrapper != null) {
+			Addon addon = responseWrapper.getAddon();
+			List<Action> response = responseWrapper.getResponse();
+
+			processOneResponse(context, webView, addon, response);
+		}
 	}
 	
 	private void processResponses(Context context, CustomWebView webView, List<AddonResponseWrapper> responses) {
