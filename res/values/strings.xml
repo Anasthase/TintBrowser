@@ -440,5 +440,7 @@
     
     <string name="DeleteFolder">Delete folder</string>
     <string name="ConfirmDeleteFolderMessage">Delete this folder and all its content?</string>
+    
+    <string name="ContentDescriptionBookmarksFoldersBack">Go back in bookmarks folders hierarchy</string>
 
 </resources>

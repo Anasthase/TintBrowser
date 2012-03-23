@@ -49,6 +49,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
@@ -72,7 +73,9 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 	
 	private GridView mBookmarksGrid;
 	
+	private ViewGroup mBreadCrumbGroup;
 	private FragmentBreadCrumbs mFoldersBreadCrumb;
+	private ImageView mBackBreadCrumb;
 	
 	private BookmarksAdapter mAdapter;
 	
@@ -134,6 +137,8 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 		if (mContainer == null) {
 			mContainer = inflater.inflate(R.layout.bookmarks_fragment, container, false);
 			
+			mBreadCrumbGroup = (ViewGroup) mContainer.findViewById(R.id.BookmarksBreadCrumbGroup);
+			
 			mFoldersBreadCrumb = (FragmentBreadCrumbs) mContainer.findViewById(R.id.BookmarksBreadCrumb);
 			mFoldersBreadCrumb.setMaxVisible(2);
 			mFoldersBreadCrumb.setActivity(getActivity());
@@ -145,10 +150,18 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 				}
 			});
 			
+			mBackBreadCrumb = (ImageView) mContainer.findViewById(R.id.BookmarksBreadCrumbBackHierarchy);
+			mBackBreadCrumb.setOnClickListener(new OnClickListener() {				
+				@Override
+				public void onClick(View arg0) {
+					setFolderId(-1, null);
+				}
+			});
+			
 			mBookmarksGrid = (GridView) mContainer.findViewById(R.id.BookmarksGridView);
 			
 			if (!mIsTablet) {
-				mFoldersBreadCrumb.setVisibility(View.GONE);
+				mBreadCrumbGroup.setVisibility(View.GONE);
 			}
 			
 			if ((savedInstanceState != null) && 
@@ -318,7 +331,9 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 		
 		if (mFolderId == -1) {
 			if (!mIsTablet) {
-				mFoldersBreadCrumb.setVisibility(View.GONE);
+				mBreadCrumbGroup.setVisibility(View.GONE);
+			} else {
+				mBackBreadCrumb.setVisibility(View.GONE);
 			}
 			
 			mFoldersBreadCrumb.setTitle(null, null);
@@ -326,7 +341,9 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 			mFoldersBreadCrumb.setTitle(mFolderTitle, mFolderTitle);
 			
 			if (!mIsTablet) {
-				mFoldersBreadCrumb.setVisibility(View.VISIBLE);
+				mBreadCrumbGroup.setVisibility(View.VISIBLE);
+			} else {
+				mBackBreadCrumb.setVisibility(View.VISIBLE);
 			}
 		}		
 	}
