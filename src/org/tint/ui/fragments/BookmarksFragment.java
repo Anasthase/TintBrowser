@@ -29,6 +29,10 @@ import org.tint.ui.activities.EditBookmarkActivity;
 import org.tint.utils.ApplicationUtils;
 import org.tint.utils.Constants;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -327,25 +331,59 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 		mFolderId = folderId;
 		mFolderTitle = folderTitle;
 		
-		getLoaderManager().restartLoader(0, null, this);
+		if (mAdapter != null) {
+			mAdapter.swapCursor(null);
+		}		
 		
 		if (mFolderId == -1) {
 			if (!mIsTablet) {
-				mBreadCrumbGroup.setVisibility(View.GONE);
+//				mBreadCrumbGroup.setVisibility(View.GONE);
+				
+				AnimatorSet animator = new AnimatorSet();
+				animator.play(ObjectAnimator.ofFloat(mBreadCrumbGroup, "translationY", - mBreadCrumbGroup.getHeight()));
+				
+				animator.addListener(new AnimatorListenerAdapter() {
+					@Override
+					public void onAnimationEnd(Animator animation) {
+						mBreadCrumbGroup.setVisibility(View.GONE);
+						getLoaderManager().restartLoader(0, null, BookmarksFragment.this);
+					}					
+				});
+				
+				animator.start();
+				
 			} else {
 				mBackBreadCrumb.setVisibility(View.GONE);
+				getLoaderManager().restartLoader(0, null, this);
 			}
 			
 			mFoldersBreadCrumb.setTitle(null, null);
-		} else {
+		} else {			
 			mFoldersBreadCrumb.setTitle(mFolderTitle, mFolderTitle);
 			
 			if (!mIsTablet) {
 				mBreadCrumbGroup.setVisibility(View.VISIBLE);
+				
+				AnimatorSet animator = new AnimatorSet();
+				animator.play(ObjectAnimator.ofFloat(mBreadCrumbGroup, "translationY", 0));
+				
+				animator.addListener(new AnimatorListenerAdapter() {
+					@Override
+					public void onAnimationEnd(Animator animation) {
+						mBreadCrumbGroup.requestLayout();
+						getLoaderManager().restartLoader(0, null, BookmarksFragment.this);
+					}					
+				});
+				
+				animator.start();
+				
 			} else {
 				mBackBreadCrumb.setVisibility(View.VISIBLE);
+				getLoaderManager().restartLoader(0, null, this);
 			}
-		}		
+		}
+		
+//		getLoaderManager().restartLoader(0, null, this);
 	}
 
 }
