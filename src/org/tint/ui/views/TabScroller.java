@@ -153,7 +153,7 @@ public class TabScroller extends ScrollerView {
         mLayoutListener = l;
     }
 
-    protected void setAdapter(BaseAdapter adapter, int selection) {
+    public void setAdapter(BaseAdapter adapter, int selection) {
         mAdapter = adapter;
         mAdapter.registerDataSetObserver(new DataSetObserver() {
 
@@ -231,7 +231,7 @@ public class TabScroller extends ScrollerView {
         mContentView.removeAllViews();
     }
 
-    void snapToSelected(int pos, boolean smooth) {
+    public void snapToSelected(int pos, boolean smooth) {
         if (pos < 0) return;
         View v = mContentView.getChildAt(pos);
         if (v == null) return;

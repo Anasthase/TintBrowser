@@ -168,6 +168,19 @@ public class TabletUIManager extends BaseUIManager {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public int getCurrentTabIndex() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+
+	@Override
+	public void setTabIndex(int index) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
 	public void addTab(String url, boolean openInBackground, boolean privateBrowsing) {
@@ -440,4 +453,5 @@ public class TabletUIManager extends BaseUIManager {
 		mUrlBar.setBackEnabled(currentWebView.canGoBack());
 		mUrlBar.setForwardEnabled(currentWebView.canGoForward());
 	}
+	
 }

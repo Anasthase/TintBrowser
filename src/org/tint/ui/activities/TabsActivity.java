@@ -27,12 +27,10 @@ import org.tint.ui.views.TabScroller.OnRemoveListener;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Picture;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.BaseAdapter;
@@ -49,21 +47,28 @@ public class TabsActivity extends Activity {
 	
 	private List<BaseWebViewFragment> mTabs;
 	
+	private int mTabWidth;
+	private int mTabHeight;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tabs_activity);
 		
-		mUIManager = Controller.getInstance().getUIManager();
+		mTabWidth = (int) getResources().getDimension(R.dimen.nav_tab_width);
+		mTabHeight = (int) getResources().getDimension(R.dimen.nav_tab_height);
+		
+		mUIManager = Controller.getInstance().getUIManager();		
 		mTabs = mUIManager.getTabs();
 		
 		mOrientation = getResources().getConfiguration().orientation;
 		
 		mTabScroller = (TabScroller) findViewById(R.id.TabsScroller);
-		mTabScroller.setAdapter(new TabsAdapter(this));
 		
 		mTabScroller.setOrientation(mOrientation == Configuration.ORIENTATION_LANDSCAPE
                 ? LinearLayout.HORIZONTAL : LinearLayout.VERTICAL);
+		
+		mTabScroller.setAdapter(new TabsAdapter(this), mUIManager.getCurrentTabIndex());
         
 		mTabScroller.setOnRemoveListener(new OnRemoveListener() {
 			@Override
@@ -71,6 +76,8 @@ public class TabsActivity extends Activity {
 				
 			}        	
         });
+		
+		
 	}
 
 	private class TabsAdapter extends BaseAdapter {
@@ -97,7 +104,7 @@ public class TabsActivity extends Activity {
 		}
 
 		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
+		public View getView(final int position, View convertView, ViewGroup parent) {
 			if (convertView == null) {
 				convertView = mInflater.inflate(R.layout.nav_tab_view, null, false);
 			}
@@ -109,18 +116,19 @@ public class TabsActivity extends Activity {
 			tv.setText(webView.getTitle());
 			
 			ImageView iv = (ImageView) convertView.findViewById(R.id.tab_view);
-			iv.setImageBitmap(createFromPicture(webView.capturePicture()));
+			iv.setImageBitmap(current.getScreenShot(mTabWidth, mTabHeight));
+			
+			convertView.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					mUIManager.setTabIndex(position);
+					TabsActivity.this.finish();
+				}
+			});
 			
 			return convertView;
 		}
-		
-		private Bitmap createFromPicture(Picture p) {
-	    	Bitmap result = Bitmap.createBitmap(p.getWidth(), p.getHeight(), Bitmap.Config.ARGB_8888);
-	    	Canvas c = new Canvas(result);
-	    	p.draw(c);
-	    	    	
-	    	return result;
-	    }
 		
 	}
 	

@@ -87,6 +87,10 @@ public interface UIManager extends OnTouchListener {
 	
 	List<BaseWebViewFragment> getTabs();
 	
+	int getCurrentTabIndex();
+	
+	void setTabIndex(int index);
+	
 	void setUploadMessage(ValueCallback<Uri> uploadMsg);
 	
 	ValueCallback<Uri> getUploadMessage();

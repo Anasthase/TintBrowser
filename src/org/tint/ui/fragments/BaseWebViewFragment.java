@@ -24,6 +24,9 @@ import org.tint.ui.components.CustomWebViewClient;
 import org.tint.utils.Constants;
 
 import android.app.Fragment;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Picture;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -96,6 +99,18 @@ public abstract class BaseWebViewFragment extends Fragment {
 		mPrivateBrowsing = privateBrowsing;
 	}
 	
+	public Bitmap getScreenShot(int width, int height) {
+		Bitmap result = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+		
+		if (!isStartPageShown()) {
+			Canvas c = new Canvas(result);
+			Picture p = mWebView.capturePicture();
+			p.draw(c);
+		}
+		
+		return result;
+	}
+		
 	protected void onViewCreated() {
 		if (!mWebViewAddedToParent) {
 			mParentView.addView(mWebView);

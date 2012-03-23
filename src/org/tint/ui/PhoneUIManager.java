@@ -522,6 +522,18 @@ public class PhoneUIManager extends BaseUIManager {
 	public List<BaseWebViewFragment> getTabs() {
 		return new ArrayList<BaseWebViewFragment>(mFragmentsList);
 	}
+	
+	@Override
+	public int getCurrentTabIndex() {
+		return mCurrentTabIndex;
+	}
+	
+	@Override
+	public void setTabIndex(int index) {
+		int oldIndex = mCurrentTabIndex;
+		mCurrentTabIndex = index;
+		showCurrentTab(oldIndex, true);		
+	}
 
 	@Override
 	protected int getTabCount() {
@@ -936,6 +948,6 @@ public class PhoneUIManager extends BaseUIManager {
 			return super.onFling(e1, e2, velocityX, velocityY);
 		}
 		
-	}
+	}	
 
 }
