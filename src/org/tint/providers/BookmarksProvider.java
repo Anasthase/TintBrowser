@@ -198,8 +198,9 @@ public class BookmarksProvider extends ContentProvider {
 						Columns.VISITS + ", " + 
 						Columns.CREATION_DATE + ", " +
 						Columns.VISITED_DATE + ", " + 
-						Columns.BOOKMARK +
-						") VALUES (?, ?, ?, ?, ?, ?)");
+						Columns.BOOKMARK + ", " +
+						Columns.PARENT_FOLDER_ID + 
+						") VALUES (?, ?, ?, ?, ?, ?, ?)");
 				
 				for (ContentValues value : values) {
 					
@@ -213,6 +214,7 @@ public class BookmarksProvider extends ContentProvider {
 						String creationDate = value.getAsString(Columns.CREATION_DATE);
 						String visitedDate = value.getAsString(Columns.VISITED_DATE);
 						String bookmark = value.getAsString(Columns.BOOKMARK);
+						String parentFolderId = value.getAsString(Columns.PARENT_FOLDER_ID);
 						
 						insert.bindString(1, title);
 						insert.bindString(2, url);
@@ -239,6 +241,12 @@ public class BookmarksProvider extends ContentProvider {
 							insert.bindString(6, bookmark);
 						} else {
 							insert.bindString(6, "0");
+						}
+						
+						if (!TextUtils.isEmpty(parentFolderId)) {
+							insert.bindString(7, parentFolderId);
+						} else {
+							insert.bindString(7, "-1");
 						}
 
 						insert.execute();
