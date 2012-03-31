@@ -39,10 +39,10 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.app.ActionBar.Tab;
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
-import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -62,8 +62,8 @@ public class BookmarksActivity extends Activity implements IHistoryBookmaksExpor
 	private static final AtomicReference<AsyncTask<String, Integer, String>> mImportSyncThread =
 		      new AtomicReference<AsyncTask<String, Integer, String>>();
 	
-	private static final AtomicReference<AsyncTask<Cursor, Integer, String>> mExportSyncThread =
-		      new AtomicReference<AsyncTask<Cursor, Integer, String>>();
+	private static final AtomicReference<AsyncTask<ContentResolver, Integer, String>> mExportSyncThread =
+		      new AtomicReference<AsyncTask<ContentResolver, Integer, String>>();
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -272,7 +272,7 @@ public class BookmarksActivity extends Activity implements IHistoryBookmaksExpor
 		
 		boolean retVal = mExportSyncThread.compareAndSet(null, mExportTask);
 		if (retVal) {
-			mExportTask.execute(BookmarksWrapper.getAllHistoryBookmarks(getContentResolver()));
+			mExportTask.execute(getContentResolver());
 		}
 	}
 	

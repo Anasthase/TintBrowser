@@ -87,7 +87,15 @@ public class BookmarksWrapper {
 	}
 	
 	public static Cursor getAllHistoryBookmarks(ContentResolver contentResolver) {
-		return contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, null, null, null);
+		String whereClause = BookmarksProvider.Columns.IS_FOLDER + " = 0";
+		
+		return contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, null);
+	}
+	
+	public static Cursor getAllFolders(ContentResolver contentResolver) {
+		String whereClause = BookmarksProvider.Columns.IS_FOLDER + " > 0";
+		
+		return contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, null);
 	}
 	
 	public static Cursor getBookmarks(ContentResolver contentResolver) {

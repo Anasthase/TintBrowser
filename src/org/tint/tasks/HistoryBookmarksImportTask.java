@@ -76,77 +76,12 @@ public class HistoryBookmarksImportTask extends AsyncTask<String, Integer, Strin
 
 				Element root = document.getDocumentElement();
 				
-				if ((root != null) &&
-						(root.getNodeName().equals("itemlist"))) {
-					
-					NodeList itemsList = root.getElementsByTagName("item");
-					
-					int progress = 0;
-					int total = itemsList.getLength();
-					
-					Node item;
-					NodeList record;
-					Node dataItem;
-					
-					for (int i = 0; i < itemsList.getLength(); i++) {
-						
-						publishProgress(2, progress, total);
-						
-						item = itemsList.item(i);
-						
-						if (item != null) {
-							record = item.getChildNodes();
-							
-							String title = null;
-							String url = null;
-							int visits = 0;
-							long visitedDate = -1;
-							long creationDate = -1;
-							int bookmark = 0;
-							
-							for (int j = 0; j < record.getLength(); j++) {
-								dataItem = record.item(j);																
-								
-								if ((dataItem != null) &&
-										(dataItem.getNodeName() != null)) {
-									
-									if (dataItem.getNodeName().equals("title")) {
-										title = URLDecoder.decode(getNodeContent(dataItem));										
-									} else if (dataItem.getNodeName().equals("url")) {
-										url = URLDecoder.decode(getNodeContent(dataItem));
-									} else if (dataItem.getNodeName().equals("visits")) {
-										try {
-											visits = Integer.parseInt(getNodeContent(dataItem));
-										} catch (Exception e) {
-											visits = 0;
-										}
-									} else if (dataItem.getNodeName().equals("visiteddate")) {
-										try {
-											visitedDate = Long.parseLong(getNodeContent(dataItem));
-										} catch (Exception e) {
-											visitedDate = -1;
-										}
-									} else if (dataItem.getNodeName().equals("creationdate")) {
-										try {
-											creationDate = Long.parseLong(getNodeContent(dataItem));
-										} catch (Exception e) {
-											creationDate = -1;
-										}
-									} else if (dataItem.getNodeName().equals("bookmark")) {
-										try {
-											bookmark = Integer.parseInt(getNodeContent(dataItem));
-										} catch (Exception e) {
-											bookmark = 0;
-										}
-									}
-								}								
-							}
-							
-							values.add(createContentValues(title, url, visits, visitedDate, creationDate, bookmark));
-						}
-												
-						progress++;						
-					}
+				if (root != null) {
+					if (root.getNodeName().equals("itemlist")) {					
+						readOldFileFormat(root, values);
+					} else if (root.getNodeName().equals("bookmarks")) {
+						readNewFileFormat(root, values);
+					}					
 				}
 			
 			} catch (ParserConfigurationException e) {
@@ -177,6 +112,82 @@ public class HistoryBookmarksImportTask extends AsyncTask<String, Integer, Strin
 	@Override
 	protected void onPostExecute(String result) {
 		mListener.onImportDone(result);
+	}
+	
+	private void readNewFileFormat(Element root, List<ContentValues> values) {
+		
+	}
+	
+	private void readOldFileFormat(Element root, List<ContentValues> values) {
+		
+		NodeList itemsList = root.getElementsByTagName("item");
+		
+		int progress = 0;
+		int total = itemsList.getLength();
+		
+		Node item;
+		NodeList record;
+		Node dataItem;
+		
+		for (int i = 0; i < itemsList.getLength(); i++) {
+			
+			publishProgress(2, progress, total);
+			
+			item = itemsList.item(i);
+			
+			if (item != null) {
+				record = item.getChildNodes();
+				
+				String title = null;
+				String url = null;
+				int visits = 0;
+				long visitedDate = -1;
+				long creationDate = -1;
+				int bookmark = 0;
+				
+				for (int j = 0; j < record.getLength(); j++) {
+					dataItem = record.item(j);																
+					
+					if ((dataItem != null) &&
+							(dataItem.getNodeName() != null)) {
+						
+						if (dataItem.getNodeName().equals("title")) {
+							title = URLDecoder.decode(getNodeContent(dataItem));										
+						} else if (dataItem.getNodeName().equals("url")) {
+							url = URLDecoder.decode(getNodeContent(dataItem));
+						} else if (dataItem.getNodeName().equals("visits")) {
+							try {
+								visits = Integer.parseInt(getNodeContent(dataItem));
+							} catch (Exception e) {
+								visits = 0;
+							}
+						} else if (dataItem.getNodeName().equals("visiteddate")) {
+							try {
+								visitedDate = Long.parseLong(getNodeContent(dataItem));
+							} catch (Exception e) {
+								visitedDate = -1;
+							}
+						} else if (dataItem.getNodeName().equals("creationdate")) {
+							try {
+								creationDate = Long.parseLong(getNodeContent(dataItem));
+							} catch (Exception e) {
+								creationDate = -1;
+							}
+						} else if (dataItem.getNodeName().equals("bookmark")) {
+							try {
+								bookmark = Integer.parseInt(getNodeContent(dataItem));
+							} catch (Exception e) {
+								bookmark = 0;
+							}
+						}
+					}								
+				}
+				
+				values.add(createContentValues(title, url, visits, visitedDate, creationDate, bookmark));
+			}
+									
+			progress++;						
+		}
 	}
 	
 	/**

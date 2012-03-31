@@ -21,18 +21,23 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Hashtable;
+import java.util.Map;
+import java.util.UUID;
 
 import org.tint.R;
 import org.tint.providers.BookmarksProvider;
+import org.tint.providers.BookmarksWrapper;
 import org.tint.ui.preferences.IHistoryBookmaksExportListener;
 import org.tint.utils.IOUtils;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Environment;
 
-public class HistoryBookmarksExportTask extends AsyncTask<Cursor, Integer, String> {
+public class HistoryBookmarksExportTask extends AsyncTask<ContentResolver, Integer, String> {
 
 	private Context mContext;
 	private IHistoryBookmaksExportListener mListener;
@@ -43,7 +48,7 @@ public class HistoryBookmarksExportTask extends AsyncTask<Cursor, Integer, Strin
 	}
 
 	@Override
-	protected String doInBackground(Cursor... params) {
+	protected String doInBackground(ContentResolver... params) {
 		
 		publishProgress(0, 0, 0);
 		
@@ -59,9 +64,47 @@ public class HistoryBookmarksExportTask extends AsyncTask<Cursor, Integer, Strin
 			FileWriter writer = new FileWriter(file);
 			
 			writer.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+			writer.write("<bookmarks>\n");			
+			
+			ContentResolver contentResolver = params[0];
+			
+			writer.write("<folders>\n");
+			
+			Cursor foldersCursor = BookmarksWrapper.getAllFolders(contentResolver);
+			
+			Map<Long, UUID> foldersMap = new Hashtable<Long, UUID>();
+			
+			if ((foldersCursor != null) &&
+					(foldersCursor.moveToFirst())) {								
+				
+				int idIndex = foldersCursor.getColumnIndex(BookmarksProvider.Columns._ID);
+				int titleIndex = foldersCursor.getColumnIndex(BookmarksProvider.Columns.TITLE);
+				
+				do {
+					
+					UUID folderUUID = UUID.randomUUID();
+					long id = foldersCursor.getLong(idIndex);
+					String title = foldersCursor.getString(titleIndex);
+					
+					foldersMap.put(id, folderUUID);
+					
+					writer.write("<folder>\n");
+					
+					writer.write(String.format("<title>%s</title>\n", title != null ? URLEncoder.encode(title) : ""));
+					writer.write(String.format("<UUID>%s</UUID>\n", folderUUID.toString()));
+					
+					writer.write("</folder>\n");
+					
+				} while (foldersCursor.moveToNext());
+				
+			}
+			
+			writer.write("</folders>\n");
+			
 			writer.write("<itemlist>\n");
 			
-			Cursor c = params[0];
+			Cursor c = BookmarksWrapper.getAllHistoryBookmarks(contentResolver);
+			
 			if (c.moveToFirst()) {
 				
 				int titleIndex = c.getColumnIndex(BookmarksProvider.Columns.TITLE);
@@ -70,7 +113,7 @@ public class HistoryBookmarksExportTask extends AsyncTask<Cursor, Integer, Strin
 				int visitedDateIndex = c.getColumnIndex(BookmarksProvider.Columns.VISITED_DATE);
 				int visitsIndex = c.getColumnIndex(BookmarksProvider.Columns.VISITS);
 				int bookmarkIndex = c.getColumnIndex(BookmarksProvider.Columns.BOOKMARK);
-				int folderIndex = c.getColumnIndex(BookmarksProvider.Columns.IS_FOLDER);
+				int parentFolderIndex = c.getColumnIndex(BookmarksProvider.Columns.PARENT_FOLDER_ID);
 				
 				int current = 0;
 				int total = c.getCount();
@@ -79,22 +122,31 @@ public class HistoryBookmarksExportTask extends AsyncTask<Cursor, Integer, Strin
 					
 					publishProgress(1, current, total);
 					
-					if (c.getInt(folderIndex) == 0) {
-						writer.write("<item>\n");
+					writer.write("<item>\n");
 
-						String title = c.getString(titleIndex);
-						writer.write(String.format("<title>%s</title>\n", title != null ? URLEncoder.encode(title) : ""));
+					String title = c.getString(titleIndex);
+					writer.write(String.format("<title>%s</title>\n", title != null ? URLEncoder.encode(title) : ""));
 
-						String url = c.getString(urlIndex);
-						writer.write(String.format("<url>%s</url>\n", url != null ? URLEncoder.encode(url) : ""));
+					String url = c.getString(urlIndex);
+					writer.write(String.format("<url>%s</url>\n", url != null ? URLEncoder.encode(url) : ""));
 
-						writer.write(String.format("<creationdate>%s</creationdate>\n", c.getLong(creationDateIndex)));
-						writer.write(String.format("<visiteddate>%s</visiteddate>\n", c.getLong(visitedDateIndex)));
-						writer.write(String.format("<visits>%s</visits>\n", c.getInt(visitsIndex)));					
-						writer.write(String.format("<bookmark>%s</bookmark>\n", c.getInt(bookmarkIndex)));
-
-						writer.write("</item>\n");
+					writer.write(String.format("<creationdate>%s</creationdate>\n", c.getLong(creationDateIndex)));
+					writer.write(String.format("<visiteddate>%s</visiteddate>\n", c.getLong(visitedDateIndex)));
+					writer.write(String.format("<visits>%s</visits>\n", c.getInt(visitsIndex)));					
+					writer.write(String.format("<bookmark>%s</bookmark>\n", c.getInt(bookmarkIndex)));
+					
+					String parentFolderString = null;
+					long parentFolderId = c.getLong(parentFolderIndex);
+					if (parentFolderId != -1) {
+						UUID parentFolderUUID = foldersMap.get(parentFolderId);
+						if (parentFolderUUID != null) {
+							parentFolderString = parentFolderUUID.toString();
+						}
 					}
+					
+					writer.write(String.format("<parentfolder>%s</parentfolder>\n", parentFolderString != null ? parentFolderString : ""));
+
+					writer.write("</item>\n");
 					
 					current++;
 					c.moveToNext();
@@ -103,6 +155,7 @@ public class HistoryBookmarksExportTask extends AsyncTask<Cursor, Integer, Strin
 			}
 			
 			writer.write("</itemlist>\n");
+			writer.write("</bookmarks>\n");
 
 			writer.flush();
 			writer.close();
