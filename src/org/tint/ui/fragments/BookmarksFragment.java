@@ -15,6 +15,7 @@
 
 package org.tint.ui.fragments;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.tint.R;
@@ -38,12 +39,15 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentBreadCrumbs;
 import android.app.LoaderManager;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -60,8 +64,9 @@ import android.widget.GridView;
 
 public class BookmarksFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 	
-	private static final String EXTRA_CURRENT_FOLDER_ID = "EXTRA_CURRENT_FOLDER_ID";
-	private static final String EXTRA_CURRENT_FOLDER_TITLE = "EXTRA_CURRENT_FOLDER_TITLE";
+	private static final String EXTRA_FOLDER_STACK = "EXTRA_FOLDER_STACK";
+	
+	private static final String STACK_SEPARATOR = "//;//";
 	
 	private static final int CONTEXT_MENU_OPEN_IN_TAB = Menu.FIRST;
 	private static final int CONTEXT_MENU_EDIT_BOOKMARK = Menu.FIRST + 1;
@@ -83,10 +88,11 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 	
 	private BookmarksAdapter mAdapter;
 	
-	private long mFolderId = -1;
-	private String mFolderTitle = null;
+	private List<NavigationItem> mNavigationList;
 	
 	private boolean mIsTablet;
+	
+	private ProgressDialog mProgressDialog;
 	
 	public BookmarksFragment() {
 		mUIManager = Controller.getInstance().getUIManager();
@@ -117,7 +123,8 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 				
 				if (item != null) {
 					if (item.isFolder()) {
-						setFolderId(item.getId(), item.getTitle());						
+						mNavigationList.add(new NavigationItem(item.getId(), item.getTitle()));
+						updateFolderId();						
 					} else {
 						Intent result = new Intent();
 						result.putExtra(Constants.EXTRA_URL, item.getUrl());
@@ -136,16 +143,21 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 			mBreadCrumbGroup.setTranslationY(- mBreadCrumbGroup.getHeight());
 		}
 		
+		mNavigationList = new ArrayList<NavigationItem>();		
+		
 		if ((savedInstanceState != null) && 
-			(savedInstanceState.containsKey(EXTRA_CURRENT_FOLDER_ID))) {				
-			mFolderId = savedInstanceState.getLong(EXTRA_CURRENT_FOLDER_ID);
-			mFolderTitle = savedInstanceState.getString(EXTRA_CURRENT_FOLDER_TITLE);
+				(savedInstanceState.containsKey(EXTRA_FOLDER_STACK))) {
+			String folderStack = savedInstanceState.getString(EXTRA_FOLDER_STACK);
+			
+			String[] stack = folderStack.split(STACK_SEPARATOR);
+			for (int i = 0; i < stack.length; i++) {
+				mNavigationList.add(new NavigationItem(stack[i]));
+			}
 		} else {
-			mFolderId = -1;
-			mFolderTitle = null;
+			mNavigationList.add(new NavigationItem(-1, null));
 		}
 		
-		setFolderId(mFolderId, mFolderTitle);
+		updateFolderId();
 	}	
 	
 	@Override
@@ -164,7 +176,7 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 			mFoldersBreadCrumb.setParentTitle(getString(R.string.Bookmarks), null, new OnClickListener() {				
 				@Override
 				public void onClick(View v) {
-					setFolderId(-1, null);
+					popNavigation();					
 				}
 			});
 			
@@ -172,7 +184,7 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 			mBackBreadCrumb.setOnClickListener(new OnClickListener() {				
 				@Override
 				public void onClick(View arg0) {
-					setFolderId(-1, null);
+					popNavigation();
 				}
 			});
 			
@@ -185,8 +197,13 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 	@Override
 	public void onSaveInstanceState(Bundle outState) {		
 		super.onSaveInstanceState(outState);
-		outState.putLong(EXTRA_CURRENT_FOLDER_ID, mFolderId);
-		outState.putString(EXTRA_CURRENT_FOLDER_TITLE, mFolderTitle);
+		
+		StringBuilder sb = new StringBuilder();
+		for (NavigationItem item : mNavigationList) {
+			sb.append(item.toString() + STACK_SEPARATOR);
+		}
+		
+		outState.putString(EXTRA_FOLDER_STACK, sb.toString());
 	}
 	
 	@Override
@@ -287,7 +304,8 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 			builder.setPositiveButton(R.string.Yes, new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					BookmarksWrapper.deleteFolder(getActivity().getContentResolver(), info.id);					
+					doDeleteFolder(info.id);
+//					BookmarksWrapper.deleteFolder(getActivity().getContentResolver(), info.id);					
 				}				
 			});
 			
@@ -313,7 +331,7 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-		return BookmarksWrapper.getCursorLoaderForBookmarks(getActivity(), mFolderId);
+		return BookmarksWrapper.getCursorLoaderForBookmarks(getActivity(), mNavigationList.get(mNavigationList.size() - 1).getId());
 	}
 
 	@Override
@@ -326,17 +344,14 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 		mAdapter.swapCursor(null);
 	}
 	
-	private void setFolderId(long folderId, String folderTitle) {
-		mFolderId = folderId;
-		mFolderTitle = folderTitle;
-		
+	private void updateFolderId() {
 		if (mAdapter != null) {
 			mAdapter.swapCursor(null);
-		}		
+		}
 		
-		if (mFolderId == -1) {
+		NavigationItem current = mNavigationList.get(mNavigationList.size() - 1);
+		if (current.getId() == -1) {
 			if (!mIsTablet) {
-				
 				// Dirty workaround for the first time the BreadCrumb is shown.
 				// At this time, its size has not been computed, so its height is 0 
 				// and does not show with an animation.
@@ -344,10 +359,10 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 				if (height == 0) {
 					height = 80;
 				}
-				
+
 				AnimatorSet animator = new AnimatorSet();
 				animator.play(ObjectAnimator.ofFloat(mBreadCrumbGroup, "translationY", - height));
-				
+
 				animator.addListener(new AnimatorListenerAdapter() {
 					@Override
 					public void onAnimationEnd(Animator animation) {
@@ -355,18 +370,22 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 						getLoaderManager().restartLoader(0, null, BookmarksFragment.this);
 					}					
 				});
-				
+
 				animator.start();
-				
+
 			} else {
 				mBackBreadCrumb.setVisibility(View.GONE);
 				getLoaderManager().restartLoader(0, null, this);
 			}
 			
-			mFoldersBreadCrumb.setTitle(null, null);
-		} else {			
-			mFoldersBreadCrumb.setTitle(mFolderTitle, mFolderTitle);
+			mFoldersBreadCrumb.setParentTitle(getString(R.string.Bookmarks), null, new OnClickListener() {					
+				@Override
+				public void onClick(View arg0) {
+					popNavigation();
+				}
+			});
 			
+		} else {			
 			if (!mIsTablet) {
 				mBreadCrumbGroup.setVisibility(View.VISIBLE);
 				
@@ -387,7 +406,108 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 				mBackBreadCrumb.setVisibility(View.VISIBLE);
 				getLoaderManager().restartLoader(0, null, this);
 			}
+			
+			if (mNavigationList.size() > 2) {
+				NavigationItem previous = mNavigationList.get(mNavigationList.size() - 2);
+				mFoldersBreadCrumb.setParentTitle(previous.getTitle(), null, new OnClickListener() {					
+					@Override
+					public void onClick(View arg0) {
+						popNavigation();
+					}
+				});
+			} else {
+				mFoldersBreadCrumb.setParentTitle(getString(R.string.Bookmarks), null, new OnClickListener() {					
+					@Override
+					public void onClick(View arg0) {
+						popNavigation();
+					}
+				});
+			}
 		}
+		
+		mFoldersBreadCrumb.setTitle(current.getTitle(), current.getTitle());
+	}
+	
+	private void popNavigation() {
+		mNavigationList.remove(mNavigationList.size() - 1);
+		updateFolderId();
+	}
+	
+	private void doDeleteFolder(long folderId) {
+		mProgressDialog = ProgressDialog.show(
+				getActivity(),
+				getString(R.string.DeleteFolderTitle),
+				getString(R.string.DeleteFolderMessage));
+		
+		new Thread(new DeleteFolderRunnable(folderId)).start();
+	}
+	
+	private class DeleteFolderRunnable implements Runnable {
+
+		private long mFolderId;
+		
+		public DeleteFolderRunnable(long folderId) {
+			mFolderId = folderId;
+		}
+		
+		@Override
+		public void run() {			
+			BookmarksWrapper.deleteFolder(getActivity().getContentResolver(), mFolderId);
+			mHandler.sendEmptyMessage(0);
+		}
+		
+		private Handler mHandler = new Handler() {
+			public void handleMessage(Message msg) {
+				mProgressDialog.dismiss();
+				getLoaderManager().restartLoader(0, null, BookmarksFragment.this);
+			}
+		};
+		
+	}
+	
+	private class NavigationItem {
+		private long mId;
+		private String mTitle;
+		
+		public NavigationItem(long id, String title) {
+			mId = id;
+			mTitle = title;
+		}
+		
+		public NavigationItem(String builder) {
+			if ((builder.startsWith("{")) &&
+					(builder.endsWith("}"))) {
+				
+				try {
+					builder = builder.substring(1, builder.length() - 1);
+					String[] parts = builder.split(",");
+
+					mId = Long.parseLong(parts[0]);
+					mTitle = parts[1];
+				} catch (Exception e) {
+					mId = -1;
+					mTitle = null;
+				}
+				
+			} else {
+				mId = -1;
+				mTitle = null;
+			}
+		}
+		
+		public long getId() {
+			return mId;
+		}
+		
+		public String getTitle() {
+			return mTitle;
+		}
+
+		@Override
+		public String toString() {
+			return String.format("{%s,%s}", mId, mTitle);
+		}
+		
 	}
 
 }

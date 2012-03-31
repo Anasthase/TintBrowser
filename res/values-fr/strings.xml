@@ -440,6 +440,8 @@
     
     <string name="DeleteFolder">Supprimer le dossier</string>
     <string name="ConfirmDeleteFolderMessage">Supprimer ce dossier et l\'ensemble de son contenu ?</string>
+    <string name="DeleteFolderTitle">Suppression du dossier</string>
+    <string name="DeleteFolderMessage">Veillez patientez pendant que le dossier et son contenu sont supprimés&#8230;</string>
     
     <string name="ContentDescriptionBookmarksFoldersBack">Remonter d\'un niveau dans la hierarchie des dossiers des favoris</string>
 

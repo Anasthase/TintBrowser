@@ -78,6 +78,8 @@ public class BookmarksProvider extends ContentProvider {
 	private SQLiteDatabase mDb;
 	private DatabaseHelper mDbHelper;
 	
+	private boolean mNotifyChanges;
+	
 	private Context mContext;
 	
 	static {
@@ -87,10 +89,12 @@ public class BookmarksProvider extends ContentProvider {
 	}
 	
 	@Override
-	public boolean onCreate() {
+	public boolean onCreate() {		
 		mContext = getContext();
 		mDbHelper = new DatabaseHelper(mContext);
 		mDb = mDbHelper.getWritableDatabase();
+		mNotifyChanges = true;
+		
 		return true;
 	}
 	
@@ -106,7 +110,8 @@ public class BookmarksProvider extends ContentProvider {
 		default: throw new IllegalArgumentException("Unknown URI " + uri);
 		}		
 		
-		if (count > 0) {
+		if ((mNotifyChanges) &&
+				(count > 0)) {
 			mContext.getContentResolver().notifyChange(uri, null);
 		}
 		
@@ -132,7 +137,11 @@ public class BookmarksProvider extends ContentProvider {
 			long rowId = mDb.insert(BOOKMARKS_TABLE, null, values);
 			if (rowId > 0) {
 				Uri rowUri = ContentUris.withAppendedId(BOOKMARKS_URI, rowId);
-				mContext.getContentResolver().notifyChange(rowUri, null);
+				
+				if (mNotifyChanges) {
+					mContext.getContentResolver().notifyChange(rowUri, null);
+				}
+				
 				return rowUri;
 			}
 			
@@ -174,7 +183,8 @@ public class BookmarksProvider extends ContentProvider {
 		default: throw new IllegalArgumentException("Unknown URI " + uri);
 		}
 						
-		if (count > 0) {
+		if ((mNotifyChanges) &&
+				(count > 0)) {
 			mContext.getContentResolver().notifyChange(uri, null);
 		}
 		
@@ -265,6 +275,10 @@ public class BookmarksProvider extends ContentProvider {
 			return numInserted;
 		default: throw new IllegalArgumentException("Unknown URI " + uri);
 		}
+	}
+	
+	public void setNotifyChanges(boolean value) {
+		mNotifyChanges = value;
 	}
 	
 	private static class DatabaseHelper extends SQLiteOpenHelper {

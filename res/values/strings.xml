@@ -440,6 +440,8 @@
     
     <string name="DeleteFolder">Delete folder</string>
     <string name="ConfirmDeleteFolderMessage">Delete this folder and all its content?</string>
+    <string name="DeleteFolderTitle">Deleting folder</string>
+    <string name="DeleteFolderMessage">Please wait while the folder and its content is being deleted&#8230;</string>
     
     <string name="ContentDescriptionBookmarksFoldersBack">Go back in bookmarks folders hierarchy</string>
 

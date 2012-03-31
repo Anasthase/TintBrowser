@@ -283,10 +283,32 @@ public class BookmarksWrapper {
 		}
 	}
 	
-	public static void deleteFolder(ContentResolver contentResolver, long id) {
-		// First delete content of the folder.
+	public static void deleteFolder(ContentResolver contentResolver, long id) {				
+		
+		BookmarksProvider provider = (BookmarksProvider) contentResolver.acquireContentProviderClient(BookmarksProvider.BOOKMARKS_URI).getLocalContentProvider();
+		provider.setNotifyChanges(false);
+		
+		// Delete child folders.
+		Cursor c = getChildrenFolders(contentResolver, id);
+		if (c != null) {
+			if (c.moveToFirst()) {
+				
+				int idIndex = c.getColumnIndex(BookmarksProvider.Columns._ID);
+				
+				do {
+					
+					long childId = c.getLong(idIndex);
+					deleteFolder(contentResolver, childId);
+					
+				} while (c.moveToNext());				
+			}
+			
+			c.close();
+		}
+		
+		// Delete content of the folder.
 		String whereClause = BookmarksProvider.Columns.PARENT_FOLDER_ID + " = " + id + " AND " + BookmarksProvider.Columns.BOOKMARK + " > 0";		
-		Cursor c = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, null);
+		c = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, null);
 		if (c != null) {
 			if (c.moveToFirst()) {
 				
@@ -316,6 +338,8 @@ public class BookmarksWrapper {
 		
 		// Finally delete the folder.
 		contentResolver.delete(BookmarksProvider.BOOKMARKS_URI, BookmarksProvider.Columns._ID + " = " + id, null);
+		
+		provider.setNotifyChanges(true);
 	}
 	
 	public static void deleteHistoryRecord(ContentResolver contentResolver, long id) {
@@ -758,5 +782,10 @@ public class BookmarksWrapper {
     	
     	return cursor;
     }
+    
+    private static Cursor getChildrenFolders(ContentResolver contentResolver, long folderId) {
+		String whereClause = BookmarksProvider.Columns.IS_FOLDER + " > 0 AND " + BookmarksProvider.Columns.PARENT_FOLDER_ID + " = " + folderId;
+		return contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, null);
+	}
 
 }
