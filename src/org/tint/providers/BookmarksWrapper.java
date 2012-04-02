@@ -90,13 +90,6 @@ public class BookmarksWrapper {
 		return contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, null, null, null);
 	}
 	
-	public static Cursor getBookmarks(ContentResolver contentResolver) {
-		String whereClause = BookmarksProvider.Columns.BOOKMARK + " = 1";
-		String orderClause = BookmarksProvider.Columns.VISITS + " DESC, " + BookmarksProvider.Columns.TITLE + " COLLATE NOCASE";
-		
-		return contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, orderClause);
-	}
-	
 	public static BookmarkHistoryItem getBookmarkById(ContentResolver contentResolver, long id) {
 		BookmarkHistoryItem result = null;
 		String whereClause = BookmarksProvider.Columns._ID + " = " + id;
@@ -536,90 +529,6 @@ public class BookmarksWrapper {
 		}
 	}
 	
-	public static CursorLoader getBookmarksCursorLoaderWithLimit(Context context, int limit) {
-		String whereClause = BookmarksProvider.Columns.BOOKMARK + " = 1";
-		String orderClause = BookmarksProvider.Columns.VISITS + " DESC LIMIT " + Integer.toString(limit);
-		
-		return new CursorLoader(context, BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, orderClause);
-	}
-	
-	public static CursorLoader getHistoryCursorLoaderWithLimit(Context context, int limit) {
-		String whereClause = BookmarksProvider.Columns.VISITS + " > 0";
-		String orderClause = BookmarksProvider.Columns.VISITED_DATE + " DESC LIMIT " + Integer.toString(limit);
-		
-		return new CursorLoader(context, BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, orderClause);
-	}
-	
-	/**
-	 * Get a list of most visited bookmarks items, limited in size.
-	 * @param contentResolver The content resolver.
-	 * @param limit The size limit.
-	 * @return A list of BookmarkItem.
-	 */
-	public static List<BookmarkHistoryItem> getBookmarksWithLimit(ContentResolver contentResolver, int limit) {
-		String whereClause = BookmarksProvider.Columns.BOOKMARK + " = 1";
-		String orderClause = BookmarksProvider.Columns.VISITS + " DESC";
-				
-		Cursor cursor = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, orderClause);
-		
-		return mapCursorToBookmarkHistoryItemListWithLimit(cursor, limit);
-	}
-	
-	/**
-	 * Get a list of most recent history items, limited in size.
-	 * @param contentResolver The content resolver.
-	 * @param limit The size limit.
-	 * @return A list of HistoryItem.
-	 */
-	public static List<BookmarkHistoryItem> getHistoryWithLimit(ContentResolver contentResolver, int limit) {
-		String whereClause = BookmarksProvider.Columns.VISITS + " > 0";
-		String orderClause = BookmarksProvider.Columns.VISITED_DATE + " DESC";
-		
-		Cursor cursor = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, orderClause);
-		
-		return mapCursorToBookmarkHistoryItemListWithLimit(cursor, limit);
-	}
-	
-	private static List<BookmarkHistoryItem> mapCursorToBookmarkHistoryItemListWithLimit(Cursor cursor, int limit) {
-		List<BookmarkHistoryItem> result = new ArrayList<BookmarkHistoryItem>();
-		
-		if (cursor != null) {
-			if (cursor.moveToFirst()) {
-				
-				int columnId = cursor.getColumnIndex(BookmarksProvider.Columns._ID);
-				int columnTitle = cursor.getColumnIndex(BookmarksProvider.Columns.TITLE);
-				int columnUrl = cursor.getColumnIndex(BookmarksProvider.Columns.URL);
-				int columnBookmark = cursor.getColumnIndex(BookmarksProvider.Columns.BOOKMARK);
-				int columnFolder = cursor.getColumnIndex(BookmarksProvider.Columns.IS_FOLDER);
-				int columnFolderId = cursor.getColumnIndex(BookmarksProvider.Columns.PARENT_FOLDER_ID);
-				int columnFavicon = cursor.getColumnIndex(BookmarksProvider.Columns.FAVICON);
-				
-				int count = 0;
-				while (!cursor.isAfterLast() &&
-						(count < limit)) {
-					
-					BookmarkHistoryItem item = new BookmarkHistoryItem(
-							cursor.getLong(columnId),
-							cursor.getString(columnTitle),
-							cursor.getString(columnUrl),
-							cursor.getInt(columnBookmark) >= 1 ? true : false,
-							cursor.getInt(columnFolder) >= 1 ? true : false,
-							cursor.getLong(columnFolderId),
-							cursor.getBlob(columnFavicon));
-					
-					result.add(item);
-					
-					count++;
-					cursor.moveToNext();
-				}
-			}
-			
-			cursor.close();
-		}
-		
-		return result;
-	}
-	
 	public static void toggleBookmark(ContentResolver contentResolver, long id, boolean bookmark) {
 		String[] colums = new String[] { BookmarksProvider.Columns._ID };
 		String whereClause = BookmarksProvider.Columns._ID + " = " + id;
@@ -737,30 +646,6 @@ public class BookmarksWrapper {
     			
     			stockCursor.close();
     		}
-    		
-//    		if (lookInWeaveBookmarks) {
-//    			Cursor weaveCursor = contentResolver.query(WeaveColumns.CONTENT_URI,
-//    					null,
-//    					WeaveColumns.WEAVE_BOOKMARKS_FOLDER + " = 0 AND (" +  WeaveColumns.WEAVE_BOOKMARKS_TITLE + " LIKE '" + sqlPattern + "' OR " + WeaveColumns.WEAVE_BOOKMARKS_URL  + " LIKE '" + sqlPattern + "')",
-//    					null, null);
-//
-//    			if (weaveCursor != null) {
-//    				if (weaveCursor.moveToFirst()) {
-//    					
-//    					int weaveTitleId = weaveCursor.getColumnIndex(WeaveColumns.WEAVE_BOOKMARKS_TITLE);
-//        				int weaveUrlId = weaveCursor.getColumnIndex(WeaveColumns.WEAVE_BOOKMARKS_URL);
-//    					
-//    					do {
-//    						results.add(new UrlSuggestionItem(pattern,
-//    								weaveCursor.getString(weaveTitleId),
-//    								weaveCursor.getString(weaveUrlId),
-//    								3));
-//    					} while (weaveCursor.moveToNext());
-//    				}
-//
-//    				weaveCursor.close();
-//    			}
-//    		}
     		
     		// Sort results.
     		Collections.sort(results, new UrlSuggestionItemComparator());
