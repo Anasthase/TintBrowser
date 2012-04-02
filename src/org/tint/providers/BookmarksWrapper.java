@@ -143,10 +143,10 @@ public class BookmarksWrapper {
 		contentResolver.delete(BookmarksProvider.BOOKMARKS_URI, whereClause, null);		
 	}
 	
-	public static List<FolderItem> getFoldersList(ContentResolver contentResolver) {
+	public static List<FolderItem> getFirstLevelFoldersList(ContentResolver contentResolver) {
 		List<FolderItem> result = new ArrayList<FolderItem>();
 		
-		String whereClause = BookmarksProvider.Columns.IS_FOLDER + " = 1";
+		String whereClause = BookmarksProvider.Columns.IS_FOLDER + " = 1 AND " + BookmarksProvider.Columns.PARENT_FOLDER_ID + " = -1";
 		String orderClause = BookmarksProvider.Columns.TITLE;
 		
 		Cursor c = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, orderClause);

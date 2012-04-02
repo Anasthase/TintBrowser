@@ -68,7 +68,7 @@ public class EditBookmarkActivity extends Activity {
 			actionBar.setDisplayHomeAsUpEnabled(true);
 		}
         
-		mFolders = BookmarksWrapper.getFoldersList(getContentResolver());
+		mFolders = BookmarksWrapper.getFirstLevelFoldersList(getContentResolver());
 		mFolders.add(0, new FolderItem(-1, getString(R.string.Bookmarks)));
 		mFolders.add(0, new FolderItem(-2, getString(R.string.NewFolder)));
 		
