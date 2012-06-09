@@ -78,7 +78,7 @@ public class AskUserInputExecutor extends BaseActionExecutor {
 						mContext,
 						mWebView,
 						mAddon,
-						mAddonAction.getId().toString(),
+						mAddonAction.getId(),
 						false,
 						mInput.getText().toString());
 			}
@@ -91,7 +91,7 @@ public class AskUserInputExecutor extends BaseActionExecutor {
 						mContext,
 						mWebView,
 						mAddon,
-						mAddonAction.getId().toString(),
+						mAddonAction.getId(),
 						true,
 						null);
 			}
@@ -104,7 +104,7 @@ public class AskUserInputExecutor extends BaseActionExecutor {
 						mContext,
 						mWebView,
 						mAddon,
-						mAddonAction.getId().toString(),
+						mAddonAction.getId(),
 						true,
 						null);
 			}

@@ -259,7 +259,7 @@ public class AddonServiceConnection implements ServiceConnection {
 		}
 	}
 	
-	public List<Action> onUserConfirm(String currentTabId, String questionId, boolean positiveAnswer) {
+	public List<Action> onUserConfirm(String currentTabId, int questionId, boolean positiveAnswer) {
 		try {
 			return mAddon.onUserConfirm(currentTabId, questionId, positiveAnswer);
 		} catch (RemoteException e) {
@@ -268,7 +268,7 @@ public class AddonServiceConnection implements ServiceConnection {
 		}
 	}
 	
-	public List<Action> onUserInput(String currentTabId, String questionId, boolean cancelled, String userInput) {
+	public List<Action> onUserInput(String currentTabId, int questionId, boolean cancelled, String userInput) {
 		try {
 			return mAddon.onUserInput(currentTabId, questionId, cancelled, userInput);
 		} catch (RemoteException e) {
@@ -277,7 +277,7 @@ public class AddonServiceConnection implements ServiceConnection {
 		}
 	}
 	
-	public List<Action> onUserChoice(String currentTabId, String questionId, boolean cancelled, int userChoice) {
+	public List<Action> onUserChoice(String currentTabId, int questionId, boolean cancelled, int userChoice) {
 		try {
 			return mAddon.onUserChoice(currentTabId, questionId, cancelled, userChoice);
 		} catch (RemoteException e) {			

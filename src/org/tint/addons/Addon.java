@@ -254,7 +254,7 @@ public class Addon {
 		}
 	}
 	
-	public List<Action> onUserConfirm(String currentTabId, String questionId, boolean positiveAnswer) {
+	public List<Action> onUserConfirm(String currentTabId, int questionId, boolean positiveAnswer) {
 		if (makeCallWithoutSpecificCallback()) {
 			return mServiceConnection.onUserConfirm(currentTabId, questionId, positiveAnswer);
 		} else {
@@ -262,7 +262,7 @@ public class Addon {
 		}
 	}
 	
-	public List<Action> onUserInput(String currentTabId, String questionId, boolean cancelled, String userInput) {
+	public List<Action> onUserInput(String currentTabId, int questionId, boolean cancelled, String userInput) {
 		if (makeCallWithoutSpecificCallback()) {
 			return mServiceConnection.onUserInput(currentTabId, questionId, cancelled, userInput);
 		} else {
@@ -270,7 +270,7 @@ public class Addon {
 		}
 	}
 	
-	public List<Action> onUserChoice(String currentTabId, String questionId, boolean cancelled, int userChoice) {
+	public List<Action> onUserChoice(String currentTabId, int questionId, boolean cancelled, int userChoice) {
 		if (makeCallWithoutSpecificCallback()) {
 			return mServiceConnection.onUserChoice(currentTabId, questionId, cancelled, userChoice);
 		} else {

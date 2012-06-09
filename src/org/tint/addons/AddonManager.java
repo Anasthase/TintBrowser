@@ -314,7 +314,7 @@ public class AddonManager {
 		}
 	}
 	
-	public void onUserConfirm(Context context, CustomWebView currentWebView, Addon addon, String actionId, boolean positiveAnswer) {
+	public void onUserConfirm(Context context, CustomWebView currentWebView, Addon addon, int actionId, boolean positiveAnswer) {
 		List<Action> response = addon.onUserConfirm(
 				currentWebView.getParentFragmentUUID().toString(),
 				actionId,
@@ -323,7 +323,7 @@ public class AddonManager {
 		processOneResponse(context, currentWebView, addon, response);
 	}
 	
-	public void onUserInput(Context context, CustomWebView currentWebView, Addon addon, String actionId, boolean cancelled, String userInput) {
+	public void onUserInput(Context context, CustomWebView currentWebView, Addon addon, int actionId, boolean cancelled, String userInput) {
 		List<Action> response = addon.onUserInput(
 				currentWebView.getParentFragmentUUID().toString(),
 				actionId,
@@ -333,7 +333,7 @@ public class AddonManager {
 		processOneResponse(context, currentWebView, addon, response);
 	}
 	
-	public void onUserChoice(Context context, CustomWebView currentWebView, Addon addon, String actionId, boolean cancelled, int userChoice) {
+	public void onUserChoice(Context context, CustomWebView currentWebView, Addon addon, int actionId, boolean cancelled, int userChoice) {
 		List<Action> response = addon.onUserChoice(
 				currentWebView.getParentFragmentUUID().toString(),
 				actionId,

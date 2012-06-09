@@ -46,21 +46,21 @@ public class AskUserConfirmationExecutor extends BaseActionExecutor {
     	builder.setPositiveButton(mAddonAction.getPositiveButtonCaption(), new OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				Controller.getInstance().getAddonManager().onUserConfirm(mContext, mWebView, mAddon, mAddonAction.getId().toString(), true);
+				Controller.getInstance().getAddonManager().onUserConfirm(mContext, mWebView, mAddon, mAddonAction.getId(), true);
 			}
 		});
     	
     	builder.setNegativeButton(mAddonAction.getNegativeButtonCaption(), new OnClickListener() {			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				Controller.getInstance().getAddonManager().onUserConfirm(mContext, mWebView, mAddon, mAddonAction.getId().toString(), false);
+				Controller.getInstance().getAddonManager().onUserConfirm(mContext, mWebView, mAddon, mAddonAction.getId(), false);
 			}
 		});
     	
     	builder.setOnCancelListener(new OnCancelListener() {			
 			@Override
 			public void onCancel(DialogInterface dialog) {
-				Controller.getInstance().getAddonManager().onUserConfirm(mContext, mWebView, mAddon, mAddonAction.getId().toString(), false);
+				Controller.getInstance().getAddonManager().onUserConfirm(mContext, mWebView, mAddon, mAddonAction.getId(), false);
 			}
 		});
     	

@@ -50,7 +50,7 @@ public class AskUserChoiceExecutor extends BaseActionExecutor {
 						mContext,
 						mWebView,
 						mAddon,
-						mAddonAction.getId().toString(),
+						mAddonAction.getId(),
 						false,
 						which);
 			}			
@@ -64,7 +64,7 @@ public class AskUserChoiceExecutor extends BaseActionExecutor {
 						mContext,
 						mWebView,
 						mAddon,
-						mAddonAction.getId().toString(),
+						mAddonAction.getId(),
 						true,
 						-1);
 			}			
@@ -78,7 +78,7 @@ public class AskUserChoiceExecutor extends BaseActionExecutor {
 						mContext,
 						mWebView,
 						mAddon,
-						mAddonAction.getId().toString(),
+						mAddonAction.getId(),
 						true,
 						-1);
 			}
