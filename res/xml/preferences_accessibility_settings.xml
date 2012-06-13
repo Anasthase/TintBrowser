@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+   Tint Browser for Android
+  
+   Copyright (C) 2012 - to infinity and beyond J. Devauchelle and contributors.
+ 
+   This program is free software; you can redistribute it and/or
+   modify it under the terms of the GNU General Public License
+   version 3 as published by the Free Software Foundation.
+ 
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+ -->
+
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/org.tint" >
+    
+    <PreferenceCategory android:title="@string/PreferenceCategoryTextSizeTitle">
+        
+        <org.tint.ui.preferences.SeekBarPreference
+            android:title="@string/PreferenceUserAgentTitle"
+            android:summary="@string/PreferenceUserAgentSummary"
+            android:defaultValue="5"
+            app:minValue="3"
+            app:maxValue="10"
+            app:symbol="%%"
+            android:key="PREFERENCE_TODO" />
+        
+    </PreferenceCategory>
+
+</PreferenceScreen>

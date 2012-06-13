@@ -432,7 +432,7 @@
     <string name="ContextMenuOpenInBackground">Open in background</string>
     <string name="ContentDescriptionPrivateBrowsingIndicator">Private browsing indicator</string>
     
-    <!-- 1.4 -->
+    <!-- 1.3 -->
     <string name="Folder">Folder</string>
     <string name="NewFolder">New folder</string>    
     <string name="NewFolderHint">Name of the new folder</string>
@@ -444,5 +444,9 @@
     <string name="DeleteFolderMessage">Please wait while the folder and its content is being deleted&#8230;</string>
     
     <string name="ContentDescriptionBookmarksFoldersBack">Go back in bookmarks folders hierarchy</string>
+    
+    <!-- 1.4 -->
+    <string name="PreferenceHeaderAccessibilityTitle">Accessibility</string>
+    <string name="PreferenceCategoryTextSizeTitle">Text size</string>
 
 </resources>

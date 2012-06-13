@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+   Tint Browser for Android
+  
+   Copyright (C) 2012 - to infinity and beyond J. Devauchelle and contributors.
+ 
+   This program is free software; you can redistribute it and/or
+   modify it under the terms of the GNU General Public License
+   version 3 as published by the Free Software Foundation.
+ 
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+ -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dip"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/SeekBarPreferenceTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@+id/SeekBarPreferenceTitle"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <TextView
+        android:id="@+id/SeekBarPreferenceSummary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@+id/SeekBarPreferenceSummary"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <RelativeLayout
+        android:id="@+id/SeekBarLayout"
+        android:layout_width="match_parent"
+    	android:layout_height="match_parent">
+    	
+        <TextView
+        	android:id="@+id/SeekBarPreferenceValue"
+        	android:layout_width="wrap_content"
+        	android:layout_height="match_parent"
+        	android:gravity="center_vertical"
+        	android:layout_gravity="center_vertical"
+        	android:layout_alignParentLeft="true"
+        	android:layout_alignBottom="@+id/SeekBarLayout"        	
+        	android:text="@+id/SeekBarPreferenceValue"        	
+        	android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+        <SeekBar
+        	android:id="@+id/SeekBarPreferenceSeekBar"
+        	android:layout_width="wrap_content"
+        	android:layout_height="match_parent"
+        	android:layout_alignParentRight="true"
+        	android:layout_toRightOf="@+id/SeekBarPreferenceValue" />
+        
+    </RelativeLayout>    
+
+</LinearLayout>
