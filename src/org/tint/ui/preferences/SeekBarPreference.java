@@ -68,7 +68,7 @@ public class SeekBarPreference extends Preference implements SeekBar.OnSeekBarCh
 			mMinValue = Math.round(mMinValue / mStepValue);
 			mMaxValue = Math.round(mMaxValue / mStepValue);
 			
-			mDefaultValue = getBoundedValue(a.getInt(R.styleable.SeekBarPreference_android_defaultValue, 0));
+			mDefaultValue = a.getInt(R.styleable.SeekBarPreference_android_defaultValue, 0);
 			
 			mSymbol = a.getString(R.styleable.SeekBarPreference_symbol);
 			
