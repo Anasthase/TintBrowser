@@ -21,6 +21,9 @@
     
     <PreferenceCategory android:title="@string/PreferenceCategoryTextSizeTitle">
         
+        <org.tint.ui.preferences.AccessibilityPreviewPreference
+            android:title="@string/PreferenceAccessibilityTextSizePreviewTitle" />
+        
         <org.tint.ui.preferences.SeekBarPreference
             android:title="@string/PreferenceAccessibilityTextScalingTitle"
             android:defaultValue="100"
