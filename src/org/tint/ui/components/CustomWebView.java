@@ -110,7 +110,13 @@ public class CustomWebView extends WebView implements DownloadListener {
 		
 		settings.setGeolocationEnabled(prefs.getBoolean(Constants.PREFERENCE_ENABLE_GEOLOCATION, true));
 		settings.setSaveFormData(prefs.getBoolean(Constants.PREFERENCE_REMEMBER_FORM_DATA, true));
-		settings.setSavePassword(prefs.getBoolean(Constants.PREFERENCE_REMEMBER_PASSWORDS, true));		
+		settings.setSavePassword(prefs.getBoolean(Constants.PREFERENCE_REMEMBER_PASSWORDS, true));
+		
+		settings.setTextZoom(prefs.getInt(Constants.PREFERENCE_TEXT_SCALING, 100));
+		
+		int minimumFontSize = prefs.getInt(Constants.PREFERENCE_MINIMUM_FONT_SIZE, 1);
+		settings.setMinimumFontSize(minimumFontSize);
+		settings.setMinimumLogicalFontSize(minimumFontSize);
 		
 		settings.setUserAgentString(prefs.getString(Constants.PREFERENCE_USER_AGENT, Constants.USER_AGENT_ANDROID));		
 		settings.setPluginState(PluginState.valueOf(prefs.getString(Constants.PREFERENCE_PLUGINS, PluginState.ON_DEMAND.toString())));
@@ -119,6 +125,7 @@ public class CustomWebView extends WebView implements DownloadListener {
 		
 		settings.setSupportZoom(true);
 		settings.setSupportMultipleWindows(true);
+		settings.setEnableSmoothTransition(true);
 		
 		// HTML5 API flags
 		settings.setAppCacheEnabled(true);

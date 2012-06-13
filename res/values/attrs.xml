@@ -25,6 +25,7 @@
     	<attr name="android:defaultValue" />
     	<attr name="minValue" format="integer" />
     	<attr name="maxValue" format="integer" />
+    	<attr name="stepValue" format="integer" />
     	<attr name="symbol" format="string" />
 	</declare-styleable>	
     

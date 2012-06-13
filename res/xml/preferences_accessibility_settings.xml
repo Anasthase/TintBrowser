@@ -22,13 +22,22 @@
     <PreferenceCategory android:title="@string/PreferenceCategoryTextSizeTitle">
         
         <org.tint.ui.preferences.SeekBarPreference
-            android:title="@string/PreferenceUserAgentTitle"
-            android:summary="@string/PreferenceUserAgentSummary"
-            android:defaultValue="5"
-            app:minValue="3"
-            app:maxValue="10"
+            android:title="@string/PreferenceAccessibilityTextScalingTitle"
+            android:defaultValue="100"
+            app:minValue="50"
+            app:maxValue="200"
             app:symbol="%%"
-            android:key="PREFERENCE_TODO" />
+            app:stepValue="5"
+            android:key="PREFERENCE_TEXT_SCALING" />
+        
+        <org.tint.ui.preferences.SeekBarPreference
+            android:title="@string/PreferenceAccessibilityMinimumFontSizeTitle"
+            android:summary="@string/PreferenceAccessibilityMinimumFontSizeSummary"
+            android:defaultValue="1"
+            app:minValue="1"
+            app:maxValue="24"
+            app:symbol="pt"
+            android:key="PREFERENCE_MINIMUM_FONT_SIZE" />
         
     </PreferenceCategory>
 

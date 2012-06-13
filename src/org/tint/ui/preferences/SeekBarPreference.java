@@ -34,6 +34,7 @@ public class SeekBarPreference extends Preference implements SeekBar.OnSeekBarCh
 	private int mDefaultValue;
 	private int mMinValue;
 	private int mMaxValue;
+	private int mStepValue;
 
 	private String mSymbol;
 	
@@ -50,6 +51,7 @@ public class SeekBarPreference extends Preference implements SeekBar.OnSeekBarCh
 			
 			mMinValue = a.getInt(R.styleable.SeekBarPreference_minValue, 0);
 			mMaxValue = a.getInt(R.styleable.SeekBarPreference_maxValue, 10);
+			mStepValue = a.getInt(R.styleable.SeekBarPreference_stepValue, 1);
 			
 			if (mMaxValue <= mMinValue) {
 				mMaxValue = mMinValue + 1;
@@ -58,6 +60,13 @@ public class SeekBarPreference extends Preference implements SeekBar.OnSeekBarCh
 			if (mDefaultValue < mMinValue) {
 				mDefaultValue = mMinValue;
 			}
+			
+			if (mStepValue <= 0) {
+				mStepValue = 1;
+			}
+			
+			mMinValue = Math.round(mMinValue / mStepValue);
+			mMaxValue = Math.round(mMaxValue / mStepValue);
 			
 			mDefaultValue = getBoundedValue(a.getInt(R.styleable.SeekBarPreference_android_defaultValue, 0));
 			
@@ -111,6 +120,8 @@ public class SeekBarPreference extends Preference implements SeekBar.OnSeekBarCh
 
 	private int getBoundedValue(int value) {
 		
+		value = Math.round(value / mStepValue);
+		
 		if (value < mMinValue) {
 			value = mMinValue;
 		}
@@ -122,9 +133,9 @@ public class SeekBarPreference extends Preference implements SeekBar.OnSeekBarCh
 		return value;
 	}
 	
-	private void updateValue(int value, boolean save) {
+	private void updateValue(int value, boolean save) {			
 		
-		value = value + mMinValue;
+		value = (value + mMinValue) * mStepValue;
 		
 		mValue.setText(String.format("%s" + mSymbol, value));
 		

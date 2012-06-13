@@ -77,6 +77,9 @@ public class Constants {
 	public static final String PREFERENCE_CLEAR_FORM_DATA = "PREFERENCE_CLEAR_FORM_DATA";
 	public static final String PREFERENCE_CLEAR_PASSWORDS = "PREFERENCE_CLEAR_PASSWORDS";
 	
+	public static final String PREFERENCE_TEXT_SCALING = "PREFERENCE_TEXT_SCALING";
+	public static final String PREFERENCE_MINIMUM_FONT_SIZE = "PREFERENCE_MINIMUM_FONT_SIZE";
+	
 	/**
 	 * Technical preferences.
 	 */

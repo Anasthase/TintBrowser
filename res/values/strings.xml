@@ -448,5 +448,8 @@
     <!-- 1.4 -->
     <string name="PreferenceHeaderAccessibilityTitle">Accessibility</string>
     <string name="PreferenceCategoryTextSizeTitle">Text size</string>
+    <string name="PreferenceAccessibilityTextScalingTitle">Text scaling</string>
+    <string name="PreferenceAccessibilityMinimumFontSizeTitle">Minimum font size</string>
+    <string name="PreferenceAccessibilityMinimumFontSizeSummary">Set the minimum font size used to display text in the browser.</string>
 
 </resources>
