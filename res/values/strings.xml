@@ -460,5 +460,9 @@
 		<item>Large</item>
 		<item>Huge</item>
 	</string-array>
+	
+    <string name="PreferenceCategoryInvertedScreenRenderingTitle">Inverted screen rendering</string>
+    <string name="PreferenceAccessibilityInvertedRenderingTitle">Inverted rendering</string>
+    <string name="PreferenceAccessibilityInvertedRenderingSummary">Invert the screen colors. Black becomes white and vice versa.</string>
 
 </resources>

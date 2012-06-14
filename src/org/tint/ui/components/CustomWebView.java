@@ -15,6 +15,8 @@
 
 package org.tint.ui.components;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.UUID;
 
@@ -33,6 +35,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -52,6 +55,9 @@ public class CustomWebView extends WebView implements DownloadListener {
 
 	private boolean mIsLoading = false;
 	
+	private static boolean sMethodsLoaded = false;
+	private static Method sWebSettingsSetProperty = null;
+	
 	public CustomWebView(Context context, boolean privateBrowsing) {
 		this(context, null, privateBrowsing);
 	}
@@ -62,8 +68,13 @@ public class CustomWebView extends WebView implements DownloadListener {
 		mContext = context;
 		
 		if (!isInEditMode()) {
+			
+			if (!sMethodsLoaded) {
+				loadMethods();
+			}
+			
 			loadSettings();
-			setupContextMenu();
+			setupContextMenu();			
 		}
 	}
 	
@@ -117,6 +128,8 @@ public class CustomWebView extends WebView implements DownloadListener {
 		int minimumFontSize = prefs.getInt(Constants.PREFERENCE_MINIMUM_FONT_SIZE, 1);
 		settings.setMinimumFontSize(minimumFontSize);
 		settings.setMinimumLogicalFontSize(minimumFontSize);
+		
+		setWebSettingsProperty(settings, "inverted", prefs.getBoolean(Constants.PREFERENCE_INVERTED_DISPLAY, false) ? "true" : "false");
 		
 		settings.setUserAgentString(prefs.getString(Constants.PREFERENCE_USER_AGENT, Constants.USER_AGENT_ANDROID));		
 		settings.setPluginState(PluginState.valueOf(prefs.getString(Constants.PREFERENCE_PLUGINS, PluginState.ON_DEMAND.toString())));
@@ -281,6 +294,31 @@ public class CustomWebView extends WebView implements DownloadListener {
 				}
 			}
 		});
+	}
+	
+	private static void loadMethods() {
+		try {
+			sWebSettingsSetProperty = WebSettings.class.getMethod("setProperty", new Class[] { String.class, String.class });
+		} catch (NoSuchMethodException e) {
+			Log.e("CustomWebView", "loadMethods(): " + e.getMessage());
+			sWebSettingsSetProperty = null;
+		}
+		
+		sMethodsLoaded = true;
+	}
+	
+	private static void setWebSettingsProperty(WebSettings settings, String key, String value) {
+		if (sWebSettingsSetProperty != null) {
+			try {
+				sWebSettingsSetProperty.invoke(settings, key, value);
+			} catch (IllegalArgumentException e) {
+				Log.e("CustomWebView", "setWebSettingsProperty(): " + e.getMessage());
+			} catch (IllegalAccessException e) {
+				Log.e("CustomWebView", "setWebSettingsProperty(): " + e.getMessage());
+			} catch (InvocationTargetException e) {
+				Log.e("CustomWebView", "setWebSettingsProperty(): " + e.getMessage());
+			}
+		}
 	}
 
 }

@@ -102,7 +102,10 @@ public class AccessibilityPreviewPreference extends Preference implements OnShar
 	
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-		updatePreview();
+		if (Constants.PREFERENCE_LOAD_WITH_OVERVIEW.equals(key) ||
+				Constants.PREFERENCE_TEXT_SCALING.equals(key)) {
+			updatePreview();
+		}
 	}
 	
 	private void updatePreview() {

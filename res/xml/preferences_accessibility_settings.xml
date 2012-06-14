@@ -43,5 +43,15 @@
             android:key="PREFERENCE_MINIMUM_FONT_SIZE" />
         
     </PreferenceCategory>
+    
+    <PreferenceCategory android:title="@string/PreferenceCategoryInvertedScreenRenderingTitle">
+    	
+    	<CheckBoxPreference
+	        android:defaultValue="false"
+    	    android:key="PREFERENCE_INVERTED_DISPLAY"
+        	android:summary="@string/PreferenceAccessibilityInvertedRenderingSummary"
+        	android:title="@string/PreferenceAccessibilityInvertedRenderingTitle" />
+    
+    </PreferenceCategory>
 
 </PreferenceScreen>
