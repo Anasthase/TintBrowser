@@ -80,6 +80,7 @@ public class Constants {
 	public static final String PREFERENCE_TEXT_SCALING = "PREFERENCE_TEXT_SCALING";
 	public static final String PREFERENCE_MINIMUM_FONT_SIZE = "PREFERENCE_MINIMUM_FONT_SIZE";
 	public static final String PREFERENCE_INVERTED_DISPLAY = "PREFERENCE_INVERTED_DISPLAY";
+	public static final String PREFERENCE_INVERTED_DISPLAY_CONTRAST = "PREFERENCE_INVERTED_DISPLAY_CONTRAST";
 	
 	/**
 	 * Technical preferences.

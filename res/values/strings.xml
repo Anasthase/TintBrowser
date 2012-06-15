@@ -463,6 +463,7 @@
 	
     <string name="PreferenceCategoryInvertedScreenRenderingTitle">Inverted screen rendering</string>
     <string name="PreferenceAccessibilityInvertedRenderingTitle">Inverted rendering</string>
-    <string name="PreferenceAccessibilityInvertedRenderingSummary">Invert the screen colors. Black becomes white and vice versa.</string>
+    <string name="PreferenceAccessibilityInvertedRenderingSummary">Invert the screen colors. This may not works on all devices.</string>
+    <string name="PreferenceAccessibilityInvertedRenderingContrastTitle">Contrast</string>
 
 </resources>

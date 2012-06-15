@@ -129,7 +129,14 @@ public class CustomWebView extends WebView implements DownloadListener {
 		settings.setMinimumFontSize(minimumFontSize);
 		settings.setMinimumLogicalFontSize(minimumFontSize);
 		
-		setWebSettingsProperty(settings, "inverted", prefs.getBoolean(Constants.PREFERENCE_INVERTED_DISPLAY, false) ? "true" : "false");
+		boolean useInvertedDisplay = prefs.getBoolean(Constants.PREFERENCE_INVERTED_DISPLAY, false);
+		setWebSettingsProperty(settings, "inverted", useInvertedDisplay ? "true" : "false");
+		
+		if (useInvertedDisplay) {
+			setWebSettingsProperty(settings,
+					"inverted_contrast",
+					Float.toString(prefs.getInt(Constants.PREFERENCE_INVERTED_DISPLAY_CONTRAST, 100) / 100f));
+		}
 		
 		settings.setUserAgentString(prefs.getString(Constants.PREFERENCE_USER_AGENT, Constants.USER_AGENT_ANDROID));		
 		settings.setPluginState(PluginState.valueOf(prefs.getString(Constants.PREFERENCE_PLUGINS, PluginState.ON_DEMAND.toString())));

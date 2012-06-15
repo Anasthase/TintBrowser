@@ -51,6 +51,15 @@
     	    android:key="PREFERENCE_INVERTED_DISPLAY"
         	android:summary="@string/PreferenceAccessibilityInvertedRenderingSummary"
         	android:title="@string/PreferenceAccessibilityInvertedRenderingTitle" />
+    	
+    	<org.tint.ui.preferences.SeekBarPreference
+            android:title="@string/PreferenceAccessibilityInvertedRenderingContrastTitle"
+            android:defaultValue="100"
+            app:minValue="100"
+            app:maxValue="300"
+            app:symbol=" %%"
+            app:stepValue="10"
+            android:key="PREFERENCE_INVERTED_DISPLAY_CONTRAST" />
     
     </PreferenceCategory>
 
