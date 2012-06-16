@@ -24,6 +24,7 @@ import org.tint.controllers.Controller;
 import org.tint.model.DownloadItem;
 import org.tint.providers.BookmarksWrapper;
 import org.tint.ui.PhoneUIManager;
+import org.tint.ui.PhoneUIManager2;
 import org.tint.ui.TabletUIManager;
 import org.tint.ui.UIManager;
 import org.tint.ui.UIManagerProvider;
@@ -106,7 +107,8 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
         if (isTablet) {
         	setContentView(R.layout.tablet_main_activity);
         } else {
-        	setContentView(R.layout.phone_main_activity);
+        	//setContentView(R.layout.phone_main_activity);
+        	setContentView(R.layout.phone_main_activity2);
         }
         
         getActionBar().setHomeButtonEnabled(true);
@@ -121,7 +123,8 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
         if (isTablet) {
         	mUIManager = new TabletUIManager(this);
         } else {
-        	mUIManager = new PhoneUIManager(this);
+        	//mUIManager = new PhoneUIManager(this);
+        	mUIManager = new PhoneUIManager2(this);
         }
         
         Controller.getInstance().init(mUIManager, this);        
