@@ -432,7 +432,7 @@
     <string name="ContextMenuOpenInBackground">Ouvrir en arrière plan</string>
     <string name="ContentDescriptionPrivateBrowsingIndicator">Indicateur de navigation privée</string>
     
-    <!-- 1.4 -->
+    <!-- 1.3 -->
     <string name="Folder">Dossier</string>
     <string name="NewFolder">Nouveau dossier</string>    
     <string name="NewFolderHint">Nom du nouveau dossier</string>
@@ -444,5 +444,26 @@
     <string name="DeleteFolderMessage">Veillez patientez pendant que le dossier et son contenu sont supprimés&#8230;</string>
     
     <string name="ContentDescriptionBookmarksFoldersBack">Remonter d\'un niveau dans la hierarchie des dossiers des favoris</string>
+    
+    <!-- 1.4 -->
+    <string name="PreferenceHeaderAccessibilityTitle">Accessibilité</string>
+    <string name="PreferenceCategoryTextSizeTitle">Taille de la police</string>
+    <string name="PreferenceAccessibilityTextSizePreviewTitle">Aperçu</string>
+    <string name="PreferenceAccessibilityTextScalingTitle">Mise à l\'échelle du texte</string>
+    <string name="PreferenceAccessibilityMinimumFontSizeTitle">Taille de police minimale</string>
+    <string name="PreferenceAccessibilityMinimumFontSizeSummary">Définie la taille minimale de police utilisée pour afficher les textes dans le navigateur.</string>
+    
+    <string-array name="FontPreviewText">
+		<item>Très petite</item>
+		<item>Petite</item>
+		<item>Normale</item>
+		<item>Grande</item>
+		<item>Très grande</item>
+	</string-array>
+	
+    <string name="PreferenceCategoryInvertedScreenRenderingTitle">Rendu inversé de l\'écran</string>
+    <string name="PreferenceAccessibilityInvertedRenderingTitle">Rendu inversé</string>
+    <string name="PreferenceAccessibilityInvertedRenderingSummary">Inverse les couleurs à l\'écran. Ceci peut ne pas marcher sur tous les appareils.</string>
+    <string name="PreferenceAccessibilityInvertedRenderingContrastTitle">Contraste</string>
 
 </resources>
