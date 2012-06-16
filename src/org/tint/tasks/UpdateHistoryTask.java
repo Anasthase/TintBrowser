@@ -52,7 +52,7 @@ public class UpdateHistoryTask extends AsyncTask<String, Void, Void> {
 		
 		if ((lastTruncation < 0) ||
 				(now - lastTruncation > DAY_IN_MILLISECONDS)) {
-			BookmarksWrapper.truncateHistory(mContentResolver, PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_HISTORY_SIZE, "90"));
+			BookmarksWrapper.truncateHistory(mContentResolver, PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_HISTORY_SIZE, "30"));
 			
 			Editor prefEditor = PreferenceManager.getDefaultSharedPreferences(mActivity).edit();
 			prefEditor.putLong(Constants.TECHNICAL_PREFERENCE_LAST_HISTORY_TRUNCATION, now);

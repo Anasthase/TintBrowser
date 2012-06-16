@@ -36,7 +36,7 @@
         <EditTextPreference
 			android:title="@string/PreferencePrivacyHistorySizeTitle"			
 			android:summary="@string/PreferencePrivacyHistorySizeSummary"
-			android:defaultValue="90"
+			android:defaultValue="30"
 			android:numeric="integer"
 			android:key="PREFERENCE_HISTORY_SIZE" />
         
