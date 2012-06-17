@@ -64,15 +64,6 @@
     </RelativeLayout>
     
     <LinearLayout
-        android:id="@+id/WebViewContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/TopBar"
-        android:orientation="vertical" >        
-
-    </LinearLayout>
-    
-    <LinearLayout
         android:id="@+id/LateralBar"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -81,6 +72,11 @@
         android:background="@drawable/ab_solid_dark_holo"
         android:scaleType="fitXY"
         android:orientation="vertical" >
+        
+        <LinearLayout
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"        
+        	android:weightSum="2" >
         
         <ImageView android:id="@+id/BtnHome"
 			android:layout_width="wrap_content"
@@ -93,6 +89,43 @@
 			android:paddingLeft="8dip"
 			android:paddingRight="8dip"
 			android:src="@drawable/ic_menu_home" />
+        
+        <ImageView
+            android:id="@+id/BtnBookmarks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/ContentDescriptionBookmarksButton"
+            android:focusable="true"
+            android:paddingBottom="8dip"
+            android:paddingLeft="8dip"
+            android:paddingRight="8dip"
+            android:paddingTop="8dip"
+            android:src="@drawable/ic_bookmarks" />
+        
+        </LinearLayout>
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dip"
+            android:text="History"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+        <ImageView
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:paddingTop="3dip"
+        	android:paddingLeft="8dip"
+        	android:paddingRight="8dip"
+        	android:scaleType="fitXY"
+        	android:src="?android:attr/dividerHorizontal" />
+        
+        <LinearLayout
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"        
+        	android:weightSum="2" >
         
         <ImageView android:id="@+id/BtnBack"
 			android:layout_width="wrap_content"
@@ -118,22 +151,31 @@
 			android:focusable="true"
 			android:paddingLeft="8dip"
 			android:paddingRight="8dip"
-			android:src="@drawable/ic_forward" />        
+			android:src="@drawable/ic_forward" />
+        
+        </LinearLayout>        
 
-        <ImageView
-            android:id="@+id/BtnBookmarks"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/ContentDescriptionBookmarksButton"
-            android:focusable="true"
-            android:paddingBottom="8dip"
             android:paddingLeft="8dip"
-            android:paddingRight="8dip"
-            android:paddingTop="8dip"
-            android:src="@drawable/ic_bookmarks" />
-
+            android:text="Tabs"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+        <ImageView
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:paddingTop="3dip"
+        	android:paddingLeft="8dip"
+        	android:paddingRight="8dip"
+        	android:scaleType="fitXY"
+        	android:src="?android:attr/dividerHorizontal" />
+        
+        <LinearLayout
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"        
+        	android:weightSum="2" >            
+        
         <ImageView
             android:id="@+id/BtnAddTab"
             android:layout_width="wrap_content"
@@ -161,6 +203,12 @@
             android:paddingRight="8dip"
             android:paddingTop="8dip"
             android:src="@android:drawable/ic_menu_close_clear_cancel" />
+        </LinearLayout>
+        
+        <LinearLayout
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"        
+        	android:weightSum="2" >
         
         <ImageView android:id="@+id/PreviousTabView"
 			android:layout_width="wrap_content"
@@ -187,6 +235,16 @@
 			android:paddingLeft="8dip"
 			android:paddingRight="8dip"
 			android:src="@drawable/ic_forward" />
+        </LinearLayout>
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/WebViewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/TopBar"
+        android:orientation="vertical" >        
 
     </LinearLayout>
 

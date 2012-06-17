@@ -41,7 +41,9 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.ActionMode;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -63,6 +65,7 @@ public class PhoneUIManager2 extends BaseUIManager {
 	
 	private RelativeLayout mTopBar;
 	private LinearLayout mLateralBar;
+	private LinearLayout mContainer;
 	
 	private ProgressBar mProgressBar;
 	
@@ -84,6 +87,9 @@ public class PhoneUIManager2 extends BaseUIManager {
 	private ActionMode mActionMode;
 	
 	private ToolbarsAnimator2 mToolbarsAnimator;
+	
+	private GestureListener mGestureListener;
+	private GestureDetector mGestureDetector;
 	
 	private int mCurrentTabIndex = -1;
 	
@@ -278,14 +284,22 @@ public class PhoneUIManager2 extends BaseUIManager {
 
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
-		closeLateralBarIfNecessary();
+//		closeLateralBarIfNecessary();
 		
-		return false;
+		if (event.getAction() == MotionEvent.ACTION_UP) {
+			mGestureListener.onActionUp(event);
+		}
+		
+		return mGestureDetector.onTouchEvent(event);
+//		return false;
 	}
 
 	@Override
 	protected void setupUI() {
 		mActionBar.hide();
+		
+		mGestureListener = new GestureListener(mActivity);
+		mGestureDetector = new GestureDetector(mActivity, mGestureListener);
 		
 		int buttonSize = mActivity.getResources().getInteger(R.integer.application_button_size);
 		Drawable d = mActivity.getResources().getDrawable(R.drawable.ic_launcher);
@@ -368,8 +382,12 @@ public class PhoneUIManager2 extends BaseUIManager {
 			}
 		});
 		
+		mContainer = (LinearLayout) mActivity.findViewById(R.id.WebViewContainer);
+		
 		mLateralBar = (LinearLayout) mActivity.findViewById(R.id.LateralBar);
-		mLateralBar.setVisibility(View.GONE);
+//		mLateralBar.setVisibility(View.GONE);
+//		mLateralBar.setTranslationX(-mLateralBar.getWidth());
+//		mLateralBar.setAlpha(0);
 		mLateralBar.setOnClickListener(new OnClickListener() {			
 			@Override
 			public void onClick(View arg0) {
@@ -459,7 +477,7 @@ public class PhoneUIManager2 extends BaseUIManager {
 			}
 		});
 		
-		mToolbarsAnimator = new ToolbarsAnimator2(mLateralBar);
+		mToolbarsAnimator = new ToolbarsAnimator2(mLateralBar, mContainer);
 	}
 
 	@Override
@@ -740,6 +758,81 @@ public class PhoneUIManager2 extends BaseUIManager {
 		}
 		
 		mUrlBar.setPrivateBrowsingIndicator(currentFragment != null ? currentFragment.isPrivateBrowsingEnabled() : false);
+	}
+	
+	private class GestureListener extends GestureDetector.SimpleOnGestureListener {
+
+		private boolean mIsInZone = false;
+		
+		private int mThreshold;
+		
+		public GestureListener(Context context) {
+			float density = context.getResources().getDisplayMetrics().density;
+			mThreshold = (int) (30 * density + 0.5f);
+			
+			Log.d("mThreshold", Integer.toString(mThreshold));
+		}
+		
+		@Override
+		public boolean onDown(MotionEvent e) {						
+			
+			Log.d("onDown()", "InOnDown");
+			
+			if (e.getX() < mThreshold) {
+				Log.d("onDown()", "Below threshold");
+				
+				mIsInZone = true;
+				return true;
+			}
+			
+			return super.onDown(e);
+		}
+		
+		public boolean onActionUp(MotionEvent e) {
+			if (mIsInZone) {
+				mIsInZone = false;
+				
+				if (mContainer.getX() > mLateralBar.getWidth() / 2) {
+					mToolbarsAnimator.startShowAnimation();
+				} else {
+					mToolbarsAnimator.startHideAnimation();
+				}
+				
+				return true;
+			}
+			
+			return false;
+		}
+
+		@Override
+		public boolean onScroll(MotionEvent e1, MotionEvent e2,	float distanceX, float distanceY) {
+			
+			if (mIsInZone) {
+				int currentX = (int) mContainer.getX();
+				int offset = (int) (e2.getX() - e1.getX());
+				
+				if ((currentX < mLateralBar.getWidth()) ||
+						(offset < 0)) {					
+					
+					if (currentX + offset > mLateralBar.getWidth()) {
+						offset = mLateralBar.getWidth() - currentX;
+					} else if (currentX + offset < 0) {
+						offset = - currentX;
+					}
+
+					Log.d("onScroll()", Integer.toString(offset));
+
+					mContainer.offsetLeftAndRight(offset);
+
+					Log.d("ScrollX", Float.toString(mContainer.getX()));
+				}
+				
+				return true;
+			}
+			
+			return super.onScroll(e1, e2, distanceX, distanceY);
+		}
+		
 	}
 
 }
