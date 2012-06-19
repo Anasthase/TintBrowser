@@ -569,6 +569,7 @@ public class PhoneUIManager extends BaseUIManager {
 			if (webViewFragment == getCurrentWebViewFragment()) {
 
 				FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+				fragmentTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out);
 
 				if (mStartPageFragment == null) {
 					mStartPageFragment = new StartPageFragment();
@@ -603,7 +604,8 @@ public class PhoneUIManager extends BaseUIManager {
 			if (webViewFragment == getCurrentWebViewFragment()) {
 
 				FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();			
-
+				fragmentTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out);
+				
 				fragmentTransaction.hide(mStartPageFragment);
 				fragmentTransaction.show(webViewFragment);
 
@@ -756,11 +758,11 @@ public class PhoneUIManager extends BaseUIManager {
 		FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
 		//fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 		
-//		if (previousIndex > mCurrentTabIndex) {
-//			fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_right);
-//		} else {
-//			fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_left);
-//		}
+		if (previousIndex > mCurrentTabIndex) {
+			fragmentTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out);
+		} else {
+			fragmentTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out);
+		}
 		
 		if (previousIndex != -1) {
 			PhoneWebViewFragment oldFragment = mFragmentsList.get(previousIndex);
