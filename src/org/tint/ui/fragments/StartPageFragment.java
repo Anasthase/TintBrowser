@@ -38,6 +38,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -48,6 +49,8 @@ public class StartPageFragment extends Fragment implements LoaderManager.LoaderC
 		public void onStartPageItemClicked(String url);
 	}
 	
+	private View mParentView = null;
+	
 	private GridView mGrid;	
 	private BookmarksAdapter mAdapter;
 	
@@ -57,6 +60,8 @@ public class StartPageFragment extends Fragment implements LoaderManager.LoaderC
 	
 	private UIManager mUIManager;
 	private boolean mInitialized;
+	
+	private boolean mListShown = true;
 	
 	public StartPageFragment() {
 		mInitialized = false;
@@ -74,64 +79,115 @@ public class StartPageFragment extends Fragment implements LoaderManager.LoaderC
 			}
 			
 			mInitialized = true;
-		}
+		}		
 	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.start_page_fragment, container, false);
-		mGrid = (GridView) v.findViewById(R.id.StartPageFragmentGrid);
+		if (mParentView == null) {		
+			mParentView = inflater.inflate(R.layout.start_page_fragment, container, false);
+			mGrid = (GridView) mParentView.findViewById(R.id.StartPageFragmentGrid);
+			
+			String[] from = new String[] { BookmarksProvider.Columns.TITLE, BookmarksProvider.Columns.URL };
+			int[] to = new int[] { R.id.StartPageRowTitle, R.id.StartPageRowUrl };
+			
+			mAdapter = new BookmarksAdapter(
+					getActivity(),
+					R.layout.start_page_row,
+					null,
+					from,
+					to,
+					ApplicationUtils.getBookmarksThumbnailsDimensions(getActivity()),
+					R.drawable.browser_thumbnail);
+			
+			mGrid.setAdapter(mAdapter);
+			
+			mGrid.setOnItemClickListener(new OnItemClickListener() {
+				@Override
+				public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+					if (mListener != null) {
+						BookmarkHistoryItem item = BookmarksWrapper.getBookmarkById(getActivity().getContentResolver(), id);
+
+						if (item != null) {
+							mListener.onStartPageItemClicked(item.getUrl());
+						}
+					}
+				}
+			});
+			
+			mGrid.setOnTouchListener(mUIManager);
+			
+//			getLoaderManager().initLoader(0, null, this);		
+			
+			mPreferenceChangeListener = new OnSharedPreferenceChangeListener() {
+				@Override
+				public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+					if (Constants.PREFERENCE_START_PAGE_LIMIT.equals(key)) {
+						getLoaderManager().restartLoader(0, null, StartPageFragment.this);
+					}
+				}			
+			};
+
+			PreferenceManager.getDefaultSharedPreferences(getActivity()).registerOnSharedPreferenceChangeListener(mPreferenceChangeListener);
+		}
+				
+		Log.d("StartPageFragment", "onCreateView()");
 		
-		return v;
+		return mParentView;
 	}
 	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
-		String[] from = new String[] { BookmarksProvider.Columns.TITLE, BookmarksProvider.Columns.URL };
-		int[] to = new int[] { R.id.StartPageRowTitle, R.id.StartPageRowUrl };
+		Log.d("StartPageFragment", "onActivityCreated()");
 		
-		mAdapter = new BookmarksAdapter(
-				getActivity(),
-				R.layout.start_page_row,
-				null,
-				from,
-				to,
-				ApplicationUtils.getBookmarksThumbnailsDimensions(getActivity()),
-				R.drawable.browser_thumbnail);
+		setListShown(false, false);
+		getLoaderManager().initLoader(0, null, this);
 		
-		mGrid.setAdapter(mAdapter);
-		
-		mGrid.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-				if (mListener != null) {
-					BookmarkHistoryItem item = BookmarksWrapper.getBookmarkById(getActivity().getContentResolver(), id);
+//		String[] from = new String[] { BookmarksProvider.Columns.TITLE, BookmarksProvider.Columns.URL };
+//		int[] to = new int[] { R.id.StartPageRowTitle, R.id.StartPageRowUrl };
+//		
+//		mAdapter = new BookmarksAdapter(
+//				getActivity(),
+//				R.layout.start_page_row,
+//				null,
+//				from,
+//				to,
+//				ApplicationUtils.getBookmarksThumbnailsDimensions(getActivity()),
+//				R.drawable.browser_thumbnail);
+//		
+//		mGrid.setAdapter(mAdapter);
+//		
+//		mGrid.setOnItemClickListener(new OnItemClickListener() {
+//			@Override
+//			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+//				if (mListener != null) {
+//					BookmarkHistoryItem item = BookmarksWrapper.getBookmarkById(getActivity().getContentResolver(), id);
+//
+//					if (item != null) {
+//						mListener.onStartPageItemClicked(item.getUrl());
+//					}
+//				}
+//			}
+//		});
+//		
+//		mGrid.setOnTouchListener(mUIManager);
+//		
+//		getLoaderManager().initLoader(0, null, this);		
+//		
+//		mPreferenceChangeListener = new OnSharedPreferenceChangeListener() {
+//			@Override
+//			public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+//				if (Constants.PREFERENCE_START_PAGE_LIMIT.equals(key)) {
+//					getLoaderManager().restartLoader(0, null, StartPageFragment.this);
+//				}
+//			}			
+//		};
+//
+//		PreferenceManager.getDefaultSharedPreferences(getActivity()).registerOnSharedPreferenceChangeListener(mPreferenceChangeListener);
+	}	
 
-					if (item != null) {
-						mListener.onStartPageItemClicked(item.getUrl());
-					}
-				}
-			}
-		});
-		
-		mGrid.setOnTouchListener(mUIManager);
-		
-		getLoaderManager().initLoader(0, null, this);		
-		
-		mPreferenceChangeListener = new OnSharedPreferenceChangeListener() {
-			@Override
-			public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-				if (Constants.PREFERENCE_START_PAGE_LIMIT.equals(key)) {
-					getLoaderManager().restartLoader(0, null, StartPageFragment.this);
-				}
-			}			
-		};
-
-		PreferenceManager.getDefaultSharedPreferences(getActivity()).registerOnSharedPreferenceChangeListener(mPreferenceChangeListener);
-	}
-	
 	@Override
 	public void onDestroy() {
 		PreferenceManager.getDefaultSharedPreferences(getActivity()).unregisterOnSharedPreferenceChangeListener(mPreferenceChangeListener);
@@ -156,6 +212,12 @@ public class StartPageFragment extends Fragment implements LoaderManager.LoaderC
 	@Override
 	public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 		mAdapter.swapCursor(data);
+		
+		if (isResumed()) {
+            setListShown(true, true);
+        } else {
+            setListShown(true, false);
+        }
 	}
 
 	@Override
@@ -165,6 +227,27 @@ public class StartPageFragment extends Fragment implements LoaderManager.LoaderC
 	
 	public void setOnStartPageItemClickedListener(OnStartPageItemClickedListener listener) {
 		mListener = listener;
+	}
+	
+	private void setListShown(boolean shown, boolean animate) {
+		
+		if (mListShown == shown) {
+			return;
+		}
+		
+		mListShown = shown;
+		
+		if (shown) {
+			if (animate) {
+				mGrid.startAnimation(AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_in));
+			}
+			mGrid.setVisibility(View.VISIBLE);
+		} else {
+			if (animate) {
+				mGrid.startAnimation(AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_out));
+			}
+			mGrid.setVisibility(View.GONE);
+		}
 	}
 
 }
