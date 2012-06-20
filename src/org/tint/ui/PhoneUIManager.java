@@ -64,6 +64,13 @@ public class PhoneUIManager extends BaseUIManager {
 		BOTH
 	}
 	
+	private enum AnimationType {
+		NONE,
+		FADE,
+		LEFT_TO_RIGHT,
+		RIGHT_TO_LEFT
+	}
+	
 	private static final int FLIP_PIXEL_THRESHOLD = 200;
 	private static final int FLIP_TIME_THRESHOLD = 400;
 	
@@ -143,10 +150,10 @@ public class PhoneUIManager extends BaseUIManager {
 					createStartPageFragment();
 				}
 				
-				setCurrentFragment(mStartPageFragment);
+				setCurrentFragment(mStartPageFragment, AnimationType.FADE);
 			} else {
 				fragment.setStartPageShown(false);
-				setCurrentFragment(fragment);
+				setCurrentFragment(fragment, AnimationType.FADE);
 			}			
 			
 			CustomWebView webView = getCurrentWebView();
@@ -594,7 +601,7 @@ public class PhoneUIManager extends BaseUIManager {
 					createStartPageFragment();
 				}
 
-				setCurrentFragment(mStartPageFragment);
+				setCurrentFragment(mStartPageFragment, AnimationType.FADE);
 				
 				onShowStartPage();
 			}
@@ -610,7 +617,7 @@ public class PhoneUIManager extends BaseUIManager {
 			webViewFragment.setStartPageShown(false);
 			
 			if (webViewFragment == getCurrentWebViewFragment()) {
-				setCurrentFragment(webViewFragment);
+				setCurrentFragment(webViewFragment, AnimationType.FADE);
 
 				onHideStartPage();
 			}
@@ -663,9 +670,11 @@ public class PhoneUIManager extends BaseUIManager {
 			if (currentWebView.isLoading()) {
 				mProgressBar.setVisibility(View.VISIBLE);
 				mFaviconView.setVisibility(View.INVISIBLE);
+				mUrlBar.setGoStopReloadImage(R.drawable.ic_stop);
 			} else {
 				mFaviconView.setVisibility(View.VISIBLE);
-				mProgressBar.setVisibility(View.INVISIBLE);				
+				mProgressBar.setVisibility(View.INVISIBLE);
+				mUrlBar.setGoStopReloadImage(R.drawable.ic_refresh);
 			}
 			
 			updateBackForwardEnabled();
@@ -739,10 +748,10 @@ public class PhoneUIManager extends BaseUIManager {
 		PhoneWebViewFragment newFragment = mFragmentsList.get(mCurrentTabIndex);
 		
 		if (newFragment.isStartPageShown()) {
-			setCurrentFragment(mStartPageFragment);
+			setCurrentFragment(mStartPageFragment, AnimationType.FADE);
 			mUrlBar.hideGoStopReloadButton();
 		} else {
-			setCurrentFragment(newFragment);
+			setCurrentFragment(newFragment, AnimationType.FADE);
 			mUrlBar.showGoStopReloadButton();
 		}		
 
@@ -878,12 +887,20 @@ public class PhoneUIManager extends BaseUIManager {
 		});
 	}
 	
-	private void setCurrentFragment(Fragment fragment) {
+	private void setCurrentFragment(Fragment fragment, AnimationType animationType) {
 		if (fragment != mCurrentFragment) {
 			mCurrentFragment = fragment;
 			
-			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();		
-			fragmentTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out);
+			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();			
+			
+			switch (animationType) {
+			case NONE: break;
+			case FADE: fragmentTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out); break;
+			case LEFT_TO_RIGHT: fragmentTransaction.setCustomAnimations(R.animator.fragment_slide_left_enter, R.animator.fragment_slide_left_exit); break;
+			case RIGHT_TO_LEFT: fragmentTransaction.setCustomAnimations(R.animator.fragment_slide_right_enter, R.animator.fragment_slide_right_exit); break;
+			default: break;
+			}
+			
 			fragmentTransaction.replace(R.id.WebViewContainer, mCurrentFragment);				
 			fragmentTransaction.commit();
 		}

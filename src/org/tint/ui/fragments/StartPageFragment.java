@@ -115,9 +115,7 @@ public class StartPageFragment extends Fragment implements LoaderManager.LoaderC
 				}
 			});
 			
-			mGrid.setOnTouchListener(mUIManager);
-			
-//			getLoaderManager().initLoader(0, null, this);		
+			mGrid.setOnTouchListener(mUIManager);		
 			
 			mPreferenceChangeListener = new OnSharedPreferenceChangeListener() {
 				@Override
@@ -130,8 +128,6 @@ public class StartPageFragment extends Fragment implements LoaderManager.LoaderC
 
 			PreferenceManager.getDefaultSharedPreferences(getActivity()).registerOnSharedPreferenceChangeListener(mPreferenceChangeListener);
 		}
-				
-		Log.d("StartPageFragment", "onCreateView()");
 		
 		return mParentView;
 	}
@@ -140,52 +136,8 @@ public class StartPageFragment extends Fragment implements LoaderManager.LoaderC
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
-		Log.d("StartPageFragment", "onActivityCreated()");
-		
 		setListShown(false, false);
 		getLoaderManager().initLoader(0, null, this);
-		
-//		String[] from = new String[] { BookmarksProvider.Columns.TITLE, BookmarksProvider.Columns.URL };
-//		int[] to = new int[] { R.id.StartPageRowTitle, R.id.StartPageRowUrl };
-//		
-//		mAdapter = new BookmarksAdapter(
-//				getActivity(),
-//				R.layout.start_page_row,
-//				null,
-//				from,
-//				to,
-//				ApplicationUtils.getBookmarksThumbnailsDimensions(getActivity()),
-//				R.drawable.browser_thumbnail);
-//		
-//		mGrid.setAdapter(mAdapter);
-//		
-//		mGrid.setOnItemClickListener(new OnItemClickListener() {
-//			@Override
-//			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-//				if (mListener != null) {
-//					BookmarkHistoryItem item = BookmarksWrapper.getBookmarkById(getActivity().getContentResolver(), id);
-//
-//					if (item != null) {
-//						mListener.onStartPageItemClicked(item.getUrl());
-//					}
-//				}
-//			}
-//		});
-//		
-//		mGrid.setOnTouchListener(mUIManager);
-//		
-//		getLoaderManager().initLoader(0, null, this);		
-//		
-//		mPreferenceChangeListener = new OnSharedPreferenceChangeListener() {
-//			@Override
-//			public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-//				if (Constants.PREFERENCE_START_PAGE_LIMIT.equals(key)) {
-//					getLoaderManager().restartLoader(0, null, StartPageFragment.this);
-//				}
-//			}			
-//		};
-//
-//		PreferenceManager.getDefaultSharedPreferences(getActivity()).registerOnSharedPreferenceChangeListener(mPreferenceChangeListener);
 	}	
 
 	@Override

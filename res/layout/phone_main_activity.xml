@@ -20,13 +20,14 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
     
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/WebViewContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#dcdcdc"
         android:orientation="vertical" >
 
-    </LinearLayout>
+    </FrameLayout>
 
     <RelativeLayout
         android:id="@+id/TopBar"
