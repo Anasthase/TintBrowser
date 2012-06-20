@@ -35,6 +35,7 @@ import org.tint.ui.views.PhoneUrlBar.OnPhoneUrlBarEventListener;
 import org.tint.utils.ApplicationUtils;
 import org.tint.utils.Constants;
 
+import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -106,6 +107,8 @@ public class PhoneUIManager extends BaseUIManager {
 	
 	private int mCurrentTabIndex = -1;
 	
+	private Fragment mCurrentFragment = null;
+	
 	private SwitchTabsMethod mSwitchTabsMethod = SwitchTabsMethod.BOTH;
 
 	public PhoneUIManager(TintBrowserActivity activity) {
@@ -118,24 +121,43 @@ public class PhoneUIManager extends BaseUIManager {
 
 	@Override
 	public void addTab(String url, boolean openInBackground, boolean privateBrowsing) {
-		int previousIndex = mCurrentTabIndex;
+		boolean startPage = false;
+		if (Constants.URL_ABOUT_START.equals(url)) {
+			url = null;
+			startPage = true;
+		}
 		
-		FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
 		PhoneWebViewFragment fragment = new PhoneWebViewFragment();
+		fragment.init(this, privateBrowsing, url);		
 		
-		fragment.init(this, privateBrowsing, url);
-		
-		fragmentTransaction.add(R.id.WebViewContainer, fragment);
-		fragmentTransaction.commit();
-		
-		//mCurrentTabIndex++;
 		mFragmentsList.add(mCurrentTabIndex + 1, fragment);
-		mFragmentsMap.put(fragment.getUUID(), fragment);
+		mFragmentsMap.put(fragment.getUUID(), fragment);		
 		
 		if (!openInBackground) {
 			mCurrentTabIndex++;
-			showCurrentTab(previousIndex, false);
+			
+			if (startPage) {
+				fragment.setStartPageShown(true);
+				
+				if (mStartPageFragment == null) {
+					createStartPageFragment();
+				}
+				
+				setCurrentFragment(mStartPageFragment);
+			} else {
+				fragment.setStartPageShown(false);
+				setCurrentFragment(fragment);
+			}			
+			
+			CustomWebView webView = getCurrentWebView();
+
+			if (!webView.isPrivateBrowsingEnabled()) {
+				Controller.getInstance().getAddonManager().onTabSwitched(mActivity, webView);
+			}
 		}
+		
+		updateShowPreviousNextTabButtons();
+		updateUrlBar();
 	}
 
 	@Override
@@ -568,26 +590,12 @@ public class PhoneUIManager extends BaseUIManager {
 			
 			if (webViewFragment == getCurrentWebViewFragment()) {
 
-				FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-				fragmentTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out);
-
 				if (mStartPageFragment == null) {
-					mStartPageFragment = new StartPageFragment();
-					mStartPageFragment.setOnStartPageItemClickedListener(new OnStartPageItemClickedListener() {					
-						@Override
-						public void onStartPageItemClicked(String url) {
-							loadUrl(url);
-						}
-					});
-
-					fragmentTransaction.add(R.id.WebViewContainer, mStartPageFragment);
+					createStartPageFragment();
 				}
 
-				fragmentTransaction.hide(webViewFragment);
-				fragmentTransaction.show(mStartPageFragment);
-
-				fragmentTransaction.commit();
-
+				setCurrentFragment(mStartPageFragment);
+				
 				onShowStartPage();
 			}
 		}
@@ -602,14 +610,7 @@ public class PhoneUIManager extends BaseUIManager {
 			webViewFragment.setStartPageShown(false);
 			
 			if (webViewFragment == getCurrentWebViewFragment()) {
-
-				FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();			
-				fragmentTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out);
-				
-				fragmentTransaction.hide(mStartPageFragment);
-				fragmentTransaction.show(webViewFragment);
-
-				fragmentTransaction.commit();
+				setCurrentFragment(webViewFragment);
 
 				onHideStartPage();
 			}
@@ -708,7 +709,6 @@ public class PhoneUIManager extends BaseUIManager {
 	private void closeTabByIndex(int index) {
 		boolean currentTab = index == mCurrentTabIndex;		
 		
-		FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
 		PhoneWebViewFragment fragment = mFragmentsList.get(index);
 		
 		CustomWebView webView = fragment.getWebView();
@@ -719,16 +719,6 @@ public class PhoneUIManager extends BaseUIManager {
 		
 		webView.onPause();
 		
-		if (fragment.isStartPageShown()) {
-			fragmentTransaction.hide(mStartPageFragment);
-		} else {
-			//fragmentTransaction.remove(fragment);
-		}
-		// TODO: Check this.
-		fragmentTransaction.remove(fragment);
-		
-		fragmentTransaction.commit();
-		
 		mFragmentsList.remove(index);
 		mFragmentsMap.remove(fragment.getUUID());
 		
@@ -737,7 +727,7 @@ public class PhoneUIManager extends BaseUIManager {
 				mCurrentTabIndex--;
 			}
 			
-			showCurrentTab(-1, true);
+			showCurrentTab(true);
 		} else {
 			if (index < mCurrentTabIndex) {
 				mCurrentTabIndex--;
@@ -745,45 +735,16 @@ public class PhoneUIManager extends BaseUIManager {
 		}
 	}
 	
-	private void showCurrentTab(int previousIndex, boolean notifyTabSwitched) {
-//		if (previousIndex != -1) {
-//			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-//			WebViewFragment oldFragment = mFragments.get(previousIndex);
-//			
-//			//fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-//			fragmentTransaction.hide(oldFragment);
-//			fragmentTransaction.commit();
-//		}
-		
-		FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-		//fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-		
-		if (previousIndex > mCurrentTabIndex) {
-			fragmentTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out);
-		} else {
-			fragmentTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out);
-		}
-		
-		if (previousIndex != -1) {
-			PhoneWebViewFragment oldFragment = mFragmentsList.get(previousIndex);
-			if (oldFragment.isStartPageShown()) {
-				fragmentTransaction.hide(mStartPageFragment);
-			} else {
-				fragmentTransaction.hide(oldFragment);
-			}
-		}
-		
+	private void showCurrentTab(boolean notifyTabSwitched) {
 		PhoneWebViewFragment newFragment = mFragmentsList.get(mCurrentTabIndex);
 		
 		if (newFragment.isStartPageShown()) {
-			fragmentTransaction.show(mStartPageFragment);
+			setCurrentFragment(mStartPageFragment);
 			mUrlBar.hideGoStopReloadButton();
 		} else {
-			fragmentTransaction.show(newFragment);
+			setCurrentFragment(newFragment);
 			mUrlBar.showGoStopReloadButton();
-		}
-		
-		fragmentTransaction.commit();
+		}		
 
 		updateShowPreviousNextTabButtons();
 		updateUrlBar();
@@ -795,16 +756,15 @@ public class PhoneUIManager extends BaseUIManager {
 				Controller.getInstance().getAddonManager().onTabSwitched(mActivity, webView);
 			}
 		}
-	}
+	}	
 	
 	private void showPreviousTab() {
 		if (mCurrentTabIndex > 0) {
 			mUrlBar.hideUrl();
 			
-			int previousIndex = mCurrentTabIndex;
 			mCurrentTabIndex--;
 			
-			showCurrentTab(previousIndex, true);
+			showCurrentTab(true);
 			startHideToolbarsThread();
 		}
 	}
@@ -813,10 +773,9 @@ public class PhoneUIManager extends BaseUIManager {
 		if (mCurrentTabIndex < mFragmentsList.size() - 1) {
 			mUrlBar.hideUrl();
 			
-			int previousIndex = mCurrentTabIndex;
 			mCurrentTabIndex++;
 			
-			showCurrentTab(previousIndex, true);
+			showCurrentTab(true);
 			startHideToolbarsThread();
 		}
 	}
@@ -907,6 +866,27 @@ public class PhoneUIManager extends BaseUIManager {
 	
 	private boolean isSwitchTabsByButtonsEnabled() {
 		return (mSwitchTabsMethod == SwitchTabsMethod.BUTTONS) || (mSwitchTabsMethod == SwitchTabsMethod.BOTH);
+	}
+	
+	private void createStartPageFragment() {
+		mStartPageFragment = new StartPageFragment();
+		mStartPageFragment.setOnStartPageItemClickedListener(new OnStartPageItemClickedListener() {					
+			@Override
+			public void onStartPageItemClicked(String url) {
+				loadUrl(url);
+			}
+		});
+	}
+	
+	private void setCurrentFragment(Fragment fragment) {
+		if (fragment != mCurrentFragment) {
+			mCurrentFragment = fragment;
+			
+			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();		
+			fragmentTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out);
+			fragmentTransaction.replace(R.id.WebViewContainer, mCurrentFragment);				
+			fragmentTransaction.commit();
+		}
 	}
 	
 	private class GestureListener extends GestureDetector.SimpleOnGestureListener {
