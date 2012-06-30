@@ -151,6 +151,7 @@ public class PhoneUIManager extends BaseUIManager {
 				}
 				
 				setCurrentFragment(mStartPageFragment, AnimationType.FADE);
+				onShowStartPage();
 			} else {
 				fragment.setStartPageShown(false);
 				setCurrentFragment(fragment, AnimationType.FADE);
