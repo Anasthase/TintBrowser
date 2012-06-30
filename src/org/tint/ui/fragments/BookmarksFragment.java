@@ -56,119 +56,62 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
+import android.widget.ProgressBar;
 
 public class BookmarksFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
-	
+
 	private static final String EXTRA_FOLDER_STACK = "EXTRA_FOLDER_STACK";
-	
+
 	private static final String STACK_SEPARATOR = "//;//";
-	
+
 	private static final int CONTEXT_MENU_OPEN_IN_TAB = Menu.FIRST;
 	private static final int CONTEXT_MENU_EDIT_BOOKMARK = Menu.FIRST + 1;
 	private static final int CONTEXT_MENU_COPY_URL = Menu.FIRST + 2;
 	private static final int CONTEXT_MENU_SHARE_URL = Menu.FIRST + 3;
 	private static final int CONTEXT_MENU_DELETE_BOOKMARK = Menu.FIRST + 4;
-	
+
 	private static final int CONTEXT_MENU_DELETE_FOLDER = Menu.FIRST + 5;
-	
+
 	private View mContainer = null;
-	
+
 	private UIManager mUIManager;
-	
+
 	private GridView mBookmarksGrid;
-	
+
+	private ProgressBar mProgress;
+
 	private ViewGroup mBreadCrumbGroup;
 	private FragmentBreadCrumbs mFoldersBreadCrumb;
 	private ImageView mBackBreadCrumb;
-	
+
 	private BookmarksAdapter mAdapter;
-	
+
 	private List<NavigationItem> mNavigationList;
-	
+
 	private boolean mIsTablet;
-	
+	private boolean mIsListShown = true;
+
 	private ProgressDialog mProgressDialog;
-	
+
 	public BookmarksFragment() {
 		mUIManager = Controller.getInstance().getUIManager();
 	}
 
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);		
-		
-		String[] from = new String[] { BookmarksProvider.Columns.TITLE, BookmarksProvider.Columns.URL };
-		int[] to = new int[] { R.id.BookmarkRow_Title, R.id.BookmarkRow_Url };
-		
-		mAdapter = new BookmarksAdapter(
-				getActivity(),
-				R.layout.bookmark_row,
-				null,
-				from,
-				to,
-				ApplicationUtils.getBookmarksThumbnailsDimensions(getActivity()),
-				R.drawable.browser_thumbnail);
-		
-		mBookmarksGrid.setAdapter(mAdapter);
-		
-		mBookmarksGrid.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-				BookmarkHistoryItem item = BookmarksWrapper.getBookmarkById(getActivity().getContentResolver(), id);
-				
-				if (item != null) {
-					if (item.isFolder()) {
-						mNavigationList.add(new NavigationItem(item.getId(), item.getTitle()));
-						updateFolderId();						
-					} else {
-						Intent result = new Intent();
-						result.putExtra(Constants.EXTRA_URL, item.getUrl());
-
-						getActivity().setResult(Activity.RESULT_OK, result);
-						getActivity().finish();
-					}
-				}
-			}
-		});
-		
-		registerForContextMenu(mBookmarksGrid);
-		
-		if (!mIsTablet) {
-			mBreadCrumbGroup.setVisibility(View.GONE);
-			mBreadCrumbGroup.setTranslationY(- mBreadCrumbGroup.getHeight());
-		}
-		
-		mNavigationList = new ArrayList<NavigationItem>();		
-		
-		if ((savedInstanceState != null) && 
-				(savedInstanceState.containsKey(EXTRA_FOLDER_STACK))) {
-			String folderStack = savedInstanceState.getString(EXTRA_FOLDER_STACK);
-			
-			String[] stack = folderStack.split(STACK_SEPARATOR);
-			for (int i = 0; i < stack.length; i++) {
-				mNavigationList.add(new NavigationItem(stack[i]));
-			}
-		} else {
-			mNavigationList.add(new NavigationItem(-1, null));
-		}
-		
-		updateFolderId();
-	}	
-	
-	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mIsTablet = ApplicationUtils.isTablet(getActivity());
-		
+
 		if (mContainer == null) {
 			mContainer = inflater.inflate(R.layout.bookmarks_fragment, container, false);
-			
+
 			mBreadCrumbGroup = (ViewGroup) mContainer.findViewById(R.id.BookmarksBreadCrumbGroup);			
-			
+
 			mFoldersBreadCrumb = (FragmentBreadCrumbs) mContainer.findViewById(R.id.BookmarksBreadCrumb);
 			mFoldersBreadCrumb.setMaxVisible(2);
 			mFoldersBreadCrumb.setActivity(getActivity());
@@ -179,7 +122,7 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 					popNavigation();					
 				}
 			});
-			
+
 			mBackBreadCrumb = (ImageView) mContainer.findViewById(R.id.BookmarksBreadCrumbBackHierarchy);
 			mBackBreadCrumb.setOnClickListener(new OnClickListener() {				
 				@Override
@@ -187,36 +130,96 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 					popNavigation();
 				}
 			});
-			
+
 			mBookmarksGrid = (GridView) mContainer.findViewById(R.id.BookmarksGridView);
+			mProgress = (ProgressBar) mContainer.findViewById(R.id.BookmarksProgressBar);
+
+			String[] from = new String[] { BookmarksProvider.Columns.TITLE, BookmarksProvider.Columns.URL };
+			int[] to = new int[] { R.id.BookmarkRow_Title, R.id.BookmarkRow_Url };
+
+			mAdapter = new BookmarksAdapter(
+					getActivity(),
+					R.layout.bookmark_row,
+					null,
+					from,
+					to,
+					ApplicationUtils.getBookmarksThumbnailsDimensions(getActivity()),
+					R.drawable.browser_thumbnail);
+
+			mBookmarksGrid.setAdapter(mAdapter);
+
+			mBookmarksGrid.setOnItemClickListener(new OnItemClickListener() {
+				@Override
+				public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+					BookmarkHistoryItem item = BookmarksWrapper.getBookmarkById(getActivity().getContentResolver(), id);
+
+					if (item != null) {
+						if (item.isFolder()) {
+							mNavigationList.add(new NavigationItem(item.getId(), item.getTitle()));
+							updateFolderId();						
+						} else {
+							Intent result = new Intent();
+							result.putExtra(Constants.EXTRA_URL, item.getUrl());
+
+							getActivity().setResult(Activity.RESULT_OK, result);
+							getActivity().finish();
+						}
+					}
+				}
+			});
+
+			registerForContextMenu(mBookmarksGrid);
+
+			if (!mIsTablet) {
+				mBreadCrumbGroup.setVisibility(View.GONE);
+				mBreadCrumbGroup.setTranslationY(- mBreadCrumbGroup.getHeight());
+			}
+
+			mNavigationList = new ArrayList<NavigationItem>();		
+
+			if ((savedInstanceState != null) && 
+					(savedInstanceState.containsKey(EXTRA_FOLDER_STACK))) {
+				String folderStack = savedInstanceState.getString(EXTRA_FOLDER_STACK);
+
+				String[] stack = folderStack.split(STACK_SEPARATOR);
+				for (int i = 0; i < stack.length; i++) {
+					mNavigationList.add(new NavigationItem(stack[i]));
+				}
+			} else {
+				mNavigationList.add(new NavigationItem(-1, null));
+			}
+
+			setListShown(false, false);
+
+			updateFolderId();
 		}
-		
+
 		return mContainer;
 	}
-	
+
 	@Override
 	public void onSaveInstanceState(Bundle outState) {		
 		super.onSaveInstanceState(outState);
-		
+
 		StringBuilder sb = new StringBuilder();
 		for (NavigationItem item : mNavigationList) {
 			sb.append(item.toString() + STACK_SEPARATOR);
 		}
-		
+
 		outState.putString(EXTRA_FOLDER_STACK, sb.toString());
 	}
-	
+
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
 		super.onCreateContextMenu(menu, v, menuInfo);
-		
+
 		long id = ((AdapterContextMenuInfo) menuInfo).id;
 		if (id != -1) {
 			BookmarkHistoryItem selectedItem = BookmarksWrapper.getBookmarkById(getActivity().getContentResolver(), id);
 			if (selectedItem != null) {
-				
+
 				menu.setHeaderTitle(selectedItem.getTitle());
-				
+
 				if (!selectedItem.isFolder()) {
 					BitmapDrawable icon = ApplicationUtils.getApplicationButtonImage(getActivity(), selectedItem.getFavicon());
 					if (icon != null) {
@@ -229,13 +232,13 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 					menu.add(0, CONTEXT_MENU_SHARE_URL, 0, R.string.ContextMenuShareUrl);
 					menu.add(0, CONTEXT_MENU_DELETE_BOOKMARK, 0, R.string.DeleteBookmark);
 
-					
+
 				} else {
-				
+
 					menu.add(0, CONTEXT_MENU_DELETE_FOLDER, 0, R.string.DeleteFolder);
-					
+
 				}
-				
+
 				List<AddonMenuItem> addonsContributions = Controller.getInstance().getAddonManager().getContributedBookmarkContextMenuItems(mUIManager.getCurrentWebView());
 				for (AddonMenuItem item : addonsContributions) {
 					menu.add(0, item.getAddon().getMenuId(), 0, item.getMenuItem());
@@ -243,13 +246,13 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 			}
 		}
 	}
-	
+
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
 		final AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
-		
+
 		BookmarkHistoryItem selectedItem = BookmarksWrapper.getBookmarkById(getActivity().getContentResolver(), info.id);
-		
+
 		Intent i;
 		switch (item.getItemId()) {
 		case CONTEXT_MENU_OPEN_IN_TAB:			
@@ -257,12 +260,12 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 				Intent result = new Intent();
 				result.putExtra(Constants.EXTRA_NEW_TAB, true);
 				result.putExtra(Constants.EXTRA_URL, selectedItem.getUrl());
-				
+
 				getActivity().setResult(Activity.RESULT_OK, result);
 				getActivity().finish();
 			}
 			return true;
-			
+
 		case CONTEXT_MENU_EDIT_BOOKMARK:
 			if (selectedItem != null) {
 				i = new Intent(getActivity(), EditBookmarkActivity.class);
@@ -270,51 +273,50 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 				i.putExtra(Constants.EXTRA_FOLDER_ID, selectedItem.getFolderId());
 				i.putExtra(Constants.EXTRA_LABEL, selectedItem.getTitle());
 				i.putExtra(Constants.EXTRA_URL, selectedItem.getUrl());
-				
+
 				startActivity(i);
 			}
-			
+
 			return true;
 
 		case CONTEXT_MENU_COPY_URL:
 			if (selectedItem != null) {
 				ApplicationUtils.copyTextToClipboard(getActivity(), selectedItem.getUrl(), getActivity().getResources().getString(R.string.UrlCopyToastMessage));
 			}
-			
+
 			return true;
-			
+
 		case CONTEXT_MENU_SHARE_URL:
 			if (selectedItem != null) {
 				ApplicationUtils.sharePage(getActivity(), null, selectedItem.getUrl());						
 			}
-			
+
 			return true;
-			
+
 		case CONTEXT_MENU_DELETE_BOOKMARK:
 			BookmarksWrapper.deleteBookmark(getActivity().getContentResolver(), info.id);
 			return true;
-			
+
 		case CONTEXT_MENU_DELETE_FOLDER:
 			AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 			builder.setCancelable(true);
 			builder.setIcon(android.R.drawable.ic_dialog_info);
 			builder.setTitle(R.string.DeleteFolder);
 			builder.setMessage(R.string.ConfirmDeleteFolderMessage);
-			
+
 			builder.setPositiveButton(R.string.Yes, new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					doDeleteFolder(info.id);
-//					BookmarksWrapper.deleteFolder(getActivity().getContentResolver(), info.id);					
+					doDeleteFolder(info.id);					
 				}				
 			});
-			
+
 			builder.setNegativeButton(R.string.No, null);
-			
+
 			builder.create().show();
-						
+
 			return true;
-		
+
 		default:
 			if (Controller.getInstance().getAddonManager().onContributedBookmarkContextMenuItemSelected(
 					getActivity(),
@@ -331,24 +333,68 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+		if (isResumed()) {
+			setListShown(false, true);
+		} else {
+			setListShown(false, false);
+		}
+
 		return BookmarksWrapper.getCursorLoaderForBookmarks(getActivity(), mNavigationList.get(mNavigationList.size() - 1).getId());
 	}
 
 	@Override
 	public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 		mAdapter.swapCursor(data);
+
+		if (isResumed()) {
+			setListShown(true, true);
+		} else {
+			setListShown(true, false);
+		}
 	}
 
 	@Override
 	public void onLoaderReset(Loader<Cursor> loader) {
 		mAdapter.swapCursor(null);
 	}
-	
+
+	private void setListShown(boolean shown, boolean animate) {
+		if (mIsListShown == shown) {
+			return;
+		}
+
+		mIsListShown = shown;
+
+		if (shown) {
+			if (animate) {
+				mProgress.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out));
+				mBookmarksGrid.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in));
+			} else {
+				mProgress.clearAnimation();
+				mBookmarksGrid.clearAnimation();
+			}
+
+			mProgress.setVisibility(View.GONE);
+			mBookmarksGrid.setVisibility(View.VISIBLE);
+		} else {
+			if (animate) {
+				mProgress.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in));
+				mBookmarksGrid.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out));
+			} else {
+				mProgress.clearAnimation();
+				mBookmarksGrid.clearAnimation();
+			}
+
+			mProgress.setVisibility(View.VISIBLE);
+			mBookmarksGrid.setVisibility(View.GONE);
+		}
+	}
+
 	private void updateFolderId() {
 		if (mAdapter != null) {
 			mAdapter.swapCursor(null);
 		}
-		
+
 		NavigationItem current = mNavigationList.get(mNavigationList.size() - 1);
 		if (current.getId() == -1) {
 			if (!mIsTablet) {
@@ -377,21 +423,21 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 				mBackBreadCrumb.setVisibility(View.GONE);
 				getLoaderManager().restartLoader(0, null, this);
 			}
-			
+
 			mFoldersBreadCrumb.setParentTitle(getString(R.string.Bookmarks), null, new OnClickListener() {					
 				@Override
 				public void onClick(View arg0) {
 					popNavigation();
 				}
 			});
-			
+
 		} else {			
 			if (!mIsTablet) {
 				mBreadCrumbGroup.setVisibility(View.VISIBLE);
-				
+
 				AnimatorSet animator = new AnimatorSet();
 				animator.play(ObjectAnimator.ofFloat(mBreadCrumbGroup, "translationY", 0));
-				
+
 				animator.addListener(new AnimatorListenerAdapter() {
 					@Override
 					public void onAnimationEnd(Animator animation) {
@@ -399,14 +445,14 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 						getLoaderManager().restartLoader(0, null, BookmarksFragment.this);
 					}					
 				});
-				
+
 				animator.start();
-				
+
 			} else {
 				mBackBreadCrumb.setVisibility(View.VISIBLE);
 				getLoaderManager().restartLoader(0, null, this);
 			}
-			
+
 			if (mNavigationList.size() > 2) {
 				NavigationItem previous = mNavigationList.get(mNavigationList.size() - 2);
 				mFoldersBreadCrumb.setParentTitle(previous.getTitle(), null, new OnClickListener() {					
@@ -424,60 +470,60 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 				});
 			}
 		}
-		
+
 		mFoldersBreadCrumb.setTitle(current.getTitle(), current.getTitle());
 	}
-	
+
 	private void popNavigation() {
 		mNavigationList.remove(mNavigationList.size() - 1);
 		updateFolderId();
 	}
-	
+
 	private void doDeleteFolder(long folderId) {
 		mProgressDialog = ProgressDialog.show(
 				getActivity(),
 				getString(R.string.DeleteFolderTitle),
 				getString(R.string.DeleteFolderMessage));
-		
+
 		new Thread(new DeleteFolderRunnable(folderId)).start();
 	}
-	
+
 	private class DeleteFolderRunnable implements Runnable {
 
 		private long mFolderId;
-		
+
 		public DeleteFolderRunnable(long folderId) {
 			mFolderId = folderId;
 		}
-		
+
 		@Override
 		public void run() {			
 			BookmarksWrapper.deleteFolder(getActivity().getContentResolver(), mFolderId);
 			mHandler.sendEmptyMessage(0);
 		}
-		
+
 		private Handler mHandler = new Handler() {
 			public void handleMessage(Message msg) {
 				mProgressDialog.dismiss();
 				getLoaderManager().restartLoader(0, null, BookmarksFragment.this);
 			}
 		};
-		
+
 	}
-	
+
 	private class NavigationItem {
 		private long mId;
 		private String mTitle;
-		
+
 		public NavigationItem(long id, String title) {
 			mId = id;
 			mTitle = title;
 		}
-		
+
 		public NavigationItem(String builder) {
 			if ((builder.startsWith("{")) &&
 					(builder.endsWith("}"))) {
-				
+
 				try {
 					builder = builder.substring(1, builder.length() - 1);
 					String[] parts = builder.split(",");
@@ -488,17 +534,17 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 					mId = -1;
 					mTitle = null;
 				}
-				
+
 			} else {
 				mId = -1;
 				mTitle = null;
 			}
 		}
-		
+
 		public long getId() {
 			return mId;
 		}
-		
+
 		public String getTitle() {
 			return mTitle;
 		}
@@ -507,7 +553,7 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 		public String toString() {
 			return String.format("{%s,%s}", mId, mTitle);
 		}
-		
+
 	}
 
 }
