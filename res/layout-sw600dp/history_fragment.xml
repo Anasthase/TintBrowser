@@ -74,17 +74,30 @@
             android:contentDescription="@string/ContentDescriptionDivider"
             android:src="#404040" />
         
-        <ListView
-            android:id="@+id/history_child_list"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="32dip"
-            android:paddingRight="32dip"
-            android:cacheColorHint="@android:color/transparent"
-            android:drawSelectorOnTop="false"
-            android:listPreferredItemHeight="48dp"
-            android:scrollbarAlwaysDrawVerticalTrack="true" />
-        
+            android:layout_height="match_parent" >
+
+            <ListView
+                android:id="@+id/history_child_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:cacheColorHint="@android:color/transparent"
+                android:drawSelectorOnTop="false"
+                android:listPreferredItemHeight="48dp"
+                android:paddingLeft="32dip"
+                android:paddingRight="32dip"
+                android:scrollbarAlwaysDrawVerticalTrack="true" />
+
+            <ProgressBar
+                android:id="@+id/HistoryProgressBar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            
+        </RelativeLayout>
+
     </LinearLayout>
 
 </LinearLayout>

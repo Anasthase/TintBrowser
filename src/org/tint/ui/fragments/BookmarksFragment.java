@@ -529,7 +529,11 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 					String[] parts = builder.split(",");
 
 					mId = Long.parseLong(parts[0]);
-					mTitle = parts[1];
+					if (mId == -1) {
+						mTitle = null;
+					} else {
+						mTitle = parts[1];
+					}
 				} catch (Exception e) {
 					mId = -1;
 					mTitle = null;

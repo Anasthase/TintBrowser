@@ -44,6 +44,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.animation.AnimationUtils;
 import android.webkit.DateSorter;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -52,6 +53,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.CompoundButton;
 import android.widget.ExpandableListView;
+import android.widget.ProgressBar;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
@@ -77,6 +79,8 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 	private ListView mGroupList;
 	private ListView mChildList;
 	
+	private ProgressBar mProgress;
+	
 	private FragmentBreadCrumbs mChildHeader;
 	
 	private HistoryAdapter mAdapter;
@@ -85,6 +89,8 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 	private HistoryChildWrapper mChildAdapter;
 	
 	private boolean mTwoPaneMode;
+	
+	private boolean mIsListShown = true;
 	
 	private int mSelectedGroup;	
 	private boolean[] mExpandedGroups = new boolean[DateSorter.DAY_COUNT];
@@ -107,40 +113,7 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
-		mBookmarkStarChangeListener = new OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				long id = (Long) buttonView.getTag();
-				BookmarksWrapper.toggleBookmark(getActivity().getContentResolver(), id, isChecked);
-				
-				if (isChecked) {
-					Toast.makeText(getActivity(), R.string.BookmarkAdded, Toast.LENGTH_SHORT).show();
-				} else {
-					Toast.makeText(getActivity(), R.string.BookmarkRemoved, Toast.LENGTH_SHORT).show();
-				}
-			}			
-		};
 		
-		mAdapter = new HistoryAdapter(getActivity(),
-				mBookmarkStarChangeListener,
-				getActivity().getResources().getInteger(R.integer.favicon_size));
-		
-		if (mTwoPaneMode) {
-			
-			mGroupAdapter = new HistoryGroupWrapper(mAdapter);
-			mGroupList.setAdapter(mGroupAdapter);
-			
-			mChildAdapter = new HistoryChildWrapper(mAdapter);
-			mChildList.setAdapter(mChildAdapter);
-			
-			registerForContextMenu(mChildList);
-			
-		} else {
-			mListView.setAdapter(mAdapter);		
-			registerForContextMenu(mListView);
-		}
-		
-		getLoaderManager().initLoader(0, null, this);
 	}
 	
 	@Override
@@ -155,6 +128,43 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 			} else {
 				inflateTwoPane();
 			}
+			
+			mBookmarkStarChangeListener = new OnCheckedChangeListener() {
+				@Override
+				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+					long id = (Long) buttonView.getTag();
+					BookmarksWrapper.toggleBookmark(getActivity().getContentResolver(), id, isChecked);
+					
+					if (isChecked) {
+						Toast.makeText(getActivity(), R.string.BookmarkAdded, Toast.LENGTH_SHORT).show();
+					} else {
+						Toast.makeText(getActivity(), R.string.BookmarkRemoved, Toast.LENGTH_SHORT).show();
+					}
+				}			
+			};
+			
+			mAdapter = new HistoryAdapter(getActivity(),
+					mBookmarkStarChangeListener,
+					getActivity().getResources().getInteger(R.integer.favicon_size));
+			
+			if (mTwoPaneMode) {
+				
+				mGroupAdapter = new HistoryGroupWrapper(mAdapter);
+				mGroupList.setAdapter(mGroupAdapter);
+				
+				mChildAdapter = new HistoryChildWrapper(mAdapter);
+				mChildList.setAdapter(mChildAdapter);
+				
+				registerForContextMenu(mChildList);
+				
+			} else {
+				mListView.setAdapter(mAdapter);		
+				registerForContextMenu(mListView);
+			}
+			
+			setListShown(false, false);
+			
+			getLoaderManager().initLoader(0, null, this);
 		}
 		
 		return mContainer;
@@ -283,6 +293,13 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 		mSelectedGroup = 0;
+		
+		if (isResumed()) {
+			setListShown(false, true);
+		} else {
+			setListShown(false, false);
+		}
+		
 		return BookmarksWrapper.getCursorLoaderForHistory(getActivity());
 	}
 
@@ -309,11 +326,79 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 				selectGroup(mAdapter.getGroupView(mSelectedGroup, false, null, null), mSelectedGroup);
 			}
 		}
+		
+		if (isResumed()) {
+			setListShown(true, true);
+		} else {
+			setListShown(true, false);
+		}
 	}
 
 	@Override
 	public void onLoaderReset(Loader<Cursor> loader) {
 		mAdapter.changeCursor(null);
+	}
+	
+	private void setListShown(boolean shown, boolean animate) {
+		if (mIsListShown == shown) {
+			return;
+		}
+
+		mIsListShown = shown;
+
+		if (shown) {
+			if (animate) {
+				mProgress.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out));
+				
+				if (mTwoPaneMode) {
+					mChildList.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in));
+				} else {
+					mListView.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in));
+				}
+			} else {
+				mProgress.clearAnimation();
+				
+				if (mTwoPaneMode) {
+					mChildList.clearAnimation();
+				} else {
+					mListView.clearAnimation();
+				}
+			}
+
+			mProgress.setVisibility(View.GONE);
+			
+			if (mTwoPaneMode) {
+				mChildList.setVisibility(View.VISIBLE);
+			} else {
+				mListView.setVisibility(View.VISIBLE);
+			}
+		} else {
+			if (animate) {
+				mProgress.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in));
+				
+				if (mTwoPaneMode) {
+					mChildList.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out));
+				} else {
+					mListView.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out));
+				}
+			} else {
+				mProgress.clearAnimation();
+				
+				if (mTwoPaneMode) {
+					mChildList.clearAnimation();
+				} else {
+					mListView.clearAnimation();
+				}
+			}
+
+			mProgress.setVisibility(View.VISIBLE);
+			
+			if (mTwoPaneMode) {
+				mChildList.setVisibility(View.VISIBLE);
+			} else {
+				mListView.setVisibility(View.VISIBLE);
+			}
+		}
 	}
 	
 	private void inflateSinglePane() {
@@ -344,6 +429,8 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 				return true;
 			}
 		});
+		
+		mProgress = (ProgressBar) mContainer.findViewById(R.id.HistoryProgressBar);
 	}
 	
 	private void inflateTwoPane() {
@@ -371,6 +458,8 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 				openItem(mChildAdapter.getSelectedGroup(), position);
 			}
 		});
+		
+		mProgress = (ProgressBar) mContainer.findViewById(R.id.HistoryProgressBar);
 	}
 	
 	private void openItem(int groupPosition, int childPosition) {
