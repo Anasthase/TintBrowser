@@ -1,3 +1,8 @@
+1.4:
+- Add accessibility settings: minimum font size, text scaling, and inverted screen rendering;
+- Add progress bar when loading history and bookmarks;
+- On phones, tab switching use a quick fade in/out animation;
+
 1.3: Features:
 - Folders can be created in bookmarks;
 - Various minor improvements in layouts;
