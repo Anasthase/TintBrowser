@@ -40,18 +40,25 @@ public class AccessibilityPreviewPreference extends Preference implements OnShar
 	private String mHtml;
 	
 	public AccessibilityPreviewPreference(Context context) {
-		this(context, null);
+		super(context);
+		init();
 	}
 	
 	public AccessibilityPreviewPreference(Context context, AttributeSet attrs) {
-		this(context, attrs, 0);
+		super(context, attrs);
+		init();
 	}
 	
 	public AccessibilityPreviewPreference(Context context, AttributeSet attrs,	int defStyle) {
 		super(context, attrs, defStyle);
+		init();
+	}
+	
+	private void init() {
 		setLayoutResource(R.layout.accessibility_preview);
 		
 		Object[] visualNames = getContext().getResources().getStringArray(R.array.FontPreviewText);
+		
         mHtml = String.format(HTML_FORMAT, visualNames);
 	}
 	
@@ -69,14 +76,14 @@ public class AccessibilityPreviewPreference extends Preference implements OnShar
         	summary.setVisibility(View.GONE);
         }
         
-        mWebView = (WebView) root.findViewById(R.id.AccessibilityPreviewWebView);
-        mWebView.setFocusable(false);
-        mWebView.setFocusableInTouchMode(false);
-        mWebView.setClickable(false);
-        mWebView.setLongClickable(false);
-        mWebView.setHorizontalScrollBarEnabled(false);
-        mWebView.setVerticalScrollBarEnabled(false);
-        mWebView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        WebView wv = (WebView) root.findViewById(R.id.AccessibilityPreviewWebView);
+        wv.setFocusable(false);
+        wv.setFocusableInTouchMode(false);
+        wv.setClickable(false);
+        wv.setLongClickable(false);
+        wv.setHorizontalScrollBarEnabled(false);
+        wv.setVerticalScrollBarEnabled(false);
+        wv.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         
         return root;
 	}
@@ -117,15 +124,11 @@ public class AccessibilityPreviewPreference extends Preference implements OnShar
         
         int fontSize = prefs.getInt(Constants.PREFERENCE_MINIMUM_FONT_SIZE, 1);
         int textScaling = prefs.getInt(Constants.PREFERENCE_TEXT_SCALING, 100);
-        
-//        Log.d("fontSize", Integer.toString(fontSize));
-//        Log.d("textScaling", Integer.toString(textScaling));
         		
         ws.setMinimumFontSize(fontSize);
         ws.setTextZoom(textScaling);
         
-        mWebView.loadData(mHtml, "text/html", "utf-8");
-        mWebView.invalidate();
+        mWebView.loadData(mHtml, "text/html; charset=utf-8", "utf-8");
     }
 
 }
