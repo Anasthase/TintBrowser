@@ -17,6 +17,7 @@ package org.tint.ui.views;
 
 import org.tint.R;
 import org.tint.model.UrlSuggestionCursorAdapter;
+import org.tint.model.UrlSuggestionCursorAdapter.QueryBuilderListener;
 import org.tint.providers.BookmarksWrapper;
 
 import android.content.Context;
@@ -106,7 +107,19 @@ public class TabletUrlBar extends LinearLayout implements UrlBar {
 		String[] from = new String[] { UrlSuggestionCursorAdapter.URL_SUGGESTION_TITLE, UrlSuggestionCursorAdapter.URL_SUGGESTION_URL };
     	int[] to = new int[] {R.id.AutocompleteTitle, R.id.AutocompleteUrl};
     	
-    	UrlSuggestionCursorAdapter adapter = new UrlSuggestionCursorAdapter(mContext, R.layout.url_autocomplete_line, null, from, to);
+    	UrlSuggestionCursorAdapter adapter = new UrlSuggestionCursorAdapter(
+    			mContext,
+    			R.layout.url_autocomplete_line,
+    			null,
+    			from,
+    			to,
+    			new QueryBuilderListener() {					
+					@Override
+					public void onSuggestionSelected(String url) {
+						setUrl(url);
+						mUrl.setSelection(url.length());
+					}
+				});
     	
     	adapter.setCursorToStringConverter(new CursorToStringConverter() {			
 			@Override

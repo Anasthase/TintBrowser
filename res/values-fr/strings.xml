@@ -465,5 +465,7 @@
     <string name="PreferenceAccessibilityInvertedRenderingTitle">Rendu inversé</string>
     <string name="PreferenceAccessibilityInvertedRenderingSummary">Inverse les couleurs à l\'écran. Ceci peut ne pas marcher sur tous les appareils.</string>
     <string name="PreferenceAccessibilityInvertedRenderingContrastTitle">Contraste</string>
+    
+    <string name="ContentDescriptionAutocompleteQueryBuilder">Place l\'url de la suggestion dans la barre d\'adresse, sans naviger vers elle.</string>
 
 </resources>

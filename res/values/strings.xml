@@ -465,5 +465,7 @@
     <string name="PreferenceAccessibilityInvertedRenderingTitle">Inverted rendering</string>
     <string name="PreferenceAccessibilityInvertedRenderingSummary">Invert the screen colors. This may not works on all devices.</string>
     <string name="PreferenceAccessibilityInvertedRenderingContrastTitle">Contrast</string>
+    
+    <string name="ContentDescriptionAutocompleteQueryBuilder">Put suggestion url in the url bar, without navigating to it.</string>
 
 </resources>

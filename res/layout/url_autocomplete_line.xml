@@ -18,7 +18,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"    
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal" >
+    android:orientation="horizontal"
+    android:descendantFocusability="blocksDescendants" >
 
     <ImageView
         android:id="@+id/AutocompleteImageView"
@@ -74,7 +75,7 @@
         android:layout_gravity="center_vertical"
         android:layout_toRightOf="@+id/AutocompleteUrl"
         android:background="?android:attr/selectableItemBackground"
-        android:contentDescription="@string/ContentDescriptionGoStopReloadButton"
+        android:contentDescription="@string/ContentDescriptionAutocompleteQueryBuilder"
         android:focusable="true"
         android:paddingLeft="8dip"
         android:paddingRight="8dip"

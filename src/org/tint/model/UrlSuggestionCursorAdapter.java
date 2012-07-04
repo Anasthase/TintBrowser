@@ -20,6 +20,7 @@ import org.tint.R;
 import android.content.Context;
 import android.database.Cursor;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SimpleCursorAdapter;
@@ -34,6 +35,12 @@ public class UrlSuggestionCursorAdapter extends SimpleCursorAdapter {
 	public static final String URL_SUGGESTION_URL = "URL_SUGGESTION_URL";
 	public static final String URL_SUGGESTION_TYPE = "URL_SUGGESTION_TYPE";
 	
+	public interface QueryBuilderListener {
+		public void onSuggestionSelected(String url);
+	}
+	
+	private QueryBuilderListener mQueryBuilderListener = null;
+	
 	/**
 	 * Constructor.
 	 * @param context The context.
@@ -42,14 +49,15 @@ public class UrlSuggestionCursorAdapter extends SimpleCursorAdapter {
 	 * @param from Input array.
 	 * @param to Output array.
 	 */
-	public UrlSuggestionCursorAdapter(Context context, int layout, Cursor c, String[] from, int[] to) {		
-		super(context, layout, c, from, to);		
+	public UrlSuggestionCursorAdapter(Context context, int layout, Cursor c, String[] from, int[] to, QueryBuilderListener listener) {		
+		super(context, layout, c, from, to);
+		mQueryBuilderListener = listener;
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		
-		View superView = super.getView(position, convertView, parent);
+		View superView = super.getView(position, convertView, parent);		
 		
 		ImageView iconView = (ImageView) superView.findViewById(R.id.AutocompleteImageView);
 
@@ -66,6 +74,18 @@ public class UrlSuggestionCursorAdapter extends SimpleCursorAdapter {
 		case 3: iconView.setImageResource(R.drawable.ic_search_category_bookmark); break; // TODO: Change this for Weave !
 		default: break;
 		}
+		
+		final String url = getCursor().getString(getCursor().getColumnIndex(URL_SUGGESTION_URL));
+		
+		ImageView queryBuilderView = (ImageView) superView.findViewById(R.id.AutoCompleteQueryBuilder);
+		queryBuilderView.setOnClickListener(new OnClickListener() {			
+			@Override
+			public void onClick(View v) {
+				if (mQueryBuilderListener != null) {
+					mQueryBuilderListener.onSuggestionSelected(url);
+				}
+			}
+		});
 		
 		return superView;
 	}

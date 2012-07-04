@@ -1,6 +1,7 @@
 1.4:
 - Add accessibility settings: minimum font size, text scaling, and inverted screen rendering;
 - Add progress bar when loading history and bookmarks;
+- On url suggestions, add a button to paste the suggested url in the url bar, without loading it;
 - On phones, tab switching use a quick fade in/out animation;
 
 1.3: Features:
