@@ -28,6 +28,7 @@ import org.tint.ui.activities.TintBrowserActivity;
 import org.tint.ui.fragments.BaseWebViewFragment;
 import org.tint.utils.Constants;
 
+import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
@@ -110,6 +111,7 @@ public class CustomWebView extends WebView implements DownloadListener {
 		}
 	}
 	
+	@SuppressLint("SetJavaScriptEnabled")
 	public void loadSettings() {
 		WebSettings settings = getSettings();
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());		
@@ -305,10 +307,24 @@ public class CustomWebView extends WebView implements DownloadListener {
 	
 	private static void loadMethods() {
 		try {
-			sWebSettingsSetProperty = WebSettings.class.getMethod("setProperty", new Class[] { String.class, String.class });
+			
+			// 15 is ICS 2nd release.
+			if (android.os.Build.VERSION.SDK_INT > 15) {
+				// WebSettings became abstract in JB, and "setProperty" moved to the concrete class, WebSettingsClassic,
+				// not present in the SDK. So we must look for the class first, then for the methods.
+				ClassLoader classLoader = CustomWebView.class.getClassLoader();
+				Class<?> webSettingsClassicClass = classLoader.loadClass("android.webkit.WebSettingsClassic");
+				sWebSettingsSetProperty = webSettingsClassicClass.getMethod("setProperty", new Class[] { String.class, String.class });
+			} else {
+				sWebSettingsSetProperty = WebSettings.class.getMethod("setProperty", new Class[] { String.class, String.class });
+			}											
+			
 		} catch (NoSuchMethodException e) {
 			Log.e("CustomWebView", "loadMethods(): " + e.getMessage());
 			sWebSettingsSetProperty = null;
+		} catch (ClassNotFoundException e) {
+			Log.e("CustomWebView", "loadMethods(): " + e.getMessage());
+			e.printStackTrace();
 		}
 		
 		sMethodsLoaded = true;
