@@ -24,7 +24,7 @@ import android.graphics.Paint;
 import android.graphics.Picture;
 import android.os.AsyncTask;
 
-public class ThumbnailTaker extends AsyncTask<Void, Void, Void> {
+public class ThumbnailSaver extends AsyncTask<Void, Void, Void> {
 
 	private ContentResolver mContentResolver;
 	private String mUrl;
@@ -35,7 +35,7 @@ public class ThumbnailTaker extends AsyncTask<Void, Void, Void> {
 	private int mCaptureWidth;
 	private int mCaptureHeight;
 	
-	public ThumbnailTaker(ContentResolver contentResolver, String url, String originalUrl, Picture picture, int[] dimensions) {
+	public ThumbnailSaver(ContentResolver contentResolver, String url, String originalUrl, Picture picture, int[] dimensions) {
 		mContentResolver = contentResolver;
 		mUrl = url;
 		mOriginalUrl = originalUrl;

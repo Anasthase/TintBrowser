@@ -22,7 +22,7 @@ import org.tint.R;
 import org.tint.controllers.Controller;
 import org.tint.model.DownloadItem;
 import org.tint.providers.BookmarksWrapper;
-import org.tint.tasks.ThumbnailTaker;
+import org.tint.tasks.ThumbnailSaver;
 import org.tint.ui.activities.BookmarksActivity;
 import org.tint.ui.activities.EditBookmarkActivity;
 import org.tint.ui.activities.TintBrowserActivity;
@@ -400,7 +400,7 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 				if (BookmarksWrapper.urlHasBookmark(mActivity.getContentResolver(), url, view.getOriginalUrl())) {
 					Picture p = view.capturePicture();
 					
-					new ThumbnailTaker(mActivity.getContentResolver(),
+					new ThumbnailSaver(mActivity.getContentResolver(),
 							url,
 							view.getOriginalUrl(),
 							p,
