@@ -324,7 +324,6 @@ public class CustomWebView extends WebView implements DownloadListener {
 			sWebSettingsSetProperty = null;
 		} catch (ClassNotFoundException e) {
 			Log.e("CustomWebView", "loadMethods(): " + e.getMessage());
-			e.printStackTrace();
 			sWebSettingsSetProperty = null;
 		}
 		
