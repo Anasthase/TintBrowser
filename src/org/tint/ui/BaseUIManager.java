@@ -21,6 +21,7 @@ import java.util.UUID;
 import org.tint.R;
 import org.tint.controllers.Controller;
 import org.tint.model.DownloadItem;
+import org.tint.providers.BookmarksWrapper;
 import org.tint.tasks.ThumbnailTaker;
 import org.tint.ui.activities.BookmarksActivity;
 import org.tint.ui.activities.EditBookmarkActivity;
@@ -39,6 +40,7 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Picture;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Handler;
@@ -389,12 +391,23 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 	}
 	
 	@Override
-	public void onPageFinished(WebView view, String url) {
-		new ThumbnailTaker(mActivity.getContentResolver(),
-				url,
-				view.getOriginalUrl(),
-				view,
-				ApplicationUtils.getBookmarksThumbnailsDimensions(mActivity)).execute();
+	public void onPageFinished(final WebView view, final String url) {
+		
+		view.postDelayed(new Runnable() {
+			
+			@Override
+			public void run() {
+				if (BookmarksWrapper.urlHasBookmark(mActivity.getContentResolver(), url, view.getOriginalUrl())) {
+					Picture p = view.capturePicture();
+					
+					new ThumbnailTaker(mActivity.getContentResolver(),
+							url,
+							view.getOriginalUrl(),
+							p,
+							ApplicationUtils.getBookmarksThumbnailsDimensions(mActivity)).execute();
+				}				
+			}
+		}, 2000);
 	}
 	
 	@Override

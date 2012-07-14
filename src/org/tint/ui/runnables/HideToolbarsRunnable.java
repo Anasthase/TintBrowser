@@ -28,7 +28,7 @@ public class HideToolbarsRunnable implements Runnable {
 	
 	private boolean mDisabled;
 	
-	private Handler mhandler = new Handler() {
+	private Handler mHandler = new Handler() {
 		public void handleMessage(Message msg) {
 			if ((!mDisabled) &&
 					(mUIManager != null)) {
@@ -52,10 +52,10 @@ public class HideToolbarsRunnable implements Runnable {
 	public void run() {
 		try {
 			Thread.sleep(mDuration);
-			mhandler.sendEmptyMessage(0);
+			mHandler.sendEmptyMessage(0);
 		} catch (InterruptedException e) {
 			Log.d("HideToolbarsRunnable", e.getMessage());
-			mhandler.sendEmptyMessage(0);
+			mHandler.sendEmptyMessage(0);
 		}
 		
 	}
