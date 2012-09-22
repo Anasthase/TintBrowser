@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   Tint Browser for Android
+  
+   Copyright (C) 2012 - to infinity and beyond J. Devauchelle and contributors.
+ 
+   This program is free software; you can redistribute it and/or
+   modify it under the terms of the GNU General Public License
+   version 3 as published by the Free Software Foundation.
+ 
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/history_row_padding_top_bottom"
+    android:paddingLeft="@dimen/history_row_padding_left_right"
+    android:paddingRight="@dimen/history_row_padding_left_right"
+    android:paddingTop="@dimen/history_row_padding_top_bottom" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"        
+        android:layout_toLeftOf="@+id/SslExceptionRow.AllowCheckbox"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/SslExceptionRow.Title"
+            style="@style/ApplicationTheme.ListMainItem"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@+id/SslExceptionRow.Title" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="false"
+            android:text="@string/SslExceptionWebsitesText"
+            android:textColor="#888888" />
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/SslExceptionRow.AllowCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="15dip"
+        android:paddingLeft="15dip"        
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

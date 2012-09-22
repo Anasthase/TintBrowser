@@ -190,29 +190,6 @@ public class ApplicationUtils {
     	alert.show();
 	}
 	
-	/**
-	 * Display a continue / cancel dialog.
-	 * @param context The current context.
-	 * @param icon The dialog icon.
-	 * @param title The dialog title.
-	 * @param message The dialog message.
-	 * @param onContinue The dialog listener for the continue button.
-	 * @param onCancel The dialog listener for the cancel button.
-	 */
-	public static void showContinueCancelDialog(Context context, int icon, String title, String message, DialogInterface.OnClickListener onContinue, DialogInterface.OnClickListener onCancel) {		
-		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-    	builder.setCancelable(true);
-    	builder.setIcon(icon);
-    	builder.setTitle(title);
-    	builder.setMessage(message);
-
-    	builder.setInverseBackgroundForced(true);
-    	builder.setPositiveButton(context.getResources().getString(R.string.Continue), onContinue);
-    	builder.setNegativeButton(context.getResources().getString(R.string.Cancel), onCancel);
-    	AlertDialog alert = builder.create();
-    	alert.show();
-	}
-	
 	public static void showErrorDialog(Context context, String title, String message) {
 		new AlertDialog.Builder(context)
         .setTitle(title)

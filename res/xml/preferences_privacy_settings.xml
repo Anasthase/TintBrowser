@@ -31,6 +31,11 @@
             android:summary="@string/PreferencePrivacyWebsitesSettingsSummary"
             android:key="PREFERENCE_WEBSITES_SETTINGS" />
     
+    <PreferenceScreen            
+            android:title="@string/PreferenceSslExceptionsTitle"
+            android:summary="@string/PreferenceSslExceptionsSummary"
+            android:key="PREFERENCE_SSL_EXCEPTIONS" />
+    
     <PreferenceCategory android:title="@string/PreferenceCategoryHistoryTitle">
         
         <EditTextPreference

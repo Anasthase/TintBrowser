@@ -86,7 +86,7 @@
     <string name="JavaScriptPromptDialog">Fenêtre de saisie JavaScript</string>    
 	
 	<string name="SslWarning">Avertissement de sécurité</string>
-	<string name="SslWarningsHeader">Il y a des problèmes avec le certificat de sécurité de ce site.</string>
+	<string name="SslWarningsHeader">Il y a des problèmes avec le certificat de sécurité de ce site (%s).</string>
 	<string name="SslUntrusted">Le certificat ne vient pas d\'une autorité certifiée.</string>
 	<string name="SslIDMismatch">Le nom du site ne correspond pas au nom dans le certificat.</string>
 	<string name="SslExpired">Le certificat a expiré.</string>
@@ -342,8 +342,7 @@
     <string name="HistoryBookmarksExportErrorMessage">Une erreur s\'est produite pendant l\'export de l\'historique et des favoris : %s</string>
     
     <string name="GeolocationTitle">Demande de localisation</string>
-    <string name="GeolocationMessage">Le site %s souhaite connêtre votre position géographique.</string>
-    <string name="GeolocationRemember">Mémoriser mon choix</string>
+    <string name="GeolocationMessage">Le site %s souhaite connêtre votre position géographique.</string>    
     <string name="GeolocationAccept">Accepter</string>
     <string name="GeolocationDecline">Refuser</string>
     
@@ -386,7 +385,7 @@
     
     <string name="AddonDetailsUsedPermissionsTitle">A les permissions suivantes :</string>
     <string name="AddonDetailsPermissionsNone">Aucune.</string>
-   <string name="AddonDetailsUnableToGetPermissions">Impossible de lire les permissions. Vérifier les avec le gestionnaire d\'applications de votre appareil.</string>
+    <string name="AddonDetailsUnableToGetPermissions">Impossible de lire les permissions. Vérifier les avec le gestionnaire d\'applications de votre appareil.</string>
     
     <string name="ContentDescriptionDivider">divider</string>
     <string name="ContentDescriptionApplicationIcon">Icône de l\'application</string>
@@ -467,5 +466,19 @@
     <string name="PreferenceAccessibilityInvertedRenderingContrastTitle">Contraste</string>
     
     <string name="ContentDescriptionAutocompleteQueryBuilder">Place l\'url de la suggestion dans la barre d\'adresse, sans naviger vers elle.</string>
+    
+    <!-- 1.5 -->
+    <string name="UnknownAutority">instance inconnue</string>
+    <string name="RememberMyChoice">Mémoriser mon choix</string>
+    <string name="SslExceptionAccessAllowedByUserToast">Accès autorisé à %s par l\'utilisateur.</string>
+    <string name="SslExceptionAccessDisallowedByUserToast">Accès refusé à %s par l\'utilisateur.</string>
+    
+    <string name="PreferenceSslExceptionsTitle">Exceptions de sécurité SSL</string>
+    <string name="PreferenceSslExceptionsSummary">Liste des exceptions de sécurité SSL par site web.</string>
+    <string name="SslExceptionWebsitesText">Cliquer pour supprimer une exception, ou cliquer sur la case à cocher pour changer la permission.</string>
+    <string name="SslExceptionEmptyText">Vous n\'avez aucune exception de sécurité SSL.</string>
+    
+    <string name="RemoveSslExceptionTitle">Supprimer l\'exception</string>
+    <string name="RemoveSslExceptionMessage">Voulez vous supprimer l\'exception de sécurité pour ce site web ?</string>
 
 </resources>

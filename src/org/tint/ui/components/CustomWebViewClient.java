@@ -15,14 +15,16 @@
 
 package org.tint.ui.components;
 
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.tint.R;
+import org.tint.providers.SslExceptionsWrapper;
 import org.tint.ui.UIManager;
-import org.tint.utils.ApplicationUtils;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
@@ -43,7 +45,9 @@ import android.webkit.HttpAuthHandler;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class CustomWebViewClient extends WebViewClient {
 
@@ -82,56 +86,124 @@ public class CustomWebViewClient extends WebViewClient {
 	}
 
 	@Override
-	public void onReceivedSslError(WebView view, final SslErrorHandler handler, SslError error) {
+	public void onReceivedSslError(final WebView view, final SslErrorHandler handler, SslError error) {
 		
-		StringBuilder sb = new StringBuilder();
-		
-		sb.append(view.getResources().getString(R.string.SslWarningsHeader));
-		sb.append("\n\n");
-		
-		if (error.hasError(SslError.SSL_UNTRUSTED)) {
-			sb.append(" - ");
-			sb.append(view.getResources().getString(R.string.SslUntrusted));
-			sb.append("\n");
+		boolean hasAuthority = false;
+		String authority = view.getResources().getString(R.string.UnknownAutority);
+		if (error.getUrl() != null) {
+			try {
+				URL url = new URL(error.getUrl());
+				authority = url.getAuthority();
+				hasAuthority = true;
+			} catch (MalformedURLException e) {
+				hasAuthority = false;				
+			}
 		}
 		
-		if (error.hasError(SslError.SSL_IDMISMATCH)) {
-			sb.append(" - ");
-			sb.append(view.getResources().getString(R.string.SslIDMismatch));
-			sb.append("\n");
+		boolean askUser = true;
+		
+		if (hasAuthority) {
+			int result = SslExceptionsWrapper.getStatusForAuthority(view.getContext().getContentResolver(), authority);
+			
+			switch (result) {
+			case SslExceptionsWrapper.AUTHORITY_UNKNOWN:
+				askUser = true;
+				break;
+				
+			case SslExceptionsWrapper.AUTHORITY_ALLOWED:
+				askUser = false;
+				handler.proceed();
+				Toast.makeText(view.getContext(), String.format(view.getResources().getString(R.string.SslExceptionAccessAllowedByUserToast), authority), Toast.LENGTH_SHORT).show();
+				break;
+				
+			case SslExceptionsWrapper.AUTHORITY_DISALLOWED:
+				askUser = false;
+				handler.cancel();
+				Toast.makeText(view.getContext(), String.format(view.getResources().getString(R.string.SslExceptionAccessDisallowedByUserToast), authority), Toast.LENGTH_SHORT).show();
+				break;
+
+			default:
+				askUser = true;
+				break;
+			}
 		}
 		
-		if (error.hasError(SslError.SSL_EXPIRED)) {
-			sb.append(" - ");
-			sb.append(view.getResources().getString(R.string.SslExpired));
-			sb.append("\n");
-		}
-		
-		if (error.hasError(SslError.SSL_NOTYETVALID)) {
-			sb.append(" - ");
-			sb.append(view.getResources().getString(R.string.SslNotYetValid));
-			sb.append("\n");
-		}
-		
-		ApplicationUtils.showContinueCancelDialog(view.getContext(),
-				android.R.drawable.ic_dialog_info,
-				view.getResources().getString(R.string.SslWarning),
-				sb.toString(),
-				new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-						handler.proceed();
+		if (askUser) {
+			StringBuilder sb = new StringBuilder();
+
+			sb.append(String.format(view.getResources().getString(R.string.SslWarningsHeader), authority));
+			sb.append("\n\n");
+
+			if (error.hasError(SslError.SSL_UNTRUSTED)) {
+				sb.append(" - ");
+				sb.append(view.getResources().getString(R.string.SslUntrusted));
+				sb.append("\n");
+			}
+
+			if (error.hasError(SslError.SSL_IDMISMATCH)) {
+				sb.append(" - ");
+				sb.append(view.getResources().getString(R.string.SslIDMismatch));
+				sb.append("\n");
+			}
+
+			if (error.hasError(SslError.SSL_EXPIRED)) {
+				sb.append(" - ");
+				sb.append(view.getResources().getString(R.string.SslExpired));
+				sb.append("\n");
+			}
+
+			if (error.hasError(SslError.SSL_NOTYETVALID)) {
+				sb.append(" - ");
+				sb.append(view.getResources().getString(R.string.SslNotYetValid));
+				sb.append("\n");
+			}
+
+			final String finalAuthority = authority;
+			
+			AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());			
+			builder.setCancelable(true);
+			builder.setIcon(android.R.drawable.ic_dialog_info);
+			builder.setTitle(view.getResources().getString(R.string.SslWarning));
+			builder.setMessage(sb.toString());
+
+			LayoutInflater adbInflater = LayoutInflater.from(view.getContext());
+			View checkBoxLayout = adbInflater.inflate(R.layout.checkbox_layout, null);
+			final CheckBox rememberCheckBox = (CheckBox) checkBoxLayout.findViewById(R.id.RemenberChoiceCheckBox);
+
+			builder.setView(checkBoxLayout);
+			
+			builder.setInverseBackgroundForced(true);
+			builder.setPositiveButton(view.getResources().getString(R.string.Continue), new DialogInterface.OnClickListener() {
+
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					if (rememberCheckBox.isChecked()) {
+						SslExceptionsWrapper.setSslException(view.getContext().getContentResolver(), finalAuthority, true);
 					}
 
-				},
-				new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-						handler.cancel();
+					dialog.dismiss();
+					handler.proceed();					
+				}
+
+			});
+
+			builder.setNegativeButton(view.getResources().getString(R.string.Cancel), new DialogInterface.OnClickListener() {
+
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					if (rememberCheckBox.isChecked()) {
+						SslExceptionsWrapper.setSslException(view.getContext().getContentResolver(), finalAuthority, false);
 					}
-		});
+
+					dialog.dismiss();
+					handler.cancel();
+				}
+
+			});
+
+			AlertDialog alert = builder.create();
+			alert.show();
+		}
 	}
 	
 	@Override

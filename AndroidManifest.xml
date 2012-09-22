@@ -77,7 +77,11 @@
         <provider android:name=".providers.BookmarksProvider"
             android:authorities="org.tint.providers.bookmarksprovider"
             android:readPermission="org.tint.permissions.bookmarksprovider.READ"
-            android:writePermission="org.tint.permissions.bookmarksprovider.WRITE" />                  
+            android:writePermission="org.tint.permissions.bookmarksprovider.WRITE" />
+        
+        <provider android:name=".providers.SslExceptionsProvider"
+            android:authorities="org.tint.providers.sslexceptionsprovider"
+            android:exported="false" />
         
     </application>
 

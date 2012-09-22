@@ -32,6 +32,9 @@ public class PrivacyPreferencesFragment extends PreferenceFragment {
         
         PreferenceScreen websiteSettings = (PreferenceScreen) findPreference(Constants.PREFERENCE_WEBSITES_SETTINGS);
         websiteSettings.setFragment(WebsitesSettingsFragment.class.getName());
+        
+        PreferenceScreen sslExceptionsSettings = (PreferenceScreen) findPreference(Constants.PREFERENCE_SSL_EXCEPTIONS);
+        sslExceptionsSettings.setFragment(SslExceptionsFragment.class.getName());
 	}
 
 }

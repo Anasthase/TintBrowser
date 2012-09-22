@@ -86,7 +86,7 @@
     <string name="JavaScriptPromptDialog">JavaScript prompt dialog</string>    
 	
 	<string name="SslWarning">Security warning</string>
-	<string name="SslWarningsHeader">There are problems with the security certificate for this site.</string>
+	<string name="SslWarningsHeader">There are problems with the security certificate for this site (%s).</string>
 	<string name="SslUntrusted">This certificate is not from a trusted authority.</string>
 	<string name="SslIDMismatch">The name of the site does not match the name on the certificate.</string>
 	<string name="SslExpired">This certificate has expired.</string>
@@ -342,8 +342,7 @@
     <string name="HistoryBookmarksExportErrorMessage">An error occurred during history &amp; bookmarks export: %s</string>
     
     <string name="GeolocationTitle">Location request</string>
-    <string name="GeolocationMessage">Website %s request access to your location.</string>
-    <string name="GeolocationRemember">Remember my choice</string>
+    <string name="GeolocationMessage">Website %s request access to your location.</string>    
     <string name="GeolocationAccept">Accept</string>
     <string name="GeolocationDecline">Decline</string>
     
@@ -467,5 +466,19 @@
     <string name="PreferenceAccessibilityInvertedRenderingContrastTitle">Contrast</string>
     
     <string name="ContentDescriptionAutocompleteQueryBuilder">Put suggestion url in the url bar, without navigating to it.</string>
+    
+    <!-- 1.5 -->
+    <string name="UnknownAutority">unknown authority</string>
+    <string name="RememberMyChoice">Remember my choice</string>
+    <string name="SslExceptionAccessAllowedByUserToast">Access allowed to %s by user.</string>
+    <string name="SslExceptionAccessDisallowedByUserToast">Access disallowed to %s by user.</string>
+    
+    <string name="PreferenceSslExceptionsTitle">SSL security exceptions</string>
+    <string name="PreferenceSslExceptionsSummary">List of SSL security exceptions by websites.</string>
+    <string name="SslExceptionWebsitesText">Click to remove exception, or click the checkbox to change permission.</string>
+    <string name="SslExceptionEmptyText">You do not have any SSL security exception.</string>
+    
+    <string name="RemoveSslExceptionTitle">Remove exception</string>
+    <string name="RemoveSslExceptionMessage">Do you want to remove the security exception for this website?</string>
 
 </resources>
