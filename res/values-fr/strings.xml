@@ -475,10 +475,15 @@
     
     <string name="PreferenceSslExceptionsTitle">Exceptions de sécurité SSL</string>
     <string name="PreferenceSslExceptionsSummary">Liste des exceptions de sécurité SSL par site web.</string>
-    <string name="SslExceptionWebsitesText">Cliquer pour supprimer une exception, ou cliquer sur la case à cocher pour changer la permission.</string>
+    <string name="SslExceptionWebsitesText">Cliquer pour supprimer l\'exception.</string>
     <string name="SslExceptionEmptyText">Vous n\'avez aucune exception de sécurité SSL.</string>
     
     <string name="RemoveSslExceptionTitle">Supprimer l\'exception</string>
     <string name="RemoveSslExceptionMessage">Voulez vous supprimer l\'exception de sécurité pour ce site web ?</string>
+    
+    <string name="SslInvalid">Le certificat est invalide.</string>
+    <string name="SslDateInvalid">La date du certificat est invalide.</string>
+    
+    <string name="Reasons">Raisons :</string>
 
 </resources>

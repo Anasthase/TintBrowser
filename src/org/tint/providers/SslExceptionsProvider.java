@@ -41,6 +41,7 @@ public class SslExceptionsProvider extends ContentProvider {
 	public static class Columns {
 		public static final String _ID = "_id";
 		public static final String AUTHORITY = "authority";
+		public static final String REASON = "reason";
 		public static final String ALLOW = "allow";
 	}
 	
@@ -49,7 +50,8 @@ public class SslExceptionsProvider extends ContentProvider {
 	
 	private static final String SSL_EXCEPTION_TABLE_CREATE = "CREATE TABLE " + SSL_EXCEPTIONS_TABLE + " (" + 
 		Columns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-		Columns.AUTHORITY + " TEXT NOT NULL, " +		
+		Columns.AUTHORITY + " TEXT NOT NULL, " +
+		Columns.REASON + " INTEGER NOT NULL DEFAULT 0, " +
 		Columns.ALLOW + " INTEGER NOT NULL DEFAULT 0);";
 	
 	private static final int EXCEPTIONS = 1;

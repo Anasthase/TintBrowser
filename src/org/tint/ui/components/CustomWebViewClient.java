@@ -37,6 +37,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Message;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -129,35 +130,16 @@ public class CustomWebViewClient extends WebViewClient {
 		}
 		
 		if (askUser) {
+			
+			final int errorCode = SslExceptionsWrapper.sslErrorToInt(error);
+			
 			StringBuilder sb = new StringBuilder();
 
 			sb.append(String.format(view.getResources().getString(R.string.SslWarningsHeader), authority));
 			sb.append("\n\n");
 
-			if (error.hasError(SslError.SSL_UNTRUSTED)) {
-				sb.append(" - ");
-				sb.append(view.getResources().getString(R.string.SslUntrusted));
-				sb.append("\n");
-			}
-
-			if (error.hasError(SslError.SSL_IDMISMATCH)) {
-				sb.append(" - ");
-				sb.append(view.getResources().getString(R.string.SslIDMismatch));
-				sb.append("\n");
-			}
-
-			if (error.hasError(SslError.SSL_EXPIRED)) {
-				sb.append(" - ");
-				sb.append(view.getResources().getString(R.string.SslExpired));
-				sb.append("\n");
-			}
-
-			if (error.hasError(SslError.SSL_NOTYETVALID)) {
-				sb.append(" - ");
-				sb.append(view.getResources().getString(R.string.SslNotYetValid));
-				sb.append("\n");
-			}
-
+			sb.append(Html.fromHtml(SslExceptionsWrapper.sslErrorReasonToString(view.getContext(), errorCode)));
+			
 			final String finalAuthority = authority;
 			
 			AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());			
@@ -178,7 +160,7 @@ public class CustomWebViewClient extends WebViewClient {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					if (rememberCheckBox.isChecked()) {
-						SslExceptionsWrapper.setSslException(view.getContext().getContentResolver(), finalAuthority, true);
+						SslExceptionsWrapper.setSslException(view.getContext().getContentResolver(), finalAuthority, errorCode, true);
 					}
 
 					dialog.dismiss();
@@ -192,7 +174,7 @@ public class CustomWebViewClient extends WebViewClient {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					if (rememberCheckBox.isChecked()) {
-						SslExceptionsWrapper.setSslException(view.getContext().getContentResolver(), finalAuthority, false);
+						SslExceptionsWrapper.setSslException(view.getContext().getContentResolver(), finalAuthority, errorCode, false);
 					}
 
 					dialog.dismiss();

@@ -27,14 +27,16 @@ import android.content.DialogInterface;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Switch;
+import android.widget.TextView;
 
 public class SslExceptionsFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 	
@@ -122,10 +124,15 @@ public class SslExceptionsFragment extends ListFragment implements LoaderManager
 			
 			Cursor c = getCursor();
 			
-			CheckBox cb = (CheckBox) superView.findViewById(R.id.SslExceptionRow_AllowCheckbox);
-			cb.setTag(c.getLong(c.getColumnIndex(SslExceptionsProvider.Columns._ID)));
-			cb.setChecked(c.getInt(c.getColumnIndex(SslExceptionsProvider.Columns.ALLOW)) > 0 ? true : false);
-			cb.setOnCheckedChangeListener(mCheckedChangeListener);
+			Switch sw = (Switch) superView.findViewById(R.id.SslExceptionRow_AllowSwitch);
+			sw.setTag(c.getLong(c.getColumnIndex(SslExceptionsProvider.Columns._ID)));
+			sw.setChecked(c.getInt(c.getColumnIndex(SslExceptionsProvider.Columns.ALLOW)) > 0 ? true : false);
+			sw.setOnCheckedChangeListener(mCheckedChangeListener);
+			
+			int reasons = c.getInt(c.getColumnIndex(SslExceptionsProvider.Columns.REASON));
+			
+			TextView tv = (TextView) superView.findViewById(R.id.SslExceptionRow_Reasons);
+			tv.setText(Html.fromHtml(SslExceptionsWrapper.sslErrorReasonToString(getActivity(), reasons)));
 			
 			return superView;
 		}		
