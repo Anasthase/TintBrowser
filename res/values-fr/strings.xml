@@ -470,12 +470,12 @@
     <!-- 1.5 -->
     <string name="UnknownAutority">instance inconnue</string>
     <string name="RememberMyChoice">Mémoriser mon choix</string>
-    <string name="SslExceptionAccessAllowedByUserToast">Accès autorisé à %s par l\'utilisateur.</string>
-    <string name="SslExceptionAccessDisallowedByUserToast">Accès refusé à %s par l\'utilisateur.</string>
+    <string name="SslExceptionAccessAllowedByUserToast">Exception de sécurité SSL : Accès autorisé à %s par l\'utilisateur.</string>
+    <string name="SslExceptionAccessDisallowedByUserToast">Exception de sécurité SSL : Accès refusé à %s par l\'utilisateur.</string>
     
     <string name="PreferenceSslExceptionsTitle">Exceptions de sécurité SSL</string>
     <string name="PreferenceSslExceptionsSummary">Liste des exceptions de sécurité SSL par site web.</string>
-    <string name="SslExceptionWebsitesText">Cliquer pour supprimer l\'exception.</string>
+    <string name="SslExceptionWebsitesText"><i>Cliquer pour supprimer l\'exception.</i></string>
     <string name="SslExceptionEmptyText">Vous n\'avez aucune exception de sécurité SSL.</string>
     
     <string name="RemoveSslExceptionTitle">Supprimer l\'exception</string>
@@ -484,6 +484,7 @@
     <string name="SslInvalid">Le certificat est invalide.</string>
     <string name="SslDateInvalid">La date du certificat est invalide.</string>
     
+    <string name="Authorized">Autorisé :</string>
     <string name="Reasons">Raisons :</string>
 
 </resources>

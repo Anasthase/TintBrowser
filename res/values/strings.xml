@@ -470,12 +470,12 @@
     <!-- 1.5 -->
     <string name="UnknownAutority">unknown authority</string>
     <string name="RememberMyChoice">Remember my choice</string>
-    <string name="SslExceptionAccessAllowedByUserToast">Access allowed to %s by user.</string>
-    <string name="SslExceptionAccessDisallowedByUserToast">Access disallowed to %s by user.</string>
+    <string name="SslExceptionAccessAllowedByUserToast">SSL security exception: Access allowed to %s by user.</string>
+    <string name="SslExceptionAccessDisallowedByUserToast">SSL security exception: Access disallowed to %s by user.</string>
     
     <string name="PreferenceSslExceptionsTitle">SSL security exceptions</string>
     <string name="PreferenceSslExceptionsSummary">List of SSL security exceptions by websites.</string>
-    <string name="SslExceptionWebsitesText">Click to remove the exception.</string>
+    <string name="SslExceptionWebsitesText"><i>Click to remove the exception.</i></string>
     <string name="SslExceptionEmptyText">You do not have any SSL security exception.</string>
     
     <string name="RemoveSslExceptionTitle">Remove exception</string>
@@ -484,6 +484,7 @@
     <string name="SslInvalid">This certificate is invalid.</string>
     <string name="SslDateInvalid">This certificate date is invalid.</string>
     
+    <string name="Authorized">Authorized:</string>
     <string name="Reasons">Reasons:</string>
 
 </resources>
