@@ -409,14 +409,7 @@ public class BookmarksWrapper {
 	 * Only delete history items. For bookmarks, reset their visited value date and visits count.
 	 * @param contentResolver The content resolver.
 	 */
-	public static void truncateHistory(ContentResolver contentResolver, String prefHistorySize) {
-		int historySize;
-		try {
-			historySize = Integer.parseInt(prefHistorySize);
-		} catch (NumberFormatException e) {
-			historySize = 90;
-		}
-
+	public static void truncateHistory(ContentResolver contentResolver, int historySize) {
 		Calendar c = Calendar.getInstance();
 		c.setTime(new Date());          
 		c.set(Calendar.HOUR_OF_DAY, 0);

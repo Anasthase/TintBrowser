@@ -34,6 +34,7 @@ import org.tint.ui.views.PhoneUrlBar;
 import org.tint.ui.views.PhoneUrlBar.OnPhoneUrlBarEventListener;
 import org.tint.utils.ApplicationUtils;
 import org.tint.utils.Constants;
+import org.tint.utils.PreferencesUtils;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -843,13 +844,7 @@ public class PhoneUIManager extends BaseUIManager {
 	}
 	
 	private void updateToolbarsDisplayDuration() {
-		String duration = PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_TOOLBARS_AUTOHIDE_DURATION, "3");
-		
-		try {
-			mToolbarsDisplayDuration = Integer.parseInt(duration);
-		} catch (NumberFormatException e) {
-			mToolbarsDisplayDuration = 3;
-		}
+		mToolbarsDisplayDuration = PreferencesUtils.getConvertedIntPreference(mActivity, Constants.PREFERENCE_TOOLBARS_AUTOHIDE_DURATION, 3);
 		
 		if (mToolbarsDisplayDuration <= 0) {
 			mToolbarsDisplayDuration = 3;

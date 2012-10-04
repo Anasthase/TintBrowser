@@ -486,5 +486,9 @@
     
     <string name="Authorized">Authorized:</string>
     <string name="Reasons">Reasons:</string>
+    
+    <string name="Elements">elements.</string>
+    <string name="Seconds">seconds.</string>
+    <string name="Days">days.</string>
 
 </resources>

@@ -16,6 +16,7 @@
 package org.tint.ui.preferences;
 
 import org.tint.R;
+import org.tint.utils.PreferencesUtils;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -36,6 +37,8 @@ public class SeekBarPreference extends Preference implements SeekBar.OnSeekBarCh
 	private int mMaxValue;
 	private int mStepValue;
 
+	private boolean mSpacedSymbol;
+	
 	private String mSymbol;
 	
 	private TextView mTitle;
@@ -52,6 +55,8 @@ public class SeekBarPreference extends Preference implements SeekBar.OnSeekBarCh
 			mMinValue = a.getInt(R.styleable.SeekBarPreference_minValue, 0);
 			mMaxValue = a.getInt(R.styleable.SeekBarPreference_maxValue, 10);
 			mStepValue = a.getInt(R.styleable.SeekBarPreference_stepValue, 1);
+			
+			mSpacedSymbol = a.getBoolean(R.styleable.SeekBarPreference_spacedSymbol, false);
 			
 			if (mMaxValue <= mMinValue) {
 				mMaxValue = mMinValue + 1;
@@ -97,7 +102,7 @@ public class SeekBarPreference extends Preference implements SeekBar.OnSeekBarCh
 		mSeekBar = (SeekBar) v.findViewById(R.id.SeekBarPreferenceSeekBar);
 		mSeekBar.setMax(mMaxValue - mMinValue);
 		
-		int currentValue = getBoundedValue(PreferenceManager.getDefaultSharedPreferences(getContext()).getInt(getKey(), mDefaultValue));
+		int currentValue = getBoundedValue(PreferencesUtils.getConvertedIntPreference(getContext(), getKey(), mDefaultValue));		
 		currentValue = currentValue - mMinValue;
 		
 		mSeekBar.setProgress(currentValue);
@@ -137,7 +142,7 @@ public class SeekBarPreference extends Preference implements SeekBar.OnSeekBarCh
 		
 		value = (value + mMinValue) * mStepValue;
 		
-		mValue.setText(String.format("%s" + mSymbol, value));
+		mValue.setText(String.format((mSpacedSymbol ? "%s " : "%s") + mSymbol, value));
 		
 		if (save) {
 			PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putInt(getKey(), value).commit();

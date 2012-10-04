@@ -24,6 +24,7 @@ import org.tint.ui.UIManager;
 import org.tint.ui.UIManagerProvider;
 import org.tint.utils.ApplicationUtils;
 import org.tint.utils.Constants;
+import org.tint.utils.PreferencesUtils;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -148,15 +149,11 @@ public class StartPageFragment extends Fragment implements LoaderManager.LoaderC
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-		int limit;
-		try {
-			limit = Integer.parseInt(
-					PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(
-							Constants.PREFERENCE_START_PAGE_LIMIT,
-							Integer.toString(getResources().getInteger(R.integer.default_start_page_items_number))));
-		} catch (Exception e) {
-			limit = getResources().getInteger(R.integer.default_start_page_items_number);
-		}
+		
+		int limit = PreferencesUtils.getConvertedIntPreference(
+				getActivity(),
+				Constants.PREFERENCE_START_PAGE_LIMIT,
+				getResources().getInteger(R.integer.default_start_page_items_number));
 		
 		return BookmarksWrapper.getCursorLoaderForStartPage(getActivity(), limit);
 	}

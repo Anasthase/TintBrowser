@@ -15,7 +15,9 @@
    GNU General Public License for more details.
  -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/org.tint" >
     
     <org.tint.ui.preferences.ClearPreference
             android:title="@string/PreferencePrivacyClearCacheTitle"
@@ -38,12 +40,14 @@
     
     <PreferenceCategory android:title="@string/PreferenceCategoryHistoryTitle">
         
-        <EditTextPreference
-			android:title="@string/PreferencePrivacyHistorySizeTitle"			
-			android:summary="@string/PreferencePrivacyHistorySizeSummary"
-			android:defaultValue="30"
-			android:numeric="integer"
-			android:key="PREFERENCE_HISTORY_SIZE" />
+        <org.tint.ui.preferences.SeekBarPreference
+            android:title="@string/PreferencePrivacyHistorySizeTitle"
+            android:defaultValue="30"
+            app:minValue="0"
+            app:maxValue="180"
+            app:symbol="@string/Days"
+            app:spacedSymbol="true"
+            android:key="PREFERENCE_HISTORY_SIZE" />
         
         <org.tint.ui.preferences.ClearPreference
             android:title="@string/PreferencePrivacyClearHistoryTitle"

@@ -185,7 +185,7 @@
     <string name="PreferenceEnableJavascriptSummaryOff">Le JavaScript est désactivé.</string>
     <string name="PreferenceEnableImagesTitle">Charger les images</string>
     <string name="PreferenceEnableImagesSummary">Afficher les images des pages Web.</string>
-    <string name="PreferenceUseWideViewportTitle">utiliser une vue large</string>
+    <string name="PreferenceUseWideViewportTitle">Utiliser une vue large</string>
     <string name="PreferenceUseWideViewportSummary">Activer pour que le navigateur utilise une vue large similaire aux navigateurs de bureaux.</string>
     <string name="PreferenceLoadPagesWithOverviewTitle">Charger les pages avec une vue d\'ensemble</string>
     <string name="PreferenceLoadPagesWithOverviewSummary">Activer pour que les pages affichent une vue d\'ensemble lors du chargement.</string>
@@ -486,5 +486,9 @@
     
     <string name="Authorized">Autorisé :</string>
     <string name="Reasons">Raisons :</string>
+    
+    <string name="Elements">éléments.</string>
+    <string name="Seconds">secondes.</string>
+    <string name="Days">jours.</string>
 
 </resources>
