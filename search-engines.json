@@ -1,0 +1,22 @@
+[
+	{
+		"name": "Google",
+		"url": "http://www.google.com/m?q=%s"
+	},
+	{
+		"name": "Google UK",
+		"url": "http://www.google.co.uk/m?q=%s"
+	},
+	{
+		"name": "Google France",
+		"url": "http://www.google.fr/m?q=%s"
+	},
+	{
+		"name": "Wikipedia EN",
+		"url": "http://en.wikipedia.org/w/index.php?search=%s&go=Go"
+	},
+	{
+		"name": "Wikipedia FR",
+		"url": "http://fr.wikipedia.org/w/index.php?search=%s&go=Go"
+	}
+]
