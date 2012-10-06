@@ -216,12 +216,168 @@
 		"category": "Wikipedia",
 		"engines": [
 			{
-				"name": "Wikipedia EN",
+				"name": "Wikipedia English",
 				"url": "http://en.wikipedia.org/w/index.php?search=%s&go=Go"
 			},
 			{
-				"name": "Wikipedia FR",
+				"name": "Wikipedia Deutsch",
+				"url": "http://de.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Français",
 				"url": "http://fr.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Nederlands",
+				"url": "http://nl.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Italiano",
+				"url": "http://it.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Polski",
+				"url": "http://pl.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Español",
+				"url": "http://es.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Русский",
+				"url": "http://ru.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia 日本語",
+				"url": "http://ja.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Português",
+				"url": "http://pt.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia 中文",
+				"url": "http://zh.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Tiếng Việt",
+				"url": "http://vi.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Svenska",
+				"url": "http://sv.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Українська",
+				"url": "http://uk.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Català",
+				"url": "http://ca.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Norsk (Bokmål)",
+				"url": "http://no.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Suomi",
+				"url": "http://fi.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Čeština",
+				"url": "http://cs.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Magyar",
+				"url": "http://hu.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia فارسی",
+				"url": "http://fa.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Română",
+				"url": "http://ro.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia 한국어",
+				"url": "http://ko.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia العربية",
+				"url": "http://ar.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Türkçe",
+				"url": "http://tr.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Bahasa Indonesia",
+				"url": "http://id.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Slovenčina",
+				"url": "http://sk.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Esperanto",
+				"url": "http://eo.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Dansk",
+				"url": "http://da.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Қазақша",
+				"url": "http://kk.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Српски / Srpski",
+				"url": "http://sr.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Lietuvių",
+				"url": "http://lt.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Bahasa Melayu",
+				"url": "http://ms.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia עברית",
+				"url": "http://he.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Euskara",
+				"url": "http://eu.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Български",
+				"url": "http://bg.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Slovenščina",
+				"url": "http://sl.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Volapük",
+				"url": "http://vo.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Hrvatski",
+				"url": "http://hr.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Winaray",
+				"url": "http://war.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia हिन्दी",
+				"url": "http://hi.wikipedia.org/w/index.php?search=%s&go=Go"
+			},
+			{
+				"name": "Wikipedia Eesti",
+				"url": "http://et.wikipedia.org/w/index.php?search=%s&go=Go"
 			}
 		]		
 	}
