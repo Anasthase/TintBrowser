@@ -1,3 +1,5 @@
 h1. Tint Browser
 
-This project is licensed under the "GPL v3":http://www.gnu.org/licenses/gpl-3.0.en.html	license.
+This project is licensed under the "GPL v3":http://www.gnu.org/licenses/gpl-3.0.en.html license.
+
+To build it, it is needed to clone the "Tint Browser Addon Framework Library":https://github.com/Anasthase/TintBrowserAddonFrameworkLibrary project.
