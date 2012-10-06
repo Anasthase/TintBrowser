@@ -380,5 +380,286 @@
 				"url": "http://et.wikipedia.org/w/index.php?search=%s&go=Go"
 			}
 		]		
+	},	
+	{
+		"category": "Duck Duck Go",
+		"engines": [
+			{
+				"name": "Duck Duck Go",
+				"url": "http://duckduckgo.com/?q=%s"
+			},
+			{
+				"name": "Duck Duck Go Arabia",
+				"url": "http://duckduckgo.com/?q=%s&kl=xa-ar"
+			},
+			{
+				"name": "Duck Duck Go Arabia (en)",
+				"url": "http://duckduckgo.com/?q=%s&kl=xa-en"
+			},
+			{
+				"name": "Duck Duck Go Argentina",
+				"url": "http://duckduckgo.com/?q=%s&kl=ar-es"
+			},
+			{
+				"name": "Duck Duck Go Australia",
+				"url": "http://duckduckgo.com/?q=%s&kl=au-en"
+			},
+			{
+				"name": "Duck Duck Go Austria",
+				"url": "http://duckduckgo.com/?q=%s&kl=at-de"
+			},
+			{
+				"name": "Duck Duck Go Belgium (fr)",
+				"url": "http://duckduckgo.com/?q=%s&kl=be-fr"
+			},
+			{
+				"name": "Duck Duck Go Belgium (nl)",
+				"url": "http://duckduckgo.com/?q=%s&kl=be-nl"
+			},
+			{
+				"name": "Duck Duck Go Brazil",
+				"url": "http://duckduckgo.com/?q=%s&kl=br-pt"
+			},
+			{
+				"name": "Duck Duck Go Bulgaria",
+				"url": "http://duckduckgo.com/?q=%s&kl=bg-bg"
+			},
+			{
+				"name": "Duck Duck Go Canada",
+				"url": "http://duckduckgo.com/?q=%s&kl=ca-en"
+			},
+			{
+				"name": "Duck Duck Go Canada (fr)",
+				"url": "http://duckduckgo.com/?q=%s&kl=ca-fr"
+			},
+			{
+				"name": "Duck Duck Go Catalan",
+				"url": "http://duckduckgo.com/?q=%s&kl=ct-ca"
+			},
+			{
+				"name": "Duck Duck Go Chile",
+				"url": "http://duckduckgo.com/?q=%s&kl=cl-es"
+			},
+			{
+				"name": "Duck Duck Go China",
+				"url": "http://duckduckgo.com/?q=%s&kl=cn-zh"
+			},
+			{
+				"name": "Duck Duck Go Colombia",
+				"url": "http://duckduckgo.com/?q=%s&kl=co-es"
+			},
+			{
+				"name": "Duck Duck Go Croatia",
+				"url": "http://duckduckgo.com/?q=%s&kl=hr-hr"
+			},
+			{
+				"name": "Duck Duck Go Czech Republic ",
+				"url": "http://duckduckgo.com/?q=%s&kl=cz-cs"
+			},
+			{
+				"name": "Duck Duck Go Denmark",
+				"url": "http://duckduckgo.com/?q=%s&kl=dk-da"
+			},
+			{
+				"name": "Duck Duck Go Estonia",
+				"url": "http://duckduckgo.com/?q=%s&kl=ee-et"
+			},
+			{
+				"name": "Duck Duck Go Finland",
+				"url": "http://duckduckgo.com/?q=%s&kl=fi-fi"
+			},
+			{
+				"name": "Duck Duck Go France",
+				"url": "http://duckduckgo.com/?q=%s&kl=fr-fr"
+			},
+			{
+				"name": "Duck Duck Go Germany",
+				"url": "http://duckduckgo.com/?q=%s&kl=de-de"
+			},
+			{
+				"name": "Duck Duck Go Greece",
+				"url": "http://duckduckgo.com/?q=%s&kl=gr-el"
+			},
+			{
+				"name": "Duck Duck Go Hong Kong ",
+				"url": "http://duckduckgo.com/?q=%s&kl=hk-tzh"
+			},
+			{
+				"name": "Duck Duck Go Hungary",
+				"url": "http://duckduckgo.com/?q=%s&kl=hu-hu"
+			},
+			{
+				"name": "Duck Duck Go India",
+				"url": "http://duckduckgo.com/?q=%s&kl=in-en"
+			},
+			{
+				"name": "Duck Duck Go Indonesia",
+				"url": "http://duckduckgo.com/?q=%s&kl=id-id"
+			},
+			{
+				"name": "Duck Duck Go Indonesia (en)",
+				"url": "http://duckduckgo.com/?q=%s&kl=id-en"
+			},
+			{
+				"name": "Duck Duck Go Ireland",
+				"url": "http://duckduckgo.com/?q=%s&kl=ie-en"
+			},
+			{
+				"name": "Duck Duck Go Israel",
+				"url": "http://duckduckgo.com/?q=%s&kl=il-he"
+			},
+			{
+				"name": "Duck Duck Go Italy",
+				"url": "http://duckduckgo.com/?q=%s&kl=it-it"
+			},
+			{
+				"name": "Duck Duck Go Japan",
+				"url": "http://duckduckgo.com/?q=%s&kl=jp-jp"
+			},
+			{
+				"name": "Duck Duck Go Korea",
+				"url": "http://duckduckgo.com/?q=%s&kl=kr-kr"
+			},
+			{
+				"name": "Duck Duck Go Latvia",
+				"url": "http://duckduckgo.com/?q=%s&kl=lv-lv"
+			},
+			{
+				"name": "Duck Duck Go Lithuania",
+				"url": "http://duckduckgo.com/?q=%s&kl=lt-lt"
+			},
+			{
+				"name": "Duck Duck Go Latin America ",
+				"url": "http://duckduckgo.com/?q=%s&kl=xl-es"
+			},
+			{
+				"name": "Duck Duck Go Malaysia",
+				"url": "http://duckduckgo.com/?q=%s&kl=my-ms"
+			},
+			{
+				"name": "Duck Duck Go Malaysia (en)",
+				"url": "http://duckduckgo.com/?q=%s&kl=my-en"
+			},
+			{
+				"name": "Duck Duck Go Mexico",
+				"url": "http://duckduckgo.com/?q=%s&kl=mx-es"
+			},
+			{
+				"name": "Duck Duck Go Netherlands",
+				"url": "http://duckduckgo.com/?q=%s&kl=nl-nl"
+			},
+			{
+				"name": "Duck Duck Go New Zealand ",
+				"url": "http://duckduckgo.com/?q=%s&kl=nz-en"
+			},
+			{
+				"name": "Duck Duck Go Norway",
+				"url": "http://duckduckgo.com/?q=%s&kl=no-no"
+			},
+			{
+				"name": "Duck Duck Go Peru",
+				"url": "http://duckduckgo.com/?q=%s&kl=pe-es"
+			},
+			{
+				"name": "Duck Duck Go Philippines",
+				"url": "http://duckduckgo.com/?q=%s&kl=ph-en"
+			},
+			{
+				"name": "Duck Duck Go Philippines (tl)",
+				"url": "http://duckduckgo.com/?q=%s&kl=ph-tl"
+			},
+			{
+				"name": "Duck Duck Go Poland",
+				"url": "http://duckduckgo.com/?q=%s&kl=pl-pl"
+			},
+			{
+				"name": "Duck Duck Go Portugal",
+				"url": "http://duckduckgo.com/?q=%s&kl=pt-pt"
+			},
+			{
+				"name": "Duck Duck Go Romania",
+				"url": "http://duckduckgo.com/?q=%s&kl=ro-ro"
+			},
+			{
+				"name": "Duck Duck Go Russia",
+				"url": "http://duckduckgo.com/?q=%s&kl=ru-ru"
+			},
+			{
+				"name": "Duck Duck Go Singapore",
+				"url": "http://duckduckgo.com/?q=%s&kl=sg-en"
+			},
+			{
+				"name": "Duck Duck Go Slovak Republic ",
+				"url": "http://duckduckgo.com/?q=%s&kl=sk-sk"
+			},
+			{
+				"name": "Duck Duck Go Slovenia",
+				"url": "http://duckduckgo.com/?q=%s&kl=sl-sl"
+			},
+			{
+				"name": "Duck Duck Go South Africa ",
+				"url": "http://duckduckgo.com/?q=%s&kl=za-en"
+			},
+			{
+				"name": "Duck Duck Go Spain",
+				"url": "http://duckduckgo.com/?q=%s&kl=es-es"
+			},
+			{
+				"name": "Duck Duck Go Sweden",
+				"url": "http://duckduckgo.com/?q=%s&kl=se-sv"
+			},
+			{
+				"name": "Duck Duck Go Switzerland (de) ",
+				"url": "http://duckduckgo.com/?q=%s&kl=ch-de"
+			},
+			{
+				"name": "Duck Duck Go Switzerland (fr) ",
+				"url": "http://duckduckgo.com/?q=%s&kl=ch-fr"
+			},
+			{
+				"name": "Duck Duck Go Switzerland (it) ",
+				"url": "http://duckduckgo.com/?q=%s&kl=ch-it"
+			},
+			{
+				"name": "Duck Duck Go Taiwan",
+				"url": "http://duckduckgo.com/?q=%s&kl=tw-tzh"
+			},
+			{
+				"name": "Duck Duck Go Thailand",
+				"url": "http://duckduckgo.com/?q=%s&kl=th-th"
+			},
+			{
+				"name": "Duck Duck Go Turkey",
+				"url": "http://duckduckgo.com/?q=%s&kl=tr-tr"
+			},
+			{
+				"name": "Duck Duck Go Ukraine",
+				"url": "http://duckduckgo.com/?q=%s&kl=ua-uk"
+			},
+			{
+				"name": "Duck Duck Go United Kingdom",
+				"url": "http://duckduckgo.com/?q=%s&kl=uk-en"
+			},
+			{
+				"name": "Duck Duck Go United States",
+				"url": "http://duckduckgo.com/?q=%s&kl=us-en"
+			},
+			{
+				"name": "Duck Duck Go United States (es)",
+				"url": "http://duckduckgo.com/?q=%s&kl=ue-es"
+			},
+			{
+				"name": "Duck Duck Go Venezuela",
+				"url": "http://duckduckgo.com/?q=%s&kl=ve-es"
+			},
+			{
+				"name": "Duck Duck Go Vietnam",
+				"url": "http://duckduckgo.com/?q=%s&kl=vn-vi"
+			},
+			{
+				"name": "Duck Duck Go World Traveler",
+				"url": "http://duckduckgo.com/?q=%s&kl=wt-wt"
+			}
+		]
 	}
 ]
