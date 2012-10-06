@@ -18,7 +18,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="UselessParent">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -28,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             
-            <TableLayout android:id="@+id/default_view"
+            <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:stretchColumns="1"
@@ -39,7 +40,6 @@
                 
                 <TableRow android:layout_marginBottom="10dip">
                     <TextView
-                        android:id="@+id/EditBookmarkActivity.LabelText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -57,11 +57,9 @@
 				</TableRow>
               
                 <TableRow
-                    android:id="@+id/row_address"
                     android:layout_marginBottom="10dip" >
 
-                    <TextView
-                        android:id="@+id/EditBookmarkActivity.UrlText"
+                    <TextView                       
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -80,11 +78,9 @@
                 </TableRow>
                 
                 <TableRow
-                    android:id="@+id/row_folder"
                     android:layout_marginBottom="10dip" >
 
                     <TextView
-                        android:id="@+id/EditBookmarkActivity.FolderText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"

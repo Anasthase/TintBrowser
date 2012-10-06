@@ -302,7 +302,7 @@ public class HistoryAdapter extends BaseExpandableListAdapter {
         if ((convertView == null) ||
         		(!(convertView instanceof TextView))) {
         	LayoutInflater factory = LayoutInflater.from(mContext);
-        	item = (TextView) factory.inflate(R.layout.history_header, null);
+        	item = (TextView) factory.inflate(R.layout.expandable_list_header, null);
         } else {
         	item = (TextView) convertView;
         }

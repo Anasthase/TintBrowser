@@ -15,7 +15,12 @@
    GNU General Public License for more details.
  -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"    
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ApplicationTheme.ListMainItem"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" />
+    android:layout_height="wrap_content"    
+    android:gravity="center_vertical"
+    android:paddingLeft="35dip"    
+    android:paddingRight="?android:attr/listPreferredItemPaddingRight"
+    android:minHeight="?android:attr/listPreferredItemHeightSmall"
+/>

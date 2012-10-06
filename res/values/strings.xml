@@ -129,7 +129,6 @@
     
     <string name="PreferenceGeneralSearchUrlTitle">Search engine</string>
     <string name="PreferenceGeneralSearchUrlSummary">Set the search engine used to make default search from the url bar.</string>
-    <string name="PreferenceSearchUrlDialogTitle">Search engine</string>
     
     <string name="PreferenceCategoryStartPageTitle">Start page</string>
     <string name="PreferenceGeneralStartPageLimitTitle">Number of items in the start page</string>
@@ -250,8 +249,6 @@
     <string name="PreferencePrivacyWebsitesSettingsTitle">Websites settings</string>
     <string name="PreferencePrivacyWebsitesSettingsSummary">Advanced settings for individual websites.</string>
     
-<!--     <string name="PreferenceHeaderAdvancedSettingsTitle">Advanced settings</string> -->
-    
     <string name="HistoryToday">Today</string>
     <string name="HistoryYesterday">Yesterday</string>
     <string name="HistoryLastSevenDays">Last 7 days</string>
@@ -275,16 +272,6 @@
         <item>@string/PreferenceHomepageCustom</item>
     </string-array>
     
-    <string name="PreferenceSearchUrlGoogle">Google</string>
-    <string name="PreferenceSearchUrlWikipedia">Wikipedia</string>
-    <string name="PreferenceSearchUrlOther">Other</string>
-    
-    <string-array name="SearchUrlTitles">
-        <item>@string/PreferenceSearchUrlGoogle</item>
-        <item>@string/PreferenceSearchUrlWikipedia</item>
-        <item>@string/PreferenceSearchUrlOther</item>
-    </string-array>
-    
     <string name="PreferenceUserAgentAndroid">Android</string>
     <string name="PreferenceUserAgentDesktop">Desktop</string>
     <string name="PreferenceUserAgentOther">Other</string>
@@ -296,7 +283,6 @@
     </string-array>
     
     <string name="SearchUrlGoogle">http://www.google.com/m?hl=en&amp;gl=us&amp;client=ms-null&amp;source=android-browser-key&amp;q=%s</string>
-    <string name="SearchUrlWikipedia">http://en.wikipedia.org/w/index.php?search=%s&amp;go=Go</string>
     
     <string name="PreferenceHeaderAddonsTitle">Addons</string>
     
@@ -486,5 +472,11 @@
     
     <string name="Authorized">Authorized:</string>
     <string name="Reasons">Reasons:</string>
+    
+    <string name="SearchUrlDialogText">Customize your search url in the field below.</string>
+    <string name="SearchUrlGetOnline"><a href="">Get more search url online</a></string>    
+    <string name="SearchUrlConnecting">Connecting&#8230;</string>
+    <string name="SearchUrlParsing">Parsing results&#8230;</string>
+    <string name="SearchUrlBadResponseCodeMessage">Unable to connect to search engine site (response code: %s).</string>
 
 </resources>

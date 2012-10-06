@@ -129,7 +129,6 @@
     
     <string name="PreferenceGeneralSearchUrlTitle">Moteur de recherche</string>
     <string name="PreferenceGeneralSearchUrlSummary">Définir le moteur de recherche utilisé lors d\'une recherche depuis la barre d\'adresse.</string>
-    <string name="PreferenceSearchUrlDialogTitle">Moteur de recherche</string>
     
     <string name="PreferenceCategoryStartPageTitle">Page de démarrage</string>
     <string name="PreferenceGeneralStartPageLimitTitle">Nombre d\'éléments dans la page de démarrage</string>
@@ -250,8 +249,6 @@
     <string name="PreferencePrivacyWebsitesSettingsTitle">Paramètres des sites Web</string>
     <string name="PreferencePrivacyWebsitesSettingsSummary">Paramètres avancés de sites Web individuels.</string>
     
-<!--     <string name="PreferenceHeaderAdvancedSettingsTitle">Avancés</string>     -->
-    
     <string name="HistoryToday">Aujourd\'hui</string>
     <string name="HistoryYesterday">Hier</string>
     <string name="HistoryLastSevenDays">Les 7 derniers jours</string>
@@ -275,16 +272,6 @@
         <item>@string/PreferenceHomepageCustom</item>
     </string-array>
     
-    <string name="PreferenceSearchUrlGoogle">Google</string>
-    <string name="PreferenceSearchUrlWikipedia">Wikipedia</string>
-    <string name="PreferenceSearchUrlOther">Autre</string>
-    
-    <string-array name="SearchUrlTitles">
-        <item>@string/PreferenceSearchUrlGoogle</item>
-        <item>@string/PreferenceSearchUrlWikipedia</item>
-        <item>@string/PreferenceSearchUrlOther</item>
-    </string-array>
-    
     <string name="PreferenceUserAgentAndroid">Android</string>
     <string name="PreferenceUserAgentDesktop">Ordinateur de bureau</string>
     <string name="PreferenceUserAgentOther">Autre</string>
@@ -296,7 +283,6 @@
     </string-array>
     
     <string name="SearchUrlGoogle">http://www.google.com/m?hl=fr&amp;gl=us&amp;client=ms-null&amp;source=android-browser-key&amp;q=%s</string>
-    <string name="SearchUrlWikipedia">http://fr.wikipedia.org/w/index.php?search=%s&amp;go=Go</string>
     
     <string name="PreferenceHeaderAddonsTitle">Addons</string>
     
@@ -486,5 +472,11 @@
     
     <string name="Authorized">Autorisé :</string>
     <string name="Reasons">Raisons :</string>
+    
+    <string name="SearchUrlDialogText">Personalisez votre url de recherche dans le champs ci-dessous.</string>
+    <string name="SearchUrlGetOnline"><a href="">Obtenir des url de recherche en ligne</a></string>    
+    <string name="SearchUrlConnecting">Connexion&#8230;</string>
+    <string name="SearchUrlParsing">Traitement des résultats&#8230;</string>
+    <string name="SearchUrlBadResponseCodeMessage">Impossible de se connecter au site (code: %s).</string>
 
 </resources>

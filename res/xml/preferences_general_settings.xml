@@ -25,12 +25,9 @@
             android:negativeButtonText="@string/Cancel"            
             android:key="PREFERENCE_HOME_PAGE" />
     
-    <org.tint.ui.preferences.SearchUrlSpinnerPreference
+    <org.tint.ui.preferences.SearchEnginePreference
             android:title="@string/PreferenceGeneralSearchUrlTitle"
-            android:summary="@string/PreferenceGeneralSearchUrlSummary"
-            android:dialogTitle="@string/PreferenceSearchUrlDialogTitle"            
-            android:positiveButtonText="@string/OK"
-            android:negativeButtonText="@string/Cancel"            
+            android:summary="@string/PreferenceGeneralSearchUrlSummary"            
             android:key="PREFERENCE_SEARCH_URL" />
     
     <PreferenceCategory android:title="@string/PreferenceCategoryStartPageTitle">
