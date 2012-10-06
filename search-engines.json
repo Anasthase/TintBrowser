@@ -7,8 +7,204 @@
 				"url": "http://www.google.com/m?q=%s"
 			},
 			{
-				"name": "Google UK",
+				"name": "Google Deutschland",
+				"url": "http://www.google.de/m?q=%s"
+			},
+			{
+				"name": "Google España",
+				"url": "http://www.google.es/m?q=%s"
+			},
+			{
+				"name": "Google Suomi",
+				"url": "http://www.google.fi/m?q=%s"
+			},
+			{
+				"name": "Google Greece",
+				"url": "http://www.google.gr/m?q=%s"
+			},
+			{
+				"name": "Google Ísland",
+				"url": "http://www.google.is/m?q=%s"
+			},
+			{
+				"name": "Google Italia",
+				"url": "http://www.google.it/m?q=%s"
+			},
+			{
+				"name": "Google Ireland",
+				"url": "http://www.google.ie/m?q=%s"
+			},
+			{
+				"name": "Google الأردن",
+				"url": "http://www.google.jo/m?q=%s"
+			},
+			{
+				"name": "Google Nederland",
+				"url": "http://www.google.nl/m?q=%s"
+			},
+			{
+				"name": "Google Norway",
+				"url": "http://www.google.no/m?q=%s"
+			},
+			{
+				"name": "Google Polska",
+				"url": "http://www.google.pl/m?q=%s"
+			},
+			{
+				"name": "Google الأراضي الفلسطينية",
+				"url": "http://www.google.ps/m?q=%s"
+			},
+			{
+				"name": "Google Portugal",
+				"url": "http://www.google.pt/m?q=%s"
+			},
+			{
+				"name": "Google România",
+				"url": "http://www.google.ro/m?q=%s"
+			},
+			{
+				"name": "Google Serbia",
+				"url": "http://www.google.rs/m?q=%s"
+			},
+			{
+				"name": "Google Russia",
+				"url": "http://www.google.ru/m?q=%s"
+			},
+			{
+				"name": "Google Sverige",
+				"url": "http://www.google.se/m?q=%s"
+			},
+			{
+				"name": "Google Slovenija",
+				"url": "http://www.google.si/m?q=%s"
+			},
+			{
+				"name": "Google Slovensko",
+				"url": "http://www.google.sk/m?q=%s"
+			},
+			{
+				"name": "Google United Kingdom",
 				"url": "http://www.google.co.uk/m?q=%s"
+			},
+			{
+				"name": "Google Israel",
+				"url": "http://www.google.co.il/m?q=%s"
+			},
+			{
+				"name": "Google India",
+				"url": "http://www.google.co.in/m?q=%s"
+			},
+			{
+				"name": "Google Japan",
+				"url": "http://www.google.co.jp/m?q=%s"
+			},
+			{
+				"name": "Google Korea",
+				"url": "http://www.google.co.kr/m?q=%s"
+			},
+			{
+				"name": "Google Maroc",
+				"url": "http://www.google.co.ma/m?q=%s"
+			},
+			{
+				"name": "Google New Zealand",
+				"url": "http://www.google.co.nz/m?q=%s"
+			},
+			{
+				"name": "Google Thailand",
+				"url": "http://www.google.co.th/m?q=%s"
+			},
+			{
+				"name": "Google O'zbekiston",
+				"url": "http://www.google.co.uz/m?q=%s"
+			},
+			{
+				"name": "Google Venezuela",
+				"url": "http://www.google.co.ve/m?q=%s"
+			},
+			{
+				"name": "Google South Africa",
+				"url": "http://www.google.co.za/m?q=%s"
+			},
+			{
+				"name": "Google Jamaica",
+				"url": "http://www.google.com.jm/m?q=%s"
+			},
+			{
+				"name": "Google Hong Kong",
+				"url": "http://www.google.com.hk/m?q=%s"
+			},
+			{
+				"name": "Google ព្រះរាជាណាចក្រកម្ពុជា",
+				"url": "http://www.google.com.kh/m?q=%s"
+			},
+			{
+				"name": "Google الكويت",
+				"url": "http://www.google.com.kw/m?q=%s"
+			},
+			{
+				"name": "Google Liban",
+				"url": "http://www.google.com.lb/m?q=%s"
+			},
+			{
+				"name": "Google Libya",
+				"url": "http://www.google.com.ly/m?q=%s"
+			},
+			{
+				"name": "Google Mexico",
+				"url": "http://www.google.com.mx/m?q=%s"
+			},
+			{
+				"name": "Google Nicaragua",
+				"url": "http://www.google.com.ni/m?q=%s"
+			},
+			{
+				"name": "Google Nepal",
+				"url": "http://www.google.com.np/m?q=%s"
+			},
+			{
+				"name": "Google Perú",
+				"url": "http://www.google.com.pe/m?q=%s"
+			},
+			{
+				"name": "Google Pilipinas",
+				"url": "http://www.google.com.ph/m?q=%s"
+			},
+			{
+				"name": "Google Pakistan",
+				"url": "http://www.google.com.pk/m?q=%s"
+			},
+			{
+				"name": "Google Paraguay",
+				"url": "http://www.google.com.py/m?q=%s"
+			},
+			{
+				"name": "Google قطر",
+				"url": "http://www.google.com.qa/m?q=%s"
+			},
+			{
+				"name": "Google Saudi Arabia",
+				"url": "http://www.google.com.sa/m?q=%s"
+			},
+			{
+				"name": "Google Singapore",
+				"url": "http://www.google.com.sg/m?q=%s"
+			},
+			{
+				"name": "Google Tunisie",
+				"url": "http://www.google.com.tn/m?q=%s"
+			},
+			{
+				"name": "Google Türkiye",
+				"url": "http://www.google.com.tr/m?q=%s"
+			},
+			{
+				"name": "Google Uruguay",
+				"url": "http://www.google.com.uy/m?q=%s"
+			},
+			{
+				"name": "Google Vietnam",
+				"url": "http://www.google.com.vn/m?q=%s"
 			},
 			{
 				"name": "Google France",
