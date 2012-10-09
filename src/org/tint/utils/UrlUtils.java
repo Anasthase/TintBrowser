@@ -18,6 +18,7 @@ package org.tint.utils;
 import org.tint.R;
 
 import android.content.Context;
+import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
 
 /**
@@ -37,6 +38,19 @@ public class UrlUtils {
 			url.contains(".");
 	}
 	
+	public static String getRawSearchUrl(Context context) {
+		String currentSearchUrl = PreferenceManager.getDefaultSharedPreferences(context).getString(Constants.PREFERENCE_SEARCH_URL, context.getString(R.string.SearchUrlGoogle));
+		if (currentSearchUrl.contains("%s")) {
+			currentSearchUrl = currentSearchUrl.replaceAll("%s", "{searchTerms}");
+			
+			Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
+			editor.putString(Constants.PREFERENCE_SEARCH_URL, currentSearchUrl);
+			editor.commit();
+		}
+		
+		return currentSearchUrl;
+	}
+	
 	/**
 	 * Get the current search url.
 	 * @param context The current context.
@@ -44,8 +58,8 @@ public class UrlUtils {
 	 * @return The search url.
 	 */
 	public static String getSearchUrl(Context context, String searchTerms) {
-		String currentSearchUrl = PreferenceManager.getDefaultSharedPreferences(context).getString(Constants.PREFERENCE_SEARCH_URL, context.getString(R.string.SearchUrlGoogle));
-		return String.format(currentSearchUrl, searchTerms);
+		String currentSearchUrl = getRawSearchUrl(context);
+		return currentSearchUrl.replaceAll("\\{searchTerms\\}", searchTerms);
 	}
 	
 	/**

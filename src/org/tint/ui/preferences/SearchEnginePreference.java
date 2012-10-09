@@ -24,7 +24,7 @@ import org.tint.model.SearchUrlCategory;
 import org.tint.model.SearchUrlItem;
 import org.tint.tasks.SearchUrlTask;
 import org.tint.tasks.SearchUrlTask.ISearchUrlTaskListener;
-import org.tint.utils.Constants;
+import org.tint.utils.UrlUtils;
 
 import android.content.Context;
 import android.content.SharedPreferences.Editor;
@@ -108,11 +108,7 @@ public class SearchEnginePreference extends DialogPreference implements ISearchU
 			}
 		});
 		
-		String currentSearchUrl = PreferenceManager.getDefaultSharedPreferences(getContext()).getString(
-				Constants.PREFERENCE_SEARCH_URL,
-				getContext().getString(R.string.SearchUrlGoogle));
-		
-		mEditText.setText(currentSearchUrl);
+		mEditText.setText(UrlUtils.getRawSearchUrl(getContext()));
 	}
 	
 	@Override

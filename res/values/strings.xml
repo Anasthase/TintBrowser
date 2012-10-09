@@ -282,7 +282,7 @@
         <item>@string/PreferenceUserAgentOther</item>
     </string-array>
     
-    <string name="SearchUrlGoogle">http://www.google.com/m?hl=en&amp;gl=us&amp;client=ms-null&amp;source=android-browser-key&amp;q=%s</string>
+    <string name="SearchUrlGoogle">http://www.google.com/m?q={searchTerms}</string>
     
     <string name="PreferenceHeaderAddonsTitle">Addons</string>
     
