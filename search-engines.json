@@ -4,211 +4,211 @@
 		"engines": [
 			{
 				"name": "Google",
-				"url": "http://www.google.com/m?q=%s"
+				"url": "http://www.google.com/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Deutschland",
-				"url": "http://www.google.de/m?q=%s"
+				"url": "http://www.google.de/m?q={searchTerms}"
 			},
 			{
 				"name": "Google España",
-				"url": "http://www.google.es/m?q=%s"
+				"url": "http://www.google.es/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Suomi",
-				"url": "http://www.google.fi/m?q=%s"
+				"url": "http://www.google.fi/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Greece",
-				"url": "http://www.google.gr/m?q=%s"
+				"url": "http://www.google.gr/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Ísland",
-				"url": "http://www.google.is/m?q=%s"
+				"url": "http://www.google.is/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Italia",
-				"url": "http://www.google.it/m?q=%s"
+				"url": "http://www.google.it/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Ireland",
-				"url": "http://www.google.ie/m?q=%s"
+				"url": "http://www.google.ie/m?q={searchTerms}"
 			},
 			{
 				"name": "Google الأردن",
-				"url": "http://www.google.jo/m?q=%s"
+				"url": "http://www.google.jo/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Nederland",
-				"url": "http://www.google.nl/m?q=%s"
+				"url": "http://www.google.nl/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Norway",
-				"url": "http://www.google.no/m?q=%s"
+				"url": "http://www.google.no/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Polska",
-				"url": "http://www.google.pl/m?q=%s"
+				"url": "http://www.google.pl/m?q={searchTerms}"
 			},
 			{
 				"name": "Google الأراضي الفلسطينية",
-				"url": "http://www.google.ps/m?q=%s"
+				"url": "http://www.google.ps/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Portugal",
-				"url": "http://www.google.pt/m?q=%s"
+				"url": "http://www.google.pt/m?q={searchTerms}"
 			},
 			{
 				"name": "Google România",
-				"url": "http://www.google.ro/m?q=%s"
+				"url": "http://www.google.ro/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Serbia",
-				"url": "http://www.google.rs/m?q=%s"
+				"url": "http://www.google.rs/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Russia",
-				"url": "http://www.google.ru/m?q=%s"
+				"url": "http://www.google.ru/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Sverige",
-				"url": "http://www.google.se/m?q=%s"
+				"url": "http://www.google.se/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Slovenija",
-				"url": "http://www.google.si/m?q=%s"
+				"url": "http://www.google.si/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Slovensko",
-				"url": "http://www.google.sk/m?q=%s"
+				"url": "http://www.google.sk/m?q={searchTerms}"
 			},
 			{
 				"name": "Google United Kingdom",
-				"url": "http://www.google.co.uk/m?q=%s"
+				"url": "http://www.google.co.uk/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Israel",
-				"url": "http://www.google.co.il/m?q=%s"
+				"url": "http://www.google.co.il/m?q={searchTerms}"
 			},
 			{
 				"name": "Google India",
-				"url": "http://www.google.co.in/m?q=%s"
+				"url": "http://www.google.co.in/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Japan",
-				"url": "http://www.google.co.jp/m?q=%s"
+				"url": "http://www.google.co.jp/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Korea",
-				"url": "http://www.google.co.kr/m?q=%s"
+				"url": "http://www.google.co.kr/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Maroc",
-				"url": "http://www.google.co.ma/m?q=%s"
+				"url": "http://www.google.co.ma/m?q={searchTerms}"
 			},
 			{
 				"name": "Google New Zealand",
-				"url": "http://www.google.co.nz/m?q=%s"
+				"url": "http://www.google.co.nz/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Thailand",
-				"url": "http://www.google.co.th/m?q=%s"
+				"url": "http://www.google.co.th/m?q={searchTerms}"
 			},
 			{
 				"name": "Google O'zbekiston",
-				"url": "http://www.google.co.uz/m?q=%s"
+				"url": "http://www.google.co.uz/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Venezuela",
-				"url": "http://www.google.co.ve/m?q=%s"
+				"url": "http://www.google.co.ve/m?q={searchTerms}"
 			},
 			{
 				"name": "Google South Africa",
-				"url": "http://www.google.co.za/m?q=%s"
+				"url": "http://www.google.co.za/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Jamaica",
-				"url": "http://www.google.com.jm/m?q=%s"
+				"url": "http://www.google.com.jm/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Hong Kong",
-				"url": "http://www.google.com.hk/m?q=%s"
+				"url": "http://www.google.com.hk/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Cambodia",
-				"url": "http://www.google.com.kh/m?q=%s"
+				"url": "http://www.google.com.kh/m?q={searchTerms}"
 			},
 			{
 				"name": "Google الكويت",
-				"url": "http://www.google.com.kw/m?q=%s"
+				"url": "http://www.google.com.kw/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Liban",
-				"url": "http://www.google.com.lb/m?q=%s"
+				"url": "http://www.google.com.lb/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Libya",
-				"url": "http://www.google.com.ly/m?q=%s"
+				"url": "http://www.google.com.ly/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Mexico",
-				"url": "http://www.google.com.mx/m?q=%s"
+				"url": "http://www.google.com.mx/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Nicaragua",
-				"url": "http://www.google.com.ni/m?q=%s"
+				"url": "http://www.google.com.ni/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Nepal",
-				"url": "http://www.google.com.np/m?q=%s"
+				"url": "http://www.google.com.np/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Perú",
-				"url": "http://www.google.com.pe/m?q=%s"
+				"url": "http://www.google.com.pe/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Pilipinas",
-				"url": "http://www.google.com.ph/m?q=%s"
+				"url": "http://www.google.com.ph/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Pakistan",
-				"url": "http://www.google.com.pk/m?q=%s"
+				"url": "http://www.google.com.pk/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Paraguay",
-				"url": "http://www.google.com.py/m?q=%s"
+				"url": "http://www.google.com.py/m?q={searchTerms}"
 			},
 			{
 				"name": "Google قطر",
-				"url": "http://www.google.com.qa/m?q=%s"
+				"url": "http://www.google.com.qa/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Saudi Arabia",
-				"url": "http://www.google.com.sa/m?q=%s"
+				"url": "http://www.google.com.sa/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Singapore",
-				"url": "http://www.google.com.sg/m?q=%s"
+				"url": "http://www.google.com.sg/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Tunisie",
-				"url": "http://www.google.com.tn/m?q=%s"
+				"url": "http://www.google.com.tn/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Türkiye",
-				"url": "http://www.google.com.tr/m?q=%s"
+				"url": "http://www.google.com.tr/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Uruguay",
-				"url": "http://www.google.com.uy/m?q=%s"
+				"url": "http://www.google.com.uy/m?q={searchTerms}"
 			},
 			{
 				"name": "Google Vietnam",
-				"url": "http://www.google.com.vn/m?q=%s"
+				"url": "http://www.google.com.vn/m?q={searchTerms}"
 			},
 			{
 				"name": "Google France",
-				"url": "http://www.google.fr/m?q=%s"
+				"url": "http://www.google.fr/m?q={searchTerms}"
 			}
 		]		
 	},	
@@ -217,167 +217,167 @@
 		"engines": [
 			{
 				"name": "Wikipedia English",
-				"url": "http://en.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://en.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Deutsch",
-				"url": "http://de.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://de.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Français",
-				"url": "http://fr.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://fr.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Nederlands",
-				"url": "http://nl.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://nl.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Italiano",
-				"url": "http://it.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://it.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Polski",
-				"url": "http://pl.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://pl.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Español",
-				"url": "http://es.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://es.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Русский",
-				"url": "http://ru.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://ru.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia 日本語",
-				"url": "http://ja.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://ja.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Português",
-				"url": "http://pt.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://pt.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia 中文",
-				"url": "http://zh.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://zh.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Tiếng Việt",
-				"url": "http://vi.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://vi.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Svenska",
-				"url": "http://sv.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://sv.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Українська",
-				"url": "http://uk.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://uk.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Català",
-				"url": "http://ca.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://ca.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Norsk (Bokmål)",
-				"url": "http://no.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://no.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Suomi",
-				"url": "http://fi.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://fi.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Čeština",
-				"url": "http://cs.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://cs.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Magyar",
-				"url": "http://hu.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://hu.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia فارسی",
-				"url": "http://fa.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://fa.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Română",
-				"url": "http://ro.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://ro.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia 한국어",
-				"url": "http://ko.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://ko.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia العربية",
-				"url": "http://ar.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://ar.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Türkçe",
-				"url": "http://tr.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://tr.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Bahasa Indonesia",
-				"url": "http://id.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://id.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Slovenčina",
-				"url": "http://sk.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://sk.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Esperanto",
-				"url": "http://eo.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://eo.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Dansk",
-				"url": "http://da.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://da.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Қазақша",
-				"url": "http://kk.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://kk.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Српски / Srpski",
-				"url": "http://sr.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://sr.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Lietuvių",
-				"url": "http://lt.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://lt.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Bahasa Melayu",
-				"url": "http://ms.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://ms.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia עברית",
-				"url": "http://he.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://he.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Euskara",
-				"url": "http://eu.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://eu.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Български",
-				"url": "http://bg.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://bg.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Slovenščina",
-				"url": "http://sl.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://sl.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Volapük",
-				"url": "http://vo.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://vo.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Hrvatski",
-				"url": "http://hr.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://hr.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Winaray",
-				"url": "http://war.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://war.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia हिन्दी",
-				"url": "http://hi.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://hi.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			},
 			{
 				"name": "Wikipedia Eesti",
-				"url": "http://et.wikipedia.org/w/index.php?search=%s&go=Go"
+				"url": "http://et.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			}
 		]		
 	},	
@@ -386,279 +386,279 @@
 		"engines": [
 			{
 				"name": "Duck Duck Go",
-				"url": "http://duckduckgo.com/?q=%s"
+				"url": "http://duckduckgo.com/?q={searchTerms}"
 			},
 			{
 				"name": "Duck Duck Go Arabia",
-				"url": "http://duckduckgo.com/?q=%s&kl=xa-ar"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=xa-ar"
 			},
 			{
 				"name": "Duck Duck Go Arabia (en)",
-				"url": "http://duckduckgo.com/?q=%s&kl=xa-en"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=xa-en"
 			},
 			{
 				"name": "Duck Duck Go Argentina",
-				"url": "http://duckduckgo.com/?q=%s&kl=ar-es"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=ar-es"
 			},
 			{
 				"name": "Duck Duck Go Australia",
-				"url": "http://duckduckgo.com/?q=%s&kl=au-en"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=au-en"
 			},
 			{
 				"name": "Duck Duck Go Austria",
-				"url": "http://duckduckgo.com/?q=%s&kl=at-de"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=at-de"
 			},
 			{
 				"name": "Duck Duck Go Belgium (fr)",
-				"url": "http://duckduckgo.com/?q=%s&kl=be-fr"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=be-fr"
 			},
 			{
 				"name": "Duck Duck Go Belgium (nl)",
-				"url": "http://duckduckgo.com/?q=%s&kl=be-nl"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=be-nl"
 			},
 			{
 				"name": "Duck Duck Go Brazil",
-				"url": "http://duckduckgo.com/?q=%s&kl=br-pt"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=br-pt"
 			},
 			{
 				"name": "Duck Duck Go Bulgaria",
-				"url": "http://duckduckgo.com/?q=%s&kl=bg-bg"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=bg-bg"
 			},
 			{
 				"name": "Duck Duck Go Canada",
-				"url": "http://duckduckgo.com/?q=%s&kl=ca-en"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=ca-en"
 			},
 			{
 				"name": "Duck Duck Go Canada (fr)",
-				"url": "http://duckduckgo.com/?q=%s&kl=ca-fr"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=ca-fr"
 			},
 			{
 				"name": "Duck Duck Go Catalan",
-				"url": "http://duckduckgo.com/?q=%s&kl=ct-ca"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=ct-ca"
 			},
 			{
 				"name": "Duck Duck Go Chile",
-				"url": "http://duckduckgo.com/?q=%s&kl=cl-es"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=cl-es"
 			},
 			{
 				"name": "Duck Duck Go China",
-				"url": "http://duckduckgo.com/?q=%s&kl=cn-zh"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=cn-zh"
 			},
 			{
 				"name": "Duck Duck Go Colombia",
-				"url": "http://duckduckgo.com/?q=%s&kl=co-es"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=co-es"
 			},
 			{
 				"name": "Duck Duck Go Croatia",
-				"url": "http://duckduckgo.com/?q=%s&kl=hr-hr"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=hr-hr"
 			},
 			{
 				"name": "Duck Duck Go Czech Republic ",
-				"url": "http://duckduckgo.com/?q=%s&kl=cz-cs"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=cz-cs"
 			},
 			{
 				"name": "Duck Duck Go Denmark",
-				"url": "http://duckduckgo.com/?q=%s&kl=dk-da"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=dk-da"
 			},
 			{
 				"name": "Duck Duck Go Estonia",
-				"url": "http://duckduckgo.com/?q=%s&kl=ee-et"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=ee-et"
 			},
 			{
 				"name": "Duck Duck Go Finland",
-				"url": "http://duckduckgo.com/?q=%s&kl=fi-fi"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=fi-fi"
 			},
 			{
 				"name": "Duck Duck Go France",
-				"url": "http://duckduckgo.com/?q=%s&kl=fr-fr"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=fr-fr"
 			},
 			{
 				"name": "Duck Duck Go Germany",
-				"url": "http://duckduckgo.com/?q=%s&kl=de-de"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=de-de"
 			},
 			{
 				"name": "Duck Duck Go Greece",
-				"url": "http://duckduckgo.com/?q=%s&kl=gr-el"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=gr-el"
 			},
 			{
 				"name": "Duck Duck Go Hong Kong ",
-				"url": "http://duckduckgo.com/?q=%s&kl=hk-tzh"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=hk-tzh"
 			},
 			{
 				"name": "Duck Duck Go Hungary",
-				"url": "http://duckduckgo.com/?q=%s&kl=hu-hu"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=hu-hu"
 			},
 			{
 				"name": "Duck Duck Go India",
-				"url": "http://duckduckgo.com/?q=%s&kl=in-en"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=in-en"
 			},
 			{
 				"name": "Duck Duck Go Indonesia",
-				"url": "http://duckduckgo.com/?q=%s&kl=id-id"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=id-id"
 			},
 			{
 				"name": "Duck Duck Go Indonesia (en)",
-				"url": "http://duckduckgo.com/?q=%s&kl=id-en"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=id-en"
 			},
 			{
 				"name": "Duck Duck Go Ireland",
-				"url": "http://duckduckgo.com/?q=%s&kl=ie-en"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=ie-en"
 			},
 			{
 				"name": "Duck Duck Go Israel",
-				"url": "http://duckduckgo.com/?q=%s&kl=il-he"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=il-he"
 			},
 			{
 				"name": "Duck Duck Go Italy",
-				"url": "http://duckduckgo.com/?q=%s&kl=it-it"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=it-it"
 			},
 			{
 				"name": "Duck Duck Go Japan",
-				"url": "http://duckduckgo.com/?q=%s&kl=jp-jp"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=jp-jp"
 			},
 			{
 				"name": "Duck Duck Go Korea",
-				"url": "http://duckduckgo.com/?q=%s&kl=kr-kr"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=kr-kr"
 			},
 			{
 				"name": "Duck Duck Go Latvia",
-				"url": "http://duckduckgo.com/?q=%s&kl=lv-lv"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=lv-lv"
 			},
 			{
 				"name": "Duck Duck Go Lithuania",
-				"url": "http://duckduckgo.com/?q=%s&kl=lt-lt"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=lt-lt"
 			},
 			{
 				"name": "Duck Duck Go Latin America ",
-				"url": "http://duckduckgo.com/?q=%s&kl=xl-es"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=xl-es"
 			},
 			{
 				"name": "Duck Duck Go Malaysia",
-				"url": "http://duckduckgo.com/?q=%s&kl=my-ms"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=my-ms"
 			},
 			{
 				"name": "Duck Duck Go Malaysia (en)",
-				"url": "http://duckduckgo.com/?q=%s&kl=my-en"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=my-en"
 			},
 			{
 				"name": "Duck Duck Go Mexico",
-				"url": "http://duckduckgo.com/?q=%s&kl=mx-es"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=mx-es"
 			},
 			{
 				"name": "Duck Duck Go Netherlands",
-				"url": "http://duckduckgo.com/?q=%s&kl=nl-nl"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=nl-nl"
 			},
 			{
 				"name": "Duck Duck Go New Zealand ",
-				"url": "http://duckduckgo.com/?q=%s&kl=nz-en"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=nz-en"
 			},
 			{
 				"name": "Duck Duck Go Norway",
-				"url": "http://duckduckgo.com/?q=%s&kl=no-no"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=no-no"
 			},
 			{
 				"name": "Duck Duck Go Peru",
-				"url": "http://duckduckgo.com/?q=%s&kl=pe-es"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=pe-es"
 			},
 			{
 				"name": "Duck Duck Go Philippines",
-				"url": "http://duckduckgo.com/?q=%s&kl=ph-en"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=ph-en"
 			},
 			{
 				"name": "Duck Duck Go Philippines (tl)",
-				"url": "http://duckduckgo.com/?q=%s&kl=ph-tl"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=ph-tl"
 			},
 			{
 				"name": "Duck Duck Go Poland",
-				"url": "http://duckduckgo.com/?q=%s&kl=pl-pl"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=pl-pl"
 			},
 			{
 				"name": "Duck Duck Go Portugal",
-				"url": "http://duckduckgo.com/?q=%s&kl=pt-pt"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=pt-pt"
 			},
 			{
 				"name": "Duck Duck Go Romania",
-				"url": "http://duckduckgo.com/?q=%s&kl=ro-ro"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=ro-ro"
 			},
 			{
 				"name": "Duck Duck Go Russia",
-				"url": "http://duckduckgo.com/?q=%s&kl=ru-ru"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=ru-ru"
 			},
 			{
 				"name": "Duck Duck Go Singapore",
-				"url": "http://duckduckgo.com/?q=%s&kl=sg-en"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=sg-en"
 			},
 			{
 				"name": "Duck Duck Go Slovak Republic ",
-				"url": "http://duckduckgo.com/?q=%s&kl=sk-sk"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=sk-sk"
 			},
 			{
 				"name": "Duck Duck Go Slovenia",
-				"url": "http://duckduckgo.com/?q=%s&kl=sl-sl"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=sl-sl"
 			},
 			{
 				"name": "Duck Duck Go South Africa ",
-				"url": "http://duckduckgo.com/?q=%s&kl=za-en"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=za-en"
 			},
 			{
 				"name": "Duck Duck Go Spain",
-				"url": "http://duckduckgo.com/?q=%s&kl=es-es"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=es-es"
 			},
 			{
 				"name": "Duck Duck Go Sweden",
-				"url": "http://duckduckgo.com/?q=%s&kl=se-sv"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=se-sv"
 			},
 			{
 				"name": "Duck Duck Go Switzerland (de) ",
-				"url": "http://duckduckgo.com/?q=%s&kl=ch-de"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=ch-de"
 			},
 			{
 				"name": "Duck Duck Go Switzerland (fr) ",
-				"url": "http://duckduckgo.com/?q=%s&kl=ch-fr"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=ch-fr"
 			},
 			{
 				"name": "Duck Duck Go Switzerland (it) ",
-				"url": "http://duckduckgo.com/?q=%s&kl=ch-it"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=ch-it"
 			},
 			{
 				"name": "Duck Duck Go Taiwan",
-				"url": "http://duckduckgo.com/?q=%s&kl=tw-tzh"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=tw-tzh"
 			},
 			{
 				"name": "Duck Duck Go Thailand",
-				"url": "http://duckduckgo.com/?q=%s&kl=th-th"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=th-th"
 			},
 			{
 				"name": "Duck Duck Go Turkey",
-				"url": "http://duckduckgo.com/?q=%s&kl=tr-tr"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=tr-tr"
 			},
 			{
 				"name": "Duck Duck Go Ukraine",
-				"url": "http://duckduckgo.com/?q=%s&kl=ua-uk"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=ua-uk"
 			},
 			{
 				"name": "Duck Duck Go United Kingdom",
-				"url": "http://duckduckgo.com/?q=%s&kl=uk-en"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=uk-en"
 			},
 			{
 				"name": "Duck Duck Go United States",
-				"url": "http://duckduckgo.com/?q=%s&kl=us-en"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=us-en"
 			},
 			{
 				"name": "Duck Duck Go United States (es)",
-				"url": "http://duckduckgo.com/?q=%s&kl=ue-es"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=ue-es"
 			},
 			{
 				"name": "Duck Duck Go Venezuela",
-				"url": "http://duckduckgo.com/?q=%s&kl=ve-es"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=ve-es"
 			},
 			{
 				"name": "Duck Duck Go Vietnam",
-				"url": "http://duckduckgo.com/?q=%s&kl=vn-vi"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=vn-vi"
 			},
 			{
 				"name": "Duck Duck Go World Traveler",
-				"url": "http://duckduckgo.com/?q=%s&kl=wt-wt"
+				"url": "http://duckduckgo.com/?q={searchTerms}&kl=wt-wt"
 			}
 		]
 	}
