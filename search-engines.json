@@ -1,7 +1,7 @@
 [
 	{
-		"category": "Google",
-		"engines": [
+		"group": "Google",
+		"items": [
 			{
 				"name": "Google",
 				"url": "http://www.google.com/m?q={searchTerms}"
@@ -213,8 +213,8 @@
 		]		
 	},	
 	{
-		"category": "Wikipedia",
-		"engines": [
+		"group": "Wikipedia",
+		"items": [
 			{
 				"name": "Wikipedia English",
 				"url": "http://en.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
@@ -382,8 +382,8 @@
 		]		
 	},	
 	{
-		"category": "Duck Duck Go",
-		"engines": [
+		"group": "Duck Duck Go",
+		"items": [
 			{
 				"name": "Duck Duck Go",
 				"url": "http://duckduckgo.com/?q={searchTerms}"
