@@ -32,13 +32,4 @@ public class SearchUrlItem {
 	public String getUrl() {
 		return mUrl;
 	}
-
-	/**
-	 * Overriden to display only the name in an ArrayAdapter.
-	 */
-	@Override	
-	public String toString() {
-		return mName;
-	}
-
 }

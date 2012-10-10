@@ -29,9 +29,9 @@ import android.widget.TextView;
 public class SearchUrlAdapter extends BaseExpandableListAdapter {
 
 	private Context mContext;
-	private List<SearchUrlCategory> mData;
+	private List<SearchUrlGroup> mData;
 	
-	public SearchUrlAdapter(Context context, List<SearchUrlCategory> data) {
+	public SearchUrlAdapter(Context context, List<SearchUrlGroup> data) {
 		mContext = context;
 		mData = data;
 	}
@@ -93,7 +93,7 @@ public class SearchUrlAdapter extends BaseExpandableListAdapter {
         	item = (TextView) convertView;
         }
         
-        item.setText(((SearchUrlCategory) getGroup(groupPosition)).getName());
+        item.setText(((SearchUrlGroup) getGroup(groupPosition)).getName());
         
         return item;
 	}

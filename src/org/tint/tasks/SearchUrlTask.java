@@ -33,7 +33,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.tint.R;
-import org.tint.model.SearchUrlCategory;
+import org.tint.model.SearchUrlGroup;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -43,7 +43,7 @@ public class SearchUrlTask extends AsyncTask<Void, Integer, String> {
 	private Context mContext;
 	private ISearchUrlTaskListener mListener;
 	
-	private Map<String, SearchUrlCategory> mResults;
+	private Map<String, SearchUrlGroup> mResults;
 	
 	public SearchUrlTask(Context context, ISearchUrlTaskListener listener) {
 		super();
@@ -51,19 +51,19 @@ public class SearchUrlTask extends AsyncTask<Void, Integer, String> {
 		mContext = context;
 		mListener = listener;
 		
-		mResults = new HashMap<String, SearchUrlCategory>();
+		mResults = new HashMap<String, SearchUrlGroup>();
 	}
 	
-	public List<SearchUrlCategory> getResults() {
-		List<SearchUrlCategory> result = new ArrayList<SearchUrlCategory>();
-		for (SearchUrlCategory item : mResults.values()) {
-			item.sort();
-			result.add(item);
+	public List<SearchUrlGroup> getResults() {
+		List<SearchUrlGroup> result = new ArrayList<SearchUrlGroup>();
+		for (SearchUrlGroup group : mResults.values()) {
+			group.sort();
+			result.add(group);
 		}
 		
-		Collections.sort(result, new Comparator<SearchUrlCategory>() {
+		Collections.sort(result, new Comparator<SearchUrlGroup>() {
 			@Override
-			public int compare(SearchUrlCategory lhs, SearchUrlCategory rhs) {						
+			public int compare(SearchUrlGroup lhs, SearchUrlGroup rhs) {						
 				return lhs.getName().compareTo(rhs.getName());
 			}		        	
         });
@@ -105,21 +105,21 @@ public class SearchUrlTask extends AsyncTask<Void, Integer, String> {
 		        for (int i = 0; i < jsonArray.length(); i++) {
 		        	JSONObject jsonObject = jsonArray.getJSONObject(i);
 		        	
-		        	String categoryName = jsonObject.getString("category");
+		        	String groupName = jsonObject.getString("group");
 		        	
-		        	SearchUrlCategory category = mResults.get(categoryName);
-		        	if (category == null) {
-		        		category = new SearchUrlCategory(categoryName);
-		        		mResults.put(categoryName, category);
+		        	SearchUrlGroup group = mResults.get(groupName);
+		        	if (group == null) {
+		        		group = new SearchUrlGroup(groupName);
+		        		mResults.put(groupName, group);
 		        	}
 		        	
-		        	JSONArray engines = jsonObject.getJSONArray("engines");
-		        	for (int j = 0; j < engines.length(); j++) {
-		        		JSONObject engine = engines.getJSONObject(j);
+		        	JSONArray items = jsonObject.getJSONArray("items");
+		        	for (int j = 0; j < items.length(); j++) {
+		        		JSONObject item = items.getJSONObject(j);
 		        		
-		        		category.addItem(
-		        				engine.getString("name"),
-		        				engine.getString("url"));
+		        		group.addItem(
+		        				item.getString("name"),
+		        				item.getString("url"));
 		        	}
 		        }
 		        
