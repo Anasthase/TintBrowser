@@ -62,7 +62,7 @@ bq. &lt;string name=&quot;HttpAuthenticationDialog.DialogTitle&quot;&gt;SomeText
 
 h4. Misc.
 
-*Use &#8230; instead of writing three points (...);
+* Use &#8230; instead of writing three points (...);
 
 h3. Submit your translation
 
