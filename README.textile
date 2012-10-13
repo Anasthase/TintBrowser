@@ -3,3 +3,63 @@ h1. Tint Browser
 This project is licensed under the "GPL v3":http://www.gnu.org/licenses/gpl-3.0.en.html license.
 
 To build it, it is needed to clone the "Tint Browser Addon Framework Library":https://github.com/Anasthase/TintBrowserAddonFrameworkLibrary project.
+
+h1. Writting addons
+
+See "TintBrowserSampleAddon":https://github.com/Anasthase/TintBrowserSampleAddon .
+
+h1. How to translate Tint Browser in your language
+
+Before starting a translation, you must agree that your work will be released under the same license as Tint Browser, e.g. "GPL version 3":http://www.gnu.org/licenses/gpl-3.0.en.html. Also do not forget that a software translation is not a one-shot work, and that new translations may be needed after your initial work.
+
+Translations are done is a language-specific XML file. A single translation string look like this :
+
+bq. <string name="Bookmarks">Bookmarks</string>
+
+Where the part in the name parameter is the string key, which you must leave unchanged, and the part between ??<string …>?? and ??</string>?? the translated string.
+
+h2. Translation steps
+
+h3. Get the last reference language file
+
+"https://raw.github.com/Anasthase/TintBrowser/master/res/values/strings.xml":https://raw.github.com/Anasthase/TintBrowser/master/res/values/strings.xml
+
+Then select “Save as...” in your browser, and save it where you want on your computer.
+
+h3. Translate
+
+Open the file you downloaded with a decent text editor (hint: Windows Notepad is *NOT* a decent text editor). Do not change the default encoding (UTF-8) and the default line breaks (Unix style).
+
+Translate every required strings.
+
+h3. Specials cases
+
+h4. String-arrays
+
+Do not translate anything within a ??<string-array>?? tag.
+
+h4. Apostrophes
+
+Apostrophes must be preceded by a “\” character. 
+
+Example:
+bq. <string name="ContextMenuCopyLinkUrl">Copier l\'adresse du lien</string>
+
+h4. Formatted strings
+
+Some strings may contains dynamic values, filled at runtime by the application. The place where the dynamics values are inserted in the string are represented by a %s, %1$s %2$s, etc. You must include the original %s-type in your translation, at the appropriate place.
+
+Examples:
+bq. <string name="SslWarningsHeader">There are problems with the security certificate for this site (%s).</string>
+bq. <string name="HttpAuthenticationDialogDialogTitle">Sign in to %1$s - %2$s</string>
+
+When there is several values to dynamically change in a single string, the %s part change to %1$s, %2$s, etc. You may change the order of the %s in your translation, if its make sense in you language, e.g. you can do something like:
+bq. <string name="HttpAuthenticationDialog.DialogTitle">SomeText %2$s AnotherText %1$s</string>
+
+h4. Misc.
+
+*Use &#8230; instead of writing three points (...);
+
+h3. Submit your translation
+
+Either send me an e-mail, with your modified file and the language you translated, or open an "issue":https://github.com/Anasthase/TintBrowser/issues and post your file there. 
