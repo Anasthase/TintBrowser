@@ -14,9 +14,9 @@ Before starting a translation, you must agree that your work will be released un
 
 Translations are done is a language-specific XML file. A single translation string look like this :
 
-bq. <string name="Bookmarks">Bookmarks</string>
+bq. &lt;string name=&quot;Bookmarks&quot;&gt;Bookmarks&lt;/string&gt;
 
-Where the part in the name parameter is the string key, which you must leave unchanged, and the part between ??<string …>?? and ??</string>?? the translated string.
+Where the part in the name parameter is the string key, which you must leave unchanged, and the part between ??&lt;string …&gt;?? and ??&lt;/string&gt;?? the translated string.
 
 h2. Translation steps
 
@@ -36,25 +36,29 @@ h3. Specials cases
 
 h4. String-arrays
 
-Do not translate anything within a ??<string-array>?? tag.
+Do not translate anything within a ??&lt;string-array&gt;?? tag.
 
 h4. Apostrophes
 
 Apostrophes must be preceded by a “\” character. 
 
 Example:
-bq. <string name="ContextMenuCopyLinkUrl">Copier l\'adresse du lien</string>
+
+bq. &lt;string name=&quot;ContextMenuCopyLinkUrl&quot;&gt;Copier l\'adresse du lien&lt;/string&gt;
 
 h4. Formatted strings
 
 Some strings may contains dynamic values, filled at runtime by the application. The place where the dynamics values are inserted in the string are represented by a %s, %1$s %2$s, etc. You must include the original %s-type in your translation, at the appropriate place.
 
 Examples:
-bq. <string name="SslWarningsHeader">There are problems with the security certificate for this site (%s).</string>
-bq. <string name="HttpAuthenticationDialogDialogTitle">Sign in to %1$s - %2$s</string>
+
+bq. &lt;string name=&quot;SslWarningsHeader&quot;&gt;There are problems with the security certificate for this site (%s).&lt;/string&gt;
+
+bq. &lt;string name=&quot;HttpAuthenticationDialogDialogTitle&quot;&gt;Sign in to %1$s - %2$s&lt;/string&gt;
 
 When there is several values to dynamically change in a single string, the %s part change to %1$s, %2$s, etc. You may change the order of the %s in your translation, if its make sense in you language, e.g. you can do something like:
-bq. <string name="HttpAuthenticationDialog.DialogTitle">SomeText %2$s AnotherText %1$s</string>
+
+bq. &lt;string name=&quot;HttpAuthenticationDialog.DialogTitle&quot;&gt;SomeText %2$s AnotherText %1$s&lt;/string&gt;
 
 h4. Misc.
 
