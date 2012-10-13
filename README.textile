@@ -64,6 +64,6 @@ h4. Misc.
 
 * Use &#8230; instead of writing three points (...);
 
-h3. Submit your translation
+h2. Submit your translation
 
 Either send me an e-mail, with your modified file and the language you translated, or open an "issue":https://github.com/Anasthase/TintBrowser/issues and post your file there. 
