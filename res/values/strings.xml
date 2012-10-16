@@ -473,10 +473,14 @@
     <string name="Authorized">Authorized:</string>
     <string name="Reasons">Reasons:</string>
     
-    <string name="SearchUrlDialogText">Customize your search url in the field below.</string>
-    <string name="SearchUrlGetOnline"><a href="">Get more search url online</a></string>    
+    <string name="SearchUrlDialogText1">Your search engine is currently set to:</string>
+    <string name="SearchUrlDialogText2">You can customize it by choosing a search engine proposed below.</string>
+    <string name="SearchUrlGetOnline"><a href="">Manually edit the search engine</a></string>    
     <string name="SearchUrlConnecting">Connecting&#8230;</string>
     <string name="SearchUrlParsing">Parsing results&#8230;</string>
-    <string name="SearchUrlBadResponseCodeMessage">Unable to connect to search engine site (response code: %s).</string>
+    <string name="SearchUrlBadResponseCodeMessage">Unable to connect to search engine repository (response code: %s).</string>
+    
+    <string name="SearchUrlDefault">Google worldwide</string>
+    <string name="SearchUrlCustom">Custom search engine</string>
 
 </resources>

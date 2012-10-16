@@ -24,6 +24,7 @@ import org.tint.model.SearchUrlGroup;
 import org.tint.model.SearchUrlItem;
 import org.tint.tasks.SearchUrlTask;
 import org.tint.tasks.SearchUrlTask.ISearchUrlTaskListener;
+import org.tint.utils.Constants;
 import org.tint.utils.UrlUtils;
 
 import android.content.Context;
@@ -31,6 +32,9 @@ import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.preference.DialogPreference;
 import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,16 +46,20 @@ import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class SearchEnginePreference extends DialogPreference implements ISearchUrlTaskListener {
 	
-	private TextView mText;
-	private EditText mEditText;
-	private ImageView mDivider;
+	private TextView mText2;
+	private TextView mCurrentEngine;
+	private TextView mCustomEngineText;
+	private EditText mCustomEngineEditText;
+	private ImageView mDivider1;
+	private ImageView mDivider2;
 	private ExpandableListView mList;
 	private ProgressBar mProgress;
 	private TextView mProgressText;
+	
+	private TextWatcher mTextWatcher;
 	
 	private SearchUrlTask mTask;
 	
@@ -74,22 +82,30 @@ public class SearchEnginePreference extends DialogPreference implements ISearchU
 	protected void onBindDialogView(View view) {
 		super.onBindDialogView(view);
 		
-		mText = (TextView) view.findViewById(R.id.SearchUrlGetOnlineText);
-		mEditText = (EditText) view.findViewById(R.id.SearchUrlEditText);
-		mDivider = (ImageView) view.findViewById(R.id.divider);
+		mText2 = (TextView) view.findViewById(R.id.SearchUrlText2);
+		mCurrentEngine = (TextView) view.findViewById(R.id.CurrentSearchEngine);
+		mCustomEngineText = (TextView) view.findViewById(R.id.SearchUrlManualEdit);
+		mCustomEngineEditText = (EditText) view.findViewById(R.id.SearchUrlEditText);
+		mDivider1 = (ImageView) view.findViewById(R.id.divider1);
+		mDivider2 = (ImageView) view.findViewById(R.id.divider2);
 		mList = (ExpandableListView) view.findViewById(R.id.SearchUrlList);
 		mProgress = (ProgressBar) view.findViewById(R.id.SearchUrlProgressBar);
 		mProgressText = (TextView) view.findViewById(R.id.SearchUrlProgressText);
 		
-		mDivider.setVisibility(View.GONE);
-		mList.setVisibility(View.GONE);
-		mProgress.setVisibility(View.GONE);
-		mProgressText.setVisibility(View.GONE);
-		
-		mText.setOnClickListener(new OnClickListener() {			
+		mCustomEngineText.setOnClickListener(new OnClickListener() {			
 			@Override
 			public void onClick(View v) {
-				startGetSearchUrlOnline();
+				mText2.setVisibility(View.GONE);
+				mCustomEngineText.setVisibility(View.GONE);
+				mDivider1.setVisibility(View.GONE);
+				mDivider2.setVisibility(View.GONE);
+				mList.setVisibility(View.GONE);
+				mProgress.setVisibility(View.GONE);
+				mProgressText.setVisibility(View.GONE);
+				
+				mCustomEngineEditText.setVisibility(View.VISIBLE);
+				mCustomEngineEditText.requestFocus();
+				showKeyboard();
 			}
 		});
 		
@@ -99,16 +115,43 @@ public class SearchEnginePreference extends DialogPreference implements ISearchU
 			public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
 				
 				if (mAdapter != null) {
-					mEditText.setText(((SearchUrlItem) mAdapter.getChild(groupPosition, childPosition)).getUrl());
+					mCustomEngineEditText.removeTextChangedListener(mTextWatcher);
+					
+					SearchUrlItem item = (SearchUrlItem) mAdapter.getChild(groupPosition, childPosition);
+					
+					mCurrentEngine.setText(item.getName());
+					mCustomEngineEditText.setText(item.getUrl());
 					
 					removeEditTextFocus();
+					
+					mCustomEngineEditText.addTextChangedListener(mTextWatcher);
 				}
 				
 				return true;
 			}
 		});
 		
-		mEditText.setText(UrlUtils.getRawSearchUrl(getContext()));
+		mTextWatcher = new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				mCurrentEngine.setText(getContext().getString(R.string.SearchUrlCustom));
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,	int after) { }
+			
+			@Override
+			public void afterTextChanged(Editable s) { }
+		};
+		
+		mCurrentEngine.setText(getCurrentSearchEngineName());
+		mCustomEngineEditText.setText(UrlUtils.getRawSearchUrl(getContext()));
+		
+		mCustomEngineEditText.setVisibility(View.GONE);
+		mCustomEngineEditText.addTextChangedListener(mTextWatcher);
+		
+		startGetSearchUrlOnline();
 	}
 	
 	@Override
@@ -117,7 +160,8 @@ public class SearchEnginePreference extends DialogPreference implements ISearchU
 		
 		if (positiveResult) {
 			Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
-	    	editor.putString(getKey(), mEditText.getText().toString());
+	    	editor.putString(getKey(), mCustomEngineEditText.getText().toString());
+	    	editor.putString(getKey() + "_NAME",  mCurrentEngine.getText().toString());
 	    	editor.commit();
 		}
 	}
@@ -140,18 +184,12 @@ public class SearchEnginePreference extends DialogPreference implements ISearchU
 	@Override
 	public void onDone(String result) {		
 		if (result != null) {
-			mText.setVisibility(View.VISIBLE);
 			mProgress.setVisibility(View.GONE);
-			mProgressText.setVisibility(View.GONE);
-			mList.setVisibility(View.GONE);
-			mDivider.setVisibility(View.GONE);
-			
-			Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();			
+			mProgressText.setText(result);			
 		} else {
 			mProgress.setVisibility(View.INVISIBLE);
 			mProgressText.setVisibility(View.INVISIBLE);
 			mList.setVisibility(View.VISIBLE);
-			mDivider.setVisibility(View.VISIBLE);
 			
 			List<SearchUrlGroup> results = mTask.getResults();
 			
@@ -161,15 +199,11 @@ public class SearchEnginePreference extends DialogPreference implements ISearchU
 		}
 		
 		mSearchUrlSyncThread.compareAndSet(mTask, null);
-		mProgressText.setText(R.string.SearchUrlConnecting);
 	}
 	
 	private void startGetSearchUrlOnline() {
 		removeEditTextFocus();
 		
-		mText.setVisibility(View.GONE);
-		
-		mDivider.setVisibility(View.INVISIBLE);
 		mList.setVisibility(View.INVISIBLE);
 		mProgress.setVisibility(View.VISIBLE);
 		mProgressText.setVisibility(View.VISIBLE);		
@@ -182,10 +216,29 @@ public class SearchEnginePreference extends DialogPreference implements ISearchU
 	}
 	
 	private void removeEditTextFocus() {
-		mEditText.clearFocus();
+		mCustomEngineEditText.clearFocus();
 		
 		InputMethodManager mgr = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-		mgr.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);
+		mgr.hideSoftInputFromWindow(mCustomEngineEditText.getWindowToken(), 0);
 	}
-
+	
+	private void showKeyboard() {
+		InputMethodManager mgr = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+		mgr.showSoftInput(mCustomEngineEditText, InputMethodManager.SHOW_IMPLICIT);
+	}
+	
+	private String getCurrentSearchEngineName() {
+		String name = PreferenceManager.getDefaultSharedPreferences(getContext()).getString(Constants.PREFERENCE_SEARCH_URL + "_NAME", "");
+		
+		if (TextUtils.isEmpty(name)) {
+			String searchUrl = UrlUtils.getRawSearchUrl(getContext());
+			if (getContext().getString(R.string.SearchUrlGoogle).equals(searchUrl)) {
+				name = getContext().getString(R.string.SearchUrlDefault);
+			} else {
+				name = getContext().getString(R.string.SearchUrlCustom);
+			}
+		}
+		
+		return name;
+	}
 }

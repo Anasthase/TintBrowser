@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <!--
    Tint Browser for Android
   
@@ -13,16 +12,16 @@
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
- -->
+-->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingTop="10dip"
     android:paddingLeft="10dip"
-    android:paddingRight="10dip" >
-    
+    android:paddingRight="10dip"
+    android:paddingTop="10dip" >
+
     <LinearLayout
         android:id="@+id/DummyLayoutToSteelFuckingFocusOnUrlEditText"
         android:layout_width="0dip"
@@ -32,55 +31,66 @@
         android:orientation="horizontal" />
 
     <TextView
-        android:id="@+id/SearchUrlText"
+        android:id="@+id/SearchUrlText1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"        
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:text="@string/SearchUrlDialogText"
-        android:textAppearance="?android:attr/textAppearanceSmall" />    
+        android:text="@string/SearchUrlDialogText1"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/CurrentSearchEngine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/SearchUrlText1"
+        android:layout_marginTop="5dip"
+        android:layout_marginBottom="5dip"
+        android:gravity="center"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@+id/CurrentSearchEngine"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <TextView
+        android:id="@+id/SearchUrlText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/CurrentSearchEngine"
+        android:text="@string/SearchUrlDialogText2"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <EditText
         android:id="@+id/SearchUrlEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/SearchUrlText2"
         android:layout_marginTop="5dip"
-        android:layout_marginBottom="5dip"
-        android:layout_below="@+id/SearchUrlText"
-        android:selectAllOnFocus="true"
-        android:inputType="textUri" />
-    
-    <TextView
-        android:id="@+id/SearchUrlGetOnlineText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/SearchUrlEditText"
-        android:layout_marginBottom="15dip"
-        android:gravity="center"
-        android:text="@string/SearchUrlGetOnline"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_marginBottom="5dip"        
+        android:inputType="textUri"
+        android:selectAllOnFocus="true" />    
 
     <ImageView
-        android:id="@+id/divider"
+        android:id="@+id/divider1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/SearchUrlGetOnlineText"
+        android:layout_below="@id/SearchUrlEditText"
         android:layout_marginTop="10dip"
         android:contentDescription="@string/ContentDescriptionDivider"
         android:scaleType="fitXY"
         android:src="?android:attr/dividerHorizontal" />
-    
+
     <ExpandableListView
         android:id="@+id/SearchUrlList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"        
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/divider" />
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/divider2"
+        android:layout_below="@+id/divider1" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/SearchUrlList"
-        android:layout_below="@+id/divider"
+        android:layout_below="@+id/divider1"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:orientation="vertical" >
@@ -95,8 +105,31 @@
             android:id="@+id/SearchUrlProgressText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:gravity="center"
             android:text="@string/SearchUrlConnecting"
             android:textAppearance="?android:attr/textAppearanceSmall" />
-    </LinearLayout>    
+    </LinearLayout>
+    
+    <ImageView
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/SearchUrlManualEdit"
+        android:contentDescription="@string/ContentDescriptionDivider"
+        android:scaleType="fitXY"
+        android:src="?android:attr/dividerHorizontal" />
+    
+    <TextView
+        android:id="@+id/SearchUrlManualEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"        
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="15dip"
+        android:gravity="center"        
+        android:text="@string/SearchUrlGetOnline"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>

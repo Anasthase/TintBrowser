@@ -473,10 +473,14 @@
     <string name="Authorized">Autorisé :</string>
     <string name="Reasons">Raisons :</string>
     
-    <string name="SearchUrlDialogText">Personalisez votre url de recherche dans le champs ci-dessous.</string>
-    <string name="SearchUrlGetOnline"><a href="">Obtenir des url de recherche en ligne</a></string>    
+    <string name="SearchUrlDialogText1">Votre moteur de recherche est actuellement :</string>
+    <string name="SearchUrlDialogText2">Vous pouvez le personnaliser en choisissant un des moteurs proposés ci-dessous.</string>
+    <string name="SearchUrlGetOnline"><a href="">Modifier manuellement le moteur de recherche</a></string>    
     <string name="SearchUrlConnecting">Connexion&#8230;</string>
     <string name="SearchUrlParsing">Traitement des résultats&#8230;</string>
-    <string name="SearchUrlBadResponseCodeMessage">Impossible de se connecter au site (code: %s).</string>
+    <string name="SearchUrlBadResponseCodeMessage">Impossible de se connecter au répertoire des moteurs de recherche (code : %s).</string>
 
+    <string name="SearchUrlDefault">Google France</string>
+    <string name="SearchUrlCustom">Moteur de recherche personnalisé</string>
+    
 </resources>
