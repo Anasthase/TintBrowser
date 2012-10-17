@@ -231,6 +231,13 @@ public class TabletUIManager extends BaseUIManager {
 	}
 	
 	@Override
+	public boolean onKeySearch() {
+		mUrlBar.setFocusOnUrl();
+		
+		return true;
+	}
+	
+	@Override
 	public void onPageStarted(WebView view, String url, Bitmap favicon) {
 		if (view == getCurrentWebView()) {
 			mProgressBar.setProgress(0);

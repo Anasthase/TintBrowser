@@ -236,6 +236,8 @@ public class PhoneUIManager extends BaseUIManager {
 		if (!super.onKeyBack()) {
 			if (mUrlBar.isUrlBarVisible()) {
 				mUrlBar.hideUrl();
+				startHideToolbarsThread();
+				
 				return true;
 			} else {
 				CustomWebView currentWebView = getCurrentWebView();
@@ -249,6 +251,18 @@ public class PhoneUIManager extends BaseUIManager {
 		}
 		
 		return false;
+	}
+	
+	@Override
+	public boolean onKeySearch() {
+		setToolbarsVisibility(true);
+		startHideToolbarsThread();
+		
+		if (!mUrlBar.isUrlBarVisible()) {
+			mUrlBar.showUrl();
+		}
+		
+		return true;
 	}
 
 	@Override

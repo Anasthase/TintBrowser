@@ -28,6 +28,7 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.FilterQueryProvider;
@@ -261,6 +262,13 @@ public class TabletUrlBar extends LinearLayout implements UrlBar {
 		} else {
 			mUrl.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 		}
+	}
+	
+	public void setFocusOnUrl() {
+		mUrl.requestFocus();
+		
+		InputMethodManager mgr = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+		mgr.showSoftInput(mUrl, InputMethodManager.SHOW_IMPLICIT);
 	}
 	
 	private void triggerOnUrlValidated() {

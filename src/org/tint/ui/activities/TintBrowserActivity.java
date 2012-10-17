@@ -306,6 +306,12 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 			} else {
 				return super.onKeyUp(keyCode, event);
 			}
+		case KeyEvent.KEYCODE_SEARCH:
+			if (mUIManager.onKeySearch()) {
+				return true;
+			} else {
+				return super.onKeyUp(keyCode, event);
+			}
 		default: return super.onKeyUp(keyCode, event);
 		}
 	}

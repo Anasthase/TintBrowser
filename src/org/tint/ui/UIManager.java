@@ -95,6 +95,8 @@ public interface UIManager extends OnTouchListener {
 	 */	
 	boolean onKeyBack();
 	
+	boolean onKeySearch();
+	
 	void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key);
 	
 	void onMenuVisibilityChanged(boolean isVisible);
