@@ -24,6 +24,10 @@
 	    android:showAsAction="ifRoom|withText" />
     
     <item
+	    android:id="@+id/BookmarksActivityMenuSortBookmarks"
+	    android:title="@string/SortBookmarks" />
+    
+    <item
 	    android:id="@+id/BookmarksActivityMenuImportHistoryBookmarks"
 	    android:title="@string/ImportHistoryBookmarks" />
     
@@ -33,7 +37,7 @@
     
     <item
 	    android:id="@+id/BookmarksActivityMenuClearHistoryBookmarks"
-	    android:title="@string/ClearHistoryBookmarks" />
+	    android:title="@string/ClearHistoryBookmarks" />    
     
     <group
         android:id="@+id/BookmarksActivity.AddonsMenuGroup" />

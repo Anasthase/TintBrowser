@@ -42,9 +42,11 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -114,6 +116,12 @@ public class BookmarksActivity extends Activity implements IHistoryBookmaksExpor
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		super.onPrepareOptionsMenu(menu);
+
+		if (getActionBar().getSelectedNavigationIndex() == 0) {
+			menu.findItem(R.id.BookmarksActivityMenuSortBookmarks).setVisible(true);
+		} else {
+			menu.findItem(R.id.BookmarksActivityMenuSortBookmarks).setVisible(false);
+		}
 		
 		menu.removeGroup(R.id.BookmarksActivity_AddonsMenuGroup);
 		
@@ -138,6 +146,10 @@ public class BookmarksActivity extends Activity implements IHistoryBookmaksExpor
 			i.putExtra(Constants.EXTRA_ID, -1);
 			startActivity(i);
 			
+			return true;
+			
+		case R.id.BookmarksActivityMenuSortBookmarks:
+			changeSortMode();
 			return true;
 			
 		case R.id.BookmarksActivityMenuImportHistoryBookmarks:
@@ -311,6 +323,40 @@ public class BookmarksActivity extends Activity implements IHistoryBookmaksExpor
     	
     	AlertDialog alert = builder.create();
     	alert.show();
+	}
+	
+	private void changeSortMode() {
+		int currentSort = PreferenceManager.getDefaultSharedPreferences(this).getInt(Constants.PREFERENCE_BOOKMARKS_SORT_MODE, 0);
+    	
+    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    	
+    	builder.setInverseBackgroundForced(true);
+    	builder.setIcon(android.R.drawable.ic_dialog_info);
+    	builder.setTitle(getResources().getString(R.string.SortBookmarks));
+    	
+    	builder.setSingleChoiceItems(
+    			new String[] {
+    					getResources().getString(R.string.MostUsedSortMode),
+    					getResources().getString(R.string.AlphaSortMode),
+    					getResources().getString(R.string.RecentSortMode)
+    			},
+    			currentSort,
+    			new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				Editor editor = PreferenceManager.getDefaultSharedPreferences(BookmarksActivity.this).edit();
+		    	editor.putInt(Constants.PREFERENCE_BOOKMARKS_SORT_MODE, which);
+		    	editor.commit();
+				
+				dialog.dismiss();				
+			}    		
+    	});
+    	
+    	builder.setCancelable(true);
+    	builder.setNegativeButton(android.R.string.cancel, null);
+    	
+    	AlertDialog alert = builder.create();
+    	alert.show();		
 	}
 	
 }

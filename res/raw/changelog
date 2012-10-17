@@ -1,7 +1,8 @@
 1.5:
 - User choice for SSL security exceptions can now be saved on a per-website basis.
 - Better search engine customization.
-- Handler search key on devices which has one.
+- Handle search key on devices which has one.
+- Bookmarks can now be sorted in three ways (Most used, Alphabetically, Most recently visited).
 
 1.4:
 - Add accessibility settings: minimum font size, text scaling, and inverted screen rendering;

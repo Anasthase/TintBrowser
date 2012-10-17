@@ -83,6 +83,8 @@ public class Constants {
 	public static final String PREFERENCE_INVERTED_DISPLAY = "PREFERENCE_INVERTED_DISPLAY";
 	public static final String PREFERENCE_INVERTED_DISPLAY_CONTRAST = "PREFERENCE_INVERTED_DISPLAY_CONTRAST";
 	
+	public static final String PREFERENCE_BOOKMARKS_SORT_MODE = "PREFERENCE_BOOKMARKS_SORT_MODE";
+	
 	/**
 	 * Technical preferences.
 	 */

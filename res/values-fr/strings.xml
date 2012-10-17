@@ -483,4 +483,9 @@
     <string name="SearchUrlDefault">Google France</string>
     <string name="SearchUrlCustom">Moteur de recherche personnalisé</string>
     
+    <string name="SortBookmarks">Tri des favoris</string>    
+    <string name="MostUsedSortMode">Plus utilisés</string>
+    <string name="AlphaSortMode">Alphabétiquement</string>
+    <string name="RecentSortMode">Plus récemment visités</string>
+    
 </resources>

@@ -482,5 +482,10 @@
     
     <string name="SearchUrlDefault">Google worldwide</string>
     <string name="SearchUrlCustom">Custom search engine</string>
+    
+    <string name="SortBookmarks">Sort bookmarks</string>    
+    <string name="MostUsedSortMode">Most used</string>
+    <string name="AlphaSortMode">Alphabetically</string>
+    <string name="RecentSortMode">Most recently visited</string>
 
 </resources>

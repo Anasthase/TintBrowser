@@ -43,11 +43,14 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.Cursor;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -98,9 +101,34 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 	private boolean mIsListShown = true;
 
 	private ProgressDialog mProgressDialog;
+	
+	private OnSharedPreferenceChangeListener mPreferenceChangeListener;
 
 	public BookmarksFragment() {
 		mUIManager = Controller.getInstance().getUIManager();
+	}
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {		
+		super.onCreate(savedInstanceState);
+		
+		mPreferenceChangeListener = new OnSharedPreferenceChangeListener() {
+
+			@Override
+			public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+				if (Constants.PREFERENCE_BOOKMARKS_SORT_MODE.equals(key)) {
+					getLoaderManager().restartLoader(0, null, BookmarksFragment.this);
+				}
+			}				
+		};
+		
+		PreferenceManager.getDefaultSharedPreferences(getActivity()).registerOnSharedPreferenceChangeListener(mPreferenceChangeListener);
+	}
+	
+	@Override
+	public void onDestroy() {		
+		super.onDestroy();
+		PreferenceManager.getDefaultSharedPreferences(getActivity()).unregisterOnSharedPreferenceChangeListener(mPreferenceChangeListener);
 	}
 
 	@Override
@@ -109,7 +137,7 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 
 		if (mContainer == null) {
 			mContainer = inflater.inflate(R.layout.bookmarks_fragment, container, false);
-
+			
 			mBreadCrumbGroup = (ViewGroup) mContainer.findViewById(R.id.BookmarksBreadCrumbGroup);			
 
 			mFoldersBreadCrumb = (FragmentBreadCrumbs) mContainer.findViewById(R.id.BookmarksBreadCrumb);

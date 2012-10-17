@@ -27,6 +27,7 @@ import org.tint.model.FolderItem;
 import org.tint.model.UrlSuggestionCursorAdapter;
 import org.tint.model.UrlSuggestionItem;
 import org.tint.model.UrlSuggestionItemComparator;
+import org.tint.utils.Constants;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -37,6 +38,7 @@ import android.database.MatrixCursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 public class BookmarksWrapper {
@@ -73,8 +75,28 @@ public class BookmarksWrapper {
 	}
 	
 	public static CursorLoader getCursorLoaderForBookmarks(Context context, long parentFolderId) {
+		int sortMode = PreferenceManager.getDefaultSharedPreferences(context).getInt(Constants.PREFERENCE_BOOKMARKS_SORT_MODE, 0);
+		
 		String whereClause = BookmarksProvider.Columns.PARENT_FOLDER_ID + " = " + parentFolderId + " AND (" + BookmarksProvider.Columns.BOOKMARK + " = 1 OR " + BookmarksProvider.Columns.IS_FOLDER + " = 1)";
-		String orderClause = BookmarksProvider.Columns.IS_FOLDER + " DESC, " + BookmarksProvider.Columns.VISITS + " DESC, " + BookmarksProvider.Columns.TITLE + " COLLATE NOCASE";
+		
+		String orderClause;
+		switch (sortMode) {
+		case 0:
+			orderClause = BookmarksProvider.Columns.IS_FOLDER + " DESC, " + BookmarksProvider.Columns.VISITS + " DESC, " + BookmarksProvider.Columns.TITLE + " COLLATE NOCASE";
+			break;
+		
+		case 1:
+			orderClause = BookmarksProvider.Columns.IS_FOLDER + " DESC, " + BookmarksProvider.Columns.TITLE + " COLLATE NOCASE, " + BookmarksProvider.Columns.VISITS + " DESC";
+			break;
+			
+		case 2:
+			orderClause = BookmarksProvider.Columns.IS_FOLDER + " DESC, " + BookmarksProvider.Columns.VISITED_DATE + " DESC, " + BookmarksProvider.Columns.TITLE + " COLLATE NOCASE";
+			break;
+
+		default:
+			orderClause = BookmarksProvider.Columns.IS_FOLDER + " DESC, " + BookmarksProvider.Columns.VISITS + " DESC, " + BookmarksProvider.Columns.TITLE + " COLLATE NOCASE";
+			break;
+		}		
 		
 		return new CursorLoader(context, BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, orderClause);
 	}
