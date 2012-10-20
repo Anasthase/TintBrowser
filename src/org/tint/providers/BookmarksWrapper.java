@@ -34,6 +34,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.CursorLoader;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.MatrixCursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -184,7 +185,9 @@ public class BookmarksWrapper {
 	}
 	
 	public static long getFolderId(ContentResolver contentResolver, String folderName, boolean createIfNotPresent) {
-		String whereClause = BookmarksProvider.Columns.TITLE + " = \"" + folderName + "\" AND " + BookmarksProvider.Columns.IS_FOLDER + " = 1";
+		String escapedFolderName = DatabaseUtils.sqlEscapeString(folderName);
+		
+		String whereClause = BookmarksProvider.Columns.TITLE + " = " + escapedFolderName + " AND " + BookmarksProvider.Columns.IS_FOLDER + " = 1";
 		
 		Cursor c = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, null);
 		if ((c != null) &&
@@ -237,7 +240,10 @@ public class BookmarksWrapper {
 			bookmarkExist = (cursor != null) && (cursor.moveToFirst());
 		} else {
 			String[] colums = new String[] { BookmarksProvider.Columns._ID };
-			String whereClause = BookmarksProvider.Columns.URL + " = \"" + url + "\"";
+			
+			String escapedUrl = DatabaseUtils.sqlEscapeString(url);
+			
+			String whereClause = BookmarksProvider.Columns.URL + " = " + escapedUrl;
 
 			Cursor cursor = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, colums, whereClause, null, null);
 			bookmarkExist = (cursor != null) && (cursor.moveToFirst());
@@ -391,7 +397,11 @@ public class BookmarksWrapper {
 	 */
 	public static void updateHistory(ContentResolver contentResolver, String title, String url, String originalUrl) {
 		String[] colums = new String[] { BookmarksProvider.Columns._ID, BookmarksProvider.Columns.URL, BookmarksProvider.Columns.BOOKMARK, BookmarksProvider.Columns.VISITS };
-		String whereClause = BookmarksProvider.Columns.URL + " = \"" + url + "\" OR " + BookmarksProvider.Columns.URL + " = \"" + originalUrl + "\"";
+		
+		String escapedUrl = DatabaseUtils.sqlEscapeString(url);
+		String escapedOriginalUrl = DatabaseUtils.sqlEscapeString(originalUrl);
+		
+		String whereClause = BookmarksProvider.Columns.URL + " = " + escapedUrl + " OR " + BookmarksProvider.Columns.URL + " = " + escapedOriginalUrl;
 
 		Cursor cursor = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, colums, whereClause, null, null);
 
@@ -479,9 +489,14 @@ public class BookmarksWrapper {
 			String whereClause;
 
 			if (!url.equals(originalUrl)) {
-				whereClause = BookmarksProvider.Columns.URL + " = \"" + url + "\" OR " + BookmarksProvider.Columns.URL + " = \"" + originalUrl + "\"";
+				url = DatabaseUtils.sqlEscapeString(url);
+				originalUrl = DatabaseUtils.sqlEscapeString(originalUrl);
+				
+				whereClause = BookmarksProvider.Columns.URL + " = " + url + " OR " + BookmarksProvider.Columns.URL + " = " + originalUrl;
 			} else {
-				whereClause = BookmarksProvider.Columns.URL + " = \"" + url + "\"";
+				url = DatabaseUtils.sqlEscapeString(url);
+				
+				whereClause = BookmarksProvider.Columns.URL + " = " + url;
 			}
 
 			BitmapDrawable icon = new BitmapDrawable(favicon);
@@ -508,9 +523,14 @@ public class BookmarksWrapper {
 			String whereClause;
 
 			if (!url.equals(originalUrl)) {
-				whereClause = "(" + BookmarksProvider.Columns.URL + " = \"" + url + "\" OR " + BookmarksProvider.Columns.URL + " = \"" + originalUrl + "\")";
+				url = DatabaseUtils.sqlEscapeString(url);
+				originalUrl = DatabaseUtils.sqlEscapeString(originalUrl);
+				
+				whereClause = "(" + BookmarksProvider.Columns.URL + " = " + url + " OR " + BookmarksProvider.Columns.URL + " = " + originalUrl + ")";
 			} else {
-				whereClause = BookmarksProvider.Columns.URL + " = \"" + url + "\"";
+				url = DatabaseUtils.sqlEscapeString(url);
+				
+				whereClause = BookmarksProvider.Columns.URL + " = " + url;
 			}
 
 			whereClause += " AND " + BookmarksProvider.Columns.BOOKMARK + " = 1";
@@ -538,9 +558,14 @@ public class BookmarksWrapper {
 			String whereClause;
 
 			if (!url.equals(originalUrl)) {
-				whereClause = "(" + BookmarksProvider.Columns.URL + " = \"" + url + "\" OR " + BookmarksProvider.Columns.URL + " = \"" + originalUrl + "\")";
+				url = DatabaseUtils.sqlEscapeString(url);
+				originalUrl = DatabaseUtils.sqlEscapeString(originalUrl);
+				
+				whereClause = "(" + BookmarksProvider.Columns.URL + " = " + url + " OR " + BookmarksProvider.Columns.URL + " = " + originalUrl + ")";
 			} else {
-				whereClause = BookmarksProvider.Columns.URL + " = \"" + url + "\"";
+				url = DatabaseUtils.sqlEscapeString(url);
+				
+				whereClause = BookmarksProvider.Columns.URL + " = " + url;
 			}
 
 			whereClause += " AND " + BookmarksProvider.Columns.BOOKMARK + " = 1";
