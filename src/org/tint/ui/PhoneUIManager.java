@@ -173,7 +173,7 @@ public class PhoneUIManager extends BaseUIManager {
 		if (mFragmentsList.size() > 1) {
 			closeTabByIndex(mCurrentTabIndex);
 		} else {
-			loadHomePage();
+			closeLastTab();			
 		}
 	}
 	
@@ -187,7 +187,7 @@ public class PhoneUIManager extends BaseUIManager {
 				closeTabByIndex(index);
 			}
 		} else if (index == mCurrentTabIndex) {
-			loadHomePage();
+			closeLastTab();
 		}
 	}
 
@@ -728,6 +728,21 @@ public class PhoneUIManager extends BaseUIManager {
 			mShowPreviousTab.setVisibility(View.GONE);
 			mShowNextTab.setVisibility(View.GONE);
 		}
+	}
+	
+	private void closeLastTab() {
+		PhoneWebViewFragment fragment = mFragmentsList.get(mCurrentTabIndex);
+		
+		CustomWebView webView = fragment.getWebView();
+		
+		if (!webView.isPrivateBrowsingEnabled()) {
+			Controller.getInstance().getAddonManager().onTabClosed(mActivity, webView);
+		}
+		
+		webView.onPause();
+		
+		loadHomePage();
+		updateUrlBar();
 	}
 	
 	private void closeTabByIndex(int index) {
