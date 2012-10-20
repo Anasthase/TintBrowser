@@ -150,9 +150,11 @@ public class BookmarksWrapper {
 		if (clearHistory && clearBookmarks) {
 			whereClause = null;
 		} else if (clearHistory) {
-			whereClause = "(" + BookmarksProvider.Columns.BOOKMARK + " = 0) OR (" + BookmarksProvider.Columns.BOOKMARK + " IS NULL)";
+			whereClause = "((" + BookmarksProvider.Columns.BOOKMARK + " = 0) OR (" +
+					BookmarksProvider.Columns.BOOKMARK + " IS NULL)) AND (" +
+					BookmarksProvider.Columns.IS_FOLDER + " = 0)";
 		} else if (clearBookmarks) {
-			whereClause = BookmarksProvider.Columns.BOOKMARK + " = 1";
+			whereClause = "(" + BookmarksProvider.Columns.BOOKMARK + " = 1) OR (" + BookmarksProvider.Columns.IS_FOLDER + " = 1)";
 		}
 		
 		contentResolver.delete(BookmarksProvider.BOOKMARKS_URI, whereClause, null);		
