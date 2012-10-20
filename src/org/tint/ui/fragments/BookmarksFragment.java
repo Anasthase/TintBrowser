@@ -34,6 +34,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -516,6 +517,7 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 		new Thread(new DeleteFolderRunnable(folderId)).start();
 	}
 
+	@SuppressLint("HandlerLeak")
 	private class DeleteFolderRunnable implements Runnable {
 
 		private long mFolderId;

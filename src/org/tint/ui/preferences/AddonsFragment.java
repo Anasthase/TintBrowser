@@ -118,7 +118,11 @@ public class AddonsFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 	
-		mAddons = Controller.getInstance().getAddonManager().getAddons();
+		if (Controller.getInstance().getAddonManager() != null) {
+			mAddons = Controller.getInstance().getAddonManager().getAddons();
+		} else {
+			mAddons = null;
+		}
 						
 		mAdapter = new AddonsAdapter(getActivity());
 		mListView.setAdapter(mAdapter);

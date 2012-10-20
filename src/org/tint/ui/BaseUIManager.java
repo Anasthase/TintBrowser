@@ -34,6 +34,7 @@ import org.tint.utils.ApplicationUtils;
 import org.tint.utils.Constants;
 import org.tint.utils.UrlUtils;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.DownloadManager;
 import android.app.FragmentManager;
@@ -62,6 +63,7 @@ import android.webkit.WebView.HitTestResult;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+@SuppressLint("HandlerLeak")
 public abstract class BaseUIManager implements UIManager {//, WebViewFragmentListener {
 	
 	protected static final FrameLayout.LayoutParams COVER_SCREEN_PARAMS =
@@ -419,12 +421,18 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 	
 	@Override
 	public void onMainActivityPause() {
-		getCurrentWebView().pauseTimers();
+		CustomWebView webView = getCurrentWebView();
+		if (webView != null) {
+			webView.pauseTimers();
+		}
 	}
 	
 	@Override
 	public void onMainActivityResume() {
-		getCurrentWebView().resumeTimers();
+		CustomWebView webView = getCurrentWebView();
+		if (webView != null) {
+			webView.resumeTimers();
+		}
 	}	
 	
 	@Override
@@ -599,17 +607,20 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 	}
 	
 	private void requestHrefNode(int action, boolean incognito) {
-		final HashMap<String, WebView> hrefMap = new HashMap<String, WebView>();
 		WebView webView = getCurrentWebView();
-		hrefMap.put("webview", webView);
 		
-		final Message msg = mHandler.obtainMessage(
-                FOCUS_NODE_HREF,
-                action,
-                incognito ? 1 : 0,
-                hrefMap);
-		
-		webView.requestFocusNodeHref(msg);
+		if (webView != null) {
+			final HashMap<String, WebView> hrefMap = new HashMap<String, WebView>();		
+			hrefMap.put("webview", webView);
+
+			final Message msg = mHandler.obtainMessage(
+					FOCUS_NODE_HREF,
+					action,
+					incognito ? 1 : 0,
+							hrefMap);
+
+			webView.requestFocusNodeHref(msg);
+		}
 	}
 
 	private void setFullscreen(boolean enabled) {
