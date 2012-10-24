@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+   Tint Browser for Android
+  
+   Copyright (C) 2012 - to infinity and beyond J. Devauchelle and contributors.
+ 
+   This program is free software; you can redistribute it and/or
+   modify it under the terms of the GNU General Public License
+   version 3 as published by the Free Software Foundation.
+ 
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+ -->
+
+<resources>
+
+    <string name="ApplicationName">Tint Browser</string>
+    <string name="ApplicationDescription">O Tint Browser é um browser open-source para Android.</string>
+    
+    <string name="AboutVersionText">Versão: %1$s (%2$s)</string>
+    <string name="AboutLicenseText">Licença: GPLv3</string>
+    <string name="AboutUrlText">https://github.com/Anasthase/TintBrowser</string>
+    <string name="AboutChangelogText">Changelog:</string>
+    
+    <string name="PermissionReadBookmarksLabel">Ler favoritos do Tint Browser</string>
+    <string name="PermissionReadBookmarksDescription">Permitir aos addons e aplicações de terceiros a leitura do histórico e favoritos do Tint Browser.</string>
+    
+	<string name="PermissionWriteBookmarksLabel">Escrever favoritos do Tint Browser</string>
+    <string name="PermissionWriteBookmarksDescription">Permitir aos addons e aplicações de terceiros a escrita do histórico e favoritos do Tint Browser.</string>        
+    
+    <string name="PermissionBindAddonServiceLabel">Vincular os serviços de addons do Tint Browser</string>
+    <string name="PermissionBindAddonServiceDescription">Permitir a uma aplicação vincular-se aos serviços de addons do Tint Browser. Somente o Tint Browser deverá ter esta permissão.</string>
+    
+    <string name="OK">OK</string>
+    <string name="Cancel">Cancelar</string>
+    <string name="Yes">Sim</string>
+    <string name="No">Não</string>
+    <string name="On">Ligado</string>
+    <string name="Off">Desligado</string>
+    <string name="Clear">Apagar</string>
+    <string name="Continue">Continuar</string>
+    <string name="Proceed">Proceder</string>
+    <string name="VideoLoading">A carregar vídeo\u2026</string>
+    <string name="History">Histórico</string>
+    <string name="All">Todos</string>
+    <string name="Bookmarks">Favoritos</string>
+    <string name="Preferences">Definições</string>
+    
+    <string name="UrlBarUrlDefaultSubTitle">Tocar para introduzir um endereço ou pesquisa.</string>
+    <string name="UrlBarUrlHint">Introduzir uma pesquisa ou endereço</string>
+    
+    <string name="ShareChooserTitle">Partilhar via</string>
+    <string name="FileChooserPrompt">Escolher ficheiro para enviar</string>
+    
+    <string name="DownloadStart">A descarregar %1$s&#8230;</string>
+    <string name="DownloadComplete">Download completo.</string>
+    <string name="DownloadFailedWithErrorMessage">Download falhou: %1$s.</string>
+    <string name="DownloadErrorDisk">Erro de disco, verifique se tem um dispositivo de armazenamento, e se este tem espaço livre suficiente.</string>
+    <string name="DownloadErrorHttp">Erro de HTTP</string>
+    <string name="DownloadErrorRedirection">Demasiados redirecionamentos</string>
+    <string name="DownloadErrorUnknown">Erro desconhecido</string>
+    
+    <string name="ContextMenuOpen">Abrir</string>
+    <string name="ContextMenuOpenNewTab">Abrir num novo separador</string>
+    <string name="ContextMenuCopyLinkUrl">Copiar endereço</string>
+    <string name="ContextMenuDownload">Descarregar</string>
+    <string name="ContextMenuShareLinkUrl">Partilhar endereço</string>
+    
+    <string name="ContextMenuViewImage">Ver imagem</string>
+    <string name="ContextMenuCopyImageUrl">Copiar endereço de imagem</string>
+    <string name="ContextMenuDownloadImage">Descarregar imagem</string>
+    <string name="ContextMenuShareImageUrl">Partilhar imagem</string>
+    
+    <string name="ContextMenuSendEmail">Enviar email</string>
+    <string name="ContextMenuCopyEmailUrl">Copiar endereço de email</string>
+    <string name="ContextMenuShareEmailUrl">Partilhar email</string>
+    
+    <string name="UrlCopyToastMessage">Endereço copiado para a área de transferência</string>
+    <string name="ContextMenuShareUrl">Partilhar</string>
+    
+    <string name="JavaScriptAlertDialog">Diálogo de alerta de JavaScript</string>
+    <string name="JavaScriptConfirmDialog">Diálogo de confirmação de JavaScript</string>
+    <string name="JavaScriptPromptDialog">Diálogo de aviso de JavaScript</string>        
+	
+	<string name="SslWarning">Aviso de segurança</string>
+	<string name="SslWarningsHeader">Há problemas com o certificado de segurança para site (%s).</string>
+	<string name="SslUntrusted">Este certificado não pertence a uma fonte segura.</string>
+	<string name="SslIDMismatch">O nome do site não corresponde ao nome no certificado.</string>
+	<string name="SslExpired">Este certificado expirou.</string>
+	<string name="SslNotYetValid">Este certificado ainda não é válido.</string>        
+        
+    <string name="NewTab">Novo separador</string>
+        
+    <string name="CloseTab">Fechar separador atual</string>
+    <string name="AddBookmark">Adicionar favorito</string>
+    <string name="SharePage">Partilhar página</string>
+    <string name="Search">Localizar na página</string>
+    
+    <string name="BookmarksTitle">Favoritos e Histórico</string>
+    <string name="BookmarksTabTitle">Favoritos</string>
+    <string name="HistoryTabTitle">Histórico</string>
+    
+    <string name="ImportHistoryBookmarks">Importar</string>
+    <string name="ExportHistoryBookmarks">Exportar</string>
+    <string name="ClearHistoryBookmarks">Apagar</string>
+    
+    <string name="AddBookmarkTitle">Adicionar favorito</string>
+    <string name="BookmarkText">Etiqueta</string>
+    <string name="UrlText">Endereço</string>
+    <string name="UrlHint">http://</string>
+    <string name="AddBookmarkLabelOrUrlEmpty">Por favor providencie uma etiqueta e endereço corretos.</string>
+    
+    <string name="OpenInTab">Abrir num separador novo</string>
+    <string name="EditBookmark">Editar favorito</string>
+    <string name="CopyUrl">Copiar endereço</string>
+    <string name="DeleteBookmark">Apagar favorito</string>
+    <string name="DeleteHistoryItem">Apagar do histórico</string>
+    
+    <string name="PreferencesActivityTitle">Definições</string>
+        
+    <string name="PreferenceHeaderGeneralSettingsTitle">Definições gerais</string>
+    
+    <string name="PreferenceGeneralHomepageTitle">Página inicial</string>
+    <string name="PreferenceGeneralHomepageSummary">Definir a página inicial a carregar ao abrir um separador novo, etc.</string>
+    <string name="PreferenceHomePageDialogTitle">Página inicial</string>
+    
+    <string name="PreferenceGeneralSearchUrlTitle">Motor de pesquisa</string>
+    <string name="PreferenceGeneralSearchUrlSummary">Definir o motor de busca predefinido ao executar uma pesquisa a partir da barra de endereços.</string>
+    
+    <string name="PreferenceCategoryStartPageTitle">Página inicial</string>
+    <string name="PreferenceGeneralStartPageLimitTitle">Número de itens na página inicial</string>
+    <string name="PreferenceGeneralStartPageLimitSummary">Definir o número de itens a mostrar na página inicial.</string>
+    
+    <string name="PreferenceCategoryUITitle">Interface de utilizador</string>
+        
+    <string name="PreferenceBubblePositionTitle">Posição da bolha</string>
+    <string name="PreferenceBubblePositionSummary">Posição da bolha que permite mostrar as barras de ferramentas.</string>
+    
+    <string name="PreferenceBubblePositionRight">Direita</string>
+    <string name="PreferenceBubblePositionLeft">Esquerda</string>
+    <string name="PreferenceBubblePositionBoth">Ambos</string>
+    
+    <string-array name="PreferenceBubblePositionEntries">
+		<item>@string/PreferenceBubblePositionRight</item>
+		<item>@string/PreferenceBubblePositionLeft</item>
+		<item>@string/PreferenceBubblePositionBoth</item>
+	</string-array>
+	
+    <string-array name="PreferenceBubblePositionValues">
+		<item>RIGHT</item>
+		<item>LEFT</item>
+		<item>BOTH</item>
+	</string-array>
+	
+    <string name="PreferenceToolbarsAutoHideDurationTitle">Duração das barras de ferramentas</string>
+    <string name="PreferenceToolbarsAutoHideDurationSummary">Definir o tempo de duração da visibilidade das barras de ferramentas, em segundos.</string>
+    
+    <string name="PreferenceSwitchTabsMethodTitle">Método de alteração de separadores</string>
+    <string name="PreferenceSwitchTabsMethodSummary">Definir como alternar entre separadores.</string>
+    
+    <string name="PreferenceSwitchTabsMethodButtons">Botões</string>
+    <string name="PreferenceSwitchTabsMethodFling">Arrastar</string>
+    <string name="PreferenceSwitchTabsMethodBoth">Ambos</string>
+    
+    <string-array name="PreferenceSwitchTabsMethodEntries">
+		<item>@string/PreferenceSwitchTabsMethodButtons</item>
+		<item>@string/PreferenceSwitchTabsMethodFling</item>
+		<item>@string/PreferenceSwitchTabsMethodBoth</item>
+	</string-array>
+	
+    <string-array name="PreferenceSwitchTabsMethodValues">
+		<item>BUTTONS</item>
+		<item>FLING</item>
+		<item>BOTH</item>
+	</string-array>
+    
+    <string name="PreferenceHeaderBrowserSettingsTitle">Definições do browser</string>
+    
+    <string name="PreferenceEnableJavascriptTitle">Ativar JavaScript</string>
+    <string name="PreferenceEnableJavascriptSummaryOn">JavaScript está ativado.</string>
+    <string name="PreferenceEnableJavascriptSummaryOff">JavaScript está desativado.</string>
+    <string name="PreferenceEnableImagesTitle">Ativar imagens</string>
+    <string name="PreferenceEnableImagesSummary">Ativar para carregar imagens.</string>
+    <string name="PreferenceUseWideViewportTitle">Usar viewport amplo</string>
+    <string name="PreferenceUseWideViewportSummary">Se ativado, o browser irá usar um viewport similar ao dos browsers de desktop.</string>
+    <string name="PreferenceLoadPagesWithOverviewTitle">Abrir páginas em vista geral</string>
+    <string name="PreferenceLoadPagesWithOverviewSummary">Ativar para efetuar carregamento das páginas na vista geral.</string>
+    <string name="PreferencePluginsTitle">Ativar plugins</string>
+    <string name="PreferencePluginsSummary">Escolher como gerir os plugins.</string>
+    
+    <string name="PreferencePluginsAlwaysOff">Sempre desligados</string>
+    <string name="PreferencePluginsOnDemand">A pedido</string>
+    <string name="PreferencePluginsAlwaysOn">Sempre ligados</string>
+    
+    <string-array name="PreferencePluginsEntries">
+		<item>@string/PreferencePluginsAlwaysOff</item>
+		<item>@string/PreferencePluginsOnDemand</item>
+		<item>@string/PreferencePluginsAlwaysOn</item>
+	</string-array>
+	
+    <string-array name="PreferencePluginsValues">
+		<item>OFF</item>
+		<item>ON_DEMAND</item>
+		<item>ON</item>
+	</string-array>
+	
+    <string name="PreferenceUserAgentTitle">User-agent</string>
+    <string name="PreferenceUserAgentSummary">Definir o user-agent a usar pelo browser.</string>
+    <string name="PreferenceUserAgentDialogTitle">User-agent</string>
+    
+    <string name="PreferenceHeaderPrivacySettingsTitle">Definições de privacidade e segurança</string>
+    
+    <string name="PreferencePrivacyClearCacheTitle">Apagar cache</string>
+    <string name="PreferencePrivacyClearCacheSummary">Apagar cache e bases de dados locais.</string>
+        
+    <string name="PreferenceCategoryHistoryTitle">Histórico</string>
+    <string name="PreferencePrivacyHistorySizeTitle">Tamanho do histórico</string>
+    <string name="PreferencePrivacyHistorySizeSummary">Definir tamanho do histórico, em dias.</string>
+    <string name="PreferencePrivacyClearHistoryTitle">Apagar histórico</string>
+    <string name="PreferencePrivacyClearHistorySummary">Apagar histórico de navegação.</string>
+        
+    <string name="PreferenceCategoryCookiesTitle">Cookies</string>
+    <string name="PreferencePrivacyAcceptCookiesTitle">Aceitar cookies</string>
+    <string name="PreferencePrivacyAcceptCookiesSummary">Permitir que os sites guardem e leiam dados de cookies.</string>
+    <string name="PreferencePrivacyClearCookiesTitle">Apagar cookies</string>
+    <string name="PreferencePrivacyClearCookiesSummary">Apagar todos os cookies do browser.</string>
+    
+    <string name="PreferenceCategoryGeolocationTitle">Localização</string>
+    <string name="PreferencePrivacyEnableGeolocationTitle">Ativar localização</string>
+    <string name="PreferencePrivacyEnableGeolocationSummary">Permitir que os sites peçam acesso à sua localização.</string>
+    <string name="PreferencePrivacyClearGeolocationTitle">Apagar acessos à localização</string>
+    <string name="PreferencePrivacyClearGeolocationSummary">Apagar acessos à localização para todos os sites.</string>
+    
+    <string name="PreferenceCategoryFormDataTitle">Dados de formulário</string>
+    <string name="PreferencePrivacyRememberFormDataTitle">Lembrar dados de formulário</string>
+    <string name="PreferencePrivacyRememberFormDataSummary">Lembrar dados de formulário para usar mais tarde.</string>
+    <string name="PreferencePrivacyClearFormDataTitle">Apagar dados de formulário</string>
+    <string name="PreferencePrivacyClearFormDataSummary">Apagar todos os dados de formulário guardados.</string>
+    
+    <string name="PreferenceCategoryPasswordsTitle">Senhas</string>
+    <string name="PreferencePrivacyRememberPasswordsTitle">Lembrar senhas</string>
+    <string name="PreferencePrivacyRememberPasswordsSummary">Guardar nomes de utilizador e senhas para os sites.</string>
+    <string name="PreferencePrivacyClearPasswordsTitle">Apagar senhas</string>
+    <string name="PreferencePrivacyClearPasswordsSummary">Apagar todas as senhas guardadas.</string>
+    
+    <string name="PreferencePrivacyWebsitesSettingsTitle">Definições de sites</string>
+    <string name="PreferencePrivacyWebsitesSettingsSummary">Definições avançadas para sites individuais.</string>
+    
+    <string name="HistoryToday">Hoje</string>
+    <string name="HistoryYesterday">Ontem</string>
+    <string name="HistoryLastSevenDays">Últimos 7 dias</string>
+    <string name="HistoryLastMonth">Último mês</string>
+    <string name="HistoryOlder">Mais antigo</string>
+    
+    <string name="ClearCacheMessage">Apagar conteúdo e bases de dados locais?</string>
+    <string name="ClearHistoryMessage">Apagar histórico de navegação do browser?</string>
+    <string name="ClearCookiesMessage">Apagar todos os cookies?</string>
+    <string name="ClearGeolocationMessage">Apagar dados de acesso dos sites?</string>
+    <string name="ClearFormDataMessage">Apagar todos os dados de formulário guardados?</string>
+    <string name="ClearPasswordsMessage">Apagar todas as senhas guardadas?</string>
+    
+    <string name="PreferenceHomepageStart">Página inicial</string>
+    <string name="PreferenceHomepageBlank">Página em branco</string>
+    <string name="PreferenceHomepageCustom">Página personalizada</string>
+    
+    <string-array name="HomepageTitles">
+        <item>@string/PreferenceHomepageStart</item>
+        <item>@string/PreferenceHomepageBlank</item>
+        <item>@string/PreferenceHomepageCustom</item>
+    </string-array>
+    
+    <string name="PreferenceUserAgentAndroid">Android</string>
+    <string name="PreferenceUserAgentDesktop">Desktop</string>
+    <string name="PreferenceUserAgentOther">Outro</string>
+    
+    <string-array name="UserAgentsTitles">
+        <item>@string/PreferenceUserAgentAndroid</item>
+        <item>@string/PreferenceUserAgentDesktop</item>
+        <item>@string/PreferenceUserAgentOther</item>
+    </string-array>
+    
+    <string name="SearchUrlGoogle">http://www.google.pt/m?q={searchTerms}</string>
+    
+    <string name="PreferenceHeaderAddonsTitle">Addons</string>
+    
+    <string name="PreferenceHeaderAboutTitle">Sobre</string>
+    
+    <string name="HttpAuthenticationDialogDialogTitle">Entrar em %1$s - %2$s</string>
+    <string name="HttpAuthenticationDialogUserName">Nome</string>
+    <string name="HttpAuthenticationDialogPassword">Senha</string>
+    
+    <string name="FormResubmitTitle">Reenvio de formulário</string>
+    <string name="FormResubmitMessage">A página que está a tentar ver contém dados já submetidos (\"POSTDATA\"). Se reenviar os dados, qualquer ação que o formulário tenha feito na página (tal como uma pesquisa ou compra online) será repetida.</string>
+    
+    <string name="BookmarkAdded">Adicionado aos favoritos.</string>
+    <string name="BookmarkRemoved">Removido dos favoritos.</string>
+    
+    <string name="SDCardErrorNoSDMsg">Cartão de memória não encontrado.</string>
+    <string name="SDCardErrorSDUnavailable">Cartão de memória não disponível.</string>
+    
+    <string name="HistoryBookmarksClearTitle">Apagar</string>
+    
+    <string-array name="ClearHistoryBookmarksChoice">
+        <item>@string/History</item>
+        <item>@string/Bookmarks</item>
+        <item>@string/All</item>
+    </string-array>
+    
+    <string name="HistoryBookmarksImportSourceTitle">Importar ficheiro</string>
+    <string name="HistoryBookmarksImportFileUnavailable">Ficheiro indisponível, ou não existe ou não é legível.</string>
+    <string name="HistoryBookmarksImportTitle">Importar histórico e favoritos</string>
+    <string name="HistoryBookmarksImportInitialMessage">A importar histórico e favoritos&#8230;</string>
+    <string name="HistoryBookmarksImportReadingFile">A ler ficheiro&#8230;</string>
+    <string name="HistoryBookmarksImportParsingFile">A analizar ficheiro&#8230;</string>
+    <string name="HistoryBookmarksImportProgressMessage">A ler item %1$s de %2$s.</string>
+    <string name="HistoryBookmarksImportInsertMessage">A inserir valores&#8230;</string>
+    <string name="HistoryBookmarksImportErrorTitle">Erro durante a importação</string>
+    <string name="HistoryBookmarksImportErrorMessage">Ocorreu um erro durante a importação do histórico e favoritos: %s</string>
+    
+    <string name="HistoryBookmarksExportTitle">Exportar histórico e favoritos</string>
+    <string name="HistoryBookmarksExportInitialMessage">A exportar histórico e favoritos&#8230;</string>
+    <string name="HistoryBookmarksExportCheckCardMessage">A verificar armazenamento externo&#8230;</string>
+    <string name="HistoryBookmarksExportProgressMessage">A exportar item %1$s de %2$s.</string>
+    <string name="HistoryBookmarksExportErrorTitle">Erro durante a exportação</string>
+    <string name="HistoryBookmarksExportErrorMessage">Ocorreu um erro durante a exportação do histórico e favoritos: %s</string>
+    
+    <string name="GeolocationTitle">Pedido de localização</string>
+    <string name="GeolocationMessage">Pedido de acesso do site %s à sua localização.</string>        
+    <string name="GeolocationAccept">Aceitar</string>
+    <string name="GeolocationDecline">Recusar</string>
+    
+    <string name="WebsitesSettingsEmpty">Sem definições para sites.</string>
+    
+    <string name="WebsitesSettingsSiteTitle">Definições para %s</string>
+    
+    <string name="WebsitesSettingsDataUsage">%s MB armazenados no seu dispositivo.</string>
+    <string name="WebsitesSettingsDataClickToClear">Carregar para apagar dados armazenados.</string>
+    <string name="WebsitesSettingsCleatDataDialogTitle">Apagar dados</string>
+    <string name="WebsitesSettingsCleatDataDialogMessage">Apagar todos os dados armazenados para este site?</string>
+    
+    <string name="WebsitesSettingsGeolocationClickToClear">Carregar para apagar acessos de localização.</string>
+    <string name="WebsitesSettingsGeolocationAllowed">Este site pode aceder à sua localização.</string>
+    <string name="WebsitesSettingsGeolocationNotAllowed">Este site não pode aceder à sua localização.</string>
+    <string name="WebsitesSettingsGeolocationPageDialogTitle">Apagar acessos de localização</string>
+    <string name="WebsitesSettingsGeolocationPageDialogMessage">Apagar acessos de localização para este site?</string>
+    
+    <string name="AddonsWarningText">Por favor instale apenas addons de desenvolvedores de confiança. Se experimentar comportamentos estranhos, desactive todos os seus addons.</string>
+    <string name="AddonsGetAddons"><a href="">Obter addons</a></string>
+    <string name="AddonsMarketNotFoundTitle">Android Market não encontrado</string>
+    <string name="AddonsMarketNotFoundMessage">O Android Market não parece estar instalado no seu dispositivo.</string>
+    <string name="AddonsEnableAll">Ativar todos</string>
+    <string name="AddonsDisableAll">Desativar todos</string>
+    
+    <string name="AddonDetailsContact">Contacto: %s</string>
+    <string name="AddonDetailsUsedCallbacksTitle">Este addon:</string>
+    
+    <string name="AddonCallbackPageStarted">É notificado quando uma página começar a carregar.</string>
+    <string name="AddonCallbackPageFinished">É notificado quando uma página acabar de carregar.</string>
+    <string name="AddonCallbackTabOpened">É notificado quando um separador for aberto.</string>
+    <string name="AddonCallbackTabClosed">É notificado quando um separador for fechado.</string>
+    <string name="AddonCallbackTabSwitched">É notificado ao alternar entre separadores.</string>
+    <string name="AddonCallbackHasPreferencesPage">Tem uma página de definições.</string>
+    <string name="AddonCallbackContributeMainMenu">Pode contribuir para o menu principal.</string>
+    <string name="AddonCallbackContributeLinkContextMenu">Pode contribuir para o menu de contexto de ligação.</string>
+    <string name="AddonCallbackContributeHistoryBookmarksMenu">Pode contribuir para o menu de favoritos e histórico.</string>
+    <string name="AddonCallbackContributeBookmarkContextMenu">Pode contribuir para o menu de favoritos.</string>
+    <string name="AddonCallbackContributeHistoryContextMenu">Pode contribuir para o menu de histórico.</string>
+    
+    <string name="AddonDetailsUsedPermissionsTitle">Tem as seguintes permissões:</string>
+    <string name="AddonDetailsPermissionsNone">Nenhuma.</string>
+    <string name="AddonDetailsUnableToGetPermissions">Incapaz de ler permissões. Verifique-as com o gestor de aplicações do seu dispositivo.</string>
+    
+    <string name="ContentDescriptionDivider">divisor</string>
+    <string name="ContentDescriptionApplicationIcon">Ícone de aplicação</string>
+    <string name="ContentDescriptionSuggestionIcon">Sugestão favicon</string>
+    <string name="ContentDescriptionBookmarkThumbnail">Miniatura de favorito</string>
+    <string name="ContentDescriptionFavicon">Favicon de site</string>
+    <string name="ContentDescriptionGoStopReloadButton">Ir / Parar / Recarregar botão</string>
+    <string name="ContentDescriptionMenuButton">Botão de menu</string>
+    <string name="ContentDescriptionPreviousTabButton">Botão de separador anterior</string>
+    <string name="ContentDescriptionNextTabButton">Botão de separador seguinte</string>
+    <string name="ContentDescriptionLeftBubble">Bolha esquerda</string>
+    <string name="ContentDescriptionRightBubble">Bolha direita</string>
+    <string name="ContentDescriptionBackButton">Botão de retrocesso</string>
+    <string name="ContentDescriptionCloseTabButton">Botão de fechar separador</string>
+    <string name="ContentDescriptionBookmarksButton">Botão de favoritos</string>
+    <string name="ContentDescriptionNewTabButton">Botão de separador novo</string>
+    <string name="ContentDescriptionForwardButton">Botão de avanço</string>
+    <string name="ContentDescriptionHomeButton">Botão de início</string>
+    <string name="ContentDescriptionWebsiteSettingsLocation">Localização de site</string>
+    <string name="ContentDescriptionWebsiteSettingsUsage">Uso de site</string>
+    <string name="ContentDescriptionWebsiteSettingsFeature">Características de site</string>
+    
+    <string-array name="DefaultBookmarksTitles">
+		<item>Google</item>
+		<item>Wikipedia</item>
+		<item>YouTube</item>
+		<item>Yahoo!</item>
+		<item>BBC</item>
+		<item>eBay</item>
+	</string-array>
+	
+    <string-array name="DefaultBookmarksUrls">
+		<item>http://www.google.com/</item>
+		<item>http://en.wikipedia.org/</item>
+		<item>http://www.youtube.com/</item>
+		<item>http://www.yahoo.com/</item>
+		<item>http://www.bbc.co.uk/</item>
+		<item>http://www.ebay.com/</item>
+	</string-array>
+	
+    <!-- 1.2 -->
+    <string name="IncognitoTab">Separador incognito</string>
+    <string name="ContextMenuOpenInBackground">Abrir em background</string>
+    <string name="ContentDescriptionPrivateBrowsingIndicator">Indicador de navegação privada</string>
+    
+    <!-- 1.3 -->
+    <string name="Folder">Pasta</string>
+    <string name="NewFolder">Nova pasta</string>        
+    <string name="NewFolderHint">Nome de nova pasta</string>
+    <string name="ProvideNewFolderName">Por favor providencie um nome para a nova pasta, ou escolha uma existente.</string>
+    
+    <string name="DeleteFolder">Apagar pasta</string>
+    <string name="ConfirmDeleteFolderMessage">Apagar esta pasta e todo o seu conteúdo?</string>
+    <string name="DeleteFolderTitle">A apagar pasta</string>
+    <string name="DeleteFolderMessage">Por favor aguarde enquanto a pasta e o seu conteúdo estão a ser apagados&#8230;</string>
+    
+    <string name="ContentDescriptionBookmarksFoldersBack">Voltar na hierarquia das pastas dos favoritos</string>
+    
+    <!-- 1.4 -->
+    <string name="PreferenceHeaderAccessibilityTitle">Definições de acessibilidade</string>
+    <string name="PreferenceCategoryTextSizeTitle">Tamanho do texto</string>
+    <string name="PreferenceAccessibilityTextSizePreviewTitle">Pré-visualização do tamanho do texto</string>
+    <string name="PreferenceAccessibilityTextScalingTitle">Escala de texto</string>
+    <string name="PreferenceAccessibilityMinimumFontSizeTitle">Tamanho mínimo da fonte</string>
+    <string name="PreferenceAccessibilityMinimumFontSizeSummary">Definir o tamanho mínimo da fonte usada para monstrar o texto no browser.</string>
+    
+    <string name="FontPreviewTextTiny">Minúsculo</string>
+    <string name="FontPreviewTextSmall">Pequeno</string>
+    <string name="FontPreviewTextNormal">Normal</string>
+    <string name="FontPreviewTextLarge">Grande</string>
+    <string name="FontPreviewTextHuge">Enorme</string>
+    
+    <string-array name="FontPreviewText">
+		<item>@string/FontPreviewTextTiny</item>
+		<item>@string/FontPreviewTextSmall</item>
+		<item>@string/FontPreviewTextNormal</item>
+		<item>@string/FontPreviewTextLarge</item>
+		<item>@string/FontPreviewTextHuge</item>
+	</string-array>
+	
+    <string name="PreferenceCategoryInvertedScreenRenderingTitle">Renderização invertida do ecran</string>
+    <string name="PreferenceAccessibilityInvertedRenderingTitle">Renderização invertida</string>
+    <string name="PreferenceAccessibilityInvertedRenderingSummary">Renderização invertida das cores do ecran. Pode não funcionar em todos os dispositivos.</string>
+    <string name="PreferenceAccessibilityInvertedRenderingContrastTitle">Contraste</string>
+    
+    <string name="ContentDescriptionAutocompleteQueryBuilder">Coloque o endereço de sugestão na barra de endereços, sem navegar para ele.</string>
+    
+    <!-- 1.5 -->
+    <string name="UnknownAutority">fonte desconhecida</string>
+    <string name="RememberMyChoice">Lembrar a minha escolha</string>
+    <string name="SslExceptionAccessAllowedByUserToast">Exceção de segurança de SSL: Acesso permitido a %s pelo utilizador.</string>
+    <string name="SslExceptionAccessDisallowedByUserToast">Exceção de segurança de SSL: Accesso não permitido a %s pelo utilizador.</string>
+    
+    <string name="PreferenceSslExceptionsTitle">Exceções de segurança de SSL</string>
+    <string name="PreferenceSslExceptionsSummary">Lista de exceções de segurança de SSL dos sites.</string>
+    <string name="SslExceptionWebsitesText"><i>Clicar para remover exceção.</i></string>
+    <string name="SslExceptionEmptyText">Não existem nenhumas exceções de segurança de SSL.</string>
+    
+    <string name="RemoveSslExceptionTitle">Remover exceção</string>
+    <string name="RemoveSslExceptionMessage">Remover exceção de segurança para este site?</string>
+    
+    <string name="SslInvalid">Este certificado é inválido.</string>
+    <string name="SslDateInvalid">A data deste certificado é inválida.</string>
+    
+    <string name="Authorized">Autorizado:</string>
+    <string name="Reasons">Razões:</string>
+    
+    <string name="SearchUrlDialogText1">O seu motor de busca está atualmente definido para:</string>
+    <string name="SearchUrlDialogText2">Pode altera-lo escolhendo um motor de busca proposto abaixo.</string>
+    <string name="SearchUrlGetOnline"><a href="">Editar manualmente o motor de busca</a></string>        
+    <string name="SearchUrlConnecting">A ligar&#8230;</string>
+    <string name="SearchUrlParsing">A analizar resultados&#8230;</string>
+    <string name="SearchUrlBadResponseCodeMessage">Não é possível ligar ao repositório de motores de busca (código de resposta: %s).</string>
+    
+    <string name="SearchUrlDefault">Google Portugal</string>
+    <string name="SearchUrlCustom">Motor de busca personalizado</string>
+    
+    <string name="SortBookmarks">Ordenar favoritos</string>        
+    <string name="MostUsedSortMode">Mais utilizados</string>
+    <string name="AlphaSortMode">Alfabeticamente</string>
+    <string name="RecentSortMode">Visitados recentemente</string>
+
+</resources>

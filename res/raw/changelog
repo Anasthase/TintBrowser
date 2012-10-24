@@ -4,6 +4,7 @@
 - Handle search key on devices which has one.
 - Bookmarks can now be sorted in three ways (Most used, Alphabetically, Most recently visited).
 - Various bug fixes.
+- Portuguese translation (thanks to Murkom).
 
 1.4:
 - Add accessibility settings: minimum font size, text scaling, and inverted screen rendering;

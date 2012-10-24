@@ -438,12 +438,18 @@
     <string name="PreferenceAccessibilityMinimumFontSizeTitle">Minimum font size</string>
     <string name="PreferenceAccessibilityMinimumFontSizeSummary">Set the minimum font size used to display text in the browser.</string>
     
+    <string name="FontPreviewTextTiny">Tiny</string>
+    <string name="FontPreviewTextSmall">Small</string>
+    <string name="FontPreviewTextNormal">Normal</string>
+    <string name="FontPreviewTextLarge">Large</string>
+    <string name="FontPreviewTextHuge">Huge</string>
+    
     <string-array name="FontPreviewText">
-		<item>Tiny</item>
-		<item>Small</item>
-		<item>Normal</item>
-		<item>Large</item>
-		<item>Huge</item>
+		<item>@string/FontPreviewTextTiny</item>
+		<item>@string/FontPreviewTextSmall</item>
+		<item>@string/FontPreviewTextNormal</item>
+		<item>@string/FontPreviewTextLarge</item>
+		<item>@string/FontPreviewTextHuge</item>
 	</string-array>
 	
     <string name="PreferenceCategoryInvertedScreenRenderingTitle">Inverted screen rendering</string>

@@ -438,12 +438,18 @@
     <string name="PreferenceAccessibilityMinimumFontSizeTitle">Taille de police minimale</string>
     <string name="PreferenceAccessibilityMinimumFontSizeSummary">Définie la taille minimale de police utilisée pour afficher les textes dans le navigateur.</string>
     
+    <string name="FontPreviewTextTiny">Très petite</string>
+    <string name="FontPreviewTextSmall">Petite</string>
+    <string name="FontPreviewTextNormal">Normale</string>
+    <string name="FontPreviewTextLarge">Grande</string>
+    <string name="FontPreviewTextHuge">Très grande</string>
+    
     <string-array name="FontPreviewText">
-		<item>Très petite</item>
-		<item>Petite</item>
-		<item>Normale</item>
-		<item>Grande</item>
-		<item>Très grande</item>
+		<item>@string/FontPreviewTextTiny</item>
+		<item>@string/FontPreviewTextSmall</item>
+		<item>@string/FontPreviewTextNormal</item>
+		<item>@string/FontPreviewTextLarge</item>
+		<item>@string/FontPreviewTextHuge</item>
 	</string-array>
 	
     <string name="PreferenceCategoryInvertedScreenRenderingTitle">Rendu inversé de l\'écran</string>
