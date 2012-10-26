@@ -38,8 +38,8 @@
     <string name="Cancel">Cancelar</string>
     <string name="Yes">Sim</string>
     <string name="No">Não</string>
-    <string name="On">Ligado</string>
-    <string name="Off">Desligado</string>
+    <string name="On">On</string>
+    <string name="Off">Off</string>
     <string name="Clear">Apagar</string>
     <string name="Continue">Continuar</string>
     <string name="Proceed">Proceder</string>
@@ -81,9 +81,9 @@
     <string name="UrlCopyToastMessage">Endereço copiado para a área de transferência</string>
     <string name="ContextMenuShareUrl">Partilhar</string>
     
-    <string name="JavaScriptAlertDialog">Diálogo de alerta de JavaScript</string>
-    <string name="JavaScriptConfirmDialog">Diálogo de confirmação de JavaScript</string>
-    <string name="JavaScriptPromptDialog">Diálogo de aviso de JavaScript</string>        
+    <string name="JavaScriptAlertDialog">Alerta de JavaScript</string>
+    <string name="JavaScriptConfirmDialog">Confirmação de JavaScript</string>
+    <string name="JavaScriptPromptDialog">Aviso de JavaScript</string>        
 	
 	<string name="SslWarning">Aviso de segurança</string>
 	<string name="SslWarningsHeader">Há problemas com o certificado de segurança para site (%s).</string>
@@ -347,7 +347,7 @@
     <string name="WebsitesSettingsGeolocationPageDialogTitle">Apagar acessos de localização</string>
     <string name="WebsitesSettingsGeolocationPageDialogMessage">Apagar acessos de localização para este site?</string>
     
-    <string name="AddonsWarningText">Por favor instale apenas addons de desenvolvedores de confiança. Se experimentar comportamentos estranhos, desactive todos os seus addons.</string>
+    <string name="AddonsWarningText">Por favor instale apenas addons de desenvolvedores de confiança. Se experimentar comportamentos estranhos, desative todos os seus addons.</string>
     <string name="AddonsGetAddons"><a href="">Obter addons</a></string>
     <string name="AddonsMarketNotFoundTitle">Android Market não encontrado</string>
     <string name="AddonsMarketNotFoundMessage">O Android Market não parece estar instalado no seu dispositivo.</string>
