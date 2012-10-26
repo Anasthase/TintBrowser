@@ -398,8 +398,8 @@ public class BookmarksWrapper {
 	public static void updateHistory(ContentResolver contentResolver, String title, String url, String originalUrl) {
 		String[] colums = new String[] { BookmarksProvider.Columns._ID, BookmarksProvider.Columns.URL, BookmarksProvider.Columns.BOOKMARK, BookmarksProvider.Columns.VISITS };
 		
-		String escapedUrl = DatabaseUtils.sqlEscapeString(url);
-		String escapedOriginalUrl = DatabaseUtils.sqlEscapeString(originalUrl);
+		String escapedUrl = url != null ? DatabaseUtils.sqlEscapeString(url) : "";
+		String escapedOriginalUrl = originalUrl != null ? DatabaseUtils.sqlEscapeString(originalUrl) : "";
 		
 		String whereClause = BookmarksProvider.Columns.URL + " = " + escapedUrl + " OR " + BookmarksProvider.Columns.URL + " = " + escapedOriginalUrl;
 
@@ -488,7 +488,8 @@ public class BookmarksWrapper {
 				(contentResolver != null)) {
 			String whereClause;
 
-			if (!url.equals(originalUrl)) {
+			if ((originalUrl != null) &&
+					!url.equals(originalUrl)) {
 				url = DatabaseUtils.sqlEscapeString(url);
 				originalUrl = DatabaseUtils.sqlEscapeString(originalUrl);
 				
@@ -522,7 +523,8 @@ public class BookmarksWrapper {
 				(contentResolver != null)) {
 			String whereClause;
 
-			if (!url.equals(originalUrl)) {
+			if ((originalUrl != null) &&
+					!url.equals(originalUrl)) {
 				url = DatabaseUtils.sqlEscapeString(url);
 				originalUrl = DatabaseUtils.sqlEscapeString(originalUrl);
 				
@@ -557,7 +559,8 @@ public class BookmarksWrapper {
 				(contentResolver != null)) {
 			String whereClause;
 
-			if (!url.equals(originalUrl)) {
+			if ((originalUrl != null) &&
+					!url.equals(originalUrl)) {
 				url = DatabaseUtils.sqlEscapeString(url);
 				originalUrl = DatabaseUtils.sqlEscapeString(originalUrl);
 				
@@ -684,11 +687,11 @@ public class BookmarksWrapper {
     				int bookmarkId = stockCursor.getColumnIndex(BookmarksProvider.Columns.BOOKMARK);
     				
     				do {
-    					boolean isFolder = stockCursor.getInt(bookmarkId) > 0 ? true : false;
+    					boolean isBookmark = stockCursor.getInt(bookmarkId) > 0 ? true : false;
     					results.add(new UrlSuggestionItem(pattern,
     							stockCursor.getString(titleId),
     							stockCursor.getString(urlId),
-    							isFolder ? 2 : 1));
+    							isBookmark ? 2 : 1));
     					
     				} while (stockCursor.moveToNext());
     			}
