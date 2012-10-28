@@ -493,5 +493,12 @@
     <string name="MostUsedSortMode">Mais utilizados</string>
     <string name="AlphaSortMode">Alfabeticamente</string>
     <string name="RecentSortMode">Visitados recentemente</string>
+    
+    <!-- 1.6 -->
+    <string name="HistoryBookmarksImportErrorInvalidFileFormat">Invalid file format</string>
+    <string name="HistoryBookmarksImportFoldersProgressMessage">Reading folder %1$s of %2$s.</string>
+    <string name="HistoryBookmarksImportFoldersLinkMessage">Linking folders&#8230;</string>
+    <string name="HistoryBookmarksImportBookmarksProgressMessage">Reading bookmark %1$s of %2$s.</string>
+    <string name="HistoryBookmarksImportHistoryProgressMessage">Reading history item %1$s of %2$s.</string>
 
 </resources>

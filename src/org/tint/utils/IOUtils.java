@@ -45,7 +45,8 @@ public class IOUtils {
 				@Override
 				public boolean accept(File pathname) {
 					if ((pathname.isFile()) &&
-							(pathname.getPath().endsWith(".xml"))) {
+							(pathname.getPath().toLowerCase().endsWith(".xml") ||
+							 pathname.getPath().toLowerCase().endsWith(".json"))) {
 						return true;
 					}
 					return false;

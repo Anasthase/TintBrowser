@@ -214,6 +214,18 @@ public class BookmarksActivity extends Activity implements IHistoryBookmaksExpor
 			mProgress.setMessage(String.format(getString(R.string.HistoryBookmarksImportProgressMessage), progress, total));
 			break;
 		case 3:
+			mProgress.setMessage(String.format(getString(R.string.HistoryBookmarksImportFoldersProgressMessage), progress, total));
+			break;
+		case 4:
+			mProgress.setMessage(getString(R.string.HistoryBookmarksImportFoldersLinkMessage));
+			break;
+		case 5:
+			mProgress.setMessage(String.format(getString(R.string.HistoryBookmarksImportBookmarksProgressMessage), progress, total));
+			break;
+		case 6:
+			mProgress.setMessage(String.format(getString(R.string.HistoryBookmarksImportHistoryProgressMessage), progress, total));
+			break;
+		case 7:
 			mProgress.setMessage(getString(R.string.HistoryBookmarksImportInsertMessage));
 			break;
 		default: break;

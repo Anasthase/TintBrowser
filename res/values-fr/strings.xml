@@ -494,4 +494,11 @@
     <string name="AlphaSortMode">Alphabétiquement</string>
     <string name="RecentSortMode">Plus récemment visités</string>
     
+    <!-- 1.6 -->
+    <string name="HistoryBookmarksImportErrorInvalidFileFormat">Format de fichier invalide</string>
+    <string name="HistoryBookmarksImportFoldersProgressMessage">Import du dossier %1$s sur %2$s.</string>
+    <string name="HistoryBookmarksImportFoldersLinkMessage">Création des liens entre dossiers&#8230;</string>
+    <string name="HistoryBookmarksImportBookmarksProgressMessage">Import du favori %1$s sur %2$s.</string>
+    <string name="HistoryBookmarksImportHistoryProgressMessage">Import de l\'élément de l\'historique %1$s sur %2$s.</string>
+    
 </resources>

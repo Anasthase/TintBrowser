@@ -21,7 +21,9 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.tint.R;
 import org.tint.providers.BookmarksProvider;
 import org.tint.ui.preferences.IHistoryBookmaksExportListener;
@@ -36,7 +38,7 @@ public class HistoryBookmarksExportTask extends AsyncTask<Cursor, Integer, Strin
 
 	private Context mContext;
 	private IHistoryBookmaksExportListener mListener;
-	
+
 	public HistoryBookmarksExportTask(Context context, IHistoryBookmaksExportListener listener) {
 		mContext = context;
 		mListener = listener;
@@ -44,87 +46,27 @@ public class HistoryBookmarksExportTask extends AsyncTask<Cursor, Integer, Strin
 
 	@Override
 	protected String doInBackground(Cursor... params) {
-		
+
 		publishProgress(0, 0, 0);
-		
+
 		String cardState = IOUtils.checkCardState(mContext);
 		if (cardState != null) {
 			return cardState;
 		}
-		
-		try {
-			String fileName = mContext.getString(R.string.ApplicationName) + "-" + getNowForFileName() + ".xml";
 
-			File file = new File(Environment.getExternalStorageDirectory(), fileName);		
-			FileWriter writer = new FileWriter(file);
-			
-			writer.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-			writer.write("<itemlist>\n");
-			
-			Cursor c = params[0];
-			if (c.moveToFirst()) {
-				
-				int titleIndex = c.getColumnIndex(BookmarksProvider.Columns.TITLE);
-				int urlIndex = c.getColumnIndex(BookmarksProvider.Columns.URL);
-				int creationDateIndex = c.getColumnIndex(BookmarksProvider.Columns.CREATION_DATE);
-				int visitedDateIndex = c.getColumnIndex(BookmarksProvider.Columns.VISITED_DATE);
-				int visitsIndex = c.getColumnIndex(BookmarksProvider.Columns.VISITS);
-				int bookmarkIndex = c.getColumnIndex(BookmarksProvider.Columns.BOOKMARK);
-				int folderIndex = c.getColumnIndex(BookmarksProvider.Columns.IS_FOLDER);
-				
-				int current = 0;
-				int total = c.getCount();
-				
-				while (!c.isAfterLast()) {
-					
-					publishProgress(1, current, total);
-					
-					if (c.getInt(folderIndex) == 0) {
-						writer.write("<item>\n");
-
-						String title = c.getString(titleIndex);
-						writer.write(String.format("<title>%s</title>\n", title != null ? URLEncoder.encode(title) : ""));
-
-						String url = c.getString(urlIndex);
-						writer.write(String.format("<url>%s</url>\n", url != null ? URLEncoder.encode(url) : ""));
-
-						writer.write(String.format("<creationdate>%s</creationdate>\n", c.getLong(creationDateIndex)));
-						writer.write(String.format("<visiteddate>%s</visiteddate>\n", c.getLong(visitedDateIndex)));
-						writer.write(String.format("<visits>%s</visits>\n", c.getInt(visitsIndex)));					
-						writer.write(String.format("<bookmark>%s</bookmark>\n", c.getInt(bookmarkIndex)));
-
-						writer.write("</item>\n");
-					}
-					
-					current++;
-					c.moveToNext();
-				}
-				
-			}
-			
-			writer.write("</itemlist>\n");
-
-			writer.flush();
-			writer.close();
-			
-		} catch (IOException e) {			
-			e.printStackTrace();
-			return e.getMessage();
-		}
-		
-		return null;
+		return writeAsJSON(params);
 	}
-	
+
 	@Override
 	protected void onProgressUpdate(Integer... values) {
 		mListener.onExportProgress(values[0], values[1], values[2]);
 	}
-	
+
 	@Override
 	protected void onPostExecute(String result) {
 		mListener.onExportDone(result);
 	}
-	
+
 	/**
 	 * Get a string representation of the current date / time in a format suitable for a file name.
 	 * @return A string representation of the current date / time.
@@ -132,8 +74,144 @@ public class HistoryBookmarksExportTask extends AsyncTask<Cursor, Integer, Strin
 	private String getNowForFileName() {
 		Calendar c = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmss");
-		
+
 		return sdf.format(c.getTime());
+	}
+	
+	private String writeAsJSON(Cursor... params) {
+		try {
+			String fileName = mContext.getString(R.string.ApplicationName) + "-" + getNowForFileName() + ".json";
+
+			File file = new File(Environment.getExternalStorageDirectory(), fileName);		
+			FileWriter writer = new FileWriter(file);			
+			
+			FoldersJSONArray foldersArray = new FoldersJSONArray();
+			BookmarksJSONArray bookmarksArray = new BookmarksJSONArray();
+			HistoryJSONArray historyArray = new HistoryJSONArray();
+			
+			Cursor c = params[0];
+			if (c.moveToFirst()) {
+
+				int current = 0;
+				int total = c.getCount();
+
+				int idIndex = c.getColumnIndex(BookmarksProvider.Columns._ID);
+				int titleIndex = c.getColumnIndex(BookmarksProvider.Columns.TITLE);
+				int urlIndex = c.getColumnIndex(BookmarksProvider.Columns.URL);
+				int creationDateIndex = c.getColumnIndex(BookmarksProvider.Columns.CREATION_DATE);
+				int visitedDateIndex = c.getColumnIndex(BookmarksProvider.Columns.VISITED_DATE);
+				int visitsIndex = c.getColumnIndex(BookmarksProvider.Columns.VISITS);
+				int bookmarkIndex = c.getColumnIndex(BookmarksProvider.Columns.BOOKMARK);
+				int folderIndex = c.getColumnIndex(BookmarksProvider.Columns.IS_FOLDER);
+				int parentfolderIdIndex = c.getColumnIndex(BookmarksProvider.Columns.PARENT_FOLDER_ID);
+
+				while (!c.isAfterLast()) {
+
+					publishProgress(1, current, total);
+
+					boolean isFolder = c.getInt(folderIndex) > 0 ? true : false;					
+
+					if (isFolder) {						
+						String title = c.getString(titleIndex);
+						title = title != null ? URLEncoder.encode(title) : "";
+						
+						foldersArray.add(
+								title,
+								c.getLong(idIndex),
+								c.getLong(parentfolderIdIndex));
+						
+					} else {
+						boolean isBookmark = c.getInt(bookmarkIndex) > 0 ? true : false;
+						
+						String title = c.getString(titleIndex);
+						title = title != null ? URLEncoder.encode(title) : "";
+
+						String url = c.getString(urlIndex);
+						url = url != null ? URLEncoder.encode(url) : "";
+						
+						if (isBookmark) {
+							bookmarksArray.add(
+									c.getLong(parentfolderIdIndex),
+									title,
+									url,
+									c.getLong(creationDateIndex),
+									c.getLong(visitedDateIndex),
+									c.getInt(visitsIndex));							
+						} else {
+							historyArray.add(
+									title,
+									url,
+									c.getLong(visitedDateIndex),
+									c.getInt(visitsIndex));
+						}
+					}
+
+					current++;
+					c.moveToNext();
+				}
+			}
+			
+			JSONObject output = new JSONObject();
+			output.put("folders", foldersArray);
+			output.put("bookmarks", bookmarksArray);
+			output.put("history", historyArray);
+			
+			writer.write(output.toString(1));
+			
+			writer.flush();
+			writer.close();
+			
+		} catch (JSONException e) {
+			e.printStackTrace();
+			return e.getMessage();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return e.getMessage();
+		}
+
+		return null;
+	}
+	
+	private class FoldersJSONArray extends JSONArray {
+		
+		public void add(String title, long id, long parentId) throws JSONException {
+			JSONObject item = new JSONObject();
+			item.put("title", title);
+			item.put("id", id);
+			item.put("parentId", parentId);
+			
+			this.put(item);
+		}
+		
+	}
+	
+	private class BookmarksJSONArray extends JSONArray {
+		
+		public void add(long folderId, String title, String url, long creationDate, long visitedDate, int visits) throws JSONException {
+			JSONObject item = new JSONObject();
+			item.put("folderId", folderId);
+			item.put("title", title);
+			item.put("url", url);
+			item.put("creationDate", creationDate);
+			item.put("visitedDate", visitedDate);
+			item.put("visits", visits);
+
+			this.put(item);
+		}
+		
+	}
+	
+	private class HistoryJSONArray extends JSONArray  {
+
+		public void add(String title, String url, long visitedDate, int visits) throws JSONException {
+			JSONObject item = new JSONObject();
+			item.put("title", title);
+			item.put("url", url);
+			item.put("visitedDate", visitedDate);
+			item.put("visits", visits);
+
+			this.put(item);
+		}
 	}
 
 }

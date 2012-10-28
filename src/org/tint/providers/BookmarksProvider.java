@@ -209,25 +209,31 @@ public class BookmarksProvider extends ContentProvider {
 						Columns.CREATION_DATE + ", " +
 						Columns.VISITED_DATE + ", " + 
 						Columns.BOOKMARK + ", " +
+						Columns.IS_FOLDER + ", " +
 						Columns.PARENT_FOLDER_ID + 
-						") VALUES (?, ?, ?, ?, ?, ?, ?)");
+						") VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 				
 				for (ContentValues value : values) {
 					
-					String title = value.getAsString(Columns.TITLE);
-					String url = value.getAsString(Columns.URL);
+					String title = value.getAsString(Columns.TITLE);					
 					
-					if ((!TextUtils.isEmpty(title)) &&
-							(!TextUtils.isEmpty(url))) {
+					if (!TextUtils.isEmpty(title)) {
 					
+						String url = value.getAsString(Columns.URL);
 						String visits = value.getAsString(Columns.VISITS);
 						String creationDate = value.getAsString(Columns.CREATION_DATE);
 						String visitedDate = value.getAsString(Columns.VISITED_DATE);
 						String bookmark = value.getAsString(Columns.BOOKMARK);
+						String isFolder = value.getAsString(Columns.IS_FOLDER);
 						String parentFolderId = value.getAsString(Columns.PARENT_FOLDER_ID);
 						
 						insert.bindString(1, title);
-						insert.bindString(2, url);
+						
+						if (!TextUtils.isEmpty(url)) {
+							insert.bindString(2, url);
+						} else {
+							insert.bindNull(2);
+						}
 						
 						if (!TextUtils.isEmpty(visits)) {
 							insert.bindString(3, visits);
@@ -253,10 +259,16 @@ public class BookmarksProvider extends ContentProvider {
 							insert.bindString(6, "0");
 						}
 						
-						if (!TextUtils.isEmpty(parentFolderId)) {
-							insert.bindString(7, parentFolderId);
+						if (!TextUtils.isEmpty(isFolder)) {
+							insert.bindString(7, isFolder);
 						} else {
-							insert.bindString(7, "-1");
+							insert.bindString(7, "0");
+						}
+						
+						if (!TextUtils.isEmpty(parentFolderId)) {
+							insert.bindString(8, parentFolderId);
+						} else {
+							insert.bindString(8, "-1");
 						}
 
 						insert.execute();

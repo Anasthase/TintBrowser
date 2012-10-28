@@ -1,3 +1,6 @@
+1.6:
+- New export format for bookmarks and history; Bookmarks folders are now handled in export and import; Old format still supported for import.
+
 1.5:
 - User choice for SSL security exceptions can now be saved on a per-website basis.
 - Better search engine customization.
