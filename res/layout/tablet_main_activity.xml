@@ -13,40 +13,52 @@
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
- -->
+-->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >    
-    
+    android:orientation="vertical" >
+
     <LinearLayout
         android:id="@+id/WebViewContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_below="@+id/UrlBar"
         android:background="#dcdcdc"
-        android:layout_below="@+id/UrlBar" >
+        android:orientation="vertical" >
     </LinearLayout>
-    
+
+    <ImageView
+        android:id="@+id/ExitFullScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dip"
+        android:layout_marginBottom="10dip"
+        android:contentDescription="@string/ContentDescriptionExitFullScreen"
+        android:src="@drawable/ic_exit_fullscreen"
+        android:visibility="gone" />
+
     <org.tint.ui.views.TabletUrlBar
         android:id="@+id/UrlBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true" />
-    
+
     <ProgressBar
         android:id="@+id/WebViewProgress"
         style="@android:style/Widget.Holo.ProgressBar.Horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/UrlBar"
+        android:layout_marginBottom="0dip"
         android:layout_marginLeft="0dip"
         android:layout_marginRight="0dip"
-        android:layout_marginBottom="0dip"
         android:indeterminate="false"
         android:maxHeight="4dp"
-        android:minHeight="4dp"
-        android:layout_below="@+id/UrlBar">
+        android:minHeight="4dp" >
     </ProgressBar>
 
 </RelativeLayout>

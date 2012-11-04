@@ -33,6 +33,11 @@
 	    android:icon="@drawable/ic_incognito_holo_dark" 
 	    android:checkable="true" />
     
+    <item
+	    android:id="@+id/MainActivity.MenuFullScreen"
+	    android:title="@string/FullScreen" 
+	    android:checkable="true" />
+    
     <group android:id="@+id/MainActivity.DisabledOnStartPageMenuGroup">
     	<item
     	    android:id="@+id/MainActivity.MenuSharePage"

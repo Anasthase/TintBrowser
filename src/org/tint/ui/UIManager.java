@@ -89,6 +89,10 @@ public interface UIManager extends OnTouchListener {
 	ValueCallback<Uri> getUploadMessage();
 	
 	void onNewIntent(Intent intent);
+	
+	boolean isFullScreen();
+	
+	void toggleFullScreen();
 		
 	/**
 	 * Events.

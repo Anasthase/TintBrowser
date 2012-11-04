@@ -38,7 +38,9 @@ import android.graphics.Bitmap;
 import android.view.ActionMode;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 public class TabletUIManager extends BaseUIManager {
@@ -48,6 +50,7 @@ public class TabletUIManager extends BaseUIManager {
 	
 	private TabletUrlBar mUrlBar;
 	private ProgressBar mProgressBar;
+	private ImageView mExitFullScreen;
 	
 	public TabletUIManager(TintBrowserActivity activity) {
 		super(activity);
@@ -84,12 +87,21 @@ public class TabletUIManager extends BaseUIManager {
 	}
 	
 	@Override
-	protected void setupUI() {
+	protected void setupUI() {		
 		mActionBar.setDisplayShowTitleEnabled(false);
 		mActionBar.setHomeButtonEnabled(false);
 		mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		
 		mProgressBar = (ProgressBar) mActivity.findViewById(R.id.WebViewProgress);
+		
+		mExitFullScreen = (ImageView) mActivity.findViewById(R.id.ExitFullScreen);
+		mExitFullScreen.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				toggleFullScreen();
+			}
+		});
 		
 		mUrlBar = (TabletUrlBar) mActivity.findViewById(R.id.UrlBar);
 		mUrlBar.setEventListener(new OnTabletUrlBarEventListener() {
@@ -137,6 +149,8 @@ public class TabletUIManager extends BaseUIManager {
 				}
 			}
 		});
+		
+		super.setupUI();
 	}
 
 	@Override
@@ -320,6 +334,21 @@ public class TabletUIManager extends BaseUIManager {
 	
 	public StartPageFragment getStartPageFragment() {
 		return mStartPageFragment;
+	}
+
+	@Override
+	protected void setFullScreenFromPreferences() {
+		boolean fullScreen = isFullScreen();
+		
+		if (fullScreen) {
+			mActionBar.hide();
+		} else {
+			mActionBar.show();
+		}
+		
+		if (mExitFullScreen != null) {
+			mExitFullScreen.setVisibility(fullScreen ? View.VISIBLE : View.GONE);
+		}
 	}
 
 	@Override

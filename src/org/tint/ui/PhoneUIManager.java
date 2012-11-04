@@ -48,6 +48,8 @@ import android.view.ActionMode;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
@@ -370,7 +372,9 @@ public class PhoneUIManager extends BaseUIManager {
 	}
 
 	@Override
-	protected void setupUI() {
+	protected void setupUI() {	
+		super.setupUI();
+		
 		mActionBar.hide();
 		
 		mGestureDetector = new GestureDetector(mActivity, new GestureListener());
@@ -543,7 +547,7 @@ public class PhoneUIManager extends BaseUIManager {
         
         updateBubblesVisibility();
         
-        mToolbarsAnimator = new ToolbarsAnimator(mTopBar, mBottomBar, mShowPreviousTab, mShowNextTab);
+        mToolbarsAnimator = new ToolbarsAnimator(mTopBar, mBottomBar, mShowPreviousTab, mShowNextTab);		
         
         startHideToolbarsThread();
 	}
@@ -642,6 +646,21 @@ public class PhoneUIManager extends BaseUIManager {
 	@Override
 	protected void resetUI() {
 		updateUrlBar();		
+	}
+	
+	@Override
+	protected void setFullScreenFromPreferences() {
+		Window win = mActivity.getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+		final int bits = WindowManager.LayoutParams.FLAG_FULLSCREEN;
+		
+		if (PreferenceManager.getDefaultSharedPreferences(mActivity).getBoolean(Constants.PREFERENCE_FULL_SCREEN, false)) {
+			winParams.flags |=  bits;
+		} else {
+			winParams.flags &= ~bits;
+		}
+		
+		win.setAttributes(winParams);
 	}
 	
 	private void updateUrlBar() {

@@ -501,4 +501,7 @@
     <string name="HistoryBookmarksImportBookmarksProgressMessage">Import du favori %1$s sur %2$s.</string>
     <string name="HistoryBookmarksImportHistoryProgressMessage">Import de l\'élément de l\'historique %1$s sur %2$s.</string>
     
+    <string name="FullScreen">Plein écran</string>
+    <string name="ContentDescriptionExitFullScreen">Bouton de sortie du plein écran</string>
+    
 </resources>

@@ -500,5 +500,8 @@
     <string name="HistoryBookmarksImportFoldersLinkMessage">Linking folders&#8230;</string>
     <string name="HistoryBookmarksImportBookmarksProgressMessage">Reading bookmark %1$s of %2$s.</string>
     <string name="HistoryBookmarksImportHistoryProgressMessage">Reading history item %1$s of %2$s.</string>
+    
+    <string name="FullScreen">Full screen</string>
+    <string name="ContentDescriptionExitFullScreen">Exit full screen button</string>
 
 </resources>

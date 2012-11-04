@@ -40,6 +40,7 @@ import android.app.DownloadManager;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
 import android.graphics.Picture;
 import android.graphics.drawable.BitmapDrawable;
@@ -51,8 +52,6 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.webkit.GeolocationPermissions.Callback;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -103,9 +102,7 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 		setupUI();
 		
 		startHandler();
-	}
-	
-	protected abstract void setupUI();
+	}	
 	
 	protected abstract String getCurrentUrl();
 	
@@ -127,7 +124,11 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 		} else {
 			mActionBar.setIcon(R.drawable.ic_launcher);
 		}
-	}		
+	}
+	
+	protected void setupUI() {
+		setFullScreenFromPreferences();
+	}
 	
 	@Override
 	public TintBrowserActivity getMainActivity() {
@@ -452,7 +453,7 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
         mFullscreenContainer.addView(view, COVER_SCREEN_PARAMS);
         decor.addView(mFullscreenContainer, COVER_SCREEN_PARAMS);
         mCustomView = view;
-        setFullscreen(true);
+
         mCustomViewCallback = callback;
         mActivity.setRequestedOrientation(requestedOrientation);
 	}
@@ -462,7 +463,6 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 		if (mCustomView == null)
             return;
 		
-        setFullscreen(false);
         FrameLayout decor = (FrameLayout) mActivity.getWindow().getDecorView();
         decor.removeView(mFullscreenContainer);
         mFullscreenContainer = null;
@@ -489,18 +489,6 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 			mGeolocationPermissionsDialog.hide();
 		}
 	}
-	
-//	@Override
-//	public void onFragmentReady(BaseWebViewFragment fragment, String urlToLoadWhenReady) {
-//		CustomWebView webView = fragment.getWebView();
-//		if (!webView.isPrivateBrowsingEnabled()) {
-//			Controller.getInstance().getAddonManager().onTabOpened(mActivity, webView);
-//		}
-//		
-//		if (urlToLoadWhenReady != null) {
-//			loadUrl(urlToLoadWhenReady);
-//		}
-//	}	
 	
 	@Override
 	public void loadUrl(BaseWebViewFragment webViewFragment, String url) {
@@ -534,6 +522,23 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 		}
 	}
 	
+	@Override
+	public boolean isFullScreen() {		
+		return PreferenceManager.getDefaultSharedPreferences(mActivity).getBoolean(Constants.PREFERENCE_FULL_SCREEN, false);
+	}
+
+	@Override
+	public void toggleFullScreen() {
+		boolean newValue = !isFullScreen();
+		Editor editor = PreferenceManager.getDefaultSharedPreferences(mActivity).edit();
+		editor.putBoolean(Constants.PREFERENCE_FULL_SCREEN, newValue);
+		editor.commit();
+		
+		setFullScreenFromPreferences();
+	}
+	
+	protected abstract void setFullScreenFromPreferences();
+
 	private void startHandler() {
 		mHandler = new Handler() {
 
@@ -622,28 +627,6 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 			webView.requestFocusNodeHref(msg);
 		}
 	}
-
-	private void setFullscreen(boolean enabled) {
-        Window win = mActivity.getWindow();
-        WindowManager.LayoutParams winParams = win.getAttributes();
-        final int bits = WindowManager.LayoutParams.FLAG_FULLSCREEN;
-        if (enabled) {
-            winParams.flags |=  bits;
-            if (mCustomView != null) {
-                mCustomView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
-            } else {
-                //mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
-            }
-        } else {
-            winParams.flags &= ~bits;
-            if (mCustomView != null) {
-                mCustomView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
-            } else {
-                //mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
-            }
-        }
-        win.setAttributes(winParams);
-    }
 	
 	/**
 	 * Check if the current tab can be reused to display an intent request.

@@ -93,6 +93,7 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
+    	
     	boolean isTablet = ApplicationUtils.isTablet(this);
     	
     	if (isTablet) {
@@ -105,9 +106,11 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
         
         if (isTablet) {
         	setContentView(R.layout.tablet_main_activity);
+        	mUIManager = new TabletUIManager(this);
         } else {
         	setContentView(R.layout.phone_main_activity);
-        }
+        	mUIManager = new PhoneUIManager(this);
+        }        
         
         getActionBar().setHomeButtonEnabled(true);
         
@@ -117,12 +120,6 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 				mUIManager.onMenuVisibilityChanged(isVisible);
 			}
 		});
-        
-        if (isTablet) {
-        	mUIManager = new TabletUIManager(this);
-        } else {
-        	mUIManager = new PhoneUIManager(this);
-        }
         
         Controller.getInstance().init(mUIManager, this);        
         Controller.getInstance().getAddonManager().bindAddons();
@@ -200,6 +197,7 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 		boolean privateBrowsing = mUIManager.getCurrentWebView().isPrivateBrowsingEnabled();
 		
 		menu.findItem(R.id.MainActivity_MenuIncognitoTab).setChecked(privateBrowsing);
+		menu.findItem(R.id.MainActivity_MenuFullScreen).setChecked(mUIManager.isFullScreen());
 		
 		menu.removeGroup(R.id.MainActivity_AddonsMenuGroup);
 		
@@ -236,6 +234,10 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 	        	
 	        case R.id.MainActivity_MenuIncognitoTab:
 	        	mUIManager.togglePrivateBrowsing();
+	        	return true;
+	        	
+	        case R.id.MainActivity_MenuFullScreen:
+	        	mUIManager.toggleFullScreen();
 	        	return true;
 	        	
 	        case R.id.MainActivity_MenuSharePage:

@@ -85,6 +85,8 @@ public class Constants {
 	
 	public static final String PREFERENCE_BOOKMARKS_SORT_MODE = "PREFERENCE_BOOKMARKS_SORT_MODE";
 	
+	public static final String PREFERENCE_FULL_SCREEN = "PREFERENCE_FULL_SCREEN";
+	
 	/**
 	 * Technical preferences.
 	 */
