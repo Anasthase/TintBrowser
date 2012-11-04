@@ -1,6 +1,6 @@
 1.6:
 - New export format for bookmarks and history; Bookmarks folders are now handled in export and import; Old format still supported for import.
-- Full screen mode.
+- Full screen mode (Exit full screen icon on tablets designed by Olyn LeRoy from The Noun Project).
 - German translation (thanks to Lars-Dominik).
 
 1.5:
