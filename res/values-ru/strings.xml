@@ -12,7 +12,7 @@
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
+   GNU General Public License for more details.
 -->
 
 <resources>
@@ -150,9 +150,9 @@
     </string-array>
     
     <string-array name="PreferenceBubblePositionValues">
-        <item>СПРАВА</item>
-        <item>СЛЕВА</item>
-        <item>ОБЕ</item>
+        <item>RIGHT</item>
+        <item>LEFT</item>
+        <item>BOTH</item>
     </string-array>
 
     <string name="PreferenceToolbarsAutoHideDurationTitle">Время отображения панели</string>
@@ -172,9 +172,9 @@
     </string-array>
     
     <string-array name="PreferenceSwitchTabsMethodValues">
-        <item>КНОПКИ</item>
-        <item>БРОСОК</item>
-        <item>ОБА</item>
+        <item>BUTTONS</item>
+        <item>FLING</item>
+        <item>BOTH</item>
     </string-array>
 
     <string name="PreferenceHeaderBrowserSettingsTitle">Настройки браузера</string>
@@ -402,6 +402,7 @@
         <item>ВКонтакте</item>
         <item>Лента</item>
     </string-array>
+    
     <string-array name="DefaultBookmarksUrls">
         <item>http://www.yandex.ru/</item>
         <item>http://ru.wikipedia.org/</item>
