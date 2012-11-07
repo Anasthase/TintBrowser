@@ -480,6 +480,7 @@
     <string name="Reasons">Причины:</string>
     
     <string name="SearchUrlDialogText1">Ваша поисковая система по умолчанию:</string>
+    <string name="SearchUrlDialogText2">Вы можете настроить ее выбирая среди поисковых систем указанных ниже.</string>
     <string name="SearchUrlGetOnline"><a href="">Вручную редактировать поисковую систему</a></string>
     <string name="SearchUrlConnecting">Соединение&#8230;</string>
     <string name="SearchUrlParsing">Результаты разбора&#8230;</string>
@@ -494,7 +495,6 @@
     <string name="RecentSortMode">Самые посещаемые</string>
 
     <!-- 1.6 -->
-
     <string name="HistoryBookmarksImportErrorInvalidFileFormat">Неверный формат файла</string>
     <string name="HistoryBookmarksImportFoldersProgressMessage">Чтение %1$s каталога из %2$s.</string>
     <string name="HistoryBookmarksImportFoldersLinkMessage">Привязанные папки&#8230;</string>
