@@ -2,6 +2,7 @@
 - New export format for bookmarks and history; Bookmarks folders are now handled in export and import; Old format still supported for import.
 - Full screen mode (Exit full screen icon on tablets designed by Olyn LeRoy from The Noun Project).
 - German translation (thanks to Lars-Dominik).
+- Russian translation (thanks to Anton).
 
 1.5:
 - User choice for SSL security exceptions can now be saved on a per-website basis.
