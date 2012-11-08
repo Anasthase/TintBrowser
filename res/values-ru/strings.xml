@@ -182,12 +182,12 @@
     <string name="PreferenceEnableJavascriptTitle">Включить JavaScript</string>
     <string name="PreferenceEnableJavascriptSummaryOn">JavaScript включен.</string>
     <string name="PreferenceEnableJavascriptSummaryOff">JavaScript выключен.</string>
-    <string name="PreferenceEnableImagesTitle">Включить изображения</string>
-    <string name="PreferenceEnableImagesSummary">Включите, если хотите загружать картинки.</string>
-    <string name="PreferenceUseWideViewportTitle">Включить просмотр во всю ширину</string>
-    <string name="PreferenceUseWideViewportSummary">Если включить, браузер будет отображать страницу как настольные компьютеры.</string>
-    <string name="PreferenceLoadPagesWithOverviewTitle">Загрузка страницы с предпросмотром</string>
-    <string name="PreferenceLoadPagesWithOverviewSummary">Включите, если хотите после загрузке видеть всю страницу.</string>
+    <string name="PreferenceEnableImagesTitle">Загружать графику</string>
+    <string name="PreferenceEnableImagesSummary">Показывать изображения на веб-страницах.</string>
+    <string name="PreferenceUseWideViewportTitle">Мобильный вид</string>
+    <string name="PreferenceUseWideViewportSummary">Подгонять веб-страницы под размер экрана.</string>
+    <string name="PreferenceLoadPagesWithOverviewTitle">Обзор страницы</string>
+    <string name="PreferenceLoadPagesWithOverviewSummary">Открывать новые страницы в окне предпросмотра.</string>
     <string name="PreferencePluginsTitle">Включить плагины</string>
     <string name="PreferencePluginsSummary">Выберите как управлять плагинами.</string>
     
@@ -214,13 +214,13 @@
     <string name="PreferenceHeaderPrivacySettingsTitle">Настройки приватности и безопасности</string>
     
     <string name="PreferencePrivacyClearCacheTitle">Очистить кеш</string>
-    <string name="PreferencePrivacyClearCacheSummary">Очистить локальный кеш.</string>
+    <string name="PreferencePrivacyClearCacheSummary">Удалить контент и данные, сохраненные браузером.</string>
     
     <string name="PreferenceCategoryHistoryTitle">История</string>
     <string name="PreferencePrivacyHistorySizeTitle">Размер истории</string>
     <string name="PreferencePrivacyHistorySizeSummary">Установить размер истории в днях.</string>
     <string name="PreferencePrivacyClearHistoryTitle">Очистить историю</string>
-    <string name="PreferencePrivacyClearHistorySummary">Очистить историю посещений страниц.</string>
+    <string name="PreferencePrivacyClearHistorySummary">Очистить список посещенных в Интернете страниц.</string>
     
     <string name="PreferenceCategoryCookiesTitle">Куки</string>
     <string name="PreferencePrivacyAcceptCookiesTitle">Принимать куки</string>
@@ -229,22 +229,22 @@
     <string name="PreferencePrivacyClearCookiesSummary">Очистить все куки.</string>
     
     <string name="PreferenceCategoryGeolocationTitle">Местоположение</string>
-    <string name="PreferencePrivacyEnableGeolocationTitle">Включить местоположение</string>
-    <string name="PreferencePrivacyEnableGeolocationSummary">Разрешать сайтам опредлять ваше местоположение.</string>
-    <string name="PreferencePrivacyClearGeolocationTitle">Удалить доступ к местоположению</string>
-    <string name="PreferencePrivacyClearGeolocationSummary">Удалить доступ к местоположению для всех сайтов.</string>
+    <string name="PreferencePrivacyEnableGeolocationTitle">Доступ к геоданным</string>
+    <string name="PreferencePrivacyEnableGeolocationSummary">Разрешать сайтам запрашивать доступ к данным о вашем местоположении.</string>
+    <string name="PreferencePrivacyClearGeolocationTitle">Закрыть геоданные</string>
+    <string name="PreferencePrivacyClearGeolocationSummary">Очистить список сайтов имеющих доступ к данным о вашем местоположении.</string>
     
     <string name="PreferenceCategoryFormDataTitle">Формы</string>
-    <string name="PreferencePrivacyRememberFormDataTitle">Запоминать данные форм</string>
-    <string name="PreferencePrivacyRememberFormDataSummary">Запоминать данные форм для дальнейшего использования.</string>
-    <string name="PreferencePrivacyClearFormDataTitle">Очистить данные форм</string>
-    <string name="PreferencePrivacyClearFormDataSummary">Очистить все данные форм.</string>
+    <string name="PreferencePrivacyRememberFormDataTitle">Сохранять данные форм</string>
+    <string name="PreferencePrivacyRememberFormDataSummary">Запоминать введенные в формы данные для дальнейшего использования.</string>
+    <string name="PreferencePrivacyClearFormDataTitle">Очистить данные формы</string>
+    <string name="PreferencePrivacyClearFormDataSummary">Удалить все сохраненные данные форм.</string>
     
     <string name="PreferenceCategoryPasswordsTitle">Пароли</string>
     <string name="PreferencePrivacyRememberPasswordsTitle">Запоминать пароли</string>
-    <string name="PreferencePrivacyRememberPasswordsSummary">Запоминать имена и пароли для вебсайтов.</string>
+    <string name="PreferencePrivacyRememberPasswordsSummary">Запоминать имена пользователей и пароли веб-сайтов.</string>
     <string name="PreferencePrivacyClearPasswordsTitle">Очистить пароли</string>
-    <string name="PreferencePrivacyClearPasswordsSummary">Очистить все сохраненные пароли.</string>
+    <string name="PreferencePrivacyClearPasswordsSummary">Удалить все сохраненные пароли.</string>
     
     <string name="PreferencePrivacyWebsitesSettingsTitle">Настройки сайтов</string>
     <string name="PreferencePrivacyWebsitesSettingsSummary">Расширенные настройки для отдельных сайтов.</string>
@@ -255,10 +255,10 @@
     <string name="HistoryLastMonth">В этом месяце</string>
     <string name="HistoryOlder">Ранее</string>
     
-    <string name="ClearCacheMessage">Удалить локальный кеш?</string>
-    <string name="ClearHistoryMessage">Удалить историю посещений страниц?</string>
+    <string name="ClearCacheMessage">Очистить кеш?</string>
+    <string name="ClearHistoryMessage">Очистить список посещенных страниц?</string>
     <string name="ClearCookiesMessage">Удалить все куки?</string>
-    <string name="ClearGeolocationMessage">Удалить доступ к местоположению для сайтов?</string>
+    <string name="ClearGeolocationMessage">Очистить список сайтов имеющих доступ к данным о вашем местоположении?</string>
     <string name="ClearFormDataMessage">Удалить данные всех форм?</string>
     <string name="ClearPasswordsMessage">Удалить все сохраненные пароли?</string>
     
@@ -293,7 +293,7 @@
     <string name="HttpAuthenticationDialogPassword">Пароль</string>
     
     <string name="FormResubmitTitle">Повторная отправка</string>
-    <string name="FormResubmitMessage">Вы повторно отправляете данные на сервер (\"POSTDATA\"). Если вы все же отправите данные повторно, то они могут повторно обработаться (например товар в ИМ может добавиться второй раз).</string>
+    <string name="FormResubmitMessage">Вы повторно отправляете данные на сервер (\"POSTDATA\"). Если вы все же отправите данные повторно, то они могут повторно обработаться (например, в интернет магазине товар в корзину может добавиться во второй раз).</string>
     
     <string name="BookmarkAdded">Добавлено в закладки.</string>
     <string name="BookmarkRemoved">Удалено из закладок.</string>
@@ -341,11 +341,11 @@
     <string name="WebsitesSettingsCleatDataDialogTitle">Удаление данных</string>
     <string name="WebsitesSettingsCleatDataDialogMessage">Удалить все сохраненные данные, относящиеся к данному сайту?</string>
     
-    <string name="WebsitesSettingsGeolocationClickToClear">Кликните для удаления доступа к определению местоположения.</string>
-    <string name="WebsitesSettingsGeolocationAllowed">Этот сайт может получить доступ к определению вашего местоположения.</string>
-    <string name="WebsitesSettingsGeolocationNotAllowed">Этот сайт не может получить доступ к определению вашего местоположения.</string>
-    <string name="WebsitesSettingsGeolocationPageDialogTitle">Очистить доступ к определению местороложения</string>
-    <string name="WebsitesSettingsGeolocationPageDialogMessage">Очистить доступ к определению месторасположения для этого сайта?</string>
+    <string name="WebsitesSettingsGeolocationClickToClear">Кликните для удаления доступа к данным о вашем местоположения.</string>
+    <string name="WebsitesSettingsGeolocationAllowed">Этот сайт может получить доступ к данным о вашем местоположеним.</string>
+    <string name="WebsitesSettingsGeolocationNotAllowed">Этот сайт не может получить доступ к данным о вашем местоположении.</string>
+    <string name="WebsitesSettingsGeolocationPageDialogTitle">Очистить доступ к данным о вашем местороложения</string>
+    <string name="WebsitesSettingsGeolocationPageDialogMessage">Очистить доступ для этого сайта к данным о вашем местоположении?</string>
     
     <string name="AddonsWarningText">Пожалуйста, устанавливайте дополнения только от разработчиков, которым вы доверяете. При возникновении странного поведения, отключите все дополнения.</string>
     <string name="AddonsGetAddons"><a href="">Получить дополнения</a></string>
@@ -421,7 +421,7 @@
     <string name="Folder">Каталог</string>
     <string name="NewFolder">Новый каталог</string>
     <string name="NewFolderHint">Имя нового каталога</string>
-    <string name="ProvideNewFolderName">Пожалуйста укажите имя новой папки либо выберите существующую</string>
+    <string name="ProvideNewFolderName">Пожалуйста укажите имя нового каталога или выберите существующий</string>
     
     <string name="DeleteFolder">Удалить каталог</string>
     <string name="ConfirmDeleteFolderMessage">Удалить каталог и все его содержимое?</string>
@@ -452,12 +452,12 @@
         <item>@string/FontPreviewTextHuge</item>
     </string-array>
 
-    <string name="PreferenceCategoryInvertedScreenRenderingTitle">Инвертированное отображение экрана</string>
-    <string name="PreferenceAccessibilityInvertedRenderingTitle">Инвертированное отображение</string>
-    <string name="PreferenceAccessibilityInvertedRenderingSummary">Инвертированное отображение цветов. Может не работать на некоторых устройствах</string>
-    <string name="PreferenceAccessibilityInvertedRenderingContrastTitle">Контрастность</string>
+    <string name="PreferenceCategoryInvertedScreenRenderingTitle">Режим инверсии</string>
+    <string name="PreferenceAccessibilityInvertedRenderingTitle">Инверсия</string>
+    <string name="PreferenceAccessibilityInvertedRenderingSummary">Черное становится белым и наоборот. Может не работать на некоторых устройствах</string>
+    <string name="PreferenceAccessibilityInvertedRenderingContrastTitle">Контраст</string>
     
-    <string name="ContentDescriptionAutocompleteQueryBuilder">Дополнение адреса в адресной строке, без перехода.</string>
+    <string name="ContentDescriptionAutocompleteQueryBuilder">Автозавершение адреса в адресной строке, без перехода.</string>
 
     <!-- 1.5 -->
     <string name="UnknownAutority">Неизвестные полномочия</string>
@@ -484,7 +484,7 @@
     <string name="SearchUrlGetOnline"><a href="">Вручную редактировать поисковую систему</a></string>
     <string name="SearchUrlConnecting">Соединение&#8230;</string>
     <string name="SearchUrlParsing">Результаты разбора&#8230;</string>
-    <string name="SearchUrlBadResponseCodeMessage">Не могу соединиться с репозитарием поисковых систем (response code: %s).</string>
+    <string name="SearchUrlBadResponseCodeMessage">Не могу соединиться с репозитарием поисковых систем (Код ответа: %s).</string>
     
     <string name="SearchUrlDefault">Google Russia</string>
     <string name="SearchUrlCustom">Пользовательская система поиска</string>
@@ -498,10 +498,10 @@
     <string name="HistoryBookmarksImportErrorInvalidFileFormat">Неверный формат файла</string>
     <string name="HistoryBookmarksImportFoldersProgressMessage">Чтение %1$s каталога из %2$s.</string>
     <string name="HistoryBookmarksImportFoldersLinkMessage">Привязанные папки&#8230;</string>
-    <string name="HistoryBookmarksImportBookmarksProgressMessage">Чтение%1$s закладки из %2$s.</string>
+    <string name="HistoryBookmarksImportBookmarksProgressMessage">Чтение %1$s закладки из %2$s.</string>
     <string name="HistoryBookmarksImportHistoryProgressMessage">Чтение %1$s элемента истории из %2$s.</string>
     
-    <string name="FullScreen">Полноэеранный режим</string>
+    <string name="FullScreen">Полноэкранный режим</string>
     <string name="ContentDescriptionExitFullScreen">Кнопка выхода из полноэкранного режима</string>
 
 </resources>
