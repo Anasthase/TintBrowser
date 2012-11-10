@@ -18,7 +18,7 @@
 <resources>
 
     <string name="ApplicationName">Tint Browser</string>
-    <string name="ApplicationDescription">Tint Browser это браузер с открытыми исходными кодами для Android.</string>
+    <string name="ApplicationDescription">Tint Browser это браузер с открытым исходом кодом для Android.</string>
     
     <string name="AboutVersionText">Версия: %1$s (%2$s)</string>
     <string name="AboutLicenseText">Лицензия: GPLv3</string>
@@ -26,10 +26,10 @@
     <string name="AboutChangelogText">Список изменений:</string>
     
     <string name="PermissionReadBookmarksLabel">Читать закладки</string>
-    <string name="PermissionReadBookmarksDescription">Разрешить сторонним приложениям и дополнениям читать историю и закладки браузера</string>
+    <string name="PermissionReadBookmarksDescription">Разрешить сторонним приложениям и дополнениям читать историю и закладки браузера.</string>
     
     <string name="PermissionWriteBookmarksLabel">Сохранять в закладки</string>
-    <string name="PermissionWriteBookmarksDescription">Разрешить сторонним приложениям и дополнениям сохранять в историю и закладки браузера</string>
+    <string name="PermissionWriteBookmarksDescription">Разрешить сторонним приложениям и дополнениям сохранять в историю и закладки браузера.</string>
     
     <string name="PermissionBindAddonServiceLabel">Сервис привязки плагинов к браузеру</string>
     <string name="PermissionBindAddonServiceDescription">Разрешить приложениям добавлять дополнения к браузеру. Только у самого браузера должно быть это разрешение.</string>
@@ -58,7 +58,7 @@
     <string name="DownloadStart">Загрузка %1$s&#8230;</string>
     <string name="DownloadComplete">Загрузка завершена.</string>
     <string name="DownloadFailedWithErrorMessage">Загрузка прервана: %1$s.</string>
-    <string name="DownloadErrorDisk">Ошибка диска. Проверьте, подключен ли носитель информации и имеет ли он достаточно места</string>
+    <string name="DownloadErrorDisk">Ошибка диска. Проверьте, подключен ли носитель информации и имеет ли он достаточно места.</string>
     <string name="DownloadErrorHttp">Ошибка HTTP</string>
     <string name="DownloadErrorRedirection">Слишком много перенаправлений</string>
     <string name="DownloadErrorUnknown">Неизвестная ошибка</string>
@@ -78,7 +78,7 @@
     <string name="ContextMenuCopyEmailUrl">Скопировать email адрес</string>
     <string name="ContextMenuShareEmailUrl">Поделиться адресом email</string>
     
-    <string name="UrlCopyToastMessage">Скопировать адрес в буфер обмена.</string>
+    <string name="UrlCopyToastMessage">Адрес веб-страницы скопирован в буфер обмена.</string>
     <string name="ContextMenuShareUrl">Поделиться</string>
     
     <string name="JavaScriptAlertDialog">JavaScript: предупреждение</string>
@@ -111,7 +111,7 @@
     <string name="BookmarkText">Название</string>
     <string name="UrlText">Адрес</string>
     <string name="UrlHint">http://</string>
-    <string name="AddBookmarkLabelOrUrlEmpty">Пожалуйста укажите действительное название и адрес</string>
+    <string name="AddBookmarkLabelOrUrlEmpty">Пожалуйста укажите действительное название и адрес.</string>
     
     <string name="OpenInTab">Открыть в новой вкладке</string>
     <string name="EditBookmark">Редактировать закладку</string>
@@ -121,18 +121,18 @@
     
     <string name="PreferencesActivityTitle">Настройки</string>
     
-    <string name="PreferenceHeaderGeneralSettingsTitle">Главные настройки</string>
+    <string name="PreferenceHeaderGeneralSettingsTitle">Общие</string>
     
     <string name="PreferenceGeneralHomepageTitle">Домашняя страница</string>
-    <string name="PreferenceGeneralHomepageSummary">Сделать домашней страницей при открытии новой вкладки и т.д.</string>
+    <string name="PreferenceGeneralHomepageSummary">Страница, которая будет показа при открытии новой вкладки.</string>
     <string name="PreferenceHomePageDialogTitle">Домашная страница</string>
     
     <string name="PreferenceGeneralSearchUrlTitle">Поисковая система</string>
-    <string name="PreferenceGeneralSearchUrlSummary">Выберите поисковую системы для ее использовании в адресной строке</string>
+    <string name="PreferenceGeneralSearchUrlSummary">Выберите поисковую системы для ее использовании в адресной строке.</string>
     
     <string name="PreferenceCategoryStartPageTitle">Стартовая страница</string>
     <string name="PreferenceGeneralStartPageLimitTitle">Количество элементов на стартовой странице</string>
-    <string name="PreferenceGeneralStartPageLimitSummary">Установить количество элементов на стартовой странице</string>
+    <string name="PreferenceGeneralStartPageLimitSummary">Установить количество элементов на стартовой странице.</string>
     
     <string name="PreferenceCategoryUITitle">Интерфейс пользователя</string>
     
@@ -140,8 +140,8 @@
     <string name="PreferenceBubblePositionSummary">Position of the bubble allowing to show the toolbars.</string>
     
     <string name="PreferenceBubblePositionRight">Справа</string>
-    <string name="PreferenceBubblePositionLeft">Слеваt</string>
-    <string name="PreferenceBubblePositionBoth">Обе</string>
+    <string name="PreferenceBubblePositionLeft">Слева</string>
+    <string name="PreferenceBubblePositionBoth">Обе стороны</string>
 
     <string-array name="PreferenceBubblePositionEntries">
         <item>@string/PreferenceBubblePositionRight</item>
@@ -177,7 +177,7 @@
         <item>BOTH</item>
     </string-array>
 
-    <string name="PreferenceHeaderBrowserSettingsTitle">Настройки браузера</string>
+    <string name="PreferenceHeaderBrowserSettingsTitle">Расширенные</string>
     
     <string name="PreferenceEnableJavascriptTitle">Включить JavaScript</string>
     <string name="PreferenceEnableJavascriptSummaryOn">JavaScript включен.</string>
@@ -211,7 +211,7 @@
     <string name="PreferenceUserAgentSummary">Выберите строку user-agent используемую браузером.</string>
     <string name="PreferenceUserAgentDialogTitle">User-agent</string>
     
-    <string name="PreferenceHeaderPrivacySettingsTitle">Настройки приватности и безопасности</string>
+    <string name="PreferenceHeaderPrivacySettingsTitle">Личные данные</string>
     
     <string name="PreferencePrivacyClearCacheTitle">Очистить кеш</string>
     <string name="PreferencePrivacyClearCacheSummary">Удалить контент и данные, сохраненные браузером.</string>
@@ -246,8 +246,8 @@
     <string name="PreferencePrivacyClearPasswordsTitle">Очистить пароли</string>
     <string name="PreferencePrivacyClearPasswordsSummary">Удалить все сохраненные пароли.</string>
     
-    <string name="PreferencePrivacyWebsitesSettingsTitle">Настройки сайтов</string>
-    <string name="PreferencePrivacyWebsitesSettingsSummary">Расширенные настройки для отдельных сайтов.</string>
+    <string name="PreferencePrivacyWebsitesSettingsTitle">Настройки веб-сайтов</string>
+    <string name="PreferencePrivacyWebsitesSettingsSummary">Дополнительные настройки для отдельных сайтов.</string>
     
     <string name="HistoryToday">Сегодня</string>
     <string name="HistoryYesterday">Вчера</string>
@@ -273,7 +273,7 @@
     </string-array>
 
     <string name="PreferenceUserAgentAndroid">Android</string>
-    <string name="PreferenceUserAgentDesktop">Стационарный ПК</string>
+    <string name="PreferenceUserAgentDesktop">Desktop</string>
     <string name="PreferenceUserAgentOther">Другой</string>
 
     <string-array name="UserAgentsTitles">
@@ -282,7 +282,7 @@
         <item>@string/PreferenceUserAgentOther</item>
     </string-array>
 
-    <string name="SearchUrlGoogle">http://www.google.ru/m?q={searchTerms}</string>
+    <string name="SearchUrlGoogle">http://yandex.ru/touchsearch?text={searchTerms}</string>
     
     <string name="PreferenceHeaderAddonsTitle">Дополнения</string>
     
@@ -292,8 +292,8 @@
     <string name="HttpAuthenticationDialogUserName">Имя</string>
     <string name="HttpAuthenticationDialogPassword">Пароль</string>
     
-    <string name="FormResubmitTitle">Повторная отправка</string>
-    <string name="FormResubmitMessage">Вы повторно отправляете данные на сервер (\"POSTDATA\"). Если вы все же отправите данные повторно, то они могут повторно обработаться (например, в интернет магазине товар в корзину может добавиться во второй раз).</string>
+    <string name="FormResubmitTitle">Повторная отправка даннах</string>
+     <string name="FormResubmitMessage">Вы пытаетесь повторно отправить данные формы на сервер (\"POSTDATA\"). Если продолжите, то они могут обработаться еще раз (например, в интернет магазине, товар в корзину может добавиться во второй раз).</string>
     
     <string name="BookmarkAdded">Добавлено в закладки.</string>
     <string name="BookmarkRemoved">Удалено из закладок.</string>
@@ -310,7 +310,7 @@
     </string-array>
 
     <string name="HistoryBookmarksImportSourceTitle">Импорт файлов</string>
-    <string name="HistoryBookmarksImportFileUnavailable">Файл недоступен, либо он не существует либо не читается.</string>
+    <string name="HistoryBookmarksImportFileUnavailable">Файл недоступен, либо он не существует, либо не читается.</string>
     <string name="HistoryBookmarksImportTitle">Импорт истории и закладок</string>
     <string name="HistoryBookmarksImportInitialMessage">Импорт истории и закладок&#8230;</string>
     <string name="HistoryBookmarksImportReadingFile">Чтение файлов&#8230;</string>
@@ -396,20 +396,21 @@
 
     <string-array name="DefaultBookmarksTitles">
         <item>Яндекс</item>
-        <item>Wikipedia</item>
-        <item>YouTube</item>
         <item>Google</item>
-        <item>ВКонтакте</item>
+        <item>Wikipedia</item>
         <item>Лента</item>
+        <item>YouTube</item>
+        <item>ВКонтакте</item>
     </string-array>
     
     <string-array name="DefaultBookmarksUrls">
         <item>http://www.yandex.ru/</item>
-        <item>http://ru.wikipedia.org/</item>
-        <item>http://www.youtube.com/</item>
         <item>http://www.google.com/</item>
-        <item>http://vk.com/</item>
+        <item>http://ru.wikipedia.org/</item>
         <item>http://www.lenta.ru/</item>
+        <item>http://www.youtube.com/</item>
+        <item>http://vk.com/</item>
+
     </string-array>
 
     <!-- 1.2 -->
@@ -431,7 +432,7 @@
     <string name="ContentDescriptionBookmarksFoldersBack">Вернуться к иерархии закладок</string>
 
     <!-- 1.4 -->
-    <string name="PreferenceHeaderAccessibilityTitle">Настройки доступности</string>
+    <string name="PreferenceHeaderAccessibilityTitle">Специальные возможности</string>
     <string name="PreferenceCategoryTextSizeTitle">Размер текста</string>
     <string name="PreferenceAccessibilityTextSizePreviewTitle">Просмотр размера текста</string>
     <string name="PreferenceAccessibilityTextScalingTitle">Масштабирование текста</string>
@@ -454,7 +455,7 @@
 
     <string name="PreferenceCategoryInvertedScreenRenderingTitle">Режим инверсии</string>
     <string name="PreferenceAccessibilityInvertedRenderingTitle">Инверсия</string>
-    <string name="PreferenceAccessibilityInvertedRenderingSummary">Черное становится белым и наоборот. Может не работать на некоторых устройствах</string>
+    <string name="PreferenceAccessibilityInvertedRenderingSummary">Черное становится белым и наоборот. Может не работать на некоторых устройствах.</string>
     <string name="PreferenceAccessibilityInvertedRenderingContrastTitle">Контраст</string>
     
     <string name="ContentDescriptionAutocompleteQueryBuilder">Автозавершение адреса в адресной строке, без перехода.</string>
@@ -486,7 +487,7 @@
     <string name="SearchUrlParsing">Результаты разбора&#8230;</string>
     <string name="SearchUrlBadResponseCodeMessage">Не могу соединиться с репозитарием поисковых систем (Код ответа: %s).</string>
     
-    <string name="SearchUrlDefault">Google Russia</string>
+    <string name="SearchUrlDefault">Яндекс</string>
     <string name="SearchUrlCustom">Пользовательская система поиска</string>
     
     <string name="SortBookmarks">Упорядочить закладки</string>
