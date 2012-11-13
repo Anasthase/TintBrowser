@@ -184,9 +184,9 @@
     <string name="PreferenceEnableJavascriptSummaryOff">JavaScript ist deaktiviert.</string>
     <string name="PreferenceEnableImagesTitle">Bilder anzeigen</string>
     <string name="PreferenceEnableImagesSummary">Aktivieren, um Bilder anzuzeigen.</string>
-    <string name="PreferenceUseWideViewportTitle">Use wide view port</string>
-    <string name="PreferenceUseWideViewportSummary">If checked, browser will use a viewport similar to desktop browsers.</string>
-    <string name="PreferenceLoadPagesWithOverviewTitle">Load pages with overview</string>
+    <string name="PreferenceUseWideViewportTitle">Breite Webseitenansicht verwenden</string>
+    <string name="PreferenceUseWideViewportSummary">Aktivieren, um Webseitenansichten mit breitem Layout zu bevorzugen, wie bei Desktop-Browsern.</string>
+    <string name="PreferenceLoadPagesWithOverviewTitle">Ganze Webseite nach dem Laden anzeigen</string>
     <string name="PreferenceLoadPagesWithOverviewSummary">Aktivieren, um Webseiten nach dem Laden auf Bildschirmgröße zu verkleinern.</string>
     <string name="PreferencePluginsTitle">Plugins aktivieren</string>
     <string name="PreferencePluginsSummary">Auswählen, wann Plugins verwendet werden.</string>
@@ -415,7 +415,7 @@
     <!-- 1.2 -->
     <string name="IncognitoTab">Inkognito-Reiter</string>
     <string name="ContextMenuOpenInBackground">Im Hintergrund öffnen</string>
-    <string name="ContentDescriptionPrivateBrowsingIndicator">Private browsing indicator</string>
+    <string name="ContentDescriptionPrivateBrowsingIndicator">Inkognitomodus aktiv</string>
     
     <!-- 1.3 -->
     <string name="Folder">Ordner</string>
@@ -457,16 +457,16 @@
     <string name="PreferenceAccessibilityInvertedRenderingSummary">Invertiere die Farben von Webseiten. Dies funktioniert nicht mit allen Geräten.</string>
     <string name="PreferenceAccessibilityInvertedRenderingContrastTitle">Kontrast</string>
     
-    <string name="ContentDescriptionAutocompleteQueryBuilder">Put suggestion url in the url bar, without navigating to it.</string>
+    <string name="ContentDescriptionAutocompleteQueryBuilder">URL vervollständigen.</string>
     
     <!-- 1.5 -->
     <string name="UnknownAutority">Unbekannter Aussteller</string>
     <string name="RememberMyChoice">Diese Antwort merken</string>
-    <string name="SslExceptionAccessAllowedByUserToast">SSL security exception: Access allowed to %s by user.</string>
-    <string name="SslExceptionAccessDisallowedByUserToast">SSL security exception: Access disallowed to %s by user.</string>
+    <string name="SslExceptionAccessAllowedByUserToast">Zugriff auf %s durch Sicherheits-Ausnahmeregel erlaubt.</string>
+    <string name="SslExceptionAccessDisallowedByUserToast">Zugriff auf %s durch Sicherheits-Ausnahmeregel verboten.</string>
     
-    <string name="PreferenceSslExceptionsTitle">SSL security exceptions</string>
-    <string name="PreferenceSslExceptionsSummary">List of SSL security exceptions by websites.</string>
+    <string name="PreferenceSslExceptionsTitle">Sicherheits-Ausnahmeregel</string>
+    <string name="PreferenceSslExceptionsSummary">Liste der Sicherheits-Ausnahmeregeln für Webseiten.</string>
     <string name="SslExceptionWebsitesText"><i>Entferne Ausnahme.</i></string>
     <string name="SslExceptionEmptyText">Keine Ausnahmen definiert.</string>
     
@@ -495,13 +495,13 @@
     <string name="RecentSortMode">Zuletzt besucht</string>
 
     <!-- 1.6 -->
-    <string name="HistoryBookmarksImportErrorInvalidFileFormat">Ungültigen Dateiformat</string>
+    <string name="HistoryBookmarksImportErrorInvalidFileFormat">Ungültiges Dateiformat</string>
     <string name="HistoryBookmarksImportFoldersProgressMessage">Lese Ordner %1$s von %2$s.</string>
     <string name="HistoryBookmarksImportFoldersLinkMessage">Verbinde Ordner&#8230;</string>
     <string name="HistoryBookmarksImportBookmarksProgressMessage">Lese Lesezeichen %1$s von %2$s.</string>
     <string name="HistoryBookmarksImportHistoryProgressMessage">Lese Verlaufselement %1$s von %2$s.</string>
     
-    <string name="FullScreen">Full screen</string>
-    <string name="ContentDescriptionExitFullScreen">Exit full screen button</string>
+    <string name="FullScreen">Vollbildmodus</string>
+    <string name="ContentDescriptionExitFullScreen">Vollbildmodus verlassen</string>
     
 </resources>

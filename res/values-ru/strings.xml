@@ -18,7 +18,7 @@
 <resources>
 
     <string name="ApplicationName">Tint Browser</string>
-    <string name="ApplicationDescription">Tint Browser это браузер с открытым исходом кодом для Android.</string>
+    <string name="ApplicationDescription">Tint Browser - это браузер с открытым исходом кодом для Android.</string>
     
     <string name="AboutVersionText">Версия: %1$s (%2$s)</string>
     <string name="AboutLicenseText">Лицензия: GPLv3</string>
@@ -293,7 +293,7 @@
     <string name="HttpAuthenticationDialogPassword">Пароль</string>
     
     <string name="FormResubmitTitle">Повторная отправка даннах</string>
-     <string name="FormResubmitMessage">Вы пытаетесь повторно отправить данные формы на сервер (\"POSTDATA\"). Если продолжите, то они могут обработаться еще раз (например, в интернет магазине, товар в корзину может добавиться во второй раз).</string>
+    <string name="FormResubmitMessage">Чтобы отобразить эту страницу, приложение должно отправить информацию(\"POSTDATA\"), которая повторит любое ранее произведённое действие (например, запрос на поиск или онлайн-покупка).</string>
     
     <string name="BookmarkAdded">Добавлено в закладки.</string>
     <string name="BookmarkRemoved">Удалено из закладок.</string>
