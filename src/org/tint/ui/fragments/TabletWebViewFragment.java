@@ -24,8 +24,6 @@ import android.webkit.WebView;
 
 public class TabletWebViewFragment extends PhoneWebViewFragment {
 	
-	private static final int TAB_TITLE_LENGTH = 30;
-	
 	private Tab mTab;
 	
 	public TabletWebViewFragment() {	
@@ -60,8 +58,10 @@ public class TabletWebViewFragment extends PhoneWebViewFragment {
 	}
 	
 	private String stripTitle(String title) {
-		if (title.length() > TAB_TITLE_LENGTH) {
-			title = title.substring(0, TAB_TITLE_LENGTH) + '\u2026';
+		int length = getResources().getInteger(R.integer.tab_title_length);
+		
+		if (title.length() > length) {
+			title = title.substring(0, length) + '\u2026';
 		}
 		
 		return title;

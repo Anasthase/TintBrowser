@@ -181,7 +181,7 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 
 	@Override
 	public boolean onCreateOptionsMenu(final Menu menu) {
-		getMenuInflater().inflate(R.menu.main_activity_menu, menu);		
+		getMenuInflater().inflate(ApplicationUtils.getMenuResource(this), menu);		
 		
 		return true;
 	} 

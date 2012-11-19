@@ -17,11 +17,6 @@
  
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     
-    <integer name="default_start_page_items_number">9</integer>
-    
-    <integer name="favicon_size">20</integer>
-    <integer name="application_button_size">50</integer>
-    
-    <integer name="tab_title_length">30</integer>
+    <integer name="tab_title_length">20</integer>
     
 </resources>
