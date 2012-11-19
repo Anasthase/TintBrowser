@@ -85,7 +85,7 @@ public class StartPageFragment extends Fragment implements LoaderManager.LoaderC
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		if (mParentView == null) {		
-			mParentView = inflater.inflate(R.layout.start_page_fragment, container, false);
+			mParentView = inflater.inflate(ApplicationUtils.getStartPageLayout(getActivity()), container, false);
 			mGrid = (GridView) mParentView.findViewById(R.id.StartPageFragmentGrid);
 			
 			String[] from = new String[] { BookmarksProvider.Columns.TITLE, BookmarksProvider.Columns.URL };

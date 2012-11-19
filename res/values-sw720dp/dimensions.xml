@@ -17,9 +17,9 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">    
     
-    <dimen name="bookmarks_fragment_margin_top_bottom">25dip</dimen>
-    <dimen name="bookmarks_fragment_margin_left_right">75dip</dimen>
-    <dimen name="bookmarks_fragment_breadcrumb_margin_left_right">70dip</dimen>
+    <dimen name="bookmarks_fragment_margin_top_bottom">75dip</dimen>
+    <dimen name="bookmarks_fragment_margin_left_right">150dip</dimen>
+    <dimen name="bookmarks_fragment_breadcrumb_margin_left_right">145dip</dimen>
     
     <dimen name="bookmarks_fragment_column_width">125dip</dimen>
     <dimen name="bookmarks_fragment_vertical_spacing">25dip</dimen>
@@ -28,13 +28,13 @@
     <dimen name="tablet_history_fragment_header_margin_left">96dp</dimen>
     <dimen name="tablet_history_fragment_values_margin_right">96dp</dimen>
     
-    <dimen name="startpage_fragment_margin_top_bottom">10dip</dimen>
-    <dimen name="startpage_fragment_margin_left_right">50dip</dimen>
+    <dimen name="startpage_fragment_margin_top_bottom">50dip</dimen>
+    <dimen name="startpage_fragment_margin_left_right">150dip</dimen>
     
     <dimen name="startpage_fragment_column_width">125dip</dimen>
     <dimen name="startpage_fragment_vertical_spacing">25dip</dimen>
     <dimen name="startpage_fragment_horizontal_spacing">25dip</dimen>
     
-    <dimen name="history_row_padding_left_right">5dip</dimen>
+    <dimen name="history_row_padding_left_right">20dip</dimen>
     <dimen name="history_row_padding_top_bottom">10dip</dimen>
 </resources>

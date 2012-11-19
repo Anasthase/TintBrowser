@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+   Tint Browser for Android
+  
+   Copyright (C) 2012 - to infinity and beyond J. Devauchelle and contributors.
+ 
+   This program is free software; you can redistribute it and/or
+   modify it under the terms of the GNU General Public License
+   version 3 as published by the Free Software Foundation.
+ 
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+ -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="0dip"
+    android:paddingBottom="0dip"    
+    android:orientation="vertical" >
+
+    <GridView
+        android:id="@+id/StartPageFragmentGrid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/startpage_fragment_margin_top_bottom"
+        android:layout_marginLeft="@dimen/startpage_fragment_margin_left_right"
+        android:layout_marginRight="@dimen/startpage_fragment_margin_left_right"
+        android:layout_marginTop="@dimen/startpage_fragment_margin_top_bottom"        
+        android:gravity="center"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:columnWidth="@dimen/startpage_fragment_column_width"
+        android:horizontalSpacing="@dimen/startpage_fragment_horizontal_spacing"
+        android:verticalSpacing="@dimen/startpage_fragment_vertical_spacing" >
+
+    </GridView>
+
+</LinearLayout>

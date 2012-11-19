@@ -63,6 +63,14 @@ public class ApplicationUtils {
 		return R.menu.main_activity_menu;
 	}
 	
+	public static int getStartPageLayout(Context context) {
+		if (isTablet(context)) {
+			return R.layout.start_page_fragment_tablet;
+		}
+		
+		return R.layout.start_page_fragment;
+	}
+	
 	/**
 	 * Get the application version code.
 	 * @param context The current context.
