@@ -68,9 +68,7 @@ public class PhoneUIManager extends BaseUIManager {
 	
 	private enum AnimationType {
 		NONE,
-		FADE,
-		LEFT_TO_RIGHT,
-		RIGHT_TO_LEFT
+		FADE
 	}
 	
 	private static final int FLIP_PIXEL_THRESHOLD = 200;
@@ -945,8 +943,6 @@ public class PhoneUIManager extends BaseUIManager {
 			switch (animationType) {
 			case NONE: break;
 			case FADE: fragmentTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out); break;
-			case LEFT_TO_RIGHT: fragmentTransaction.setCustomAnimations(R.animator.fragment_slide_left_enter, R.animator.fragment_slide_left_exit); break;
-			case RIGHT_TO_LEFT: fragmentTransaction.setCustomAnimations(R.animator.fragment_slide_right_enter, R.animator.fragment_slide_right_exit); break;
 			default: break;
 			}
 			
