@@ -238,7 +238,7 @@ public class ApplicationUtils {
 	 * @param resourceId The resource id.
 	 * @return The loaded string.
 	 */
-	private static String getStringFromRawResource(Context context, int resourceId) {
+	public static String getStringFromRawResource(Context context, int resourceId) {
 		String result = null;
 		
 		InputStream is = context.getResources().openRawResource(resourceId);
