@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/nav_tab_bg"
+    android:focusable="false"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="32dip"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingLeft="8dip" >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:drawablePadding="8dip"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:lines="1"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <ImageView
+            android:id="@+id/closetab"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground"
+            android:paddingLeft="8dip"
+            android:paddingRight="16dip"
+            android:src="@drawable/ic_tab_close" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/tab_view"
+        android:layout_width="200dip"
+        android:layout_height="120dip"
+        android:focusable="false"
+        android:paddingLeft="2dip"
+        android:paddingRight="2dip"
+        android:src="@drawable/ic_stop_holo_dark" />
+
+</LinearLayout>

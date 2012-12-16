@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/panel"
+        android:layout_width="225dip"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ab_bottom_solid_dark_holo"
+            android:scaleType="fitXY"
+            android:weightSum="4" >
+
+            <ImageView
+                android:id="@+id/BtnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="?android:attr/selectableItemBackground"
+                android:focusable="true"
+                android:paddingBottom="8dip"
+                android:paddingLeft="8dip"
+                android:paddingRight="8dip"
+                android:paddingTop="8dip"
+                android:src="@drawable/ic_back" />
+
+            <ImageView
+                android:id="@+id/BtnHome"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:focusable="true"
+                android:paddingBottom="8dip"
+                android:paddingLeft="8dip"
+                android:paddingRight="8dip"
+                android:paddingTop="8dip"
+                android:src="@drawable/ic_home" />
+
+            <ImageView
+                android:id="@+id/BtnAddTab"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="?android:attr/selectableItemBackground"
+                android:focusable="true"
+                android:paddingBottom="8dip"
+                android:paddingLeft="8dip"
+                android:paddingRight="8dip"
+                android:paddingTop="8dip"
+                android:src="@android:drawable/ic_menu_add" />
+
+            <ImageView
+                android:id="@+id/BtnForward"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="?android:attr/selectableItemBackground"
+                android:focusable="true"
+                android:paddingBottom="8dip"
+                android:paddingLeft="8dip"
+                android:paddingRight="8dip"
+                android:paddingTop="8dip"
+                android:src="@drawable/ic_forward" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:text="Tabs"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <ImageView
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dip"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:scaleType="fitXY"
+            android:src="?android:attr/dividerHorizontal" />
+
+        <org.tint.ui.views.TabsScroller
+            android:id="@+id/tabs_scroller"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/holo_orange_light"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/TopBar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:layout_margin="0dip"
+            android:background="@drawable/ab_solid_dark_holo"
+            android:orientation="horizontal"
+            android:padding="0dip"
+            android:scaleType="fitXY" >
+
+            <ImageView
+                android:id="@+id/FaviconView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="3dip"
+                android:layout_marginTop="3dip"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/ContentDescriptionFavicon"
+                android:focusable="true"
+                android:padding="5dip"
+                android:src="@drawable/ic_launcher" />
+
+            <ProgressBar
+                android:id="@+id/WebViewProgress"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_toLeftOf="@+id/UrlBar"
+                android:visibility="invisible" />
+
+            <org.tint.ui.views.PhoneUrlBar
+                android:id="@+id/UrlBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/FaviconView" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/WebViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#dcdcdc"
+            android:orientation="vertical" >
+        </FrameLayout>
+    </LinearLayout>
+
+</RelativeLayout>
