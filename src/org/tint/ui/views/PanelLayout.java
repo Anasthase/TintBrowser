@@ -9,6 +9,7 @@ import android.animation.ObjectAnimator;
 import android.animation.Animator.AnimatorListener;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -36,6 +37,7 @@ public class PanelLayout extends RelativeLayout {
 	private TabsScroller mTabsScroller;
 
 	private boolean mInSlide;
+	private float mBezelTopDelta;
 	private float mBezelSize;
 	private float mBezelSizeOpen;
 	private float mLastX;
@@ -63,9 +65,14 @@ public class PanelLayout extends RelativeLayout {
 		mAnimator = null;
 
 		if (!isInEditMode()) {
+			
+			TypedValue tv = new TypedValue();
+			context.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true);
+			
+			mBezelTopDelta = getResources().getDimension(tv.resourceId);
 			mBezelSize = BEZEL_SIZE * context.getResources().getDisplayMetrics().density + 0.5f;
 			mBezelSizeOpen = BEZEL_SIZE_OPEN * context.getResources().getDisplayMetrics().density + 0.5f;
-
+			
 			LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			View v = layoutInflater.inflate(R.layout.panel_layout, this);
 
@@ -103,10 +110,12 @@ public class PanelLayout extends RelativeLayout {
 		switch (ev.getAction()) {
 		case MotionEvent.ACTION_DOWN:
 			float x = ev.getX();
+			float y = ev.getY();
 
 			float bezelSize = mPanelShown ? mBezelSizeOpen : mBezelSize;
 			
-			if ((x >= mTranslation) &&
+			if ((y > mBezelTopDelta) &&
+					(x >= mTranslation) &&
 					(x <= mTranslation + bezelSize)) {
 				return true;
 			}
@@ -131,10 +140,12 @@ public class PanelLayout extends RelativeLayout {
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN:
 			float x = event.getX();
+			float y = event.getY();
 
 			float bezelSize = mPanelShown ? mBezelSizeOpen : mBezelSize;
 			
-			if ((x >= mTranslation) &&
+			if ((y > mBezelTopDelta) &&
+					(x >= mTranslation) &&
 					(x <= mTranslation + bezelSize)) {
 
 				mInSlide = true;

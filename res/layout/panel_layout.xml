@@ -14,7 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ab_bottom_solid_dark_holo"
+            android:background="@drawable/ab_solid_dark_holo"
             android:scaleType="fitXY"
             android:weightSum="4" >
 
@@ -91,7 +91,6 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="@android:color/holo_orange_light"
         android:orientation="vertical" >
 
         <RelativeLayout
@@ -109,12 +108,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
-                android:layout_marginBottom="3dip"
-                android:layout_marginTop="3dip"
                 android:background="?android:attr/selectableItemBackground"
                 android:contentDescription="@string/ContentDescriptionFavicon"
                 android:focusable="true"
-                android:padding="5dip"
+                android:paddingTop="5dip"
+                android:paddingBottom="5dip"
                 android:src="@drawable/ic_launcher" />
 
 <!--             <ProgressBar -->

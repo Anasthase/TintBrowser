@@ -160,8 +160,6 @@ public class PhoneUIManager2 extends BaseUIManager {
 			}
 		});
         
-        mFaviconView.setImageDrawable(mDefaultFavicon);
-        
 		mTopBar = (RelativeLayout) mActivity.findViewById(R.id.TopBar);
 		mTopBar.setOnClickListener(new OnClickListener() {
 			@Override
@@ -200,7 +198,7 @@ public class PhoneUIManager2 extends BaseUIManager {
         mHome.setOnClickListener(new OnClickListener() {			
 			@Override
 			public void onClick(View v) {
-				showStartPage(getCurrentWebViewFragment());
+				loadHomePage();
 				mPanel.hidePanel();
 			}
 		});
@@ -551,7 +549,7 @@ public class PhoneUIManager2 extends BaseUIManager {
 		} else {
 			mUrlBar.setTitle(R.string.ApplicationName);
 			mUrlBar.setSubtitle(R.string.UrlBarUrlDefaultSubTitle);
-			mFaviconView.setImageDrawable(mDefaultFavicon);
+//			mFaviconView.setImageDrawable(mDefaultFavicon);
 			
 //			mFaviconView.setVisibility(View.VISIBLE);
 //			mProgressBar.setVisibility(View.INVISIBLE);
