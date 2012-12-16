@@ -48,15 +48,15 @@ public class TabView extends LinearLayout {
 		mImage = (ImageView) findViewById(R.id.tab_view);		
 	}
 
-	protected boolean isClose(View v) {
+	public boolean isClose(View v) {
 		return v == mClose;
 	}
 
-	protected boolean isTitle(View v) {
+	public boolean isTitle(View v) {
 		return v == mTitleBar;
 	}
 
-	protected boolean isWebView(View v) {
+	public boolean isWebView(View v) {
 		return v == mImage;
 	}
 

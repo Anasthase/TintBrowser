@@ -40,7 +40,7 @@ public class TabsScroller extends ScrollerView {
     static final int INVALID_POSITION = -1;
     static final float[] PULL_FACTOR = { 2.5f, 0.9f };
 
-    interface OnRemoveListener {
+    public interface OnRemoveListener {
         public void onRemovePosition(int position);
     }
 
@@ -237,7 +237,7 @@ public class TabsScroller extends ScrollerView {
         }
     }
 
-    protected void animateOut(View v) {
+    public void animateOut(View v) {
         if (v == null) return;
         animateOut(v, -mFlingVelocity);
     }

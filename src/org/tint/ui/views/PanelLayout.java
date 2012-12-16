@@ -9,7 +9,6 @@ import android.animation.ObjectAnimator;
 import android.animation.Animator.AnimatorListener;
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -213,18 +212,7 @@ public class PanelLayout extends RelativeLayout {
 		return (ImageView) mPanel.findViewById(R.id.BtnAddTab);
 	}
 	
-	public ImageView getBackButton() {
-		return (ImageView) mPanel.findViewById(R.id.BtnBack);
-	}
-	
-	public ImageView getForwardButton() {
-		return (ImageView) mPanel.findViewById(R.id.BtnForward);
-	}
-	
 	public void togglePanel() {
-		
-		Log.d("ChildCount", Integer.toString(mTabsScroller.getContentView().getChildCount()));
-		
 		if (mPanelShown) {
 			hidePanel();
 		} else {
@@ -232,7 +220,7 @@ public class PanelLayout extends RelativeLayout {
 		}
 	}
 
-	private void showPanel() {
+	public void showPanel() {
 		if (mAnimator != null) {
 			mAnimator.end();
 		}
@@ -254,7 +242,7 @@ public class PanelLayout extends RelativeLayout {
 		mAnimator.start();
 	}
 
-	private void hidePanel() {
+	public void hidePanel() {
 		if (mAnimator != null) {
 			mAnimator.end();
 		}

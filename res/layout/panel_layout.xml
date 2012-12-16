@@ -25,6 +25,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/ContentDescriptionBackButton"
                 android:focusable="true"
                 android:paddingBottom="8dip"
                 android:paddingLeft="8dip"
@@ -38,6 +39,8 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/ContentDescriptionHomeButton"
                 android:focusable="true"
                 android:paddingBottom="8dip"
                 android:paddingLeft="8dip"
@@ -52,6 +55,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/ContentDescriptionNewTabButton"
                 android:focusable="true"
                 android:paddingBottom="8dip"
                 android:paddingLeft="8dip"
@@ -66,6 +70,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/ContentDescriptionForwardButton"
                 android:focusable="true"
                 android:paddingBottom="8dip"
                 android:paddingLeft="8dip"
@@ -73,26 +78,6 @@
                 android:paddingTop="8dip"
                 android:src="@drawable/ic_forward" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
-            android:paddingLeft="10dip"
-            android:paddingRight="10dip"
-            android:text="Tabs"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <ImageView
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dip"
-            android:paddingLeft="10dip"
-            android:paddingRight="10dip"
-            android:scaleType="fitXY"
-            android:src="?android:attr/dividerHorizontal" />
 
         <org.tint.ui.views.TabsScroller
             android:id="@+id/tabs_scroller"
@@ -132,15 +117,15 @@
                 android:padding="5dip"
                 android:src="@drawable/ic_launcher" />
 
-            <ProgressBar
-                android:id="@+id/WebViewProgress"
-                style="?android:attr/progressBarStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerInParent="true"
-                android:layout_toLeftOf="@+id/UrlBar"
-                android:visibility="invisible" />
+<!--             <ProgressBar -->
+<!--                 android:id="@+id/WebViewProgress" -->
+<!--                 style="?android:attr/progressBarStyleSmall" -->
+<!--                 android:layout_width="wrap_content" -->
+<!--                 android:layout_height="wrap_content" -->
+<!--                 android:layout_alignParentLeft="true" -->
+<!--                 android:layout_centerInParent="true" -->
+<!--                 android:layout_toLeftOf="@+id/UrlBar" -->
+<!--                 android:visibility="invisible" /> -->
 
             <org.tint.ui.views.PhoneUrlBar
                 android:id="@+id/UrlBar"
