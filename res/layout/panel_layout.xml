@@ -15,7 +15,7 @@
             android:id="@+id/TopPanel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"            
+            android:layout_alignParentTop="true"
             android:background="@drawable/ab_solid_dark_holo"
             android:scaleType="fitXY"
             android:weightSum="3" >
@@ -48,7 +48,7 @@
                 android:paddingLeft="8dip"
                 android:paddingRight="8dip"
                 android:paddingTop="8dip"
-                android:src="@drawable/ic_home" />            
+                android:src="@drawable/ic_home" />
 
             <ImageView
                 android:id="@+id/BtnForward"
@@ -70,9 +70,9 @@
             android:id="@+id/tabs_scroller"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/TopPanel"
-            android:layout_above="@+id/BottomPanel" />
-        
+            android:layout_above="@+id/BottomPanel"
+            android:layout_below="@+id/TopPanel" />
+
         <LinearLayout
             android:id="@+id/BottomPanel"
             android:layout_width="match_parent"
@@ -81,7 +81,7 @@
             android:background="@drawable/ab_bottom_solid_dark_holo"
             android:scaleType="fitXY"
             android:weightSum="1" >
-            
+
             <ImageView
                 android:id="@+id/BtnAddTab"
                 android:layout_width="0dip"
@@ -96,12 +96,10 @@
                 android:paddingRight="8dip"
                 android:paddingTop="8dip"
                 android:src="@android:drawable/ic_menu_add" />
-            
         </LinearLayout>
-        
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -113,6 +111,8 @@
             android:id="@+id/TopBar"
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
             android:layout_margin="0dip"
             android:background="@drawable/ab_solid_dark_holo"
             android:orientation="horizontal"
@@ -127,19 +127,9 @@
                 android:background="?android:attr/selectableItemBackground"
                 android:contentDescription="@string/ContentDescriptionFavicon"
                 android:focusable="true"
-                android:paddingTop="5dip"
                 android:paddingBottom="5dip"
+                android:paddingTop="5dip"
                 android:src="@drawable/ic_launcher" />
-
-<!--             <ProgressBar -->
-<!--                 android:id="@+id/WebViewProgress" -->
-<!--                 style="?android:attr/progressBarStyleSmall" -->
-<!--                 android:layout_width="wrap_content" -->
-<!--                 android:layout_height="wrap_content" -->
-<!--                 android:layout_alignParentLeft="true" -->
-<!--                 android:layout_centerInParent="true" -->
-<!--                 android:layout_toLeftOf="@+id/UrlBar" -->
-<!--                 android:visibility="invisible" /> -->
 
             <org.tint.ui.views.PhoneUrlBar
                 android:id="@+id/UrlBar"
@@ -153,9 +143,21 @@
             android:id="@+id/WebViewContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/TopBar"
             android:background="#dcdcdc"
-            android:orientation="vertical" >
-        </FrameLayout>
-    </LinearLayout>
+            android:orientation="vertical" />
+
+        <ProgressBar
+            android:id="@+id/WebViewProgress"
+            
+            style="@android:style/Widget.Holo.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TopBar"
+            android:layout_marginLeft="0dip"
+            android:layout_marginRight="0dip"
+            android:layout_marginTop="-8dip"
+            android:indeterminate="false" />
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -20,7 +20,6 @@ import android.content.Context;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.FocusFinder;
 import android.view.InputDevice;
 import android.view.KeyEvent;
@@ -163,13 +162,6 @@ public class ScrollerView extends FrameLayout {
 		super(context, attrs, defStyle);
 		initScrollView();
 		setFillViewport(true);
-		//
-		//        TypedArray a =
-		//            context.obtainStyledAttributes(attrs, com.android.internal.R.styleable.ScrollView, defStyle, 0);
-
-		//        setFillViewport(a.getBoolean(R.styleable.ScrollView_fillViewport, false));
-
-		//        a.recycle();
 	}
 
 	private void initScrollView() {
@@ -505,8 +497,6 @@ public class ScrollerView extends FrameLayout {
 		 */
 		final int action = ev.getAction();
 		
-		Log.d("onInterceptTouchEvent", Integer.toString(action));
-		
 		if ((action == MotionEvent.ACTION_MOVE) && (mIsBeingDragged)) {
 			return true;
 		}
@@ -589,8 +579,6 @@ public class ScrollerView extends FrameLayout {
 			final float ocoord = mHorizontal ? ev.getY() : ev.getX();
 			mLastOrthoCoord = ocoord;
 			mDownView = findViewAt((int) ev.getX(), (int) ev.getY());
-			
-			Log.d("onInterceptTouchEvent.ACTION_DOWN", Boolean.toString(mIsBeingDragged));
 			
 			break;
 		}

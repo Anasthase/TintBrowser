@@ -53,6 +53,7 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 public class PhoneUIManager2 extends BaseUIManager {
@@ -77,7 +78,7 @@ public class PhoneUIManager2 extends BaseUIManager {
 	private ImageView mHome;
 	private ImageView mAddTab;
 	
-//	private ProgressBar mProgressBar;
+	private ProgressBar mProgressBar;
 	
 	private int mCurrentTabIndex = -1;
 	private Fragment mCurrentFragment = null;
@@ -103,9 +104,12 @@ public class PhoneUIManager2 extends BaseUIManager {
 		
 		mPanel = (PanelLayout) mActivity.findViewById(R.id.panel_layout);
 		
-//		mProgressBar = (ProgressBar) mActivity.findViewById(R.id.WebViewProgress);
+		mProgressBar = (ProgressBar) mActivity.findViewById(R.id.WebViewProgress);
+		mProgressBar.setIndeterminate(false);
+		mProgressBar.setMax(100);
+		mProgressBar.setVisibility(View.GONE);
 		
-		mUrlBar = (PhoneUrlBar) mActivity.findViewById(R.id.UrlBar);
+		mUrlBar = (PhoneUrlBar) mActivity.findViewById(R.id.UrlBar);		
 		
 		mUrlBar.setEventListener(new OnPhoneUrlBarEventListener() {
 			
@@ -342,8 +346,8 @@ public class PhoneUIManager2 extends BaseUIManager {
 	@Override
 	public void onPageStarted(WebView view, String url, Bitmap favicon) {
 		if (view == getCurrentWebView()) {
-//			mProgressBar.setVisibility(View.VISIBLE);
-//			mFaviconView.setVisibility(View.INVISIBLE);
+			mProgressBar.setProgress(0);
+			mProgressBar.setVisibility(View.VISIBLE);			
 			
 			mUrlBar.setUrl(url);
 			
@@ -358,8 +362,8 @@ public class PhoneUIManager2 extends BaseUIManager {
 		super.onPageFinished(view, url);
 		
 		if (view == getCurrentWebView()) {
-//			mFaviconView.setVisibility(View.VISIBLE);
-//			mProgressBar.setVisibility(View.INVISIBLE);			
+			mProgressBar.setProgress(100);
+			mProgressBar.setVisibility(View.GONE);			
 						
 			mUrlBar.setUrl(url);
 			
@@ -371,9 +375,9 @@ public class PhoneUIManager2 extends BaseUIManager {
 
 	@Override
 	public void onProgressChanged(WebView view, int newProgress) {
-//		if (view == getCurrentWebView()) {
-//			mProgressBar.setProgress(newProgress);
-//		}
+		if (view == getCurrentWebView()) {
+			mProgressBar.setProgress(newProgress);
+		}
 	}
 
 	@Override
@@ -534,12 +538,11 @@ public class PhoneUIManager2 extends BaseUIManager {
 			setApplicationButtonImage(icon);
 			
 			if (currentWebView.isLoading()) {
-//				mProgressBar.setVisibility(View.VISIBLE);
-//				mFaviconView.setVisibility(View.INVISIBLE);
+				mProgressBar.setProgress(currentWebView.getProgress());
+				mProgressBar.setVisibility(View.VISIBLE);
 				mUrlBar.setGoStopReloadImage(R.drawable.ic_stop);
 			} else {
-//				mFaviconView.setVisibility(View.VISIBLE);
-//				mProgressBar.setVisibility(View.INVISIBLE);
+				mProgressBar.setVisibility(View.GONE);
 				mUrlBar.setGoStopReloadImage(R.drawable.ic_refresh);
 			}
 			
@@ -547,10 +550,8 @@ public class PhoneUIManager2 extends BaseUIManager {
 		} else {
 			mUrlBar.setTitle(R.string.ApplicationName);
 			mUrlBar.setSubtitle(R.string.UrlBarUrlDefaultSubTitle);
-//			mFaviconView.setImageDrawable(mDefaultFavicon);
-			
-//			mFaviconView.setVisibility(View.VISIBLE);
-//			mProgressBar.setVisibility(View.INVISIBLE);
+
+			mProgressBar.setVisibility(View.GONE);
 						
 			mUrlBar.setUrl(null);
 			mBack.setEnabled(false);
