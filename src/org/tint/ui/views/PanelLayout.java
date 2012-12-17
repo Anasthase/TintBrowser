@@ -246,7 +246,8 @@ public class PanelLayout extends RelativeLayout {
 		animator.addListener(mShowListener);
 
 		mAnimator = animator;
-		mAnimator.setDuration(ANIMATION_DURATION);
+				
+		mAnimator.setDuration((long) (ANIMATION_DURATION * ((mPanel.getWidth() - mTranslation) / mPanel.getWidth())));
 		mAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
 
 		mAnimator.start();
@@ -268,7 +269,7 @@ public class PanelLayout extends RelativeLayout {
 
 		mAnimator = animator;
 
-		mAnimator.setDuration(ANIMATION_DURATION);
+		mAnimator.setDuration((long) (ANIMATION_DURATION * (mTranslation / mPanel.getWidth())));
 		mAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
 
 		mAnimator.start();
