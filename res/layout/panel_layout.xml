@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/panel"
         android:layout_width="225dip"
         android:layout_height="match_parent"
@@ -12,11 +12,13 @@
         android:orientation="vertical" >
 
         <LinearLayout
+            android:id="@+id/TopPanel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"            
             android:background="@drawable/ab_solid_dark_holo"
             android:scaleType="fitXY"
-            android:weightSum="4" >
+            android:weightSum="3" >
 
             <ImageView
                 android:id="@+id/BtnBack"
@@ -46,22 +48,7 @@
                 android:paddingLeft="8dip"
                 android:paddingRight="8dip"
                 android:paddingTop="8dip"
-                android:src="@drawable/ic_home" />
-
-            <ImageView
-                android:id="@+id/BtnAddTab"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:background="?android:attr/selectableItemBackground"
-                android:contentDescription="@string/ContentDescriptionNewTabButton"
-                android:focusable="true"
-                android:paddingBottom="8dip"
-                android:paddingLeft="8dip"
-                android:paddingRight="8dip"
-                android:paddingTop="8dip"
-                android:src="@android:drawable/ic_menu_add" />
+                android:src="@drawable/ic_home" />            
 
             <ImageView
                 android:id="@+id/BtnForward"
@@ -82,8 +69,37 @@
         <org.tint.ui.views.TabsScroller
             android:id="@+id/tabs_scroller"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_below="@+id/TopPanel"
+            android:layout_above="@+id/BottomPanel" />
+        
+        <LinearLayout
+            android:id="@+id/BottomPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/ab_bottom_solid_dark_holo"
+            android:scaleType="fitXY"
+            android:weightSum="1" >
+            
+            <ImageView
+                android:id="@+id/BtnAddTab"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/ContentDescriptionNewTabButton"
+                android:focusable="true"
+                android:paddingBottom="8dip"
+                android:paddingLeft="8dip"
+                android:paddingRight="8dip"
+                android:paddingTop="8dip"
+                android:src="@android:drawable/ic_menu_add" />
+            
+        </LinearLayout>
+        
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/main_content"

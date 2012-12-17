@@ -32,7 +32,7 @@ public class PanelLayout extends RelativeLayout {
 	private AnimatorListener mHideListener;
 
 	private LinearLayout mContent;
-	private LinearLayout mPanel;
+	private RelativeLayout mPanel;
 	
 	private TabsScroller mTabsScroller;
 
@@ -77,7 +77,7 @@ public class PanelLayout extends RelativeLayout {
 			View v = layoutInflater.inflate(R.layout.panel_layout, this);
 
 			mContent = (LinearLayout) v.findViewById(R.id.main_content);
-			mPanel = (LinearLayout) v.findViewById(R.id.panel);
+			mPanel = (RelativeLayout) v.findViewById(R.id.panel);
 
 			mTabsScroller = (TabsScroller) v.findViewById(R.id.tabs_scroller);
 
