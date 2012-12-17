@@ -109,6 +109,8 @@ public interface UIManager extends OnTouchListener {
 	
 	void onPageFinished(WebView view, String url);
 	
+	void onClientPageFinished(CustomWebView view, String url);
+	
 	void onProgressChanged(WebView view, int newProgress);
 	
 	void onReceivedTitle(WebView view, String title);

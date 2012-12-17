@@ -20,7 +20,7 @@ import android.widget.RelativeLayout;
 public class PanelLayout extends RelativeLayout {
 	
 	private static final int ANIMATION_DURATION = 150;
-	private static final int BEZEL_SIZE = 30;
+	private static final int BEZEL_SIZE = 20;
 	private static final int BEZEL_SIZE_OPEN = 100;
 
 	private Animator mAnimator;
@@ -166,7 +166,7 @@ public class PanelLayout extends RelativeLayout {
 						hidePanel();
 					}
 				} else {
-					if (mTranslation <= 0.8 * mPanel.getWidth()) {
+					if (mTranslation <= 0.9 * mPanel.getWidth()) {
 						hidePanel();
 					} else {
 						showPanel();

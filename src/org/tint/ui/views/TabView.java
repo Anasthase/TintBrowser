@@ -1,25 +1,27 @@
 package org.tint.ui.views;
 
 import org.tint.R;
-
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Picture;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class TabView extends LinearLayout {
 
-	private ViewGroup mContent;
 	private ImageView mClose;
 	private TextView mTitle;
 	private View mTitleBar;
 	private ImageView mImage;
 	
-	private boolean mHighlighted;
+	private int mImageWidth;
+	private int mImageHeight;
 	
 	private OnClickListener mClickListener;
 
@@ -41,11 +43,13 @@ public class TabView extends LinearLayout {
 	private void init(Context context) {
 		LayoutInflater.from(context).inflate(R.layout.tab_view, this);
 
-		mContent = (ViewGroup) findViewById(R.id.main);
 		mClose = (ImageView) findViewById(R.id.closetab);
 		mTitle = (TextView) findViewById(R.id.title);
 		mTitleBar = findViewById(R.id.titlebar);
-		mImage = (ImageView) findViewById(R.id.tab_view);		
+		mImage = (ImageView) findViewById(R.id.tab_view);
+		
+		mImageWidth = (int) (200 * context.getResources().getDisplayMetrics().density);
+		mImageHeight = (int) (120 * context.getResources().getDisplayMetrics().density);
 	}
 
 	public boolean isClose(View v) {
@@ -58,6 +62,24 @@ public class TabView extends LinearLayout {
 
 	public boolean isWebView(View v) {
 		return v == mImage;
+	}
+	
+	public void setImage(Picture picture) {
+		Bitmap bm = Bitmap.createBitmap(mImageWidth, mImageHeight, Bitmap.Config.ARGB_8888);
+		Canvas canvas = new Canvas(bm);
+		
+		Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
+		p.setColor(0xFFFFFFFF);
+		canvas.drawRect(0, 0, mImageWidth, mImageHeight, p);
+		
+		if (picture != null) {
+			float scale = mImageWidth / (float) picture.getWidth();
+			canvas.scale(scale, scale);
+
+			picture.draw(canvas);			
+		}
+		
+		mImage.setImageBitmap(bm);
 	}
 
 //	private void setTitle() {
@@ -82,19 +104,6 @@ public class TabView extends LinearLayout {
 	
 	public void setTitle(String title) {
 		mTitle.setText(title);
-	}
-
-	private void setTitleIcon(int id) {
-		if (id == 0) {
-			mTitle.setPadding(mTitle.getCompoundDrawablePadding(), 0, 0, 0);
-		} else {
-			mTitle.setPadding(0, 0, 0, 0);
-		}
-		mTitle.setCompoundDrawablesWithIntrinsicBounds(id, 0, 0, 0);
-	}
-
-	protected boolean isHighlighted() {
-		return mHighlighted;
 	}
 
 //	protected Long getWebViewId(){

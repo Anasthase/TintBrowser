@@ -211,7 +211,11 @@ public class PhoneUIManager2 extends BaseUIManager {
 			
 			@Override
 			public void onRemovePosition(int position) {
-				closeTabByIndex(position);
+				if (mFragmentsList.size() > 1) {
+					closeTabByIndex(position);
+				} else {
+					mAdapter.notifyDataSetChanged();
+				}
 			}
 		});
 	}
@@ -371,8 +375,16 @@ public class PhoneUIManager2 extends BaseUIManager {
 			
 			updateBackForwardEnabled();
 		}
+		
+		mAdapter.notifyDataSetChanged();
 	}
 
+	@Override
+	public void onClientPageFinished(CustomWebView view, String url) {
+		super.onClientPageFinished(view, url);
+		mAdapter.notifyDataSetChanged();
+	}
+	
 	@Override
 	public void onProgressChanged(WebView view, int newProgress) {
 		if (view == getCurrentWebView()) {
@@ -405,6 +417,8 @@ public class PhoneUIManager2 extends BaseUIManager {
 		mUrlBar.setUrl(null);
 		mBack.setEnabled(false);
 		mForward.setEnabled(false);
+		
+		mAdapter.notifyDataSetChanged();
 	}
 
 	@Override
@@ -692,7 +706,10 @@ public class PhoneUIManager2 extends BaseUIManager {
 				// TODO: Translate
 				tabview.setTitle("Start page");
 			} else {
-				tabview.setTitle(fragment.getWebView().getTitle());
+				CustomWebView webView = fragment.getWebView();
+				
+				tabview.setTitle(webView.getTitle());
+				tabview.setImage(webView.isLoading() ? null : webView.capturePicture());
 			}
 			
 			ImageView closeView = (ImageView) tabview.findViewById(R.id.closetab);

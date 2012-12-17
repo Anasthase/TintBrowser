@@ -109,7 +109,7 @@ public abstract class BaseWebViewFragment extends Fragment {
 	}
 	
 	private void createWebView(boolean addToParent) {
-		mWebView = new CustomWebView(mUIManager.getMainActivity(), mPrivateBrowsing);
+		mWebView = new CustomWebView(mUIManager, mPrivateBrowsing);
 		
 		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 		mWebView.setLayoutParams(params);

@@ -24,6 +24,7 @@ import org.tint.R;
 import org.tint.addons.AddonMenuItem;
 import org.tint.controllers.Controller;
 import org.tint.model.DownloadItem;
+import org.tint.ui.UIManager;
 import org.tint.ui.activities.TintBrowserActivity;
 import org.tint.ui.fragments.BaseWebViewFragment;
 import org.tint.utils.Constants;
@@ -50,6 +51,7 @@ import android.widget.Toast;
 
 public class CustomWebView extends WebView implements DownloadListener {
 	
+	private UIManager mUIManager;
 	private Context mContext;
 	private BaseWebViewFragment mParentFragment;
 
@@ -58,8 +60,9 @@ public class CustomWebView extends WebView implements DownloadListener {
 	private static boolean sMethodsLoaded = false;
 	private static Method sWebSettingsSetProperty = null;
 	
-	public CustomWebView(Context context, boolean privateBrowsing) {
-		this(context, null, privateBrowsing);
+	public CustomWebView(UIManager uiManager, boolean privateBrowsing) {
+		this(uiManager.getMainActivity(), null, privateBrowsing);
+		mUIManager = uiManager;
 	}
 	
 	public CustomWebView(Context context, AttributeSet attrs, boolean privateBrowsing) {
@@ -108,6 +111,8 @@ public class CustomWebView extends WebView implements DownloadListener {
 		if (!isPrivateBrowsingEnabled()) {
 			Controller.getInstance().getAddonManager().onPageFinished(mContext, this, url);
 		}
+		
+		mUIManager.onClientPageFinished(this, url);
 	}
 	
 	@SuppressLint("SetJavaScriptEnabled")

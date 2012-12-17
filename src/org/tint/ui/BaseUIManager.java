@@ -414,6 +414,9 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 	}
 	
 	@Override
+	public void onClientPageFinished(CustomWebView view, String url) { }
+
+	@Override
 	public void onReceivedIcon(WebView view, Bitmap icon) {
 		if (view == getCurrentWebView()) {
 			setApplicationButtonImage(icon);
