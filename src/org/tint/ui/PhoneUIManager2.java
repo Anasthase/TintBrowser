@@ -38,15 +38,17 @@ import org.tint.utils.Constants;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
+import android.preference.PreferenceManager;
 import android.view.ActionMode;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.BaseAdapter;
@@ -77,10 +79,10 @@ public class PhoneUIManager2 extends BaseUIManager {
 	
 //	private ProgressBar mProgressBar;
 	
-	private BitmapDrawable mDefaultFavicon;
-	
 	private int mCurrentTabIndex = -1;
 	private Fragment mCurrentFragment = null;
+	
+	private ActionMode mActionMode;
 	
 	private TabAdapter mAdapter;
 
@@ -98,16 +100,6 @@ public class PhoneUIManager2 extends BaseUIManager {
 		super.setupUI();
 		
 		mActionBar.hide();
-		
-		int buttonSize = mActivity.getResources().getInteger(R.integer.application_button_size);
-		Drawable d = mActivity.getResources().getDrawable(R.drawable.ic_launcher);
-		
-		Bitmap bm = Bitmap.createBitmap(buttonSize, buttonSize, Bitmap.Config.ARGB_8888);
-		Canvas canvas = new Canvas(bm);
-		d.setBounds(0, 0, buttonSize, buttonSize);
-		d.draw(canvas);
-		
-		mDefaultFavicon = new BitmapDrawable(mActivity.getResources(), bm);
 		
 		mPanel = (PanelLayout) mActivity.findViewById(R.id.panel_layout);
 		
@@ -333,22 +325,19 @@ public class PhoneUIManager2 extends BaseUIManager {
 	
 	@Override
 	public boolean onKeySearch() {
-		// TODO Auto-generated method stub
-		return false;
+		mUrlBar.showUrl();
+		return true;
 	}
 
 	@Override
-	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
-			String key) {
-		// TODO Auto-generated method stub
-
+	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+		for (PhoneWebViewFragment fragment : mFragmentsList) {
+			fragment.getWebView().loadSettings();
+		}
 	}
 
 	@Override
-	public void onMenuVisibilityChanged(boolean isVisible) {
-		// TODO Auto-generated method stub
-
-	}
+	public void onMenuVisibilityChanged(boolean isVisible) { }
 	
 	@Override
 	public void onPageStarted(WebView view, String url, Bitmap favicon) {
@@ -408,8 +397,6 @@ public class PhoneUIManager2 extends BaseUIManager {
 		mUrlBar.setTitle(mActivity.getString(R.string.ApplicationName));
 		mUrlBar.setSubtitle(R.string.UrlBarUrlDefaultSubTitle);
 		mUrlBar.hideGoStopReloadButton();
-		
-//		mFaviconView.setImageDrawable(mDefaultFavicon);
 					
 		mUrlBar.setUrl(null);
 		mBack.setEnabled(false);
@@ -423,14 +410,17 @@ public class PhoneUIManager2 extends BaseUIManager {
 
 	@Override
 	public void onActionModeStarted(ActionMode mode) {
-		// TODO Auto-generated method stub
-
+		mActionMode = mode;
 	}
 
 	@Override
 	public void onActionModeFinished(ActionMode mode) {
-		// TODO Auto-generated method stub
-
+		if (mActionMode != null) {
+			mActionMode = null;
+			
+			InputMethodManager mgr = (InputMethodManager) mActivity.getSystemService(Context.INPUT_METHOD_SERVICE);
+			mgr.hideSoftInputFromWindow(null, 0);
+		}
 	}
 
 	@Override
@@ -491,14 +481,22 @@ public class PhoneUIManager2 extends BaseUIManager {
 
 	@Override
 	protected void resetUI() {
-		// TODO Auto-generated method stub
-
+		updateUrlBar();
 	}
 
 	@Override
 	protected void setFullScreenFromPreferences() {
-		// TODO Auto-generated method stub
-
+		Window win = mActivity.getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+		final int bits = WindowManager.LayoutParams.FLAG_FULLSCREEN;
+		
+		if (PreferenceManager.getDefaultSharedPreferences(mActivity).getBoolean(Constants.PREFERENCE_FULL_SCREEN, false)) {
+			winParams.flags |=  bits;
+		} else {
+			winParams.flags &= ~bits;
+		}
+		
+		win.setAttributes(winParams);
 	}
 	
 	private void updateUrlBar() {
