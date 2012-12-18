@@ -43,7 +43,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class StartPageFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public abstract class StartPageFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
 	public interface OnStartPageItemClickedListener {
 		public void onStartPageItemClicked(String url);
@@ -58,7 +58,8 @@ public class StartPageFragment extends Fragment implements LoaderManager.LoaderC
 	
 	private OnSharedPreferenceChangeListener mPreferenceChangeListener;
 	
-	private UIManager mUIManager;
+	protected UIManager mUIManager;
+	
 	private boolean mInitialized;
 	
 	private boolean mListShown = true;
@@ -85,7 +86,7 @@ public class StartPageFragment extends Fragment implements LoaderManager.LoaderC
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		if (mParentView == null) {		
-			mParentView = inflater.inflate(ApplicationUtils.getStartPageLayout(getActivity()), container, false);
+			mParentView = inflater.inflate(getStartPageFragmentLayout(), container, false);
 			mGrid = (GridView) mParentView.findViewById(R.id.StartPageFragmentGrid);
 			
 			String[] from = new String[] { BookmarksProvider.Columns.TITLE, BookmarksProvider.Columns.URL };
@@ -137,7 +138,14 @@ public class StartPageFragment extends Fragment implements LoaderManager.LoaderC
 		super.onActivityCreated(savedInstanceState);
 		
 		setListShown(false, false);
-		getLoaderManager().initLoader(0, null, this);
+		
+		mParentView.postDelayed(new Runnable() {
+			
+			@Override
+			public void run() {
+				getLoaderManager().initLoader(0, null, StartPageFragment.this);
+			}
+		}, 100);
 	}	
 
 	@Override
@@ -180,6 +188,8 @@ public class StartPageFragment extends Fragment implements LoaderManager.LoaderC
 	public void setOnStartPageItemClickedListener(OnStartPageItemClickedListener listener) {
 		mListener = listener;
 	}
+	
+	protected abstract int getStartPageFragmentLayout();
 	
 	private void setListShown(boolean shown, boolean animate) {
 		

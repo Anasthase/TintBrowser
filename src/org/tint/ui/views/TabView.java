@@ -105,6 +105,10 @@ public class TabView extends LinearLayout {
 	public void setTitle(String title) {
 		mTitle.setText(title);
 	}
+	
+	public void setTitle(int title) {
+		mTitle.setText(title);
+	}
 
 //	protected Long getWebViewId(){
 //		if(mTab == null) return null;

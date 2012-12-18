@@ -25,6 +25,7 @@ import org.tint.ui.activities.TintBrowserActivity;
 import org.tint.ui.components.CustomWebView;
 import org.tint.ui.fragments.BaseWebViewFragment;
 import org.tint.ui.fragments.StartPageFragment;
+import org.tint.ui.fragments.TabletStartPageFragment;
 import org.tint.ui.fragments.TabletWebViewFragment;
 import org.tint.ui.fragments.StartPageFragment.OnStartPageItemClickedListener;
 import org.tint.ui.tabs.WebViewFragmentTabListener;
@@ -61,7 +62,7 @@ public class TabletUIManager extends BaseUIManager {
 		if (mStartPageFragment == null) {
 			FragmentTransaction ft = mFragmentManager.beginTransaction();
 			
-			mStartPageFragment = new StartPageFragment();
+			mStartPageFragment = new TabletStartPageFragment();
 			mStartPageFragment.setOnStartPageItemClickedListener(new OnStartPageItemClickedListener() {					
 				@Override
 				public void onStartPageItemClicked(String url) {

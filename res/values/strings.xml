@@ -504,4 +504,8 @@
     <string name="FullScreen">Full screen</string>
     <string name="ContentDescriptionExitFullScreen">Exit full screen button</string>
     
+    <!-- 1.7 -->
+    <string name="StartPageLabel">Start page</string>
+    <string name="StartPageOpenBookmarks"><a href="">Bookmarks</a></string>
+    
 </resources>

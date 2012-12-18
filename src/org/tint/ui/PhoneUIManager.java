@@ -26,8 +26,8 @@ import org.tint.controllers.Controller;
 import org.tint.ui.activities.TintBrowserActivity;
 import org.tint.ui.components.CustomWebView;
 import org.tint.ui.fragments.BaseWebViewFragment;
+import org.tint.ui.fragments.PhoneStartPageFragment;
 import org.tint.ui.fragments.PhoneWebViewFragment;
-import org.tint.ui.fragments.StartPageFragment;
 import org.tint.ui.fragments.StartPageFragment.OnStartPageItemClickedListener;
 import org.tint.ui.runnables.HideToolbarsRunnable;
 import org.tint.ui.views.PhoneUrlBar;
@@ -932,7 +932,7 @@ public class PhoneUIManager extends BaseUIManager {
 	}
 	
 	private void createStartPageFragment() {
-		mStartPageFragment = new StartPageFragment();
+		mStartPageFragment = new PhoneStartPageFragment();
 		mStartPageFragment.setOnStartPageItemClickedListener(new OnStartPageItemClickedListener() {					
 			@Override
 			public void onStartPageItemClicked(String url) {

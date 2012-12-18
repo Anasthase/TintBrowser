@@ -27,8 +27,8 @@ import org.tint.ui.activities.TintBrowserActivity;
 import org.tint.ui.components.BadgedImageView;
 import org.tint.ui.components.CustomWebView;
 import org.tint.ui.fragments.BaseWebViewFragment;
+import org.tint.ui.fragments.PhoneStartPageFragment2;
 import org.tint.ui.fragments.PhoneWebViewFragment;
-import org.tint.ui.fragments.StartPageFragment;
 import org.tint.ui.fragments.StartPageFragment.OnStartPageItemClickedListener;
 import org.tint.ui.views.PanelLayout;
 import org.tint.ui.views.PhoneUrlBar;
@@ -195,6 +195,8 @@ public class PhoneUIManager2 extends BaseUIManager {
         mHome.setOnClickListener(new OnClickListener() {			
 			@Override
 			public void onClick(View v) {
+				mProgressBar.setProgress(0);
+				mProgressBar.setVisibility(View.GONE);
 				loadHomePage();
 				mPanel.hidePanel();
 			}
@@ -579,7 +581,7 @@ public class PhoneUIManager2 extends BaseUIManager {
 	}
 
 	private void createStartPageFragment() {
-		mStartPageFragment = new StartPageFragment();
+		mStartPageFragment = new PhoneStartPageFragment2();
 		mStartPageFragment.setOnStartPageItemClickedListener(new OnStartPageItemClickedListener() {					
 			@Override
 			public void onStartPageItemClicked(String url) {
@@ -717,8 +719,7 @@ public class PhoneUIManager2 extends BaseUIManager {
 			PhoneWebViewFragment fragment = getItem(position);
 			
 			if (fragment.isStartPageShown()) {
-				// TODO: Translate
-				tabview.setTitle("Start page");
+				tabview.setTitle(R.string.StartPageLabel);
 			} else {
 				CustomWebView webView = fragment.getWebView();
 				
