@@ -20,8 +20,9 @@ import android.widget.RelativeLayout;
 public class PanelLayout extends RelativeLayout {
 	
 	private static final int ANIMATION_DURATION = 150;
-	private static final int BEZEL_SIZE = 20;
-	private static final int BEZEL_SIZE_OPEN = 100;
+	private static final int BEZEL_SIZE_REDUCED = 10;
+	private static final int BEZEL_SIZE_STANDARD = 20;
+	private static final int BEZEL_SIZE_OPENED = 100;
 
 	private Animator mAnimator;
 
@@ -37,8 +38,9 @@ public class PanelLayout extends RelativeLayout {
 
 	private boolean mInSlide;
 	private float mBezelTopDelta;
-	private float mBezelSize;
-	private float mBezelSizeOpen;
+	private float mBezelSizeReduced;
+	private float mBezelSizeStandard;
+	private float mBezelSizeOpened;
 	private float mLastX;
 	private float mTranslation;
 	private float mAlpha;
@@ -69,8 +71,12 @@ public class PanelLayout extends RelativeLayout {
 			context.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true);
 			
 			mBezelTopDelta = getResources().getDimension(tv.resourceId);
-			mBezelSize = BEZEL_SIZE * context.getResources().getDisplayMetrics().density + 0.5f;
-			mBezelSizeOpen = BEZEL_SIZE_OPEN * context.getResources().getDisplayMetrics().density + 0.5f;
+			
+			float density = context.getResources().getDisplayMetrics().density;
+			
+			mBezelSizeReduced = BEZEL_SIZE_REDUCED * density + 0.5f;
+			mBezelSizeStandard = BEZEL_SIZE_STANDARD * density + 0.5f;
+			mBezelSizeOpened = BEZEL_SIZE_OPENED * density + 0.5f;
 			
 			LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			View v = layoutInflater.inflate(R.layout.panel_layout, this);
@@ -108,15 +114,28 @@ public class PanelLayout extends RelativeLayout {
 
 		switch (ev.getAction()) {
 		case MotionEvent.ACTION_DOWN:
-			float x = ev.getX();
 			float y = ev.getY();
-
-			float bezelSize = mPanelShown ? mBezelSizeOpen : mBezelSize;
 			
-			if ((y > mBezelTopDelta) &&
-					(x >= mTranslation) &&
-					(x <= mTranslation + bezelSize)) {
-				return true;
+			if (y > mBezelTopDelta) {
+				float x = ev.getX();
+				
+				float bezelSize;
+				if (mPanelShown) {
+					bezelSize = mBezelSizeOpened;
+				} else {
+					float height = mPanel.getHeight() - mBezelTopDelta;
+					if ((y - mBezelTopDelta <= 0.1 * height) ||
+							(y - mBezelTopDelta >= 0.9 * height)) {
+						bezelSize = mBezelSizeReduced;
+					} else {
+						bezelSize = mBezelSizeStandard;
+					}
+				}
+				
+				if ((x >= mTranslation) &&
+						(x <= mTranslation + bezelSize)) {
+					return true;
+				}
 			}
 
 			break;
@@ -138,19 +157,32 @@ public class PanelLayout extends RelativeLayout {
 
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN:
-			float x = event.getX();
 			float y = event.getY();
-
-			float bezelSize = mPanelShown ? mBezelSizeOpen : mBezelSize;
 			
-			if ((y > mBezelTopDelta) &&
-					(x >= mTranslation) &&
-					(x <= mTranslation + bezelSize)) {
+			if (y > mBezelTopDelta) {
+				float x = event.getX();
+				
+				float bezelSize;
+				if (mPanelShown) {
+					bezelSize = mBezelSizeOpened;
+				} else {
+					float height = mPanel.getHeight() - mBezelTopDelta;
+					if ((y - mBezelTopDelta <= 0.1 * height) ||
+							(y - mBezelTopDelta >= 0.9 * height)) {
+						bezelSize = mBezelSizeReduced;
+					} else {
+						bezelSize = mBezelSizeStandard;
+					}
+				}
+				
+				if ((x >= mTranslation) &&
+						(x <= mTranslation + bezelSize)) {
+					
+					mInSlide = true;
+					mLastX = event.getX();
 
-				mInSlide = true;
-				mLastX = event.getX();
-
-				return true;
+					return true;
+				}
 			}
 
 			break;
