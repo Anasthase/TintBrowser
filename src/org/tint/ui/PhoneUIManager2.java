@@ -24,6 +24,7 @@ import java.util.UUID;
 import org.tint.R;
 import org.tint.controllers.Controller;
 import org.tint.ui.activities.TintBrowserActivity;
+import org.tint.ui.components.BadgedImageView;
 import org.tint.ui.components.CustomWebView;
 import org.tint.ui.fragments.BaseWebViewFragment;
 import org.tint.ui.fragments.PhoneWebViewFragment;
@@ -71,7 +72,7 @@ public class PhoneUIManager2 extends BaseUIManager {
 	private PhoneUrlBar mUrlBar;
 	private RelativeLayout mTopBar;
 	
-	private ImageView mFaviconView;
+	private BadgedImageView mFaviconView;
 	
 	private ImageView mBack;
 	private ImageView mForward;
@@ -144,7 +145,7 @@ public class PhoneUIManager2 extends BaseUIManager {
         mUrlBar.setTitle(R.string.ApplicationName);
         mUrlBar.setSubtitle(R.string.UrlBarUrlDefaultSubTitle);
 		
-        mFaviconView = (ImageView) mActivity.findViewById(R.id.FaviconView);
+        mFaviconView = (BadgedImageView) mActivity.findViewById(R.id.FaviconView);
         mFaviconView.setOnClickListener(new OnClickListener() {			
 			@Override
 			public void onClick(View v) {
@@ -572,6 +573,8 @@ public class PhoneUIManager2 extends BaseUIManager {
 			mForward.setEnabled(false);
 		}
 		
+		mFaviconView.setValue(mFragmentsList.size());
+		
 		mUrlBar.setPrivateBrowsingIndicator(currentFragment != null ? currentFragment.isPrivateBrowsingEnabled() : false);
 	}
 
@@ -646,6 +649,8 @@ public class PhoneUIManager2 extends BaseUIManager {
 				mCurrentTabIndex--;
 			}
 		}
+		
+		updateUrlBar();
 		
 		mAdapter.notifyDataSetChanged();
 	}

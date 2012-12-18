@@ -119,7 +119,7 @@
             android:padding="0dip"
             android:scaleType="fitXY" >
 
-            <ImageView
+            <org.tint.ui.components.BadgedImageView
                 android:id="@+id/FaviconView"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -129,7 +129,7 @@
                 android:focusable="true"
                 android:paddingBottom="5dip"
                 android:paddingTop="5dip"
-                android:src="@drawable/ic_launcher" />
+                android:src="@drawable/ic_tabs" />
 
             <org.tint.ui.views.PhoneUrlBar
                 android:id="@+id/UrlBar"
