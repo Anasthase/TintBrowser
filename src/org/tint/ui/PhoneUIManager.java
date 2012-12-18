@@ -798,6 +798,7 @@ public class PhoneUIManager extends BaseUIManager {
 			setCurrentFragment(mStartPageFragment, AnimationType.FADE);
 			mUrlBar.hideGoStopReloadButton();
 		} else {
+			newFragment.getWebView().onResume();
 			setCurrentFragment(newFragment, AnimationType.FADE);
 			mUrlBar.showGoStopReloadButton();
 		}		
@@ -818,6 +819,9 @@ public class PhoneUIManager extends BaseUIManager {
 		if (mCurrentTabIndex > 0) {
 			mUrlBar.hideUrl();
 			
+			PhoneWebViewFragment oldFragment = mFragmentsList.get(mCurrentTabIndex);
+			oldFragment.getWebView().onPause();
+			
 			mCurrentTabIndex--;
 			
 			showCurrentTab(true);
@@ -828,6 +832,9 @@ public class PhoneUIManager extends BaseUIManager {
 	private void showNextTab() {
 		if (mCurrentTabIndex < mFragmentsList.size() - 1) {
 			mUrlBar.hideUrl();
+			
+			PhoneWebViewFragment oldFragment = mFragmentsList.get(mCurrentTabIndex);
+			oldFragment.getWebView().onPause();
 			
 			mCurrentTabIndex++;
 			

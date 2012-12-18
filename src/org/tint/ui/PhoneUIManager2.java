@@ -662,6 +662,14 @@ public class PhoneUIManager2 extends BaseUIManager {
 		mForward.setEnabled(currentWebView.canGoForward());
 	}
 	
+	private void showTabByIndex(int index, boolean notifyTabSwitched) {
+		PhoneWebViewFragment oldFragment = mFragmentsList.get(mCurrentTabIndex);
+		oldFragment.getWebView().onPause();
+		
+		mCurrentTabIndex = index;
+		showCurrentTab(notifyTabSwitched);
+	}
+	
 	private void showCurrentTab(boolean notifyTabSwitched) {
 		PhoneWebViewFragment newFragment = mFragmentsList.get(mCurrentTabIndex);
 		
@@ -669,6 +677,7 @@ public class PhoneUIManager2 extends BaseUIManager {
 			setCurrentFragment(mStartPageFragment, AnimationType.FADE);
 			mUrlBar.hideGoStopReloadButton();
 		} else {
+			newFragment.getWebView().onResume();
 			setCurrentFragment(newFragment, AnimationType.FADE);
 			mUrlBar.showGoStopReloadButton();
 		}		
@@ -732,8 +741,7 @@ public class PhoneUIManager2 extends BaseUIManager {
 					if (tabview.isClose(v)) {
 						mPanel.getTabsScroller().animateOut(tabview);
 					} else {
-						mCurrentTabIndex = position;
-						showCurrentTab(true);
+						showTabByIndex(position, true);
 						mPanel.hidePanel();
 					}
 				}
