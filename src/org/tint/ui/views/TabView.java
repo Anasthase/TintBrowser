@@ -81,6 +81,10 @@ public class TabView extends LinearLayout {
 		
 		mImage.setImageBitmap(bm);
 	}
+	
+	public void setImageResource(int resource) {
+		mImage.setImageResource(resource);
+	}
 
 //	private void setTitle() {
 //		if (mTab == null) return;

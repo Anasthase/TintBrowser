@@ -35,6 +35,7 @@ public class PanelLayout extends RelativeLayout {
 	private RelativeLayout mPanel;
 	
 	private TabsScroller mTabsScroller;
+	private ImageView mOpenTabView;
 
 	private boolean mInSlide;
 	private float mBezelTopDelta;
@@ -86,6 +87,8 @@ public class PanelLayout extends RelativeLayout {
 
 			mTabsScroller = (TabsScroller) v.findViewById(R.id.tabs_scroller);
 
+			mOpenTabView = (ImageView) v.findViewById(R.id.tab_add);
+						
 			mShowListener = new AnimatorListenerAdapter() {
 				@Override
 				public void onAnimationEnd(Animator animation) {
@@ -250,10 +253,10 @@ public class PanelLayout extends RelativeLayout {
 		return mTabsScroller;
 	}
 	
-	public ImageView getAddTabButton() {
-		return (ImageView) mPanel.findViewById(R.id.BtnAddTab);
+	public ImageView getOpenTabView() {
+		return mOpenTabView;
 	}
-	
+		
 	public void togglePanel() {
 		if (mPanelShown) {
 			hidePanel();

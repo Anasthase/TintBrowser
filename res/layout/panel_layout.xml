@@ -64,39 +64,25 @@
                 android:paddingRight="8dip"
                 android:paddingTop="8dip"
                 android:src="@drawable/ic_forward" />
-        </LinearLayout>
+        </LinearLayout>        
+        
+        <ImageView
+            android:id="@+id/tab_add"
+            android:layout_width="200dip"
+            android:layout_height="60dip"
+            android:layout_below="@+id/TopPanel"
+            android:focusable="false"
+            android:layout_marginLeft="12dip"
+            android:layout_marginTop="12dip"
+            android:layout_marginBottom="5dip"
+            android:src="@drawable/open_tab" />
 
         <org.tint.ui.views.TabsScroller
             android:id="@+id/tabs_scroller"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/BottomPanel"
-            android:layout_below="@+id/TopPanel" />
-
-        <LinearLayout
-            android:id="@+id/BottomPanel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/ab_bottom_solid_dark_holo"
-            android:scaleType="fitXY"
-            android:weightSum="1" >
-
-            <ImageView
-                android:id="@+id/BtnAddTab"
-                android:layout_width="0dip"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:background="?android:attr/selectableItemBackground"
-                android:contentDescription="@string/ContentDescriptionNewTabButton"
-                android:focusable="true"
-                android:paddingBottom="8dip"
-                android:paddingLeft="8dip"
-                android:paddingRight="8dip"
-                android:paddingTop="8dip"
-                android:src="@android:drawable/ic_menu_add" />
-        </LinearLayout>
+            android:layout_below="@+id/tab_add" />
     </RelativeLayout>
 
     <RelativeLayout

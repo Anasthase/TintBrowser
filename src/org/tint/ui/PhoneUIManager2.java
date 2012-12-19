@@ -77,7 +77,6 @@ public class PhoneUIManager2 extends BaseUIManager {
 	private ImageView mBack;
 	private ImageView mForward;
 	private ImageView mHome;
-	private ImageView mAddTab;
 	
 	private ProgressBar mProgressBar;
 	
@@ -104,6 +103,15 @@ public class PhoneUIManager2 extends BaseUIManager {
 		mActionBar.hide();
 		
 		mPanel = (PanelLayout) mActivity.findViewById(R.id.panel_layout);
+		
+		ImageView openTabView = mPanel.getOpenTabView();
+		openTabView.setImageResource(R.drawable.open_tab);
+		openTabView.setOnClickListener(new OnClickListener() {			
+			@Override
+			public void onClick(View v) {
+				addTab(true, false);
+			}
+		});
 		
 		mProgressBar = (ProgressBar) mActivity.findViewById(R.id.WebViewProgress);
 		mProgressBar.setIndeterminate(false);
@@ -199,14 +207,6 @@ public class PhoneUIManager2 extends BaseUIManager {
 				mProgressBar.setVisibility(View.GONE);
 				loadHomePage();
 				mPanel.hidePanel();
-			}
-		});
-        
-        mAddTab = (ImageView) mActivity.findViewById(R.id.BtnAddTab);
-        mAddTab.setOnClickListener(new OnClickListener() {			
-			@Override
-			public void onClick(View v) {
-				addTab(true, false);
 			}
 		});
         
