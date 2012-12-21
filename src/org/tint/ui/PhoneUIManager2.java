@@ -667,36 +667,39 @@ public class PhoneUIManager2 extends BaseUIManager {
 	}
 	
 	private void closeTabByIndex(int index) {
-		boolean currentTab = index == mCurrentTabIndex;		
-		
-		PhoneWebViewFragment fragment = mFragmentsList.get(index);
-		
-		CustomWebView webView = fragment.getWebView();
-		
-		if (!webView.isPrivateBrowsingEnabled()) {
-			Controller.getInstance().getAddonManager().onTabClosed(mActivity, webView);
-		}
-		
-		webView.onPause();
-		
-		mFragmentsList.remove(index);
-		mFragmentsMap.remove(fragment.getUUID());
-		
-		if (currentTab) {
-			if (mCurrentTabIndex > 0) {
-				mCurrentTabIndex--;
+		if ((index >= 0) &&
+				(index < mFragmentsList.size())) {
+			boolean currentTab = index == mCurrentTabIndex;		
+
+			PhoneWebViewFragment fragment = mFragmentsList.get(index);
+
+			CustomWebView webView = fragment.getWebView();
+
+			if (!webView.isPrivateBrowsingEnabled()) {
+				Controller.getInstance().getAddonManager().onTabClosed(mActivity, webView);
 			}
-			
-			showCurrentTab(true);
-		} else {
-			if (index < mCurrentTabIndex) {
-				mCurrentTabIndex--;
+
+			webView.onPause();
+
+			mFragmentsList.remove(index);
+			mFragmentsMap.remove(fragment.getUUID());
+
+			if (currentTab) {
+				if (mCurrentTabIndex > 0) {
+					mCurrentTabIndex--;
+				}
+
+				showCurrentTab(true);
+			} else {
+				if (index < mCurrentTabIndex) {
+					mCurrentTabIndex--;
+				}
 			}
+
+			updateUrlBar();
+
+			mAdapter.notifyDataSetChanged();
 		}
-		
-		updateUrlBar();
-		
-		mAdapter.notifyDataSetChanged();
 	}
 	
 	private void updateBackForwardEnabled() {

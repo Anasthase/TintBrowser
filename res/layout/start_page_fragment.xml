@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <!--
    Tint Browser for Android
   
@@ -13,14 +12,14 @@
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
- -->
+-->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="?android:attr/actionBarSize"
-    android:paddingBottom="?android:attr/actionBarSize"    
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:paddingBottom="?android:attr/actionBarSize"
+    android:paddingTop="?android:attr/actionBarSize" >
 
     <GridView
         android:id="@+id/StartPageFragmentGrid"
@@ -29,14 +28,13 @@
         android:layout_marginBottom="@dimen/startpage_fragment_margin_top_bottom"
         android:layout_marginLeft="@dimen/startpage_fragment_margin_left_right"
         android:layout_marginRight="@dimen/startpage_fragment_margin_left_right"
-        android:layout_marginTop="@dimen/startpage_fragment_margin_top_bottom"        
+        android:layout_marginTop="@dimen/startpage_fragment_margin_top_bottom"
+        android:columnWidth="@dimen/startpage_fragment_column_width"
         android:gravity="center"
+        android:horizontalSpacing="@dimen/startpage_fragment_horizontal_spacing"
         android:numColumns="auto_fit"
         android:stretchMode="columnWidth"
-        android:columnWidth="@dimen/startpage_fragment_column_width"
-        android:horizontalSpacing="@dimen/startpage_fragment_horizontal_spacing"
         android:verticalSpacing="@dimen/startpage_fragment_vertical_spacing" >
-
     </GridView>
 
 </LinearLayout>

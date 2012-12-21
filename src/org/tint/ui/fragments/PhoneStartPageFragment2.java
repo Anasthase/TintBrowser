@@ -17,36 +17,11 @@ package org.tint.ui.fragments;
 
 import org.tint.R;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
 public class PhoneStartPageFragment2 extends StartPageFragment {
-
-	private TextView mBookmarks;
 	
 	@Override
 	protected int getStartPageFragmentLayout() {
 		return R.layout.start_page_fragment2;
-	}
-
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View v = super.onCreateView(inflater, container, savedInstanceState);
-		
-		mBookmarks = (TextView) v.findViewById(R.id.open_bookmarks);
-		mBookmarks.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				mUIManager.openBookmarksActivityForResult();
-			}
-		});
-		
-		return v;
 	}
 
 }
