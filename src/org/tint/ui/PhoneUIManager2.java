@@ -16,7 +16,7 @@
 package org.tint.ui;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -46,6 +46,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.preference.PreferenceManager;
+import android.util.SparseArray;
 import android.view.ActionMode;
 import android.view.MotionEvent;
 import android.view.View;
@@ -93,7 +94,7 @@ public class PhoneUIManager2 extends BaseUIManager {
 	public PhoneUIManager2(TintBrowserActivity activity) {
 		super(activity);
 		mFragmentsList = new ArrayList<PhoneWebViewFragment>();
-		mFragmentsMap = new Hashtable<UUID, PhoneWebViewFragment>();
+		mFragmentsMap = new HashMap<UUID, PhoneWebViewFragment>();
 		
 		mAdapter = new TabAdapter();
         mPanel.getTabsScroller().setAdapter(mAdapter);
@@ -709,6 +710,11 @@ public class PhoneUIManager2 extends BaseUIManager {
 		PhoneWebViewFragment oldFragment = mFragmentsList.get(mCurrentTabIndex);
 		oldFragment.getWebView().onPause();
 		
+		TabView oldTabView = mAdapter.getViewAt(mCurrentTabIndex);
+		if (oldTabView != null) {
+			oldTabView.setSelected(false);
+		}
+		
 		mCurrentTabIndex = index;
 		showCurrentTab(notifyTabSwitched);
 	}
@@ -723,7 +729,12 @@ public class PhoneUIManager2 extends BaseUIManager {
 			newFragment.getWebView().onResume();
 			setCurrentFragment(newFragment, AnimationType.FADE);
 			mUrlBar.showGoStopReloadButton();
-		}		
+		}
+		
+		TabView currentTabView = mAdapter.getViewAt(mCurrentTabIndex);
+		if (currentTabView != null) {
+			currentTabView.setSelected(true);
+		}
 
 		updateUrlBar();
 		
@@ -737,6 +748,13 @@ public class PhoneUIManager2 extends BaseUIManager {
 	}
 	
 	private class TabAdapter extends BaseAdapter {
+		
+		private SparseArray<TabView> mViews;
+		
+		public TabAdapter() {
+			super();
+			mViews = new SparseArray<TabView>();
+		}
 
 		@Override
 		public int getCount() {
@@ -754,6 +772,12 @@ public class PhoneUIManager2 extends BaseUIManager {
 		}
 
 		@Override
+		public void notifyDataSetChanged() {
+			mViews.clear();
+			super.notifyDataSetChanged();
+		}
+
+		@Override
 		public View getView(final int position, View convertView, ViewGroup parent) {
 			final TabView tabview = new TabView(mActivity);
 			
@@ -768,6 +792,8 @@ public class PhoneUIManager2 extends BaseUIManager {
 				tabview.setImage(webView.isLoading() ? null : webView.capturePicture());
 			}
 			
+			tabview.setSelected(position == mCurrentTabIndex);
+			
 			tabview.setOnClickListener(new OnClickListener() {
 				
 				@Override
@@ -781,7 +807,13 @@ public class PhoneUIManager2 extends BaseUIManager {
 				}
 			});
 			
+			mViews.put(position, tabview);
+			
 			return tabview;
+		}
+		
+		public TabView getViewAt(int position) {
+			return mViews.get(position);
 		}
 		
 	}

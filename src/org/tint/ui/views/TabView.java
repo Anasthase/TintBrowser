@@ -23,6 +23,8 @@ public class TabView extends LinearLayout {
 	private int mImageWidth;
 	private int mImageHeight;
 	
+	private int mDefaultTextColor;
+	
 	private OnClickListener mClickListener;
 
 	public TabView(Context context) {
@@ -50,6 +52,8 @@ public class TabView extends LinearLayout {
 		
 		mImageWidth = (int) (200 * context.getResources().getDisplayMetrics().density);
 		mImageHeight = (int) (120 * context.getResources().getDisplayMetrics().density);
+		
+		mDefaultTextColor = mTitle.getCurrentTextColor();
 	}
 
 	public boolean isClose(View v) {
@@ -113,23 +117,14 @@ public class TabView extends LinearLayout {
 	public void setTitle(int title) {
 		mTitle.setText(title);
 	}
-
-//	protected Long getWebViewId(){
-//		if(mTab == null) return null;
-//		return new Long(mTab.getId());
-//	}
-//
-//	protected void setWebView(Tab tab) {
-//		mTab = tab;
-//		setTitle();
-//		Bitmap image = tab.getScreenshot();
-//		if (image != null) {
-//			mImage.setImageBitmap(image);
-//			if (tab != null) {
-//				mImage.setContentDescription(tab.getTitle());
-//			}
-//		}
-//	}
+	
+	public void setSelected(boolean selected) {
+		if (selected) {
+			mTitle.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
+		} else {
+			mTitle.setTextColor(mDefaultTextColor);
+		}
+	}
 
 	@Override
 	public void setOnClickListener(OnClickListener listener) {
