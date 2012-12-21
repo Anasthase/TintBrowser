@@ -101,6 +101,8 @@ public interface UIManager extends OnTouchListener {
 	
 	boolean onKeySearch();
 	
+	void onActivityResult(int requestCode, int resultCode, Intent intent);
+	
 	void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key);
 	
 	void onMenuVisibilityChanged(boolean isVisible);

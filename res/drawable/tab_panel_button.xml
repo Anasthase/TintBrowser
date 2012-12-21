@@ -18,8 +18,8 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:state_enabled="true" android:state_pressed="true"
-        android:drawable="@drawable/open_tab_pressed" />
+        android:drawable="@drawable/tab_panel_button_pressed" />
 
     <item android:state_enabled="true"
-        android:drawable="@drawable/open_tab_normal" />
+        android:drawable="@drawable/tab_panel_button_normal" />
 </selector>

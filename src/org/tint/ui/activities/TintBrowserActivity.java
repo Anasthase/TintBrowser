@@ -295,6 +295,8 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
         	mUIManager.getUploadMessage().onReceiveValue(result);
         	mUIManager.setUploadMessage(null);
         }
+        
+        mUIManager.onActivityResult(requestCode, resultCode, intent);
 	}
 	
 	@Override

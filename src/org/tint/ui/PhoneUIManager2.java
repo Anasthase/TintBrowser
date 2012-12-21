@@ -37,9 +37,11 @@ import org.tint.ui.views.TabView;
 import org.tint.ui.views.TabsScroller.OnRemoveListener;
 import org.tint.utils.Constants;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.preference.PreferenceManager;
@@ -104,12 +106,19 @@ public class PhoneUIManager2 extends BaseUIManager {
 		
 		mPanel = (PanelLayout) mActivity.findViewById(R.id.panel_layout);
 		
-		ImageView openTabView = mPanel.getOpenTabView();
-		openTabView.setImageResource(R.drawable.open_tab);
+		ImageView openTabView = (ImageView) mActivity.findViewById(R.id.BtnAddTab);
 		openTabView.setOnClickListener(new OnClickListener() {			
 			@Override
 			public void onClick(View v) {
 				addTab(true, false);
+			}
+		});
+		
+		ImageView openBookmarksView = (ImageView) mActivity.findViewById(R.id.BtnBookmarks);
+		openBookmarksView.setOnClickListener(new OnClickListener() {			
+			@Override
+			public void onClick(View v) {
+				openBookmarksActivityForResult();
 			}
 		});
 		
@@ -441,6 +450,16 @@ public class PhoneUIManager2 extends BaseUIManager {
 			
 			InputMethodManager mgr = (InputMethodManager) mActivity.getSystemService(Context.INPUT_METHOD_SERVICE);
 			mgr.hideSoftInputFromWindow(null, 0);
+		}
+	}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		if ((requestCode == TintBrowserActivity.ACTIVITY_BOOKMARKS) &&
+				(resultCode == Activity.RESULT_OK)) {
+			if (mPanel.isPanelShown()) {
+				mPanel.hidePanel();
+			}
 		}
 	}
 

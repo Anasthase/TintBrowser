@@ -38,6 +38,7 @@ import org.tint.utils.Constants;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -358,6 +359,9 @@ public class PhoneUIManager extends BaseUIManager {
 			mgr.hideSoftInputFromWindow(null, 0);
 		}
 	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent intent) { }
 
 	@Override
 	public boolean onTouch(View view, MotionEvent event) {

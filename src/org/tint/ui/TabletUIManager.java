@@ -34,6 +34,7 @@ import org.tint.ui.views.TabletUrlBar.OnTabletUrlBarEventListener;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.app.ActionBar.Tab;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.view.ActionMode;
@@ -332,6 +333,9 @@ public class TabletUIManager extends BaseUIManager {
 
 	@Override
 	public void onActionModeFinished(ActionMode mode) { }
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent intent) { }
 	
 	public StartPageFragment getStartPageFragment() {
 		return mStartPageFragment;

@@ -14,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 public class PanelLayout extends RelativeLayout {
@@ -35,7 +34,6 @@ public class PanelLayout extends RelativeLayout {
 	private RelativeLayout mPanel;
 	
 	private TabsScroller mTabsScroller;
-	private ImageView mOpenTabView;
 
 	private boolean mInSlide;
 	private float mBezelTopDelta;
@@ -86,8 +84,6 @@ public class PanelLayout extends RelativeLayout {
 			mPanel = (RelativeLayout) v.findViewById(R.id.panel);
 
 			mTabsScroller = (TabsScroller) v.findViewById(R.id.tabs_scroller);
-
-			mOpenTabView = (ImageView) v.findViewById(R.id.tab_add);
 						
 			mShowListener = new AnimatorListenerAdapter() {
 				@Override
@@ -252,10 +248,6 @@ public class PanelLayout extends RelativeLayout {
 	public TabsScroller getTabsScroller() {
 		return mTabsScroller;
 	}
-	
-	public ImageView getOpenTabView() {
-		return mOpenTabView;
-	}
 		
 	public void togglePanel() {
 		if (mPanelShown) {
@@ -308,6 +300,10 @@ public class PanelLayout extends RelativeLayout {
 		mAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
 
 		mAnimator.start();
+	}
+	
+	public boolean isPanelShown() {
+		return mPanelShown;
 	}
 
 }
