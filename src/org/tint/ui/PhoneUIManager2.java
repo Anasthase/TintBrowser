@@ -226,7 +226,7 @@ public class PhoneUIManager2 extends BaseUIManager {
 				if (mFragmentsList.size() > 1) {
 					closeTabByIndex(position);
 				} else {
-					mAdapter.notifyDataSetChanged();
+					loadHomePage();
 				}
 			}
 		});
@@ -744,14 +744,6 @@ public class PhoneUIManager2 extends BaseUIManager {
 				
 				tabview.setTitle(webView.getTitle());
 				tabview.setImage(webView.isLoading() ? null : webView.capturePicture());
-			}
-			
-			ImageView closeView = (ImageView) tabview.findViewById(R.id.closetab);
-			
-			if (mFragmentsList.size() > 1) {
-				closeView.setVisibility(View.VISIBLE);
-			} else {
-				closeView.setVisibility(View.INVISIBLE);
 			}
 			
 			tabview.setOnClickListener(new OnClickListener() {
