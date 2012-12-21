@@ -31,6 +31,7 @@ import org.tint.ui.fragments.PhoneStartPageFragment2;
 import org.tint.ui.fragments.PhoneWebViewFragment;
 import org.tint.ui.fragments.StartPageFragment.OnStartPageItemClickedListener;
 import org.tint.ui.views.PanelLayout;
+import org.tint.ui.views.PanelLayout.PanelEventsListener;
 import org.tint.ui.views.PhoneUrlBar;
 import org.tint.ui.views.PhoneUrlBar.OnPhoneUrlBarEventListener;
 import org.tint.ui.views.TabView;
@@ -106,11 +107,32 @@ public class PhoneUIManager2 extends BaseUIManager {
 		
 		mPanel = (PanelLayout) mActivity.findViewById(R.id.panel_layout);
 		
+		mPanel.setPanelEventsListener(new PanelEventsListener() {
+			
+			@Override
+			public void onPanelShown() {
+				mPanel.getTabsScroller().snapToSelected(mCurrentTabIndex, true);
+			}
+			
+			@Override
+			public void onPanelHidden() { }
+		});
+		
 		ImageView openTabView = (ImageView) mActivity.findViewById(R.id.BtnAddTab);
 		openTabView.setOnClickListener(new OnClickListener() {			
 			@Override
 			public void onClick(View v) {
 				addTab(true, false);
+				
+				// Wait for the adapter/scoller to updated before scrolling to the new tab.
+				// Maybe find a better way to do this.
+				mPanel.postDelayed(new Runnable() {
+					
+					@Override
+					public void run() {
+						mPanel.getTabsScroller().snapToSelected(mCurrentTabIndex, true);
+					}
+				}, 50);				
 			}
 		});
 		

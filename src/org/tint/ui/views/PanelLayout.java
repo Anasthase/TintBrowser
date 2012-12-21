@@ -18,6 +18,11 @@ import android.widget.RelativeLayout;
 
 public class PanelLayout extends RelativeLayout {
 	
+	public interface PanelEventsListener {
+		void onPanelShown();
+		void onPanelHidden();
+	}
+	
 	private static final int ANIMATION_DURATION = 150;
 	private static final int BEZEL_SIZE_REDUCED = 10;
 	private static final int BEZEL_SIZE_STANDARD = 20;
@@ -44,6 +49,8 @@ public class PanelLayout extends RelativeLayout {
 	private float mTranslation;
 	private float mAlpha;
 	private boolean mLastMoveOpen;
+	
+	private PanelEventsListener mListener;
 
 	public PanelLayout(Context context) {
 		this(context, null);
@@ -56,6 +63,8 @@ public class PanelLayout extends RelativeLayout {
 	public PanelLayout(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 
+		mListener = null;
+		
 		mInSlide = false;
 		mLastMoveOpen = false;
 		mTranslation = 0;
@@ -93,6 +102,10 @@ public class PanelLayout extends RelativeLayout {
 					mPanelShown = true;
 					mTranslation = mPanel.getWidth();
 					mAlpha = 1;
+					
+					if (mListener != null) {
+						mListener.onPanelShown();
+					}
 				}               
 			};
 
@@ -103,9 +116,17 @@ public class PanelLayout extends RelativeLayout {
 					mPanelShown = false;
 					mTranslation = 0;
 					mAlpha = 0;
+					
+					if (mListener != null) {
+						mListener.onPanelHidden();
+					}
 				}
 			};
 		}
+	}
+	
+	public void setPanelEventsListener(PanelEventsListener listener) {
+		mListener = listener;
 	}
 
 	@Override
