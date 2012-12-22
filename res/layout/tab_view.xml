@@ -33,6 +33,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/ContentDescriptionCloseTabButton"
             android:paddingLeft="8dip"
             android:paddingRight="16dip"
             android:src="@drawable/ic_tab_close" />
@@ -40,6 +41,7 @@
 
     <ImageView
         android:id="@+id/tab_view"
+        android:contentDescription="@string/ContentDescriptionTabPreview"
         android:layout_width="200dip"
         android:layout_height="120dip"
         android:focusable="false"

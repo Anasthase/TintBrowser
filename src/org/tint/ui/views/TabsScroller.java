@@ -14,8 +14,12 @@
  * the License.
  */
 
-package org.tint.ui.views;
+/*
+ * Class taken from the stock browser in AOSP.
+ * Only slightly modified to meet Tint's needs.
+ */
 
+package org.tint.ui.views;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

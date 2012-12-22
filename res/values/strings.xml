@@ -513,4 +513,6 @@
     <string name="PreferencePhoneNewUITitle">Use the new UI for phones</string>
     <string name="PreferencePhoneNewUISummary">Uncheck if you want to use the old user interface for phones.</string>
     
+    <string name="ContentDescriptionTabPreview">Tab preview</string>
+    
 </resources>
