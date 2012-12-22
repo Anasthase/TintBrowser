@@ -67,6 +67,8 @@ public class PhoneUIManager2 extends BaseUIManager {
 		NONE,
 		FADE
 	}
+	
+	private static final AnimationType sAnimationType = AnimationType.NONE;
 
 	private List<PhoneWebViewFragment> mFragmentsList;
 	private Map<UUID, PhoneWebViewFragment> mFragmentsMap;
@@ -279,11 +281,11 @@ public class PhoneUIManager2 extends BaseUIManager {
 					createStartPageFragment();
 				}
 
-				setCurrentFragment(mStartPageFragment, AnimationType.FADE);
+				setCurrentFragment(mStartPageFragment, sAnimationType);
 				onShowStartPage();
 			} else {
 				fragment.setStartPageShown(false);
-				setCurrentFragment(fragment, AnimationType.FADE);
+				setCurrentFragment(fragment, sAnimationType);
 			}			
 
 			CustomWebView webView = getCurrentWebView();
@@ -520,7 +522,7 @@ public class PhoneUIManager2 extends BaseUIManager {
 					createStartPageFragment();
 				}
 
-				setCurrentFragment(mStartPageFragment, AnimationType.FADE);
+				setCurrentFragment(mStartPageFragment, sAnimationType);
 				
 				onShowStartPage();
 			}
@@ -535,7 +537,7 @@ public class PhoneUIManager2 extends BaseUIManager {
 			webViewFragment.setStartPageShown(false);
 			
 			if (webViewFragment == getCurrentWebViewFragment()) {
-				setCurrentFragment(webViewFragment, AnimationType.FADE);
+				setCurrentFragment(webViewFragment, sAnimationType);
 
 				onHideStartPage();
 			}
@@ -726,12 +728,12 @@ public class PhoneUIManager2 extends BaseUIManager {
 		PhoneWebViewFragment newFragment = mFragmentsList.get(mCurrentTabIndex);
 		
 		if (newFragment.isStartPageShown()) {
-			setCurrentFragment(mStartPageFragment, AnimationType.FADE);
+			setCurrentFragment(mStartPageFragment, sAnimationType);
 			mUrlBar.hideGoStopReloadButton();
-		} else {
-			newFragment.getWebView().onResume();
-			setCurrentFragment(newFragment, AnimationType.FADE);
+		} else {			
+			setCurrentFragment(newFragment, sAnimationType);
 			mUrlBar.showGoStopReloadButton();
+			newFragment.getWebView().onResume();
 		}
 		
 		TabView currentTabView = mAdapter.getViewAt(mCurrentTabIndex);
