@@ -518,4 +518,8 @@
     <string name="PreferenceClosePanelOnNewTabTitle">Close panel on new tab</string>
     <string name="PreferenceClosePanelOnNewTabSummary">If checked, the tab panel will close when openning a new tab.</string>
     
+    <string name="AboutChangelogTitle">Changelog</string>
+    <string name="AboutContributorsTitle">Contributors</string>
+    <string name="AboutLicensesTitle">Licenses</string>
+    
 </resources>

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <style type="text/css">
+        	* {
+        		font-size: 95%;
+        	}        	
+            body {
+                font-family: sans-serif;
+            }
+            ul.header {
+           		padding: 0 1em 0 1em ;
+            	margin: 0 1em 0 1em;
+            }
+            ul.details {
+            	background-color: #eeeeee;
+            	padding: 1em 2.5em 1em 2.5em;
+            	margin: 0.5em 0 0.5em 0;
+            }
+            pre {
+            	white-space: pre-wrap;
+            	display: inline;
+            }
+        </style>
+    </head>    
+    <body>
+    	<ul class="header">
+    		<li>Murkom
+        		<ul class="details">
+    				<li><pre>Portuguese translation.</pre></li>
+    			</ul>
+    		</li>
+    		<li>Lars-Dominik
+        		<ul class="details">
+    				<li><pre>German translation.</pre></li>
+    			</ul>
+    		</li>
+    		<li>Anton
+        		<ul class="details">
+    				<li><pre>Russian translation.</pre></li>
+    			</ul>
+    		</li>
+    	</ul>
+	</body>
+</html>
