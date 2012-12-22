@@ -506,6 +506,11 @@
     
     <!-- 1.7 -->
     <string name="StartPageLabel">Start page</string>
-    <string name="StartPageOpenBookmarks"><a href="">Bookmarks</a></string>
+
+    <string name="RestartDialogTitle">Restart required</string>
+    <string name="RestartDialogMessage">This change will not take effect until the application restart. Do you want to do it now?</string>
+    
+    <string name="PreferencePhoneNewUITitle">Use the new UI for phones</string>
+    <string name="PreferencePhoneNewUISummary">Uncheck if you want to use the old user interface for phones.</string>
     
 </resources>

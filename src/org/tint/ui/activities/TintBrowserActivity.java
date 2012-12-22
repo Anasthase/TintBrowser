@@ -109,11 +109,13 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
         	setContentView(R.layout.tablet_main_activity);
         	mUIManager = new TabletUIManager(this);
         } else {
-//        	setContentView(R.layout.phone_main_activity);
-//        	mUIManager = new PhoneUIManager(this);
-        	
-        	setContentView(R.layout.phone_main_activity);
-        	mUIManager = new PhoneUIManager(this);
+        	if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean(Constants.PREFERENCE_PHONE_NEW_UI, true)) {
+        		setContentView(R.layout.phone_main_activity);
+        		mUIManager = new PhoneUIManager(this);
+        	} else {
+        		setContentView(R.layout.legacy_phone_main_activity);
+        		mUIManager = new LegacyPhoneUIManager(this);
+        	}
         }        
         
         getActionBar().setHomeButtonEnabled(true);

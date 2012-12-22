@@ -45,6 +45,12 @@
         android:key="PREFERENCE_CATEGORY_UI"
         android:title="@string/PreferenceCategoryUITitle">
         
+        <CheckBoxPreference
+			android:title="@string/PreferencePhoneNewUITitle"			
+			android:summary="@string/PreferencePhoneNewUISummary"
+			android:defaultValue="true"
+			android:key="PREFERENCE_PHONE_NEW_UI" />
+        
         <ListPreference android:title="@string/PreferenceBubblePositionTitle"			
 			android:summary="@string/PreferenceBubblePositionSummary"
 			android:entries="@array/PreferenceBubblePositionEntries"
