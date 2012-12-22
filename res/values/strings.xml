@@ -510,9 +510,12 @@
     <string name="RestartDialogTitle">Restart required</string>
     <string name="RestartDialogMessage">This change will not take effect until the application restart. Do you want to do it now?</string>
     
+    <string name="ContentDescriptionTabPreview">Tab preview</string>
+    
     <string name="PreferencePhoneNewUITitle">Use the new UI for phones</string>
     <string name="PreferencePhoneNewUISummary">Uncheck if you want to use the old user interface for phones.</string>
     
-    <string name="ContentDescriptionTabPreview">Tab preview</string>
+    <string name="PreferenceClosePanelOnNewTabTitle">Close panel on new tab</string>
+    <string name="PreferenceClosePanelOnNewTabSummary">If checked, the tab panel will close when openning a new tab.</string>
     
 </resources>

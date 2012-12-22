@@ -92,11 +92,15 @@ public class PhoneUIManager extends BaseUIManager {
 	private ActionMode mActionMode;
 	
 	private TabAdapter mAdapter;
+	
+	private SharedPreferences mPreferences;
 
 	public PhoneUIManager(TintBrowserActivity activity) {
 		super(activity);
 		mFragmentsList = new ArrayList<PhoneWebViewFragment>();
 		mFragmentsMap = new HashMap<UUID, PhoneWebViewFragment>();
+		
+		mPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
 		
 		mAdapter = new TabAdapter();
         mPanel.getTabsScroller().setAdapter(mAdapter);
@@ -127,15 +131,19 @@ public class PhoneUIManager extends BaseUIManager {
 			public void onClick(View v) {
 				addTab(true, false);
 				
-				// Wait for the adapter/scoller to updated before scrolling to the new tab.
-				// Maybe find a better way to do this.
-				mPanel.postDelayed(new Runnable() {
-					
-					@Override
-					public void run() {
-						mPanel.getTabsScroller().snapToSelected(mCurrentTabIndex, true);
-					}
-				}, 50);				
+				if (mPreferences.getBoolean(Constants.PREFERENCE_CLOSE_PANEL_ON_NEW_TAB, true)) {
+					mPanel.hidePanel();
+				} else {
+					// Wait for the adapter/scoller to updated before scrolling to the new tab.
+					// Maybe find a better way to do this.
+					mPanel.postDelayed(new Runnable() {
+
+						@Override
+						public void run() {
+							mPanel.getTabsScroller().snapToSelected(mCurrentTabIndex, true);
+						}
+					}, 50);
+				}
 			}
 		});
 		

@@ -42,19 +42,18 @@ public class GeneralPreferencesFragment extends PreferenceFragment {
 
         addPreferencesFromResource(R.xml.preferences_general_settings);
         
-        if (ApplicationUtils.isTablet(getActivity())) {
-        	PreferenceCategory uiCategory = (PreferenceCategory) findPreference("PREFERENCE_CATEGORY_UI");
-        	getPreferenceScreen().removePreference(uiCategory);
-        }
+        PreferenceCategory oldPhoneUIcategory = (PreferenceCategory) findPreference("PREFERENCE_CATEGORY_OLD_PHONE_UI");
+        PreferenceCategory newPhoneUIcategory = (PreferenceCategory) findPreference("PREFERENCE_CATEGORY_NEW_PHONE_UI");
         
-        if (PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean(Constants.PREFERENCE_PHONE_NEW_UI, true)) {
-        	PreferenceCategory uiCategory = (PreferenceCategory) findPreference("PREFERENCE_CATEGORY_UI");
-        	
-        	uiCategory.removePreference(findPreference(Constants.PREFERENCE_BUBBLE_POSITION));
-        	uiCategory.removePreference(findPreference(Constants.PREFERENCE_TOOLBARS_AUTOHIDE_DURATION));
-        	uiCategory.removePreference(findPreference(Constants.PREFERENCES_SWITCH_TABS_METHOD));
-        } else {
-        	
+        if (ApplicationUtils.isTablet(getActivity())) {
+        	getPreferenceScreen().removePreference(oldPhoneUIcategory);
+        	getPreferenceScreen().removePreference(newPhoneUIcategory);
+        } else {        
+        	if (PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean(Constants.PREFERENCE_PHONE_NEW_UI, true)) {
+        		getPreferenceScreen().removePreference(oldPhoneUIcategory);
+        	} else {
+        		getPreferenceScreen().removePreference(newPhoneUIcategory);
+        	}
         }
         
         mListener = new OnSharedPreferenceChangeListener() {
@@ -92,7 +91,6 @@ public class GeneralPreferencesFragment extends PreferenceFragment {
 				mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 2000, intent);
 				System.exit(2);
 			}
-			
 		});
 	}
 

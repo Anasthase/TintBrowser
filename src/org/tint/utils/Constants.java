@@ -88,6 +88,7 @@ public class Constants {
 	public static final String PREFERENCE_FULL_SCREEN = "PREFERENCE_FULL_SCREEN";
 	
 	public static final String PREFERENCE_PHONE_NEW_UI = "PREFERENCE_PHONE_NEW_UI";
+	public static final String PREFERENCE_CLOSE_PANEL_ON_NEW_TAB = "PREFERENCE_CLOSE_PANEL_ON_NEW_TAB";
 	
 	/**
 	 * Technical preferences.
