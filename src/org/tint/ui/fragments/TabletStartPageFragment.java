@@ -21,7 +21,7 @@ public class TabletStartPageFragment extends StartPageFragment {
 
 	@Override
 	protected int getStartPageFragmentLayout() {
-		return R.layout.start_page_fragment_tablet;
+		return R.layout.tablet_start_page_fragment;
 	}
 
 }

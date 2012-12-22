@@ -15,7 +15,7 @@
 
 package org.tint.ui.runnables;
 
-import org.tint.ui.PhoneUIManager;
+import org.tint.ui.LegacyPhoneUIManager;
 
 import android.os.Handler;
 import android.os.Message;
@@ -23,7 +23,7 @@ import android.util.Log;
 
 public class HideToolbarsRunnable implements Runnable {
 
-	private PhoneUIManager mUIManager;
+	private LegacyPhoneUIManager mUIManager;
 	private int mDuration;
 	
 	private boolean mDisabled;
@@ -37,7 +37,7 @@ public class HideToolbarsRunnable implements Runnable {
 		}
 	};
 	
-	public HideToolbarsRunnable(PhoneUIManager uiManager, int duration) {
+	public HideToolbarsRunnable(LegacyPhoneUIManager uiManager, int duration) {
 		mUIManager = uiManager;
 		mDuration = duration;
 		

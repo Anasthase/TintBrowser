@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+   Tint Browser for Android
+  
+   Copyright (C) 2012 - to infinity and beyond J. Devauchelle and contributors.
+ 
+   This program is free software; you can redistribute it and/or
+   modify it under the terms of the GNU General Public License
+   version 3 as published by the Free Software Foundation.
+ 
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+ -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+    <FrameLayout
+        android:id="@+id/WebViewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#dcdcdc"
+        android:orientation="vertical" >
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/TopBar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"        
+        android:layout_alignParentTop="true"
+        android:layout_margin="0dip"
+        android:padding="0dip"
+        android:background="@drawable/ab_solid_dark_holo"
+        android:scaleType="fitXY"
+        android:orientation="horizontal" >       	            
+        
+        <ImageView
+            android:id="@+id/FaviconView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="3dip"
+            android:layout_marginTop="3dip"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/ContentDescriptionFavicon"
+            android:focusable="true"
+            android:padding="5dip"
+            android:src="@drawable/ic_launcher" />
+
+        <ProgressBar
+            android:id="@+id/WebViewProgress"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@+id/UrlBar"
+            android:visibility="invisible" />
+
+        <org.tint.ui.views.PhoneUrlBar
+            android:id="@+id/UrlBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/FaviconView" />
+        
+    </RelativeLayout>
+    
+    <ImageView
+        android:id="@+id/PreviousTabView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_above="@+id/BottomBar"
+        android:contentDescription="@string/ContentDescriptionPreviousTabButton"
+        android:src="@drawable/ic_previous_tab" >
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/NextTabView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_above="@+id/BottomBar"
+        android:contentDescription="@string/ContentDescriptionNextTabButton"
+        android:src="@drawable/ic_next_tab" >
+    </ImageView>
+    
+    <ImageView
+        android:id="@+id/BubbleLeftView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:contentDescription="@string/ContentDescriptionLeftBubble"
+        android:src="@drawable/ic_bubble_left" >
+    </ImageView>
+    
+    <ImageView
+        android:id="@+id/BubbleRightView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:contentDescription="@string/ContentDescriptionRightBubble"
+        android:src="@drawable/ic_bubble_right" >
+    </ImageView>
+    
+    <LinearLayout
+        android:id="@+id/BottomBar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"        
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/ab_bottom_solid_dark_holo"
+        android:scaleType="fitXY"
+        android:weightSum="5" >
+        
+        <ImageView android:id="@+id/BtnBack"
+			android:layout_width="wrap_content" android:layout_height="match_parent"
+			android:layout_gravity="center_vertical" android:background="?android:attr/selectableItemBackground"
+			android:paddingTop="8dip"
+        	android:paddingBottom="8dip"
+			android:contentDescription="@string/ContentDescriptionBackButton"
+			android:focusable="true" android:paddingLeft="8dip"
+			android:paddingRight="8dip" android:src="@drawable/ic_back"
+			android:layout_weight="1" />
+			
+		<ImageView android:id="@+id/BtnCloseTab"
+			android:layout_width="wrap_content" android:layout_height="match_parent"
+			android:layout_gravity="center_vertical" android:background="?android:attr/selectableItemBackground"
+			android:paddingTop="8dip"
+        	android:paddingBottom="8dip"
+			android:contentDescription="@string/ContentDescriptionCloseTabButton"
+			android:focusable="true" android:paddingLeft="8dip"
+			android:paddingRight="8dip" android:src="@android:drawable/ic_menu_close_clear_cancel"
+			android:layout_weight="1" />
+			
+		<ImageView android:id="@+id/BtnBookmarks"
+			android:layout_width="wrap_content" android:layout_height="match_parent"
+			android:layout_gravity="center_vertical" android:background="?android:attr/selectableItemBackground"
+			android:paddingTop="8dip"
+        	android:paddingBottom="8dip"
+			android:contentDescription="@string/ContentDescriptionBookmarksButton"
+			android:focusable="true" android:paddingLeft="8dip"
+			android:paddingRight="8dip" android:src="@drawable/ic_bookmarks"
+			android:layout_weight="1" />
+			
+		<ImageView android:id="@+id/BtnAddTab"
+			android:layout_width="wrap_content" android:layout_height="match_parent"
+			android:layout_gravity="center_vertical" android:background="?android:attr/selectableItemBackground"
+			android:paddingTop="8dip"
+        	android:paddingBottom="8dip"
+			android:contentDescription="@string/ContentDescriptionNewTabButton"
+			android:focusable="true" android:paddingLeft="8dip"
+			android:paddingRight="8dip" android:src="@android:drawable/ic_menu_add"
+			android:layout_weight="1" />
+
+		<ImageView android:id="@+id/BtnForward" android:layout_width="wrap_content"
+			android:layout_height="match_parent" android:layout_gravity="center_vertical"
+			android:background="?android:attr/selectableItemBackground"
+			android:paddingTop="8dip"
+        	android:paddingBottom="8dip"
+			android:contentDescription="@string/ContentDescriptionForwardButton"
+			android:focusable="true" android:paddingLeft="8dip"
+			android:paddingRight="8dip" android:src="@drawable/ic_forward"
+			android:layout_weight="1" />
+        
+    </LinearLayout>
+
+</RelativeLayout>

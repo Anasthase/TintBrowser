@@ -17,11 +17,11 @@ package org.tint.ui.fragments;
 
 import org.tint.R;
 
-public class PhoneStartPageFragment2 extends StartPageFragment {
-	
+public class LegacyPhoneStartPageFragment extends StartPageFragment {
+
 	@Override
 	protected int getStartPageFragmentLayout() {
-		return R.layout.start_page_fragment2;
+		return R.layout.legacy_phone_start_page_fragment;
 	}
 
 }

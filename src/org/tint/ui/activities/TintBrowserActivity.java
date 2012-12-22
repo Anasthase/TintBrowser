@@ -23,8 +23,8 @@ import org.tint.addons.AddonMenuItem;
 import org.tint.controllers.Controller;
 import org.tint.model.DownloadItem;
 import org.tint.providers.BookmarksWrapper;
+import org.tint.ui.LegacyPhoneUIManager;
 import org.tint.ui.PhoneUIManager;
-import org.tint.ui.PhoneUIManager2;
 import org.tint.ui.TabletUIManager;
 import org.tint.ui.UIManager;
 import org.tint.ui.UIManagerProvider;
@@ -112,8 +112,8 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 //        	setContentView(R.layout.phone_main_activity);
 //        	mUIManager = new PhoneUIManager(this);
         	
-        	setContentView(R.layout.phone_main_activity_2);
-        	mUIManager = new PhoneUIManager2(this);
+        	setContentView(R.layout.phone_main_activity);
+        	mUIManager = new PhoneUIManager(this);
         }        
         
         getActionBar().setHomeButtonEnabled(true);

@@ -18,10 +18,10 @@ package org.tint.ui.fragments;
 import org.tint.R;
 
 public class PhoneStartPageFragment extends StartPageFragment {
-
+	
 	@Override
 	protected int getStartPageFragmentLayout() {
-		return R.layout.start_page_fragment;
+		return R.layout.phone_start_page_fragment;
 	}
 
 }
