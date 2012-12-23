@@ -47,6 +47,6 @@
         android:focusable="false"
         android:paddingLeft="2dip"
         android:paddingRight="2dip"
-        android:src="@drawable/ic_stop_holo_dark" />
+        android:src="@drawable/start_page" />
 
 </LinearLayout>

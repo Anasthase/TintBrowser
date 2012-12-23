@@ -26,6 +26,11 @@
     </head>    
     <body>
     	<ul class="header">
+    		<li>Application icon
+        		<ul class="details">
+    				<li><pre>Designed by Brsev under CC BY-NC-ND 3.0.</pre></li>
+    			</ul>
+    		</li>
     		<li>Exit full screen icon
         		<ul class="details">
     				<li><pre>Designed by Olyn LeRoy from The Noun Project.</pre></li>
