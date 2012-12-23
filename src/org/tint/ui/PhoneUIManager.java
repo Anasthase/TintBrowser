@@ -404,6 +404,17 @@ public class PhoneUIManager extends BaseUIManager {
 			
 			updateBackForwardEnabled();
 		}
+		
+		CustomWebView webview = (CustomWebView) view;
+		PhoneWebViewFragment parent = (PhoneWebViewFragment) webview.getParentFragment();
+		
+		if (parent != null) {
+			int index = mFragmentsList.indexOf(parent);
+			if (index != -1) {
+				TabView tabview = mAdapter.getViewAt(index);
+				tabview.setFavicon(null);
+			}
+		}
 	}
 	
 	@Override
@@ -420,14 +431,29 @@ public class PhoneUIManager extends BaseUIManager {
 			
 			updateBackForwardEnabled();
 		}
-		
-		mAdapter.notifyDataSetChanged();
 	}
 
 	@Override
-	public void onClientPageFinished(CustomWebView view, String url) {
+	public void onClientPageFinished(final CustomWebView view, String url) {
 		super.onClientPageFinished(view, url);
-		mAdapter.notifyDataSetChanged();
+	
+		PhoneWebViewFragment parent = (PhoneWebViewFragment) view.getParentFragment();
+		
+		if ((parent != null) &&
+				(!parent.isStartPageShown()) &&
+				(!view.isLoading())) {
+			int index = mFragmentsList.indexOf(parent);
+			if (index != -1) {
+				final TabView tabview = mAdapter.getViewAt(index);
+				
+				mPanel.postDelayed(new Runnable() {					
+					@Override
+					public void run() {
+						tabview.setImage(view.capturePicture());
+					}
+				}, 50);
+			}
+		}
 	}
 	
 	@Override
@@ -451,6 +477,22 @@ public class PhoneUIManager extends BaseUIManager {
 		}
 		
 		mAdapter.notifyDataSetChanged();
+	}
+
+	@Override
+	public void onReceivedIcon(WebView view, Bitmap icon) {
+		// Don't call parent here, we don't need the parent behavior.
+		CustomWebView webview = (CustomWebView) view;
+		PhoneWebViewFragment parent = (PhoneWebViewFragment) webview.getParentFragment();
+		
+		if ((parent != null) &&
+				(!parent.isStartPageShown())) {
+			int index = mFragmentsList.indexOf(parent);
+			if (index != -1) {
+				TabView tabview = mAdapter.getViewAt(index);
+				tabview.setFavicon(icon);
+			}
+		}
 	}
 
 	@Override
@@ -798,10 +840,13 @@ public class PhoneUIManager extends BaseUIManager {
 			
 			if (fragment.isStartPageShown()) {
 				tabview.setTitle(R.string.StartPageLabel);
+				tabview.setFavicon(null);
 			} else {
 				CustomWebView webView = fragment.getWebView();
 				
 				tabview.setTitle(webView.getTitle());
+				
+				tabview.setFavicon(webView.getFavicon());
 				tabview.setImage(webView.isLoading() ? null : webView.capturePicture());
 			}
 			

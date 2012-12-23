@@ -21,6 +21,8 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Picture;
+import android.graphics.drawable.BitmapDrawable;
+import android.text.Html;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,15 +32,18 @@ import android.widget.TextView;
 
 public class TabView extends LinearLayout {
 
-	private ImageView mClose;
-	private TextView mTitle;
+	private ImageView mCloseView;
+	private TextView mTitleView;
 	private View mTitleBar;
 	private ImageView mImage;
 	
 	private int mImageWidth;
 	private int mImageHeight;
 	
-	private int mDefaultTextColor;
+	private int mFaviconSize;
+	
+	private String mTitle;
+	private boolean mSelected;
 	
 	private OnClickListener mClickListener;
 
@@ -60,19 +65,23 @@ public class TabView extends LinearLayout {
 	private void init(Context context) {
 		LayoutInflater.from(context).inflate(R.layout.tab_view, this);
 
-		mClose = (ImageView) findViewById(R.id.closetab);
-		mTitle = (TextView) findViewById(R.id.title);
+		mTitle = null;
+		mSelected = false;
+		
+		mCloseView = (ImageView) findViewById(R.id.closetab);
+		mTitleView = (TextView) findViewById(R.id.title);
 		mTitleBar = findViewById(R.id.titlebar);
 		mImage = (ImageView) findViewById(R.id.tab_view);
 		
-		mImageWidth = (int) (200 * context.getResources().getDisplayMetrics().density);
-		mImageHeight = (int) (120 * context.getResources().getDisplayMetrics().density);
+		float density = context.getResources().getDisplayMetrics().density;
 		
-		mDefaultTextColor = mTitle.getCurrentTextColor();
+		mImageWidth = (int) (200 * density);
+		mImageHeight = (int) (120 * density);
+		mFaviconSize = (int) (32 * density);
 	}
 
 	public boolean isClose(View v) {
-		return v == mClose;
+		return v == mCloseView;
 	}
 
 	public boolean isTitle(View v) {
@@ -104,50 +113,52 @@ public class TabView extends LinearLayout {
 	public void setImageResource(int resource) {
 		mImage.setImageResource(resource);
 	}
-
-//	private void setTitle() {
-//		if (mTab == null) return;
-//		if (mHighlighted) {
-//			mTitle.setText(mTab.getUrl());
-//		} else {
-//			String txt = mTab.getTitle();
-//			if (txt == null) {
-//				txt = mTab.getUrl();
-//			}
-//			mTitle.setText(txt);
-//		}
-//		if (mTab.isSnapshot()) {
-//			setTitleIcon(R.drawable.ic_history_holo_dark);
-//		} else if (mTab.isPrivateBrowsingEnabled()) {
-//			setTitleIcon(R.drawable.ic_incognito_holo_dark);
-//		} else {
-//			setTitleIcon(0);
-//		}
-//	}
 	
 	public void setTitle(String title) {
-		mTitle.setText(title);
+		mTitle = title;
+		updateTitle();
 	}
 	
 	public void setTitle(int title) {
-		mTitle.setText(title);
+		mTitle = getResources().getString(title);
+		updateTitle();
 	}
 	
 	public void setSelected(boolean selected) {
-		if (selected) {
-			mTitle.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
+		mSelected = selected;
+		updateTitle();
+	}
+	
+	public void setFavicon(Bitmap icon) {
+		BitmapDrawable bd;
+		if (icon != null) {
+			bd = new BitmapDrawable(Bitmap.createScaledBitmap(icon, mFaviconSize, mFaviconSize, false));
 		} else {
-			mTitle.setTextColor(mDefaultTextColor);
+			bd = null;
 		}
+		
+		mTitleView.setCompoundDrawablesWithIntrinsicBounds(bd, null, null, null);
 	}
 
 	@Override
 	public void setOnClickListener(OnClickListener listener) {
 		mClickListener = listener;
 		mTitleBar.setOnClickListener(mClickListener);
-		mClose.setOnClickListener(mClickListener);
+		mCloseView.setOnClickListener(mClickListener);
 		if (mImage != null) {
 			mImage.setOnClickListener(mClickListener);
+		}
+	}
+	
+	private void updateTitle() {
+		if (mTitle != null) {
+			if (mSelected) {
+				mTitleView.setText(Html.fromHtml(String.format("<b>%s</b>", mTitle)));
+			} else {
+				mTitleView.setText(mTitle);
+			}
+		} else {
+			mTitleView.setText(null);
 		}
 	}
 
