@@ -16,6 +16,7 @@
 package org.tint.ui;
 
 import java.util.HashMap;
+import java.util.Set;
 import java.util.UUID;
 
 import org.tint.R;
@@ -540,6 +541,17 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 		setFullScreenFromPreferences();
 	}
 	
+	
+	
+	@Override
+	public void saveTabs() {
+		Editor editor = PreferenceManager.getDefaultSharedPreferences(mActivity).edit();
+		editor.putStringSet(Constants.TECHNICAL_PREFERENCE_SAVED_TABS, getTabsToSave());
+		editor.commit();
+	}
+	
+	protected abstract Set<String> getTabsToSave();
+
 	protected abstract void setFullScreenFromPreferences();
 
 	private void startHandler() {

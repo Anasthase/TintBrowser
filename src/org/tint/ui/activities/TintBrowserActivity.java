@@ -17,6 +17,7 @@ package org.tint.ui.activities;
 
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import org.tint.R;
 import org.tint.addons.AddonMenuItem;
@@ -28,6 +29,9 @@ import org.tint.ui.PhoneUIManager;
 import org.tint.ui.TabletUIManager;
 import org.tint.ui.UIManager;
 import org.tint.ui.UIManagerProvider;
+import org.tint.ui.components.CustomWebView;
+import org.tint.ui.dialogs.YesNoRememberDialog;
+import org.tint.ui.fragments.BaseWebViewFragment;
 import org.tint.ui.preferences.PreferencesActivity;
 import org.tint.utils.ApplicationUtils;
 import org.tint.utils.Constants;
@@ -55,6 +59,8 @@ import android.view.ActionMode;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.webkit.WebIconDatabase;
 import android.widget.Toast;
 
@@ -146,7 +152,9 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 			}
 		};
 		
-		PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(mPreferenceChangeListener);
+		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		
+		prefs.registerOnSharedPreferenceChangeListener(mPreferenceChangeListener);
 		
 		mPackagesFilter = new IntentFilter();
 		mPackagesFilter.addAction( Intent.ACTION_PACKAGE_ADDED  );
@@ -157,9 +165,9 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 		
 		registerReceiver(mPackagesReceiver, mPackagesFilter);
         
-		boolean firstRun = PreferenceManager.getDefaultSharedPreferences(this).getBoolean(Constants.TECHNICAL_PREFERENCE_FIRST_RUN, true);
+		boolean firstRun = prefs.getBoolean(Constants.TECHNICAL_PREFERENCE_FIRST_RUN, true);
 		if (firstRun) {
-			Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+			Editor editor = prefs.edit();
 			editor.putBoolean(Constants.TECHNICAL_PREFERENCE_FIRST_RUN, false);
 			editor.putInt(Constants.TECHNICAL_PREFERENCE_LAST_RUN_VERSION_CODE, ApplicationUtils.getApplicationVersionCode(this));
 			editor.commit();
@@ -171,10 +179,10 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 			
 		} else {
 			int currentVersionCode = ApplicationUtils.getApplicationVersionCode(this);
-			int savedVersionCode = PreferenceManager.getDefaultSharedPreferences(this).getInt(Constants.TECHNICAL_PREFERENCE_LAST_RUN_VERSION_CODE, -1);
+			int savedVersionCode = prefs.getInt(Constants.TECHNICAL_PREFERENCE_LAST_RUN_VERSION_CODE, -1);
 			
 			if (currentVersionCode != savedVersionCode) {
-				Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+				Editor editor = prefs.edit();
 				editor.putInt(Constants.TECHNICAL_PREFERENCE_LAST_RUN_VERSION_CODE, currentVersionCode);
 				editor.commit();
 				
@@ -183,6 +191,74 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 		}
 		
 		mUIManager.onNewIntent(getIntent());
+		
+		if (prefs.contains(Constants.TECHNICAL_PREFERENCE_SAVED_TABS)) {
+			final Set<String> tabs = prefs.getStringSet(Constants.TECHNICAL_PREFERENCE_SAVED_TABS, null);
+			
+			if ((tabs != null) &&
+					(!tabs.isEmpty())) {
+				
+				String tabsRestoreMode = prefs.getString(Constants.PREFERENCE_RESTORE_TABS, "ASK");
+				
+				if ("ASK".equals(tabsRestoreMode)) {
+					final YesNoRememberDialog dialog = new YesNoRememberDialog(this);
+					
+					dialog.setTitle(R.string.RestoreTabsDialogTitle);
+					dialog.setMessage(R.string.RestoreTabsDialogMessage);
+					
+					dialog.setPositiveButtonListener(new OnClickListener() {
+
+						@Override
+						public void onClick(View v) {
+							dialog.dismiss();
+							
+							if (dialog.isRememberChecked()) {
+								Editor editor = prefs.edit();
+								editor.putString(Constants.PREFERENCE_RESTORE_TABS, "ALWAYS");
+								editor.commit();
+							}
+							
+							restoreTabs(tabs);
+						}
+					});
+
+					dialog.setNegativeButtonListener(new OnClickListener() {
+
+						@Override
+						public void onClick(View v) {
+							dialog.dismiss();
+							
+							if (dialog.isRememberChecked()) {
+								Editor editor = prefs.edit();
+								editor.putString(Constants.PREFERENCE_RESTORE_TABS, "NEVER");
+								editor.commit();
+							}
+						}
+					});
+
+					dialog.show();
+				} else if ("ALWAYS".equals(tabsRestoreMode)) {
+					restoreTabs(tabs);
+				}
+			}
+			
+			Editor editor = prefs.edit();
+			editor.remove(Constants.TECHNICAL_PREFERENCE_SAVED_TABS);
+			editor.commit();
+		}		
+    }
+    
+    private void restoreTabs(Set<String> tabs) {
+    	boolean first = true;
+
+		for (String url : tabs) {
+			if (first) {
+				mUIManager.loadUrl(url);
+				first = false;
+			} else {
+				mUIManager.addTab(url, !first, false);
+			}
+		}
     }
 
 	@Override
@@ -196,19 +272,24 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		super.onPrepareOptionsMenu(menu);		
 		
+		BaseWebViewFragment currentFragment = mUIManager.getCurrentWebViewFragment();
+		
 		menu.setGroupEnabled(
 				R.id.MainActivity_DisabledOnStartPageMenuGroup,
-				!mUIManager.getCurrentWebViewFragment().isStartPageShown());
+				currentFragment != null && !currentFragment.isStartPageShown());
 		
-		boolean privateBrowsing = mUIManager.getCurrentWebView().isPrivateBrowsingEnabled();
+		CustomWebView currentWebView = mUIManager.getCurrentWebView();
+		
+		boolean privateBrowsing = currentWebView != null && currentWebView.isPrivateBrowsingEnabled();
 		
 		menu.findItem(R.id.MainActivity_MenuIncognitoTab).setChecked(privateBrowsing);
 		menu.findItem(R.id.MainActivity_MenuFullScreen).setChecked(mUIManager.isFullScreen());
 		
 		menu.removeGroup(R.id.MainActivity_AddonsMenuGroup);
 		
-		if (!privateBrowsing) {
-			List<AddonMenuItem> contributedMenuItems = Controller.getInstance().getAddonManager().getContributedMainMenuItems(mUIManager.getCurrentWebView());
+		if (!privateBrowsing &&
+				(currentWebView != null)) {
+			List<AddonMenuItem> contributedMenuItems = Controller.getInstance().getAddonManager().getContributedMainMenuItems(currentWebView);
 			for (AddonMenuItem item : contributedMenuItems) {
 				menu.add(R.id.MainActivity_AddonsMenuGroup, item.getAddon().getMenuId(), 0, item.getMenuItem());
 			}
@@ -353,19 +434,20 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 	}
 
 	@Override
-	protected void onStart() {
-//		Controller.getInstance().getAddonManager().bindAddons();
+	protected void onStart() {		
 		super.onStart();
 	}
 
 	@Override
 	protected void onStop() {
-		//Controller.getInstance().getAddonManager().unbindAddons();
 		super.onStop();
 	}
 
 	@Override
 	protected void onDestroy() {
+		
+		mUIManager.saveTabs();
+		
 		Controller.getInstance().getAddonManager().unbindAddons();
 		WebIconDatabase.getInstance().close();
 		PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(mPreferenceChangeListener);

@@ -15,8 +15,10 @@
 
 package org.tint.ui;
 
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 import org.tint.R;
@@ -406,6 +408,20 @@ public class TabletUIManager extends BaseUIManager {
 		updateUrlBar();		
 	}
 	
+	@Override
+	protected Set<String> getTabsToSave() {
+		Set<String> tabs = new HashSet<String>();
+		
+		for (TabletWebViewFragment f : mTabs.values()) {
+			if (!f.isStartPageShown() &&
+					!f.isPrivateBrowsingEnabled()) {
+				tabs.add(f.getWebView().getUrl());
+			}
+		}
+		
+		return tabs;
+	}
+
 	private void closeTabByTab(Tab tab) {
 		TabletWebViewFragment oldFragment = mTabs.get(tab);
 		

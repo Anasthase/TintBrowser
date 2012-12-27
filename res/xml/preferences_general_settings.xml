@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <!--
    Tint Browser for Android
   
@@ -13,83 +12,84 @@
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
- -->
+-->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <org.tint.ui.preferences.HomepageSpinnerPreference
-            android:title="@string/PreferenceGeneralHomepageTitle"
-            android:summary="@string/PreferenceGeneralHomepageSummary"
-            android:dialogTitle="@string/PreferenceHomePageDialogTitle"            
-            android:positiveButtonText="@string/OK"
-            android:negativeButtonText="@string/Cancel"            
-            android:key="PREFERENCE_HOME_PAGE" />
-    
+        android:dialogTitle="@string/PreferenceHomePageDialogTitle"
+        android:key="PREFERENCE_HOME_PAGE"
+        android:negativeButtonText="@string/Cancel"
+        android:positiveButtonText="@string/OK"
+        android:summary="@string/PreferenceGeneralHomepageSummary"
+        android:title="@string/PreferenceGeneralHomepageTitle" />
+
     <org.tint.ui.preferences.SearchEnginePreference
-            android:title="@string/PreferenceGeneralSearchUrlTitle"
-            android:summary="@string/PreferenceGeneralSearchUrlSummary"            
-            android:key="PREFERENCE_SEARCH_URL" />
-    
-    <PreferenceCategory android:title="@string/PreferenceCategoryStartPageTitle">
-        
+        android:key="PREFERENCE_SEARCH_URL"
+        android:summary="@string/PreferenceGeneralSearchUrlSummary"
+        android:title="@string/PreferenceGeneralSearchUrlTitle" />
+
+    <ListPreference
+        android:defaultValue="ASK"
+        android:entries="@array/PreferenceRestoreTabsEntries"
+        android:entryValues="@array/PreferenceRestoreTabsValues"
+        android:key="PREFERENCE_RESTORE_TABS"
+        android:summary="@string/PreferenceRestoreTabsSummary"
+        android:title="@string/PreferenceRestoreTabsTitle" />
+
+    <PreferenceCategory android:title="@string/PreferenceCategoryStartPageTitle" >
         <EditTextPreference
-			android:title="@string/PreferenceGeneralStartPageLimitTitle"			
-			android:summary="@string/PreferenceGeneralStartPageLimitSummary"
-			android:defaultValue="@integer/default_start_page_items_number"
-			android:numeric="integer"
-			android:key="PREFERENCE_START_PAGE_LIMIT" />
-        
+            android:defaultValue="@integer/default_start_page_items_number"
+            android:key="PREFERENCE_START_PAGE_LIMIT"
+            android:numeric="integer"
+            android:summary="@string/PreferenceGeneralStartPageLimitSummary"
+            android:title="@string/PreferenceGeneralStartPageLimitTitle" />
     </PreferenceCategory>
-    
     <PreferenceCategory
         android:key="PREFERENCE_CATEGORY_OLD_PHONE_UI"
-        android:title="@string/PreferenceCategoryUITitle">
-        
+        android:title="@string/PreferenceCategoryUITitle" >
         <CheckBoxPreference
-			android:title="@string/PreferencePhoneNewUITitle"			
-			android:summary="@string/PreferencePhoneNewUISummary"
-			android:defaultValue="true"
-			android:key="PREFERENCE_PHONE_NEW_UI" />
-        
-        <ListPreference android:title="@string/PreferenceBubblePositionTitle"			
-			android:summary="@string/PreferenceBubblePositionSummary"
-			android:entries="@array/PreferenceBubblePositionEntries"
-			android:entryValues="@array/PreferenceBubblePositionValues"
-			android:defaultValue="RIGHT"
-			android:key="PREFERENCE_BUBBLE_POSITION" />
-        
+            android:defaultValue="true"
+            android:key="PREFERENCE_PHONE_NEW_UI"
+            android:summary="@string/PreferencePhoneNewUISummary"
+            android:title="@string/PreferencePhoneNewUITitle" />
+
+        <ListPreference
+            android:defaultValue="RIGHT"
+            android:entries="@array/PreferenceBubblePositionEntries"
+            android:entryValues="@array/PreferenceBubblePositionValues"
+            android:key="PREFERENCE_BUBBLE_POSITION"
+            android:summary="@string/PreferenceBubblePositionSummary"
+            android:title="@string/PreferenceBubblePositionTitle" />
+
         <EditTextPreference
-			android:title="@string/PreferenceToolbarsAutoHideDurationTitle"			
-			android:summary="@string/PreferenceToolbarsAutoHideDurationSummary"
-			android:defaultValue="3"
-			android:numeric="integer"
-			android:key="PREFERENCE_TOOLBARS_AUTOHIDE_DURATION" />
-        
-        <ListPreference android:title="@string/PreferenceSwitchTabsMethodTitle"			
-			android:summary="@string/PreferenceSwitchTabsMethodSummary"
-			android:entries="@array/PreferenceSwitchTabsMethodEntries"
-			android:entryValues="@array/PreferenceSwitchTabsMethodValues"
-			android:defaultValue="BUTTONS"
-			android:key="PREFERENCES_SWITCH_TABS_METHOD" />
-        
+            android:defaultValue="3"
+            android:key="PREFERENCE_TOOLBARS_AUTOHIDE_DURATION"
+            android:numeric="integer"
+            android:summary="@string/PreferenceToolbarsAutoHideDurationSummary"
+            android:title="@string/PreferenceToolbarsAutoHideDurationTitle" />
+
+        <ListPreference
+            android:defaultValue="BUTTONS"
+            android:entries="@array/PreferenceSwitchTabsMethodEntries"
+            android:entryValues="@array/PreferenceSwitchTabsMethodValues"
+            android:key="PREFERENCES_SWITCH_TABS_METHOD"
+            android:summary="@string/PreferenceSwitchTabsMethodSummary"
+            android:title="@string/PreferenceSwitchTabsMethodTitle" />
     </PreferenceCategory>
-    
     <PreferenceCategory
         android:key="PREFERENCE_CATEGORY_NEW_PHONE_UI"
-        android:title="@string/PreferenceCategoryUITitle">
-        
+        android:title="@string/PreferenceCategoryUITitle" >
         <CheckBoxPreference
-			android:title="@string/PreferencePhoneNewUITitle"			
-			android:summary="@string/PreferencePhoneNewUISummary"
-			android:defaultValue="true"
-			android:key="PREFERENCE_PHONE_NEW_UI" />
-        
+            android:defaultValue="true"
+            android:key="PREFERENCE_PHONE_NEW_UI"
+            android:summary="@string/PreferencePhoneNewUISummary"
+            android:title="@string/PreferencePhoneNewUITitle" />
         <CheckBoxPreference
-			android:title="@string/PreferenceClosePanelOnNewTabTitle"			
-			android:summary="@string/PreferenceClosePanelOnNewTabSummary"
-			android:defaultValue="true"
-			android:key="PREFERENCE_CLOSE_PANEL_ON_NEW_TAB" />
-        
+            android:defaultValue="true"
+            android:key="PREFERENCE_CLOSE_PANEL_ON_NEW_TAB"
+            android:summary="@string/PreferenceClosePanelOnNewTabSummary"
+            android:title="@string/PreferenceClosePanelOnNewTabTitle" />
     </PreferenceCategory>
 
 </PreferenceScreen>

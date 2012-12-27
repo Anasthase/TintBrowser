@@ -520,6 +520,28 @@
     
     <string name="AboutChangelogTitle">Changelog</string>
     <string name="AboutContributorsTitle">Contributors</string>
-    <string name="AboutLicensesTitle">Licenses</string>
+    <string name="AboutLicensesTitle">Other licenses</string>
+    
+    <string name="RestoreTabsDialogTitle">Restore tabs</string>
+    <string name="RestoreTabsDialogMessage">Do you want to restore the tabs from your previous session?</string>
+    
+    <string name="PreferenceRestoreTabsTitle">Tabs restore</string>
+    <string name="PreferenceRestoreTabsSummary">Select how you want tabs to be restored.</string>
+    
+    <string name="PreferenceRestoreTabsAsk">Ask</string>
+    <string name="PreferenceRestoreTabsAlways">Always</string>
+    <string name="PreferenceRestoreTabsNever">Never</string>
+    
+    <string-array name="PreferenceRestoreTabsEntries">
+		<item>@string/PreferenceRestoreTabsAsk</item>
+		<item>@string/PreferenceRestoreTabsAlways</item>
+		<item>@string/PreferenceRestoreTabsNever</item>
+	</string-array>
+	
+    <string-array name="PreferenceRestoreTabsValues">
+		<item>ASK</item>
+		<item>ALWAYS</item>
+		<item>NEVER</item>
+	</string-array>
     
 </resources>

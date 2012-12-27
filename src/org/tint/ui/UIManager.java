@@ -93,6 +93,8 @@ public interface UIManager extends OnTouchListener {
 	boolean isFullScreen();
 	
 	void toggleFullScreen();
+	
+	void saveTabs();
 		
 	/**
 	 * Events.

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <!--
    Tint Browser for Android
   
@@ -13,60 +12,66 @@
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
- -->
+-->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent"    
     android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="15dip"
-        android:paddingBottom="15dip"
-        android:paddingLeft="10dip"
-        android:paddingRight="10dip"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:padding="15dip" >
 
         <TextView
-            android:id="@+id/GeolocationMessage"
+            android:id="@+id/DialogMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@+id/GeolocationMessage" />
+            android:layout_marginBottom="15dip"
+            android:text="@+id/DialogMessage"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <CheckBox
-            android:id="@+id/GeolocationRemember"
+            android:id="@+id/DialogRemember"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/RememberMyChoice" />
     </LinearLayout>
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="?android:attr/buttonBarStyle" >
+        android:contentDescription="@string/ContentDescriptionDivider"
+        android:scaleType="fitXY"
+        android:src="?android:attr/dividerHorizontal" />
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
         <Button
-            android:id="@+id/GeolocationDecline"
+            android:id="@+id/DialogNegativeButton"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
             android:layout_weight="1"
-            android:layout_gravity="right"            
             android:maxLines="2"
-            android:text="@string/GeolocationDecline"
-            style="?android:attr/buttonBarButtonStyle" />
+            android:text="@string/No" />
 
         <Button
-            android:id="@+id/GeolocationAccept"
+            android:id="@+id/DialogPositiveButton"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
             android:layout_weight="1"
-            android:layout_gravity="right"            
             android:maxLines="2"
-            android:text="@string/GeolocationAccept"
-            style="?android:attr/buttonBarButtonStyle" />
-
+            android:text="@string/Yes" />
     </LinearLayout>
 
 </LinearLayout>

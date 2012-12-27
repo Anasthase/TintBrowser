@@ -17,8 +17,10 @@ package org.tint.ui;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 import org.tint.R;
@@ -620,7 +622,21 @@ public class PhoneUIManager extends BaseUIManager {
 		
 		win.setAttributes(winParams);
 	}
-	
+
+	@Override
+	protected Set<String> getTabsToSave() {
+		Set<String> tabs = new HashSet<String>();
+		
+		for (PhoneWebViewFragment f : mFragmentsList) {
+			if (!f.isStartPageShown() &&
+					!f.isPrivateBrowsingEnabled()) {
+				tabs.add(f.getWebView().getUrl());
+			}
+		}
+		
+		return tabs;
+	}
+
 	private void updateUrlBar() {
 		CustomWebView currentWebView;
 		BaseWebViewFragment currentFragment = getCurrentWebViewFragment();

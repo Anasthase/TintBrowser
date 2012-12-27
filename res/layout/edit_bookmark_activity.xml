@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <!--
    Tint Browser for Android
   
@@ -13,32 +12,35 @@
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
- -->
+-->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="UselessParent">
+    android:orientation="vertical"
+    tools:ignore="UselessParent" >
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="1">
+        android:layout_weight="1" >
+
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            
+            android:layout_height="match_parent" >
+
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:stretchColumns="1"
-                android:shrinkColumns="1"
-                android:paddingTop="10dip"
                 android:paddingLeft="20dip"
-                android:paddingRight="20dip" >
-                
-                <TableRow android:layout_marginBottom="10dip">
+                android:paddingRight="20dip"
+                android:paddingTop="10dip"
+                android:shrinkColumns="1"
+                android:stretchColumns="1" >
+
+                <TableRow android:layout_marginBottom="10dip" >
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -54,12 +56,11 @@
                         android:ellipsize="end"
                         android:inputType="textCapSentences|textNoSuggestions"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
-				</TableRow>
-              
-                <TableRow
-                    android:layout_marginBottom="10dip" >
+                </TableRow>
 
-                    <TextView                       
+                <TableRow android:layout_marginBottom="10dip" >
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -76,9 +77,8 @@
                         android:inputType="textUri"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </TableRow>
-                
-                <TableRow
-                    android:layout_marginBottom="10dip" >
+
+                <TableRow android:layout_marginBottom="10dip" >
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -92,7 +92,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dip" />
-                    
                 </TableRow>
 
                 <EditText
@@ -103,33 +102,43 @@
                     android:hint="@string/NewFolderHint"
                     android:inputType="text" >
                 </EditText>
-                
-			</TableLayout>            
+            </TableLayout>
         </ScrollView>
     </FrameLayout>
-    
-    <LinearLayout
+
+    <ImageView
+        android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        style="?android:attr/buttonBarStyle">
-        <Button android:id="@+id/EditBookmarkActivity.Cancel"
-            android:text="@string/Cancel"
+        android:contentDescription="@string/ContentDescriptionDivider"
+        android:scaleType="fitXY"
+        android:src="?android:attr/dividerHorizontal" />
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/EditBookmarkActivity.Cancel"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dip"
+            android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_weight="1"
             android:maxLines="2"
-            android:layout_height="wrap_content"
-            style="?android:attr/buttonBarButtonStyle" />
-        <Button android:id="@+id/EditBookmarkActivity.OK"
-            android:text="@string/OK"
+            android:text="@string/Cancel" />
+
+        <Button
+            android:id="@+id/EditBookmarkActivity.OK"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dip"
+            android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_weight="1"
             android:maxLines="2"
-            android:layout_height="wrap_content"
-            style="?android:attr/buttonBarButtonStyle" />
+            android:text="@string/OK" />
     </LinearLayout>
-    
 
 </LinearLayout>

@@ -143,7 +143,9 @@ public abstract class StartPageFragment extends Fragment implements LoaderManage
 			
 			@Override
 			public void run() {
-				getLoaderManager().initLoader(0, null, StartPageFragment.this);
+				if (isAdded()) {
+					getLoaderManager().initLoader(0, null, StartPageFragment.this);
+				}
 			}
 		}, 100);
 	}	
