@@ -512,21 +512,21 @@
     
     <string name="ContentDescriptionTabPreview">Tab preview</string>
     
-    <string name="PreferencePhoneNewUITitle">Use the new UI for phones</string>
+    <string name="PreferencePhoneNewUITitle">Use the new interface for phones</string>
     <string name="PreferencePhoneNewUISummary">Uncheck if you want to use the old user interface for phones.</string>
     
-    <string name="PreferenceClosePanelOnNewTabTitle">Close panel on new tab</string>
-    <string name="PreferenceClosePanelOnNewTabSummary">If checked, the tab panel will close when openning a new tab.</string>
+    <string name="PreferenceClosePanelOnNewTabTitle">Close side panel on new tab</string>
+    <string name="PreferenceClosePanelOnNewTabSummary">If checked, the side panel will close when openning a new tab.</string>
     
     <string name="AboutChangelogTitle">Changelog</string>
     <string name="AboutContributorsTitle">Contributors</string>
     <string name="AboutLicensesTitle">Other licenses</string>
     
-    <string name="RestoreTabsDialogTitle">Restore tabs</string>
+    <string name="RestoreTabsDialogTitle">Tabs restoration</string>
     <string name="RestoreTabsDialogMessage">Do you want to restore the tabs from your previous session?</string>
     
-    <string name="PreferenceRestoreTabsTitle">Tabs restore</string>
-    <string name="PreferenceRestoreTabsSummary">Select how you want tabs to be restored.</string>
+    <string name="PreferenceRestoreTabsTitle">Tabs restoration</string>
+    <string name="PreferenceRestoreTabsSummary">Select how you want tabs to be restored from a previous session.</string>
     
     <string name="PreferenceRestoreTabsAsk">Ask</string>
     <string name="PreferenceRestoreTabsAlways">Always</string>

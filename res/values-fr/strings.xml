@@ -504,4 +504,44 @@
     <string name="FullScreen">Plein écran</string>
     <string name="ContentDescriptionExitFullScreen">Bouton de sortie du plein écran</string>
     
+    <!-- 1.7 -->
+    <string name="StartPageLabel">Page de démarrage</string>
+
+    <string name="RestartDialogTitle">Redémarrage requis</string>
+    <string name="RestartDialogMessage">Cette modification ne prendra effet qu\'après un redémarrage de l\'application. Souhaitez vous le faire maintenant ?</string>
+    
+    <string name="ContentDescriptionTabPreview">Apperçu d\'onglet</string>
+    
+    <string name="PreferencePhoneNewUITitle">Utiliser la nouvelle interface pour téléphones</string>
+    <string name="PreferencePhoneNewUISummary">Décochez si vous souhaitez utiliser l\'ancienne interface pour téléphone.</string>
+    
+    <string name="PreferenceClosePanelOnNewTabTitle">Fermer le panneau latéral à l\'ouverture d\'un nouvel onglet</string>
+    <string name="PreferenceClosePanelOnNewTabSummary">Si coché, le panneau latéral se fermera automatiquement lors de l\'ouverture d\'un nouvel onglet.</string>
+    
+    <string name="AboutChangelogTitle">Liste des changements</string>
+    <string name="AboutContributorsTitle">Contributeurs</string>
+    <string name="AboutLicensesTitle">Autres licenses</string>
+    
+    <string name="RestoreTabsDialogTitle">Restauration des onglets</string>
+    <string name="RestoreTabsDialogMessage">Souhaitez vous restaurer les onglets de votre session précédente ?</string>
+    
+    <string name="PreferenceRestoreTabsTitle">Restauration des onglets</string>
+    <string name="PreferenceRestoreTabsSummary">Choisissez comment restaurer les onglets d\'un session précédente.</string>
+    
+    <string name="PreferenceRestoreTabsAsk">Demander</string>
+    <string name="PreferenceRestoreTabsAlways">Toujours</string>
+    <string name="PreferenceRestoreTabsNever">Jamais</string>
+    
+    <string-array name="PreferenceRestoreTabsEntries">
+		<item>@string/PreferenceRestoreTabsAsk</item>
+		<item>@string/PreferenceRestoreTabsAlways</item>
+		<item>@string/PreferenceRestoreTabsNever</item>
+	</string-array>
+	
+    <string-array name="PreferenceRestoreTabsValues">
+		<item>ASK</item>
+		<item>ALWAYS</item>
+		<item>NEVER</item>
+	</string-array>
+    
 </resources>
