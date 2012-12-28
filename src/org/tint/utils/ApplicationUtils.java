@@ -87,15 +87,6 @@ public class ApplicationUtils {
 		return result;
 	}
 	
-	/**
-	 * Load the changelog string.
-	 * @param context The current context.
-	 * @return The changelog string.
-	 */
-	public static String getChangelogString(Context context) {
-		return getStringFromRawResource(context, R.raw.changelog);
-	}
-	
 	public static BitmapDrawable getApplicationButtonImage(Activity activity, Bitmap icon) {
 		if (icon != null) {
 			int buttonSize = activity.getResources().getInteger(R.integer.application_button_size);
