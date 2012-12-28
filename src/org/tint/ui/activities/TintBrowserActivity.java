@@ -441,18 +441,17 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 
 	@Override
 	protected void onStop() {
+		mUIManager.saveTabs();
 		super.onStop();
 	}
 
 	@Override
 	protected void onDestroy() {
-		
-		mUIManager.saveTabs();
-		
 		Controller.getInstance().getAddonManager().unbindAddons();
 		WebIconDatabase.getInstance().close();
 		PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(mPreferenceChangeListener);
 		unregisterReceiver(mPackagesReceiver);
+		
 		super.onDestroy();
 	}	
 
