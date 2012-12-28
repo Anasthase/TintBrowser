@@ -26,6 +26,12 @@
     </head>    
     <body>
     	<ul class="header">
+    		<li>Version 1.6.1        
+        		<ul class="details">
+    				<li><pre>Fix FC when opening a tab in background on tablets.</pre></li>
+    				<li><pre>Hide application instead of finishing it on back pressed.</pre></li>
+    			</ul>
+    		</li>
     		<li>Version 1.6        
         		<ul class="details">
     				<li><pre>New export format for bookmarks and history; Bookmarks folders are now handled in export and import; Old format still supported for import.</pre></li>

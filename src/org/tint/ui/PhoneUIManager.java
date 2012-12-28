@@ -88,6 +88,8 @@ public class PhoneUIManager extends BaseUIManager {
 	
 	private ProgressBar mProgressBar;
 	
+	private ImageView mExitFullScreen;
+	
 	private int mCurrentTabIndex = -1;
 	private Fragment mCurrentFragment = null;
 	
@@ -109,10 +111,8 @@ public class PhoneUIManager extends BaseUIManager {
 	}
 	
 	@Override
-	protected void setupUI() {	
-		super.setupUI();
-		
-		mActionBar.hide();
+	protected void setupUI() {
+		mActionBar.hide();		
 		
 		mPanel = (PanelLayout) mActivity.findViewById(R.id.panel_layout);
 		
@@ -125,6 +125,15 @@ public class PhoneUIManager extends BaseUIManager {
 			
 			@Override
 			public void onPanelHidden() { }
+		});
+		
+		mExitFullScreen = (ImageView) mActivity.findViewById(R.id.ExitFullScreen);
+		mExitFullScreen.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				toggleFullScreen();
+			}
 		});
 		
 		ImageView openTabView = (ImageView) mActivity.findViewById(R.id.BtnAddTab);
@@ -265,6 +274,8 @@ public class PhoneUIManager extends BaseUIManager {
 				}
 			}
 		});
+        
+        super.setupUI();
 	}
 
 	@Override
@@ -610,14 +621,20 @@ public class PhoneUIManager extends BaseUIManager {
 
 	@Override
 	protected void setFullScreenFromPreferences() {
+		boolean fullScreen = isFullScreen();
+		
 		Window win = mActivity.getWindow();
         WindowManager.LayoutParams winParams = win.getAttributes();
 		final int bits = WindowManager.LayoutParams.FLAG_FULLSCREEN;
 		
-		if (PreferenceManager.getDefaultSharedPreferences(mActivity).getBoolean(Constants.PREFERENCE_FULL_SCREEN, false)) {
+		if (fullScreen) {
 			winParams.flags |=  bits;
+			mTopBar.setVisibility(View.GONE);
+			mExitFullScreen.setVisibility(View.VISIBLE);
 		} else {
 			winParams.flags &= ~bits;
+			mTopBar.setVisibility(View.VISIBLE);
+			mExitFullScreen.setVisibility(View.GONE);
 		}
 		
 		win.setAttributes(winParams);

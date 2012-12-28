@@ -21,7 +21,7 @@
     android:versionCode="9"
     android:versionName="1.7">
 
-    <uses-sdk android:minSdkVersion="14" />
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="17" />
     
     <permission android:name="org.tint.permissions.bookmarksprovider.READ"
         android:label="@string/PermissionReadBookmarksLabel"
