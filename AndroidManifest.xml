@@ -18,7 +18,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.tint"
     android:installLocation="auto"    
-    android:versionCode="8"
+    android:versionCode="9"
     android:versionName="1.7">
 
     <uses-sdk android:minSdkVersion="14" />
