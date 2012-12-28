@@ -1,3 +1,7 @@
+1.6.1:
+- Fix FC when opening a tab in background on tablets.
+- Hide application instead of finishing it on back pressed.
+
 1.6:
 - New export format for bookmarks and history; Bookmarks folders are now handled in export and import; Old format still supported for import.
 - Full screen mode (Exit full screen icon on tablets designed by Olyn LeRoy from The Noun Project).

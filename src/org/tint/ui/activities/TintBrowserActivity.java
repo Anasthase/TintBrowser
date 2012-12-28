@@ -306,7 +306,8 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 			if (mUIManager.onKeyBack()) {
 				return true;
 			} else {
-				return super.onKeyUp(keyCode, event);
+				moveTaskToBack(true);
+				return true;
 			}
 		case KeyEvent.KEYCODE_SEARCH:
 			if (mUIManager.onKeySearch()) {

@@ -57,8 +57,8 @@ public class TabletWebViewFragment extends PhoneWebViewFragment {
 		}
 	}
 	
-	private String stripTitle(String title) {
-		int length = getResources().getInteger(R.integer.tab_title_length);
+	private String stripTitle(String title) {		
+		int length = mUIManager.getMainActivity().getResources().getInteger(R.integer.tab_title_length);
 		
 		if (title.length() > length) {
 			title = title.substring(0, length) + '\u2026';
