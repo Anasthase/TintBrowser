@@ -507,13 +507,10 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 			
 			CustomWebView webView = webViewFragment.getWebView();
 			
-			if (url.equals(Constants.URL_ABOUT_START)) {
-//				webView.clearView();
-//				webView.clearHistory();
-								
+			if (Constants.URL_ABOUT_START.equals(url)) {
 				showStartPage(webViewFragment);
 				
-				// TODO: Check if there is no pb with this.
+				// Check if there is no pb with this.
 				// This recreate a new WebView, because i cannot found a way
 				// to reset completely (history and display) a WebView.
 				webViewFragment.resetWebView();

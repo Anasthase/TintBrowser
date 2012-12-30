@@ -39,8 +39,8 @@ public class PanelLayout extends RelativeLayout {
 	}
 	
 	private static final int ANIMATION_DURATION = 150;
-	private static final int BEZEL_SIZE_REDUCED = 10;
-	private static final int BEZEL_SIZE_STANDARD = 20;
+	private static final int BEZEL_SIZE_REDUCED = 5;
+	private static final int BEZEL_SIZE_STANDARD = 10;
 	private static final int BEZEL_SIZE_OPENED = 100;
 
 	private Animator mAnimator;

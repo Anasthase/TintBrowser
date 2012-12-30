@@ -33,9 +33,11 @@ public class UrlUtils {
 	 * @return True if the string is an url.
 	 */
 	public static boolean isUrl(String url) {
-		return url.equals(Constants.URL_ABOUT_BLANK) ||
+		return 
+			url.contains(".") ||
+			url.equals(Constants.URL_ABOUT_BLANK) ||
 			url.equals(Constants.URL_ABOUT_START) ||
-			url.contains(".");
+			url.equals(Constants.URL_ABOUT_TUTORIAL);
 	}
 	
 	public static String getRawSearchUrl(Context context) {
@@ -75,7 +77,8 @@ public class UrlUtils {
     				(!url.startsWith("https://")) &&
     				(!url.startsWith("file://")) &&
     				(!url.startsWith(Constants.URL_ABOUT_BLANK)) &&
-    				(!url.startsWith(Constants.URL_ABOUT_START))) {
+    				(!url.startsWith(Constants.URL_ABOUT_START)) &&
+    				(!url.startsWith(Constants.URL_ABOUT_TUTORIAL))) {
     			
     			url = "http://" + url;
     			
