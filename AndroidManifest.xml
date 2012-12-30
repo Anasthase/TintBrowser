@@ -75,12 +75,15 @@
         <activity android:name=".ui.activities.BookmarksActivity"></activity>
         <activity android:name=".ui.activities.EditBookmarkActivity" android:theme="@android:style/Theme.Holo.DialogWhenLarge"></activity>
         
-        <provider android:name=".providers.BookmarksProvider"
+        <provider
+            android:name=".providers.BookmarksProvider"
             android:authorities="org.tint.providers.bookmarksprovider"
+            android:exported="true"
             android:readPermission="org.tint.permissions.bookmarksprovider.READ"
             android:writePermission="org.tint.permissions.bookmarksprovider.WRITE" />
         
-        <provider android:name=".providers.SslExceptionsProvider"
+        <provider
+            android:name=".providers.SslExceptionsProvider"
             android:authorities="org.tint.providers.sslexceptionsprovider"
             android:exported="false" />
         
