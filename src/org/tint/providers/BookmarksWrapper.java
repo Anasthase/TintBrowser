@@ -69,8 +69,7 @@ public class BookmarksWrapper {
 		String whereClause = BookmarksProvider.Columns.VISITED_DATE + " > " + Long.toString(c.getTimeInMillis());	
 		
 		String orderClause = BookmarksProvider.Columns.VISITS + " DESC, " + 
-				BookmarksProvider.Columns.VISITED_DATE + " DESC, " +
-				BookmarksProvider.Columns.TITLE + " COLLATE NOCASE LIMIT " + Integer.toString(limit);
+				BookmarksProvider.Columns.VISITED_DATE + " DESC LIMIT " + Integer.toString(limit);
 		
 		return new CursorLoader(context, BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, orderClause);
 	}
