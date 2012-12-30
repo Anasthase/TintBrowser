@@ -16,11 +16,10 @@
 package org.tint.ui;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Collection;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 
 import org.tint.R;
@@ -668,17 +667,8 @@ public class LegacyPhoneUIManager extends BaseUIManager {
 	}
 	
 	@Override
-	protected Set<String> getTabsToSave() {
-		Set<String> tabs = new HashSet<String>();
-		
-		for (PhoneWebViewFragment f : mFragmentsList) {
-			if (!f.isStartPageShown() &&
-					!f.isPrivateBrowsingEnabled()) {
-				tabs.add(f.getWebView().getUrl());
-			}
-		}
-		
-		return tabs;
+	protected Collection<BaseWebViewFragment> getTabsFragments() {		
+		return new ArrayList<BaseWebViewFragment>(mFragmentsList);
 	}
 	
 	private void updateUrlBar() {

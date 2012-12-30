@@ -96,6 +96,16 @@ public abstract class BaseWebViewFragment extends Fragment {
 		mPrivateBrowsing = privateBrowsing;
 	}
 	
+	public boolean isWebViewOnUrl(String url) {
+		if (mWebView != null) {
+			String currentUrl = mWebView.getUrl();
+			
+			return currentUrl != null && currentUrl.equals(url);
+		}
+		
+		return false;
+	}
+	
 	protected void onViewCreated() {
 		if (!mWebViewAddedToParent) {
 			mParentView.addView(mWebView);

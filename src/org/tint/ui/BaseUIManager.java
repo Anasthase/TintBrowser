@@ -15,7 +15,9 @@
 
 package org.tint.ui;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -33,8 +35,6 @@ import org.tint.ui.fragments.BaseWebViewFragment;
 import org.tint.ui.fragments.StartPageFragment;
 import org.tint.utils.ApplicationUtils;
 import org.tint.utils.Constants;
-import org.tint.utils.UrlUtils;
-
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.DownloadManager;
@@ -184,10 +184,10 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 	public void loadRawUrl(UUID tabId, String url,	boolean loadInCurrentTabIfNotFound) {
 		BaseWebViewFragment fragment = getWebViewFragmentByUUID(tabId);
 		if (fragment != null) {
-			fragment.getWebView().loadUrl(url);
+			fragment.getWebView().loadRawUrl(url);
 		} else {
 			if (loadInCurrentTabIfNotFound) {
-				getCurrentWebView().loadUrl(url);
+				getCurrentWebView().loadRawUrl(url);
 			}
 		}
 	}
@@ -496,31 +496,21 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 	
 	@Override
 	public void loadUrl(BaseWebViewFragment webViewFragment, String url) {
-		if ((url != null) &&
-    			(url.length() > 0)) {
-			
-			if (UrlUtils.isUrl(url)) {
-    			url = UrlUtils.checkUrl(url);
-    		} else {
-    			url = UrlUtils.getSearchUrl(mActivity, url);
-    		}
-			
-			CustomWebView webView = webViewFragment.getWebView();
-			
-			if (Constants.URL_ABOUT_START.equals(url)) {
-				showStartPage(webViewFragment);
-				
-				// Check if there is no pb with this.
-				// This recreate a new WebView, because i cannot found a way
-				// to reset completely (history and display) a WebView.
-				webViewFragment.resetWebView();
-			} else {
-				hideStartPage(webViewFragment);				
-				webView.loadUrl(url);
-			}
-			
-			webView.requestFocus();
+		CustomWebView webView = webViewFragment.getWebView();
+
+		if (Constants.URL_ABOUT_START.equals(url)) {
+			showStartPage(webViewFragment);
+
+			// Check if there is no pb with this.
+			// This recreate a new WebView, because i cannot found a way
+			// to reset completely (history and display) a WebView.
+			webViewFragment.resetWebView();
+		} else {
+			hideStartPage(webViewFragment);				
+			webView.loadUrl(url);
 		}
+
+		webView.requestFocus();
 	}
 	
 	@Override
@@ -542,12 +532,24 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 	
 	@Override
 	public void saveTabs() {
+		String userStartPage = PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_HOME_PAGE, Constants.URL_ABOUT_START);
+		
+		Set<String> tabs = new HashSet<String>();		
+		
+		for (BaseWebViewFragment f : getTabsFragments()) {
+			if (!f.isStartPageShown() &&
+					!f.isWebViewOnUrl(userStartPage) &&
+					!f.isPrivateBrowsingEnabled()) {
+				tabs.add(f.getWebView().getUrl());
+			}
+		}
+		
 		Editor editor = PreferenceManager.getDefaultSharedPreferences(mActivity).edit();
-		editor.putStringSet(Constants.TECHNICAL_PREFERENCE_SAVED_TABS, getTabsToSave());
+		editor.putStringSet(Constants.TECHNICAL_PREFERENCE_SAVED_TABS, tabs);
 		editor.commit();
 	}
 	
-	protected abstract Set<String> getTabsToSave();
+	protected abstract Collection<BaseWebViewFragment> getTabsFragments();
 
 	protected abstract void setFullScreenFromPreferences();
 

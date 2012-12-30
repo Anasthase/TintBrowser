@@ -39,7 +39,7 @@ public class LoadUrlExecutor extends BaseActionExecutor {
 			if (mWebView != null) {				
 				
 				if (mAddonAction.getLoadRawUrl()) {
-					mWebView.loadUrl(url);
+					mWebView.loadRawUrl(url);
 				} else {
 					if (TextUtils.isEmpty(url)) {
 						mUIManager.loadHomePage();

@@ -29,6 +29,7 @@ import org.tint.ui.activities.TintBrowserActivity;
 import org.tint.ui.fragments.BaseWebViewFragment;
 import org.tint.utils.ApplicationUtils;
 import org.tint.utils.Constants;
+import org.tint.utils.UrlUtils;
 
 import android.annotation.SuppressLint;
 import android.app.DownloadManager;
@@ -100,16 +101,30 @@ public class CustomWebView extends WebView implements DownloadListener {
 	
 	@Override
 	public void loadUrl(String url) {
-		if (Constants.URL_ABOUT_TUTORIAL.equals(url)) {
-			loadDataWithBaseURL(
-					"file:///android_asset/",
-					ApplicationUtils.getStringFromRawResource(mContext, R.raw.phone_tutorial_html),
-					"text/html",
-					"UTF-8",
-					Constants.URL_ABOUT_TUTORIAL);
-		} else {
-			super.loadUrl(url);
+		if ((url != null) &&
+    			(url.length() > 0)) {
+			
+			if (UrlUtils.isUrl(url)) {
+    			url = UrlUtils.checkUrl(url);
+    		} else {
+    			url = UrlUtils.getSearchUrl(mContext, url);
+    		}
+			
+			if (Constants.URL_ABOUT_TUTORIAL.equals(url)) {
+				loadDataWithBaseURL(
+						"file:///android_asset/",
+						ApplicationUtils.getStringFromRawResource(mContext, R.raw.phone_tutorial_html),
+						"text/html",
+						"UTF-8",
+						Constants.URL_ABOUT_TUTORIAL);
+			} else {
+				super.loadUrl(url);
+			}
 		}
+	}
+	
+	public void loadRawUrl(String url) {
+		super.loadUrl(url);
 	}
 
 	public void onClientPageStarted(String url) {
