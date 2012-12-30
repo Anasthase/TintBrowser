@@ -165,6 +165,8 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 		
 		registerReceiver(mPackagesReceiver, mPackagesFilter);
         
+		Intent startIntent = getIntent();
+		
 		boolean firstRun = prefs.getBoolean(Constants.TECHNICAL_PREFERENCE_FIRST_RUN, true);
 		if (firstRun) {
 			Editor editor = prefs.edit();
@@ -177,6 +179,9 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 					getResources().getStringArray(R.array.DefaultBookmarksTitles),
 					getResources().getStringArray(R.array.DefaultBookmarksUrls));
 			
+			startIntent = new Intent(Intent.ACTION_VIEW);
+			startIntent.setData(Uri.parse(Constants.URL_ABOUT_TUTORIAL));
+			
 		} else {
 			int currentVersionCode = ApplicationUtils.getApplicationVersionCode(this);
 			int savedVersionCode = prefs.getInt(Constants.TECHNICAL_PREFERENCE_LAST_RUN_VERSION_CODE, -1);
@@ -186,11 +191,15 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 				editor.putInt(Constants.TECHNICAL_PREFERENCE_LAST_RUN_VERSION_CODE, currentVersionCode);
 				editor.commit();
 				
-				// TODO: Do something on new version.
+				// Version code 9 introduce the new phone UI.
+				if (savedVersionCode < 9) {
+					startIntent = new Intent(Intent.ACTION_VIEW);
+					startIntent.setData(Uri.parse(Constants.URL_ABOUT_TUTORIAL));
+				}
 			}
 		}
 		
-		mUIManager.onNewIntent(getIntent());
+		mUIManager.onNewIntent(startIntent);
 		
 		if (prefs.contains(Constants.TECHNICAL_PREFERENCE_SAVED_TABS)) {
 			final Set<String> tabs = prefs.getStringSet(Constants.TECHNICAL_PREFERENCE_SAVED_TABS, null);
