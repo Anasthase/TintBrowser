@@ -178,8 +178,11 @@ public class TintBrowserActivity extends Activity {
 					getResources().getStringArray(R.array.DefaultBookmarksTitles),
 					getResources().getStringArray(R.array.DefaultBookmarksUrls));
 			
-			startIntent = new Intent(Intent.ACTION_VIEW);
-			startIntent.setData(Uri.parse(Constants.URL_ABOUT_TUTORIAL));
+			// Show tutorial only on phones.
+			if (!isTablet) {
+				startIntent = new Intent(Intent.ACTION_VIEW);
+				startIntent.setData(Uri.parse(Constants.URL_ABOUT_TUTORIAL));
+			}
 			
 		} else {
 			int currentVersionCode = ApplicationUtils.getApplicationVersionCode(this);
@@ -190,10 +193,13 @@ public class TintBrowserActivity extends Activity {
 				editor.putInt(Constants.TECHNICAL_PREFERENCE_LAST_RUN_VERSION_CODE, currentVersionCode);
 				editor.commit();
 				
-				// Version code 9 introduce the new phone UI.
-				if (savedVersionCode < 9) {
-					startIntent = new Intent(Intent.ACTION_VIEW);
-					startIntent.setData(Uri.parse(Constants.URL_ABOUT_TUTORIAL));
+				// Show tutorial only on phones.
+				if (!isTablet) {
+					// Version code 9 introduce the new phone UI.
+					if (savedVersionCode < 9) {
+						startIntent = new Intent(Intent.ACTION_VIEW);
+						startIntent.setData(Uri.parse(Constants.URL_ABOUT_TUTORIAL));
+					}
 				}
 			}
 		}
