@@ -24,14 +24,13 @@ import org.tint.addons.AddonMenuItem;
 import org.tint.controllers.Controller;
 import org.tint.model.DownloadItem;
 import org.tint.providers.BookmarksWrapper;
-import org.tint.ui.LegacyPhoneUIManager;
-import org.tint.ui.PhoneUIManager;
-import org.tint.ui.TabletUIManager;
-import org.tint.ui.UIManager;
-import org.tint.ui.UIManagerProvider;
 import org.tint.ui.components.CustomWebView;
 import org.tint.ui.dialogs.YesNoRememberDialog;
 import org.tint.ui.fragments.BaseWebViewFragment;
+import org.tint.ui.managers.LegacyPhoneUIManager;
+import org.tint.ui.managers.PhoneUIManager;
+import org.tint.ui.managers.TabletUIManager;
+import org.tint.ui.managers.UIManager;
 import org.tint.ui.preferences.PreferencesActivity;
 import org.tint.utils.ApplicationUtils;
 import org.tint.utils.Constants;
@@ -64,7 +63,7 @@ import android.view.View.OnClickListener;
 import android.webkit.WebIconDatabase;
 import android.widget.Toast;
 
-public class TintBrowserActivity extends Activity implements UIManagerProvider {
+public class TintBrowserActivity extends Activity {
     
 	public static final int ACTIVITY_BOOKMARKS = 0;
 	public static final int ACTIVITY_OPEN_FILE_CHOOSER = 1;
@@ -490,7 +489,6 @@ public class TintBrowserActivity extends Activity implements UIManagerProvider {
 		mUIManager.onActionModeStarted(mode);
 	}
 
-	@Override
 	public UIManager getUIManager() {
 		return mUIManager;
 	}

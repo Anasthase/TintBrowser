@@ -13,17 +13,9 @@
  * GNU General Public License for more details.
  */
 
-package org.tint.ui;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+package org.tint.ui.managers;
 
 import org.tint.R;
-import org.tint.controllers.Controller;
 import org.tint.ui.activities.TintBrowserActivity;
 import org.tint.ui.components.BadgedImageView;
 import org.tint.ui.components.CustomWebView;
@@ -40,8 +32,6 @@ import org.tint.ui.views.TabsScroller.OnRemoveListener;
 import org.tint.utils.Constants;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -62,46 +52,26 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
-public class PhoneUIManager extends BaseUIManager {
-
-	private enum AnimationType {
-		NONE,
-		FADE
-	}
-	
-	private static final AnimationType sAnimationType = AnimationType.NONE;
-
-	private List<PhoneWebViewFragment> mFragmentsList;
-	private Map<UUID, PhoneWebViewFragment> mFragmentsMap;
+public class PhoneUIManager extends BasePhoneUIManager {
 
 	private PanelLayout mPanel;
 	
-	private PhoneUrlBar mUrlBar;
-	private RelativeLayout mTopBar;
-	
 	private BadgedImageView mFaviconView;
 	
-	private ImageView mBack;
-	private ImageView mForward;
 	private ImageView mHome;
 	
-	private ProgressBar mProgressBar;
-	
-	private ImageView mExitFullScreen;
-	
-	private int mCurrentTabIndex = -1;
-	private Fragment mCurrentFragment = null;
-	
-	private ActionMode mActionMode;
+	private ImageView mExitFullScreen;	
 	
 	private TabAdapter mAdapter;
 	
 	private SharedPreferences mPreferences;
 
+	static {
+		sAnimationType = AnimationType.NONE;
+	}
+	
 	public PhoneUIManager(TintBrowserActivity activity) {
-		super(activity);
-		mFragmentsList = new ArrayList<PhoneWebViewFragment>();
-		mFragmentsMap = new HashMap<UUID, PhoneWebViewFragment>();
+		super(activity);		
 		
 		mPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
 		
@@ -279,133 +249,36 @@ public class PhoneUIManager extends BaseUIManager {
 
 	@Override
 	public void addTab(String url, boolean openInBackground, boolean privateBrowsing) {
-		boolean startPage = false;
-		if (Constants.URL_ABOUT_START.equals(url)) {
-			url = null;
-			startPage = true;
-		}
+		super.addTab(url, openInBackground, privateBrowsing);
 
-		PhoneWebViewFragment fragment = new PhoneWebViewFragment();
-		fragment.init(this, privateBrowsing, url);		
-
-		mFragmentsList.add(mCurrentTabIndex + 1, fragment);
-		mFragmentsMap.put(fragment.getUUID(), fragment);		
-
-		if (!openInBackground) {
-			mCurrentTabIndex++;
-
-			if (startPage) {
-				fragment.setStartPageShown(true);
-
-				if (mStartPageFragment == null) {
-					createStartPageFragment();
-				}
-
-				setCurrentFragment(mStartPageFragment, sAnimationType);
-				onShowStartPage();
-			} else {
-				fragment.setStartPageShown(false);
-				setCurrentFragment(fragment, sAnimationType);
-			}			
-
-			CustomWebView webView = getCurrentWebView();
-
-			if (!webView.isPrivateBrowsingEnabled()) {
-				Controller.getInstance().getAddonManager().onTabSwitched(mActivity, webView);
-			}
-		}
-
-		updateUrlBar();
-		
+		updateUrlBar();		
 		mAdapter.notifyDataSetChanged();
 	}
-
+	
 	@Override
-	public void closeCurrentTab() {
-		if (mFragmentsList.size() > 1) {
-			closeTabByIndex(mCurrentTabIndex);
-		} else {
-			closeLastTab();			
-		}
-	}
-
-	@Override
-	public void closeTab(UUID tabId) {
-		int index = mFragmentsList.indexOf(getWebViewFragmentByUUID(tabId));
-		
-		if (mFragmentsList.size() > 1) {			
-			if ((index >= 0) &&
-					(index < mFragmentsList.size())) {
-				closeTabByIndex(index);
-			}
-		} else if (index == mCurrentTabIndex) {
-			closeLastTab();
-		}
-	}
-
-	@Override
-	public CustomWebView getCurrentWebView() {
-		if (mCurrentTabIndex != -1) {
-			return mFragmentsList.get(mCurrentTabIndex).getWebView();
-		} else {
-			return null;
-		}
-	}
-
-	@Override
-	public void loadUrl(String url) {
-		mUrlBar.hideUrl();
-		super.loadUrl(url);
+	protected void closeLastTab() {
+		super.closeLastTab();
+				
+		mAdapter.notifyDataSetChanged();
 	}
 	
 	@Override
-	public BaseWebViewFragment getCurrentWebViewFragment() {
-		if (mCurrentTabIndex != -1) {
-			return mFragmentsList.get(mCurrentTabIndex);
-		} else {
-			return null;
-		}
-	}
+	protected void closeTabByIndex(int index) {
+		super.closeTabByIndex(index);
 
-	@Override
-	public boolean onKeyBack() {
-		if (!super.onKeyBack()) {
-			if (mUrlBar.isUrlBarVisible()) {
-				mUrlBar.hideUrl();
-				
-				return true;
-			} else if (mPanel.isPanelShown()) {
-				mPanel.hidePanel();
-				return true;
-			} else {
-				CustomWebView currentWebView = getCurrentWebView();
-				
-				if ((currentWebView != null) &&
-						(currentWebView.canGoBack())) {
-					currentWebView.goBack();
-					return true;
-				}
-			}
-		}
-		
-		return false;
+		updateUrlBar();
+		mAdapter.notifyDataSetChanged();
 	}
 	
 	@Override
-	public boolean onKeySearch() {
-		mUrlBar.showUrl();
-		return true;
-	}
-
-	@Override
-	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-		for (PhoneWebViewFragment fragment : mFragmentsList) {
-			fragment.getWebView().loadSettings();
+	protected void showCurrentTab(boolean notifyTabSwitched) {
+		super.showCurrentTab(notifyTabSwitched);
+		
+		TabView currentTabView = mAdapter.getViewAt(mCurrentTabIndex);
+		if (currentTabView != null) {
+			currentTabView.setSelected(true);
 		}
 	}
-
-	@Override
-	public void onMenuVisibilityChanged(boolean isVisible) { }
 	
 	@Override
 	public void onPageStarted(WebView view, String url, Bitmap favicon) {
@@ -470,26 +343,10 @@ public class PhoneUIManager extends BaseUIManager {
 			}
 		}
 	}
-	
-	@Override
-	public void onProgressChanged(WebView view, int newProgress) {
-		if (view == getCurrentWebView()) {
-			mProgressBar.setProgress(newProgress);
-		}
-	}
 
 	@Override
 	public void onReceivedTitle(WebView view, String title) {
-		if (view == getCurrentWebView()) {
-			if ((title != null) &&
-					(!title.isEmpty())) {
-				mUrlBar.setTitle(title);
-				mUrlBar.setSubtitle(view.getUrl());
-			} else {
-				mUrlBar.setTitle(R.string.ApplicationName);
-				mUrlBar.setSubtitle(R.string.UrlBarUrlDefaultSubTitle);
-			}
-		}
+		super.onReceivedTitle(view, title);
 		
 		mAdapter.notifyDataSetChanged();
 	}
@@ -511,21 +368,43 @@ public class PhoneUIManager extends BaseUIManager {
 	}
 
 	@Override
-	public void onShowStartPage() {
-		mUrlBar.setTitle(mActivity.getString(R.string.ApplicationName));
-		mUrlBar.setSubtitle(R.string.UrlBarUrlDefaultSubTitle);
-		mUrlBar.hideGoStopReloadButton();
-					
-		mUrlBar.setUrl(null);
-		mBack.setEnabled(false);
-		mForward.setEnabled(false);
+	public boolean onKeyBack() {
+		if (!super.onKeyBack()) {
+			if (mUrlBar.isUrlBarVisible()) {
+				mUrlBar.hideUrl();
+				
+				return true;
+			} else if (mPanel.isPanelShown()) {
+				mPanel.hidePanel();
+				return true;
+			} else {
+				CustomWebView currentWebView = getCurrentWebView();
+				
+				if ((currentWebView != null) &&
+						(currentWebView.canGoBack())) {
+					currentWebView.goBack();
+					return true;
+				}
+			}
+		}
 		
-		mAdapter.notifyDataSetChanged();
+		return false;
+	}
+	
+	@Override
+	public boolean onKeySearch() {
+		mUrlBar.showUrl();
+		return true;
 	}
 
 	@Override
-	public void onHideStartPage() {
-		mUrlBar.showGoStopReloadButton();
+	public void onMenuVisibilityChanged(boolean isVisible) { }
+
+	@Override
+	public void onShowStartPage() {
+		super.onShowStartPage();
+		
+		mAdapter.notifyDataSetChanged();
 	}
 
 	@Override
@@ -563,62 +442,6 @@ public class PhoneUIManager extends BaseUIManager {
 	}
 
 	@Override
-	protected String getCurrentUrl() {
-		return mUrlBar.getUrl();
-	}
-
-	@Override
-	protected int getTabCount() {
-		return mFragmentsList.size();
-	}
-
-	@Override
-	protected BaseWebViewFragment getWebViewFragmentByUUID(UUID fragmentId) {
-		return mFragmentsMap.get(fragmentId);
-	}
-
-	@Override
-	protected void showStartPage(BaseWebViewFragment webViewFragment) {
-		if ((webViewFragment != null) &&
-				(!webViewFragment.isStartPageShown())) {
-		
-			webViewFragment.getWebView().onPause();
-			webViewFragment.setStartPageShown(true);
-			
-			if (webViewFragment == getCurrentWebViewFragment()) {
-
-				if (mStartPageFragment == null) {
-					createStartPageFragment();
-				}
-
-				setCurrentFragment(mStartPageFragment, sAnimationType);
-				
-				onShowStartPage();
-			}
-		}
-	}
-
-	@Override
-	protected void hideStartPage(BaseWebViewFragment webViewFragment) {
-		if ((webViewFragment != null) &&
-				(webViewFragment.isStartPageShown())) {
-		
-			webViewFragment.setStartPageShown(false);
-			
-			if (webViewFragment == getCurrentWebViewFragment()) {
-				setCurrentFragment(webViewFragment, sAnimationType);
-
-				onHideStartPage();
-			}
-		}
-	}
-
-	@Override
-	protected void resetUI() {
-		updateUrlBar();
-	}
-
-	@Override
 	protected void setFullScreenFromPreferences() {
 		boolean fullScreen = isFullScreen();
 		
@@ -640,11 +463,7 @@ public class PhoneUIManager extends BaseUIManager {
 	}
 
 	@Override
-	protected Collection<BaseWebViewFragment> getTabsFragments() {		
-		return new ArrayList<BaseWebViewFragment>(mFragmentsList);
-	}
-
-	private void updateUrlBar() {
+	protected void updateUrlBar() {
 		CustomWebView currentWebView;
 		BaseWebViewFragment currentFragment = getCurrentWebViewFragment();
 		
@@ -704,7 +523,8 @@ public class PhoneUIManager extends BaseUIManager {
 		mUrlBar.setPrivateBrowsingIndicator(currentFragment != null ? currentFragment.isPrivateBrowsingEnabled() : false);
 	}
 
-	private void createStartPageFragment() {
+	@Override
+	protected void createStartPageFragment() {
 		mStartPageFragment = new PhoneStartPageFragment();
 		mStartPageFragment.setOnStartPageItemClickedListener(new OnStartPageItemClickedListener() {					
 			@Override
@@ -712,83 +532,6 @@ public class PhoneUIManager extends BaseUIManager {
 				loadUrl(url);
 			}
 		});
-	}
-
-	private void setCurrentFragment(Fragment fragment, AnimationType animationType) {
-		if (fragment != mCurrentFragment) {
-			mCurrentFragment = fragment;
-
-			FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();			
-
-			switch (animationType) {
-			case NONE: break;
-			case FADE: fragmentTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out); break;
-			default: break;
-			}
-
-			fragmentTransaction.replace(R.id.WebViewContainer, mCurrentFragment);				
-			fragmentTransaction.commit();
-		}
-	}
-	
-	private void closeLastTab() {
-		PhoneWebViewFragment fragment = mFragmentsList.get(mCurrentTabIndex);
-		
-		CustomWebView webView = fragment.getWebView();
-		
-		if (!webView.isPrivateBrowsingEnabled()) {
-			Controller.getInstance().getAddonManager().onTabClosed(mActivity, webView);
-		}
-		
-		webView.onPause();
-		
-		loadHomePage();
-		updateUrlBar();
-		
-		mAdapter.notifyDataSetChanged();
-	}
-	
-	private void closeTabByIndex(int index) {
-		if ((index >= 0) &&
-				(index < mFragmentsList.size())) {
-			boolean currentTab = index == mCurrentTabIndex;		
-
-			PhoneWebViewFragment fragment = mFragmentsList.get(index);
-
-			CustomWebView webView = fragment.getWebView();
-
-			if (!webView.isPrivateBrowsingEnabled()) {
-				Controller.getInstance().getAddonManager().onTabClosed(mActivity, webView);
-			}
-
-			webView.onPause();
-
-			mFragmentsList.remove(index);
-			mFragmentsMap.remove(fragment.getUUID());
-
-			if (currentTab) {
-				if (mCurrentTabIndex > 0) {
-					mCurrentTabIndex--;
-				}
-
-				showCurrentTab(true);
-			} else {
-				if (index < mCurrentTabIndex) {
-					mCurrentTabIndex--;
-				}
-			}
-
-			updateUrlBar();
-
-			mAdapter.notifyDataSetChanged();
-		}
-	}
-	
-	private void updateBackForwardEnabled() {
-		CustomWebView currentWebView = getCurrentWebView();
-		
-		mBack.setEnabled(currentWebView.canGoBack());
-		mForward.setEnabled(currentWebView.canGoForward());
 	}
 	
 	private void showTabByIndex(int index, boolean notifyTabSwitched) {
@@ -802,34 +545,6 @@ public class PhoneUIManager extends BaseUIManager {
 		
 		mCurrentTabIndex = index;
 		showCurrentTab(notifyTabSwitched);
-	}
-	
-	private void showCurrentTab(boolean notifyTabSwitched) {
-		PhoneWebViewFragment newFragment = mFragmentsList.get(mCurrentTabIndex);
-		
-		if (newFragment.isStartPageShown()) {
-			setCurrentFragment(mStartPageFragment, sAnimationType);
-			mUrlBar.hideGoStopReloadButton();
-		} else {			
-			setCurrentFragment(newFragment, sAnimationType);
-			mUrlBar.showGoStopReloadButton();
-			newFragment.getWebView().onResume();
-		}
-		
-		TabView currentTabView = mAdapter.getViewAt(mCurrentTabIndex);
-		if (currentTabView != null) {
-			currentTabView.setSelected(true);
-		}
-
-		updateUrlBar();
-		
-		if (notifyTabSwitched) {
-			CustomWebView webView = getCurrentWebView();
-			
-			if (!webView.isPrivateBrowsingEnabled()) {
-				Controller.getInstance().getAddonManager().onTabSwitched(mActivity, webView);
-			}
-		}
 	}
 	
 	private class TabAdapter extends BaseAdapter {

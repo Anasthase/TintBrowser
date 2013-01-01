@@ -18,8 +18,8 @@ package org.tint.ui.components;
 import org.tint.R;
 import org.tint.tasks.UpdateFaviconTask;
 import org.tint.tasks.UpdateHistoryTask;
-import org.tint.ui.UIManager;
 import org.tint.ui.activities.TintBrowserActivity;
+import org.tint.ui.managers.UIManager;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;

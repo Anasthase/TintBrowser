@@ -13,7 +13,7 @@
  * GNU General Public License for more details.
  */
 
-package org.tint.ui;
+package org.tint.ui.managers;
 
 import java.util.Collection;
 import java.util.HashMap;

@@ -16,8 +16,8 @@
 package org.tint.ui.tabs;
 
 import org.tint.R;
-import org.tint.ui.TabletUIManager;
 import org.tint.ui.fragments.TabletWebViewFragment;
+import org.tint.ui.managers.TabletUIManager;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;

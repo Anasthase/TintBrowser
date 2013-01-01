@@ -45,7 +45,7 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.SimpleCursorAdapter.CursorToStringConverter;
 
-public class PhoneUrlBar extends LinearLayout implements UrlBar {
+public class PhoneUrlBar extends LinearLayout {
 	
 	public interface OnPhoneUrlBarEventListener {
 		
@@ -354,7 +354,6 @@ public class PhoneUrlBar extends LinearLayout implements UrlBar {
 		return mIsUrlBarVisible;
 	}
 	
-	@Override
 	public String getUrl() {
 		return mUrl.getText().toString();
 	}

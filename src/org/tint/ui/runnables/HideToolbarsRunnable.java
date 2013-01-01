@@ -15,7 +15,7 @@
 
 package org.tint.ui.runnables;
 
-import org.tint.ui.LegacyPhoneUIManager;
+import org.tint.ui.managers.LegacyPhoneUIManager;
 
 import android.os.Handler;
 import android.os.Message;

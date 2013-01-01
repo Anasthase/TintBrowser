@@ -20,8 +20,8 @@ import java.util.List;
 
 import org.tint.addons.AddonManager;
 import org.tint.model.DownloadItem;
-import org.tint.ui.UIManager;
 import org.tint.ui.activities.TintBrowserActivity;
+import org.tint.ui.managers.UIManager;
 
 public class Controller { 
 	

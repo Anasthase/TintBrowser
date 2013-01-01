@@ -21,8 +21,8 @@ import java.util.List;
 import org.tint.addons.executors.BaseActionExecutor;
 import org.tint.addons.executors.ExecutorFactory;
 import org.tint.addons.framework.Action;
-import org.tint.ui.UIManager;
 import org.tint.ui.components.CustomWebView;
+import org.tint.ui.managers.UIManager;
 
 import android.content.Context;
 import android.content.Intent;

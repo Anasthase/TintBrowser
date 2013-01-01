@@ -37,7 +37,7 @@ import android.widget.LinearLayout;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.SimpleCursorAdapter.CursorToStringConverter;
 
-public class TabletUrlBar extends LinearLayout implements UrlBar {
+public class TabletUrlBar extends LinearLayout {
 	
 	public interface OnTabletUrlBarEventListener {
 		
@@ -277,7 +277,6 @@ public class TabletUrlBar extends LinearLayout implements UrlBar {
 		}
 	}
 
-	@Override
 	public String getUrl() {
 		return mUrl.getText().toString();
 	}

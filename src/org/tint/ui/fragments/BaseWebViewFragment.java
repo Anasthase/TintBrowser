@@ -17,10 +17,10 @@ package org.tint.ui.fragments;
 
 import java.util.UUID;
 
-import org.tint.ui.UIManager;
 import org.tint.ui.components.CustomWebChromeClient;
 import org.tint.ui.components.CustomWebView;
 import org.tint.ui.components.CustomWebViewClient;
+import org.tint.ui.managers.UIManager;
 import org.tint.utils.Constants;
 
 import android.app.Fragment;

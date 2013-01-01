@@ -25,8 +25,8 @@ import org.tint.model.BookmarkHistoryItem;
 import org.tint.model.BookmarksAdapter;
 import org.tint.providers.BookmarksProvider;
 import org.tint.providers.BookmarksWrapper;
-import org.tint.ui.UIManager;
 import org.tint.ui.activities.EditBookmarkActivity;
+import org.tint.ui.managers.UIManager;
 import org.tint.utils.ApplicationUtils;
 import org.tint.utils.Constants;
 

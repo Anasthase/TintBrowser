@@ -24,7 +24,8 @@ import java.util.regex.Pattern;
 
 import org.tint.R;
 import org.tint.providers.SslExceptionsWrapper;
-import org.tint.ui.UIManager;
+import org.tint.ui.managers.UIManager;
+
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
