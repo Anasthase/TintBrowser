@@ -29,7 +29,7 @@
         <LinearLayout
             android:id="@+id/TopPanel"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="?android:attr/actionBarSize"
             android:layout_alignParentTop="true"
             android:background="@drawable/ab_solid_dark_holo"
             android:scaleType="fitXY"

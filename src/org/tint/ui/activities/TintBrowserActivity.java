@@ -27,9 +27,7 @@ import org.tint.providers.BookmarksWrapper;
 import org.tint.ui.components.CustomWebView;
 import org.tint.ui.dialogs.YesNoRememberDialog;
 import org.tint.ui.fragments.BaseWebViewFragment;
-import org.tint.ui.managers.LegacyPhoneUIManager;
-import org.tint.ui.managers.PhoneUIManager;
-import org.tint.ui.managers.TabletUIManager;
+import org.tint.ui.managers.UIFactory;
 import org.tint.ui.managers.UIManager;
 import org.tint.ui.preferences.PreferencesActivity;
 import org.tint.utils.ApplicationUtils;
@@ -100,28 +98,12 @@ public class TintBrowserActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	
-    	boolean isTablet = ApplicationUtils.isTablet(this);
-    	
-    	if (isTablet) {
-    		setTheme(android.R.style.Theme_Holo);
-    	} else {
-    		setTheme(R.style.ApplicationTheme_Overlay);
-    	}
+    	setTheme(UIFactory.getTheme(this));    	
     	
         super.onCreate(savedInstanceState);
         
-        if (isTablet) {
-        	setContentView(R.layout.tablet_main_activity);
-        	mUIManager = new TabletUIManager(this);
-        } else {
-        	if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean(Constants.PREFERENCE_PHONE_NEW_UI, true)) {
-        		setContentView(R.layout.phone_main_activity);
-        		mUIManager = new PhoneUIManager(this);
-        	} else {
-        		setContentView(R.layout.legacy_phone_main_activity);
-        		mUIManager = new LegacyPhoneUIManager(this);
-        	}
-        }        
+        setContentView(UIFactory.getMainLayout(this));
+    	mUIManager = UIFactory.createUIManager(this);
         
         getActionBar().setHomeButtonEnabled(true);
         
@@ -179,7 +161,7 @@ public class TintBrowserActivity extends Activity {
 					getResources().getStringArray(R.array.DefaultBookmarksUrls));
 			
 			// Show tutorial only on phones.
-			if (!isTablet) {
+			if (!UIFactory.isTablet(this)) {
 				startIntent = new Intent(Intent.ACTION_VIEW);
 				startIntent.setData(Uri.parse(Constants.URL_ABOUT_TUTORIAL));
 			}
@@ -194,7 +176,7 @@ public class TintBrowserActivity extends Activity {
 				editor.commit();
 				
 				// Show tutorial only on phones.
-				if (!isTablet) {
+				if (!UIFactory.isTablet(this)) {
 					// Version code 9 introduce the new phone UI.
 					if (savedVersionCode < 9) {
 						startIntent = new Intent(Intent.ACTION_VIEW);
@@ -277,7 +259,7 @@ public class TintBrowserActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(final Menu menu) {
-		getMenuInflater().inflate(ApplicationUtils.getMenuResource(this), menu);		
+		getMenuInflater().inflate(UIFactory.getMainMenuLayout(this), menu);		
 		
 		return true;
 	} 

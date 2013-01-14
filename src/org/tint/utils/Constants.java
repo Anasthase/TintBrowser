@@ -90,7 +90,7 @@ public class Constants {
 	
 	public static final String PREFERENCE_RESTORE_TABS = "PREFERENCE_RESTORE_TABS";
 	
-	public static final String PREFERENCE_PHONE_NEW_UI = "PREFERENCE_PHONE_NEW_UI";
+	public static final String PREFERENCE_UI_TYPE = "PREFERENCE_UI_TYPE";
 	public static final String PREFERENCE_CLOSE_PANEL_ON_NEW_TAB = "PREFERENCE_CLOSE_PANEL_ON_NEW_TAB";
 	
 	/**

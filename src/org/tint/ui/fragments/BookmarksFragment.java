@@ -26,6 +26,7 @@ import org.tint.model.BookmarksAdapter;
 import org.tint.providers.BookmarksProvider;
 import org.tint.providers.BookmarksWrapper;
 import org.tint.ui.activities.EditBookmarkActivity;
+import org.tint.ui.managers.UIFactory;
 import org.tint.ui.managers.UIManager;
 import org.tint.utils.ApplicationUtils;
 import org.tint.utils.Constants;
@@ -134,7 +135,7 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		mIsTablet = ApplicationUtils.isTablet(getActivity());
+		mIsTablet = UIFactory.isTablet(getActivity());
 
 		if (mContainer == null) {
 			mContainer = inflater.inflate(R.layout.bookmarks_fragment, container, false);

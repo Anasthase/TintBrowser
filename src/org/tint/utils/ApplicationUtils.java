@@ -43,26 +43,6 @@ public class ApplicationUtils {
 	
 	private static int[] sBookmarksdimensions = null;
 	
-	private static boolean mIsTabletSet = false;
-	private static boolean mIsTablet;
-	
-	public static boolean isTablet(Context context) {
-		if (!mIsTabletSet) {
-			mIsTablet = context.getResources().getBoolean(R.bool.isTablet);
-			mIsTabletSet = true;
-		}
-		
-		return mIsTablet;
-	}
-	
-	public static int getMenuResource(Context context) {
-		if (isTablet(context)) {
-			return R.menu.main_activity_menu_tablet;
-		}
-		
-		return R.menu.main_activity_menu;
-	}
-	
 	/**
 	 * Get the application version code.
 	 * @param context The current context.

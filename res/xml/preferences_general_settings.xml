@@ -46,14 +46,26 @@
             android:title="@string/PreferenceGeneralStartPageLimitTitle" />
     </PreferenceCategory>
     <PreferenceCategory
+        android:key="PREFERENCE_CATEGORY_TABLET_UI"
+        android:title="@string/PreferenceCategoryUITitle" >
+        <ListPreference
+            android:defaultValue="AUTO"
+            android:entries="@array/PreferenceUITypeEntries"
+            android:entryValues="@array/PreferenceUITypeValues"
+            android:key="PREFERENCE_UI_TYPE"
+            android:summary="@string/PreferenceUITypeSummary"
+            android:title="@string/PreferenceUITypeTitle" />
+    </PreferenceCategory>
+    <PreferenceCategory
         android:key="PREFERENCE_CATEGORY_OLD_PHONE_UI"
         android:title="@string/PreferenceCategoryUITitle" >
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="PREFERENCE_PHONE_NEW_UI"
-            android:summary="@string/PreferencePhoneNewUISummary"
-            android:title="@string/PreferencePhoneNewUITitle" />
-
+        <ListPreference
+            android:defaultValue="AUTO"
+            android:entries="@array/PreferenceUITypeEntries"
+            android:entryValues="@array/PreferenceUITypeValues"
+            android:key="PREFERENCE_UI_TYPE"
+            android:summary="@string/PreferenceUITypeSummary"
+            android:title="@string/PreferenceUITypeTitle" />
         <ListPreference
             android:defaultValue="RIGHT"
             android:entries="@array/PreferenceBubblePositionEntries"
@@ -80,11 +92,14 @@
     <PreferenceCategory
         android:key="PREFERENCE_CATEGORY_NEW_PHONE_UI"
         android:title="@string/PreferenceCategoryUITitle" >
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="PREFERENCE_PHONE_NEW_UI"
-            android:summary="@string/PreferencePhoneNewUISummary"
-            android:title="@string/PreferencePhoneNewUITitle" />
+        <ListPreference
+            android:defaultValue="AUTO"
+            android:entries="@array/PreferenceUITypeEntries"
+            android:entryValues="@array/PreferenceUITypeValues"
+            android:key="PREFERENCE_UI_TYPE"
+            android:summary="@string/PreferenceUITypeSummary"
+            android:title="@string/PreferenceUITypeTitle" />
+
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="PREFERENCE_CLOSE_PANEL_ON_NEW_TAB"

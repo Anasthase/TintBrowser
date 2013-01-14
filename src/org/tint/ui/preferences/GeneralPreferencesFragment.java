@@ -16,6 +16,7 @@
 package org.tint.ui.preferences;
 
 import org.tint.R;
+import org.tint.ui.managers.UIFactory;
 import org.tint.utils.ApplicationUtils;
 import org.tint.utils.Constants;
 
@@ -44,23 +45,30 @@ public class GeneralPreferencesFragment extends PreferenceFragment {
         
         PreferenceCategory oldPhoneUIcategory = (PreferenceCategory) findPreference("PREFERENCE_CATEGORY_OLD_PHONE_UI");
         PreferenceCategory newPhoneUIcategory = (PreferenceCategory) findPreference("PREFERENCE_CATEGORY_NEW_PHONE_UI");
+        PreferenceCategory tabletUIcategory = (PreferenceCategory) findPreference("PREFERENCE_CATEGORY_TABLET_UI");
         
-        if (ApplicationUtils.isTablet(getActivity())) {
+        switch (UIFactory.getUIType(getActivity())) {
+        case PHONE:
         	getPreferenceScreen().removePreference(oldPhoneUIcategory);
+        	getPreferenceScreen().removePreference(tabletUIcategory);
+        	break;
+        
+        case LEGACY_PHONE:
         	getPreferenceScreen().removePreference(newPhoneUIcategory);
-        } else {        
-        	if (PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean(Constants.PREFERENCE_PHONE_NEW_UI, true)) {
-        		getPreferenceScreen().removePreference(oldPhoneUIcategory);
-        	} else {
-        		getPreferenceScreen().removePreference(newPhoneUIcategory);
-        	}
+        	getPreferenceScreen().removePreference(tabletUIcategory);
+        	break;
+        
+        case TABLET:
+        	getPreferenceScreen().removePreference(newPhoneUIcategory);
+        	getPreferenceScreen().removePreference(oldPhoneUIcategory);
+        	break;
         }
         
         mListener = new OnSharedPreferenceChangeListener() {
 
 			@Override
 			public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-				if (Constants.PREFERENCE_PHONE_NEW_UI.equals(key)) {
+				if (Constants.PREFERENCE_UI_TYPE.equals(key)) {
 					askForRestart();
 				}				
 			}			

@@ -20,7 +20,7 @@ import java.util.List;
 import org.tint.R;
 import org.tint.addons.Addon;
 import org.tint.controllers.Controller;
-import org.tint.utils.ApplicationUtils;
+import org.tint.ui.managers.UIFactory;
 
 import android.app.Fragment;
 import android.content.pm.PackageInfo;
@@ -103,7 +103,7 @@ public class AddonDetailsFragment extends Fragment {
 			fillCallbacksDetails();
 			fillPackagePermissions();			
 			
-			if (!ApplicationUtils.isTablet(getActivity())) {
+			if (!UIFactory.isTablet(getActivity())) {
         		// The current addon name is currently shown in tablet-type preferences activity / fragments.
         		getActivity().setTitle(mAddon.getName());
         	}

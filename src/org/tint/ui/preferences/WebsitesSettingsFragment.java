@@ -21,8 +21,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.tint.R;
-import org.tint.utils.ApplicationUtils;
-
+import org.tint.ui.managers.UIFactory;
 import android.app.AlertDialog;
 import android.app.ListFragment;
 import android.content.Context;
@@ -34,7 +33,6 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.PreferenceActivity;
-import android.util.FloatMath;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,7 +65,7 @@ public class WebsitesSettingsFragment extends ListFragment {
 //            clear.setVisibility(View.VISIBLE);
 //            clear.setOnClickListener(this);
         } else {
-        	if (!ApplicationUtils.isTablet(getActivity())) {
+        	if (!UIFactory.isTablet(getActivity())) {
         		// The current website is currently shown in tablet-type preferences activity / fragements.
         		getActivity().setTitle(String.format(getString(R.string.WebsitesSettingsSiteTitle), mSite.getPrettyTitle()));
         	}
@@ -216,7 +214,7 @@ public class WebsitesSettingsFragment extends ListFragment {
                 return "0";
             }
             float megabytes = (float) bytes / (1024.0F * 1024.0F);
-            int truncated = (int) FloatMath.ceil(megabytes * 10.0F);
+            int truncated = (int) Math.ceil(megabytes * 10.0F);
             float result = (float) (truncated / 10.0F);
             return String.valueOf(result);
         }

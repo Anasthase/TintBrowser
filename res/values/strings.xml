@@ -512,9 +512,6 @@
     
     <string name="ContentDescriptionTabPreview">Tab preview</string>
     
-    <string name="PreferencePhoneNewUITitle">Use the new interface for phones</string>
-    <string name="PreferencePhoneNewUISummary">Uncheck if you want to use the old user interface for phones.</string>
-    
     <string name="PreferenceClosePanelOnNewTabTitle">Close side panel on new tab</string>
     <string name="PreferenceClosePanelOnNewTabSummary">If checked, the side panel will close when openning a new tab.</string>
     
@@ -542,6 +539,28 @@
 		<item>ASK</item>
 		<item>ALWAYS</item>
 		<item>NEVER</item>
+	</string-array>
+	
+    <string name="PreferenceUITypeTitle">UI type</string>
+    <string name="PreferenceUITypeSummary">Select the type of user interface.</string>
+    
+    <string name="PreferenceUITypeAuto">Automatic</string>
+    <string name="PreferenceUITypePhone">Phone</string>
+    <string name="PreferenceUITypeLegacyPhone">Phone (legacy)</string>
+    <string name="PreferenceUITypeTablet">Tablet</string>
+    
+    <string-array name="PreferenceUITypeEntries">
+		<item>@string/PreferenceUITypeAuto</item>
+		<item>@string/PreferenceUITypePhone</item>
+		<item>@string/PreferenceUITypeLegacyPhone</item>
+		<item>@string/PreferenceUITypeTablet</item>
+	</string-array>
+	
+    <string-array name="PreferenceUITypeValues">
+		<item>AUTO</item>
+		<item>PHONE</item>
+		<item>LEGACY_PHONE</item>
+		<item>TABLET</item>
 	</string-array>
     
 </resources>

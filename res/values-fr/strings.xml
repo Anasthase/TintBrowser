@@ -512,9 +512,6 @@
     
     <string name="ContentDescriptionTabPreview">Apperçu d\'onglet</string>
     
-    <string name="PreferencePhoneNewUITitle">Utiliser la nouvelle interface pour téléphones</string>
-    <string name="PreferencePhoneNewUISummary">Décochez si vous souhaitez utiliser l\'ancienne interface pour téléphone.</string>
-    
     <string name="PreferenceClosePanelOnNewTabTitle">Fermer le panneau latéral à l\'ouverture d\'un nouvel onglet</string>
     <string name="PreferenceClosePanelOnNewTabSummary">Si coché, le panneau latéral se fermera automatiquement lors de l\'ouverture d\'un nouvel onglet.</string>
     
