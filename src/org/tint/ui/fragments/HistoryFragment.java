@@ -44,7 +44,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.animation.AnimationUtils;
 import android.webkit.DateSorter;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -162,7 +161,7 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 				registerForContextMenu(mListView);
 			}
 			
-			setListShown(false, false);
+			setListShown(false);
 			
 			getLoaderManager().initLoader(0, null, this);
 		}
@@ -293,12 +292,7 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 		mSelectedGroup = 0;
-		
-		if (isResumed()) {
-			setListShown(false, true);
-		} else {
-			setListShown(false, false);
-		}
+		setListShown(false);
 		
 		return BookmarksWrapper.getCursorLoaderForHistory(getActivity());
 	}
@@ -327,11 +321,7 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 			}
 		}
 		
-		if (isResumed()) {
-			setListShown(true, true);
-		} else {
-			setListShown(true, false);
-		}
+		setListShown(true);
 	}
 
 	@Override
@@ -339,7 +329,7 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 		mAdapter.changeCursor(null);
 	}
 	
-	private void setListShown(boolean shown, boolean animate) {
+	private void setListShown(boolean shown) {
 		if (mIsListShown == shown) {
 			return;
 		}
@@ -347,24 +337,6 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 		mIsListShown = shown;
 
 		if (shown) {
-			if (animate) {
-				mProgress.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out));
-				
-				if (mTwoPaneMode) {
-					mChildList.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in));
-				} else {
-					mListView.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in));
-				}
-			} else {
-				mProgress.clearAnimation();
-				
-				if (mTwoPaneMode) {
-					mChildList.clearAnimation();
-				} else {
-					mListView.clearAnimation();
-				}
-			}
-
 			mProgress.setVisibility(View.GONE);
 			
 			if (mTwoPaneMode) {
@@ -373,24 +345,6 @@ public class HistoryFragment extends Fragment implements LoaderManager.LoaderCal
 				mListView.setVisibility(View.VISIBLE);
 			}
 		} else {
-			if (animate) {
-				mProgress.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in));
-				
-				if (mTwoPaneMode) {
-					mChildList.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out));
-				} else {
-					mListView.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out));
-				}
-			} else {
-				mProgress.clearAnimation();
-				
-				if (mTwoPaneMode) {
-					mChildList.clearAnimation();
-				} else {
-					mListView.clearAnimation();
-				}
-			}
-
 			mProgress.setVisibility(View.VISIBLE);
 			
 			if (mTwoPaneMode) {

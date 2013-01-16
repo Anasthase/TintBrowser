@@ -432,6 +432,9 @@ public class BookmarksWrapper {
 		}
 	}
 	
+	private static final String TRUNCATE_HISTORY_DELETE_WHERE_PATTERN = "(" + BookmarksProvider.Columns.BOOKMARK + " = 0 OR " + BookmarksProvider.Columns.BOOKMARK + " IS NULL) AND " + BookmarksProvider.Columns.VISITED_DATE + " < %s";
+	private static final String TRUNCATE_HISTORY_UPDATE_WHERE_PATTERN = BookmarksProvider.Columns.BOOKMARK + " = 1  AND " + BookmarksProvider.Columns.VISITED_DATE + " < %s";
+	
 	/**
 	 * Remove from history values prior to now minus the number of days defined in preferences.
 	 * Only delete history items. For bookmarks, reset their visited value date and visits count.
@@ -453,8 +456,8 @@ public class BookmarksWrapper {
 		c.set(Calendar.MILLISECOND, 0);
 		c.add(Calendar.DAY_OF_YEAR, - historySize);
 
-		String whereClauseDelete = "(" + BookmarksProvider.Columns.BOOKMARK + " = 0 OR " + BookmarksProvider.Columns.BOOKMARK + " IS NULL) AND " + BookmarksProvider.Columns.VISITED_DATE + " < " + c.getTimeInMillis();
-		String whereClauseUpdate = BookmarksProvider.Columns.BOOKMARK + " = 1  AND " + BookmarksProvider.Columns.VISITED_DATE + " < " + c.getTimeInMillis();
+		String whereClauseDelete = String.format(TRUNCATE_HISTORY_DELETE_WHERE_PATTERN, c.getTimeInMillis());
+		String whereClauseUpdate = String.format(TRUNCATE_HISTORY_UPDATE_WHERE_PATTERN, c.getTimeInMillis());
 		
 		ContentValues updateValues = new ContentValues();
 		updateValues.putNull(BookmarksProvider.Columns.VISITED_DATE);
@@ -468,6 +471,9 @@ public class BookmarksWrapper {
 			Log.w("BookmarksWrapper", "Unable to truncate history: " + e.getMessage());
 		}
 	}
+	
+	private static final String UPDATE_FAVICON_WHERE_PATTERN_1 = BookmarksProvider.Columns.URL + " = %s OR " + BookmarksProvider.Columns.URL + " = %s";
+	private static final String UPDATE_FAVICON_WHERE_PATTERN_2 = BookmarksProvider.Columns.URL + " = %s";
 	
 	/**
 	 * Update the favicon in history/bookmarks database.
@@ -487,11 +493,10 @@ public class BookmarksWrapper {
 				url = DatabaseUtils.sqlEscapeString(url);
 				originalUrl = DatabaseUtils.sqlEscapeString(originalUrl);
 				
-				whereClause = BookmarksProvider.Columns.URL + " = " + url + " OR " + BookmarksProvider.Columns.URL + " = " + originalUrl;
+				whereClause = String.format(UPDATE_FAVICON_WHERE_PATTERN_1, url, originalUrl);
 			} else {
 				url = DatabaseUtils.sqlEscapeString(url);
-				
-				whereClause = BookmarksProvider.Columns.URL + " = " + url;
+				whereClause = String.format(UPDATE_FAVICON_WHERE_PATTERN_2, url);
 			}
 
 			BitmapDrawable icon = new BitmapDrawable(favicon);
@@ -511,6 +516,9 @@ public class BookmarksWrapper {
 		}
 	}
 	
+	private static final String BOOKMARK_BY_URL_WHERE_PATTERN_1 = "(" + BookmarksProvider.Columns.URL + " = %s OR " + BookmarksProvider.Columns.URL + " = %s) AND " + BookmarksProvider.Columns.BOOKMARK + " = 1";
+	private static final String BOOKMARK_BY_URL_WHERE_PATTERN_2 = BookmarksProvider.Columns.URL + " = %s AND " + BookmarksProvider.Columns.BOOKMARK + " = 1";
+	
 	public static void updateThumbnail(ContentResolver contentResolver, String url, String originalUrl, Bitmap thumbnail) {
 		if ((url != null) &&
 				(thumbnail != null) &&
@@ -522,14 +530,11 @@ public class BookmarksWrapper {
 				url = DatabaseUtils.sqlEscapeString(url);
 				originalUrl = DatabaseUtils.sqlEscapeString(originalUrl);
 				
-				whereClause = "(" + BookmarksProvider.Columns.URL + " = " + url + " OR " + BookmarksProvider.Columns.URL + " = " + originalUrl + ")";
+				whereClause = String.format(BOOKMARK_BY_URL_WHERE_PATTERN_1, url, originalUrl);
 			} else {
-				url = DatabaseUtils.sqlEscapeString(url);
-				
-				whereClause = BookmarksProvider.Columns.URL + " = " + url;
+				url = DatabaseUtils.sqlEscapeString(url);				
+				whereClause = String.format(BOOKMARK_BY_URL_WHERE_PATTERN_2, url);
 			}
-
-			whereClause += " AND " + BookmarksProvider.Columns.BOOKMARK + " = 1";
 
 			BitmapDrawable icon = new BitmapDrawable(thumbnail);
 
@@ -546,7 +551,7 @@ public class BookmarksWrapper {
 				Log.w("BookmarksWrapper", "Unable to update thumbnail: " + e.getMessage());
 			}
 		}
-	}
+	}	
 	
 	public static boolean urlHasBookmark(ContentResolver contentResolver, String url, String originalUrl) {
 		if ((url != null) &&
@@ -558,14 +563,11 @@ public class BookmarksWrapper {
 				url = DatabaseUtils.sqlEscapeString(url);
 				originalUrl = DatabaseUtils.sqlEscapeString(originalUrl);
 				
-				whereClause = "(" + BookmarksProvider.Columns.URL + " = " + url + " OR " + BookmarksProvider.Columns.URL + " = " + originalUrl + ")";
+				whereClause = String.format(BOOKMARK_BY_URL_WHERE_PATTERN_1, url, originalUrl);
 			} else {
 				url = DatabaseUtils.sqlEscapeString(url);
-				
-				whereClause = BookmarksProvider.Columns.URL + " = " + url;
+				whereClause = String.format(BOOKMARK_BY_URL_WHERE_PATTERN_2, url);
 			}
-
-			whereClause += " AND " + BookmarksProvider.Columns.BOOKMARK + " = 1";
 
 			Cursor c = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, null);
 
@@ -575,9 +577,11 @@ public class BookmarksWrapper {
 		}
 	}
 	
+	private static final String TOGGLE_BOOKMARK_WHERE_PATTERN =  BookmarksProvider.Columns._ID + " = %s";
+	
 	public static void toggleBookmark(ContentResolver contentResolver, long id, boolean bookmark) {
 		String[] colums = new String[] { BookmarksProvider.Columns._ID };
-		String whereClause = BookmarksProvider.Columns._ID + " = " + id;
+		String whereClause = String.format(TOGGLE_BOOKMARK_WHERE_PATTERN, id);
 
 		Cursor cursor = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, colums, whereClause, null, null);
 		boolean recordExists = (cursor != null) && (cursor.moveToFirst());
@@ -672,9 +676,11 @@ public class BookmarksWrapper {
 		
 		return null;
 	}
+	
+	private static final String CHILDREN_FOLDERS_WHERE_PATTERN = BookmarksProvider.Columns.IS_FOLDER + " > 0 AND " + BookmarksProvider.Columns.PARENT_FOLDER_ID + " = %S";
     
     private static Cursor getChildrenFolders(ContentResolver contentResolver, long folderId) {
-		String whereClause = BookmarksProvider.Columns.IS_FOLDER + " > 0 AND " + BookmarksProvider.Columns.PARENT_FOLDER_ID + " = " + folderId;
+		String whereClause = String.format(CHILDREN_FOLDERS_WHERE_PATTERN, folderId);
 		return contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, null);
 	}
 

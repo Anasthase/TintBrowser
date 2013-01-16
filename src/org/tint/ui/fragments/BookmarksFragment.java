@@ -61,7 +61,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
@@ -173,7 +172,6 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 					null,
 					from,
 					to,
-					ApplicationUtils.getBookmarksThumbnailsDimensions(getActivity()),
 					R.drawable.browser_thumbnail);
 
 			mBookmarksGrid.setAdapter(mAdapter);
@@ -219,7 +217,7 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 				mNavigationList.add(new NavigationItem(-1, null));
 			}
 
-			setListShown(false, false);
+			setListShown(false);
 
 			updateFolderId();
 		}
@@ -363,24 +361,14 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-		if (isResumed()) {
-			setListShown(false, true);
-		} else {
-			setListShown(false, false);
-		}
-
+		setListShown(false);
 		return BookmarksWrapper.getCursorLoaderForBookmarks(getActivity(), mNavigationList.get(mNavigationList.size() - 1).getId());
 	}
 
 	@Override
 	public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 		mAdapter.swapCursor(data);
-
-		if (isResumed()) {
-			setListShown(true, true);
-		} else {
-			setListShown(true, false);
-		}
+		setListShown(true);
 	}
 
 	@Override
@@ -388,7 +376,7 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 		mAdapter.swapCursor(null);
 	}
 
-	private void setListShown(boolean shown, boolean animate) {
+	private void setListShown(boolean shown) {
 		if (mIsListShown == shown) {
 			return;
 		}
@@ -396,25 +384,9 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 		mIsListShown = shown;
 
 		if (shown) {
-			if (animate) {
-				mProgress.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out));
-				mBookmarksGrid.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in));
-			} else {
-				mProgress.clearAnimation();
-				mBookmarksGrid.clearAnimation();
-			}
-
 			mProgress.setVisibility(View.GONE);
 			mBookmarksGrid.setVisibility(View.VISIBLE);
 		} else {
-			if (animate) {
-				mProgress.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in));
-				mBookmarksGrid.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out));
-			} else {
-				mProgress.clearAnimation();
-				mBookmarksGrid.clearAnimation();
-			}
-
 			mProgress.setVisibility(View.VISIBLE);
 			mBookmarksGrid.setVisibility(View.GONE);
 		}

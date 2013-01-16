@@ -22,7 +22,6 @@ import org.tint.providers.BookmarksProvider;
 import org.tint.providers.BookmarksWrapper;
 import org.tint.ui.activities.TintBrowserActivity;
 import org.tint.ui.managers.UIManager;
-import org.tint.utils.ApplicationUtils;
 import org.tint.utils.Constants;
 
 import android.app.Activity;
@@ -38,7 +37,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -98,7 +96,6 @@ public abstract class StartPageFragment extends Fragment implements LoaderManage
 					null,
 					from,
 					to,
-					ApplicationUtils.getBookmarksThumbnailsDimensions(getActivity()),
 					R.drawable.browser_thumbnail);
 			
 			mGrid.setAdapter(mAdapter);
@@ -137,7 +134,7 @@ public abstract class StartPageFragment extends Fragment implements LoaderManage
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
-		setListShown(false, false);
+		setListShown(false);
 		
 		mParentView.postDelayed(new Runnable() {
 			
@@ -174,12 +171,7 @@ public abstract class StartPageFragment extends Fragment implements LoaderManage
 	@Override
 	public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 		mAdapter.swapCursor(data);
-		
-		if (isResumed()) {
-            setListShown(true, true);
-        } else {
-            setListShown(true, false);
-        }
+		setListShown(true);
 	}
 
 	@Override
@@ -193,7 +185,7 @@ public abstract class StartPageFragment extends Fragment implements LoaderManage
 	
 	protected abstract int getStartPageFragmentLayout();
 	
-	private void setListShown(boolean shown, boolean animate) {
+	private void setListShown(boolean shown) {
 		
 		if (mListShown == shown) {
 			return;
@@ -202,14 +194,8 @@ public abstract class StartPageFragment extends Fragment implements LoaderManage
 		mListShown = shown;
 		
 		if (shown) {
-			if (animate) {
-				mGrid.startAnimation(AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_in));
-			}
 			mGrid.setVisibility(View.VISIBLE);
 		} else {
-			if (animate) {
-				mGrid.startAnimation(AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_out));
-			}
 			mGrid.setVisibility(View.GONE);
 		}
 	}
