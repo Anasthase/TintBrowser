@@ -18,15 +18,11 @@ package org.tint.providers;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 import org.tint.model.BookmarkHistoryItem;
 import org.tint.model.FolderItem;
-import org.tint.model.UrlSuggestionCursorAdapter;
-import org.tint.model.UrlSuggestionItem;
-import org.tint.model.UrlSuggestionItemComparator;
 import org.tint.utils.Constants;
 
 import android.content.ContentResolver;
@@ -35,14 +31,13 @@ import android.content.Context;
 import android.content.CursorLoader;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
-import android.database.MatrixCursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-public class BookmarksWrapper {
+public class BookmarksWrapper {	
 	
 	public static String[] HISTORY_BOOKMARKS_PROJECTION = new String[] {
 		BookmarksProvider.Columns._ID,
@@ -650,74 +645,33 @@ public class BookmarksWrapper {
 		}
 	}
 	
+	private static final String SUGGESTIONS_PATTERN = "%%%s%%";
+	private static final String SUGGESTIONS_WHERE_PATTERN = BookmarksProvider.Columns.TITLE + " LIKE '%s' OR " + BookmarksProvider.Columns.URL  + " LIKE '%s'";
+	private static final String SUGGESTIONS_ORDER = BookmarksProvider.Columns.VISITED_DATE + " DESC, " + BookmarksProvider.Columns.BOOKMARK + " DESC, " + BookmarksProvider.Columns.TITLE + " ASC";
+	
 	/**
      * Get a cursor for suggestions, given a search pattern.
      * Search on history and bookmarks, on title and url.
-     * The result list is sorted based on each result note.
-     * @see UrlSuggestionItem for how a note is computed.
      * @param contentResolver The content resolver.
      * @param pattern The pattern to search for.
-     * @return A cursor of suggections.
+     * @return A cursor of suggestions.
      */
-    public static Cursor getUrlSuggestions(ContentResolver contentResolver, String pattern) {
-    	MatrixCursor cursor = new MatrixCursor(new String[] {
-    			UrlSuggestionCursorAdapter.URL_SUGGESTION_ID,
-    			UrlSuggestionCursorAdapter.URL_SUGGESTION_TITLE,
-    			UrlSuggestionCursorAdapter.URL_SUGGESTION_URL,
-    			UrlSuggestionCursorAdapter.URL_SUGGESTION_TYPE });
-    	
-    	if ((pattern != null) &&
+	public static Cursor getUrlSuggestions(ContentResolver contentResolver, String pattern) {
+		if ((pattern != null) &&
     			(pattern.length() > 0)) {
-    		
-    		String sqlPattern = "%" + pattern + "%";
-    		
-    		List<UrlSuggestionItem> results = new ArrayList<UrlSuggestionItem>();
-    		
-    		Cursor stockCursor = contentResolver.query(BookmarksProvider.BOOKMARKS_URI,
+			
+			String sqlPattern = String.format(SUGGESTIONS_PATTERN, pattern);
+			String whereClause = String.format(SUGGESTIONS_WHERE_PATTERN, sqlPattern, sqlPattern);
+			
+			return contentResolver.query(BookmarksProvider.BOOKMARKS_URI,
     				HISTORY_BOOKMARKS_PROJECTION,
-    				BookmarksProvider.Columns.TITLE + " LIKE '" + sqlPattern + "' OR " + BookmarksProvider.Columns.URL  + " LIKE '" + sqlPattern + "'",
+    				whereClause,
     				null,
-    				null);
-    		
-    		if (stockCursor != null) {
-    			if (stockCursor.moveToFirst()) {
-    				int titleId = stockCursor.getColumnIndex(BookmarksProvider.Columns.TITLE);
-    				int urlId = stockCursor.getColumnIndex(BookmarksProvider.Columns.URL);
-    				int bookmarkId = stockCursor.getColumnIndex(BookmarksProvider.Columns.BOOKMARK);
-    				
-    				do {
-    					boolean isBookmark = stockCursor.getInt(bookmarkId) > 0 ? true : false;
-    					results.add(new UrlSuggestionItem(pattern,
-    							stockCursor.getString(titleId),
-    							stockCursor.getString(urlId),
-    							isBookmark ? 2 : 1));
-    					
-    				} while (stockCursor.moveToNext());
-    			}
-    			
-    			stockCursor.close();
-    		}
-    		
-    		// Sort results.
-    		Collections.sort(results, new UrlSuggestionItemComparator());
-    		
-    		// Copy results to the output MatrixCursor.
-    		int idCounter = -1;
-    		for (UrlSuggestionItem item : results) {
-    			idCounter++;
-				
-				String[] row = new String[4];
-				row[0] = Integer.toString(idCounter);
-				row[1] = item.getTitle();
-				row[2] = item.getUrl();
-				row[3] = Integer.toString(item.getType());
-				
-				cursor.addRow(row);
-    		}
-    	}
-    	
-    	return cursor;
-    }
+    				SUGGESTIONS_ORDER);
+		}
+		
+		return null;
+	}
     
     private static Cursor getChildrenFolders(ContentResolver contentResolver, long folderId) {
 		String whereClause = BookmarksProvider.Columns.IS_FOLDER + " > 0 AND " + BookmarksProvider.Columns.PARENT_FOLDER_ID + " = " + folderId;

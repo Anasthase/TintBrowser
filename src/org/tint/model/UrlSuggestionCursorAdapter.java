@@ -16,6 +16,7 @@
 package org.tint.model;
 
 import org.tint.R;
+import org.tint.providers.BookmarksProvider;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -29,11 +30,6 @@ import android.widget.SimpleCursorAdapter;
  * Adapter for suggestions.
  */
 public class UrlSuggestionCursorAdapter extends SimpleCursorAdapter {
-
-	public static final String URL_SUGGESTION_ID = "_id";
-	public static final String URL_SUGGESTION_TITLE = "URL_SUGGESTION_TITLE";
-	public static final String URL_SUGGESTION_URL = "URL_SUGGESTION_URL";
-	public static final String URL_SUGGESTION_TYPE = "URL_SUGGESTION_TYPE";
 	
 	public interface QueryBuilderListener {
 		public void onSuggestionSelected(String url);
@@ -53,7 +49,7 @@ public class UrlSuggestionCursorAdapter extends SimpleCursorAdapter {
 		super(context, layout, c, from, to);
 		mQueryBuilderListener = listener;
 	}
-
+	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		
@@ -61,21 +57,14 @@ public class UrlSuggestionCursorAdapter extends SimpleCursorAdapter {
 		
 		ImageView iconView = (ImageView) superView.findViewById(R.id.AutocompleteImageView);
 
-		int resultType;
-		try {			
-			resultType = Integer.parseInt(getCursor().getString(getCursor().getColumnIndex(URL_SUGGESTION_TYPE)));
-		} catch (Exception e) {
-			resultType = 0;
-		}
+		int resultType = getCursor().getInt(getCursor().getColumnIndex(BookmarksProvider.Columns.BOOKMARK));
 		
 		switch (resultType) {
-		case 1: iconView.setImageResource(R.drawable.ic_search_category_history); break;
-		case 2: iconView.setImageResource(R.drawable.ic_search_category_bookmark); break;
-		case 3: iconView.setImageResource(R.drawable.ic_search_category_bookmark); break; // TODO: Change this for Weave !
-		default: break;
+		case 0: iconView.setImageResource(R.drawable.ic_search_category_history); break;
+		default: iconView.setImageResource(R.drawable.ic_search_category_bookmark); break;
 		}
 		
-		final String url = getCursor().getString(getCursor().getColumnIndex(URL_SUGGESTION_URL));
+		final String url = getCursor().getString(getCursor().getColumnIndex(BookmarksProvider.Columns.URL));
 		
 		ImageView queryBuilderView = (ImageView) superView.findViewById(R.id.AutoCompleteQueryBuilder);
 		queryBuilderView.setOnClickListener(new OnClickListener() {			

@@ -18,6 +18,7 @@ package org.tint.ui.views;
 import org.tint.R;
 import org.tint.model.UrlSuggestionCursorAdapter;
 import org.tint.model.UrlSuggestionCursorAdapter.QueryBuilderListener;
+import org.tint.providers.BookmarksProvider;
 import org.tint.providers.BookmarksWrapper;
 
 import android.content.Context;
@@ -105,7 +106,7 @@ public class TabletUrlBar extends LinearLayout {
 		
 		mGoStopReload = (ImageView) v.findViewById(R.id.UrlBarGoStopReload);
 		
-		String[] from = new String[] { UrlSuggestionCursorAdapter.URL_SUGGESTION_TITLE, UrlSuggestionCursorAdapter.URL_SUGGESTION_URL };
+		String[] from = new String[] { BookmarksProvider.Columns.TITLE, BookmarksProvider.Columns.URL };
     	int[] to = new int[] {R.id.AutocompleteTitle, R.id.AutocompleteUrl};
     	
     	UrlSuggestionCursorAdapter adapter = new UrlSuggestionCursorAdapter(
@@ -125,7 +126,7 @@ public class TabletUrlBar extends LinearLayout {
     	adapter.setCursorToStringConverter(new CursorToStringConverter() {			
 			@Override
 			public CharSequence convertToString(Cursor cursor) {
-				String aColumnString = cursor.getString(cursor.getColumnIndex(UrlSuggestionCursorAdapter.URL_SUGGESTION_URL));
+				String aColumnString = cursor.getString(cursor.getColumnIndex(BookmarksProvider.Columns.URL));
                 return aColumnString;
 			}
 		});

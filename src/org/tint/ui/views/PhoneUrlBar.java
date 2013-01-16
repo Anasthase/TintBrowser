@@ -19,6 +19,7 @@ import org.tint.R;
 import org.tint.controllers.Controller;
 import org.tint.model.UrlSuggestionCursorAdapter;
 import org.tint.model.UrlSuggestionCursorAdapter.QueryBuilderListener;
+import org.tint.providers.BookmarksProvider;
 import org.tint.providers.BookmarksWrapper;
 
 import android.app.Activity;
@@ -195,7 +196,7 @@ public class PhoneUrlBar extends LinearLayout {
 			}
 		});
 		
-		String[] from = new String[] { UrlSuggestionCursorAdapter.URL_SUGGESTION_TITLE, UrlSuggestionCursorAdapter.URL_SUGGESTION_URL };
+		String[] from = new String[] { BookmarksProvider.Columns.TITLE, BookmarksProvider.Columns.URL };
     	int[] to = new int[] {R.id.AutocompleteTitle, R.id.AutocompleteUrl};
     	
     	UrlSuggestionCursorAdapter adapter = new UrlSuggestionCursorAdapter(
@@ -215,7 +216,7 @@ public class PhoneUrlBar extends LinearLayout {
     	adapter.setCursorToStringConverter(new CursorToStringConverter() {			
 			@Override
 			public CharSequence convertToString(Cursor cursor) {
-				String aColumnString = cursor.getString(cursor.getColumnIndex(UrlSuggestionCursorAdapter.URL_SUGGESTION_URL));
+				String aColumnString = cursor.getString(cursor.getColumnIndex(BookmarksProvider.Columns.URL));
                 return aColumnString;
 			}
 		});
