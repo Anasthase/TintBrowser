@@ -23,7 +23,7 @@
     <string name="AboutVersionText">Version: %1$s (%2$s)</string>
     <string name="AboutLicenseText">Lizenz: GPLv3</string>
     <string name="AboutUrlText">https://github.com/Anasthase/TintBrowser</string>
-    <string name="AboutChangelogText">Versionshistorie:</string>
+    <string name="AboutChangelogText">Änderungen:</string>
     
     <string name="PermissionReadBookmarksLabel">Lesezeichen von Tint Browser lesen</string>
     <string name="PermissionReadBookmarksDescription">Erlaube anderen Anwendungen den Verlauf und die Lesezeichen von Tint Browser zu lesen.</string>
@@ -503,5 +503,45 @@
     
     <string name="FullScreen">Vollbildmodus</string>
     <string name="ContentDescriptionExitFullScreen">Vollbildmodus verlassen</string>
+       
+    <!-- 1.7 -->
+    <string name="StartPageLabel">Startseite</string>
+
+    <string name="RestartDialogTitle">Neustart erforderlich</string>
+    <string name="RestartDialogMessage">Diese Änderung wird erst beim nächsten Start von Tint Browser aktiv. Jetzt neu starten?</string>
     
+    <string name="ContentDescriptionTabPreview">Reitervorschau</string>
+    
+    <string name="PreferencePhoneNewUITitle">Verwende die neue Oberfläche für Telefone</string>
+    <string name="PreferencePhoneNewUISummary">Abwählen, um die alte Oberfläche zu verwenden.</string>
+    
+    <string name="PreferenceClosePanelOnNewTabTitle">Navigation automatisch schließen</string>
+    <string name="PreferenceClosePanelOnNewTabSummary">Auswählen, um die Navigation beim Öffnen eines neuen Reiters automatisch zu schließen.</string>
+    
+    <string name="AboutChangelogTitle">Änderungen</string>
+    <string name="AboutContributorsTitle">Mitwirkende</string>
+    <string name="AboutLicensesTitle">Andere Lizenzen</string>
+    
+    <string name="RestoreTabsDialogTitle">Reiter wiederherstellen</string>
+    <string name="RestoreTabsDialogMessage">Sollen die Reiter der vorherigen Sitzung wiederhergestellt werden?</string>
+    
+    <string name="PreferenceRestoreTabsTitle">Reiter wiederherstellen</string>
+    <string name="PreferenceRestoreTabsSummary">Auswählen, ob die Reiter der vorherigen Sitzung wiederhergestellt werden sollen.</string>
+    
+    <string name="PreferenceRestoreTabsAsk">Beim Start nachfragen</string>
+    <string name="PreferenceRestoreTabsAlways">Immer</string>
+    <string name="PreferenceRestoreTabsNever">Nie</string>
+    
+    <string-array name="PreferenceRestoreTabsEntries">
+		<item>@string/PreferenceRestoreTabsAsk</item>
+		<item>@string/PreferenceRestoreTabsAlways</item>
+		<item>@string/PreferenceRestoreTabsNever</item>
+	</string-array>
+	
+    <string-array name="PreferenceRestoreTabsValues">
+		<item>ASK</item>
+		<item>ALWAYS</item>
+		<item>NEVER</item>
+	</string-array>
+
 </resources>
