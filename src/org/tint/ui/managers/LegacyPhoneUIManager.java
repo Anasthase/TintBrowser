@@ -126,7 +126,16 @@ public class LegacyPhoneUIManager extends BasePhoneUIManager {
 			
 			@Override
 			public void onVisibilityChanged(boolean urlBarVisible) {
-				
+				if (urlBarVisible) {
+					mUrlBar.showGoStopReloadButton();
+				} else {
+					BaseWebViewFragment currentFragment = getCurrentWebViewFragment();
+					
+					if ((currentFragment != null) &&
+							(currentFragment.isStartPageShown())){
+						mUrlBar.hideGoStopReloadButton();
+					}
+				}
 			}
 			
 			@Override

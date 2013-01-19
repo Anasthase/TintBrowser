@@ -25,8 +25,8 @@
     <dimen name="bookmarks_fragment_vertical_spacing">25dip</dimen>
     <dimen name="bookmarks_fragment_horizontal_spacing">25dip</dimen>
     
-    <dimen name="tablet_history_fragment_header_margin_left">96dp</dimen>
-    <dimen name="tablet_history_fragment_values_margin_right">96dp</dimen>
+    <dimen name="tablet_history_fragment_header_margin_left">24dp</dimen>
+    <dimen name="tablet_history_fragment_values_margin_right">24dp</dimen>
     
     <dimen name="startpage_fragment_margin_top_bottom">10dip</dimen>
     <dimen name="startpage_fragment_margin_left_right">50dip</dimen>

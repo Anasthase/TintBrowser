@@ -17,10 +17,10 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">    
     
-    <dimen name="bookmarks_fragment_margin_left_right">75dip</dimen>
-    <dimen name="bookmarks_fragment_breadcrumb_margin_left_right">70dip</dimen>
+    <dimen name="bookmarks_fragment_margin_left_right">55dip</dimen>
+    <dimen name="bookmarks_fragment_breadcrumb_margin_left_right">50dip</dimen>
     
-    <dimen name="tablet_history_fragment_header_margin_left">24dp</dimen>
-    <dimen name="tablet_history_fragment_values_margin_right">24dp</dimen>
+    <dimen name="tablet_history_fragment_header_margin_left">12dp</dimen>
+    <dimen name="tablet_history_fragment_values_margin_right">12dp</dimen>
 
 </resources>
