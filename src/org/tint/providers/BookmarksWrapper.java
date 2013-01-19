@@ -650,7 +650,7 @@ public class BookmarksWrapper {
 	}
 	
 	private static final String SUGGESTIONS_PATTERN = "%%%s%%";
-	private static final String SUGGESTIONS_WHERE_PATTERN = BookmarksProvider.Columns.TITLE + " LIKE '%s' OR " + BookmarksProvider.Columns.URL  + " LIKE '%s'";
+	private static final String SUGGESTIONS_WHERE_PATTERN = BookmarksProvider.Columns.TITLE + " LIKE %s OR " + BookmarksProvider.Columns.URL  + " LIKE %s";
 	private static final String SUGGESTIONS_ORDER = BookmarksProvider.Columns.VISITED_DATE + " DESC, " + BookmarksProvider.Columns.BOOKMARK + " DESC, " + BookmarksProvider.Columns.TITLE + " ASC";
 	
 	/**
@@ -664,7 +664,7 @@ public class BookmarksWrapper {
 		if ((pattern != null) &&
     			(pattern.length() > 0)) {
 			
-			String sqlPattern = String.format(SUGGESTIONS_PATTERN, pattern);
+			String sqlPattern = DatabaseUtils.sqlEscapeString(String.format(SUGGESTIONS_PATTERN, pattern));
 			String whereClause = String.format(SUGGESTIONS_WHERE_PATTERN, sqlPattern, sqlPattern);
 			
 			return contentResolver.query(BookmarksProvider.BOOKMARKS_URI,
