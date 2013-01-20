@@ -78,22 +78,6 @@ public class UIFactory {
 		}
 	}
 	
-	public static int getTheme(Context context) {
-		checkInit(context);
-		
-		switch (sUIType) {
-		case TABLET:
-			return android.R.style.Theme_Holo;
-			
-		case PHONE:
-		case LEGACY_PHONE:
-			return R.style.ApplicationTheme_Overlay;
-
-		default:
-			return R.style.ApplicationTheme_Overlay;
-		}
-	}
-	
 	public static UIManager createUIManager(TintBrowserActivity activity) {
 		checkInit(activity);
 		

@@ -97,9 +97,6 @@ public class TintBrowserActivity extends Activity {
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
-    	
-    	setTheme(UIFactory.getTheme(this));    	
-    	
         super.onCreate(savedInstanceState);
         
         setContentView(UIFactory.getMainLayout(this));

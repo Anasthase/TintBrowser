@@ -59,8 +59,7 @@
 		        android:layout_gravity="center_vertical"
 		        android:ellipsize="marquee"
 		        android:singleLine="true"
-		        android:text="@+id/BookmarkRow.Title"
-		        android:textAppearance="@style/RowSmall" />
+		        android:text="@+id/BookmarkRow.Title" />
 
 		    <TextView
 		        android:id="@+id/BookmarkRow.Url"
@@ -69,7 +68,7 @@
 		        android:ellipsize="marquee"
 		        android:singleLine="true"
 		        android:text="@+id/BookmarkRow.Url"
-		        android:textAppearance="@style/RowVerySmall" />
+		        android:textColor="#888888" />
 
 		</LinearLayout>
 	
