@@ -26,6 +26,14 @@
     </head>    
     <body>
     	<ul class="header">
+    		<li>Version 1.7        
+        		<ul class="details">
+    				<li><pre>New user interface for phones. The legacy one is still available under preferences.</pre></li>
+    				<li><pre>Opened tabs can now be restored at start-up.</pre></li>
+    				<li><pre>New preference to choose user interface type.</pre></li>
+    				<li><pre>Various bug fix.</pre></li>
+    			</ul>
+    		</li>
     		<li>Version 1.6.1        
         		<ul class="details">
     				<li><pre>Fix FC when opening a tab in background on tablets.</pre></li>

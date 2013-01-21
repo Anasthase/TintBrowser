@@ -1,3 +1,9 @@
+1.7:
+- New user interface for phones. The legacy one is still available under preferences.
+- Opened tabs can now be restored at start-up.
+- New preference to choose user interface type.
+- Various bug fix.
+
 1.6.1:
 - Fix FC when opening a tab in background on tablets.
 - Hide application instead of finishing it on back pressed.
