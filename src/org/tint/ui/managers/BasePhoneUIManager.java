@@ -230,6 +230,7 @@ public abstract class BasePhoneUIManager extends BaseUIManager {
 	public void onShowStartPage() {
 		mUrlBar.setTitle(mActivity.getString(R.string.ApplicationName));
 		mUrlBar.setSubtitle(R.string.UrlBarUrlDefaultSubTitle);
+		mUrlBar.setGoStopReloadImage(R.drawable.ic_go);
 		mUrlBar.hideGoStopReloadButton();
 					
 		mUrlBar.setUrl(null);

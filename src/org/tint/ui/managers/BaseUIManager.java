@@ -84,6 +84,8 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 	protected ActionBar mActionBar;
 	protected FragmentManager mFragmentManager;
 	
+	protected boolean mHomePageLoading = false;
+	
 	protected boolean mMenuVisible = false;
 	
 	private ValueCallback<Uri> mUploadMessage = null;
@@ -194,11 +196,13 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 
 	@Override
 	public void loadHomePage() {
+		mHomePageLoading = true;
 		loadUrl(PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_HOME_PAGE, Constants.URL_ABOUT_START));
 	}
 	
 	@Override
 	public void loadHomePage(UUID tabId, boolean loadInCurrentTabIfNotFound) {
+		mHomePageLoading = true;
 		loadUrl(
 				tabId,
 				PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_HOME_PAGE, Constants.URL_ABOUT_START),
@@ -396,6 +400,17 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 	
 	@Override
 	public void onPageFinished(final WebView view, final String url) {
+		
+		if (mHomePageLoading) {
+			mHomePageLoading = false;
+			
+			if (PreferenceManager.getDefaultSharedPreferences(mActivity).getBoolean(Constants.TECHNICAL_PREFERENCE_HOMEPAGE_URL_UPDATE_NEEDED, false)) {
+				Editor editor = PreferenceManager.getDefaultSharedPreferences(mActivity).edit();
+				editor.putBoolean(Constants.TECHNICAL_PREFERENCE_HOMEPAGE_URL_UPDATE_NEEDED, false);
+				editor.putString(Constants.PREFERENCE_HOME_PAGE, url);
+				editor.commit();
+			}
+		}
 		
 		view.postDelayed(new Runnable() {
 			

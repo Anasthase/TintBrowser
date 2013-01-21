@@ -19,6 +19,7 @@ import org.tint.R;
 import org.tint.utils.Constants;
 
 import android.content.Context;
+import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
 import android.text.InputType;
 import android.util.AttributeSet;
@@ -85,6 +86,30 @@ public class HomepageSpinnerPreference extends BaseSpinnerPreference {
 			mEditText.setText(Constants.URL_ABOUT_START);
 			mEditText.setEnabled(false);
 			break;
+		}
+	}
+
+	@Override
+	protected void onDialogClosed(boolean positiveResult) {
+		super.onDialogClosed(positiveResult);
+		
+		if (positiveResult) {
+			Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
+			
+			switch (mSpinner.getSelectedItemPosition()) {
+			case 0:
+			case 1:
+				editor.putBoolean(Constants.TECHNICAL_PREFERENCE_HOMEPAGE_URL_UPDATE_NEEDED, false);
+				break;
+			case 2:
+				editor.putBoolean(Constants.TECHNICAL_PREFERENCE_HOMEPAGE_URL_UPDATE_NEEDED, true);
+				break;
+			default:
+				editor.putBoolean(Constants.TECHNICAL_PREFERENCE_HOMEPAGE_URL_UPDATE_NEEDED, false);
+				break;
+			}
+			
+			editor.commit();
 		}
 	}
 
