@@ -541,4 +541,26 @@
 		<item>NEVER</item>
 	</string-array>
     
+    <string name="PreferenceUITypeTitle">Type d\'interface</string>
+    <string name="PreferenceUITypeSummary">Choisissez le type d\'interface utilisateur.</string>
+    
+    <string name="PreferenceUITypeAuto">Automatique</string>
+    <string name="PreferenceUITypePhone">Téléphone</string>
+    <string name="PreferenceUITypeLegacyPhone">Téléphone (originale)</string>
+    <string name="PreferenceUITypeTablet">Tablette</string>
+    
+    <string-array name="PreferenceUITypeEntries">
+		<item>@string/PreferenceUITypeAuto</item>
+		<item>@string/PreferenceUITypePhone</item>
+		<item>@string/PreferenceUITypeLegacyPhone</item>
+		<item>@string/PreferenceUITypeTablet</item>
+	</string-array>
+	
+    <string-array name="PreferenceUITypeValues">
+		<item>AUTO</item>
+		<item>PHONE</item>
+		<item>LEGACY_PHONE</item>
+		<item>TABLET</item>
+	</string-array>
+	
 </resources>
