@@ -495,39 +495,39 @@
     <string name="RecentSortMode">Visitados recentemente</string>
     
     <!-- 1.6 -->
-    <string name="HistoryBookmarksImportErrorInvalidFileFormat">Invalid file format</string>
-    <string name="HistoryBookmarksImportFoldersProgressMessage">Reading folder %1$s of %2$s.</string>
-    <string name="HistoryBookmarksImportFoldersLinkMessage">Linking folders&#8230;</string>
-    <string name="HistoryBookmarksImportBookmarksProgressMessage">Reading bookmark %1$s of %2$s.</string>
-    <string name="HistoryBookmarksImportHistoryProgressMessage">Reading history item %1$s of %2$s.</string>
+    <string name="HistoryBookmarksImportErrorInvalidFileFormat">Tipo de ficheiro inválido</string>
+    <string name="HistoryBookmarksImportFoldersProgressMessage">A ler pasta %1$s de %2$s.</string>
+    <string name="HistoryBookmarksImportFoldersLinkMessage">A vincular pastas&#8230;</string>
+    <string name="HistoryBookmarksImportBookmarksProgressMessage">A ler favorito %1$s de %2$s.</string>
+    <string name="HistoryBookmarksImportHistoryProgressMessage">A ler item do histórico %1$s de %2$s.</string>
     
-    <string name="FullScreen">Full screen</string>
-    <string name="ContentDescriptionExitFullScreen">Exit full screen button</string>
+    <string name="FullScreen">Ecran completo</string>
+    <string name="ContentDescriptionExitFullScreen">Botão de saída de ecran completo</string>
 
     <!-- 1.7 -->
-    <string name="StartPageLabel">Start page</string>
+    <string name="StartPageLabel">Página inicial</string>
 
-    <string name="RestartDialogTitle">Restart required</string>
-    <string name="RestartDialogMessage">This change will not take effect until the application restart. Do you want to do it now?</string>
+    <string name="RestartDialogTitle">É necessário reiniciar</string>
+    <string name="RestartDialogMessage">Esta alteração não terá efeito até reiniciar a aplicação. Deseja reiniciar agora?</string>
     
-    <string name="ContentDescriptionTabPreview">Tab preview</string>
+    <string name="ContentDescriptionTabPreview">Pré-visualização de separador</string>
     
-    <string name="PreferenceClosePanelOnNewTabTitle">Close side panel on new tab</string>
-    <string name="PreferenceClosePanelOnNewTabSummary">If checked, the side panel will close when openning a new tab.</string>
+    <string name="PreferenceClosePanelOnNewTabTitle">Fechar painel lateral com separador novo</string>
+    <string name="PreferenceClosePanelOnNewTabSummary">Se marcado, o painel lateral irá fechar ao abrir um separador novo.</string>
     
     <string name="AboutChangelogTitle">Changelog</string>
-    <string name="AboutContributorsTitle">Contributors</string>
-    <string name="AboutLicensesTitle">Other licenses</string>
+    <string name="AboutContributorsTitle">Contribuidores</string>
+    <string name="AboutLicensesTitle">Outras licenças</string>
     
-    <string name="RestoreTabsDialogTitle">Tabs restoration</string>
-    <string name="RestoreTabsDialogMessage">Do you want to restore the tabs from your previous session?</string>
+    <string name="RestoreTabsDialogTitle">Restauro de separadores</string>
+    <string name="RestoreTabsDialogMessage">Quer restaurar os separadores da sessão anterior?</string>
     
-    <string name="PreferenceRestoreTabsTitle">Tabs restoration</string>
-    <string name="PreferenceRestoreTabsSummary">Select how you want tabs to be restored from a previous session.</string>
+    <string name="PreferenceRestoreTabsTitle">Restauro de separadores</string>
+    <string name="PreferenceRestoreTabsSummary">Selecione como pretende que os separadores da sessão anterior sejam restaurados.</string>
     
-    <string name="PreferenceRestoreTabsAsk">Ask</string>
-    <string name="PreferenceRestoreTabsAlways">Always</string>
-    <string name="PreferenceRestoreTabsNever">Never</string>
+    <string name="PreferenceRestoreTabsAsk">Perguntar</string>
+    <string name="PreferenceRestoreTabsAlways">Sempre</string>
+    <string name="PreferenceRestoreTabsNever">Nunca</string>
     
     <string-array name="PreferenceRestoreTabsEntries">
 		<item>@string/PreferenceRestoreTabsAsk</item>
@@ -541,12 +541,12 @@
 		<item>NEVER</item>
 	</string-array>
 	
-    <string name="PreferenceUITypeTitle">UI type</string>
-    <string name="PreferenceUITypeSummary">Select the type of user interface.</string>
+    <string name="PreferenceUITypeTitle">Tipo de UI</string>
+    <string name="PreferenceUITypeSummary">Selecione o tipo de interface de utilizador.</string>
     
-    <string name="PreferenceUITypeAuto">Automatic</string>
-    <string name="PreferenceUITypePhone">Phone</string>
-    <string name="PreferenceUITypeLegacyPhone">Phone (legacy)</string>
+    <string name="PreferenceUITypeAuto">Automático</string>
+    <string name="PreferenceUITypePhone">Telefone</string>
+    <string name="PreferenceUITypeLegacyPhone">Telefone (legacy)</string>
     <string name="PreferenceUITypeTablet">Tablet</string>
     
     <string-array name="PreferenceUITypeEntries">

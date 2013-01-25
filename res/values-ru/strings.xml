@@ -505,29 +505,29 @@
     <string name="ContentDescriptionExitFullScreen">Кнопка выхода из полноэкранного режима</string>
 
     <!-- 1.7 -->
-    <string name="StartPageLabel">Start page</string>
+    <string name="StartPageLabel">Стартовая страница</string>
 
-    <string name="RestartDialogTitle">Restart required</string>
-    <string name="RestartDialogMessage">This change will not take effect until the application restart. Do you want to do it now?</string>
+    <string name="RestartDialogTitle">Требуется перезагрузка</string>
+    <string name="RestartDialogMessage">Это изменение не вступит в силу до перезапуска приложения. Вы хотите сделать это сейчас?</string>
     
-    <string name="ContentDescriptionTabPreview">Tab preview</string>
+    <string name="ContentDescriptionTabPreview">Предпросмотр вкладки</string>
     
-    <string name="PreferenceClosePanelOnNewTabTitle">Close side panel on new tab</string>
-    <string name="PreferenceClosePanelOnNewTabSummary">If checked, the side panel will close when openning a new tab.</string>
+    <string name="PreferenceClosePanelOnNewTabTitle">Закрыть боковую панель на новой вкладке</string>
+    <string name="PreferenceClosePanelOnNewTabSummary">Если отмечено, то боковая панель будет закрыта в новой вкладе.</string>
     
-    <string name="AboutChangelogTitle">Changelog</string>
-    <string name="AboutContributorsTitle">Contributors</string>
-    <string name="AboutLicensesTitle">Other licenses</string>
+    <string name="AboutChangelogTitle">Список изменений</string>
+    <string name="AboutContributorsTitle">Авторы</string>
+    <string name="AboutLicensesTitle">Другие лицензии</string>
     
-    <string name="RestoreTabsDialogTitle">Tabs restoration</string>
-    <string name="RestoreTabsDialogMessage">Do you want to restore the tabs from your previous session?</string>
+    <string name="RestoreTabsDialogTitle">Восстановление вкладок</string>
+    <string name="RestoreTabsDialogMessage">Вы хотите восстановить вкладки предыдущего сеанса?</string>
     
-    <string name="PreferenceRestoreTabsTitle">Tabs restoration</string>
-    <string name="PreferenceRestoreTabsSummary">Select how you want tabs to be restored from a previous session.</string>
+    <string name="PreferenceRestoreTabsTitle">Восстановление вкладок</string>
+    <string name="PreferenceRestoreTabsSummary">Выберите вкладки, которые хотите восстановить из предыдущей сессии</string>
     
-    <string name="PreferenceRestoreTabsAsk">Ask</string>
-    <string name="PreferenceRestoreTabsAlways">Always</string>
-    <string name="PreferenceRestoreTabsNever">Never</string>
+    <string name="PreferenceRestoreTabsAsk">Спрашивать</string>
+    <string name="PreferenceRestoreTabsAlways">Всегда</string>
+    <string name="PreferenceRestoreTabsNever">Никогда</string>
     
     <string-array name="PreferenceRestoreTabsEntries">
 		<item>@string/PreferenceRestoreTabsAsk</item>
@@ -541,13 +541,13 @@
 		<item>NEVER</item>
 	</string-array>
 	
-    <string name="PreferenceUITypeTitle">UI type</string>
-    <string name="PreferenceUITypeSummary">Select the type of user interface.</string>
+    <string name="PreferenceUITypeTitle">Тип интерфейса</string>
+    <string name="PreferenceUITypeSummary">Выберите тип пользовательского интерфейса.</string>
     
-    <string name="PreferenceUITypeAuto">Automatic</string>
-    <string name="PreferenceUITypePhone">Phone</string>
-    <string name="PreferenceUITypeLegacyPhone">Phone (legacy)</string>
-    <string name="PreferenceUITypeTablet">Tablet</string>
+    <string name="PreferenceUITypeAuto">Автоматически</string>
+    <string name="PreferenceUITypePhone">Телефон</string>
+    <string name="PreferenceUITypeLegacyPhone">Телефон (legacy)</string>
+    <string name="PreferenceUITypeTablet">Планшет</string>
     
     <string-array name="PreferenceUITypeEntries">
 		<item>@string/PreferenceUITypeAuto</item>
