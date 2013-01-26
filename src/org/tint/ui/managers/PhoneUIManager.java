@@ -419,17 +419,13 @@ public class PhoneUIManager extends BasePhoneUIManager {
 	@Override
 	public void onActionModeStarted(ActionMode mode) {
 		mActionMode = mode;
-		
-		mPanel.animate().translationY(mTopBar.getHeight());
 	}
 
 	@Override
 	public void onActionModeFinished(ActionMode mode) {
 		if (mActionMode != null) {
 			mActionMode = null;
-			
-			mPanel.animate().translationY(0);
-			
+		
 			InputMethodManager mgr = (InputMethodManager) mActivity.getSystemService(Context.INPUT_METHOD_SERVICE);
 			mgr.hideSoftInputFromWindow(null, 0);
 		}
