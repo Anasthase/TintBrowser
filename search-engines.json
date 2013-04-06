@@ -379,8 +379,8 @@
 				"name": "Wikipedia Eesti",
 				"url": "http://et.wikipedia.org/w/index.php?search={searchTerms}&go=Go"
 			}
-		]		
-	},	
+		]
+	},
 	{
 		"group": "Duck Duck Go",
 		"items": [
@@ -659,6 +659,15 @@
 			{
 				"name": "Duck Duck Go World Traveler",
 				"url": "http://duckduckgo.com/?q={searchTerms}&kl=wt-wt"
+			}
+		]
+	},
+	{
+		"group": "Misc.",
+		"items": [
+			{
+				name: "StartPage",
+				url: "https://startpage.com/do/m/mobilesearch?q={searchTerms}"
 			}
 		]
 	}
