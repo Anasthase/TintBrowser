@@ -87,6 +87,10 @@ public class CustomWebChromeClient extends WebChromeClient {
 		return true;
 	}
 	
+	public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
+		openFileChooser(uploadMsg);
+	}
+	
 	public void openFileChooser(ValueCallback<Uri> uploadMsg) {
 		mUIManager.setUploadMessage(uploadMsg);
 		Intent i = new Intent(Intent.ACTION_GET_CONTENT);
