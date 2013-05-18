@@ -286,6 +286,10 @@
     
     <string name="PreferenceHeaderAddonsTitle">Addons</string>
     
+    <string name="PreferenceHeaderAdvancedTitle">Advanced</string>
+    <string name="PreferenceJsLogOnLocatTitle">Log JS logs to logcat</string>
+    <string name="PreferenceJsLogOnLocatSummary">Redirect the JS logs to the logcat buffer</string>
+    
     <string name="PreferenceHeaderAboutTitle">About</string>
     
     <string name="HttpAuthenticationDialogDialogTitle">Sign in to %1$s - %2$s</string>

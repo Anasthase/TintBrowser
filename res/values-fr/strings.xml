@@ -286,6 +286,10 @@
     
     <string name="PreferenceHeaderAddonsTitle">Addons</string>
     
+    <string name="PreferenceHeaderAdvancedTitle">Advancé</string>
+    <string name="PreferenceJsLogOnLocatTitle">Logs JS vers logcat</string>
+    <string name="PreferenceJsLogOnLocatSummary">Rediriger les logs JS vers le logcat</string>
+    
     <string name="PreferenceHeaderAboutTitle">A propos</string>
     
     <string name="HttpAuthenticationDialogDialogTitle">Se connecter à %1$s - %2$s</string>
@@ -350,7 +354,7 @@
     <string name="AddonsWarningText">N\'installez que des addons provenant de développeurs de confiance. Si vous rencontrez des comportements étranges, désactivez tous vos addons.</string>
     <string name="AddonsGetAddons"><a href="">Obtenir des addons</a></string>
     <string name="AddonsMarketNotFoundTitle">Android Market non trouvé</string>
-   <string name="AddonsMarketNotFoundMessage">Vous ne semblez pas avoir l\'application Android Market sur votre appareil.</string>
+    <string name="AddonsMarketNotFoundMessage">Vous ne semblez pas avoir l\'application Android Market sur votre appareil.</string>
     <string name="AddonsEnableAll">Tout activer</string>
     <string name="AddonsDisableAll">Tout désactiver</string>
     

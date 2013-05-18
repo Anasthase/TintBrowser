@@ -93,6 +93,8 @@ public class Constants {
 	public static final String PREFERENCE_UI_TYPE = "PREFERENCE_UI_TYPE";
 	public static final String PREFERENCE_CLOSE_PANEL_ON_NEW_TAB = "PREFERENCE_CLOSE_PANEL_ON_NEW_TAB";
 	
+	public static final String PREFERENCE_JS_LOG_ON_LOGCAT = "PREFERENCE_JS_LOG_ON_LOGCAT";
+	
 	/**
 	 * Technical preferences.
 	 */
