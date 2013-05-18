@@ -88,7 +88,14 @@ public class CustomWebChromeClient extends WebChromeClient {
 	}
 	
 	public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
-		openFileChooser(uploadMsg);
+		mUIManager.setUploadMessage(uploadMsg);
+		Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+		i.addCategory(Intent.CATEGORY_OPENABLE);
+		i.setType((acceptType == null || acceptType.isEmpty()) ? "*/*" : acceptType);
+		android.util.Log.d("inputType", i.getType());
+		mUIManager.getMainActivity().startActivityForResult(
+				Intent.createChooser(i,  mUIManager.getMainActivity().getString(R.string.FileChooserPrompt)),
+				TintBrowserActivity.ACTIVITY_OPEN_FILE_CHOOSER);
 	}
 	
 	public void openFileChooser(ValueCallback<Uri> uploadMsg) {
