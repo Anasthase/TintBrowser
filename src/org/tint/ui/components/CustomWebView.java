@@ -20,6 +20,9 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.http.HeaderElement;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicHeader;
 import org.tint.R;
 import org.tint.addons.AddonMenuItem;
 import org.tint.controllers.Controller;
@@ -37,13 +40,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.webkit.CookieManager;
 import android.webkit.DownloadListener;
 import android.webkit.WebSettings;
@@ -203,13 +207,31 @@ public class CustomWebView extends WebView implements DownloadListener {
 	@Override
 	public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
 		DownloadItem item = new DownloadItem(url);
+		item.addRequestHeader("Cookie", CookieManager.getInstance().getCookie(url));
+		
+		// TODO: implement confirmation dialog & incognito download (no DLmanager entry)
+		
+		String fileName = item.getFileName();
+		BasicHeader header = new BasicHeader("Content-Disposition", contentDisposition);
+		HeaderElement[] helelms = header.getElements();
+		if (helelms.length > 0) {
+		    HeaderElement helem = helelms[0];
+		    if (helem.getName().equalsIgnoreCase("attachment")) {
+		        NameValuePair nmv = helem.getParameterByName("filename");
+		        if (nmv != null) {
+		        	fileName = nmv.getValue();
+		        }
+		    }
+		}
+		item.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
+		item.setTitle(fileName);
 		
 		long id = ((DownloadManager) mContext.getSystemService(Context.DOWNLOAD_SERVICE)).enqueue(item);
 		item.setId(id);
 		
 		Controller.getInstance().getDownloadsList().add(item);
 		
-		Toast.makeText(mContext, String.format(mContext.getString(R.string.DownloadStart), item.getFileName()), Toast.LENGTH_SHORT).show();
+		Toast.makeText(mContext, String.format(mContext.getString(R.string.DownloadStart), fileName), Toast.LENGTH_SHORT).show();
 	}
 	
 	private Intent createIntent(String action, int actionId, int hitTestResult, String url) {
@@ -238,6 +260,7 @@ public class CustomWebView extends WebView implements DownloadListener {
 	private void setupContextMenu() {
 		setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
 			
+			@SuppressWarnings("deprecation")
 			@Override
 			public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
 				HitTestResult result = ((WebView) v).getHitTestResult();
