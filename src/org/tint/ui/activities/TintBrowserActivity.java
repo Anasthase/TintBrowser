@@ -297,7 +297,8 @@ public class TintBrowserActivity extends Activity {
 		
 	    switch (item.getItemId()) { 
 	        case R.id.MainActivity_MenuAddTab:
-	        	mUIManager.addTab(true, false);
+	        	mUIManager.addTab(true, PreferenceManager.getDefaultSharedPreferences(this).
+	        			getBoolean(Constants.PREFERENCE_INCOGNITO_BY_DEFAULT, false));
 	        	return true;
 	        	
 	        case R.id.MainActivity_MenuCloseTab:
@@ -355,7 +356,8 @@ public class TintBrowserActivity extends Activity {
             		Bundle b = intent.getExtras();
             		if (b != null) {
             			if (b.getBoolean(Constants.EXTRA_NEW_TAB)) {
-            				mUIManager.addTab(false, false);
+            				mUIManager.addTab(false, PreferenceManager.getDefaultSharedPreferences(this).
+            						getBoolean(Constants.PREFERENCE_INCOGNITO_BY_DEFAULT, false));
             			}
             			
             			mUIManager.loadUrl(b.getString(Constants.EXTRA_URL));

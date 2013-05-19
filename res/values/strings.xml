@@ -249,6 +249,10 @@
     <string name="PreferencePrivacyWebsitesSettingsTitle">Websites settings</string>
     <string name="PreferencePrivacyWebsitesSettingsSummary">Advanced settings for individual websites.</string>
     
+    <string name="PreferencePrivacyIncognitoTitle">Incognito mode</string>
+    <string name="PreferencePrivacyIncognitoDefaultTitle">Incognito by default</string>
+    <string name="PreferencePrivacyIncognitoDefaultSummary">New tabs will be opened in incognito mode</string>
+    
     <string name="HistoryToday">Today</string>
     <string name="HistoryYesterday">Yesterday</string>
     <string name="HistoryLastSevenDays">Last 7 days</string>

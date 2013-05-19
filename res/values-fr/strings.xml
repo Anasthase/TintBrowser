@@ -249,6 +249,10 @@
     <string name="PreferencePrivacyWebsitesSettingsTitle">Paramètres des sites Web</string>
     <string name="PreferencePrivacyWebsitesSettingsSummary">Paramètres avancés de sites Web individuels.</string>
     
+    <string name="PreferencePrivacyIncognitoTitle">Mode incognito</string>
+    <string name="PreferencePrivacyIncognitoDefaultTitle">Incognito par défaut</string>
+    <string name="PreferencePrivacyIncognitoDefaultSummary">Les nouveaux onglets seront ouverts en mode incognito</string>
+    
     <string name="HistoryToday">Aujourd\'hui</string>
     <string name="HistoryYesterday">Hier</string>
     <string name="HistoryLastSevenDays">Les 7 derniers jours</string>
