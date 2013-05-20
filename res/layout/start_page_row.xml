@@ -59,7 +59,7 @@
 		        android:layout_gravity="center_vertical"
 		        android:ellipsize="marquee"
 		        android:singleLine="true"
-		        android:text="@+id/StartPageRowTitle"
+		        android:text=""
 		        android:textAppearance="@style/RowSmallLight" />
 
 		    <TextView
@@ -68,7 +68,7 @@
 		        android:layout_height="wrap_content"
 		        android:ellipsize="marquee"
 		        android:singleLine="true"
-		        android:text="@+id/StartPageRowUrl"
+		        android:text=""
 		        android:textAppearance="@style/RowVerySmallLight" />
 
 		</LinearLayout>

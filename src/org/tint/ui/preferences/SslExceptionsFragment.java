@@ -59,7 +59,7 @@ public class SslExceptionsFragment extends ListFragment implements LoaderManager
 		String[] from = new String[] { SslExceptionsProvider.Columns.AUTHORITY };
 		int[] to = new int[] { R.id.SslExceptionRow_Title };
 		
-		mAdapter = new SslExceptionAdapter(getActivity(), R.layout.ssl_exception_row, null, from, to);
+		mAdapter = new SslExceptionAdapter(getActivity(), R.layout.ssl_exception_row, null, from, to, 0);
 		
 		setListAdapter(mAdapter);
 		
@@ -114,8 +114,8 @@ public class SslExceptionsFragment extends ListFragment implements LoaderManager
 	
 	private class SslExceptionAdapter extends SimpleCursorAdapter {
 		
-		public SslExceptionAdapter(Context context, int layout, Cursor c, String[] from, int[] to) {
-			super(context, R.layout.ssl_exception_row, c, from, to);
+		public SslExceptionAdapter(Context context, int layout, Cursor c, String[] from, int[] to, int flags) {
+			super(context, R.layout.ssl_exception_row, c, from, to, flags);
 		}
 		
 		@Override

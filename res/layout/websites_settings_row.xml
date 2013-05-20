@@ -47,14 +47,14 @@
     	    android:id="@+id/WebsitesSettingsTitle"
     	    android:layout_width="wrap_content"
     	    android:layout_height="wrap_content"
-    	    android:text="@+id/WebsitesSettingsTitle"
+    	    android:text=""
     	    android:textAppearance="?android:attr/textAppearanceMedium" />
     	
     	<TextView
     	    android:id="@+id/WebsitesSettingsSubTitle"
     	    android:layout_width="wrap_content"
     	    android:layout_height="wrap_content"
-    	    android:text="@+id/WebsitesSettingsSubTitle"
+    	    android:text=""
     	    android:textAppearance="?android:attr/textAppearanceSmall" />
     
     </LinearLayout>

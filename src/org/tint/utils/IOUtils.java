@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 import org.tint.R;
 
@@ -45,8 +46,8 @@ public class IOUtils {
 				@Override
 				public boolean accept(File pathname) {
 					if ((pathname.isFile()) &&
-							(pathname.getPath().toLowerCase().endsWith(".xml") ||
-							 pathname.getPath().toLowerCase().endsWith(".json"))) {
+							(pathname.getPath().toLowerCase(Locale.US).endsWith(".xml") ||
+							 pathname.getPath().toLowerCase(Locale.US).endsWith(".json"))) {
 						return true;
 					}
 					return false;

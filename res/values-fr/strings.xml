@@ -251,7 +251,7 @@
     
     <string name="PreferencePrivacyIncognitoTitle">Mode incognito</string>
     <string name="PreferencePrivacyIncognitoDefaultTitle">Incognito par défaut</string>
-    <string name="PreferencePrivacyIncognitoDefaultSummary">Les nouveaux onglets seront ouverts en mode incognito</string>
+    <string name="PreferencePrivacyIncognitoDefaultSummary">Ouvrir les nouveaux onglets en mode incognito</string>
     
     <string name="HistoryToday">Aujourd\'hui</string>
     <string name="HistoryYesterday">Hier</string>

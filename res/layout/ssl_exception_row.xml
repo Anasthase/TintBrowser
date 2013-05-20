@@ -31,7 +31,7 @@
         android:layout_gravity="center_vertical"
         android:ellipsize="end"
         android:singleLine="true"
-        android:text="@+id/SslExceptionRow.Title"
+        android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <RelativeLayout
@@ -74,7 +74,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="15dip"
         android:singleLine="false"
-        android:text="@+id/SslExceptionRow.Reasons"
+        android:text=""
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView

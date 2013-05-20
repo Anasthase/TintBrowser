@@ -9,14 +9,14 @@
         android:id="@+id/AccessibilityPreviewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@+id/AccessibilityPreviewTitle"
+        android:text=""
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/AccessibilityPreviewSummary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@+id/AccessibilityPreviewSummary"
+        android:text=""
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <WebView

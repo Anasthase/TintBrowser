@@ -48,7 +48,7 @@
         android:gravity="center"
         android:ellipsize="end"
         android:singleLine="true"
-        android:text="@+id/CurrentSearchEngine"
+        android:text=""
         android:textAppearance="?android:attr/textAppearanceMedium" />
     
     <TextView

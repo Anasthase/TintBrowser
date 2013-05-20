@@ -36,7 +36,7 @@
             android:id="@+id/AddonName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@+id/AddonName"
+            android:text=""
             android:singleLine="true"
             android:ellipsize="end"
             style="@style/ApplicationTheme.ListMainItem" />        
@@ -45,7 +45,7 @@
             android:id="@+id/AddonShortDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@+id/AddonShortDesc"
+            android:text=""
             android:singleLine="true"
             android:ellipsize="end"
             android:textColor="#888888" />
