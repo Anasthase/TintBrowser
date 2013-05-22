@@ -23,7 +23,6 @@
     <string name="AboutVersionText">Version: %1$s (%2$s)</string>
     <string name="AboutLicenseText">Licence: GPLv3</string>
     <string name="AboutUrlText">https://github.com/Anasthase/TintBrowser</string>
-    <string name="AboutChangelogText">Liste des changements :</string>
     
     <string name="PermissionReadBookmarksLabel">Lire les favoris de Tint Browser</string>
     <string name="PermissionReadBookmarksDescription">Autorise les applications tierces ou les addons à lire l\'historique et les favoris de Tint Browser.</string>
@@ -55,7 +54,10 @@
     <string name="ShareChooserTitle">Partager via</string>
     <string name="FileChooserPrompt">Choisissez le fichier à uploader</string>
     
-    <string name="DownloadStart">Téléchargement %1$s&#8230;</string>
+    <string name="Download">Télécharger</string>
+    <string name="DownloadDialogTitle">Téléchargement</string>
+    <string name="DownloadInIncognito">Téléchargement icognito</string>
+    <string name="DownloadStart">Téléchargement de %1$s&#8230;</string>
     <string name="DownloadComplete">Téléchargement terminé.</string>
     <string name="DownloadFailedWithErrorMessage">Téléchargement échoué: %1$s.</string>
     <string name="DownloadErrorDisk">Erreur disque, vérifier si vous avez un espace de stockage, et s\'il n\'est pas plein.</string>

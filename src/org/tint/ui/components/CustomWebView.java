@@ -28,6 +28,7 @@ import org.tint.addons.AddonMenuItem;
 import org.tint.controllers.Controller;
 import org.tint.model.DownloadItem;
 import org.tint.ui.activities.TintBrowserActivity;
+import org.tint.ui.dialogs.DownloadOverlayDialog;
 import org.tint.ui.fragments.BaseWebViewFragment;
 import org.tint.ui.managers.UIManager;
 import org.tint.utils.ApplicationUtils;
@@ -40,7 +41,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -53,9 +53,10 @@ import android.webkit.DownloadListener;
 import android.webkit.WebSettings;
 import android.webkit.WebSettings.PluginState;
 import android.webkit.WebView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-public class CustomWebView extends WebView implements DownloadListener {
+public class CustomWebView extends WebView implements DownloadListener, DownloadOverlayDialog.IUserActionListener {
 	
 	private UIManager mUIManager;
 	private Context mContext;
@@ -223,15 +224,30 @@ public class CustomWebView extends WebView implements DownloadListener {
 		        }
 		    }
 		}
-		item.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
-		item.setTitle(fileName);
+		item.setFilename(fileName);
+		item.setIncognito(isPrivateBrowsingEnabled());
 		
+		// TODO: Fix this ugly way of finding the RelativeView parent ----------------------v
+		DownloadOverlayDialog dialog = new DownloadOverlayDialog((RelativeLayout)getParent().getParent().getParent())
+			.setDownloadItem(item)
+			.setCallbackListener(this);
+		dialog.show();
+		
+
+	}
+	
+	@Override
+	public void onAcceptDownload(DownloadItem item) {
 		long id = ((DownloadManager) mContext.getSystemService(Context.DOWNLOAD_SERVICE)).enqueue(item);
 		item.setId(id);
 		
 		Controller.getInstance().getDownloadsList().add(item);
 		
-		Toast.makeText(mContext, String.format(mContext.getString(R.string.DownloadStart), fileName), Toast.LENGTH_SHORT).show();
+		Toast.makeText(mContext, String.format(mContext.getString(R.string.DownloadStart), item.getFileName()), Toast.LENGTH_SHORT).show();
+	}
+
+	@Override
+	public void onDenyDownload() {
 	}
 	
 	private Intent createIntent(String action, int actionId, int hitTestResult, String url) {

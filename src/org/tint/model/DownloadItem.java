@@ -24,6 +24,7 @@ public class DownloadItem extends Request {
 	private long mId;
 	private String mUrl;
 	private String mFileName;
+	private Boolean mIncognito;
 	
 	public DownloadItem(String url) {
 		super(Uri.parse(url));
@@ -43,8 +44,27 @@ public class DownloadItem extends Request {
 		mId = value;
 	}
 	
+	public void setFilename(String filename) {
+		mFileName = filename;
+		setTitle(filename);
+		setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename);
+	}
+	
+	public void setIncognito(Boolean incognito) {
+		mIncognito = incognito;
+		setVisibleInDownloadsUi(!incognito);
+	}
+	
+	public Boolean isIncognito() {
+		return mIncognito;
+	}
+	
 	public String getFileName() {
 		return mFileName;
+	}
+	
+	public String getUrl() {
+		return mUrl;
 	}
 
 }
