@@ -15,6 +15,7 @@
 
 package org.tint.model;
 
+import android.app.DownloadManager.Request;
 import android.net.Uri;
 import android.os.Environment;
 
