@@ -1,7 +1,7 @@
 h1. Tint Browser - gravgun'fork
 
 This repo is forked from the original Tint browser repo to fix some "issues":https://github.com/Anasthase/TintBrowser/issues of the base project.
-It also add features!
-
-
--- End of RAEDMEHNAO!
+It also add features such as:
+- Download confirmation dialog
+- Ability to redirect JS console messages to logcat
+- more...

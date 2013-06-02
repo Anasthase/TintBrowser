@@ -244,13 +244,6 @@ public class CustomWebChromeClient extends WebChromeClient {
 	}
 	
 	@Override
-	public void onConsoleMessage(String message, int lineNumber, String sourceID) {
-		if(mPreferences.getBoolean(Constants.PREFERENCE_JS_LOG_ON_LOGCAT, false)) {
-			Log.d("TintJS", sourceID + ":" + lineNumber + " " + message);
-		}
-	}
-	
-	@Override
 	public boolean onConsoleMessage(ConsoleMessage cm) {
 		if(mPreferences.getBoolean(Constants.PREFERENCE_JS_LOG_ON_LOGCAT, false)) {
 			Log.d("TintJS", cm.sourceId() + ":" + cm.lineNumber() + " " + cm.message());
