@@ -73,7 +73,7 @@
         android:layout_alignBottom="@+id/AutocompleteContainer"
         android:layout_alignParentRight="true"
         android:layout_gravity="center_vertical"
-        android:layout_toRightOf="@+id/AutocompleteUrl"
+        android:layout_toRightOf="@+id/AutocompleteContainer"
         android:background="?android:attr/selectableItemBackground"
         android:contentDescription="@string/ContentDescriptionAutocompleteQueryBuilder"
         android:focusable="true"

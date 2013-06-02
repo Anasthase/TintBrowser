@@ -71,6 +71,12 @@ public class CustomWebView extends WebView implements DownloadListener, Download
 		mUIManager = uiManager;
 	}
 	
+	// Used only by edit mode (UI designer)
+	public CustomWebView(Context context, AttributeSet attrs) {
+		super(context, attrs, android.R.attr.webViewStyle, false);
+		mContext = context;
+	}
+	
 	public CustomWebView(Context context, AttributeSet attrs, boolean privateBrowsing) {
 		super(context, attrs, android.R.attr.webViewStyle, privateBrowsing);
 		
