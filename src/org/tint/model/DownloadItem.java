@@ -15,7 +15,6 @@
 
 package org.tint.model;
 
-import android.app.DownloadManager.Request;
 import android.net.Uri;
 import android.os.Environment;
 
@@ -26,9 +25,38 @@ public class DownloadItem extends Request {
 	private String mFileName;
 	
 	public DownloadItem(String url) {
+		DownloadItem(url, null, null);
+	}
+	
+	public DownloadItem(String url, String userAgent, String mimetype) {
+		DownloadItem(url, userAgent, mimetype, url.substring(url.lastIndexOf("/") + 1));
+	}
+	
+	public DownloadItem(String url, String userAgent, String mimetype, String filename) {
+		if(!filename) {
+			DownloadItem(url, userAgent, mimetype);
+			return;
+		}
+		
 		super(Uri.parse(url));
-		mUrl = url;
-		mFileName = mUrl.substring(url.lastIndexOf("/") + 1);
+		mUrl      = Uri.parse(url);
+		mFileName = Uri.parse(filename);
+		
+		// Send consistent User-Agent header
+		if(userAgent) {
+			addRequestHeader("User-Agent", userAgent);
+		}
+		
+		// Send cookies
+		String cookie = CookieManager.getInstance().getCookie(mUrl);
+		if(cookie) {
+			addRequestHeader("Cookie", cookie);
+		}
+		
+		// Set expected MIME type
+		if(mimetype) {
+			setMimeType(mimetype);
+		}
 		
 		setTitle(mFileName);
 		setDescription(mUrl);
