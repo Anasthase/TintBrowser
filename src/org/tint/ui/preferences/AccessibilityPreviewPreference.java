@@ -83,7 +83,7 @@ public class AccessibilityPreviewPreference extends Preference implements OnShar
         wv.setLongClickable(false);
         wv.setHorizontalScrollBarEnabled(false);
         wv.setVerticalScrollBarEnabled(false);
-        wv.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        //wv.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         
         return root;
 	}
@@ -110,7 +110,8 @@ public class AccessibilityPreviewPreference extends Preference implements OnShar
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 		if (Constants.PREFERENCE_MINIMUM_FONT_SIZE.equals(key) ||
-				Constants.PREFERENCE_TEXT_SCALING.equals(key)) {
+				Constants.PREFERENCE_TEXT_SCALING.equals(key) ||
+				Constants.PREFERENCE_INVERTED_DISPLAY.equals(key)) {
 			updatePreview();
 		}
 	}

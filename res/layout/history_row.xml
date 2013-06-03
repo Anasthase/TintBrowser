@@ -59,7 +59,7 @@
             android:layout_gravity="center_vertical"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="@+id/HistoryRow.Title" />
+            android:text="" />
 
         <TextView
             android:id="@+id/HistoryRow.Url"
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="@+id/HistoryRow.Url"
+            android:text=""
             android:textColor="#888888" />
     </LinearLayout>
 

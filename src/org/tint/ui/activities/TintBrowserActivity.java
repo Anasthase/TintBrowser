@@ -297,7 +297,8 @@ public class TintBrowserActivity extends Activity {
 		
 	    switch (item.getItemId()) { 
 	        case R.id.MainActivity_MenuAddTab:
-	        	mUIManager.addTab(true, false);
+	        	mUIManager.addTab(true, PreferenceManager.getDefaultSharedPreferences(this).
+	        			getBoolean(Constants.PREFERENCE_INCOGNITO_BY_DEFAULT, false));
 	        	return true;
 	        	
 	        case R.id.MainActivity_MenuCloseTab:
@@ -355,7 +356,8 @@ public class TintBrowserActivity extends Activity {
             		Bundle b = intent.getExtras();
             		if (b != null) {
             			if (b.getBoolean(Constants.EXTRA_NEW_TAB)) {
-            				mUIManager.addTab(false, false);
+            				mUIManager.addTab(false, PreferenceManager.getDefaultSharedPreferences(this).
+            						getBoolean(Constants.PREFERENCE_INCOGNITO_BY_DEFAULT, false));
             			}
             			
             			mUIManager.loadUrl(b.getString(Constants.EXTRA_URL));
@@ -488,15 +490,20 @@ public class TintBrowserActivity extends Activity {
     }
 	
 	private void showNotification(String notificationTitle, String title, String message) {
-        Notification notification =  new Notification(android.R.drawable.stat_sys_download_done, notificationTitle, System.currentTimeMillis());
-        notification.flags |= Notification.FLAG_AUTO_CANCEL;
-        Intent notificationIntent = new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS);
-        PendingIntent contentIntent = PendingIntent.getActivity(this.getApplicationContext(), 0, notificationIntent, 0);
-        
-        notification.setLatestEventInfo(this, title, message, contentIntent);
-        
-        ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).notify(new Random().nextInt(), notification);
-    }
+		Intent notificationIntent = new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS);
+		PendingIntent contentIntent = PendingIntent.getActivity(this.getApplicationContext(), 0, notificationIntent, 0);
+		
+		Notification notification =  new Notification.Builder(this)
+		.setSmallIcon(android.R.drawable.stat_sys_download_done)
+		.setTicker(notificationTitle)
+		.setContentTitle(title)
+		.setContentText(message)
+		.setContentIntent(contentIntent)
+		.getNotification();
+		notification.flags |= Notification.FLAG_AUTO_CANCEL;
+		
+		((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).notify(new Random().nextInt(), notification);
+	}
 	
 	private void onReceivedDownloadNotification(Context context, Intent intent) {
 		if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(intent.getAction())) {

@@ -20,11 +20,15 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.http.HeaderElement;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicHeader;
 import org.tint.R;
 import org.tint.addons.AddonMenuItem;
 import org.tint.controllers.Controller;
 import org.tint.model.DownloadItem;
 import org.tint.ui.activities.TintBrowserActivity;
+import org.tint.ui.dialogs.DownloadConfirmDialog;
 import org.tint.ui.fragments.BaseWebViewFragment;
 import org.tint.ui.managers.UIManager;
 import org.tint.utils.ApplicationUtils;
@@ -41,9 +45,9 @@ import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.webkit.CookieManager;
 import android.webkit.DownloadListener;
 import android.webkit.WebSettings;
@@ -51,7 +55,7 @@ import android.webkit.WebSettings.PluginState;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-public class CustomWebView extends WebView implements DownloadListener {
+public class CustomWebView extends WebView implements DownloadListener, DownloadConfirmDialog.IUserActionListener {
 	
 	private UIManager mUIManager;
 	private Context mContext;
@@ -65,6 +69,12 @@ public class CustomWebView extends WebView implements DownloadListener {
 	public CustomWebView(UIManager uiManager, boolean privateBrowsing) {
 		this(uiManager.getMainActivity(), null, privateBrowsing);
 		mUIManager = uiManager;
+	}
+	
+	// Used only by edit mode (UI designer)
+	public CustomWebView(Context context, AttributeSet attrs) {
+		super(context, attrs, android.R.attr.webViewStyle, false);
+		mContext = context;
 	}
 	
 	public CustomWebView(Context context, AttributeSet attrs, boolean privateBrowsing) {
@@ -203,13 +213,41 @@ public class CustomWebView extends WebView implements DownloadListener {
 	@Override
 	public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
 		DownloadItem item = new DownloadItem(url);
+		item.addRequestHeader("Cookie", CookieManager.getInstance().getCookie(url));
 		
+		String fileName = item.getFileName();
+		BasicHeader header = new BasicHeader("Content-Disposition", contentDisposition);
+		HeaderElement[] helelms = header.getElements();
+		if (helelms.length > 0) {
+		    HeaderElement helem = helelms[0];
+		    if (helem.getName().equalsIgnoreCase("attachment")) {
+		        NameValuePair nmv = helem.getParameterByName("filename");
+		        if (nmv != null) {
+		        	fileName = nmv.getValue();
+		        }
+		    }
+		}
+		item.setFilename(fileName);
+		item.setIncognito(isPrivateBrowsingEnabled());
+
+		DownloadConfirmDialog dialog = new DownloadConfirmDialog(getContext())
+			.setDownloadItem(item)
+			.setCallbackListener(this);
+		dialog.show();
+	}
+	
+	@Override
+	public void onAcceptDownload(DownloadItem item) {
 		long id = ((DownloadManager) mContext.getSystemService(Context.DOWNLOAD_SERVICE)).enqueue(item);
 		item.setId(id);
 		
 		Controller.getInstance().getDownloadsList().add(item);
 		
 		Toast.makeText(mContext, String.format(mContext.getString(R.string.DownloadStart), item.getFileName()), Toast.LENGTH_SHORT).show();
+	}
+
+	@Override
+	public void onDenyDownload() {
 	}
 	
 	private Intent createIntent(String action, int actionId, int hitTestResult, String url) {
@@ -238,6 +276,7 @@ public class CustomWebView extends WebView implements DownloadListener {
 	private void setupContextMenu() {
 		setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
 			
+			@SuppressWarnings("deprecation")
 			@Override
 			public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
 				HitTestResult result = ((WebView) v).getHitTestResult();

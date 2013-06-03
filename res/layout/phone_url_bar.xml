@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:singleLine="true"
-                android:text="@+id/UrlBarTitle"
+                android:text=""
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
@@ -64,7 +64,7 @@
                 android:layout_marginBottom="5dip"
                 android:ellipsize="end"
                 android:singleLine="true"
-                android:text="@+id/UrlBarSubTitle"
+                android:text=""
                 android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
 

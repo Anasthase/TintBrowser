@@ -199,13 +199,14 @@ public class PhoneUrlBar extends LinearLayout {
 		String[] from = new String[] { BookmarksProvider.Columns.TITLE, BookmarksProvider.Columns.URL };
     	int[] to = new int[] {R.id.AutocompleteTitle, R.id.AutocompleteUrl};
     	
-    	UrlSuggestionCursorAdapter adapter = new UrlSuggestionCursorAdapter(
-    			mContext,
-    			R.layout.url_autocomplete_line,
-    			null,
-    			from,
-    			to,
-    			new QueryBuilderListener() {					
+		UrlSuggestionCursorAdapter adapter = new UrlSuggestionCursorAdapter(
+				mContext,
+				R.layout.url_autocomplete_line,
+				null,
+				from,
+				to,
+				0,
+				new QueryBuilderListener() {					
 					@Override
 					public void onSuggestionSelected(String url) {
 						setUrl(url);

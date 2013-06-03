@@ -172,6 +172,7 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 					null,
 					from,
 					to,
+					0,
 					R.drawable.browser_thumbnail);
 
 			mBookmarksGrid.setAdapter(mAdapter);

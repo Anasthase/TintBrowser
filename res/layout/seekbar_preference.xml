@@ -24,14 +24,14 @@
         android:id="@+id/SeekBarPreferenceTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@+id/SeekBarPreferenceTitle"
+        android:text=""
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/SeekBarPreferenceSummary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@+id/SeekBarPreferenceSummary"
+        android:text=""
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <RelativeLayout
@@ -51,12 +51,12 @@
             android:id="@+id/SeekBarPreferenceValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/SeekBarLayout"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:paddingLeft="5dip"
             android:paddingRight="5dip"
-            android:text="@+id/SeekBarPreferenceValue"
+            android:text=""
             android:textAppearance="?android:attr/textAppearanceSmall" />
     </RelativeLayout>
 

@@ -23,7 +23,6 @@
     <string name="AboutVersionText">Version: %1$s (%2$s)</string>
     <string name="AboutLicenseText">License: GPLv3</string>
     <string name="AboutUrlText">https://github.com/Anasthase/TintBrowser</string>
-    <string name="AboutChangelogText">Changelog:</string>
     
     <string name="PermissionReadBookmarksLabel">Read Tint Browser bookmarks</string>
     <string name="PermissionReadBookmarksDescription">Allow third-party applications or addons to read Tint Browser\'s history and bookmarks database.</string>
@@ -55,6 +54,9 @@
     <string name="ShareChooserTitle">Share via</string>
     <string name="FileChooserPrompt">Choose file for upload</string>
     
+    <string name="Download">Download</string>
+    <string name="DownloadDialogTitle">Download</string>
+    <string name="DownloadInIncognito">Incognito download</string>
     <string name="DownloadStart">Downloading %1$s&#8230;</string>
     <string name="DownloadComplete">Download complete.</string>
     <string name="DownloadFailedWithErrorMessage">Download failed: %1$s.</string>
@@ -249,6 +251,10 @@
     <string name="PreferencePrivacyWebsitesSettingsTitle">Websites settings</string>
     <string name="PreferencePrivacyWebsitesSettingsSummary">Advanced settings for individual websites.</string>
     
+    <string name="PreferencePrivacyIncognitoTitle">Incognito mode</string>
+    <string name="PreferencePrivacyIncognitoDefaultTitle">Incognito by default</string>
+    <string name="PreferencePrivacyIncognitoDefaultSummary">Open new tabs in incognito mode</string>
+    
     <string name="HistoryToday">Today</string>
     <string name="HistoryYesterday">Yesterday</string>
     <string name="HistoryLastSevenDays">Last 7 days</string>
@@ -285,6 +291,10 @@
     <string name="SearchUrlGoogle">http://www.google.com/m?q={searchTerms}</string>
     
     <string name="PreferenceHeaderAddonsTitle">Addons</string>
+    
+    <string name="PreferenceHeaderAdvancedTitle">Advanced</string>
+    <string name="PreferenceJsLogOnLocatTitle">Log JS logs to logcat</string>
+    <string name="PreferenceJsLogOnLocatSummary">Redirect the JS logs to the logcat buffer</string>
     
     <string name="PreferenceHeaderAboutTitle">About</string>
     

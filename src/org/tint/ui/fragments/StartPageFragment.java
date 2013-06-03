@@ -96,6 +96,7 @@ public abstract class StartPageFragment extends Fragment implements LoaderManage
 					null,
 					from,
 					to,
+					0,
 					R.drawable.browser_thumbnail);
 			
 			mGrid.setAdapter(mAdapter);

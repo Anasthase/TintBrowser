@@ -21,9 +21,8 @@
     <string name="ApplicationDescription">Tint Browser est un navigateur open-source pour Android.</string>
     
     <string name="AboutVersionText">Version: %1$s (%2$s)</string>
-    <string name="AboutLicenseText">License: GPLv3</string>
+    <string name="AboutLicenseText">Licence: GPLv3</string>
     <string name="AboutUrlText">https://github.com/Anasthase/TintBrowser</string>
-    <string name="AboutChangelogText">Liste des changements :</string>
     
     <string name="PermissionReadBookmarksLabel">Lire les favoris de Tint Browser</string>
     <string name="PermissionReadBookmarksDescription">Autorise les applications tierces ou les addons à lire l\'historique et les favoris de Tint Browser.</string>
@@ -55,7 +54,10 @@
     <string name="ShareChooserTitle">Partager via</string>
     <string name="FileChooserPrompt">Choisissez le fichier à uploader</string>
     
-    <string name="DownloadStart">Téléchargement %1$s&#8230;</string>
+    <string name="Download">Télécharger</string>
+    <string name="DownloadDialogTitle">Téléchargement</string>
+    <string name="DownloadInIncognito">Téléchargement icognito</string>
+    <string name="DownloadStart">Téléchargement de %1$s&#8230;</string>
     <string name="DownloadComplete">Téléchargement terminé.</string>
     <string name="DownloadFailedWithErrorMessage">Téléchargement échoué: %1$s.</string>
     <string name="DownloadErrorDisk">Erreur disque, vérifier si vous avez un espace de stockage, et s\'il n\'est pas plein.</string>
@@ -161,7 +163,7 @@
     <string name="PreferenceSwitchTabsMethodTitle">Méthode de changement d\'onglets</string>
     <string name="PreferenceSwitchTabsMethodSummary">Définir comment vous pouvez changer d\'onglets.</string>
     
-    <string name="PreferenceSwitchTabsMethodButtons">Bouttons</string>
+    <string name="PreferenceSwitchTabsMethodButtons">Boutons</string>
     <string name="PreferenceSwitchTabsMethodFling">Geste</string>
     <string name="PreferenceSwitchTabsMethodBoth">Les deux</string>
     
@@ -249,6 +251,10 @@
     <string name="PreferencePrivacyWebsitesSettingsTitle">Paramètres des sites Web</string>
     <string name="PreferencePrivacyWebsitesSettingsSummary">Paramètres avancés de sites Web individuels.</string>
     
+    <string name="PreferencePrivacyIncognitoTitle">Mode incognito</string>
+    <string name="PreferencePrivacyIncognitoDefaultTitle">Incognito par défaut</string>
+    <string name="PreferencePrivacyIncognitoDefaultSummary">Ouvrir les nouveaux onglets en mode incognito</string>
+    
     <string name="HistoryToday">Aujourd\'hui</string>
     <string name="HistoryYesterday">Hier</string>
     <string name="HistoryLastSevenDays">Les 7 derniers jours</string>
@@ -286,6 +292,10 @@
     
     <string name="PreferenceHeaderAddonsTitle">Addons</string>
     
+    <string name="PreferenceHeaderAdvancedTitle">Advancé</string>
+    <string name="PreferenceJsLogOnLocatTitle">Logs JS vers logcat</string>
+    <string name="PreferenceJsLogOnLocatSummary">Rediriger les logs JS vers le logcat</string>
+    
     <string name="PreferenceHeaderAboutTitle">A propos</string>
     
     <string name="HttpAuthenticationDialogDialogTitle">Se connecter à %1$s - %2$s</string>
@@ -298,7 +308,7 @@
     <string name="BookmarkAdded">Ajouté aux favoris</string>
     <string name="BookmarkRemoved">Supprimé des favoris</string>
     
-    <string name="SDCardErrorNoSDMsg">Carte SB non trouvée.</string>
+    <string name="SDCardErrorNoSDMsg">Carte SD non trouvée.</string>
     <string name="SDCardErrorSDUnavailable">Carte SD non disponible.</string>
     
     <string name="HistoryBookmarksClearTitle">Purger</string>
@@ -310,7 +320,7 @@
     </string-array>
     
     <string name="HistoryBookmarksImportSourceTitle">Importer un fichier</string>
-    <string name="HistoryBookmarksImportFileUnavailable">Fichier inaccessible, soit il n\'existe pas, soit il n\'est pas lisible.</string>
+    <string name="HistoryBookmarksImportFileUnavailable">Fichier inaccessible, il n\'existe pas ou n\'est pas lisible.</string>
     <string name="HistoryBookmarksImportTitle">Import de l\'historique et des favoris</string>
     <string name="HistoryBookmarksImportInitialMessage">Import de l\'historique et des favoris en cours&#8230;</string>
     <string name="HistoryBookmarksImportReadingFile">Lecture du fichier&#8230;</string>
@@ -350,7 +360,7 @@
     <string name="AddonsWarningText">N\'installez que des addons provenant de développeurs de confiance. Si vous rencontrez des comportements étranges, désactivez tous vos addons.</string>
     <string name="AddonsGetAddons"><a href="">Obtenir des addons</a></string>
     <string name="AddonsMarketNotFoundTitle">Android Market non trouvé</string>
-   <string name="AddonsMarketNotFoundMessage">Vous ne semblez pas avoir l\'application Android Market sur votre appareil.</string>
+    <string name="AddonsMarketNotFoundMessage">Vous ne semblez pas avoir l\'application Android Market sur votre appareil.</string>
     <string name="AddonsEnableAll">Tout activer</string>
     <string name="AddonsDisableAll">Tout désactiver</string>
     

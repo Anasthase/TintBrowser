@@ -32,7 +32,6 @@ import android.content.CursorLoader;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -499,10 +498,8 @@ public class BookmarksWrapper {
 				whereClause = String.format(UPDATE_FAVICON_WHERE_PATTERN_2, url);
 			}
 
-			BitmapDrawable icon = new BitmapDrawable(favicon);
-
-			ByteArrayOutputStream os = new ByteArrayOutputStream();         
-			icon.getBitmap().compress(Bitmap.CompressFormat.PNG, 100, os);
+			ByteArrayOutputStream os = new ByteArrayOutputStream();
+			favicon.compress(Bitmap.CompressFormat.PNG, 100, os);
 
 			ContentValues values = new ContentValues();
 			values.put(BookmarksProvider.Columns.FAVICON, os.toByteArray());				
@@ -536,10 +533,8 @@ public class BookmarksWrapper {
 				whereClause = String.format(BOOKMARK_BY_URL_WHERE_PATTERN_2, url);
 			}
 
-			BitmapDrawable icon = new BitmapDrawable(thumbnail);
-
-			ByteArrayOutputStream os = new ByteArrayOutputStream();         
-			icon.getBitmap().compress(Bitmap.CompressFormat.PNG, 100, os);
+			ByteArrayOutputStream os = new ByteArrayOutputStream();
+			thumbnail.compress(Bitmap.CompressFormat.PNG, 100, os);
 
 			ContentValues values = new ContentValues();
 			values.put(BookmarksProvider.Columns.THUMBNAIL, os.toByteArray());				

@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -73,7 +75,7 @@ public class HistoryBookmarksExportTask extends AsyncTask<Cursor, Integer, Strin
 	 */
 	private String getNowForFileName() {
 		Calendar c = Calendar.getInstance();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmss", Locale.US);
 
 		return sdf.format(c.getTime());
 	}
@@ -113,7 +115,7 @@ public class HistoryBookmarksExportTask extends AsyncTask<Cursor, Integer, Strin
 
 					if (isFolder) {						
 						String title = c.getString(titleIndex);
-						title = title != null ? URLEncoder.encode(title) : "";
+						title = title != null ? URLEncoder.encode(title, "UTF-8") : "";
 						
 						foldersArray.add(
 								title,
@@ -124,10 +126,10 @@ public class HistoryBookmarksExportTask extends AsyncTask<Cursor, Integer, Strin
 						boolean isBookmark = c.getInt(bookmarkIndex) > 0 ? true : false;
 						
 						String title = c.getString(titleIndex);
-						title = title != null ? URLEncoder.encode(title) : "";
+						title = title != null ? URLEncoder.encode(title, "UTF-8") : "";
 
 						String url = c.getString(urlIndex);
-						url = url != null ? URLEncoder.encode(url) : "";
+						url = url != null ? URLEncoder.encode(url, "UTF-8") : "";
 						
 						if (isBookmark) {
 							bookmarksArray.add(
