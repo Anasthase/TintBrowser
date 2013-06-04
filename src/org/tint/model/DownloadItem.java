@@ -35,7 +35,8 @@ public class DownloadItem extends Request {
 		super(Uri.parse(url));
 		
 		if(filename.length() < 1) {
-			filename = url.substring(url.lastIndexOf("/") + 1);
+			filename = Uri.parse(url).getPath();
+			filename = filename.substring(filename.lastIndexOf("/") + 1);
 		}
 		
 		mUrl      = Uri.decode(url);

@@ -202,7 +202,7 @@ public class CustomWebView extends WebView implements DownloadListener {
 	
 	@Override
 	public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
-		String filename = null;
+		String filename = "";
 		
 		// Parse contentDispostion
 		for(String dispositionField : contentDisposition.split(";")) {
