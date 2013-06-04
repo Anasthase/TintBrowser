@@ -10,4 +10,7 @@
         <ignore path="res/drawable-mdpi/divider_vertical_dark_opaque.9.png" />
         <ignore path="res/drawable-mdpi/ic_folder.png" />
     </issue>
+    <issue id="WrongCall">
+        <ignore path="src/org/tint/ui/views/TabsScroller.java" />
+    </issue>
 </lint>

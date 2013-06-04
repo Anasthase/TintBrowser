@@ -202,7 +202,30 @@ public class CustomWebView extends WebView implements DownloadListener {
 	
 	@Override
 	public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
-		DownloadItem item = new DownloadItem(url);
+		String filename = "";
+		
+		// Parse contentDispostion
+		for(String dispositionField : contentDisposition.split(";")) {
+			// Remove whitespace
+			dispositionField = dispositionField.trim();
+			
+			if(dispositionField.indexOf('=') > -1) {
+				String[] dispositionData = dispositionField.split("=", 2);
+				
+				// Find "filename" entry
+				if(dispositionData[0].trim() == "filename") {
+					filename = dispositionData[1].trim();
+					
+					// Let's be tolerant with quotes
+					if((filename.startsWith("\"") && filename.endsWith("\""))
+					|| (filename.startsWith("'")  && filename.endsWith("'"))) {
+						filename = filename.substring(1, filename.length() - 1);
+					}
+				}
+			}
+		}
+		
+		DownloadItem item = new DownloadItem(url, userAgent, mimetype, filename);
 		
 		long id = ((DownloadManager) mContext.getSystemService(Context.DOWNLOAD_SERVICE)).enqueue(item);
 		item.setId(id);

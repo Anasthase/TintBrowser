@@ -349,7 +349,7 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 						if (HitTestResult.SRC_IMAGE_ANCHOR_TYPE == intent.getIntExtra(Constants.EXTRA_HIT_TEST_RESULT, -1)) {
 							requestHrefNode(TintBrowserActivity.CONTEXT_MENU_DOWNLOAD);
 						} else {
-							DownloadItem item = new DownloadItem(intent.getStringExtra(Constants.EXTRA_URL));
+							DownloadItem item = DownloadItem.FromURL(intent.getStringExtra(Constants.EXTRA_URL));
 
 							long id = ((DownloadManager) mActivity.getSystemService(Context.DOWNLOAD_SERVICE)).enqueue(item);
 							item.setId(id);
@@ -604,7 +604,7 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 						break;
 						
 					case TintBrowserActivity.CONTEXT_MENU_DOWNLOAD:
-						DownloadItem item = new DownloadItem(url);
+						DownloadItem item = DownloadItem.FromURL(url);
 
 						long id = ((DownloadManager) mActivity.getSystemService(Context.DOWNLOAD_SERVICE)).enqueue(item);
 						item.setId(id);
