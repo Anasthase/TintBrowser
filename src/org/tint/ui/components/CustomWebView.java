@@ -205,23 +205,21 @@ public class CustomWebView extends WebView implements DownloadListener {
 		String filename = null;
 		
 		// Parse contentDispostion
-		if(contentDisposition) {
-			for(String dispositionField : contentDisposition.split(";")) {
-				// Remove whitespace
-				dispositionField = dispositionField.trim();
+		for(String dispositionField : contentDisposition.split(";")) {
+			// Remove whitespace
+			dispositionField = dispositionField.trim();
+			
+			if(dispositionField.indexOf('=') > -1) {
+				String[] dispositionData = dispositionField.split("=", 2);
 				
-				if(dispositionField.indexOf('=') > -1) {
-					String[] dispositionData = dispositionField.split("=", 2);
+				// Find "filename" entry
+				if(dispositionData[0].trim() == "filename") {
+					filename = dispositionData[1].trim();
 					
-					// Find "filename" entry
-					if(dispositionData[0].trim() == "filename") {
-						filename = dispositionData[1].trim();
-						
-						// Let's be tolerant with quotes
-						if((filename.startsWith("\"") && filename.endsWith("\""))
-						|| (filename.startsWith("'")  && filename.endsWith("'"))) {
-							filename = filename.substring(1, filename.length() - 1);
-						}
+					// Let's be tolerant with quotes
+					if((filename.startsWith("\"") && filename.endsWith("\""))
+					|| (filename.startsWith("'")  && filename.endsWith("'"))) {
+						filename = filename.substring(1, filename.length() - 1);
 					}
 				}
 			}
