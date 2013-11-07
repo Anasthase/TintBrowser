@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="ApplicationName">Tint Browser</string>
+    <string name="ApplicationDescription">Android 向けオープンソース・ウェブブラウザ</string>
+
+    <string name="AboutVersionText">バージョン: %1$s (%2$s)</string>
+    <string name="AboutLicenseText">ライセンス: GPLv3</string>
+    <string name="AboutUrlText">https://github.com/Anasthase/TintBrowser</string>
+    <string name="AboutChangelogText">変更履歴:</string>
+
+    <string name="PermissionReadBookmarksLabel">Tint Browser のブックマークを読み取る</string>
+    <string name="PermissionReadBookmarksDescription">サードパーティのアプリケーションやアドオンにTint Browserのブックマークと履歴の読み取りを許可する</string>
+
+    <string name="PermissionWriteBookmarksLabel">Tint Browser のブックマークを書き込む</string>
+    <string name="PermissionWriteBookmarksDescription">サードパーティのアプリケーションやアドオンにTint Browserのブックマークと履歴の書き込みを許可する</string>    
+
+    <string name="PermissionBindAddonServiceLabel">アドオン・サービスを制御する</string>
+    <string name="PermissionBindAddonServiceDescription">アプリケーションにTint Browserのアドオン・サービスの制御を許可する（Tint Browserのみがこの権限を使用するべきです）</string>
+
+    <string name="OK">OK</string>
+    <string name="Cancel">キャンセル</string>
+    <string name="Yes">はい</string>
+    <string name="No">いいえ</string>
+    <string name="On">ON</string>
+    <string name="Off">OFF</string>
+    <string name="Clear">消去</string>
+    <string name="Continue">続ける</string>
+    <string name="Proceed">承認</string>
+    <string name="VideoLoading">動画を読み込み中\u2026</string>
+    <string name="History">履歴</string>
+    <string name="All">全て</string>
+    <string name="Bookmarks">ブックマーク</string>
+    <string name="Preferences">設定</string>
+
+    <string name="UrlBarUrlDefaultSubTitle">タップして検索またはURLを入力</string>
+    <string name="UrlBarUrlHint">検索またはURLを入力</string>
+
+    <string name="ShareChooserTitle">共有する</string>
+    <string name="FileChooserPrompt">アップロードするファイルを選択</string>
+
+    <string name="DownloadStart">%1$s をダウンロード中&#8230;</string>
+    <string name="DownloadComplete">ダウンロードが完了しました</string>
+    <string name="DownloadFailedWithErrorMessage">%1$s のダウンロードに失敗</string>
+    <string name="DownloadErrorDisk">ディスクエラー　ストレージの空き容量を確認してください</string>
+    <string name="DownloadErrorHttp">HTTP エラー</string>
+    <string name="DownloadErrorRedirection">リダイレクトが多すぎます</string>
+    <string name="DownloadErrorUnknown">不明なエラー</string>
+
+    <string name="ContextMenuOpen">開く</string>
+    <string name="ContextMenuOpenNewTab">新しいタブで開く</string>
+    <string name="ContextMenuCopyLinkUrl">リンクのURLをコピー</string>
+    <string name="ContextMenuDownload">ダウンロード</string>
+    <string name="ContextMenuShareLinkUrl">リンクを共有</string>
+
+    <string name="ContextMenuViewImage">画像を表示</string>
+    <string name="ContextMenuCopyImageUrl">画像のURLをコピー</string>
+    <string name="ContextMenuDownloadImage">画像を保存</string>
+    <string name="ContextMenuShareImageUrl">画像を共有</string>
+
+    <string name="ContextMenuSendEmail">メールを作成</string>
+    <string name="ContextMenuCopyEmailUrl">メールアドレスをコピー</string>
+    <string name="ContextMenuShareEmailUrl">メールアドレスを共有</string>
+
+    <string name="UrlCopyToastMessage">クリップボードにURLをコピーしました</string>
+    <string name="ContextMenuShareUrl">共有</string>
+
+    <string name="JavaScriptAlertDialog">JavaScript 警告ダイアログ</string>
+    <string name="JavaScriptConfirmDialog">JavaScript 確認ダイアログ</string>
+    <string name="JavaScriptPromptDialog">JavaScript 入力ダイアログ</string>    
+
+    <string name="SslWarning">セキュリティーの警告</string>
+    <string name="SslWarningsHeader">このサイトのセキュリティ証明書には問題があります - %s</string>
+    <string name="SslUntrusted">信頼できる証明機関から発行されたものではありません</string>
+    <string name="SslIDMismatch">証明書にあるページの名前と表示しようとしているページの名前が一致しません</string>
+    <string name="SslExpired">証明書の有効期限が切れています</string>
+    <string name="SslNotYetValid">この証明書はまだ有効になっていません</string>    
+
+    <string name="NewTab">新しいタブ</string>
+
+    <string name="CloseTab">現在のタブを閉じる</string>
+    <string name="AddBookmark">ブックマークを追加</string>
+    <string name="SharePage">ページを共有</string>
+    <string name="Search">ページ内を検索</string>
+
+    <string name="BookmarksTitle">ブックマークと履歴</string>
+    <string name="BookmarksTabTitle">ブックマーク</string>
+    <string name="HistoryTabTitle">履歴</string>
+
+    <string name="ImportHistoryBookmarks">インポート</string>
+    <string name="ExportHistoryBookmarks">エクスポート</string>
+    <string name="ClearHistoryBookmarks">消去</string>
+
+    <string name="AddBookmarkTitle">ブックマークを追加</string>
+    <string name="BookmarkText">ラベル</string>
+    <string name="UrlText">アドレス</string>
+    <string name="UrlHint">http://</string>
+    <string name="AddBookmarkLabelOrUrlEmpty">正しいラベルとアドレスを入力してください</string>
+
+    <string name="OpenInTab">新しいタブで開く</string>
+    <string name="EditBookmark">編集</string>
+    <string name="CopyUrl">URLをコピー</string>
+    <string name="DeleteBookmark">削除</string>
+    <string name="DeleteHistoryItem">履歴から削除</string>
+
+    <string name="PreferencesActivityTitle">設定</string>
+
+    <string name="PreferenceHeaderGeneralSettingsTitle">全体設定</string>
+
+    <string name="PreferenceGeneralHomepageTitle">ホームページ</string>
+    <string name="PreferenceGeneralHomepageSummary">新しいタブなどを開いたときに表示するページを設定</string>
+    <string name="PreferenceHomePageDialogTitle">ホームページ</string>
+
+    <string name="PreferenceGeneralSearchUrlTitle">検索エンジン</string>
+    <string name="PreferenceGeneralSearchUrlSummary">デフォルトの検索エンジンを設定</string>
+
+    <string name="PreferenceCategoryStartPageTitle">スタートページ</string>
+    <string name="PreferenceGeneralStartPageLimitTitle">表示するアイテム数</string>
+    <string name="PreferenceGeneralStartPageLimitSummary">スタートページ（よくアクセスするページ）に表示するアイテム数を設定</string>
+
+    <string name="PreferenceCategoryUITitle">UI設定</string>
+
+    <string name="PreferenceBubblePositionTitle">バブルの位置</string>
+    <string name="PreferenceBubblePositionSummary">ツールバーを開くためのバブルの位置を設定</string>
+
+    <string name="PreferenceBubblePositionRight">右下</string>
+    <string name="PreferenceBubblePositionLeft">左下</string>
+    <string name="PreferenceBubblePositionBoth">両方</string>
+
+    <string-array name="PreferenceBubblePositionEntries">
+        <item>@string/PreferenceBubblePositionRight</item>
+        <item>@string/PreferenceBubblePositionLeft</item>
+        <item>@string/PreferenceBubblePositionBoth</item>
+    </string-array>
+
+    <string-array name="PreferenceBubblePositionValues">
+        <item>RIGHT</item>
+        <item>LEFT</item>
+        <item>BOTH</item>
+    </string-array>
+
+    <string name="PreferenceToolbarsAutoHideDurationTitle">ツールバー表示時間</string>
+    <string name="PreferenceToolbarsAutoHideDurationSummary">ツールバーを何秒間表示するかを設定</string>
+
+    <string name="PreferenceSwitchTabsMethodTitle">タブ切り替え方法</string>
+    <string name="PreferenceSwitchTabsMethodSummary">複数タブの切り替え方法を設定</string>
+
+    <string name="PreferenceSwitchTabsMethodButtons">ボタン</string>
+    <string name="PreferenceSwitchTabsMethodFling">フリック</string>
+    <string name="PreferenceSwitchTabsMethodBoth">両方</string>
+
+    <string-array name="PreferenceSwitchTabsMethodEntries">
+        <item>@string/PreferenceSwitchTabsMethodButtons</item>
+        <item>@string/PreferenceSwitchTabsMethodFling</item>
+        <item>@string/PreferenceSwitchTabsMethodBoth</item>
+    </string-array>
+
+    <string-array name="PreferenceSwitchTabsMethodValues">
+        <item>BUTTONS</item>
+        <item>FLING</item>
+        <item>BOTH</item>
+    </string-array>
+
+    <string name="PreferenceHeaderBrowserSettingsTitle">ブラウザー設定</string>
+
+    <string name="PreferenceEnableJavascriptTitle">JavaScript</string>
+    <string name="PreferenceEnableJavascriptSummaryOn">JavaScript を実行する</string>
+    <string name="PreferenceEnableJavascriptSummaryOff">JavaScript を実行しない</string>
+    <string name="PreferenceEnableImagesTitle">画像の表示</string>
+    <string name="PreferenceEnableImagesSummary">チェックすると画像を読み込みます</string>
+    <string name="PreferenceUseWideViewportTitle">広い表示幅を使う</string>
+    <string name="PreferenceUseWideViewportSummary">デスクトップと同じ表示幅でページを表示</string>
+    <string name="PreferenceLoadPagesWithOverviewTitle">ページの概観を読み込む</string>
+    <string name="PreferenceLoadPagesWithOverviewSummary">ズームアウトしてページ全体の概観を表示</string>
+    <string name="PreferencePluginsTitle">プラグイン</string>
+    <string name="PreferencePluginsSummary">プラグインの読み込み方を設定</string>
+
+    <string name="PreferencePluginsAlwaysOff">常に無効</string>
+    <string name="PreferencePluginsOnDemand">タップして有効</string>
+    <string name="PreferencePluginsAlwaysOn">常に有効</string>
+
+    <string-array name="PreferencePluginsEntries">
+        <item>@string/PreferencePluginsAlwaysOff</item>
+        <item>@string/PreferencePluginsOnDemand</item>
+        <item>@string/PreferencePluginsAlwaysOn</item>
+    </string-array>
+
+    <string-array name="PreferencePluginsValues">
+        <item>OFF</item>
+        <item>ON_DEMAND</item>
+        <item>ON</item>
+    </string-array>
+
+    <string name="PreferenceUserAgentTitle">ユーザーエージェント</string>
+    <string name="PreferenceUserAgentSummary">ユーザーエージェントの文字列を指定する</string>
+    <string name="PreferenceUserAgentDialogTitle">ユーザーエージェント</string>
+
+    <string name="PreferenceHeaderPrivacySettingsTitle">プライバシーとセキュリティー</string>
+
+    <string name="PreferencePrivacyClearCacheTitle">キャッシュを消去</string>
+    <string name="PreferencePrivacyClearCacheSummary">キャッシュされたコンテンツとデータベースを消去</string>
+
+    <string name="PreferenceCategoryHistoryTitle">履歴</string>
+    <string name="PreferencePrivacyHistorySizeTitle">保存する履歴</string>
+    <string name="PreferencePrivacyHistorySizeSummary">履歴を保存する日数を設定</string>
+    <string name="PreferencePrivacyClearHistoryTitle">履歴を消去</string>
+    <string name="PreferencePrivacyClearHistorySummary">履歴とよくアクセスするページを消去</string>
+
+    <string name="PreferenceCategoryCookiesTitle">Cookie</string>
+    <string name="PreferencePrivacyAcceptCookiesTitle">Cookie の受け入れ</string>
+    <string name="PreferencePrivacyAcceptCookiesSummary">サイトによる Cookie の保存と読み取りを許可</string>
+    <string name="PreferencePrivacyClearCookiesTitle">Cookie を消去</string>
+    <string name="PreferencePrivacyClearCookiesSummary">すべての Cookie を消去</string>
+
+    <string name="PreferenceCategoryGeolocationTitle">現在地情報</string>
+    <string name="PreferencePrivacyEnableGeolocationTitle">位置情報を有効にする</string>
+    <string name="PreferencePrivacyEnableGeolocationSummary">サイトに現在地情報へのアクセスを許可</string>
+    <string name="PreferencePrivacyClearGeolocationTitle">位置情報アクセスを消去</string>
+    <string name="PreferencePrivacyClearGeolocationSummary">サイトの位置情報へのアクセス履歴をすべて消去</string>
+
+    <string name="PreferenceCategoryFormDataTitle">フォームデータ</string>
+    <string name="PreferencePrivacyRememberFormDataTitle">フォームデータを記憶</string>
+    <string name="PreferencePrivacyRememberFormDataSummary">フォームに入力した内容を保存しておく</string>
+    <string name="PreferencePrivacyClearFormDataTitle">フォームデータを消去</string>
+    <string name="PreferencePrivacyClearFormDataSummary">保存されているフォームデータをすべて消去</string>
+
+    <string name="PreferenceCategoryPasswordsTitle">パスワード</string>
+    <string name="PreferencePrivacyRememberPasswordsTitle">パスワードを記憶</string>
+    <string name="PreferencePrivacyRememberPasswordsSummary">サイトのユーザー名とパスワードを保存</string>
+    <string name="PreferencePrivacyClearPasswordsTitle">パスワードを消去</string>
+    <string name="PreferencePrivacyClearPasswordsSummary">保存されているユーザー名とパスワードをすべて消去</string>
+
+    <string name="PreferencePrivacyWebsitesSettingsTitle">サイト別設定</string>
+    <string name="PreferencePrivacyWebsitesSettingsSummary">ウェブサイト個別の詳細な設定</string>
+
+    <string name="HistoryToday">今日</string>
+    <string name="HistoryYesterday">昨日</string>
+    <string name="HistoryLastSevenDays">今週</string>
+    <string name="HistoryLastMonth">今月</string>
+    <string name="HistoryOlder">それ以前</string>
+
+    <string name="ClearCacheMessage">キャッシュされたコンテンツとデータベースを削除してもよろしいですか？</string>
+    <string name="ClearHistoryMessage">閲覧履歴とよくアクセスするページを削除してもよろしいですか？</string>
+    <string name="ClearCookiesMessage">すべての Cookie を削除してもよろしいですか？</string>
+    <string name="ClearGeolocationMessage">サイトからの位置情報アクセスを削除してもよろしいですか？</string>
+    <string name="ClearFormDataMessage">保存されているフォームデータを削除してもよろしいですか？</string>
+    <string name="ClearPasswordsMessage">保存されているユーザー名とパスワードを削除してもよろしいですか？</string>
+
+    <string name="PreferenceHomepageStart">スタートページ</string>
+    <string name="PreferenceHomepageBlank">空白のページ</string>
+    <string name="PreferenceHomepageCustom">カスタム</string>
+
+    <string-array name="HomepageTitles">
+        <item>@string/PreferenceHomepageStart</item>
+        <item>@string/PreferenceHomepageBlank</item>
+        <item>@string/PreferenceHomepageCustom</item>
+    </string-array>
+
+    <string name="PreferenceUserAgentAndroid">Android</string>
+    <string name="PreferenceUserAgentDesktop">デスクトップ</string>
+    <string name="PreferenceUserAgentOther">その他</string>
+
+    <string-array name="UserAgentsTitles">
+        <item>@string/PreferenceUserAgentAndroid</item>
+        <item>@string/PreferenceUserAgentDesktop</item>
+        <item>@string/PreferenceUserAgentOther</item>
+    </string-array>
+
+    <string name="SearchUrlGoogle">http://www.google.co.jp/m?q={searchTerms}</string>
+
+    <string name="PreferenceHeaderAddonsTitle">アドオン</string>
+
+    <string name="PreferenceHeaderAboutTitle">このアプリケーションについて</string>
+
+    <string name="HttpAuthenticationDialogDialogTitle">ログイン: %1$s - %2$s</string>
+    <string name="HttpAuthenticationDialogUserName">ユーザー名</string>
+    <string name="HttpAuthenticationDialogPassword">パスワード</string>
+
+    <string name="FormResubmitTitle">フォームの再送信</string>
+    <string name="FormResubmitMessage">このページを表示するにはフォームデータを再送信する必要があります。フォームデータを再送信すると、以前実行した検索、投稿や注文などの処理が繰り返されます。</string>
+
+    <string name="BookmarkAdded">ブックマークに追加されました</string>
+    <string name="BookmarkRemoved">ブックマークを削除しました</string>
+
+    <string name="SDCardErrorNoSDMsg">SDカードが見つかりません</string>
+    <string name="SDCardErrorSDUnavailable">SDカードが無効です</string>
+
+    <string name="HistoryBookmarksClearTitle">消去</string>
+
+    <string-array name="ClearHistoryBookmarksChoice">
+        <item>@string/History</item>
+        <item>@string/Bookmarks</item>
+        <item>@string/All</item>
+    </string-array>
+
+    <string name="HistoryBookmarksImportSourceTitle">インポートするファイル</string>
+    <string name="HistoryBookmarksImportFileUnavailable">ファイルが存在しないか読み取れないため利用できません</string>
+    <string name="HistoryBookmarksImportTitle">履歴とブックマークをインポート</string>
+    <string name="HistoryBookmarksImportInitialMessage">履歴とブックマークをインポート中&#8230;</string>
+    <string name="HistoryBookmarksImportReadingFile">ファイルを読み込んでいます&#8230;</string>
+    <string name="HistoryBookmarksImportParsingFile">ファイルを解析しています&#8230;</string>
+    <string name="HistoryBookmarksImportProgressMessage">%2$s件中%1$s件を読み込んでいます&#8230;</string>
+    <string name="HistoryBookmarksImportInsertMessage">書き込んでいます&#8230;</string>
+    <string name="HistoryBookmarksImportErrorTitle">エラー</string>
+    <string name="HistoryBookmarksImportErrorMessage">インポート中にエラーが発生しました - %s</string>
+
+    <string name="HistoryBookmarksExportTitle">履歴とブックマークをエクスポート</string>
+    <string name="HistoryBookmarksExportInitialMessage">履歴とブックマークをエクスポート中&#8230;</string>
+    <string name="HistoryBookmarksExportCheckCardMessage">外部ストレージをチェックしています&#8230;</string>
+    <string name="HistoryBookmarksExportProgressMessage">%2$s件中%1$s件をエクスポートしています&#8230;</string>
+    <string name="HistoryBookmarksExportErrorTitle">エラー</string>
+    <string name="HistoryBookmarksExportErrorMessage">エクスポート中にエラーが発生しました - %s</string>
+
+    <string name="GeolocationTitle">位置情報の要求</string>
+    <string name="GeolocationMessage">%s は現在地情報へのアクセスを要求しています。</string>    
+    <string name="GeolocationAccept">承諾する</string>
+    <string name="GeolocationDecline">拒否する</string>
+
+    <string name="WebsitesSettingsEmpty">個別のウェブサイト設定はありません。</string>
+
+    <string name="WebsitesSettingsSiteTitle">%s の設定</string>
+
+    <string name="WebsitesSettingsDataUsage">%s MB使用しています</string>
+    <string name="WebsitesSettingsDataClickToClear">保存されているデータを削除</string>
+    <string name="WebsitesSettingsCleatDataDialogTitle">データを削除</string>
+    <string name="WebsitesSettingsCleatDataDialogMessage">このサイトによって保存されたデータをすべて削除しますか？</string>
+
+    <string name="WebsitesSettingsGeolocationClickToClear">位置情報アクセスを削除</string>
+    <string name="WebsitesSettingsGeolocationAllowed">このサイトの位置情報へのアクセスを許可</string>
+    <string name="WebsitesSettingsGeolocationNotAllowed">このサイトの位置情報へのアクセスを拒否</string>
+    <string name="WebsitesSettingsGeolocationPageDialogTitle">位置情報アクセスを削除</string>
+    <string name="WebsitesSettingsGeolocationPageDialogMessage">このサイトのの位置情報アクセス設定をリセットしますか？</string>
+
+    <string name="AddonsWarningText">信頼できる開発元からのアドオンのみをインストールして下さい。問題が発生する場合、全てのアドオンを無効化して下さい。</string>
+    <string name="AddonsGetAddons"><a href="">アドオンを入手</a></string>
+    <string name="AddonsMarketNotFoundTitle">Play ストアが見つかりません</string>
+    <string name="AddonsMarketNotFoundMessage">Google Play ストアのアプリがインストールされていません。</string>
+    <string name="AddonsEnableAll">全て有効</string>
+    <string name="AddonsDisableAll">全て無効</string>
+
+    <string name="AddonDetailsContact">連絡先: %s</string>
+    <string name="AddonDetailsUsedCallbacksTitle">このアドオンは次の動作を行います:</string>
+
+    <string name="AddonCallbackPageStarted">ページの読み込み開始時に実行されます</string>
+    <string name="AddonCallbackPageFinished">ページの読み込み終了時に実行されます</string>
+    <string name="AddonCallbackTabOpened">タブが開かれた際に実行されます</string>
+    <string name="AddonCallbackTabClosed">タブが閉じられた際に実行されます</string>
+    <string name="AddonCallbackTabSwitched">タブを切り替えた際に実行されます</string>
+    <string name="AddonCallbackHasPreferencesPage">設定画面を使用します</string>
+    <string name="AddonCallbackContributeMainMenu">メインメニューに項目を追加します</string>
+    <string name="AddonCallbackContributeLinkContextMenu">コンテキストメニューに項目を追加します</string>
+    <string name="AddonCallbackContributeHistoryBookmarksMenu">ブックマークと履歴のメニューに項目を追加します</string>
+    <string name="AddonCallbackContributeBookmarkContextMenu">ブックマークのコンテキストメニューに項目を追加します</string>
+    <string name="AddonCallbackContributeHistoryContextMenu">履歴のメニューに項目を追加します</string>
+
+    <string name="AddonDetailsUsedPermissionsTitle">このアドオンは次の権限を使用します:</string>
+    <string name="AddonDetailsPermissionsNone">このアドオンは特別な権限を使用しません。</string>
+    <string name="AddonDetailsUnableToGetPermissions">権限を取得できませんでした。デバイスのアプリ一覧から確認してください。</string>
+
+    <string name="ContentDescriptionDivider">スペーサー</string>
+    <string name="ContentDescriptionApplicationIcon">アプリケーションのアイコン</string>
+    <string name="ContentDescriptionSuggestionIcon">おすすめのファビコン</string>
+    <string name="ContentDescriptionBookmarkThumbnail">ブックマークのサムネイル</string>
+    <string name="ContentDescriptionFavicon">ウェブサイトのファビコン</string>
+    <string name="ContentDescriptionGoStopReloadButton">移動・停止・更新ボタン</string>
+    <string name="ContentDescriptionMenuButton">メニューボタン</string>
+    <string name="ContentDescriptionPreviousTabButton">前のタブへ戻るボタン</string>
+    <string name="ContentDescriptionNextTabButton">次のタブへ進むボタン</string>
+    <string name="ContentDescriptionLeftBubble">左バブル</string>
+    <string name="ContentDescriptionRightBubble">右バブル</string>
+    <string name="ContentDescriptionBackButton">戻るボタン</string>
+    <string name="ContentDescriptionCloseTabButton">閉じるボタン</string>
+    <string name="ContentDescriptionBookmarksButton">ブックマークボタン</string>
+    <string name="ContentDescriptionNewTabButton">新しいタブを開くボタン</string>
+    <string name="ContentDescriptionForwardButton">進むボタン</string>
+    <string name="ContentDescriptionHomeButton">ホームボタン</string>
+    <string name="ContentDescriptionWebsiteSettingsLocation">ウェブサイトのアドレス</string>
+    <string name="ContentDescriptionWebsiteSettingsUsage">ウェブサイトの使用量</string>
+    <string name="ContentDescriptionWebsiteSettingsFeature">ウェブサイトの機能</string>
+
+    <string-array name="DefaultBookmarksTitles">
+        <item>Google</item>
+        <item>Wikipedia</item>
+        <item>YouTube</item>
+        <item>Yahoo!</item>
+        <item>BBC</item>
+        <item>eBay</item>
+    </string-array>
+
+    <string-array name="DefaultBookmarksUrls">
+        <item>http://www.google.co.jp/</item>
+        <item>http://ja.wikipedia.org/</item>
+        <item>http://www.youtube.jp/</item>
+        <item>http://www.yahoo.co.jp/</item>
+        <item>http://www.bbc.co.uk/</item>
+        <item>http://www.ebay.com/</item>
+    </string-array>
+
+    <!-- 1.2 -->
+    <string name="IncognitoTab">プライベートタブ</string>
+    <string name="ContextMenuOpenInBackground">バックグラウンドのタブで開く</string>
+    <string name="ContentDescriptionPrivateBrowsingIndicator">プライベートブラウジング・インジケーター</string>
+
+    <!-- 1.3 -->
+    <string name="Folder">フォルダ</string>
+    <string name="NewFolder">新しいフォルダ</string>    
+    <string name="NewFolderHint">新しいフォルダの名前</string>
+    <string name="ProvideNewFolderName">新しいフォルダ名を入力するか、既にあるフォルダから選んでください</string>
+
+    <string name="DeleteFolder">フォルダを削除</string>
+    <string name="ConfirmDeleteFolderMessage">フォルダ内のすべての項目を削除しますか？</string>
+    <string name="DeleteFolderTitle">削除中</string>
+    <string name="DeleteFolderMessage">しばらくお待ちください&#8230;</string>
+
+    <string name="ContentDescriptionBookmarksFoldersBack">上の階層へ戻る</string>
+
+    <!-- 1.4 -->
+    <string name="PreferenceHeaderAccessibilityTitle">ユーザー補助</string>
+    <string name="PreferenceCategoryTextSizeTitle">文字サイズ</string>
+    <string name="PreferenceAccessibilityTextSizePreviewTitle">プレビュー</string>
+    <string name="PreferenceAccessibilityTextScalingTitle">テキストの倍率</string>
+    <string name="PreferenceAccessibilityMinimumFontSizeTitle">最小フォントサイズ</string>
+    <string name="PreferenceAccessibilityMinimumFontSizeSummary">テキストの表示に使用する最小のフォントサイズを指定</string>
+
+    <string name="FontPreviewTextTiny">最小</string>
+    <string name="FontPreviewTextSmall">小</string>
+    <string name="FontPreviewTextNormal">中</string>
+    <string name="FontPreviewTextLarge">大</string>
+    <string name="FontPreviewTextHuge">最大</string>
+
+    <string-array name="FontPreviewText">
+        <item>@string/FontPreviewTextTiny</item>
+        <item>@string/FontPreviewTextSmall</item>
+        <item>@string/FontPreviewTextNormal</item>
+        <item>@string/FontPreviewTextLarge</item>
+        <item>@string/FontPreviewTextHuge</item>
+    </string-array>
+
+    <string name="PreferenceCategoryInvertedScreenRenderingTitle">画面の反転レンダリング</string>
+    <string name="PreferenceAccessibilityInvertedRenderingTitle">反転レンダリング</string>
+    <string name="PreferenceAccessibilityInvertedRenderingSummary">色を反転して表示します。一部のデバイスでは動作しない恐れがあります。</string>
+    <string name="PreferenceAccessibilityInvertedRenderingContrastTitle">コントラスト</string>
+
+    <string name="ContentDescriptionAutocompleteQueryBuilder">移動先URLの候補を表示します。</string>
+
+    <!-- 1.5 -->
+    <string name="UnknownAutority">不明な認証機関</string>
+    <string name="RememberMyChoice">次回から確認しない</string>
+    <string name="SslExceptionAccessAllowedByUserToast">SSL security exception: Access allowed to %s by user.</string>
+    <string name="SslExceptionAccessDisallowedByUserToast">SSL security exception: Access disallowed to %s by user.</string>
+
+    <string name="PreferenceSslExceptionsTitle">SSLセキュリティー例外</string>
+    <string name="PreferenceSslExceptionsSummary">ウェブサイトによるSSLセキュリティー例外の一覧</string>
+    <string name="SslExceptionWebsitesText"><i>タップして例外を削除</i></string>
+    <string name="SslExceptionEmptyText">セキュリティー例外はありません。</string>
+
+    <string name="RemoveSslExceptionTitle">例外を削除</string>
+    <string name="RemoveSslExceptionMessage">このサイトのセキュリティー例外を削除してもよろしいですか？</string>
+
+    <string name="SslInvalid">この証明書は無効です</string>
+    <string name="SslDateInvalid">この証明書の日付は無効です</string>
+
+    <string name="Authorized">認証済み:</string>
+    <string name="Reasons">理由:</string>
+
+    <string name="SearchUrlDialogText1">現在設定されている検索エンジン:</string>
+    <string name="SearchUrlDialogText2">使用する検索エンジンを以下から選択できます</string>
+    <string name="SearchUrlGetOnline"><a href="">使用する検索エンジンを手動で設定</a></string>    
+    <string name="SearchUrlConnecting">接続中&#8230;</string>
+    <string name="SearchUrlParsing">結果を解析中&#8230;</string>
+    <string name="SearchUrlBadResponseCodeMessage">検索エンジンレポジトリに接続できませんでした (レスポンスコード: %s)</string>
+
+    <string name="SearchUrlDefault">Google worldwide</string>
+    <string name="SearchUrlCustom">カスタム</string>
+
+    <string name="SortBookmarks">ブックマークの並び替え</string>    
+    <string name="MostUsedSortMode">よく使う順</string>
+    <string name="AlphaSortMode">名前順</string>
+    <string name="RecentSortMode">最近アクセスした順</string>
+
+    <!-- 1.6 -->
+    <string name="HistoryBookmarksImportErrorInvalidFileFormat">不明なファイルフォーマットです</string>
+    <string name="HistoryBookmarksImportFoldersProgressMessage">%2$s件中%1$s件のフォルダを読み込み中&#8230;</string>
+    <string name="HistoryBookmarksImportFoldersLinkMessage">フォルダをリンク中&#8230;</string>
+    <string name="HistoryBookmarksImportBookmarksProgressMessage">%2$s件中%1$s件のブックマークを読み込み中&#8230;</string>
+    <string name="HistoryBookmarksImportHistoryProgressMessage">%2$s件中%1$s件の履歴を読み込み中&#8230;</string>
+
+    <string name="FullScreen">フルスクリーン</string>
+    <string name="ContentDescriptionExitFullScreen">フルスクリーン終了ボタン</string>
+
+    <!-- 1.7 -->
+    <string name="StartPageLabel">スタートページ</string>
+
+    <string name="RestartDialogTitle">再起動が必要です</string>
+    <string name="RestartDialogMessage">ブラウザを再起動するまで変更は反映されません。今すぐ再起動しますか？</string>
+
+    <string name="ContentDescriptionTabPreview">タブ・プレビュー</string>
+
+    <string name="PreferenceClosePanelOnNewTabTitle">サイドバーを自動で閉じる</string>
+    <string name="PreferenceClosePanelOnNewTabSummary">新しいタブを開いたときに自動でサイドバーを閉じる</string>
+
+    <string name="AboutChangelogTitle">変更履歴</string>
+    <string name="AboutContributorsTitle">貢献者</string>
+    <string name="AboutLicensesTitle">その他のライセンス</string>
+
+    <string name="RestoreTabsDialogTitle">タブの復元</string>
+    <string name="RestoreTabsDialogMessage">前回開いていたタブを復元しますか?</string>
+
+    <string name="PreferenceRestoreTabsTitle">タブの復元</string>
+    <string name="PreferenceRestoreTabsSummary">前回開いていたタブを復元するかどうかを設定</string>
+
+    <string name="PreferenceRestoreTabsAsk">毎回質問</string>
+    <string name="PreferenceRestoreTabsAlways">常に復元</string>
+    <string name="PreferenceRestoreTabsNever">復元しない</string>
+
+    <string-array name="PreferenceRestoreTabsEntries">
+        <item>@string/PreferenceRestoreTabsAsk</item>
+        <item>@string/PreferenceRestoreTabsAlways</item>
+        <item>@string/PreferenceRestoreTabsNever</item>
+    </string-array>
+
+    <string-array name="PreferenceRestoreTabsValues">
+        <item>ASK</item>
+        <item>ALWAYS</item>
+        <item>NEVER</item>
+    </string-array>
+
+    <string name="PreferenceUITypeTitle">UIタイプ</string>
+    <string name="PreferenceUITypeSummary">UI のタイプを選択</string>
+
+    <string name="PreferenceUITypeAuto">自動</string>
+    <string name="PreferenceUITypePhone">通常</string>
+    <string name="PreferenceUITypeLegacyPhone">通常 (レガシー)</string>
+    <string name="PreferenceUITypeTablet">タブレット</string>
+
+    <string-array name="PreferenceUITypeEntries">
+        <item>@string/PreferenceUITypeAuto</item>
+        <item>@string/PreferenceUITypePhone</item>
+        <item>@string/PreferenceUITypeLegacyPhone</item>
+        <item>@string/PreferenceUITypeTablet</item>
+    </string-array>
+
+    <string-array name="PreferenceUITypeValues">
+        <item>AUTO</item>
+        <item>PHONE</item>
+        <item>LEGACY_PHONE</item>
+        <item>TABLET</item>
+    </string-array>
+
+</resources>
