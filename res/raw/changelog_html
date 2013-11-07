@@ -35,6 +35,7 @@
 				<li>Cookies are now sent with download requests.</li>
 				<li>Ability to redirect JS logs to logcat.</li>
 				<li>Images can be opened in a new tab through the context menu.</li>
+				<li>Back key return to the start page if no browsing history (if the start page is used).</li>
 				<li>Spanish, Japanese, and Simplified Chinese translations.</li>
 			</ul>
 		</li>

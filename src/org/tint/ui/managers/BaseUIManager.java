@@ -569,6 +569,15 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 
 	protected abstract void setFullScreenFromPreferences();
 
+	protected boolean isStartPageShownOnCurrentTab() {
+		BaseWebViewFragment currentWebViewFragment = getCurrentWebViewFragment();
+		return currentWebViewFragment != null && currentWebViewFragment.isStartPageShown();
+	}
+	
+	protected boolean isHomePageStartPage() {
+		return Constants.URL_ABOUT_START.equals(PreferenceManager.getDefaultSharedPreferences(mActivity).getString(Constants.PREFERENCE_HOME_PAGE, Constants.URL_ABOUT_START));
+	}
+	
 	private void startHandler() {
 		mHandler = new Handler() {
 

@@ -351,6 +351,10 @@ public class LegacyPhoneUIManager extends BasePhoneUIManager {
 						(currentWebView.canGoBack())) {
 					currentWebView.goBack();
 					return true;
+				} else if (isHomePageStartPage() &&
+						!isStartPageShownOnCurrentTab()) {
+					loadHomePage();
+					return true;
 				}
 			}
 		}

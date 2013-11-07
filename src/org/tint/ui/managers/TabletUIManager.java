@@ -242,6 +242,10 @@ public class TabletUIManager extends BaseUIManager {
 					(currentWebView.canGoBack())) {
 				currentWebView.goBack();
 				return true;
+			} else if (isHomePageStartPage() &&
+					!isStartPageShownOnCurrentTab()) {
+				loadHomePage();
+				return true;
 			}
 		}
 		
