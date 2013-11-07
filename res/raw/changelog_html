@@ -29,11 +29,12 @@
 	<ul class="header">
 		<li>Version 1.7.1
 			<ul class="details">
-				<li>Fix file select dialog not opening</li>
-				<li>Added download confirmation dialog</li>
-				<li>Ability to redirect JS logs to logcat</li>
-				<li>"Incognito by default" option</li>
-				<li>Cookies are now sent with download requests</li>
+				<li>Fix file select dialog not opening.</li>
+				<li>Added download confirmation dialog.</li>				
+				<li>"Incognito by default" option.</li>
+				<li>Cookies are now sent with download requests.</li>
+				<li>Ability to redirect JS logs to logcat.</li>
+				<li>Spanish, Japanese, and Simplified Chinese translations.</li>
 			</ul>
 		</li>
 		<li>Version 1.7

@@ -19,7 +19,7 @@
     package="org.tint"
     android:installLocation="auto"
     android:versionCode="10"
-    android:versionName="1.7.1">
+    android:versionName="1.8">
 
     <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="17" />
     
