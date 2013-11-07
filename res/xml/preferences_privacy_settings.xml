@@ -133,5 +133,15 @@
             android:key="PREFERENCE_CLEAR_PASSWORDS" />
         
     </PreferenceCategory>	
+    
+    <PreferenceCategory android:title="@string/PreferencePrivacyIncognitoTitle">
+    
+        <CheckBoxPreference
+            android:title="@string/PreferencePrivacyIncognitoDefaultTitle"
+            android:summary="@string/PreferencePrivacyIncognitoDefaultSummary"
+            android:defaultValue="false"
+            android:key="PREFERENCE_INCOGNITO_BY_DEFAULT" />
+    
+    </PreferenceCategory>
 
 </PreferenceScreen>

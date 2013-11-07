@@ -303,7 +303,8 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 					// We do not have an url. Open a new tab if there is no tab currently opened,
 					// else do nothing.
 					if (getTabCount() <= 0) {
-						addTab(true, false);
+						addTab(true, PreferenceManager.getDefaultSharedPreferences(this.getMainActivity()).
+								getBoolean(Constants.PREFERENCE_INCOGNITO_BY_DEFAULT, false));
 					}
 				}
 			} else if (Constants.ACTION_BROWSER_CONTEXT_MENU.equals(intent.getAction())) {

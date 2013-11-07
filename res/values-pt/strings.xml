@@ -23,7 +23,6 @@
     <string name="AboutVersionText">Versão: %1$s (%2$s)</string>
     <string name="AboutLicenseText">Licença: GPLv3</string>
     <string name="AboutUrlText">https://github.com/Anasthase/TintBrowser</string>
-    <string name="AboutChangelogText">Changelog:</string>
     
     <string name="PermissionReadBookmarksLabel">Ler favoritos do Tint Browser</string>
     <string name="PermissionReadBookmarksDescription">Permitir aos addons e aplicações de terceiros a leitura do histórico e favoritos do Tint Browser.</string>
@@ -55,6 +54,9 @@
     <string name="ShareChooserTitle">Partilhar via</string>
     <string name="FileChooserPrompt">Escolher ficheiro para enviar</string>
     
+    <string name="Download">Descarregar</string>
+    <string name="DownloadDialogTitle">Descarregue</string>
+    <string name="DownloadInIncognito">Descarrega incógnito</string>
     <string name="DownloadStart">A descarregar %1$s&#8230;</string>
     <string name="DownloadComplete">Download completo.</string>
     <string name="DownloadFailedWithErrorMessage">Download falhou: %1$s.</string>
@@ -249,6 +251,10 @@
     <string name="PreferencePrivacyWebsitesSettingsTitle">Definições de sites</string>
     <string name="PreferencePrivacyWebsitesSettingsSummary">Definições avançadas para sites individuais.</string>
     
+    <string name="PreferencePrivacyIncognitoTitle">Modo incognito</string>
+    <string name="PreferencePrivacyIncognitoDefaultTitle">Incognito por padrão</string>
+    <string name="PreferencePrivacyIncognitoDefaultSummary">Abrir novas abas no modo incógnito</string>
+    
     <string name="HistoryToday">Hoje</string>
     <string name="HistoryYesterday">Ontem</string>
     <string name="HistoryLastSevenDays">Últimos 7 dias</string>
@@ -285,6 +291,10 @@
     <string name="SearchUrlGoogle">http://www.google.pt/m?q={searchTerms}</string>
     
     <string name="PreferenceHeaderAddonsTitle">Addons</string>
+    
+    <string name="PreferenceHeaderAdvancedTitle">Avançada</string>
+    <string name="PreferenceJsLogOnLocatTitle">Entrar registros JS para logcat</string>
+    <string name="PreferenceJsLogOnLocatSummary">Redirecionar os registros JS para o buffer logcat</string>
     
     <string name="PreferenceHeaderAboutTitle">Sobre</string>
     

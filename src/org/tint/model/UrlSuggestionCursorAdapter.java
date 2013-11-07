@@ -45,8 +45,8 @@ public class UrlSuggestionCursorAdapter extends SimpleCursorAdapter {
 	 * @param from Input array.
 	 * @param to Output array.
 	 */
-	public UrlSuggestionCursorAdapter(Context context, int layout, Cursor c, String[] from, int[] to, QueryBuilderListener listener) {		
-		super(context, layout, c, from, to);
+	public UrlSuggestionCursorAdapter(Context context, int layout, Cursor c, String[] from, int[] to, int flags, QueryBuilderListener listener) {		
+		super(context, layout, c, from, to, flags);
 		mQueryBuilderListener = listener;
 	}
 	

@@ -109,7 +109,8 @@ public class PhoneUIManager extends BasePhoneUIManager {
 		openTabView.setOnClickListener(new OnClickListener() {			
 			@Override
 			public void onClick(View v) {
-				addTab(true, false);
+				addTab(true, PreferenceManager.getDefaultSharedPreferences(v.getContext()).
+						getBoolean(Constants.PREFERENCE_INCOGNITO_BY_DEFAULT, false));
 				
 				if (mPreferences.getBoolean(Constants.PREFERENCE_CLOSE_PANEL_ON_NEW_TAB, true)) {
 					mPanel.hidePanel();

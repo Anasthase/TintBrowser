@@ -132,7 +132,7 @@ public class TabView extends LinearLayout {
 	public void setFavicon(Bitmap icon) {
 		BitmapDrawable bd;
 		if (icon != null) {
-			bd = new BitmapDrawable(Bitmap.createScaledBitmap(icon, mFaviconSize, mFaviconSize, false));
+			bd = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(icon, mFaviconSize, mFaviconSize, false));
 		} else {
 			bd = null;
 		}

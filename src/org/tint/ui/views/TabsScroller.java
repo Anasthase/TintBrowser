@@ -25,6 +25,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.graphics.Canvas;
@@ -203,7 +204,8 @@ public class TabsScroller extends ScrollerView {
         mScroller.forceFinished(true);
     }
 
-    @Override
+	@SuppressLint("WrongCall")
+	@Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
         if (mNeedsScroll) {

@@ -234,8 +234,9 @@ public class LegacyPhoneUIManager extends BasePhoneUIManager {
         mAddTab = (ImageView) mActivity.findViewById(R.id.BtnAddTab);
         mAddTab.setOnClickListener(new OnClickListener() {			
 			@Override
-			public void onClick(View arg0) {
-				addTab(true, false);
+			public void onClick(View view) {
+				addTab(true, PreferenceManager.getDefaultSharedPreferences(view.getContext()).
+						getBoolean(Constants.PREFERENCE_INCOGNITO_BY_DEFAULT, false));
 			}
 		});
         

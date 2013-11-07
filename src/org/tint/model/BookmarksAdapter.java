@@ -31,8 +31,8 @@ public class BookmarksAdapter extends SimpleCursorAdapter {
 	
 	private int mDefaultThumbnailId;
 	
-	public BookmarksAdapter(Context context, int layout, Cursor c, String[] from, int[] to, int defaultThumbnailId) {
-		super(context, layout, c, from, to);
+	public BookmarksAdapter(Context context, int layout, Cursor c, String[] from, int[] to, int flags, int defaultThumbnailId) {
+		super(context, layout, c, from, to, flags);
 		
 		mDefaultThumbnailId = defaultThumbnailId;
 	}

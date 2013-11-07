@@ -23,7 +23,6 @@
     <string name="AboutVersionText">Версия: %1$s (%2$s)</string>
     <string name="AboutLicenseText">Лицензия: GPLv3</string>
     <string name="AboutUrlText">https://github.com/Anasthase/TintBrowser</string>
-    <string name="AboutChangelogText">Список изменений:</string>
     
     <string name="PermissionReadBookmarksLabel">Читать закладки</string>
     <string name="PermissionReadBookmarksDescription">Разрешить сторонним приложениям и дополнениям читать историю и закладки браузера.</string>
@@ -55,6 +54,9 @@
     <string name="ShareChooserTitle">Поделиться</string>
     <string name="FileChooserPrompt">Выберите файл для загрузки</string>
     
+    <string name="Download">Загрузите</string>
+    <string name="DownloadDialogTitle">Загрузки</string>
+    <string name="DownloadInIncognito">Загрузки инкогнито</string>
     <string name="DownloadStart">Загрузка %1$s&#8230;</string>
     <string name="DownloadComplete">Загрузка завершена.</string>
     <string name="DownloadFailedWithErrorMessage">Загрузка прервана: %1$s.</string>
@@ -249,6 +251,10 @@
     <string name="PreferencePrivacyWebsitesSettingsTitle">Настройки веб-сайтов</string>
     <string name="PreferencePrivacyWebsitesSettingsSummary">Дополнительные настройки для отдельных сайтов.</string>
     
+    <string name="PreferencePrivacyIncognitoTitle">Pежим инкогнито</string>
+    <string name="PreferencePrivacyIncognitoDefaultTitle">Инкогнито по умолчанию</string>
+    <string name="PreferencePrivacyIncognitoDefaultSummary">Открывать новые вкладки в режиме инкогнито</string>
+    
     <string name="HistoryToday">Сегодня</string>
     <string name="HistoryYesterday">Вчера</string>
     <string name="HistoryLastSevenDays">На этой неделе</string>
@@ -285,6 +291,10 @@
     <string name="SearchUrlGoogle">http://yandex.ru/touchsearch?text={searchTerms}</string>
     
     <string name="PreferenceHeaderAddonsTitle">Дополнения</string>
+    
+    <string name="PreferenceHeaderAdvancedTitle">Расширенный</string>
+    <string name="PreferenceJsLogOnLocatTitle">Войти JS журналы LogCat</string>
+    <string name="PreferenceJsLogOnLocatSummary">Перенаправить JS журналы на LogCat буфер</string>
     
     <string name="PreferenceHeaderAboutTitle">О программе</string>
     

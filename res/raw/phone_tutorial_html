@@ -1,45 +1,45 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <title>Tutorial</title>
-        <style type="text/css">
-        	* {
-        		font-size: 95%;
-        	}        	
-            body {
-                font-family: sans-serif;
-            }
-            .details {
-            	font-size: 90%;
-            	background-color: #eeeeee;
-            	padding: 1em 1.5em 1em 1.5em;
-            	margin: 0.5em 0 0.5em 0;            	
-            }
-            .center {
-            	text-align: center;
-            }
-            img {
-            	display: block;
-            	margin: 0 auto;
-            }
-        </style>
-    </head>    
-    <body>
-    	<h3 class="center">Welcome to Tint Browser</h3>
-    	<ul>
-    	<li>Touch the top-left icon to open the side panel, wich give access to the list of opened tabs.</li>
-    	</ul>
-    	<img src="button.png" />    	
-    	<ul>
-    	<li>Alternatively, you can open the side panel by dragging the left edge of the browser.</li>
-    	</ul>
-    	<img src="slide_panel.png" />
-    	<ul>
-    	<li>Close a tab by clicking on its close icon, or swipe it left or right.</li>
-    	</ul>
-    	<img src="close_tab.png" />
-    	<p class="details">If you miss the previous user interface for phones, you can still enable it through preferences.</p>
-	</body>
+<!DOCTYPE html >
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<title>Tutorial</title>
+	<style>
+		* {
+			font-size: 95%;
+		}
+		body {
+			font-family: sans-serif;
+		}
+		.details {
+			font-size: 90%;
+			background-color: #eee;
+			padding: 1em 1.5em 1em 1.5em;
+			margin: .5em 0 .5em 0;
+		}
+		.center {
+			text-align: center;
+		}
+		img {
+			display: block;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<h3 class="center">Welcome to Tint Browser</h3>
+	<ul>
+	<li>Touch the top-left icon to open the side panel, wich give access to the list of opened tabs.</li>
+	</ul>
+	<img src="button.png" />
+	<ul>
+	<li>Alternatively, you can open the side panel by dragging the left edge of the browser.</li>
+	</ul>
+	<img src="slide_panel.png" />
+	<ul>
+	<li>Close a tab by clicking on its close icon, or swipe it left or right.</li>
+	</ul>
+	<img src="close_tab.png" />
+	<p class="details">If you miss the previous user interface for phones, you can still enable it through preferences.</p>
+</body>
 </html>

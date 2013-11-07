@@ -26,6 +26,7 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -71,9 +72,9 @@ public class HistoryBookmarksImportTask extends AsyncTask<String, Integer, Strin
 				(file.exists()) &&
 				(file.canRead())) {
 
-			if (file.getName().toLowerCase().endsWith(".json")) {
+			if (file.getName().toLowerCase(Locale.US).endsWith(".json")) {
 				return readAsJSON(file);
-			} else if (file.getName().toLowerCase().endsWith(".xml")) {
+			} else if (file.getName().toLowerCase(Locale.US).endsWith(".xml")) {
 				return readAsXml(file);
 			} else {
 				return mContext.getString(R.string.HistoryBookmarksImportErrorInvalidFileFormat);
@@ -148,7 +149,7 @@ public class HistoryBookmarksImportTask extends AsyncTask<String, Integer, Strin
 					
 					long id = folder.getLong("id");
 					long parentId = folder.getLong("parentId");
-					String title = URLDecoder.decode(folder.getString("title"));					
+					String title = URLDecoder.decode(folder.getString("title"), "UTF-8");
 					
 					ContentValues values = new ContentValues();
 					values.put(BookmarksProvider.Columns.TITLE, title);
@@ -216,8 +217,8 @@ public class HistoryBookmarksImportTask extends AsyncTask<String, Integer, Strin
 						parentFolder = folders.get(folderId);
 					}
 					
-					String title = URLDecoder.decode(bookmark.getString("title"));
-					String url = URLDecoder.decode(bookmark.getString("url"));
+					String title = URLDecoder.decode(bookmark.getString("title"), "UTF-8");
+					String url = URLDecoder.decode(bookmark.getString("url"), "UTF-8");
 					
 					ContentValues values = createContentValues(
 							title,
@@ -249,8 +250,8 @@ public class HistoryBookmarksImportTask extends AsyncTask<String, Integer, Strin
 					
 					JSONObject history = historyArray.getJSONObject(i);
 					
-					String title = URLDecoder.decode(history.getString("title"));
-					String url = URLDecoder.decode(history.getString("url"));
+					String title = URLDecoder.decode(history.getString("title"), "UTF-8");
+					String url = URLDecoder.decode(history.getString("url"), "UTF-8");
 					
 					ContentValues values = createContentValues(
 							title,
@@ -270,6 +271,9 @@ public class HistoryBookmarksImportTask extends AsyncTask<String, Integer, Strin
 			e.printStackTrace();
 			return e.getMessage();
 		} catch (JSONException e) {
+			e.printStackTrace();
+			return e.getMessage();
+		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			return e.getMessage();
 		}
@@ -334,9 +338,9 @@ public class HistoryBookmarksImportTask extends AsyncTask<String, Integer, Strin
 									(dataItem.getNodeName() != null)) {
 
 								if (dataItem.getNodeName().equals("title")) {
-									title = URLDecoder.decode(getNodeContent(dataItem));										
+									title = URLDecoder.decode(getNodeContent(dataItem), "UTF-8");
 								} else if (dataItem.getNodeName().equals("url")) {
-									url = URLDecoder.decode(getNodeContent(dataItem));
+									url = URLDecoder.decode(getNodeContent(dataItem), "UTF-8");
 								} else if (dataItem.getNodeName().equals("visits")) {
 									try {
 										visits = Integer.parseInt(getNodeContent(dataItem));

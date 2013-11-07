@@ -247,7 +247,7 @@ public class HistoryAdapter extends BaseExpandableListAdapter {
 		ImageView faviconView = (ImageView) view.findViewById(R.id.HistoryRow_Thumbnail);
 		Bitmap favicon = item.getFavicon();
 		if (favicon != null) {
-			BitmapDrawable icon = new BitmapDrawable(favicon);
+			BitmapDrawable icon = new BitmapDrawable(view.getResources(), favicon);
 			
 			Bitmap bm = Bitmap.createBitmap(mFaviconSize, mFaviconSize, Bitmap.Config.ARGB_8888);
 			Canvas canvas = new Canvas(bm);

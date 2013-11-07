@@ -32,7 +32,7 @@
             android:layout_marginTop="5dip"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="@+id/AddonName"
+            android:text=""
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -42,7 +42,7 @@
             android:layout_marginBottom="10dip"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="@+id/AddonShortDesc"
+            android:text=""
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <RelativeLayout
@@ -74,7 +74,7 @@
             android:layout_marginBottom="10dip"
             android:layout_marginTop="10dip"
             android:autoLink="web"
-            android:text="@+id/AddonLongDesc"
+            android:text=""
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
@@ -82,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:autoLink="web|email"
-            android:text="@+id/AddonContact"
+            android:text=""
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
@@ -96,7 +96,7 @@
             android:id="@+id/AddonCallbacks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@+id/AddonCallbacks"
+            android:text=""
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
@@ -110,7 +110,7 @@
             android:id="@+id/AddonPermissions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@+id/AddonPermissions"
+            android:text=""
             android:textAppearance="?android:attr/textAppearanceSmall" />
     </LinearLayout>
 
