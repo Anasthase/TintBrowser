@@ -573,6 +573,8 @@
     <string name="PreferenceDevelopersTitle">Développeurs</string>
     
     <string name="PreferenceJsLogOnLocatTitle">Logs JS vers logcat</string>
-    <string name="PreferenceJsLogOnLocatSummary">Rediriger les logs javascript vers le logcat.</string>    
+    <string name="PreferenceJsLogOnLocatSummary">Rediriger les logs javascript vers le logcat.</string>
+    
+    <string name="ContextMenuViewImageInNewTab">Voir l\'image dans un nouvel onglet</string>
 	
 </resources>

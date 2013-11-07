@@ -575,4 +575,6 @@
     <string name="PreferenceJsLogOnLocatTitle">Log JS logs to logcat</string>
     <string name="PreferenceJsLogOnLocatSummary">Redirect javascript logs to the logcat buffer.</string>
     
+    <string name="ContextMenuViewImageInNewTab">View image in a new tab</string>
+    
 </resources>

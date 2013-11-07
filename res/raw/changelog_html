@@ -34,6 +34,7 @@
 				<li>"Incognito by default" option.</li>
 				<li>Cookies are now sent with download requests.</li>
 				<li>Ability to redirect JS logs to logcat.</li>
+				<li>Images can be opened in a new tab through the context menu.</li>
 				<li>Spanish, Japanese, and Simplified Chinese translations.</li>
 			</ul>
 		</li>

@@ -313,6 +313,9 @@ public class CustomWebView extends WebView implements DownloadListener, Download
 					MenuItem item = menu.add(0, TintBrowserActivity.CONTEXT_MENU_OPEN, 0, R.string.ContextMenuViewImage);					
 					item.setIntent(createIntent(Constants.ACTION_BROWSER_CONTEXT_MENU, TintBrowserActivity.CONTEXT_MENU_OPEN, resultType, result.getExtra()));
 					
+					item = menu.add(0, TintBrowserActivity.CONTEXT_MENU_OPEN_IN_NEW_TAB, 0, R.string.ContextMenuViewImageInNewTab);					
+					item.setIntent(createIntent(Constants.ACTION_BROWSER_CONTEXT_MENU, TintBrowserActivity.CONTEXT_MENU_OPEN_IN_NEW_TAB, resultType, result.getExtra()));
+					
 					item = menu.add(0, TintBrowserActivity.CONTEXT_MENU_COPY, 0, R.string.ContextMenuCopyImageUrl);					
 					item.setIntent(createIntent(Constants.ACTION_BROWSER_CONTEXT_MENU, TintBrowserActivity.CONTEXT_MENU_COPY, resultType, result.getExtra()));
 					
