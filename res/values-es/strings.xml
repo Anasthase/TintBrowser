@@ -130,7 +130,7 @@
     <string name="PreferenceHomePageDialogTitle">Página principal</string>
     
     <string name="PreferenceGeneralSearchUrlTitle">Motor de búsqueda</string>
-    <string name="PreferenceGeneralSearchUrlSummary">Selecciona el motor de búsqueda que se usará como predetermindado para para las búsquedas en la barra de direcciones.</string>
+    <string name="PreferenceGeneralSearchUrlSummary">Selecciona el motor de búsqueda que se usará como predetermindado para las búsquedas en la barra de direcciones.</string>
     
     <string name="PreferenceCategoryStartPageTitle">Página de inicio</string>
     <string name="PreferenceGeneralStartPageLimitTitle">Número de elementos en la página de inicio</string>
@@ -290,11 +290,7 @@
     
     <string name="SearchUrlGoogle">http://www.google.es/m?q={searchTerms}</string>
     
-    <string name="PreferenceHeaderAddonsTitle">Complementos</string>
-    
-    <string name="PreferenceHeaderAdvancedTitle">Avanzado</string>
-    <string name="PreferenceJsLogOnLocatTitle">Entrar registros JS a Logcat</string>
-    <string name="PreferenceJsLogOnLocatSummary">Redireccionar los registros de JS en el búfer Logcat</string>
+    <string name="PreferenceHeaderAddonsTitle">Complementos</string>    
     
     <string name="PreferenceHeaderAboutTitle">Acerca de</string>
     
@@ -572,5 +568,11 @@
 		<item>LEGACY_PHONE</item>
 		<item>TABLET</item>
 	</string-array>
+    
+    <!-- 1.8 -->
+    <string name="PreferenceDevelopersTitle">Desarrolladores</string>
+    
+    <string name="PreferenceJsLogOnLocatTitle">Entrar registros JS a Logcat</string>
+    <string name="PreferenceJsLogOnLocatSummary">Redireccionar los registros de JS en el búfer Logcat.</string>
     
 </resources>

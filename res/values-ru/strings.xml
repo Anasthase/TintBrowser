@@ -290,11 +290,7 @@
 
     <string name="SearchUrlGoogle">http://yandex.ru/touchsearch?text={searchTerms}</string>
     
-    <string name="PreferenceHeaderAddonsTitle">Дополнения</string>
-    
-    <string name="PreferenceHeaderAdvancedTitle">Расширенный</string>
-    <string name="PreferenceJsLogOnLocatTitle">Войти JS журналы LogCat</string>
-    <string name="PreferenceJsLogOnLocatSummary">Перенаправить JS журналы на LogCat буфер</string>
+    <string name="PreferenceHeaderAddonsTitle">Дополнения</string>    
     
     <string name="PreferenceHeaderAboutTitle">О программе</string>
     
@@ -573,4 +569,10 @@
 		<item>TABLET</item>
 	</string-array>
 	
+    <!-- 1.8 -->
+    <string name="PreferenceDevelopersTitle">Разработчики</string>
+    
+    <string name="PreferenceJsLogOnLocatTitle">Войти JS журналы LogCat</string>
+    <string name="PreferenceJsLogOnLocatSummary">Перенаправить JS журналы на LogCat буфер.</string>
+    
 </resources>

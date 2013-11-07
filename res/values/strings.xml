@@ -290,11 +290,7 @@
     
     <string name="SearchUrlGoogle">http://www.google.com/m?q={searchTerms}</string>
     
-    <string name="PreferenceHeaderAddonsTitle">Addons</string>
-    
-    <string name="PreferenceHeaderAdvancedTitle">Advanced</string>
-    <string name="PreferenceJsLogOnLocatTitle">Log JS logs to logcat</string>
-    <string name="PreferenceJsLogOnLocatSummary">Redirect the JS logs to the logcat buffer</string>
+    <string name="PreferenceHeaderAddonsTitle">Addons</string>    
     
     <string name="PreferenceHeaderAboutTitle">About</string>
     
@@ -572,5 +568,11 @@
 		<item>LEGACY_PHONE</item>
 		<item>TABLET</item>
 	</string-array>
+	
+    <!-- 1.8 -->
+    <string name="PreferenceDevelopersTitle">Developers</string>
+    
+    <string name="PreferenceJsLogOnLocatTitle">Log JS logs to logcat</string>
+    <string name="PreferenceJsLogOnLocatSummary">Redirect javascript logs to the logcat buffer.</string>
     
 </resources>

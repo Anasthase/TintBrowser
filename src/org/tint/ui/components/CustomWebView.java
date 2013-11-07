@@ -276,7 +276,6 @@ public class CustomWebView extends WebView implements DownloadListener, Download
 	private void setupContextMenu() {
 		setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
 			
-			@SuppressWarnings("deprecation")
 			@Override
 			public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
 				HitTestResult result = ((WebView) v).getHitTestResult();

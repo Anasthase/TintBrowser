@@ -27,7 +27,7 @@
 </head>
 <body>
 	<ul class="header">
-		<li>Version 1.7.1
+		<li>Version 1.8
 			<ul class="details">
 				<li>Fix file select dialog not opening.</li>
 				<li>Added download confirmation dialog.</li>				

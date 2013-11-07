@@ -56,5 +56,15 @@
 			android:summary="@string/PreferenceUseWideViewportSummary"
 			android:defaultValue="true"
 			android:key="PREFERENCE_USE_WIDE_VIEWPORT" />
+    
+    <PreferenceCategory        
+        android:title="@string/PreferenceDevelopersTitle" >
+        
+        <CheckBoxPreference
+			android:title="@string/PreferenceJsLogOnLocatTitle"			
+			android:summary="@string/PreferenceJsLogOnLocatSummary"
+			android:defaultValue="false"
+			android:key="PREFERENCE_JS_LOG_ON_LOGCAT" />        
+    </PreferenceCategory>
 
 </PreferenceScreen>

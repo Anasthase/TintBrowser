@@ -290,11 +290,7 @@
     
     <string name="SearchUrlGoogle">http://www.google.de/m?q={searchTerms}</string>
     
-    <string name="PreferenceHeaderAddonsTitle">Erweiterungen</string>
-    
-    <string name="PreferenceHeaderAdvancedTitle">Advanced</string>
-    <string name="PreferenceJsLogOnLocatTitle">Anmelden JS Protokolle logcat</string>
-    <string name="PreferenceJsLogOnLocatSummary">Lenken Sie die JS Protokolle an den logcat puffer</string>
+    <string name="PreferenceHeaderAddonsTitle">Erweiterungen</string>    
     
     <string name="PreferenceHeaderAboutTitle">Über</string>
     
@@ -369,7 +365,7 @@
     
     <string name="AddonCallbackPageStarted">Wird benachrichtigt, wenn eine Seite aufgerufen wird.</string>
     <string name="AddonCallbackPageFinished">Wird benachrichtigt, wenn eine Seite vollständig geladen wurde.</string>
-    <string name="AddonCallbackTabOpened">Wird benachrichtigt, wenn ein ein neuer Reiter geöffnet wird.</string>
+    <string name="AddonCallbackTabOpened">Wird benachrichtigt, wenn ein neuer Reiter geöffnet wird.</string>
     <string name="AddonCallbackTabClosed">Wird benachrichtigt, wenn ein Reiter geschlossen wird.</string>
     <string name="AddonCallbackTabSwitched">Wird benachrichtigt, wenn der aktuelle Reiter gewechselt wird.</string>
     <string name="AddonCallbackHasPreferencesPage">Bietet Einstellungen.</string>
@@ -572,5 +568,11 @@
 		<item>LEGACY_PHONE</item>
 		<item>TABLET</item>
 	</string-array>
+	
+    <!-- 1.8 -->
+    <string name="PreferenceDevelopersTitle">Entwickler</string>
+    
+    <string name="PreferenceJsLogOnLocatTitle">Anmelden JS Protokolle logcat</string>
+    <string name="PreferenceJsLogOnLocatSummary">Lenken Sie die JS Protokolle an den logcat puffer.</string>
 
 </resources>
