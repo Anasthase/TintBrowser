@@ -19,6 +19,7 @@ import java.util.List;
 
 import org.tint.R;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -49,6 +50,11 @@ public class PreferencesActivity extends PreferenceActivity {
 			return true;
 		default: return super.onContextItemSelected(item);
 		}
+	}
+	
+	@SuppressLint("Override")
+	protected boolean isValidFragment(String fragmentName) {
+		return true;
 	}
 	
 }

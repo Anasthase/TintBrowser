@@ -157,7 +157,7 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 			CustomWebView webView = fragment.getWebView();
 			String currentUrl = webView.getUrl();
 			
-			fragment.setPrivateBrowsing(!webView.isPrivateBrowsingEnabled());			
+			fragment.setPrivateBrowsing(!fragment.isPrivateBrowsingEnabled());			
 			fragment.resetWebView();
 			
 			resetUI();
@@ -295,7 +295,10 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
 				
 				if (!TextUtils.isEmpty(url)) {
 					if (!isCurrentTabReusable()) {
-						addTab(url, false, false);
+						addTab(url,
+								false,
+								PreferenceManager.getDefaultSharedPreferences(this.getMainActivity()).
+									getBoolean(Constants.PREFERENCE_INCOGNITO_BY_DEFAULT, false));
 					} else {
 						loadUrl(url);
 					}					

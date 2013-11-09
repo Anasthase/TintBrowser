@@ -62,6 +62,7 @@ public class CustomWebView extends WebView implements DownloadListener, Download
 	private BaseWebViewFragment mParentFragment;
 
 	private boolean mIsLoading = false;
+	private boolean mPrivateBrowsing = false;	
 	
 	private static boolean sMethodsLoaded = false;
 	private static Method sWebSettingsSetProperty = null;
@@ -73,12 +74,13 @@ public class CustomWebView extends WebView implements DownloadListener, Download
 	
 	// Used only by edit mode (UI designer)
 	public CustomWebView(Context context, AttributeSet attrs) {
-		super(context, attrs, android.R.attr.webViewStyle, false);
+		super(context, attrs, android.R.attr.webViewStyle);
 		mContext = context;
 	}
 	
 	public CustomWebView(Context context, AttributeSet attrs, boolean privateBrowsing) {
-		super(context, attrs, android.R.attr.webViewStyle, privateBrowsing);
+		super(context, attrs, android.R.attr.webViewStyle);
+		mPrivateBrowsing = privateBrowsing;
 		
 		mContext = context;
 		
@@ -107,6 +109,10 @@ public class CustomWebView extends WebView implements DownloadListener, Download
 	
 	public boolean isLoading() {
 		return mIsLoading;
+	}
+	
+	public boolean isPrivateBrowsingEnabled() {
+		return mPrivateBrowsing;
 	}
 	
 	@Override
@@ -195,19 +201,29 @@ public class CustomWebView extends WebView implements DownloadListener, Download
 		settings.setSupportMultipleWindows(true);
 		settings.setEnableSmoothTransition(true);
 		
-		// HTML5 API flags
-		settings.setAppCacheEnabled(true);
-    	settings.setDatabaseEnabled(true);
-    	settings.setDomStorageEnabled(true);
-    	
-    	// HTML5 configuration settings.
-        settings.setAppCacheMaxSize(3 * 1024 * 1024);
-        settings.setAppCachePath(mContext.getDir("appcache", 0).getPath());
-        settings.setDatabasePath(mContext.getDir("databases", 0).getPath());
-        settings.setGeolocationDatabasePath(mContext.getDir("geolocation", 0).getPath());
+		if (mPrivateBrowsing) {
+			settings.setGeolocationEnabled(false);
+			settings.setSaveFormData(false);
+			settings.setSavePassword(false);
+			
+			settings.setAppCacheEnabled(false);
+			settings.setDatabaseEnabled(false);
+			settings.setDomStorageEnabled(false);
+		} else {
+			// HTML5 API flags
+			settings.setAppCacheEnabled(true);
+			settings.setDatabaseEnabled(true);
+			settings.setDomStorageEnabled(true);
+
+			// HTML5 configuration settings.
+			settings.setAppCacheMaxSize(3 * 1024 * 1024);
+			settings.setAppCachePath(mContext.getDir("appcache", 0).getPath());
+			settings.setDatabasePath(mContext.getDir("databases", 0).getPath());
+			settings.setGeolocationDatabasePath(mContext.getDir("geolocation", 0).getPath());
+		}
 		
 		setLongClickable(true);
-		setDownloadListener(this);
+		setDownloadListener(this);		
 	}
 	
 	@Override
