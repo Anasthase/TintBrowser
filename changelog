@@ -1,9 +1,14 @@
-1.7.1:
-- Fix file select dialog not opening
-- Added download confirmation dialog
-- Ability to redirect JS logs to logcat
-- "Incognito by default" option
-- Cookies are now sent with download requests
+1.8:
+- Fix file select dialog not opening.
+- Added download confirmation dialog.
+- Ability to redirect JS logs to logcat.
+- "Incognito by default" option.
+- Cookies are now sent with download requests.
+- Ability to redirect JS logs to logcat.
+- Images can be opened in a new tab through the context menu.
+- Back key return to the start page if no browsing history (if the start page is used).
+- Spanish, Japanese, and Simplified Chinese translations.
+
 1.7:
 - New user interface for phones. The legacy one is still available under preferences.
 - Opened tabs can now be restored at start-up.
