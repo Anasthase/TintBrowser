@@ -298,7 +298,7 @@
     <string name="HttpAuthenticationDialogUserName">Логин</string>
     <string name="HttpAuthenticationDialogPassword">Пароль</string>
     
-    <string name="FormResubmitTitle">Повторная отправка даннах</string>
+    <string name="FormResubmitTitle">Повторная отправка данных</string>
     <string name="FormResubmitMessage">Для отображения страницы браузер отправит на сервер запрос (\"POSTDATA\"), который повторит предыдущее действие (поисковый запрос, онлайн-покупку и т. д.).</string>
     
     <string name="BookmarkAdded">Закладка добавлена</string>
