@@ -548,7 +548,7 @@
 	</string-array>
 	
     <string name="PreferenceUITypeTitle">Тип интерфейса</string>
-    <string name="PreferenceUITypeSummary">Компоновка интерфейса для разных устройств.</string>
+    <string name="PreferenceUITypeSummary">Компоновка интерфейса для различных устройств.</string>
     
     <string name="PreferenceUITypeAuto">Автоматически</string>
     <string name="PreferenceUITypePhone">Смартфон</string>
