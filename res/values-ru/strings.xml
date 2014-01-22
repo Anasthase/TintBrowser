@@ -513,7 +513,7 @@
     <!-- 1.7 -->
     <string name="StartPageLabel">Стартовая страница</string>
 
-    <string name="RestartDialogTitle">Требуется перезагрузка</string>
+    <string name="RestartDialogTitle">Требуется перезапуск</string>
     <string name="RestartDialogMessage">Изменения вступят в силу после перезапуска приложения. Выполнить сейчас?</string>
     
     <string name="ContentDescriptionTabPreview">Предпросмотр вкладки</string>
