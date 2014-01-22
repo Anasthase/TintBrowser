@@ -493,7 +493,7 @@
     <string name="SearchUrlBadResponseCodeMessage">Нет соединения с репозиторием поисковых систем (код ответа: %s).</string>
     
     <string name="SearchUrlDefault">Яндекс</string>
-    <string name="SearchUrlCustom">Своя система поиска</string>
+    <string name="SearchUrlCustom">Своя поисковая система</string>
     
     <string name="SortBookmarks">Сортировка</string>
     <string name="MostUsedSortMode">Частота посещения</string>
