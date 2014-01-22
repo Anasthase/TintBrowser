@@ -476,7 +476,7 @@
     <string name="SslExceptionWebsitesText"><i>Нажмите, чтобы удалить исключение.</i></string>
     <string name="SslExceptionEmptyText">Нет исключений безопасности SSL.</string>
     
-    <string name="RemoveSslExceptionTitle">Удалить исключение безопасности</string>
+    <string name="RemoveSslExceptionTitle">Удаление исключения</string>
     <string name="RemoveSslExceptionMessage">Удалить исключения безопасности для этого сайта?</string>
     
     <string name="SslInvalid">Этот сертификат недействителен.</string>
