@@ -301,7 +301,7 @@
     <string name="FormResubmitTitle">Повторная отправка данных</string>
     <string name="FormResubmitMessage">Для отображения страницы браузер отправит на сервер запрос (\"POSTDATA\"), который повторит предыдущее действие (поисковый запрос, онлайн-покупку и т. д.).</string>
     
-    <string name="BookmarkAdded">Закладка добавлена</string>
+    <string name="BookmarkAdded">Закладка добавлена.</string>
     <string name="BookmarkRemoved">Закладка удалена.</string>
     
     <string name="SDCardErrorNoSDMsg">SD-карта не найдена.</string>
