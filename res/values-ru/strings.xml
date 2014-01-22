@@ -328,7 +328,7 @@
     
     <string name="HistoryBookmarksExportTitle">Экспорт истории и закладок</string>
     <string name="HistoryBookmarksExportInitialMessage">Экспорт истории и закладок…</string>
-    <string name="HistoryBookmarksExportCheckCardMessage">Проверка внешних носителей…</string>
+    <string name="HistoryBookmarksExportCheckCardMessage">Проверка SD-карты…</string>
     <string name="HistoryBookmarksExportProgressMessage">Экспорт %1$s элемента из %2$s.</string>
     <string name="HistoryBookmarksExportErrorTitle">Ошибка экспорта</string>
     <string name="HistoryBookmarksExportErrorMessage">Ошибка при экспорте истории и закладок: %s</string>
