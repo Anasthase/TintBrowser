@@ -83,9 +83,9 @@
     <string name="UrlCopyToastMessage">Адрес скопирован в буфер обмена.</string>
     <string name="ContextMenuShareUrl">Поделиться</string>
     
-    <string name="JavaScriptAlertDialog">JavaScript: предупреждение</string>
-    <string name="JavaScriptConfirmDialog">JavaScript: подтверждение</string>
-    <string name="JavaScriptPromptDialog">JavaScript: примечание</string>
+    <string name="JavaScriptAlertDialog">JS: предупреждение</string>
+    <string name="JavaScriptConfirmDialog">JS: подтверждение</string>
+    <string name="JavaScriptPromptDialog">JS: примечание</string>
     
     <string name="SslWarning">Предупреждение системы безопасности</string>
     <string name="SslWarningsHeader">Проблемы с сертификатом безопасности этого сайта (%s).</string>
