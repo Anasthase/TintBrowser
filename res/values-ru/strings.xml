@@ -342,7 +342,7 @@
     
     <string name="WebsitesSettingsSiteTitle">Настройки для %s</string>
     
-    <string name="WebsitesSettingsDataUsage">%s MB хранится на этом устройстве.</string>
+    <string name="WebsitesSettingsDataUsage">%s МБ хранится на этом устройстве.</string>
     <string name="WebsitesSettingsDataClickToClear">Нажмите для удаления сохранённых данных.</string>
     <string name="WebsitesSettingsCleatDataDialogTitle">Удаление данных</string>
     <string name="WebsitesSettingsCleatDataDialogMessage">Удалить все сохранённые данные, относящиеся к этому сайту?</string>
