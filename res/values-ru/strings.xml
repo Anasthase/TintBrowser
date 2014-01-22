@@ -482,8 +482,8 @@
     <string name="SslInvalid">Этот сертификат недействителен.</string>
     <string name="SslDateInvalid">Дата сертификата недействительна.</string>
     
-    <string name="Authorized">Авторизованный:</string>
-    <string name="Reasons">Причины:</string>
+    <string name="Authorized">Авторизован:</string>
+    <string name="Reasons">Основание:</string>
     
     <string name="SearchUrlDialogText1">Поисковая система по умолчанию:</string>
     <string name="SearchUrlDialogText2">Доступные поисковые системы:</string>
