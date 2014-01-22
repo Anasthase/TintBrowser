@@ -115,7 +115,7 @@
     <string name="UrlHint">http://</string>
     <string name="AddBookmarkLabelOrUrlEmpty">Введите название и адрес.</string>
     
-    <string name="OpenInTab">В новой вкладк</string>
+    <string name="OpenInTab">В новой вкладке</string>
     <string name="EditBookmark">Изменить закладку</string>
     <string name="CopyUrl">Копировать адрес</string>
     <string name="DeleteBookmark">Удалить закладку</string>
