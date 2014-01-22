@@ -91,7 +91,7 @@
     <string name="SslWarningsHeader">Проблемы с сертификатом безопасности этого сайта (%s).</string>
     <string name="SslUntrusted">Сертификат не является доверенным.</string>
     <string name="SslIDMismatch">Название сайта не совпадает с указанным в сертификате.</string>
-    <string name="SslExpired">Сертификат истек.</string>
+    <string name="SslExpired">Сертификат истёк.</string>
     <string name="SslNotYetValid">Сертификат ещё не действителен</string>
     
     <string name="NewTab">Новая вкладка</string>
