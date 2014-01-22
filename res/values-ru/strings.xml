@@ -526,7 +526,7 @@
     <string name="AboutLicensesTitle">Сторонние лицензии</string>
     
     <string name="RestoreTabsDialogTitle">Восстановление вкладок</string>
-    <string name="RestoreTabsDialogMessage">Восстановить вкладки предыдущего сеанса?</string>
+    <string name="RestoreTabsDialogMessage">Открыть вкладки предыдущего сеанса?</string>
     
     <string name="PreferenceRestoreTabsTitle">Восстановление вкладок</string>
     <string name="PreferenceRestoreTabsSummary">Режим восстановления вкладок предыдущего сеанса.</string>
