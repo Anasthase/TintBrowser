@@ -551,8 +551,8 @@
     <string name="PreferenceUITypeSummary">Компоновка интерфейса для разных устройств.</string>
     
     <string name="PreferenceUITypeAuto">Автоматически</string>
-    <string name="PreferenceUITypePhone">Телефон</string>
-    <string name="PreferenceUITypeLegacyPhone">Телефон (прежний)</string>
+    <string name="PreferenceUITypePhone">Смартфон</string>
+    <string name="PreferenceUITypeLegacyPhone">Смартфон (прежний)</string>
     <string name="PreferenceUITypeTablet">Планшет</string>
     
     <string-array name="PreferenceUITypeEntries">
