@@ -350,7 +350,7 @@
     <string name="WebsitesSettingsGeolocationClickToClear">Нажмите для удаления доступа к данным о местоположении.</string>
     <string name="WebsitesSettingsGeolocationAllowed">Этот сайт может получить доступ к данным о местоположении.</string>
     <string name="WebsitesSettingsGeolocationNotAllowed">Этот сайт не может получить доступ к данным о местоположении.</string>
-    <string name="WebsitesSettingsGeolocationPageDialogTitle">Очистка доступа к данным о местороложении</string>
+    <string name="WebsitesSettingsGeolocationPageDialogTitle">Очистка доступа к данным о местоположении</string>
     <string name="WebsitesSettingsGeolocationPageDialogMessage">Очистить доступ для этого сайта к данным о местоположении?</string>
     
     <string name="AddonsWarningText">Устанавливайте дополнения только от доверенных разработчиков.\nПри странном поведении браузера отключите все дополнения.</string>
