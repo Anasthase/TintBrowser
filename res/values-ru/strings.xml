@@ -239,7 +239,7 @@
     <string name="PreferenceCategoryFormDataTitle">Формы</string>
     <string name="PreferencePrivacyRememberFormDataTitle">Сохранять данные форм</string>
     <string name="PreferencePrivacyRememberFormDataSummary">Запоминать введённые данные форм для автозаполнения.</string>
-    <string name="PreferencePrivacyClearFormDataTitle">Очистить данные формы</string>
+    <string name="PreferencePrivacyClearFormDataTitle">Очистить данные форм</string>
     <string name="PreferencePrivacyClearFormDataSummary">Очистить сохранённые данные форм.</string>
     
     <string name="PreferenceCategoryPasswordsTitle">Пароли</string>
