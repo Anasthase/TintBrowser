@@ -190,10 +190,10 @@
     <string name="PreferenceUseWideViewportSummary">Подгонять веб-страницы под размер экрана.</string>
     <string name="PreferenceLoadPagesWithOverviewTitle">Обзор страницы</string>
     <string name="PreferenceLoadPagesWithOverviewSummary">Открывать новые страницы в окне предпросмотра.</string>
-    <string name="PreferencePluginsTitle">Включить плагины</string>
+    <string name="PreferencePluginsTitle">Запуск плагинов</string>
     <string name="PreferencePluginsSummary">Способ запуска плагинов.</string>
     
-    <string name="PreferencePluginsAlwaysOff">Отключено</string>
+    <string name="PreferencePluginsAlwaysOff">Отключить</string>
     <string name="PreferencePluginsOnDemand">По требованию</string>
     <string name="PreferencePluginsAlwaysOn">Автоматически</string>
 
