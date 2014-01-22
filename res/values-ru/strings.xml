@@ -28,7 +28,7 @@
     <string name="PermissionReadBookmarksDescription">Разрешить сторонним приложениям и дополнениям читать историю и закладки браузера.</string>
     
     <string name="PermissionWriteBookmarksLabel">Добавление закладок</string>
-    <string name="PermissionWriteBookmarksDescription">Разрешить сторонним приложениям и дополнениям сохранять в историю и закладки браузера.</string>
+    <string name="PermissionWriteBookmarksDescription">Разрешить сторонним приложениям и дополнениям изменять историю и закладки браузера.</string>
     
     <string name="PermissionBindAddonServiceLabel">Подключение дополнений</string>
     <string name="PermissionBindAddonServiceDescription">Разрешить приложениям добавлять дополнения к браузеру. Необходимо только для браузера.</string>
