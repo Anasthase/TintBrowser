@@ -55,8 +55,8 @@
     <string name="FileChooserPrompt">Выберите файл для загрузки</string>
     
     <string name="Download">Загрузка</string>
-    <string name="DownloadDialogTitle">Загрузки</string>
-    <string name="DownloadInIncognito">Загрузки инкогнито</string>
+    <string name="DownloadDialogTitle">Загрузка</string>
+    <string name="DownloadInIncognito">Загрузить инкогнито</string>
     <string name="DownloadStart">Загрузка %1$s…</string>
     <string name="DownloadComplete">Загрузка завершена.</string>
     <string name="DownloadFailedWithErrorMessage">Загрузка прервана: %1$s.</string>
