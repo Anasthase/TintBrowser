@@ -85,7 +85,7 @@
     
     <string name="JavaScriptAlertDialog">JS: предупреждение</string>
     <string name="JavaScriptConfirmDialog">JS: подтверждение</string>
-    <string name="JavaScriptPromptDialog">JS: примечание</string>
+    <string name="JavaScriptPromptDialog">JS: сообщение</string>
     
     <string name="SslWarning">Предупреждение системы безопасности</string>
     <string name="SslWarningsHeader">Проблемы с сертификатом безопасности этого сайта (%s).</string>
