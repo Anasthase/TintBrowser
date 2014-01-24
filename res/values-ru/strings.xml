@@ -290,7 +290,7 @@
 
     <string name="SearchUrlGoogle">http://yandex.ru/touchsearch?text={searchTerms}</string>
     
-    <string name="PreferenceHeaderAddonsTitle">Дополнения</string>    
+    <string name="PreferenceHeaderAddonsTitle">Дополнения браузера</string>    
     
     <string name="PreferenceHeaderAboutTitle">О программе</string>
     
