@@ -391,10 +391,20 @@ public class BookmarksWrapper {
 	public static void updateHistory(ContentResolver contentResolver, String title, String url, String originalUrl) {
 		String[] colums = new String[] { BookmarksProvider.Columns._ID, BookmarksProvider.Columns.URL, BookmarksProvider.Columns.BOOKMARK, BookmarksProvider.Columns.VISITS };
 		
+		if ((url == null || url.length() == 0) && (originalUrl == null || originalUrl.length() == 0))
+			return;
+		
 		String escapedUrl = url != null ? DatabaseUtils.sqlEscapeString(url) : "";
 		String escapedOriginalUrl = originalUrl != null ? DatabaseUtils.sqlEscapeString(originalUrl) : "";
 		
-		String whereClause = BookmarksProvider.Columns.URL + " = " + escapedUrl + " OR " + BookmarksProvider.Columns.URL + " = " + escapedOriginalUrl;
+		String whereClause = ((escapedUrl.length() > 0) ?
+				BookmarksProvider.Columns.URL + " = " + escapedUrl : "") +
+				
+				((escapedUrl.length() > 0 && escapedOriginalUrl.length() > 0) ?
+				" OR " : "") +
+				
+				((escapedOriginalUrl.length() > 0) ?
+				BookmarksProvider.Columns.URL + " = " + escapedOriginalUrl : "");
 
 		Cursor cursor = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, colums, whereClause, null, null);
 
