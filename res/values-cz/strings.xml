@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+   Tint Browser for Android
+  
+   Copyright (C) 2012 - to infinity and beyond J. Devauchelle and contributors.
+ 
+   Czech translation by AsciiWolf <mail@asciiwolf.com>
+
+   This program is free software; you can redistribute it and/or
+   modify it under the terms of the GNU General Public License
+   version 3 as published by the Free Software Foundation.
+ 
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+ -->
+
+<resources>
+
+    <string name="ApplicationName">Tint Browser</string>
+    <string name="ApplicationDescription">Tint Browser je open-source prohlížeč pro Android.</string>
+    
+    <string name="AboutVersionText">Verze: %1$s (%2$s)</string>
+    <string name="AboutLicenseText">Licence: GPLv3</string>
+    <string name="AboutUrlText">https://github.com/Anasthase/TintBrowser</string>
+    
+    <string name="PermissionReadBookmarksLabel">Číst Tint Browser záložky</string>
+    <string name="PermissionReadBookmarksDescription">Povolit aplikacím či doplňkům třetích stran čtení databáze historie a záložek Tint Browseru.</string>
+    
+    <string name="PermissionWriteBookmarksLabel">Zapisovat Tint Browser záložky</string>
+    <string name="PermissionWriteBookmarksDescription">Povolit aplikacím či doplňkům třetích stran zápis do databáze historie a záložek Tint Browseru.</string>
+    
+    <string name="PermissionBindAddonServiceLabel">Přiřadit služby doplňků Tint Browseru</string>
+    <string name="PermissionBindAddonServiceDescription">Povolit aplikaci přiřazení služeb doplňků Tint Browseru. Toto oprávnění by měl mít pouze sám Tint Browser.</string>
+    
+    <string name="OK">OK</string>
+    <string name="Cancel">Zrušit</string>
+    <string name="Yes">Ano</string>
+    <string name="No">Ne</string>
+    <string name="On">ZAP</string>
+    <string name="Off">VYP</string>
+    <string name="Clear">Vymazat</string>
+    <string name="Continue">Pokračovat</string>
+    <string name="Proceed">Provést</string>
+    <string name="VideoLoading">Načítám video\u2026</string>
+    <string name="History">Historie</string>
+    <string name="All">Vše</string>
+    <string name="Bookmarks">Záložky</string>
+    <string name="Preferences">Nastavení</string>
+    
+    <string name="UrlBarUrlDefaultSubTitle">Klepněte pro zadání adresy nebo hledání.</string>
+    <string name="UrlBarUrlHint">Vložte termín pro vyhledání nebo adresu</string>
+    
+    <string name="ShareChooserTitle">Sdílet pomocí</string>
+    <string name="FileChooserPrompt">Zvolte soubor pro nahrání</string>
+    
+    <string name="Download">Stáhnout</string>
+    <string name="DownloadDialogTitle">Stáhnout</string>
+    <string name="DownloadInIncognito">Stáhnout v režimu incognito</string>
+    <string name="DownloadStart">Stahuji %1$s&#8230;</string>
+    <string name="DownloadComplete">Stahování dokončeno.</string>
+    <string name="DownloadFailedWithErrorMessage">Stahování selhalo: %1$s.</string>
+    <string name="DownloadErrorDisk">Chyba zápisu, ověřte, jestli je dostupné paměťové médium a je na něm dostatek volného místa.</string>
+    <string name="DownloadErrorHttp">Chyba HTTP</string>
+    <string name="DownloadErrorRedirection">Příliš mnoho přesměrování</string>
+    <string name="DownloadErrorUnknown">Neznámá chyba</string>
+    
+    <string name="ContextMenuOpen">Otevřít</string>
+    <string name="ContextMenuOpenNewTab">Otevřít v nové kartě</string>
+    <string name="ContextMenuCopyLinkUrl">Kopírovat adresu odkazu</string>
+    <string name="ContextMenuDownload">Stáhnout</string>
+    <string name="ContextMenuShareLinkUrl">Sdílet odkaz</string>
+    
+    <string name="ContextMenuViewImage">Zobrazit obrázek</string>
+    <string name="ContextMenuCopyImageUrl">Kopírovat adresu obrázku</string>
+    <string name="ContextMenuDownloadImage">Stáhnout obrázek</string>
+    <string name="ContextMenuShareImageUrl">Sdílet obrázek</string>
+    
+    <string name="ContextMenuSendEmail">Poslat email</string>
+    <string name="ContextMenuCopyEmailUrl">Kopírovat email. adresu</string>
+    <string name="ContextMenuShareEmailUrl">Sdílet email</string>
+    
+    <string name="UrlCopyToastMessage">Adresa zkopírována do schránky.</string>
+    <string name="ContextMenuShareUrl">Sdílet</string>
+    
+    <string name="JavaScriptAlertDialog">JavaScript alert dialog</string>
+    <string name="JavaScriptConfirmDialog">JavaScript confirm dialog</string>
+    <string name="JavaScriptPromptDialog">JavaScript prompt dialog</string>
+	
+    <string name="SslWarning">Bezpečnostní upozornění</string>
+    <string name="SslWarningsHeader">Vyskytly se potíže s bezpečnostním certifikátem pro tuto stránku (%s).</string>
+    <string name="SslUntrusted">Tento certifikát není vydán důvěryhodnou certifikační autoritou.</string>
+    <string name="SslIDMismatch">Jméno této stránky neodpovídá jménu uvedeném na certifikátu.</string>
+    <string name="SslExpired">Platnost tohoto certifikátu vypršela.</string>
+    <string name="SslNotYetValid">Tento certifikát není zatím platný.</string>
+        
+    <string name="NewTab">Nová karta</string>
+        
+    <string name="CloseTab">Zavřít současnou kartu</string>
+    <string name="AddBookmark">Přidat záložku</string>
+    <string name="SharePage">Sdílet stránku</string>
+    <string name="Search">Najít na stránce</string>
+    
+    <string name="BookmarksTitle">Záložky &amp; Historie</string>
+    <string name="BookmarksTabTitle">Záložky</string>
+    <string name="HistoryTabTitle">Historie</string>
+    
+    <string name="ImportHistoryBookmarks">Importovat</string>
+    <string name="ExportHistoryBookmarks">Exportovat</string>
+    <string name="ClearHistoryBookmarks">Vymazat</string>
+    
+    <string name="AddBookmarkTitle">Přidat záložku</string>
+    <string name="BookmarkText">Název</string>
+    <string name="UrlText">Adresa</string>
+    <string name="UrlHint">http://</string>
+    <string name="AddBookmarkLabelOrUrlEmpty">Prosím zadejte platný název a adresu.</string>
+    
+    <string name="OpenInTab">Otevřít v nové kartě</string>
+    <string name="EditBookmark">Upravit záložku</string>
+    <string name="CopyUrl">Kopírovat adresu</string>
+    <string name="DeleteBookmark">Odstranit záložku</string>
+    <string name="DeleteHistoryItem">Odstranit z historie</string>
+    
+    <string name="PreferencesActivityTitle">Nastavení</string>
+        
+    <string name="PreferenceHeaderGeneralSettingsTitle">Hlavní nastavení</string>
+    
+    <string name="PreferenceGeneralHomepageTitle">Domovská stránka</string>
+    <string name="PreferenceGeneralHomepageSummary">Nastavit domovskou stránku, která bude načtena při otevření nové karty, apod.</string>
+    <string name="PreferenceHomePageDialogTitle">Domovská stránka</string>
+    
+    <string name="PreferenceGeneralSearchUrlTitle">Vyhledávací engine</string>
+    <string name="PreferenceGeneralSearchUrlSummary">Nastavit vyhledávací engine, který bude použit pro vyhledávání z adresního řádku.</string>
+    
+    <string name="PreferenceCategoryStartPageTitle">Úvodní stránka</string>
+    <string name="PreferenceGeneralStartPageLimitTitle">Počet položek na úvodní stránce</string>
+    <string name="PreferenceGeneralStartPageLimitSummary">Nastavit kolik položek se bude zobrazovat na úvodní stránce.</string>
+    
+    <string name="PreferenceCategoryUITitle">Uživatelské rozhraní</string>
+        
+    <string name="PreferenceBubblePositionTitle">Pozice bubliny</string>
+    <string name="PreferenceBubblePositionSummary">Pozice bubliny umožňující zobrazit panely nástrojů.</string>
+    
+    <string name="PreferenceBubblePositionRight">Vpravo</string>
+    <string name="PreferenceBubblePositionLeft">Vlevo</string>
+    <string name="PreferenceBubblePositionBoth">Obojí</string>
+    
+    <string-array name="PreferenceBubblePositionEntries">
+		<item>@string/PreferenceBubblePositionRight</item>
+		<item>@string/PreferenceBubblePositionLeft</item>
+		<item>@string/PreferenceBubblePositionBoth</item>
+	</string-array>
+	
+    <string-array name="PreferenceBubblePositionValues">
+		<item>RIGHT</item>
+		<item>LEFT</item>
+		<item>BOTH</item>
+	</string-array>
+	
+    <string name="PreferenceToolbarsAutoHideDurationTitle">Doba zobrazení panelů nástrojů</string>
+    <string name="PreferenceToolbarsAutoHideDurationSummary">Nastavit, jakou dobu budou panely nástrojů zobrazeny.</string>
+    
+    <string name="PreferenceSwitchTabsMethodTitle">Metoda přepnutí karet</string>
+    <string name="PreferenceSwitchTabsMethodSummary">Nastavit, jak bude možno přepínat mezi kartami.</string>
+    
+    <string name="PreferenceSwitchTabsMethodButtons">Tlačítka</string>
+    <string name="PreferenceSwitchTabsMethodFling">Gesta</string>
+    <string name="PreferenceSwitchTabsMethodBoth">Obojí</string>
+    
+    <string-array name="PreferenceSwitchTabsMethodEntries">
+		<item>@string/PreferenceSwitchTabsMethodButtons</item>
+		<item>@string/PreferenceSwitchTabsMethodFling</item>
+		<item>@string/PreferenceSwitchTabsMethodBoth</item>
+	</string-array>
+	
+    <string-array name="PreferenceSwitchTabsMethodValues">
+		<item>BUTTONS</item>
+		<item>FLING</item>
+		<item>BOTH</item>
+	</string-array>
+    
+    <string name="PreferenceHeaderBrowserSettingsTitle">Nastavení prohlížeče</string>
+    
+    <string name="PreferenceEnableJavascriptTitle">Povolit JavaScript</string>
+    <string name="PreferenceEnableJavascriptSummaryOn">JavaScript je povolen.</string>
+    <string name="PreferenceEnableJavascriptSummaryOff">JavaScript je zakázán.</string>
+    <string name="PreferenceEnableImagesTitle">Povolit obrázky</string>
+    <string name="PreferenceEnableImagesSummary">Zvolte, chcete-li povolit načtení obrázků.</string>
+    <string name="PreferenceUseWideViewportTitle">Používat široký viewport</string>
+    <string name="PreferenceUseWideViewportSummary">Je-li zvoleno, prohlížeč bude používat viewport podobný desktopovým prohlížečům.</string>
+    <string name="PreferenceLoadPagesWithOverviewTitle">Načíst stránky s přehledem</string>
+    <string name="PreferenceLoadPagesWithOverviewSummary">Zvolte, chcete-li aby byly stránky po načtení zmenšeny pro zobrazení přehledu stránky.</string>
+    <string name="PreferencePluginsTitle">Povolit zásuvné moduly</string>
+    <string name="PreferencePluginsSummary">Zvolte, jak spravovat zásuvné moduly.</string>
+    
+    <string name="PreferencePluginsAlwaysOff">Vždy vypnuty</string>
+    <string name="PreferencePluginsOnDemand">Na požádání</string>
+    <string name="PreferencePluginsAlwaysOn">Vždy povoleny</string>
+    
+    <string-array name="PreferencePluginsEntries">
+		<item>@string/PreferencePluginsAlwaysOff</item>
+		<item>@string/PreferencePluginsOnDemand</item>
+		<item>@string/PreferencePluginsAlwaysOn</item>
+	</string-array>
+	
+    <string-array name="PreferencePluginsValues">
+		<item>OFF</item>
+		<item>ON_DEMAND</item>
+		<item>ON</item>
+	</string-array>
+	
+    <string name="PreferenceUserAgentTitle">User-agent</string>
+    <string name="PreferenceUserAgentSummary">Nastavit řetězec user-agent, který bude prohlížeč používat.</string>
+    <string name="PreferenceUserAgentDialogTitle">User-agent</string>
+    
+    <string name="PreferenceHeaderPrivacySettingsTitle">Nastavení soukromí &amp; bezpečnosti</string>
+    
+    <string name="PreferencePrivacyClearCacheTitle">Vymazat vyrovnávací paměť</string>
+    <string name="PreferencePrivacyClearCacheSummary">Vymazat lokálně uložený obsah a databáze.</string>
+        
+    <string name="PreferenceCategoryHistoryTitle">Historie</string>
+    <string name="PreferencePrivacyHistorySizeTitle">Velikost historie</string>
+    <string name="PreferencePrivacyHistorySizeSummary">Nastavit velikost historie, ve dnech.</string>
+    <string name="PreferencePrivacyClearHistoryTitle">Vymazat historii</string>
+    <string name="PreferencePrivacyClearHistorySummary">Vymazat historii prohlížení.</string>
+        
+    <string name="PreferenceCategoryCookiesTitle">Cookies</string>
+    <string name="PreferencePrivacyAcceptCookiesTitle">Přijímat cookies</string>
+    <string name="PreferencePrivacyAcceptCookiesSummary">Povolit stránkám zápis a čtení cookie dat.</string>
+    <string name="PreferencePrivacyClearCookiesTitle">Vymazat cookies</string>
+    <string name="PreferencePrivacyClearCookiesSummary">Vymazat všechny cookies.</string>
+    
+    <string name="PreferenceCategoryGeolocationTitle">Lokace</string>
+    <string name="PreferencePrivacyEnableGeolocationTitle">Povolit lokaci</string>
+    <string name="PreferencePrivacyEnableGeolocationSummary">Povolit stránkám požádat o přístup k údajům o vaší lokaci.</string>
+    <string name="PreferencePrivacyClearGeolocationTitle">Vymazat přístup k lokaci</string>
+    <string name="PreferencePrivacyClearGeolocationSummary">Vymazat všechna udělená oprávnění pro přístup k údajům o lokaci.</string>
+    
+    <string name="PreferenceCategoryFormDataTitle">Data formulářů</string>
+    <string name="PreferencePrivacyRememberFormDataTitle">Pamatovat si data formulářů</string>
+    <string name="PreferencePrivacyRememberFormDataSummary">Pro pozdější použití si zapamatovat data, která zadám do formulářů.</string>
+    <string name="PreferencePrivacyClearFormDataTitle">Vymazat data formulářů</string>
+    <string name="PreferencePrivacyClearFormDataSummary">Vymazat všechna uložená data formulářů.</string>
+    
+    <string name="PreferenceCategoryPasswordsTitle">Hesla</string>
+    <string name="PreferencePrivacyRememberPasswordsTitle">Pamatovat si hesla</string>
+    <string name="PreferencePrivacyRememberPasswordsSummary">Ukládat uživatelská jména a hesla.</string>
+    <string name="PreferencePrivacyClearPasswordsTitle">Vymazat hesla</string>
+    <string name="PreferencePrivacyClearPasswordsSummary">Vymazat všechna uložená hesla.</string>
+    
+    <string name="PreferencePrivacyWebsitesSettingsTitle">Nastavení webových stránek</string>
+    <string name="PreferencePrivacyWebsitesSettingsSummary">Pokročilá nastavení pro jednotlivé webové stránky.</string>
+    
+    <string name="PreferencePrivacyIncognitoTitle">Anonymní režim</string>
+    <string name="PreferencePrivacyIncognitoDefaultTitle">Anonymní režim jako výchozí</string>
+    <string name="PreferencePrivacyIncognitoDefaultSummary">Otevírat nové karty v anonymním režimu</string>
+    
+    <string name="HistoryToday">Dnes</string>
+    <string name="HistoryYesterday">Včera</string>
+    <string name="HistoryLastSevenDays">Posledních 7 dnů</string>
+    <string name="HistoryLastMonth">Poslední měsíc</string>
+    <string name="HistoryOlder">Starší</string>
+    
+    <string name="ClearCacheMessage">Odstranit lokálně uložený obsah a databáze?</string>
+    <string name="ClearHistoryMessage">Odstranit historii prohlížení?</string>
+    <string name="ClearCookiesMessage">Odstranit všechny cookies?</string>
+    <string name="ClearGeolocationMessage">Vymazat přístup webových stránek k údajům o lokaci?</string>
+    <string name="ClearFormDataMessage">Odstranit všechna uložená data formulářů?</string>
+    <string name="ClearPasswordsMessage">Odstranit všechna uložená hesla?</string>
+    
+    <string name="PreferenceHomepageStart">Úvodní stránka</string>
+    <string name="PreferenceHomepageBlank">Prázdná stránka</string>
+    <string name="PreferenceHomepageCustom">Jiná stránka</string>
+    
+    <string-array name="HomepageTitles">
+        <item>@string/PreferenceHomepageStart</item>
+        <item>@string/PreferenceHomepageBlank</item>
+        <item>@string/PreferenceHomepageCustom</item>
+    </string-array>
+    
+    <string name="PreferenceUserAgentAndroid">Android</string>
+    <string name="PreferenceUserAgentDesktop">Desktop</string>
+    <string name="PreferenceUserAgentOther">Jiný</string>
+    
+    <string-array name="UserAgentsTitles">
+        <item>@string/PreferenceUserAgentAndroid</item>
+        <item>@string/PreferenceUserAgentDesktop</item>
+        <item>@string/PreferenceUserAgentOther</item>
+    </string-array>
+    
+    <string name="SearchUrlGoogle">http://www.google.cz/m?q={searchTerms}</string>
+    
+    <string name="PreferenceHeaderAddonsTitle">Doplňky</string>    
+    
+    <string name="PreferenceHeaderAboutTitle">O aplikaci</string>
+    
+    <string name="HttpAuthenticationDialogDialogTitle">Přihlásit k %1$s - %2$s</string>
+    <string name="HttpAuthenticationDialogUserName">Jméno</string>
+    <string name="HttpAuthenticationDialogPassword">Heslo</string>
+    
+    <string name="FormResubmitTitle">Opětovné odeslání formuláře</string>
+    <string name="FormResubmitMessage">Stránka, kterou se pokoušíte zobrazit obsahuje data, která byla již dříve odeslána (\"POSTDATA\"). Pokud opětovně odešlete tyto data, jakákoli akce, kterou formulář na této stránce provádí (například vyhledávání či online nákup) bude opakována.</string>
+    
+    <string name="BookmarkAdded">Přidáno do záložek.</string>
+    <string name="BookmarkRemoved">Odstraněno ze záložek.</string>
+    
+    <string name="SDCardErrorNoSDMsg">Nenalezena SD karta.</string>
+    <string name="SDCardErrorSDUnavailable">SD karta není k dispozici.</string>
+    
+    <string name="HistoryBookmarksClearTitle">Vymazat</string>
+    
+    <string-array name="ClearHistoryBookmarksChoice">
+        <item>@string/History</item>
+        <item>@string/Bookmarks</item>
+        <item>@string/All</item>
+    </string-array>
+    
+    <string name="HistoryBookmarksImportSourceTitle">Importovat soubor</string>
+    <string name="HistoryBookmarksImportFileUnavailable">Soubor je nedostupný, buďto neexistuje, nebo je nečitelný.</string>
+    <string name="HistoryBookmarksImportTitle">Importovat historii &amp; záložky</string>
+    <string name="HistoryBookmarksImportInitialMessage">Importuji historii &amp; záložky&#8230;</string>
+    <string name="HistoryBookmarksImportReadingFile">Čtu soubor&#8230;</string>
+    <string name="HistoryBookmarksImportParsingFile">Zpracovávám soubor&#8230;</string>
+    <string name="HistoryBookmarksImportProgressMessage">Čtu položku %1$s z %2$s.</string>
+    <string name="HistoryBookmarksImportInsertMessage">Vkládám hodnoty&#8230;</string>
+    <string name="HistoryBookmarksImportErrorTitle">Chyba během importu</string>
+    <string name="HistoryBookmarksImportErrorMessage">Během importu historie &amp; záložek došlo k chybě: %s</string>
+    
+    <string name="HistoryBookmarksExportTitle">Exportovat historii &amp; záložky</string>
+    <string name="HistoryBookmarksExportInitialMessage">Exportuji historii &amp; záložky&#8230;</string>
+    <string name="HistoryBookmarksExportCheckCardMessage">Kontroluji externí úložiště&#8230;</string>
+    <string name="HistoryBookmarksExportProgressMessage">Exportuji položku %1$s z %2$s.</string>
+    <string name="HistoryBookmarksExportErrorTitle">Chyba během exportu</string>
+    <string name="HistoryBookmarksExportErrorMessage">Během exportu historie &amp; záložek došlo k chybě: %s</string>
+    
+    <string name="GeolocationTitle">Žádost o přístup k lokaci</string>
+    <string name="GeolocationMessage">Webová stránka %s požaduje přístup k údajům o vaší lokaci.</string>
+    <string name="GeolocationAccept">Povolit</string>
+    <string name="GeolocationDecline">Zakázat</string>
+    
+    <string name="WebsitesSettingsEmpty">Žádné nastavení pro webové stránky.</string>
+    
+    <string name="WebsitesSettingsSiteTitle">Nastavení pro %s</string>
+    
+    <string name="WebsitesSettingsDataUsage">%s MB uloženo na vašem zařízení.</string>
+    <string name="WebsitesSettingsDataClickToClear">Klikněte pro vymazání uložených dat.</string>
+    <string name="WebsitesSettingsCleatDataDialogTitle">Odstranit data</string>
+    <string name="WebsitesSettingsCleatDataDialogMessage">Odstranit všechna data uložená touto webovou stránkou?</string>
+    
+    <string name="WebsitesSettingsGeolocationClickToClear">Klikněte pro vymazání přístupu k údajům o lokaci.</string>
+    <string name="WebsitesSettingsGeolocationAllowed">Tato stránka může přistupovat k údajům o vaší lokaci.</string>
+    <string name="WebsitesSettingsGeolocationNotAllowed">Tato stránka nemůže přistupovat k údajům o vaší lokaci.</string>
+    <string name="WebsitesSettingsGeolocationPageDialogTitle">Vymazat přístup k údajům o lokaci</string>
+    <string name="WebsitesSettingsGeolocationPageDialogMessage">Vymazat přístup k údajům o lokaci pro tento web?</string>
+    
+    <string name="AddonsWarningText">Prosím, instalujte doplňky pouze od vývojářů, kterým důvěřujete. Zaznamenáte-li jakékoli zvláštní chování, zakažte všechny vaše doplňky.</string>
+    <string name="AddonsGetAddons"><a href="">Získat doplňky</a></string>
+    <string name="AddonsMarketNotFoundTitle">Android Market nebyl nalezen</string>
+    <string name="AddonsMarketNotFoundMessage">Zdá se, že nemáte na vašem zařízení nainstalovanou aplikaci Android Market.</string>
+    <string name="AddonsEnableAll">Povolit všechny</string>
+    <string name="AddonsDisableAll">Zakázat všechny</string>
+    
+    <string name="AddonDetailsContact">Kontakt: %s</string>
+    <string name="AddonDetailsUsedCallbacksTitle">Tento doplněk:</string>
+    
+    <string name="AddonCallbackPageStarted">Je informován když se stránka začne načítat.</string>
+    <string name="AddonCallbackPageFinished">Je informován když stránka dokončí načítání.</string>
+    <string name="AddonCallbackTabOpened">Je informován když je otevřena karta.</string>
+    <string name="AddonCallbackTabClosed">Je informován když je zavřena karta.</string>
+    <string name="AddonCallbackTabSwitched">Je informován kdyžwitching tabs.</string>
+    <string name="AddonCallbackHasPreferencesPage">Má stránku s nastavením.</string>
+    <string name="AddonCallbackContributeMainMenu">Může přispívat do hlavního menu.</string>
+    <string name="AddonCallbackContributeLinkContextMenu">Může přispívat do kontextového menu odkazu.</string>
+    <string name="AddonCallbackContributeHistoryBookmarksMenu">Může přispívat do menu záložek &amp; historie.</string>
+    <string name="AddonCallbackContributeBookmarkContextMenu">Může přispívat do kontextového menu záložek.</string>
+    <string name="AddonCallbackContributeHistoryContextMenu">Může přispívat do kontextového menu historie.</string>
+    
+    <string name="AddonDetailsUsedPermissionsTitle">Má následující oprávnění:</string>
+    <string name="AddonDetailsPermissionsNone">Žádné.</string>
+    <string name="AddonDetailsUnableToGetPermissions">Nemohu získat oprávnění. Zkontrolujte je správcem aplikací vašeho zařízení.</string>
+    
+    <string name="ContentDescriptionDivider">rozdělovač</string>
+    <string name="ContentDescriptionApplicationIcon">Ikona aplikace</string>
+    <string name="ContentDescriptionSuggestionIcon">Ikona návrhu</string>
+    <string name="ContentDescriptionBookmarkThumbnail">Náhled záložky</string>
+    <string name="ContentDescriptionFavicon">Ikona webové stránky</string>
+    <string name="ContentDescriptionGoStopReloadButton">tlačítko Jdi / Stop / Aktualizuj</string>
+    <string name="ContentDescriptionMenuButton">Tlačítko menu</string>
+    <string name="ContentDescriptionPreviousTabButton">Tlačítko předchozí karta</string>
+    <string name="ContentDescriptionNextTabButton">Tlačítko následující karta</string>
+    <string name="ContentDescriptionLeftBubble">Levá bublina</string>
+    <string name="ContentDescriptionRightBubble">Pravá bublina</string>
+    <string name="ContentDescriptionBackButton">Tlačítko zpět</string>
+    <string name="ContentDescriptionCloseTabButton">Tlačítko zavřít kartu</string>
+    <string name="ContentDescriptionBookmarksButton">Tlačítko záložek</string>
+    <string name="ContentDescriptionNewTabButton">Tlačítko nová karta</string>
+    <string name="ContentDescriptionForwardButton">Tlačítko vpřed</string>
+    <string name="ContentDescriptionHomeButton">Tlačítko domů</string>
+    <string name="ContentDescriptionWebsiteSettingsLocation">Lokace webové stránky</string>
+    <string name="ContentDescriptionWebsiteSettingsUsage">Používání webové stránky</string>
+    <string name="ContentDescriptionWebsiteSettingsFeature">Vlastnost webové stránky</string>
+    
+    <string-array name="DefaultBookmarksTitles">
+		<item>Google</item>
+		<item>Wikipedie</item>
+		<item>YouTube</item>
+		<item>Seznam</item>
+		<item>Novinky</item>
+		<item>Aukro</item>
+	</string-array>
+	
+    <string-array name="DefaultBookmarksUrls">
+		<item>http://www.google.cz/</item>
+		<item>http://cs.wikipedia.org/</item>
+		<item>http://www.youtube.com/</item>
+		<item>http://www.seznam.cz/</item>
+		<item>http://www.novinky.cz/</item>
+		<item>http://www.aukro.cz/</item>
+	</string-array>
+	
+    <!-- 1.2 -->
+    <string name="IncognitoTab">Anonymní karta</string>
+    <string name="ContextMenuOpenInBackground">Otevřít na pozadí</string>
+    <string name="ContentDescriptionPrivateBrowsingIndicator">Indikátor anonymního režimu prohlížení</string>
+    
+    <!-- 1.3 -->
+    <string name="Folder">Složka</string>
+    <string name="NewFolder">Nová složka</string>
+    <string name="NewFolderHint">Jméno nové složky</string>
+    <string name="ProvideNewFolderName">Prosím zadejte jméno nové složky nebo vyberte již existující.</string>
+    
+    <string name="DeleteFolder">Odstranit složku</string>
+    <string name="ConfirmDeleteFolderMessage">Odstranit tuto složku a všechen její obsah?</string>
+    <string name="DeleteFolderTitle">Odstraňuji složku</string>
+    <string name="DeleteFolderMessage">Prosím počkejte, než bude tato složka a její obsah odstraněn&#8230;</string>
+    
+    <string name="ContentDescriptionBookmarksFoldersBack">Jdi zpět v hierarchii složek se záložkami</string>
+    
+    <!-- 1.4 -->
+    <string name="PreferenceHeaderAccessibilityTitle">Nastavení přístupnosti</string>
+    <string name="PreferenceCategoryTextSizeTitle">Velikost textu</string>
+    <string name="PreferenceAccessibilityTextSizePreviewTitle">Náhled velikosti textu</string>
+    <string name="PreferenceAccessibilityTextScalingTitle">Škálování textu</string>
+    <string name="PreferenceAccessibilityMinimumFontSizeTitle">Minimální velikost fontu</string>
+    <string name="PreferenceAccessibilityMinimumFontSizeSummary">Nastavit minimální velikost fontu použitého pro zobrazení textu v prohlížeči.</string>
+    
+    <string name="FontPreviewTextTiny">Maličký</string>
+    <string name="FontPreviewTextSmall">Malý</string>
+    <string name="FontPreviewTextNormal">Normální</string>
+    <string name="FontPreviewTextLarge">Velký</string>
+    <string name="FontPreviewTextHuge">Obrovský</string>
+    
+    <string-array name="FontPreviewText">
+		<item>@string/FontPreviewTextTiny</item>
+		<item>@string/FontPreviewTextSmall</item>
+		<item>@string/FontPreviewTextNormal</item>
+		<item>@string/FontPreviewTextLarge</item>
+		<item>@string/FontPreviewTextHuge</item>
+	</string-array>
+	
+    <string name="PreferenceCategoryInvertedScreenRenderingTitle">Inverzní vykreslování obrazu</string>
+    <string name="PreferenceAccessibilityInvertedRenderingTitle">Inverzní vykreslování</string>
+    <string name="PreferenceAccessibilityInvertedRenderingSummary">Invertovat barvy obrazu. Toto nemusí fungovat na všech zařízeních.</string>
+    <string name="PreferenceAccessibilityInvertedRenderingContrastTitle">Kontrast</string>
+    
+    <string name="ContentDescriptionAutocompleteQueryBuilder">Vložit návrh adresy do adresního řádku, bez přejití na tuto adresu.</string>
+    
+    <!-- 1.5 -->
+    <string name="UnknownAutority">neznámá autorita</string>
+    <string name="RememberMyChoice">Pamatovat si mou volbu</string>
+    <string name="SslExceptionAccessAllowedByUserToast">Bezpečnostní výjimka SSL: Přístup k %s povolen uživatelem.</string>
+    <string name="SslExceptionAccessDisallowedByUserToast">Bezpečnostní výjimka SSL: Přístup k %s zakázán uživatelem.</string>
+    
+    <string name="PreferenceSslExceptionsTitle">Bezpečnostní výjimky SSL</string>
+    <string name="PreferenceSslExceptionsSummary">Seznam bezpečnostních výjimek SSL pro webové stránky.</string>
+    <string name="SslExceptionWebsitesText"><i>Klikněte pro odstranění výjimky SSL.</i></string>
+    <string name="SslExceptionEmptyText">Nemáte žádné bezpečnostní výjimky SSL.</string>
+    
+    <string name="RemoveSslExceptionTitle">Odstranit výjimku</string>
+    <string name="RemoveSslExceptionMessage">Chcete odstranit bezpečnostní výjimku pro tuto webovou stránku?</string>
+    
+    <string name="SslInvalid">Tento certifikát je neplatný.</string>
+    <string name="SslDateInvalid">Datum tohoto certifikátu je neplatné.</string>
+    
+    <string name="Authorized">Autorizováno:</string>
+    <string name="Reasons">Důvody:</string>
+    
+    <string name="SearchUrlDialogText1">Váš vyhledávací engine je momentálně nastaven na:</string>
+    <string name="SearchUrlDialogText2">Toto nastavení je možno změnit výběrem některého z níže navržených vyhledávacích enginů.</string>
+    <string name="SearchUrlGetOnline"><a href="">Ručně upravit vyhledávací engine</a></string>
+    <string name="SearchUrlConnecting">Připojuji&#8230;</string>
+    <string name="SearchUrlParsing">Zpracovávám výsledky&#8230;</string>
+    <string name="SearchUrlBadResponseCodeMessage">Připojení k repozitáři vyhledávacích enginů se nezdařilo (stavový kód: %s).</string>
+    
+    <string name="SearchUrlDefault">Google česká republika</string>
+    <string name="SearchUrlCustom">Jiný vyhledávací engine</string>
+    
+    <string name="SortBookmarks">Řadit záložky</string>
+    <string name="MostUsedSortMode">Nejpoužívanější</string>
+    <string name="AlphaSortMode">Abecedně</string>
+    <string name="RecentSortMode">Nedávno použité</string>
+
+    <!-- 1.6 -->
+    <string name="HistoryBookmarksImportErrorInvalidFileFormat">Chybný formát souboru</string>
+    <string name="HistoryBookmarksImportFoldersProgressMessage">Čtu složku %1$s z %2$s.</string>
+    <string name="HistoryBookmarksImportFoldersLinkMessage">Spojuji složky&#8230;</string>
+    <string name="HistoryBookmarksImportBookmarksProgressMessage">Čtu záložku %1$s z %2$s.</string>
+    <string name="HistoryBookmarksImportHistoryProgressMessage">Čtu položku historie %1$s z %2$s.</string>
+    
+    <string name="FullScreen">Celá obrazovka</string>
+    <string name="ContentDescriptionExitFullScreen">Tlačítko ukončení režimu celé obrazovky</string>
+    
+    <!-- 1.7 -->
+    <string name="StartPageLabel">Úvodní stránka</string>
+
+    <string name="RestartDialogTitle">Je vyžadován restart</string>
+    <string name="RestartDialogMessage">Tato změna se projeví až po restartu aplikace. Přejete si aplikaci restartovat nyní?</string>
+    
+    <string name="ContentDescriptionTabPreview">Náhled karty</string>
+    
+    <string name="PreferenceClosePanelOnNewTabTitle">Zavřít boční panel při nové kartě</string>
+    <string name="PreferenceClosePanelOnNewTabSummary">Je-li zvoleno, boční panel bude zavřen při otevření nové karty.</string>
+    
+    <string name="AboutChangelogTitle">Seznam změn</string>
+    <string name="AboutContributorsTitle">Přispěvatelé</string>
+    <string name="AboutLicensesTitle">Další licence</string>
+    
+    <string name="RestoreTabsDialogTitle">Obnovení karet</string>
+    <string name="RestoreTabsDialogMessage">Přejete si obnovit karty z předchozí relace?</string>
+    
+    <string name="PreferenceRestoreTabsTitle">Obnovení karet</string>
+    <string name="PreferenceRestoreTabsSummary">Vyberte způsob obnovení karet z předchozí relace.</string>
+    
+    <string name="PreferenceRestoreTabsAsk">Zeptat se</string>
+    <string name="PreferenceRestoreTabsAlways">Vždy</string>
+    <string name="PreferenceRestoreTabsNever">Nikdy</string>
+    
+    <string-array name="PreferenceRestoreTabsEntries">
+		<item>@string/PreferenceRestoreTabsAsk</item>
+		<item>@string/PreferenceRestoreTabsAlways</item>
+		<item>@string/PreferenceRestoreTabsNever</item>
+	</string-array>
+	
+    <string-array name="PreferenceRestoreTabsValues">
+		<item>ASK</item>
+		<item>ALWAYS</item>
+		<item>NEVER</item>
+	</string-array>
+	
+    <string name="PreferenceUITypeTitle">Typ UI</string>
+    <string name="PreferenceUITypeSummary">Vyberte typ uživatelského rozhraní.</string>
+    
+    <string name="PreferenceUITypeAuto">Automaticky</string>
+    <string name="PreferenceUITypePhone">Telefon</string>
+    <string name="PreferenceUITypeLegacyPhone">Telefon (starší)</string>
+    <string name="PreferenceUITypeTablet">Tablet</string>
+    
+    <string-array name="PreferenceUITypeEntries">
+		<item>@string/PreferenceUITypeAuto</item>
+		<item>@string/PreferenceUITypePhone</item>
+		<item>@string/PreferenceUITypeLegacyPhone</item>
+		<item>@string/PreferenceUITypeTablet</item>
+	</string-array>
+	
+    <string-array name="PreferenceUITypeValues">
+		<item>AUTO</item>
+		<item>PHONE</item>
+		<item>LEGACY_PHONE</item>
+		<item>TABLET</item>
+	</string-array>
+	
+    <!-- 1.8 -->
+    <string name="PreferenceDevelopersTitle">Vývojáři</string>
+    
+    <string name="PreferenceJsLogOnLocatTitle">Ukládat záznamy JS do logcatu</string>
+    <string name="PreferenceJsLogOnLocatSummary">Přesměrovat záznamy javascriptu do vyrovnávací paměti logcatu.</string>
+    
+    <string name="ContextMenuViewImageInNewTab">Zobrazit obrázek v nové kartě</string>
+    
+</resources>
