@@ -494,7 +494,7 @@
     <string name="SearchUrlParsing">Zpracovávám výsledky&#8230;</string>
     <string name="SearchUrlBadResponseCodeMessage">Připojení k repozitáři vyhledávacích enginů se nezdařilo (stavový kód: %s).</string>
     
-    <string name="SearchUrlDefault">Google česká republika</string>
+    <string name="SearchUrlDefault">Google Česká republika</string>
     <string name="SearchUrlCustom">Jiný vyhledávací engine</string>
     
     <string name="SortBookmarks">Řadit záložky</string>
