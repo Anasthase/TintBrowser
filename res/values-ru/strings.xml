@@ -85,10 +85,10 @@
     
     <string name="JavaScriptAlertDialog">JavaScript: предупреждение</string>
     <string name="JavaScriptConfirmDialog">JavaScript: подтверждение</string>
-    <string name="JavaScriptPromptDialog">JavaScript: подсказка</string>
+    <string name="JavaScriptPromptDialog">JavaScript: вопрос</string>
     
     <string name="SslWarning">Предупреждение системы безопасности</string>
-    <string name="SslWarningsHeader">Есть проблемы с сертификатом безопасности для этого сайта (%s).</string>
+    <string name="SslWarningsHeader">Есть проблемы с сертификатом безопасности этого сайта (%s).</string>
     <string name="SslUntrusted">Этот сертификат не является доверенным.</string>
     <string name="SslIDMismatch">Название сайта не совпадает с именем в сертификате.</string>
     <string name="SslExpired">Этот сертификат истек.</string>
@@ -294,11 +294,11 @@
     
     <string name="PreferenceHeaderAboutTitle">О программе</string>
     
-    <string name="HttpAuthenticationDialogDialogTitle">Sign in to %1$s - %2$s</string>
+    <string name="HttpAuthenticationDialogDialogTitle">Войти на %1$s - %2$s</string>
     <string name="HttpAuthenticationDialogUserName">Имя</string>
     <string name="HttpAuthenticationDialogPassword">Пароль</string>
     
-    <string name="FormResubmitTitle">Повторная отправка даннах</string>
+    <string name="FormResubmitTitle">Повторная отправка данных</string>
     <string name="FormResubmitMessage">Чтобы отобразить эту страницу, приложение должно отправить информацию(\"POSTDATA\"), которая повторит любое ранее произведённое действие (например, запрос на поиск или онлайн-покупка).</string>
     
     <string name="BookmarkAdded">Добавлено в закладки.</string>
@@ -316,7 +316,7 @@
     </string-array>
 
     <string name="HistoryBookmarksImportSourceTitle">Импорт файлов</string>
-    <string name="HistoryBookmarksImportFileUnavailable">Файл недоступен, либо он не существует, либо не читается.</string>
+    <string name="HistoryBookmarksImportFileUnavailable">Файл недоступен, не существует или не читается.</string>
     <string name="HistoryBookmarksImportTitle">Импорт истории и закладок</string>
     <string name="HistoryBookmarksImportInitialMessage">Импорт истории и закладок&#8230;</string>
     <string name="HistoryBookmarksImportReadingFile">Чтение файлов&#8230;</string>
@@ -570,9 +570,10 @@
 	</string-array>
 	
     <!-- 1.8 -->
-    <string name="PreferenceDevelopersTitle">Разработчики</string>
-    <string name="PreferenceJsLogOnLocatTitle">Войти JS журналы LogCat</string>
-    <string name="PreferenceJsLogOnLocatSummary">Перенаправить JS журналы на LogCat буфер.</string>
+    <string name="PreferenceDevelopersTitle">Разработчикам</string>
+    <string name="PreferenceJsLogOnLocatTitle">Перенаправить JS в logcat</string>
+    <string name="PreferenceJsLogOnLocatSummary">Перенаправить ошибки и отладочную информацию Javascript в logcat</string>
+    
     <string name="ContextMenuViewImageInNewTab">Открыть изображение в новой вкладке</string>
     
 </resources>
