@@ -238,7 +238,7 @@
     
     <string name="PreferenceCategoryFormDataTitle">Form Data</string>
     <string name="PreferencePrivacyRememberFormDataTitle">Remember form data</string>
-    <string name="PreferencePrivacyRememberFormDataSummary">Remember data i type in forms for later use.</string>
+    <string name="PreferencePrivacyRememberFormDataSummary">Remember data I type in forms for later use.</string>
     <string name="PreferencePrivacyClearFormDataTitle">Clear form data</string>
     <string name="PreferencePrivacyClearFormDataSummary">Clear all saved form data.</string>
     
