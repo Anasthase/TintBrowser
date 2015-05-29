@@ -1,0 +1,45 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<title>Введение</title>
+	<style>
+		* {
+			font-size: 95%;
+		}
+		body {
+			font-family: sans-serif;
+		}
+		.details {
+			font-size: 90%;
+			background-color: #eee;
+			padding: 1em 1.5em 1em 1.5em;
+			margin: .5em 0 .5em 0;
+		}
+		.center {
+			text-align: center;
+		}
+		img {
+			display: block;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<h3 class="center">Добро пожаловать в Tint Browser</h3>
+	<ul>
+	<li>Нажмите значок вверху слева, чтобы открыть боковую панель, отображающую список открытых вкладок.</li>
+	</ul>
+	<img src="button.png" />
+	<ul>
+	<li>Боковую панель можно также открыть, сдвинув левый край окна браузера.</li>
+	</ul>
+	<img src="slide_panel.png" />
+	<ul>
+	<li>Закрыть вкладку можно нажатием на значок закрытия или сдвигом в сторону.</li>
+	</ul>
+	<img src="close_tab.png" />
+	<p class="details">Если вы скучаете по прежнему интерфейсу для смартфонов, его всё ещё можно включить в настройках.</p>
+</body>
+</html>

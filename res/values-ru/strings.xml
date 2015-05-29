@@ -17,129 +17,129 @@
 
 <resources>
 
-    <string name="ApplicationName">Tint Browser</string>
-    <string name="ApplicationDescription">Tint Browser - это браузер с открытым исходом кодом для Android.</string>
+    <string name="ApplicationName">Браузер</string>
+    <string name="ApplicationDescription">Tint Browser — браузер с открытым исходом кодом для Android.</string>
     
     <string name="AboutVersionText">Версия: %1$s (%2$s)</string>
     <string name="AboutLicenseText">Лицензия: GPLv3</string>
     <string name="AboutUrlText">https://github.com/Anasthase/TintBrowser</string>
     
-    <string name="PermissionReadBookmarksLabel">Читать закладки</string>
+    <string name="PermissionReadBookmarksLabel">Чтение закладок</string>
     <string name="PermissionReadBookmarksDescription">Разрешить сторонним приложениям и дополнениям читать историю и закладки браузера.</string>
     
-    <string name="PermissionWriteBookmarksLabel">Сохранять в закладки</string>
-    <string name="PermissionWriteBookmarksDescription">Разрешить сторонним приложениям и дополнениям сохранять в историю и закладки браузера.</string>
+    <string name="PermissionWriteBookmarksLabel">Добавление закладок</string>
+    <string name="PermissionWriteBookmarksDescription">Разрешить сторонним приложениям и дополнениям изменять историю и закладки браузера.</string>
     
-    <string name="PermissionBindAddonServiceLabel">Сервис привязки плагинов к браузеру</string>
-    <string name="PermissionBindAddonServiceDescription">Разрешить приложениям добавлять дополнения к браузеру. Только у самого браузера должно быть это разрешение.</string>
+    <string name="PermissionBindAddonServiceLabel">Подключение дополнений</string>
+    <string name="PermissionBindAddonServiceDescription">Разрешить приложениям добавлять дополнения к браузеру. Необходимо только для браузера.</string>
     
     <string name="OK">OK</string>
     <string name="Cancel">Отмена</string>
     <string name="Yes">Да</string>
     <string name="No">Нет</string>
     <string name="On">Вкл.</string>
-    <string name="Off">Выкл.</string>
+    <string name="Off">Откл.</string>
     <string name="Clear">Очистить</string>
-    <string name="Continue">Дальше</string>
+    <string name="Continue">Далее</string>
     <string name="Proceed">Продолжить</string>
-    <string name="VideoLoading">Загрузка видео\u2026</string>
+    <string name="VideoLoading">Загрузка видео…</string>
     <string name="History">История</string>
     <string name="All">Все</string>
-    <string name="Bookmarks">Закладки</string>
+    <string name="Bookmarks">Закладки и история</string>
     <string name="Preferences">Настройки</string>
     
-    <string name="UrlBarUrlDefaultSubTitle">Коснитесь для ввода адреса или поиска.</string>
-    <string name="UrlBarUrlHint">Условия поиска или URL</string>
+    <string name="UrlBarUrlDefaultSubTitle">Нажмите для ввода адреса или поиска.</string>
+    <string name="UrlBarUrlHint">Адрес сайта или поиск</string>
     
-    <string name="ShareChooserTitle">Поделиться</string>
+    <string name="ShareChooserTitle">Способ передачи</string>
     <string name="FileChooserPrompt">Выберите файл для загрузки</string>
     
-    <string name="Download">Загрузите</string>
-    <string name="DownloadDialogTitle">Загрузки</string>
-    <string name="DownloadInIncognito">Загрузки инкогнито</string>
-    <string name="DownloadStart">Загрузка %1$s&#8230;</string>
+    <string name="Download">Загрузка</string>
+    <string name="DownloadDialogTitle">Загрузка</string>
+    <string name="DownloadInIncognito">Загрузить инкогнито</string>
+    <string name="DownloadStart">Загрузка %1$s…</string>
     <string name="DownloadComplete">Загрузка завершена.</string>
     <string name="DownloadFailedWithErrorMessage">Загрузка прервана: %1$s.</string>
-    <string name="DownloadErrorDisk">Ошибка диска. Проверьте, подключен ли носитель информации и имеет ли он достаточно места.</string>
+    <string name="DownloadErrorDisk">Ошибка SD-карты. Проверьте подключение SD-карты и наличие свободного места.</string>
     <string name="DownloadErrorHttp">Ошибка HTTP</string>
     <string name="DownloadErrorRedirection">Слишком много перенаправлений</string>
     <string name="DownloadErrorUnknown">Неизвестная ошибка</string>
     
     <string name="ContextMenuOpen">Открыть</string>
-    <string name="ContextMenuOpenNewTab">Открыть в новой вкладке</string>
+    <string name="ContextMenuOpenNewTab">В новой вкладке</string>
     <string name="ContextMenuCopyLinkUrl">Копировать ссылку</string>
-    <string name="ContextMenuDownload">Скачать</string>
+    <string name="ContextMenuDownload">Загрузить</string>
     <string name="ContextMenuShareLinkUrl">Поделиться ссылкой</string>
     
-    <string name="ContextMenuViewImage">Просмотр изображения</string>
-    <string name="ContextMenuCopyImageUrl">Копировать ссылку на изображение</string>
-    <string name="ContextMenuDownloadImage">Скачать изображение</string>
+    <string name="ContextMenuViewImage">Открыть изображение</string>
+    <string name="ContextMenuCopyImageUrl">Копировать ссылку</string>
+    <string name="ContextMenuDownloadImage">Загрузить изображение</string>
     <string name="ContextMenuShareImageUrl">Поделиться изображением</string>
     
-    <string name="ContextMenuSendEmail">Написать письмо</string>
-    <string name="ContextMenuCopyEmailUrl">Скопировать email адрес</string>
-    <string name="ContextMenuShareEmailUrl">Поделиться адресом email</string>
+    <string name="ContextMenuSendEmail">Написать</string>
+    <string name="ContextMenuCopyEmailUrl">Копировать email</string>
+    <string name="ContextMenuShareEmailUrl">Поделиться email</string>
     
-    <string name="UrlCopyToastMessage">Адрес веб-страницы скопирован в буфер обмена.</string>
+    <string name="UrlCopyToastMessage">Адрес скопирован в буфер обмена.</string>
     <string name="ContextMenuShareUrl">Поделиться</string>
     
-    <string name="JavaScriptAlertDialog">JavaScript: предупреждение</string>
-    <string name="JavaScriptConfirmDialog">JavaScript: подтверждение</string>
-    <string name="JavaScriptPromptDialog">JavaScript: подсказка</string>
+    <string name="JavaScriptAlertDialog">JS: предупреждение</string>
+    <string name="JavaScriptConfirmDialog">JS: подтверждение</string>
+    <string name="JavaScriptPromptDialog">JS: сообщение</string>
     
     <string name="SslWarning">Предупреждение системы безопасности</string>
-    <string name="SslWarningsHeader">Есть проблемы с сертификатом безопасности для этого сайта (%s).</string>
-    <string name="SslUntrusted">Этот сертификат не является доверенным.</string>
-    <string name="SslIDMismatch">Название сайта не совпадает с именем в сертификате.</string>
-    <string name="SslExpired">Этот сертификат истек.</string>
-    <string name="SslNotYetValid">Даный сетртификат еще не действителен.</string>
+    <string name="SslWarningsHeader">Проблемы с сертификатом безопасности этого сайта (%s).</string>
+    <string name="SslUntrusted">Сертификат не является доверенным.</string>
+    <string name="SslIDMismatch">Название сайта не совпадает с указанным в сертификате.</string>
+    <string name="SslExpired">Сертификат истёк.</string>
+    <string name="SslNotYetValid">Сертификат ещё не действителен</string>
     
     <string name="NewTab">Новая вкладка</string>
     
     <string name="CloseTab">Закрыть вкладку</string>
     <string name="AddBookmark">Добавить закладку</string>
     <string name="SharePage">Поделиться страницей</string>
-    <string name="Search">Искать на странице</string>
+    <string name="Search">Найти на странице</string>
     
     <string name="BookmarksTitle">Закладки и история</string>
     <string name="BookmarksTabTitle">Закладки</string>
     <string name="HistoryTabTitle">История</string>
     
-    <string name="ImportHistoryBookmarks">Импортировать</string>
-    <string name="ExportHistoryBookmarks">Экспортировать</string>
+    <string name="ImportHistoryBookmarks">Импорт</string>
+    <string name="ExportHistoryBookmarks">Экспорт</string>
     <string name="ClearHistoryBookmarks">Очистить</string>
     
-    <string name="AddBookmarkTitle">Добавить закладку</string>
+    <string name="AddBookmarkTitle">Закладка</string>
     <string name="BookmarkText">Название</string>
     <string name="UrlText">Адрес</string>
     <string name="UrlHint">http://</string>
-    <string name="AddBookmarkLabelOrUrlEmpty">Пожалуйста укажите действительное название и адрес.</string>
+    <string name="AddBookmarkLabelOrUrlEmpty">Введите название и адрес.</string>
     
-    <string name="OpenInTab">Открыть в новой вкладке</string>
-    <string name="EditBookmark">Редактировать закладку</string>
+    <string name="OpenInTab">В новой вкладке</string>
+    <string name="EditBookmark">Изменить закладку</string>
     <string name="CopyUrl">Копировать адрес</string>
     <string name="DeleteBookmark">Удалить закладку</string>
     <string name="DeleteHistoryItem">Удалить из истории</string>
     
     <string name="PreferencesActivityTitle">Настройки</string>
     
-    <string name="PreferenceHeaderGeneralSettingsTitle">Общие</string>
+    <string name="PreferenceHeaderGeneralSettingsTitle">Основные</string>
     
-    <string name="PreferenceGeneralHomepageTitle">Домашняя страница</string>
-    <string name="PreferenceGeneralHomepageSummary">Страница, которая будет показа при открытии новой вкладки.</string>
-    <string name="PreferenceHomePageDialogTitle">Домашная страница</string>
+    <string name="PreferenceGeneralHomepageTitle">Новая вкладка</string>
+    <string name="PreferenceGeneralHomepageSummary">Страница, открываемая в новой вкладке.</string>
+    <string name="PreferenceHomePageDialogTitle">Новая вкладка</string>
     
     <string name="PreferenceGeneralSearchUrlTitle">Поисковая система</string>
-    <string name="PreferenceGeneralSearchUrlSummary">Выберите поисковую системы для ее использовании в адресной строке.</string>
+    <string name="PreferenceGeneralSearchUrlSummary">Поисковая система для адресной строки.</string>
     
     <string name="PreferenceCategoryStartPageTitle">Стартовая страница</string>
-    <string name="PreferenceGeneralStartPageLimitTitle">Количество элементов на стартовой странице</string>
-    <string name="PreferenceGeneralStartPageLimitSummary">Установить количество элементов на стартовой странице.</string>
+    <string name="PreferenceGeneralStartPageLimitTitle">Количество элементов</string>
+    <string name="PreferenceGeneralStartPageLimitSummary">Количество элементов на стартовой странице.</string>
     
-    <string name="PreferenceCategoryUITitle">Интерфейс пользователя</string>
+    <string name="PreferenceCategoryUITitle">Интерфейс программы</string>
     
-    <string name="PreferenceBubblePositionTitle">Bubble position</string>
-    <string name="PreferenceBubblePositionSummary">Position of the bubble allowing to show the toolbars.</string>
+    <string name="PreferenceBubblePositionTitle">Размещение круга</string>
+    <string name="PreferenceBubblePositionSummary">Размещение круга для отображения панелей.</string>
     
     <string name="PreferenceBubblePositionRight">Справа</string>
     <string name="PreferenceBubblePositionLeft">Слева</string>
@@ -157,14 +157,14 @@
         <item>BOTH</item>
     </string-array>
 
-    <string name="PreferenceToolbarsAutoHideDurationTitle">Время отображения панели</string>
-    <string name="PreferenceToolbarsAutoHideDurationSummary">Укажите, сколько показывать панель в секундах.</string>
+    <string name="PreferenceToolbarsAutoHideDurationTitle">Время отображения</string>
+    <string name="PreferenceToolbarsAutoHideDurationSummary">Время отображения панелей в секундах.</string>
     
-    <string name="PreferenceSwitchTabsMethodTitle">Метод переключения вкладок</string>
-    <string name="PreferenceSwitchTabsMethodSummary">Укажите метод переключения вкладок.</string>
+    <string name="PreferenceSwitchTabsMethodTitle">Переключение вкладок</string>
+    <string name="PreferenceSwitchTabsMethodSummary">Способ переключения вкладок.</string>
     
     <string name="PreferenceSwitchTabsMethodButtons">Кнопки</string>
-    <string name="PreferenceSwitchTabsMethodFling">Бросок</string>
+    <string name="PreferenceSwitchTabsMethodFling">Сдвиг</string>
     <string name="PreferenceSwitchTabsMethodBoth">Оба</string>
 
     <string-array name="PreferenceSwitchTabsMethodEntries">
@@ -182,20 +182,20 @@
     <string name="PreferenceHeaderBrowserSettingsTitle">Расширенные</string>
     
     <string name="PreferenceEnableJavascriptTitle">Включить JavaScript</string>
-    <string name="PreferenceEnableJavascriptSummaryOn">JavaScript включен.</string>
-    <string name="PreferenceEnableJavascriptSummaryOff">JavaScript выключен.</string>
-    <string name="PreferenceEnableImagesTitle">Загружать графику</string>
+    <string name="PreferenceEnableJavascriptSummaryOn">JavaScript включён.</string>
+    <string name="PreferenceEnableJavascriptSummaryOff">JavaScript отключён.</string>
+    <string name="PreferenceEnableImagesTitle">Загружать изображения</string>
     <string name="PreferenceEnableImagesSummary">Показывать изображения на веб-страницах.</string>
     <string name="PreferenceUseWideViewportTitle">Мобильный вид</string>
     <string name="PreferenceUseWideViewportSummary">Подгонять веб-страницы под размер экрана.</string>
     <string name="PreferenceLoadPagesWithOverviewTitle">Обзор страницы</string>
     <string name="PreferenceLoadPagesWithOverviewSummary">Открывать новые страницы в окне предпросмотра.</string>
-    <string name="PreferencePluginsTitle">Включить плагины</string>
-    <string name="PreferencePluginsSummary">Выберите как управлять плагинами.</string>
+    <string name="PreferencePluginsTitle">Запуск плагинов</string>
+    <string name="PreferencePluginsSummary">Способ запуска плагинов.</string>
     
-    <string name="PreferencePluginsAlwaysOff">Всегла выключен</string>
+    <string name="PreferencePluginsAlwaysOff">Отключить</string>
     <string name="PreferencePluginsOnDemand">По требованию</string>
-    <string name="PreferencePluginsAlwaysOn">Всегда включен</string>
+    <string name="PreferencePluginsAlwaysOn">Автоматически</string>
 
     <string-array name="PreferencePluginsEntries">
         <item>@string/PreferencePluginsAlwaysOff</item>
@@ -209,46 +209,46 @@
         <item>ON</item>
     </string-array>
 
-    <string name="PreferenceUserAgentTitle">User-agent</string>
-    <string name="PreferenceUserAgentSummary">Выберите строку user-agent используемую браузером.</string>
-    <string name="PreferenceUserAgentDialogTitle">User-agent</string>
+    <string name="PreferenceUserAgentTitle">User agent</string>
+    <string name="PreferenceUserAgentSummary">Строка user agent браузера.</string>
+    <string name="PreferenceUserAgentDialogTitle">User agent</string>
     
-    <string name="PreferenceHeaderPrivacySettingsTitle">Личные данные</string>
+    <string name="PreferenceHeaderPrivacySettingsTitle">Конфиденциальность</string>
     
-    <string name="PreferencePrivacyClearCacheTitle">Очистить кеш</string>
-    <string name="PreferencePrivacyClearCacheSummary">Удалить контент и данные, сохраненные браузером.</string>
+    <string name="PreferencePrivacyClearCacheTitle">Очистить кэш</string>
+    <string name="PreferencePrivacyClearCacheSummary">Удалить загруженное содержимое сайтов.</string>
     
     <string name="PreferenceCategoryHistoryTitle">История</string>
-    <string name="PreferencePrivacyHistorySizeTitle">Размер истории</string>
-    <string name="PreferencePrivacyHistorySizeSummary">Установить размер истории в днях.</string>
+    <string name="PreferencePrivacyHistorySizeTitle">Хранение истории</string>
+    <string name="PreferencePrivacyHistorySizeSummary">Срок хранения истории в днях.</string>
     <string name="PreferencePrivacyClearHistoryTitle">Очистить историю</string>
-    <string name="PreferencePrivacyClearHistorySummary">Очистить список посещенных в Интернете страниц.</string>
+    <string name="PreferencePrivacyClearHistorySummary">Очистить список посещённых сайтов.</string>
     
-    <string name="PreferenceCategoryCookiesTitle">Куки</string>
-    <string name="PreferencePrivacyAcceptCookiesTitle">Принимать куки</string>
-    <string name="PreferencePrivacyAcceptCookiesSummary">Разрешать сайтам сохранять и читать куки.</string>
-    <string name="PreferencePrivacyClearCookiesTitle">Очистить куки</string>
-    <string name="PreferencePrivacyClearCookiesSummary">Очистить все куки.</string>
+    <string name="PreferenceCategoryCookiesTitle">Cookies</string>
+    <string name="PreferencePrivacyAcceptCookiesTitle">Принимать cookies</string>
+    <string name="PreferencePrivacyAcceptCookiesSummary">Разрешать сайтам сохранять и читать cookies.</string>
+    <string name="PreferencePrivacyClearCookiesTitle">Очистить cookies</string>
+    <string name="PreferencePrivacyClearCookiesSummary">Очистить все cookies.</string>
     
     <string name="PreferenceCategoryGeolocationTitle">Местоположение</string>
     <string name="PreferencePrivacyEnableGeolocationTitle">Доступ к геоданным</string>
-    <string name="PreferencePrivacyEnableGeolocationSummary">Разрешать сайтам запрашивать доступ к данным о вашем местоположении.</string>
+    <string name="PreferencePrivacyEnableGeolocationSummary">Разрешать сайтам запрашивать доступ к данным о местоположении.</string>
     <string name="PreferencePrivacyClearGeolocationTitle">Закрыть геоданные</string>
-    <string name="PreferencePrivacyClearGeolocationSummary">Очистить список сайтов имеющих доступ к данным о вашем местоположении.</string>
+    <string name="PreferencePrivacyClearGeolocationSummary">Очистить список сайтов, имеющих доступ к данным о местоположении.</string>
     
     <string name="PreferenceCategoryFormDataTitle">Формы</string>
     <string name="PreferencePrivacyRememberFormDataTitle">Сохранять данные форм</string>
-    <string name="PreferencePrivacyRememberFormDataSummary">Запоминать введенные в формы данные для дальнейшего использования.</string>
-    <string name="PreferencePrivacyClearFormDataTitle">Очистить данные формы</string>
-    <string name="PreferencePrivacyClearFormDataSummary">Удалить все сохраненные данные форм.</string>
+    <string name="PreferencePrivacyRememberFormDataSummary">Запоминать введённые данные форм для автозаполнения.</string>
+    <string name="PreferencePrivacyClearFormDataTitle">Очистить данные форм</string>
+    <string name="PreferencePrivacyClearFormDataSummary">Очистить сохранённые данные форм.</string>
     
     <string name="PreferenceCategoryPasswordsTitle">Пароли</string>
     <string name="PreferencePrivacyRememberPasswordsTitle">Запоминать пароли</string>
-    <string name="PreferencePrivacyRememberPasswordsSummary">Запоминать имена пользователей и пароли веб-сайтов.</string>
+    <string name="PreferencePrivacyRememberPasswordsSummary">Запоминать логины и пароли сайтов.</string>
     <string name="PreferencePrivacyClearPasswordsTitle">Очистить пароли</string>
-    <string name="PreferencePrivacyClearPasswordsSummary">Удалить все сохраненные пароли.</string>
+    <string name="PreferencePrivacyClearPasswordsSummary">Удалить все сохранённые пароли.</string>
     
-    <string name="PreferencePrivacyWebsitesSettingsTitle">Настройки веб-сайтов</string>
+    <string name="PreferencePrivacyWebsitesSettingsTitle">Настройки сайтов</string>
     <string name="PreferencePrivacyWebsitesSettingsSummary">Дополнительные настройки для отдельных сайтов.</string>
     
     <string name="PreferencePrivacyIncognitoTitle">Pежим инкогнито</string>
@@ -261,16 +261,16 @@
     <string name="HistoryLastMonth">В этом месяце</string>
     <string name="HistoryOlder">Ранее</string>
     
-    <string name="ClearCacheMessage">Очистить кеш?</string>
-    <string name="ClearHistoryMessage">Очистить список посещенных страниц?</string>
-    <string name="ClearCookiesMessage">Удалить все куки?</string>
-    <string name="ClearGeolocationMessage">Очистить список сайтов имеющих доступ к данным о вашем местоположении?</string>
+    <string name="ClearCacheMessage">Очистить кэш?</string>
+    <string name="ClearHistoryMessage">Очистить список посещённых страниц?</string>
+    <string name="ClearCookiesMessage">Удалить все cookies?</string>
+    <string name="ClearGeolocationMessage">Очистить список сайтов, имеющих доступ к данным о местоположении?</string>
     <string name="ClearFormDataMessage">Удалить данные всех форм?</string>
-    <string name="ClearPasswordsMessage">Удалить все сохраненные пароли?</string>
+    <string name="ClearPasswordsMessage">Удалить все сохранённые пароли?</string>
     
     <string name="PreferenceHomepageStart">Стартовая страница</string>
     <string name="PreferenceHomepageBlank">Пустая страница</string>
-    <string name="PreferenceHomepageCustom">Пользовательская страница</string>
+    <string name="PreferenceHomepageCustom">Введите адрес</string>
 
     <string-array name="HomepageTitles">
         <item>@string/PreferenceHomepageStart</item>
@@ -279,7 +279,7 @@
     </string-array>
 
     <string name="PreferenceUserAgentAndroid">Android</string>
-    <string name="PreferenceUserAgentDesktop">Desktop</string>
+    <string name="PreferenceUserAgentDesktop">Обычный ПК</string>
     <string name="PreferenceUserAgentOther">Другой</string>
 
     <string-array name="UserAgentsTitles">
@@ -290,22 +290,22 @@
 
     <string name="SearchUrlGoogle">http://yandex.ru/touchsearch?text={searchTerms}</string>
     
-    <string name="PreferenceHeaderAddonsTitle">Дополнения</string>    
+    <string name="PreferenceHeaderAddonsTitle">Дополнения браузера</string>    
     
     <string name="PreferenceHeaderAboutTitle">О программе</string>
     
-    <string name="HttpAuthenticationDialogDialogTitle">Sign in to %1$s - %2$s</string>
-    <string name="HttpAuthenticationDialogUserName">Имя</string>
+    <string name="HttpAuthenticationDialogDialogTitle">Вход в %1$s - %2$s</string>
+    <string name="HttpAuthenticationDialogUserName">Логин</string>
     <string name="HttpAuthenticationDialogPassword">Пароль</string>
     
-    <string name="FormResubmitTitle">Повторная отправка даннах</string>
-    <string name="FormResubmitMessage">Чтобы отобразить эту страницу, приложение должно отправить информацию(\"POSTDATA\"), которая повторит любое ранее произведённое действие (например, запрос на поиск или онлайн-покупка).</string>
+    <string name="FormResubmitTitle">Повторная отправка данных</string>
+    <string name="FormResubmitMessage">Для отображения страницы браузер отправит на сервер запрос (\"POSTDATA\"), который повторит предыдущее действие (поисковый запрос, онлайн-покупку и т. д.).</string>
     
-    <string name="BookmarkAdded">Добавлено в закладки.</string>
-    <string name="BookmarkRemoved">Удалено из закладок.</string>
+    <string name="BookmarkAdded">Закладка добавлена.</string>
+    <string name="BookmarkRemoved">Закладка удалена.</string>
     
-    <string name="SDCardErrorNoSDMsg">Не найдена SD карта.</string>
-    <string name="SDCardErrorSDUnavailable">SD карта не доступна.</string>
+    <string name="SDCardErrorNoSDMsg">SD-карта не найдена.</string>
+    <string name="SDCardErrorSDUnavailable">SD-карта недоступна.</string>
     
     <string name="HistoryBookmarksClearTitle">Очистить</string>
 
@@ -315,59 +315,59 @@
         <item>@string/All</item>
     </string-array>
 
-    <string name="HistoryBookmarksImportSourceTitle">Импорт файлов</string>
-    <string name="HistoryBookmarksImportFileUnavailable">Файл недоступен, либо он не существует, либо не читается.</string>
+    <string name="HistoryBookmarksImportSourceTitle">Импорт из файла</string>
+    <string name="HistoryBookmarksImportFileUnavailable">Файл недоступен или не существует.</string>
     <string name="HistoryBookmarksImportTitle">Импорт истории и закладок</string>
-    <string name="HistoryBookmarksImportInitialMessage">Импорт истории и закладок&#8230;</string>
-    <string name="HistoryBookmarksImportReadingFile">Чтение файлов&#8230;</string>
-    <string name="HistoryBookmarksImportParsingFile">Разбор файлов&#8230;</string>
+    <string name="HistoryBookmarksImportInitialMessage">Импорт истории и закладок…</string>
+    <string name="HistoryBookmarksImportReadingFile">Чтение файлов…</string>
+    <string name="HistoryBookmarksImportParsingFile">Разбор файлов…</string>
     <string name="HistoryBookmarksImportProgressMessage">Чтение %1$s элемента из %2$s.</string>
-    <string name="HistoryBookmarksImportInsertMessage">Вставка значений&#8230;</string>
+    <string name="HistoryBookmarksImportInsertMessage">Вставка значений…</string>
     <string name="HistoryBookmarksImportErrorTitle">Ошибка импорта</string>
-    <string name="HistoryBookmarksImportErrorMessage">Произошла ошибка во время импорта истории и закладок: %s</string>
+    <string name="HistoryBookmarksImportErrorMessage">Ошибка при импорте истории и закладок: %s</string>
     
     <string name="HistoryBookmarksExportTitle">Экспорт истории и закладок</string>
-    <string name="HistoryBookmarksExportInitialMessage">Экспорт истории и закладок&#8230;</string>
-    <string name="HistoryBookmarksExportCheckCardMessage">Проверка внешних носителей&#8230;</string>
+    <string name="HistoryBookmarksExportInitialMessage">Экспорт истории и закладок…</string>
+    <string name="HistoryBookmarksExportCheckCardMessage">Проверка SD-карты…</string>
     <string name="HistoryBookmarksExportProgressMessage">Экспорт %1$s элемента из %2$s.</string>
     <string name="HistoryBookmarksExportErrorTitle">Ошибка экспорта</string>
-    <string name="HistoryBookmarksExportErrorMessage">Произошла ошибка во время экспорта истории и закладок: %s</string>
+    <string name="HistoryBookmarksExportErrorMessage">Ошибка при экспорте истории и закладок: %s</string>
     
     <string name="GeolocationTitle">Запрос местоположения</string>
-    <string name="GeolocationMessage">Сайт %s запрашивает доступ к определению вашего местоположения.</string>
+    <string name="GeolocationMessage">Сайт %s запрашивает доступ к местоположению.</string>
     <string name="GeolocationAccept">Разрешить</string>
     <string name="GeolocationDecline">Запретить</string>
     
-    <string name="WebsitesSettingsEmpty">Нет настроек для сайта.</string>
+    <string name="WebsitesSettingsEmpty">Нет настроек для сайтов.</string>
     
     <string name="WebsitesSettingsSiteTitle">Настройки для %s</string>
     
-    <string name="WebsitesSettingsDataUsage">%s MB хранится на вашем устройстве.</string>
-    <string name="WebsitesSettingsDataClickToClear">Кликните для удаления сохраненных данных.</string>
+    <string name="WebsitesSettingsDataUsage">%s МБ хранится на этом устройстве.</string>
+    <string name="WebsitesSettingsDataClickToClear">Нажмите для удаления сохранённых данных.</string>
     <string name="WebsitesSettingsCleatDataDialogTitle">Удаление данных</string>
-    <string name="WebsitesSettingsCleatDataDialogMessage">Удалить все сохраненные данные, относящиеся к данному сайту?</string>
+    <string name="WebsitesSettingsCleatDataDialogMessage">Удалить все сохранённые данные, относящиеся к этому сайту?</string>
     
-    <string name="WebsitesSettingsGeolocationClickToClear">Кликните для удаления доступа к данным о вашем местоположения.</string>
-    <string name="WebsitesSettingsGeolocationAllowed">Этот сайт может получить доступ к данным о вашем местоположеним.</string>
-    <string name="WebsitesSettingsGeolocationNotAllowed">Этот сайт не может получить доступ к данным о вашем местоположении.</string>
-    <string name="WebsitesSettingsGeolocationPageDialogTitle">Очистить доступ к данным о вашем местороложения</string>
-    <string name="WebsitesSettingsGeolocationPageDialogMessage">Очистить доступ для этого сайта к данным о вашем местоположении?</string>
+    <string name="WebsitesSettingsGeolocationClickToClear">Нажмите для удаления доступа к данным о местоположении.</string>
+    <string name="WebsitesSettingsGeolocationAllowed">Этот сайт может получить доступ к данным о местоположении.</string>
+    <string name="WebsitesSettingsGeolocationNotAllowed">Этот сайт не может получить доступ к данным о местоположении.</string>
+    <string name="WebsitesSettingsGeolocationPageDialogTitle">Очистка доступа к данным о местоположении</string>
+    <string name="WebsitesSettingsGeolocationPageDialogMessage">Очистить доступ для этого сайта к данным о местоположении?</string>
     
-    <string name="AddonsWarningText">Пожалуйста, устанавливайте дополнения только от разработчиков, которым вы доверяете. При возникновении странного поведения, отключите все дополнения.</string>
+    <string name="AddonsWarningText">Устанавливайте дополнения только от доверенных разработчиков.\nПри странном поведении браузера отключите все дополнения.</string>
     <string name="AddonsGetAddons"><a href="">Получить дополнения</a></string>
     <string name="AddonsMarketNotFoundTitle">Google Play не найден</string>
-    <string name="AddonsMarketNotFoundMessage">Похоже у вас нет приложения Google Play на устройстве.</string>
+    <string name="AddonsMarketNotFoundMessage">Приложение Google Play не найдено на этом устройстве.</string>
     <string name="AddonsEnableAll">Включить все</string>
-    <string name="AddonsDisableAll">Выключить все</string>
+    <string name="AddonsDisableAll">Отключить все</string>
     
-    <string name="AddonDetailsContact">Связаться: %s</string>
+    <string name="AddonDetailsContact">Связь: %s</string>
     <string name="AddonDetailsUsedCallbacksTitle">Данное дополнение:</string>
     
     <string name="AddonCallbackPageStarted">Получает уведомление, когда начинается загрузка страницы.</string>
     <string name="AddonCallbackPageFinished">Получает уведомление, когда загрузка страницы завершена.</string>
     <string name="AddonCallbackTabOpened">Получает уведомление, когда открыта вкладка.</string>
     <string name="AddonCallbackTabClosed">Получает уведомление, когда вкладка закрыта.</string>
-    <string name="AddonCallbackTabSwitched">Получает уведомление, при переключении между вкладками.</string>
+    <string name="AddonCallbackTabSwitched">Получает уведомление при переключении между вкладками.</string>
     <string name="AddonCallbackHasPreferencesPage">Получает параметры страницы.</string>
     <string name="AddonCallbackContributeMainMenu">Может дополнять главное меню.</string>
     <string name="AddonCallbackContributeLinkContextMenu">Может дополнять контекстное меню ссылки.</string>
@@ -377,24 +377,24 @@
     
     <string name="AddonDetailsUsedPermissionsTitle">Имеет следующие разрешения:</string>
     <string name="AddonDetailsPermissionsNone">Нет разрешений.</string>
-    <string name="AddonDetailsUnableToGetPermissions">Невозможно получить разрешения. Проверьте их в диспетчере приложений вашего устройства.</string>
+    <string name="AddonDetailsUnableToGetPermissions">Невозможно прочесть разрешения. Проверьте их в диспетчере приложений этого устройства.</string>
     
     <string name="ContentDescriptionDivider">Разделитель</string>
-    <string name="ContentDescriptionApplicationIcon">Иконка приложения</string>
-    <string name="ContentDescriptionSuggestionIcon">Иконка помощи</string>
+    <string name="ContentDescriptionApplicationIcon">Значок приложения</string>
+    <string name="ContentDescriptionSuggestionIcon">Значок помощи</string>
     <string name="ContentDescriptionBookmarkThumbnail">Предпросмотр закладки</string>
-    <string name="ContentDescriptionFavicon">Иконка сайта</string>
-    <string name="ContentDescriptionGoStopReloadButton">Кнопка Вперед / Остановить / Обновить</string>
+    <string name="ContentDescriptionFavicon">Значок сайта</string>
+    <string name="ContentDescriptionGoStopReloadButton">Кнопка Вперёд / Остановить / Обновить</string>
     <string name="ContentDescriptionMenuButton">Кнопка меню</string>
     <string name="ContentDescriptionPreviousTabButton">Кнопка предыдущей вкладки</string>
     <string name="ContentDescriptionNextTabButton">Кнопка следующей вкладки</string>
-    <string name="ContentDescriptionLeftBubble">Left bubble</string>
-    <string name="ContentDescriptionRightBubble">Right bubble</string>
+    <string name="ContentDescriptionLeftBubble">Левый круг</string>
+    <string name="ContentDescriptionRightBubble">Правый круг</string>
     <string name="ContentDescriptionBackButton">Кнопка назад</string>
     <string name="ContentDescriptionCloseTabButton">Кнопка закрытия вкладки</string>
     <string name="ContentDescriptionBookmarksButton">Кнопка закладок</string>
     <string name="ContentDescriptionNewTabButton">Кнопка новой вкладки</string>
-    <string name="ContentDescriptionForwardButton">Кнопка вперед</string>
+    <string name="ContentDescriptionForwardButton">Кнопка вперёд</string>
     <string name="ContentDescriptionHomeButton">Кнопка домой</string>
     <string name="ContentDescriptionWebsiteSettingsLocation">Местоположение сайта</string>
     <string name="ContentDescriptionWebsiteSettingsUsage">Использование сайта</string>
@@ -419,30 +419,30 @@
     </string-array>
 
     <!-- 1.2 -->
-    <string name="IncognitoTab">Приватная вкладка</string>
-    <string name="ContextMenuOpenInBackground">Открыть в фоновой вкладке</string>
-    <string name="ContentDescriptionPrivateBrowsingIndicator">Индикатор приватного просмотра</string>
+    <string name="IncognitoTab">Инкогнито-вкладка</string>
+    <string name="ContextMenuOpenInBackground">В фоновой вкладке</string>
+    <string name="ContentDescriptionPrivateBrowsingIndicator">Индикатор инкогнито-просмотра</string>
 
     <!-- 1.3 -->
-    <string name="Folder">Каталог</string>
-    <string name="NewFolder">Новый каталог</string>
-    <string name="NewFolderHint">Имя нового каталога</string>
-    <string name="ProvideNewFolderName">Пожалуйста укажите имя нового каталога или выберите существующий</string>
+    <string name="Folder">Папка</string>
+    <string name="NewFolder">Новая папка</string>
+    <string name="NewFolderHint">Название папки</string>
+    <string name="ProvideNewFolderName">Введите название новой папки или выберите существующую</string>
     
-    <string name="DeleteFolder">Удалить каталог</string>
-    <string name="ConfirmDeleteFolderMessage">Удалить каталог и все его содержимое?</string>
-    <string name="DeleteFolderTitle">Удалить каталог</string>
-    <string name="DeleteFolderMessage">Пожалуйста подождите, пока каталог и все его содержимое удаляется&#8230;</string>
+    <string name="DeleteFolder">Удалить папку</string>
+    <string name="ConfirmDeleteFolderMessage">Удалить папку и все её содержимое?</string>
+    <string name="DeleteFolderTitle">Удаление папки</string>
+    <string name="DeleteFolderMessage">Дождитесь удаления папки и её содержимого…</string>
     
-    <string name="ContentDescriptionBookmarksFoldersBack">Вернуться к иерархии закладок</string>
+    <string name="ContentDescriptionBookmarksFoldersBack">Вернуться в закладки</string>
 
     <!-- 1.4 -->
     <string name="PreferenceHeaderAccessibilityTitle">Специальные возможности</string>
     <string name="PreferenceCategoryTextSizeTitle">Размер текста</string>
-    <string name="PreferenceAccessibilityTextSizePreviewTitle">Просмотр размера текста</string>
+    <string name="PreferenceAccessibilityTextSizePreviewTitle">Предпросмотр</string>
     <string name="PreferenceAccessibilityTextScalingTitle">Масштабирование текста</string>
     <string name="PreferenceAccessibilityMinimumFontSizeTitle">Минимальный размер шрифта</string>
-    <string name="PreferenceAccessibilityMinimumFontSizeSummary">Установите минимальный размер шрифта, используемый для отображения текста в браузере.</string>
+    <string name="PreferenceAccessibilityMinimumFontSizeSummary">Минимальный размер шрифта для отображения текста в браузере.</string>
     
     <string name="FontPreviewTextTiny">Крошечный</string>
     <string name="FontPreviewTextSmall">Маленький</string>
@@ -460,76 +460,76 @@
 
     <string name="PreferenceCategoryInvertedScreenRenderingTitle">Режим инверсии</string>
     <string name="PreferenceAccessibilityInvertedRenderingTitle">Инверсия</string>
-    <string name="PreferenceAccessibilityInvertedRenderingSummary">Черное становится белым и наоборот. Может не работать на некоторых устройствах.</string>
+    <string name="PreferenceAccessibilityInvertedRenderingSummary">Чёрное становится белым и наоборот. Может не работать на некоторых устройствах.</string>
     <string name="PreferenceAccessibilityInvertedRenderingContrastTitle">Контраст</string>
     
     <string name="ContentDescriptionAutocompleteQueryBuilder">Автозавершение адреса в адресной строке, без перехода.</string>
 
     <!-- 1.5 -->
     <string name="UnknownAutority">Неизвестные полномочия</string>
-    <string name="RememberMyChoice">Запомнить мой выбор</string>
-    <string name="SslExceptionAccessAllowedByUserToast">Исключение безопасности SSL: доступ к %s разрешен пользователем.</string>
-    <string name="SslExceptionAccessDisallowedByUserToast">Исключение безопасности SSL: доступ к %s запрещен пользователем.</string>
+    <string name="RememberMyChoice">Запомнить выбор</string>
+    <string name="SslExceptionAccessAllowedByUserToast">Исключение безопасности SSL: доступ к %s разрешён пользователем.</string>
+    <string name="SslExceptionAccessDisallowedByUserToast">Исключение безопасности SSL: доступ к %s запрещён пользователем.</string>
     
     <string name="PreferenceSslExceptionsTitle">Исключения безопасности SSL</string>
-    <string name="PreferenceSslExceptionsSummary">Список исключений безопасности SSL сайтов.</string>
+    <string name="PreferenceSslExceptionsSummary">Список сайтов-исключений безопасности SSL.</string>
     <string name="SslExceptionWebsitesText"><i>Нажмите, чтобы удалить исключение.</i></string>
-    <string name="SslExceptionEmptyText">У вас нет никаких исключений безопасности SSL.</string>
+    <string name="SslExceptionEmptyText">Нет исключений безопасности SSL.</string>
     
-    <string name="RemoveSslExceptionTitle">Удалить исключение безопасности</string>
-    <string name="RemoveSslExceptionMessage">Вы действительно хотите удалить исключения безопасности для этого сайта?</string>
+    <string name="RemoveSslExceptionTitle">Удаление исключения</string>
+    <string name="RemoveSslExceptionMessage">Удалить исключение безопасности для этого сайта?</string>
     
-    <string name="SslInvalid">Этот сертификат является недействительным.</string>
-    <string name="SslDateInvalid">Дата данного сертификата является недействительной.</string>
+    <string name="SslInvalid">Этот сертификат недействителен.</string>
+    <string name="SslDateInvalid">Дата сертификата недействительна.</string>
     
-    <string name="Authorized">Авторизованный:</string>
-    <string name="Reasons">Причины:</string>
+    <string name="Authorized">Авторизован:</string>
+    <string name="Reasons">Основание:</string>
     
-    <string name="SearchUrlDialogText1">Ваша поисковая система по умолчанию:</string>
-    <string name="SearchUrlDialogText2">Вы можете настроить ее выбирая среди поисковых систем указанных ниже.</string>
-    <string name="SearchUrlGetOnline"><a href="">Вручную редактировать поисковую систему</a></string>
-    <string name="SearchUrlConnecting">Соединение&#8230;</string>
-    <string name="SearchUrlParsing">Результаты разбора&#8230;</string>
-    <string name="SearchUrlBadResponseCodeMessage">Не могу соединиться с репозитарием поисковых систем (Код ответа: %s).</string>
+    <string name="SearchUrlDialogText1">Поисковая система по умолчанию:</string>
+    <string name="SearchUrlDialogText2">Доступные поисковые системы:</string>
+    <string name="SearchUrlGetOnline"><a href="">Ввести вручную</a></string>
+    <string name="SearchUrlConnecting">Соединение…</string>
+    <string name="SearchUrlParsing">Результаты разбора…</string>
+    <string name="SearchUrlBadResponseCodeMessage">Нет соединения с репозиторием поисковых систем (код ответа: %s).</string>
     
     <string name="SearchUrlDefault">Яндекс</string>
-    <string name="SearchUrlCustom">Пользовательская система поиска</string>
+    <string name="SearchUrlCustom">Своя поисковая система</string>
     
-    <string name="SortBookmarks">Упорядочить закладки</string>
-    <string name="MostUsedSortMode">Наиболее часто используемые</string>
-    <string name="AlphaSortMode">В алфавитном порядке</string>
-    <string name="RecentSortMode">Самые посещаемые</string>
+    <string name="SortBookmarks">Сортировка</string>
+    <string name="MostUsedSortMode">Частота посещения</string>
+    <string name="AlphaSortMode">По алфавиту</string>
+    <string name="RecentSortMode">Порядок посещения</string>
 
     <!-- 1.6 -->
     <string name="HistoryBookmarksImportErrorInvalidFileFormat">Неверный формат файла</string>
-    <string name="HistoryBookmarksImportFoldersProgressMessage">Чтение %1$s каталога из %2$s.</string>
-    <string name="HistoryBookmarksImportFoldersLinkMessage">Привязанные папки&#8230;</string>
+    <string name="HistoryBookmarksImportFoldersProgressMessage">Чтение %1$s папки из %2$s.</string>
+    <string name="HistoryBookmarksImportFoldersLinkMessage">Объединение папок…</string>
     <string name="HistoryBookmarksImportBookmarksProgressMessage">Чтение %1$s закладки из %2$s.</string>
     <string name="HistoryBookmarksImportHistoryProgressMessage">Чтение %1$s элемента истории из %2$s.</string>
     
-    <string name="FullScreen">Полноэкранный режим</string>
+    <string name="FullScreen">Во весь экран</string>
     <string name="ContentDescriptionExitFullScreen">Кнопка выхода из полноэкранного режима</string>
 
     <!-- 1.7 -->
     <string name="StartPageLabel">Стартовая страница</string>
 
-    <string name="RestartDialogTitle">Требуется перезагрузка</string>
-    <string name="RestartDialogMessage">Это изменение не вступит в силу до перезапуска приложения. Вы хотите сделать это сейчас?</string>
+    <string name="RestartDialogTitle">Требуется перезапуск</string>
+    <string name="RestartDialogMessage">Изменения вступят в силу после перезапуска приложения. Выполнить сейчас?</string>
     
     <string name="ContentDescriptionTabPreview">Предпросмотр вкладки</string>
     
-    <string name="PreferenceClosePanelOnNewTabTitle">Закрыть боковую панель на новой вкладке</string>
-    <string name="PreferenceClosePanelOnNewTabSummary">Если отмечено, то боковая панель будет закрыта в новой вкладе.</string>
+    <string name="PreferenceClosePanelOnNewTabTitle">Закрывать панель</string>
+    <string name="PreferenceClosePanelOnNewTabSummary">Закрывать боковую панель после создания вкладки.</string>
     
-    <string name="AboutChangelogTitle">Список изменений</string>
-    <string name="AboutContributorsTitle">Авторы</string>
-    <string name="AboutLicensesTitle">Другие лицензии</string>
+    <string name="AboutChangelogTitle">Изменения</string>
+    <string name="AboutContributorsTitle">Контрибуторы</string>
+    <string name="AboutLicensesTitle">Сторонние лицензии</string>
     
     <string name="RestoreTabsDialogTitle">Восстановление вкладок</string>
-    <string name="RestoreTabsDialogMessage">Вы хотите восстановить вкладки предыдущего сеанса?</string>
+    <string name="RestoreTabsDialogMessage">Открыть вкладки предыдущего сеанса?</string>
     
     <string name="PreferenceRestoreTabsTitle">Восстановление вкладок</string>
-    <string name="PreferenceRestoreTabsSummary">Выберите вкладки, которые хотите восстановить из предыдущей сессии</string>
+    <string name="PreferenceRestoreTabsSummary">Режим восстановления вкладок предыдущего сеанса.</string>
     
     <string name="PreferenceRestoreTabsAsk">Спрашивать</string>
     <string name="PreferenceRestoreTabsAlways">Всегда</string>
@@ -548,11 +548,11 @@
 	</string-array>
 	
     <string name="PreferenceUITypeTitle">Тип интерфейса</string>
-    <string name="PreferenceUITypeSummary">Выберите тип пользовательского интерфейса.</string>
+    <string name="PreferenceUITypeSummary">Компоновка интерфейса для различных устройств.</string>
     
     <string name="PreferenceUITypeAuto">Автоматически</string>
-    <string name="PreferenceUITypePhone">Телефон</string>
-    <string name="PreferenceUITypeLegacyPhone">Телефон (legacy)</string>
+    <string name="PreferenceUITypePhone">Смартфон</string>
+    <string name="PreferenceUITypeLegacyPhone">Смартфон (прежний)</string>
     <string name="PreferenceUITypeTablet">Планшет</string>
     
     <string-array name="PreferenceUITypeEntries">
@@ -570,9 +570,9 @@
 	</string-array>
 	
     <!-- 1.8 -->
-    <string name="PreferenceDevelopersTitle">Разработчики</string>
-    <string name="PreferenceJsLogOnLocatTitle">Войти JS журналы LogCat</string>
-    <string name="PreferenceJsLogOnLocatSummary">Перенаправить JS журналы на LogCat буфер.</string>
-    <string name="ContextMenuViewImageInNewTab">Открыть изображение в новой вкладке</string>
+    <string name="PreferenceDevelopersTitle">Разработка</string>
+    <string name="PreferenceJsLogOnLocatTitle">Вывод JS в logcat</string>
+    <string name="PreferenceJsLogOnLocatSummary">Перенаправить вывод JS в logcat.</string>
+    <string name="ContextMenuViewImageInNewTab">В новой вкладке</string>
     
 </resources>
