@@ -55,8 +55,8 @@
     <string name="FileChooserPrompt">Datei zum Hochladen auswählen</string>
     
     <string name="Download">Herunterladen</string>
-    <string name="DownloadDialogTitle">Download</string>
-    <string name="DownloadInIncognito">Herunterladen incognito</string>
+    <string name="DownloadDialogTitle">Herunterladen</string>
+    <string name="DownloadInIncognito">Inkognito herunterladen</string>
     <string name="DownloadStart">Herunterladen %1$s&#8230;</string>
     <string name="DownloadComplete">Herunterladen beendet.</string>
     <string name="DownloadFailedWithErrorMessage">Herunterladen fehlgeschlagen: %1$s.</string>
@@ -251,9 +251,9 @@
     <string name="PreferencePrivacyWebsitesSettingsTitle">Webseiteneinstellungen</string>
     <string name="PreferencePrivacyWebsitesSettingsSummary">Erweiterte Einstellungen pro Webseite.</string>
     
-    <string name="PreferencePrivacyIncognitoTitle">Inkognito-modus</string>
-    <string name="PreferencePrivacyIncognitoDefaultTitle">Inkognito standardmäßig</string>
-    <string name="PreferencePrivacyIncognitoDefaultSummary">Öffnen neuer Tabs in inkognito-modus</string>
+    <string name="PreferencePrivacyIncognitoTitle">Inkognitomodus</string>
+    <string name="PreferencePrivacyIncognitoDefaultTitle">Inkognitomodus standardmäßig verwenden</string>
+    <string name="PreferencePrivacyIncognitoDefaultSummary">Öffne neue Reiter im Inkognitomodus.</string>
     
     <string name="HistoryToday">Heute</string>
     <string name="HistoryYesterday">Gestern</string>
@@ -570,9 +570,9 @@
 	</string-array>
 	
     <!-- 1.8 -->
-    <string name="PreferenceDevelopersTitle">Entwickler</string>
+    <string name="PreferenceDevelopersTitle">Entwickleroptionen</string>
     
-    <string name="PreferenceJsLogOnLocatTitle">Anmelden JS Protokolle logcat</string>
-    <string name="PreferenceJsLogOnLocatSummary">Lenken Sie die JS Protokolle an den logcat puffer.</string>
+    <string name="PreferenceJsLogOnLocatTitle">Protokolliere mit logcat</string>
+    <string name="PreferenceJsLogOnLocatSummary">Leite JavaScript-Protokolle an logcat weiter.</string>
 
 </resources>
