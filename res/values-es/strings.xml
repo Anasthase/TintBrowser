@@ -56,7 +56,7 @@
     
     <string name="Download">Descargar</string>
     <string name="DownloadDialogTitle">Descargar</string>
-    <string name="DownloadInIncognito">Descargar incognito</string>
+    <string name="DownloadInIncognito">Descargar en incógnito</string>
     <string name="DownloadStart">Descargando %1$s&#8230;</string>
     <string name="DownloadComplete">Descarga completa.</string>
     <string name="DownloadFailedWithErrorMessage">La descarga ha fallado: %1$s.</string>
@@ -188,7 +188,7 @@
     <string name="PreferenceEnableImagesSummary">Márcala si quieres que se carguen las imágenes.</string>
     <string name="PreferenceUseWideViewportTitle">Usar pantalla completa</string>
     <string name="PreferenceUseWideViewportSummary">Si está marcada, el navegador usará una vista similar a la de los navegadores de escritorio.</string>
-    <string name="PreferenceLoadPagesWithOverviewTitle">Cargar páginas con visión general</string>
+    <string name="PreferenceLoadPagesWithOverviewTitle">Cargar páginas alejadasl</string>
     <string name="PreferenceLoadPagesWithOverviewSummary">Márcala si quieres cargar las páginas alejadas para tener una visión general de la página.</string>
     <string name="PreferencePluginsTitle">Habilitar plugins</string>
     <string name="PreferencePluginsSummary">Elige cómo manejar los plugins.</string>
@@ -251,8 +251,8 @@
     <string name="PreferencePrivacyWebsitesSettingsTitle">Ajustes de sitios web</string>
     <string name="PreferencePrivacyWebsitesSettingsSummary">Ajustes avanzados para sitios web individuales.</string>
     
-    <string name="PreferencePrivacyIncognitoTitle">Modo incognito</string>
-    <string name="PreferencePrivacyIncognitoDefaultTitle">Incognito por defecto</string>
+    <string name="PreferencePrivacyIncognitoTitle">Modo incógnito</string>
+    <string name="PreferencePrivacyIncognitoDefaultTitle">Incógnito por defecto</string>
     <string name="PreferencePrivacyIncognitoDefaultSummary">Abrir nuevas pestañas en modo incógnito</string>
     
     <string name="HistoryToday">Hoy</string>
@@ -419,7 +419,7 @@
 	</string-array>
 	
     <!-- 1.2 -->
-    <string name="IncognitoTab">Pestaña  de incógnito</string>
+    <string name="IncognitoTab">Pestaña de incógnito</string>
     <string name="ContextMenuOpenInBackground">Abrir en segundo plano</string>
     <string name="ContentDescriptionPrivateBrowsingIndicator">Indicador de navegación privada</string>
     
@@ -440,7 +440,7 @@
     <string name="PreferenceHeaderAccessibilityTitle">Ajustes de accesibilidad</string>
     <string name="PreferenceCategoryTextSizeTitle">Tamaño del texto</string>
     <string name="PreferenceAccessibilityTextSizePreviewTitle">Vista previa del tamaño del texto</string>
-    <string name="PreferenceAccessibilityTextScalingTitle">Escalando el texto</string>
+    <string name="PreferenceAccessibilityTextScalingTitle">Escalado del texto</string>
     <string name="PreferenceAccessibilityMinimumFontSizeTitle">Tamaño mínimo de fuente</string>
     <string name="PreferenceAccessibilityMinimumFontSizeSummary">Establece el tamaño mínimo de fuente que se usará para mostrar el texto en el navegador.</string>
     
@@ -522,7 +522,7 @@
     <string name="PreferenceClosePanelOnNewTabSummary">Si está marcado, el panel lateral se cerrará cuando se abra una nueva pestaña.</string>
     
     <string name="AboutChangelogTitle">Changelog</string>
-    <string name="AboutContributorsTitle">Colaboradores</string>
+    <string name="AboutContributorsTitle">Colaboraciones</string>
     <string name="AboutLicensesTitle">Otras licencias</string>
     
     <string name="RestoreTabsDialogTitle">Restauración de pestañas</string>
@@ -572,7 +572,7 @@
     <!-- 1.8 -->
     <string name="PreferenceDevelopersTitle">Desarrolladores</string>
     
-    <string name="PreferenceJsLogOnLocatTitle">Entrar registros JS a Logcat</string>
-    <string name="PreferenceJsLogOnLocatSummary">Redireccionar los registros de JS en el búfer Logcat.</string>
+    <string name="PreferenceJsLogOnLocatTitle">Guardar registros JS en Logcat</string>
+    <string name="PreferenceJsLogOnLocatSummary">Redireccionar los registros de JavaScript en el búfer Logcat.</string>
     
 </resources>
