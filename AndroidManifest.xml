@@ -43,6 +43,7 @@
     <uses-permission android:name="org.tint.permissions.services.ADDONS" />
     
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
@@ -69,6 +70,12 @@
 				<data android:scheme="http" />
 				<data android:scheme="https" />
 			</intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:mimeType="text/html" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".ui.preferences.PreferencesActivity" android:label="@string/PreferencesActivityTitle"></activity>
