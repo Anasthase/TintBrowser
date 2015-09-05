@@ -87,21 +87,13 @@
                         android:text="@string/Folder"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                    <Spinner
-                        android:id="@+id/EditBookmarkActivity.FolderSpinner"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dip" />
+                    <Button android:id="@+id/PickFolder"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="I AM BEAUTIFUL"
+                            android:onClick="pickFolder" />
                 </TableRow>
 
-                <EditText
-                    android:id="@+id/EditBookmarkActivity.FolderValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dip"
-                    android:hint="@string/NewFolderHint"
-                    android:inputType="text" >
-                </EditText>
             </TableLayout>
         </ScrollView>
     </FrameLayout>

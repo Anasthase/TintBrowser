@@ -368,7 +368,7 @@ public class TintBrowserActivity extends Activity {
         	if (mUIManager.getUploadMessage() == null) {
         		return;
         	}
-        	
+
         	Uri result = intent == null || resultCode != RESULT_OK ? null : intent.getData();
         	mUIManager.getUploadMessage().onReceiveValue(result);
         	mUIManager.setUploadMessage(null);

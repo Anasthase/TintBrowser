@@ -576,5 +576,9 @@
     <string name="PreferenceJsLogOnLocatSummary">Redirect javascript logs to the logcat buffer.</string>
     
     <string name="ContextMenuViewImageInNewTab">View image in a new tab</string>
-    
+    <string name="RenameFolder">Rename folder</string>
+    <string name="MoveFolder">Move folder</string>
+    <string name="MoveBookmark">Move bookmark</string>
+    <string name="PickFolder">Pick folder</string>
+
 </resources>
