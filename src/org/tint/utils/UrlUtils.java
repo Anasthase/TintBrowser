@@ -34,7 +34,11 @@ public class UrlUtils {
 	 */
 	public static boolean isUrl(String url) {
 		return 
-			url.contains(".") ||
+			(url.contains(".") && !url.contains(" ")) || /* actually check if it begins with the proper protocol */
+			url.startsWith("http://") ||
+			url.startsWith("https://") ||
+			url.startsWith("file://") ||
+			url.startsWith("javascript:") ||
 			url.equals(Constants.URL_ABOUT_BLANK) ||
 			url.equals(Constants.URL_ABOUT_START) ||
 			url.equals(Constants.URL_ABOUT_TUTORIAL);
@@ -76,6 +80,7 @@ public class UrlUtils {
     		if ((!url.startsWith("http://")) &&
     				(!url.startsWith("https://")) &&
     				(!url.startsWith("file://")) &&
+					(!url.startsWith("javascript:")) && //add bookmarklet support
     				(!url.startsWith(Constants.URL_ABOUT_BLANK)) &&
     				(!url.startsWith(Constants.URL_ABOUT_START)) &&
     				(!url.startsWith(Constants.URL_ABOUT_TUTORIAL))) {
