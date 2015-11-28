@@ -158,7 +158,7 @@
 	</string-array>
 	
     <string name="PreferenceToolbarsAutoHideDurationTitle">Toolbars display duration</string>
-    <string name="PreferenceToolbarsAutoHideDurationSummary">Set how long toolbars are shown, in seconds.</string>
+    <string name="PreferenceToolbarsAutoHideDurationSummary">Set how long toolbars are shown (seconds).</string>
     
     <string name="PreferenceSwitchTabsMethodTitle">Switch tabs method</string>
     <string name="PreferenceSwitchTabsMethodSummary">Set how you can switch between tabs.</string>
@@ -220,7 +220,7 @@
         
     <string name="PreferenceCategoryHistoryTitle">History</string>
     <string name="PreferencePrivacyHistorySizeTitle">History size</string>
-    <string name="PreferencePrivacyHistorySizeSummary">Define the history size, in days.</string>
+    <string name="PreferencePrivacyHistorySizeSummary">Define the history size (days).</string>
     <string name="PreferencePrivacyClearHistoryTitle">Clear history</string>
     <string name="PreferencePrivacyClearHistorySummary">Clear the browser navigation history.</string>
         
@@ -238,7 +238,7 @@
     
     <string name="PreferenceCategoryFormDataTitle">Form Data</string>
     <string name="PreferencePrivacyRememberFormDataTitle">Remember form data</string>
-    <string name="PreferencePrivacyRememberFormDataSummary">Remember data i type in forms for later use.</string>
+    <string name="PreferencePrivacyRememberFormDataSummary">Remember data typed in forms for later use.</string>
     <string name="PreferencePrivacyClearFormDataTitle">Clear form data</string>
     <string name="PreferencePrivacyClearFormDataSummary">Clear all saved form data.</string>
     
@@ -472,7 +472,7 @@
     <string name="SslExceptionAccessDisallowedByUserToast">SSL security exception: Access disallowed to %s by user.</string>
     
     <string name="PreferenceSslExceptionsTitle">SSL security exceptions</string>
-    <string name="PreferenceSslExceptionsSummary">List of SSL security exceptions by websites.</string>
+    <string name="PreferenceSslExceptionsSummary">List SSL security exceptions by websites.</string>
     <string name="SslExceptionWebsitesText"><i>Click to remove the exception.</i></string>
     <string name="SslExceptionEmptyText">You do not have any SSL security exception.</string>
     
