@@ -21,8 +21,8 @@
 	<string name="Cancel">取消</string>
 	<string name="Yes">是</string>
 	<string name="No">否</string>
-	<string name="On">开</string>
-	<string name="Off">关</string>
+	<string name="On">打开</string>
+	<string name="Off">关闭</string>
 	<string name="Clear">清除</string>
 	<string name="Continue">继续</string>
 	<string name="Proceed">开始</string>
@@ -67,13 +67,13 @@
 	<string name="UrlCopyToastMessage">地址已复制到剪贴板。</string>
 	<string name="ContextMenuShareUrl">分享</string>
 	
-	<string name="JavaScriptAlertDialog">JavaScript警告对话框</string>
-	<string name="JavaScriptConfirmDialog">JavaScript确认对话框</string>
-	<string name="JavaScriptPromptDialog">JavaScript提示对话框</string>    
+	<string name="JavaScriptAlertDialog">JavaScript 警告对话框</string>
+	<string name="JavaScriptConfirmDialog">JavaScript 确认对话框</string>
+	<string name="JavaScriptPromptDialog">JavaScript 提示对话框</string>    
 	
 	<string name="SslWarning">安全警告</string>
-	<string name="SslWarningsHeader">该网站的安全证书有问题(%s)。</string>
-	<string name="SslUntrusted">该证书不是由受信任的机构颁发。</string>
+	<string name="SslWarningsHeader">当前网站的安全证书有问题(%s)。</string>
+	<string name="SslUntrusted">该证书不是由可信机构颁发。</string>
 	<string name="SslIDMismatch">网站名称与证书名称不匹配。</string>
 	<string name="SslExpired">该证书已过期。</string>
 	<string name="SslNotYetValid">该证书无效。</string>    
@@ -110,24 +110,24 @@
 	<string name="PreferenceHeaderGeneralSettingsTitle">常规设置</string>
 	
 	<string name="PreferenceGeneralHomepageTitle">主页</string>
-	<string name="PreferenceGeneralHomepageSummary">指定新标签默认加载的页面。</string>
+	<string name="PreferenceGeneralHomepageSummary">设定标签中的默认加载页面。</string>
 	<string name="PreferenceHomePageDialogTitle">主页</string>
 	
 	<string name="PreferenceGeneralSearchUrlTitle">搜索引擎</string>
-	<string name="PreferenceGeneralSearchUrlSummary">指定地址栏中的默认搜索引擎。</string>
+	<string name="PreferenceGeneralSearchUrlSummary">设定地址栏中的默认搜索引擎。</string>
 	
 	<string name="PreferenceCategoryStartPageTitle">起始页</string>
 	<string name="PreferenceGeneralStartPageLimitTitle">起始页项目数</string>
-	<string name="PreferenceGeneralStartPageLimitSummary">指定起始页中显示项的数目。</string>
+	<string name="PreferenceGeneralStartPageLimitSummary">设定起始页中的显示项数量。</string>
 	
 	<string name="PreferenceCategoryUITitle">用户界面</string>
 	
 	<string name="PreferenceBubblePositionTitle">气泡位置</string>
-	<string name="PreferenceBubblePositionSummary">指定工具条气泡摆放的位置。</string>
+	<string name="PreferenceBubblePositionSummary">设定工具条气泡的摆放位置。</string>
 	
 	<string name="PreferenceBubblePositionRight">右边</string>
 	<string name="PreferenceBubblePositionLeft">左边</string>
-	<string name="PreferenceBubblePositionBoth">两边</string>
+	<string name="PreferenceBubblePositionBoth">左右两边</string>
 	
 	<string-array name="PreferenceBubblePositionEntries">
 	    <item>@string/PreferenceBubblePositionRight</item>
@@ -142,10 +142,10 @@
 	</string-array>
 	
 	<string name="PreferenceToolbarsAutoHideDurationTitle">工具条持续时间</string>
-	<string name="PreferenceToolbarsAutoHideDurationSummary">指定工具条显示持续的秒数。</string>
+	<string name="PreferenceToolbarsAutoHideDurationSummary">设定工具条的显示可延续的秒数。</string>
 	
 	<string name="PreferenceSwitchTabsMethodTitle">标签切换方式</string>
-	<string name="PreferenceSwitchTabsMethodSummary">指定标签之间如何切换。</string>
+	<string name="PreferenceSwitchTabsMethodSummary">设定标签之间的切换方式。</string>
 	
 	<string name="PreferenceSwitchTabsMethodButtons">按钮</string>
 	<string name="PreferenceSwitchTabsMethodFling">划动</string>
@@ -168,17 +168,17 @@
 	<string name="PreferenceEnableJavascriptTitle">启用 JavaScript</string>
 	<string name="PreferenceEnableJavascriptSummaryOn">JavaScript 已启用。</string>
 	<string name="PreferenceEnableJavascriptSummaryOff">JavaScript 已禁用。</string>
-	<string name="PreferenceEnableImagesTitle">启用图片</string>
+	<string name="PreferenceEnableImagesTitle">载入图片</string>
 	<string name="PreferenceEnableImagesSummary">加载网页图片。</string>
 	<string name="PreferenceUseWideViewportTitle">使用宽视口</string>
 	<string name="PreferenceUseWideViewportSummary">使用类似桌面浏览器的视图。</string>
 	<string name="PreferenceLoadPagesWithOverviewTitle">以概览模式打开网页</string>
 	<string name="PreferenceLoadPagesWithOverviewSummary">显示新打开网页的概览。</string>
 	<string name="PreferencePluginsTitle">启用插件</string>
-	<string name="PreferencePluginsSummary">选择插件处理方式。</string>
+	<string name="PreferencePluginsSummary">选择插件的启用方式。</string>
 	
 	<string name="PreferencePluginsAlwaysOff">关闭</string>
-	<string name="PreferencePluginsOnDemand">在需要时打开</string>
+	<string name="PreferencePluginsOnDemand">手动</string>
 	<string name="PreferencePluginsAlwaysOn">打开</string>
 	
 	<string-array name="PreferencePluginsEntries">
@@ -194,7 +194,7 @@
 	</string-array>
 	
 	<string name="PreferenceUserAgentTitle">用户代理(UA)</string>
-	<string name="PreferenceUserAgentSummary">指定浏览器使用的用户代理字符串。</string>
+	<string name="PreferenceUserAgentSummary">设定浏览器使用的用户代理字符串。</string>
 	<string name="PreferenceUserAgentDialogTitle">用户代理</string>
 	
 	<string name="PreferenceHeaderPrivacySettingsTitle">隐私与安全设置</string>
@@ -203,8 +203,8 @@
 	<string name="PreferencePrivacyClearCacheSummary">清除本地缓存内容和数据库。</string>
 	
 	<string name="PreferenceCategoryHistoryTitle">历史</string>
-	<string name="PreferencePrivacyHistorySizeTitle">存储期限</string>
-	<string name="PreferencePrivacyHistorySizeSummary">指定历史记录保存的天数。</string>
+	<string name="PreferencePrivacyHistorySizeTitle">历史上限</string>
+	<string name="PreferencePrivacyHistorySizeSummary">设定浏览历史可保留的天数。</string>
 	<string name="PreferencePrivacyClearHistoryTitle">清除历史</string>
 	<string name="PreferencePrivacyClearHistorySummary">清除浏览器导航历史记录。</string>
 	
@@ -312,7 +312,7 @@
 	
 	<string name="HistoryBookmarksExportTitle">导出历史和书签</string>
 	<string name="HistoryBookmarksExportInitialMessage">导出历史和书签&#8230;</string>
-	<string name="HistoryBookmarksExportCheckCardMessage">外部存储检测&#8230;</string>
+	<string name="HistoryBookmarksExportCheckCardMessage">检测外部存储&#8230;</string>
 	<string name="HistoryBookmarksExportProgressMessage">导出项目(%1$s/%2$s)。</string>
 	<string name="HistoryBookmarksExportErrorTitle">导出错误</string>
 	<string name="HistoryBookmarksExportErrorMessage">导出过程出现错误: %s</string>
@@ -351,13 +351,13 @@
 	<string name="AddonCallbackPageFinished">在页面完成加载时回调。</string>
 	<string name="AddonCallbackTabOpened">在标签打开时回调。</string>
 	<string name="AddonCallbackTabClosed">在标签关闭时回调。</string>
-	<string name="AddonCallbackTabSwitched">在切换标签时回调。</string>
+	<string name="AddonCallbackTabSwitched">在标签切换时回调。</string>
 	<string name="AddonCallbackHasPreferencesPage">有一个设置页面。</string>
-	<string name="AddonCallbackContributeMainMenu">可以影响主菜单。</string>
-	<string name="AddonCallbackContributeLinkContextMenu">可以影响链接菜单。</string>
-	<string name="AddonCallbackContributeHistoryBookmarksMenu">可以影响书签和历史菜单。</string>
-	<string name="AddonCallbackContributeBookmarkContextMenu">可以影响书签菜单。</string>
-	<string name="AddonCallbackContributeHistoryContextMenu">可以影响历史菜单。</string>
+	<string name="AddonCallbackContributeMainMenu">可以改动主菜单。</string>
+	<string name="AddonCallbackContributeLinkContextMenu">可以改动链接菜单。</string>
+	<string name="AddonCallbackContributeHistoryBookmarksMenu">可以改动书签和历史菜单。</string>
+	<string name="AddonCallbackContributeBookmarkContextMenu">可以改动书签菜单。</string>
+	<string name="AddonCallbackContributeHistoryContextMenu">可以改动历史菜单。</string>
 	
 	<string name="AddonDetailsUsedPermissionsTitle">具有下列权限:</string>
 	<string name="AddonDetailsPermissionsNone">无。</string>
@@ -416,7 +416,7 @@
 	<string name="DeleteFolder">删除文件夹</string>
 	<string name="ConfirmDeleteFolderMessage">删除该文件夹及其所有内容？</string>
 	<string name="DeleteFolderTitle">删除文件夹</string>
-	<string name="DeleteFolderMessage">请稍候，该文件夹及其内容正被删除&#8230;</string>
+	<string name="DeleteFolderMessage">请稍候，正在删除文件夹及其内容&#8230;</string>
 	
 	<string name="ContentDescriptionBookmarksFoldersBack">返回到书签文件夹树</string>
 	
@@ -426,7 +426,7 @@
 	<string name="PreferenceAccessibilityTextSizePreviewTitle">预览</string>
 	<string name="PreferenceAccessibilityTextScalingTitle">文字缩放</string>
 	<string name="PreferenceAccessibilityMinimumFontSizeTitle">字体尺寸下限</string>
-	<string name="PreferenceAccessibilityMinimumFontSizeSummary">指定浏览器中页面文字的最小尺寸。</string>
+	<string name="PreferenceAccessibilityMinimumFontSizeSummary">设定浏览器中页面文字的最小尺寸。</string>
 	
 	<string name="FontPreviewTextTiny">超小</string>
 	<string name="FontPreviewTextSmall">小</string>
@@ -498,7 +498,7 @@
 	<string name="StartPageLabel">起始页</string>
 	
 	<string name="RestartDialogTitle">需要重启</string>
-	<string name="RestartDialogMessage">应用该设置需要重启浏览器。您想现在重启吗？</string>
+	<string name="RestartDialogMessage">应用该设置需重启浏览器。您想现在重启吗？</string>
 	
 	<string name="ContentDescriptionTabPreview">标签预览</string>
 	
@@ -513,7 +513,7 @@
 	<string name="RestoreTabsDialogMessage">您想还原上次会话的标签吗？</string>
 	
 	<string name="PreferenceRestoreTabsTitle">标签恢复</string>
-	<string name="PreferenceRestoreTabsSummary">选择如何还原上次会话的标签。</string>
+	<string name="PreferenceRestoreTabsSummary">选择上次会话标签的还原方式。</string>
 	
 	<string name="PreferenceRestoreTabsAsk">询问</string>
 	<string name="PreferenceRestoreTabsAlways">总是恢复</string>
