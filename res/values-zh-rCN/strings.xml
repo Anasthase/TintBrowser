@@ -2,49 +2,51 @@
 <resources>
     
 	<string name="ApplicationName">Tint Browser</string>
-	<string name="ApplicationDescription">Tint浏览器是Android下的开源项目。</string>
+	<string name="ApplicationDescription">Tint 是 Android 平台下的开源浏览器。</string>
 	
 	<string name="AboutVersionText">版本: %1$s (%2$s)</string>
-	<string name="AboutLicenseText">协议: GPLv3</string>
+	<string name="AboutLicenseText">许可: GPLv3</string>
 	<string name="AboutUrlText">https://github.com/Anasthase/TintBrowser</string>
-	<string name="AboutChangelogText">更新日志:</string>
 	
-	<string name="PermissionReadBookmarksLabel">打开浏览器书签</string>
-	<string name="PermissionReadBookmarksDescription">允许第三方应用或者附加组件打历史记录或者书签。</string>
+	<string name="PermissionReadBookmarksLabel">读取书签</string>
+	<string name="PermissionReadBookmarksDescription">允许其他应用读取历史或书签。</string>
 	
-	<string name="PermissionWriteBookmarksLabel">添加新书签</string>
-	<string name="PermissionWriteBookmarksDescription">允许第三封应用或者附加组件添加新的历史记录或者书签。</string>    
+	<string name="PermissionWriteBookmarksLabel">写入书签</string>
+	<string name="PermissionWriteBookmarksDescription">允许其他应用写入历史或书签。</string>
 	
 	<string name="PermissionBindAddonServiceLabel">绑定附加组件服务</string>
-	<string name="PermissionBindAddonServiceDescription">在Tint浏览器自身允许下应用可以绑定附加组件服务</string>
+	<string name="PermissionBindAddonServiceDescription">允许其他应用绑定到附加组件服务。</string>
 	
 	<string name="OK">确定</string>
 	<string name="Cancel">取消</string>
-	<string name="Yes">Yes</string>
-	<string name="No">No</string>
-	<string name="On">打开</string>
-	<string name="Off">关闭</string>
-	<string name="Clear">清空</string>
+	<string name="Yes">是</string>
+	<string name="No">否</string>
+	<string name="On">开</string>
+	<string name="Off">关</string>
+	<string name="Clear">清除</string>
 	<string name="Continue">继续</string>
 	<string name="Proceed">开始</string>
-	<string name="VideoLoading">正在加载视频\u2026</string>
+	<string name="VideoLoading">加载视频\u2026</string>
 	<string name="History">历史</string>
 	<string name="All">全部</string>
 	<string name="Bookmarks">书签</string>
 	<string name="Preferences">设置</string>
 	
-	<string name="UrlBarUrlDefaultSubTitle">点击输入搜索或地址。</string>
-	<string name="UrlBarUrlHint">输入搜索或地址</string>
+	<string name="UrlBarUrlDefaultSubTitle">点击输入网址或搜索。</string>
+	<string name="UrlBarUrlHint">搜索或输入网址</string>
 	
-	<string name="ShareChooserTitle">分享</string>
-	<string name="FileChooserPrompt">选择上传文件</string>
+	<string name="ShareChooserTitle">分享途径</string>
+	<string name="FileChooserPrompt">选择要上传的文件</string>
 	
-	<string name="DownloadStart">已下载 %1$s&#8230;</string>
-	<string name="DownloadComplete">下载完成</string>
-	<string name="DownloadFailedWithErrorMessage">下载失败: %1$s.</string>
-	<string name="DownloadErrorDisk">磁盘错误，请检查您的磁盘是否有足够的存储空间。</string>
+	<string name="Download">下载</string>
+	<string name="DownloadDialogTitle">下载</string>
+	<string name="DownloadInIncognito">隐身下载</string>
+	<string name="DownloadStart">下载 %1$s&#8230;</string>
+	<string name="DownloadComplete">下载完成。</string>
+	<string name="DownloadFailedWithErrorMessage">下载失败: %1$s</string>
+	<string name="DownloadErrorDisk">介质错误，请检查存储介质的可用空间。</string>
 	<string name="DownloadErrorHttp">网络错误</string>
-	<string name="DownloadErrorRedirection">重定向错误</string>
+	<string name="DownloadErrorRedirection">重定向过多</string>
 	<string name="DownloadErrorUnknown">未知错误</string>
 	
 	<string name="ContextMenuOpen">打开</string>
@@ -53,7 +55,7 @@
 	<string name="ContextMenuDownload">下载</string>
 	<string name="ContextMenuShareLinkUrl">分享链接</string>
 	
-	<string name="ContextMenuViewImage">打开图片</string>
+	<string name="ContextMenuViewImage">查看图片</string>
 	<string name="ContextMenuCopyImageUrl">复制图片地址</string>
 	<string name="ContextMenuDownloadImage">下载图片</string>
 	<string name="ContextMenuShareImageUrl">分享图片</string>
@@ -62,28 +64,28 @@
 	<string name="ContextMenuCopyEmailUrl">复制邮件地址</string>
 	<string name="ContextMenuShareEmailUrl">分享邮件</string>
 	
-	<string name="UrlCopyToastMessage">地址已经被复制到剪切板。</string>
+	<string name="UrlCopyToastMessage">地址已复制到剪贴板。</string>
 	<string name="ContextMenuShareUrl">分享</string>
 	
-	<string name="JavaScriptAlertDialog">JavaScript警告对话框</string>
-	<string name="JavaScriptConfirmDialog">JavaScript确认对话框</string>
-	<string name="JavaScriptPromptDialog">JavaScript提示对话框</string>    
+	<string name="JavaScriptAlertDialog">JavaScript - 警告对话框</string>
+	<string name="JavaScriptConfirmDialog">JavaScript - 确认对话框</string>
+	<string name="JavaScriptPromptDialog">JavaScript - 提示对话框</string>
 	
 	<string name="SslWarning">安全警告</string>
-	<string name="SslWarningsHeader">该网站的安全证书不受信任 (%s)。</string>
-	<string name="SslUntrusted">该证书不是由信任机构颁发。</string>
+	<string name="SslWarningsHeader">当前网站的安全证书有问题(%s)。</string>
+	<string name="SslUntrusted">该证书不是由可信机构所颁发。</string>
 	<string name="SslIDMismatch">网站名称与证书名称不匹配。</string>
 	<string name="SslExpired">该证书已过期。</string>
-	<string name="SslNotYetValid">该证书无效。</string>    
+	<string name="SslNotYetValid">该证书尚未生效。</string>
 	
-	<string name="NewTab">新建标签页</string>
+	<string name="NewTab">新建标签</string>
 	
-	<string name="CloseTab">关闭标签页</string>
+	<string name="CloseTab">关闭标签</string>
 	<string name="AddBookmark">添加书签</string>
-	<string name="SharePage">分享页面</string>
-	<string name="Search">页内查找</string>
+	<string name="SharePage">分享网页</string>
+	<string name="Search">在网页上查找</string>
 	
-	<string name="BookmarksTitle">书签 &amp; 历史</string>
+	<string name="BookmarksTitle">书签与历史</string>
 	<string name="BookmarksTabTitle">书签</string>
 	<string name="HistoryTabTitle">历史</string>
 	
@@ -92,40 +94,40 @@
 	<string name="ClearHistoryBookmarks">清空</string>
 	
 	<string name="AddBookmarkTitle">添加书签</string>
-	<string name="BookmarkText">书签名</string>
+	<string name="BookmarkText">名称</string>
 	<string name="UrlText">地址</string>
 	<string name="UrlHint">http://</string>
-	<string name="AddBookmarkLabelOrUrlEmpty">请输入有效书签名和地址。</string>
+	<string name="AddBookmarkLabelOrUrlEmpty">请指定有效的名称及地址。</string>
 	
 	<string name="OpenInTab">在新标签中打开</string>
 	<string name="EditBookmark">编辑书签</string>
 	<string name="CopyUrl">复制地址</string>
 	<string name="DeleteBookmark">删除书签</string>
-	<string name="DeleteHistoryItem">从历史记录中删除</string>
+	<string name="DeleteHistoryItem">从历史中删除</string>
 	
 	<string name="PreferencesActivityTitle">设置</string>
 	
-	<string name="PreferenceHeaderGeneralSettingsTitle">通用设置</string>
+	<string name="PreferenceHeaderGeneralSettingsTitle">常规设置</string>
 	
 	<string name="PreferenceGeneralHomepageTitle">主页</string>
-	<string name="PreferenceGeneralHomepageSummary">设置加载或者打开新标签时的主页。</string>
+	<string name="PreferenceGeneralHomepageSummary">更改标签中默认加载的网页。</string>
 	<string name="PreferenceHomePageDialogTitle">主页</string>
 	
 	<string name="PreferenceGeneralSearchUrlTitle">搜索引擎</string>
-	<string name="PreferenceGeneralSearchUrlSummary">设置地址栏中的默认搜索引擎。</string>
+	<string name="PreferenceGeneralSearchUrlSummary">更改地址栏的默认搜索引擎。</string>
 	
 	<string name="PreferenceCategoryStartPageTitle">起始页</string>
-	<string name="PreferenceGeneralStartPageLimitTitle">起始页中的项目数</string>
-	<string name="PreferenceGeneralStartPageLimitSummary">设置起始页中的项目数。</string>
+	<string name="PreferenceGeneralStartPageLimitTitle">快速拨号项数目</string>
+	<string name="PreferenceGeneralStartPageLimitSummary">更改起始页快速拨号项的数目。</string>
 	
 	<string name="PreferenceCategoryUITitle">用户界面</string>
 	
-	<string name="PreferenceBubblePositionTitle">气泡提示的位置</string>
-	<string name="PreferenceBubblePositionSummary">气泡提示的位置允许显示工具条。</string>
+	<string name="PreferenceBubblePositionTitle">气泡位置</string>
+	<string name="PreferenceBubblePositionSummary">更改工具条气泡的摆放位置。</string>
 	
-	<string name="PreferenceBubblePositionRight">右</string>
-	<string name="PreferenceBubblePositionLeft">左</string>
-	<string name="PreferenceBubblePositionBoth">两边</string>
+	<string name="PreferenceBubblePositionRight">右边</string>
+	<string name="PreferenceBubblePositionLeft">左边</string>
+	<string name="PreferenceBubblePositionBoth">左右两边</string>
 	
 	<string-array name="PreferenceBubblePositionEntries">
 	    <item>@string/PreferenceBubblePositionRight</item>
@@ -139,15 +141,15 @@
 	    <item>BOTH</item>
 	</string-array>
 	
-	<string name="PreferenceToolbarsAutoHideDurationTitle">工具条显示时间</string>
-	<string name="PreferenceToolbarsAutoHideDurationSummary">设置工具条显示时间，单位为秒。</string>
+	<string name="PreferenceToolbarsAutoHideDurationTitle">工具条持续时间</string>
+	<string name="PreferenceToolbarsAutoHideDurationSummary">更改工具条持续显示的秒数。</string>
 	
-	<string name="PreferenceSwitchTabsMethodTitle">标签页切换方式</string>
-	<string name="PreferenceSwitchTabsMethodSummary">设置标签页切换方式。</string>
+	<string name="PreferenceSwitchTabsMethodTitle">标签切换方式</string>
+	<string name="PreferenceSwitchTabsMethodSummary">更改各标签之间的切换方式。</string>
 	
-	<string name="PreferenceSwitchTabsMethodButtons">Buttons</string>
-	<string name="PreferenceSwitchTabsMethodFling">Fling</string>
-	<string name="PreferenceSwitchTabsMethodBoth">Both</string>
+	<string name="PreferenceSwitchTabsMethodButtons">按钮</string>
+	<string name="PreferenceSwitchTabsMethodFling">划动</string>
+	<string name="PreferenceSwitchTabsMethodBoth">以上两者</string>
 	
 	<string-array name="PreferenceSwitchTabsMethodEntries">
 	    <item>@string/PreferenceSwitchTabsMethodButtons</item>
@@ -163,21 +165,21 @@
 	
 	<string name="PreferenceHeaderBrowserSettingsTitle">浏览器设置</string>
 	
-	<string name="PreferenceEnableJavascriptTitle">启用JavaScript</string>
-	<string name="PreferenceEnableJavascriptSummaryOn">JavaScript已启用。</string>
-	<string name="PreferenceEnableJavascriptSummaryOff">JavaScript已关闭。</string>
-	<string name="PreferenceEnableImagesTitle">载入图像</string>
-	<string name="PreferenceEnableImagesSummary">确认您是否想载入图像。</string>
-	<string name="PreferenceUseWideViewportTitle">使用宽屏端口</string>
-	<string name="PreferenceUseWideViewportSummary">如果选择，浏览器将打开桌面版网站。</string>
-	<string name="PreferenceLoadPagesWithOverviewTitle">加载概述页</string>
-	<string name="PreferenceLoadPagesWithOverviewSummary">如果你想加载缩放的网页来显示概述页，请选择。</string>
+	<string name="PreferenceEnableJavascriptTitle">启用 JavaScript</string>
+	<string name="PreferenceEnableJavascriptSummaryOn">JavaScript 已启用。</string>
+	<string name="PreferenceEnableJavascriptSummaryOff">JavaScript 已停用。</string>
+	<string name="PreferenceEnableImagesTitle">载入图片</string>
+	<string name="PreferenceEnableImagesSummary">显示网页中的图片。</string>
+	<string name="PreferenceUseWideViewportTitle">使用宽视口</string>
+	<string name="PreferenceUseWideViewportSummary">使用类似桌面浏览器的网页布局。</string>
+	<string name="PreferenceLoadPagesWithOverviewTitle">以概览模式打开网页</string>
+	<string name="PreferenceLoadPagesWithOverviewSummary">显示新打开网页的概览。</string>
 	<string name="PreferencePluginsTitle">启用插件</string>
-	<string name="PreferencePluginsSummary">选择插件启用方式。</string>
+	<string name="PreferencePluginsSummary">选择插件的启用方式。</string>
 	
-	<string name="PreferencePluginsAlwaysOff">已禁用</string>
+	<string name="PreferencePluginsAlwaysOff">停用</string>
 	<string name="PreferencePluginsOnDemand">手动</string>
-	<string name="PreferencePluginsAlwaysOn">已启用</string>
+	<string name="PreferencePluginsAlwaysOn">启用</string>
 	
 	<string-array name="PreferencePluginsEntries">
 	    <item>@string/PreferencePluginsAlwaysOff</item>
@@ -191,64 +193,68 @@
 	    <item>ON</item>
 	</string-array>
 	
-	<string name="PreferenceUserAgentTitle">代理</string>
-	<string name="PreferenceUserAgentSummary">设置浏览器使用的代理字段。</string>
-	<string name="PreferenceUserAgentDialogTitle">代理</string>
+	<string name="PreferenceUserAgentTitle">用户代理(UA)</string>
+	<string name="PreferenceUserAgentSummary">更改浏览器送发的用户代理字符串。</string>
+	<string name="PreferenceUserAgentDialogTitle">用户代理</string>
 	
-	<string name="PreferenceHeaderPrivacySettingsTitle">隐私和安全设置</string>
+	<string name="PreferenceHeaderPrivacySettingsTitle">隐私与安全设置</string>
 	
 	<string name="PreferencePrivacyClearCacheTitle">清除缓存</string>
-	<string name="PreferencePrivacyClearCacheSummary">清除本地缓存和数据。</string>
+	<string name="PreferencePrivacyClearCacheSummary">清除本地缓存内容和数据库。</string>
 	
 	<string name="PreferenceCategoryHistoryTitle">历史</string>
-	<string name="PreferencePrivacyHistorySizeTitle">历史限制</string>
-	<string name="PreferencePrivacyHistorySizeSummary">设置保存历史的数量。</string>
+	<string name="PreferencePrivacyHistorySizeTitle">保存期限</string>
+	<string name="PreferencePrivacyHistorySizeSummary">设置导航历史可保留的天数。</string>
 	<string name="PreferencePrivacyClearHistoryTitle">清除历史</string>
-	<string name="PreferencePrivacyClearHistorySummary">清除浏览器导航历史。</string>
+	<string name="PreferencePrivacyClearHistorySummary">清除浏览器的导航历史。</string>
 	
-	<string name="PreferenceCategoryCookiesTitle">Cookies</string>
-	<string name="PreferencePrivacyAcceptCookiesTitle">接受 Cookies</string>
-	<string name="PreferencePrivacyAcceptCookiesSummary">允许网站保存和读取 Cookie数据。</string>
-	<string name="PreferencePrivacyClearCookiesTitle">清除 Cookies</string>
-	<string name="PreferencePrivacyClearCookiesSummary">清除所有 Cookies.</string>
+	<string name="PreferenceCategoryCookiesTitle">Cookie</string>
+	<string name="PreferencePrivacyAcceptCookiesTitle">接受 Cookie</string>
+	<string name="PreferencePrivacyAcceptCookiesSummary">允许网站存取 Cookie 数据。</string>
+	<string name="PreferencePrivacyClearCookiesTitle">清除 Cookie</string>
+	<string name="PreferencePrivacyClearCookiesSummary">清除浏览器的 Cookie 数据。</string>
 	
-	<string name="PreferenceCategoryGeolocationTitle">位置设置</string>
-	<string name="PreferencePrivacyEnableGeolocationTitle">允许定位</string>
-	<string name="PreferencePrivacyEnableGeolocationSummary">允许网站访问您的位置信息。</string>
-	<string name="PreferencePrivacyClearGeolocationTitle">清除位置信息</string>
-	<string name="PreferencePrivacyClearGeolocationSummary">对所有网站清除位置信息。</string>
+	<string name="PreferenceCategoryGeolocationTitle">定位</string>
+	<string name="PreferencePrivacyEnableGeolocationTitle">启用定位功能</string>
+	<string name="PreferencePrivacyEnableGeolocationSummary">允许网站请求获取位置信息。</string>
+	<string name="PreferencePrivacyClearGeolocationTitle">撤销定位权限</string>
+	<string name="PreferencePrivacyClearGeolocationSummary">撤销所有网站获取位置信息的权限。</string>
 	
 	<string name="PreferenceCategoryFormDataTitle">表单数据</string>
-	<string name="PreferencePrivacyRememberFormDataTitle">保存表单数据</string>
-	<string name="PreferencePrivacyRememberFormDataSummary">记住我在表单中填写的数据。</string>
+	<string name="PreferencePrivacyRememberFormDataTitle">记住表单数据</string>
+	<string name="PreferencePrivacyRememberFormDataSummary">记住我输入表单的数据以备用。</string>
 	<string name="PreferencePrivacyClearFormDataTitle">清除表单数据</string>
 	<string name="PreferencePrivacyClearFormDataSummary">清除所有保存的表单数据。</string>
 	
 	<string name="PreferenceCategoryPasswordsTitle">密码</string>
-	<string name="PreferencePrivacyRememberPasswordsTitle">保存密码</string>
-	<string name="PreferencePrivacyRememberPasswordsSummary">保存网站的用户名和密码。</string>
+	<string name="PreferencePrivacyRememberPasswordsTitle">记住密码</string>
+	<string name="PreferencePrivacyRememberPasswordsSummary">保存网站账号及密码。</string>
 	<string name="PreferencePrivacyClearPasswordsTitle">清除密码</string>
-	<string name="PreferencePrivacyClearPasswordsSummary">清除所有已保存的密码。</string>
+	<string name="PreferencePrivacyClearPasswordsSummary">清除所有保存的密码。</string>
 	
 	<string name="PreferencePrivacyWebsitesSettingsTitle">网站设置</string>
-	<string name="PreferencePrivacyWebsitesSettingsSummary">针对个别网站的高级设置。</string>
+	<string name="PreferencePrivacyWebsitesSettingsSummary">各网站的高级设置。</string>
+	
+	<string name="PreferencePrivacyIncognitoTitle">隐身模式</string>
+	<string name="PreferencePrivacyIncognitoDefaultTitle">默认隐身</string>
+	<string name="PreferencePrivacyIncognitoDefaultSummary">以隐身模式打开新标签。</string>
 	
 	<string name="HistoryToday">今天</string>
 	<string name="HistoryYesterday">昨天</string>
-	<string name="HistoryLastSevenDays">过去7天</string>
-	<string name="HistoryLastMonth">过去一个月</string>
+	<string name="HistoryLastSevenDays">最近七天</string>
+	<string name="HistoryLastMonth">上个月</string>
 	<string name="HistoryOlder">更早</string>
 	
-	<string name="ClearCacheMessage">删除本地缓存内容和数据?</string>
-	<string name="ClearHistoryMessage">删除浏览器导航历史?</string>
-	<string name="ClearCookiesMessage">删除所有 Cookies?</string>
-	<string name="ClearGeolocationMessage">清除网站位置信息?</string>
-	<string name="ClearFormDataMessage">删除所有已保存的表单数据?</string>
-	<string name="ClearPasswordsMessage">删除所有已保存的密码?</string>
+	<string name="ClearCacheMessage">删除本地缓存内容和数据库？</string>
+	<string name="ClearHistoryMessage">删除浏览器的导航历史？</string>
+	<string name="ClearCookiesMessage">删除所有 Cookie 数据？</string>
+	<string name="ClearGeolocationMessage">撤销网站获取位置信息的权限？</string>
+	<string name="ClearFormDataMessage">删除所有保存的表单数据？</string>
+	<string name="ClearPasswordsMessage">删除所有保存的密码？</string>
 	
 	<string name="PreferenceHomepageStart">起始页</string>
 	<string name="PreferenceHomepageBlank">空白页</string>
-	<string name="PreferenceHomepageCustom">自定义页</string>
+	<string name="PreferenceHomepageCustom">自定义</string>
 	
 	<string-array name="HomepageTitles">
 	    <item>@string/PreferenceHomepageStart</item>
@@ -266,23 +272,23 @@
 	    <item>@string/PreferenceUserAgentOther</item>
 	</string-array>
 	
-	<string name="SearchUrlGoogle">http://www.google.com/m?q={searchTerms}</string>
+	<string name="SearchUrlGoogle">https://www.baidu.com/s?wd={searchTerms}</string>
 	
 	<string name="PreferenceHeaderAddonsTitle">附加组件</string>
 	
 	<string name="PreferenceHeaderAboutTitle">关于</string>
 	
-	<string name="HttpAuthenticationDialogDialogTitle">登陆到 %1$s - %2$s</string>
-	<string name="HttpAuthenticationDialogUserName">用户名</string>
+	<string name="HttpAuthenticationDialogDialogTitle">登录到 %1$s - %2$s</string>
+	<string name="HttpAuthenticationDialogUserName">账号</string>
 	<string name="HttpAuthenticationDialogPassword">密码</string>
 	
 	<string name="FormResubmitTitle">重新提交表单</string>
-	<string name="FormResubmitMessage">您试图访问的页面内容已经被提交 (\"POSTDATA\")。如果您重发数据，该页面上表单上的任何请求都会重复（比如搜索或者在线购物）。</string>
+	<string name="FormResubmitMessage">您试图查看的网页包含已经提交的数据(\"POSTDATA\")。如果您重新发送这些数据，与之相关的任何操作(例如搜索或交易)都将重复执行。</string>
 	
-	<string name="BookmarkAdded">已添加到书签。</string>
-	<string name="BookmarkRemoved">已从书签中移除。</string>
+	<string name="BookmarkAdded">已加入书签。</string>
+	<string name="BookmarkRemoved">已移出书签。</string>
 	
-	<string name="SDCardErrorNoSDMsg">没有找到存储卡。</string>
+	<string name="SDCardErrorNoSDMsg">没发现存储卡。</string>
 	<string name="SDCardErrorSDUnavailable">存储卡不可用。</string>
 	
 	<string name="HistoryBookmarksClearTitle">清除</string>
@@ -294,86 +300,86 @@
 	</string-array>
 	
 	<string name="HistoryBookmarksImportSourceTitle">导入文件</string>
-	<string name="HistoryBookmarksImportFileUnavailable">文件不可用, 文件不存在或者不可读。</string>
+	<string name="HistoryBookmarksImportFileUnavailable">文件不存在或不可读。</string>
 	<string name="HistoryBookmarksImportTitle">导入历史和书签</string>
-	<string name="HistoryBookmarksImportInitialMessage">正在导入历史和书签&#8230;</string>
-	<string name="HistoryBookmarksImportReadingFile">正在读取文件&#8230;</string>
-	<string name="HistoryBookmarksImportParsingFile">正在解析文件&#8230;</string>
-	<string name="HistoryBookmarksImportProgressMessage">正在导入 %1$s of %2$s.</string>
-	<string name="HistoryBookmarksImportInsertMessage">正在插入内容&#8230;</string>
-	<string name="HistoryBookmarksImportErrorTitle">导入过程出错</string>
-	<string name="HistoryBookmarksImportErrorMessage">导入历史和书签过程中发生错误: %s</string>
+	<string name="HistoryBookmarksImportInitialMessage">导入历史和书签&#8230;</string>
+	<string name="HistoryBookmarksImportReadingFile">读取文件&#8230;</string>
+	<string name="HistoryBookmarksImportParsingFile">解析文件&#8230;</string>
+	<string name="HistoryBookmarksImportProgressMessage">读取条目(%1$s/%2$s)。</string>
+	<string name="HistoryBookmarksImportInsertMessage">插入内容&#8230;</string>
+	<string name="HistoryBookmarksImportErrorTitle">导入错误</string>
+	<string name="HistoryBookmarksImportErrorMessage">导入过程出现错误: %s</string>
 	
 	<string name="HistoryBookmarksExportTitle">导出历史和书签</string>
-	<string name="HistoryBookmarksExportInitialMessage">正在导出历史和书签&#8230;</string>
-	<string name="HistoryBookmarksExportCheckCardMessage">正在验证外部存储器&#8230;</string>
-	<string name="HistoryBookmarksExportProgressMessage">正在导出 %1$s of %2$s.</string>
-	<string name="HistoryBookmarksExportErrorTitle">导出过程出错</string>
-	<string name="HistoryBookmarksExportErrorMessage">导出历史和书签过程中发生错误: %s</string>
+	<string name="HistoryBookmarksExportInitialMessage">导出历史和书签&#8230;</string>
+	<string name="HistoryBookmarksExportCheckCardMessage">检测外部存储&#8230;</string>
+	<string name="HistoryBookmarksExportProgressMessage">导出条目(%1$s/%2$s)。</string>
+	<string name="HistoryBookmarksExportErrorTitle">导出错误</string>
+	<string name="HistoryBookmarksExportErrorMessage">导出过程出现错误: %s</string>
 	
-	<string name="GeolocationTitle">位置信息请求</string>
-	<string name="GeolocationMessage">网站 %s 请求您的位置信息。</string>    
-	<string name="GeolocationAccept">同意</string>
+	<string name="GeolocationTitle">定位</string>
+	<string name="GeolocationMessage">网站 %s 请求获取您的位置信息。</string>
+	<string name="GeolocationAccept">接受</string>
 	<string name="GeolocationDecline">拒绝</string>
 	
-	<string name="WebsitesSettingsEmpty">该网站没有设置信息。</string>
+	<string name="WebsitesSettingsEmpty">尚未设置。</string>
 	
 	<string name="WebsitesSettingsSiteTitle">设置 %s</string>
 	
-	<string name="WebsitesSettingsDataUsage">%s MB 存储在您的设备中。</string>
+	<string name="WebsitesSettingsDataUsage">%s MB 数据存储在设备中。</string>
 	<string name="WebsitesSettingsDataClickToClear">点击清除存储数据。</string>
 	<string name="WebsitesSettingsCleatDataDialogTitle">删除数据</string>
-	<string name="WebsitesSettingsCleatDataDialogMessage">删除该网站存储的所有数据?</string>
+	<string name="WebsitesSettingsCleatDataDialogMessage">删除该网站存储的所有数据？</string>
 	
-	<string name="WebsitesSettingsGeolocationClickToClear">点击清除位置信息。</string>
-	<string name="WebsitesSettingsGeolocationAllowed">该网站可以获取您的位置信息。</string>
+	<string name="WebsitesSettingsGeolocationClickToClear">点击撤销定位权限。</string>
+	<string name="WebsitesSettingsGeolocationAllowed">该网站能够获取您的位置信息。</string>
 	<string name="WebsitesSettingsGeolocationNotAllowed">该网站不能获取您的位置信息。</string>
-	<string name="WebsitesSettingsGeolocationPageDialogTitle">清除位置信息</string>
-	<string name="WebsitesSettingsGeolocationPageDialogMessage">清除该网站获取的位置信息?</string>
+	<string name="WebsitesSettingsGeolocationPageDialogTitle">撤销定位权限</string>
+	<string name="WebsitesSettingsGeolocationPageDialogMessage">撤销该网站获取位置信息的权限？</string>
 	
-	<string name="AddonsWarningText">请只安装可靠来源的附加组件。如果浏览器有异常行为，请关闭所有附加组件。</string>
-	<string name="AddonsGetAddons"><a href="">获取附加组件</a></string>
-	<string name="AddonsMarketNotFoundTitle">未找到Google Play</string>
-	<string name="AddonsMarketNotFoundMessage">在您的设备中似乎没有Google Play应用。</string>
+	<string name="AddonsWarningText">请只安装来源可靠的附加组件。\n如果浏览器行为异常，请停用所有组件。</string>
+	<string name="AddonsGetAddons"><a href="">获取组件</a></string>
+	<string name="AddonsMarketNotFoundTitle">Android 市场不可用</string>
+	<string name="AddonsMarketNotFoundMessage">设备中似乎没有 Android 市场。</string>
 	<string name="AddonsEnableAll">全部启用</string>
-	<string name="AddonsDisableAll">全部禁用</string>
+	<string name="AddonsDisableAll">全部停用</string>
 	
-	<string name="AddonDetailsContact">内容: %s</string>
-	<string name="AddonDetailsUsedCallbacksTitle">该附加组件:</string>
+	<string name="AddonDetailsContact">支援: %s</string>
+	<string name="AddonDetailsUsedCallbacksTitle">特性:</string>
 	
-	<string name="AddonCallbackPageStarted">当页面加载时提示。</string>
-	<string name="AddonCallbackPageFinished">当页面加载完毕时提示。</string>
-	<string name="AddonCallbackTabOpened">当打开新标签页时提示。</string>
-	<string name="AddonCallbackTabClosed">当关闭标签页时提示。</string>
-	<string name="AddonCallbackTabSwitched">当切换标签时提示。</string>
-	<string name="AddonCallbackHasPreferencesPage">设置页面。</string>
-	<string name="AddonCallbackContributeMainMenu">可以影响主菜单。</string>
-	<string name="AddonCallbackContributeLinkContextMenu">可以影响连接内容菜单。</string>
-	<string name="AddonCallbackContributeHistoryBookmarksMenu">可以影响历史和书签菜单。</string>
-	<string name="AddonCallbackContributeBookmarkContextMenu">可以影响书签内容菜单。</string>
-	<string name="AddonCallbackContributeHistoryContextMenu">可以影响历史内容菜单。</string>
+	<string name="AddonCallbackPageStarted">在网页开始加载时调用。</string>
+	<string name="AddonCallbackPageFinished">在网页完成加载时调用。</string>
+	<string name="AddonCallbackTabOpened">在标签打开时调用。</string>
+	<string name="AddonCallbackTabClosed">在标签关闭时调用。</string>
+	<string name="AddonCallbackTabSwitched">在标签切换时调用。</string>
+	<string name="AddonCallbackHasPreferencesPage">带有设置页。</string>
+	<string name="AddonCallbackContributeMainMenu">可以改动主菜单。</string>
+	<string name="AddonCallbackContributeLinkContextMenu">可以改动链接菜单。</string>
+	<string name="AddonCallbackContributeHistoryBookmarksMenu">可以改动书签和历史菜单。</string>
+	<string name="AddonCallbackContributeBookmarkContextMenu">可以改动书签菜单。</string>
+	<string name="AddonCallbackContributeHistoryContextMenu">可以改动历史菜单。</string>
 	
-	<string name="AddonDetailsUsedPermissionsTitle">有以下权限:</string>
+	<string name="AddonDetailsUsedPermissionsTitle">权限:</string>
 	<string name="AddonDetailsPermissionsNone">无。</string>
-	<string name="AddonDetailsUnableToGetPermissions">无法获取权限，请检查您的设备的应用管理器。</string>
+	<string name="AddonDetailsUnableToGetPermissions">无法获取权限。请检查您设备的应用管理器。</string>
 	
-	<string name="ContentDescriptionDivider">分配器</string>
+	<string name="ContentDescriptionDivider">分隔</string>
 	<string name="ContentDescriptionApplicationIcon">应用图标</string>
 	<string name="ContentDescriptionSuggestionIcon">建议图标</string>
-	<string name="ContentDescriptionBookmarkThumbnail">书签缓存</string>
+	<string name="ContentDescriptionBookmarkThumbnail">书签缩略图</string>
 	<string name="ContentDescriptionFavicon">网站图标</string>
-	<string name="ContentDescriptionGoStopReloadButton">前进 / 停止 / 重载 按钮</string>
+	<string name="ContentDescriptionGoStopReloadButton">前往/停止/刷新按钮</string>
 	<string name="ContentDescriptionMenuButton">菜单按钮</string>
-	<string name="ContentDescriptionPreviousTabButton">上一书签按钮</string>
-	<string name="ContentDescriptionNextTabButton">下一书签按钮</string>
+	<string name="ContentDescriptionPreviousTabButton">上一标签按钮</string>
+	<string name="ContentDescriptionNextTabButton">下一标签按钮</string>
 	<string name="ContentDescriptionLeftBubble">左气泡</string>
 	<string name="ContentDescriptionRightBubble">右气泡</string>
-	<string name="ContentDescriptionBackButton">后气泡</string>
-	<string name="ContentDescriptionCloseTabButton">关闭标签页按钮</string>
+	<string name="ContentDescriptionBackButton">返回按钮</string>
+	<string name="ContentDescriptionCloseTabButton">关闭标签按钮</string>
 	<string name="ContentDescriptionBookmarksButton">书签按钮</string>
-	<string name="ContentDescriptionNewTabButton">新建标签页按钮</string>
+	<string name="ContentDescriptionNewTabButton">新建标签按钮</string>
 	<string name="ContentDescriptionForwardButton">前进按钮</string>
-	<string name="ContentDescriptionHomeButton">Home按钮</string>
+	<string name="ContentDescriptionHomeButton">主页按钮</string>
 	<string name="ContentDescriptionWebsiteSettingsLocation">网站位置</string>
 	<string name="ContentDescriptionWebsiteSettingsUsage">网站使用率</string>
 	<string name="ContentDescriptionWebsiteSettingsFeature">网站特色</string>
@@ -397,36 +403,36 @@
 	</string-array>
 	
 	<!-- 1.2 -->
-	<string name="IncognitoTab">新建隐私浏览标签页</string>
+	<string name="IncognitoTab">隐身标签</string>
 	<string name="ContextMenuOpenInBackground">在后台打开</string>
-	<string name="ContentDescriptionPrivateBrowsingIndicator">私人浏览指示器</string>
+	<string name="ContentDescriptionPrivateBrowsingIndicator">私密浏览指示器</string>
 	
 	<!-- 1.3 -->
 	<string name="Folder">文件夹</string>
-	<string name="NewFolder">新文件夹</string>    
+	<string name="NewFolder">新文件夹</string>
 	<string name="NewFolderHint">新文件夹的名称</string>
-	<string name="ProvideNewFolderName">请输入新文件夹名称或者选择现有名称。</string>
+	<string name="ProvideNewFolderName">请给新文件夹命名，或选择现有文件夹。</string>
 	
 	<string name="DeleteFolder">删除文件夹</string>
-	<string name="ConfirmDeleteFolderMessage">删除该文件夹及其中内容?</string>
-	<string name="DeleteFolderTitle">正在删除文件夹</string>
-	<string name="DeleteFolderMessage">请稍等正在删除文件夹及其中内容&#8230;</string>
+	<string name="ConfirmDeleteFolderMessage">删除该文件夹及其所有内容？</string>
+	<string name="DeleteFolderTitle">删除文件夹</string>
+	<string name="DeleteFolderMessage">删除文件夹及其内容&#8230;</string>
 	
-	<string name="ContentDescriptionBookmarksFoldersBack">返回到书签文件夹树</string>
+	<string name="ContentDescriptionBookmarksFoldersBack">返回书签文件夹</string>
 	
 	<!-- 1.4 -->
-	<string name="PreferenceHeaderAccessibilityTitle">实用性设置</string>
-	<string name="PreferenceCategoryTextSizeTitle">文本尺寸</string>
-	<string name="PreferenceAccessibilityTextSizePreviewTitle">文本尺寸预览</string>
-	<string name="PreferenceAccessibilityTextScalingTitle">文本缩放比例</string>
-	<string name="PreferenceAccessibilityMinimumFontSizeTitle">最小字体尺寸</string>
-	<string name="PreferenceAccessibilityMinimumFontSizeSummary">设置浏览器中显示文本的最小尺寸。</string>
+	<string name="PreferenceHeaderAccessibilityTitle">辅助功能设置</string>
+	<string name="PreferenceCategoryTextSizeTitle">文字尺寸</string>
+	<string name="PreferenceAccessibilityTextSizePreviewTitle">预览</string>
+	<string name="PreferenceAccessibilityTextScalingTitle">文字缩放</string>
+	<string name="PreferenceAccessibilityMinimumFontSizeTitle">字体尺寸下限</string>
+	<string name="PreferenceAccessibilityMinimumFontSizeSummary">更改网页文字的最小尺寸。</string>
 	
-	<string name="FontPreviewTextTiny">很小</string>
+	<string name="FontPreviewTextTiny">超小</string>
 	<string name="FontPreviewTextSmall">小</string>
 	<string name="FontPreviewTextNormal">正常</string>
 	<string name="FontPreviewTextLarge">大</string>
-	<string name="FontPreviewTextHuge">巨大</string>
+	<string name="FontPreviewTextHuge">超大</string>
 	
 	<string-array name="FontPreviewText">
 	    <item>@string/FontPreviewTextTiny</item>
@@ -436,26 +442,26 @@
 	    <item>@string/FontPreviewTextHuge</item>
 	</string-array>
 	
-	<string name="PreferenceCategoryInvertedScreenRenderingTitle">屏幕反相渲染</string>
-	<string name="PreferenceAccessibilityInvertedRenderingTitle">反相渲染</string>
-	<string name="PreferenceAccessibilityInvertedRenderingSummary">反相屏幕颜色，部分设备不可用。</string>
+	<string name="PreferenceCategoryInvertedScreenRenderingTitle">屏幕反色显示</string>
+	<string name="PreferenceAccessibilityInvertedRenderingTitle">反色显示</string>
+	<string name="PreferenceAccessibilityInvertedRenderingSummary">反转屏幕颜色。部分设备无效。</string>
 	<string name="PreferenceAccessibilityInvertedRenderingContrastTitle">对比度</string>
 	
-	<string name="ContentDescriptionAutocompleteQueryBuilder">在导航工具栏中设置建议地址。</string>
+	<string name="ContentDescriptionAutocompleteQueryBuilder">指定地址栏中的建议网址。</string>
 	
 	<!-- 1.5 -->
 	<string name="UnknownAutority">未知机构</string>
 	<string name="RememberMyChoice">记住我的选择</string>
-	<string name="SslExceptionAccessAllowedByUserToast">SSL 安全设置: 用户允许连接到 %s 。</string>
-	<string name="SslExceptionAccessDisallowedByUserToast">SSL 安全设置: 用户禁止连接到 %s 。</string>
+	<string name="SslExceptionAccessAllowedByUserToast">安全例外允许访问 %s</string>
+	<string name="SslExceptionAccessDisallowedByUserToast">安全例外阻止访问 %s</string>
 	
-	<string name="PreferenceSslExceptionsTitle">SSL 安全设置</string>
-	<string name="PreferenceSslExceptionsSummary">网站的SSL安全设置列表。</string>
-	<string name="SslExceptionWebsitesText"><i>点击移除列表</i></string>
-	<string name="SslExceptionEmptyText">您未设置任何安全列表。</string>
+	<string name="PreferenceSslExceptionsTitle">安全例外</string>
+	<string name="PreferenceSslExceptionsSummary">各网站的安全例外清单。</string>
+	<string name="SslExceptionWebsitesText"><i>点击移除例外。</i></string>
+	<string name="SslExceptionEmptyText">尚未设置。</string>
 	
-	<string name="RemoveSslExceptionTitle">移除列表</string>
-	<string name="RemoveSslExceptionMessage">您想移除该网站的安全列表吗?</string>
+	<string name="RemoveSslExceptionTitle">移除例外</string>
+	<string name="RemoveSslExceptionMessage">您想移除该网站的安全例外吗？</string>
 	
 	<string name="SslInvalid">该证书无效。</string>
 	<string name="SslDateInvalid">该证书日期无效。</string>
@@ -463,27 +469,27 @@
 	<string name="Authorized">授权:</string>
 	<string name="Reasons">原因:</string>
 	
-	<string name="SearchUrlDialogText1">现在您的搜索引擎被设置为:</string>
-	<string name="SearchUrlDialogText2">您可以选择以下搜索引擎来自定义。</string>
-	<string name="SearchUrlGetOnline"><a href="">手工编辑搜索引擎</a></string>    
-	<string name="SearchUrlConnecting">正在连接&#8230;</string>
-	<string name="SearchUrlParsing">正在解析结果&#8230;</string>
-	<string name="SearchUrlBadResponseCodeMessage">无法连接搜索引擎库 (返回代码: %s)。</string>
+	<string name="SearchUrlDialogText1">您的搜索引擎目前被指定为:</string>
+	<string name="SearchUrlDialogText2">您可以选择下列中的搜索引擎来定制。</string>
+	<string name="SearchUrlGetOnline"><a href="">编辑搜索引擎</a></string>
+	<string name="SearchUrlConnecting">连接中&#8230;</string>
+	<string name="SearchUrlParsing">解析结果&#8230;</string>
+	<string name="SearchUrlBadResponseCodeMessage">无法连接到搜索引擎库(返回码: %s)。</string>
 	
-	<string name="SearchUrlDefault">Google Worldwide</string>
+	<string name="SearchUrlDefault">百度</string>
 	<string name="SearchUrlCustom">自定义搜索引擎</string>
 	
-	<string name="SortBookmarks">排列书签</string>    
+	<string name="SortBookmarks">书签排序</string>
 	<string name="MostUsedSortMode">最常用</string>
-	<string name="AlphaSortMode">字母排列</string>
-	<string name="RecentSortMode">最近访问最多</string>
+	<string name="AlphaSortMode">字母顺序</string>
+	<string name="RecentSortMode">最近访问</string>
 	
 	<!-- 1.6 -->
-	<string name="HistoryBookmarksImportErrorInvalidFileFormat">无效文件格式</string>
-	<string name="HistoryBookmarksImportFoldersProgressMessage">正在读取文件夹 %1$s of %2$s.</string>
-	<string name="HistoryBookmarksImportFoldersLinkMessage">正在连接文件夹&#8230;</string>
-	<string name="HistoryBookmarksImportBookmarksProgressMessage">正在读取书签 %1$s of %2$s.</string>
-	<string name="HistoryBookmarksImportHistoryProgressMessage">正在读取历史项目 %1$s of %2$s.</string>
+	<string name="HistoryBookmarksImportErrorInvalidFileFormat">文件格式无效</string>
+	<string name="HistoryBookmarksImportFoldersProgressMessage">读取文件夹(%1$s/%2$s)。</string>
+	<string name="HistoryBookmarksImportFoldersLinkMessage">文件夹连接中&#8230;</string>
+	<string name="HistoryBookmarksImportBookmarksProgressMessage">读取书签(%1$s/%2$s)。</string>
+	<string name="HistoryBookmarksImportHistoryProgressMessage">读取历史(%1$s/%2$s)。</string>
 	
 	<string name="FullScreen">全屏</string>
 	<string name="ContentDescriptionExitFullScreen">退出全屏按钮</string>
@@ -491,23 +497,23 @@
 	<!-- 1.7 -->
 	<string name="StartPageLabel">起始页</string>
 	
-	<string name="RestartDialogTitle">重新请求</string>
-	<string name="RestartDialogMessage">程序只有重启后更改才能生效。你想现在重启吗?</string>
+	<string name="RestartDialogTitle">请求重启</string>
+	<string name="RestartDialogMessage">应用该设置需重启浏览器。您想现在重启吗？</string>
 	
-	<string name="ContentDescriptionTabPreview">标签页预览</string>
+	<string name="ContentDescriptionTabPreview">标签预览</string>
 	
-	<string name="PreferenceClosePanelOnNewTabTitle">在新标签页中关闭侧边栏</string>
-	<string name="PreferenceClosePanelOnNewTabSummary">如果选择,侧边栏不会在新的标签页中出现。</string>
+	<string name="PreferenceClosePanelOnNewTabTitle">自动关闭侧面板</string>
+	<string name="PreferenceClosePanelOnNewTabSummary">新建标签时自动关闭侧面板。</string>
 	
 	<string name="AboutChangelogTitle">更新日志</string>
 	<string name="AboutContributorsTitle">贡献者</string>
 	<string name="AboutLicensesTitle">其他许可</string>
 	
-	<string name="RestoreTabsDialogTitle">恢复标签页</string>
-	<string name="RestoreTabsDialogMessage">您想恢复上一个会话的标签页吗?</string>
+	<string name="RestoreTabsDialogTitle">恢复标签</string>
+	<string name="RestoreTabsDialogMessage">您想从上次会话还原标签吗？</string>
 	
-	<string name="PreferenceRestoreTabsTitle">恢复标签页</string>
-	<string name="PreferenceRestoreTabsSummary">选择您恢复上一个会话标签页的方式。</string>
+	<string name="PreferenceRestoreTabsTitle">恢复标签</string>
+	<string name="PreferenceRestoreTabsSummary">选择是否从上次会话还原标签。</string>
 	
 	<string name="PreferenceRestoreTabsAsk">询问</string>
 	<string name="PreferenceRestoreTabsAlways">总是恢复</string>
@@ -525,12 +531,12 @@
 	    <item>NEVER</item>
 	</string-array>
 	
-	<string name="PreferenceUITypeTitle">界面类型</string>
-	<string name="PreferenceUITypeSummary">选择用户界面类型。</string>
+	<string name="PreferenceUITypeTitle">界面外观</string>
+	<string name="PreferenceUITypeSummary">选择用户界面的外观。</string>
 	
 	<string name="PreferenceUITypeAuto">自动</string>
 	<string name="PreferenceUITypePhone">手机</string>
-	<string name="PreferenceUITypeLegacyPhone">手机 (传统)</string>
+	<string name="PreferenceUITypeLegacyPhone">手机(怀旧)</string>
 	<string name="PreferenceUITypeTablet">平板</string>
 	
 	<string-array name="PreferenceUITypeEntries">
@@ -546,5 +552,13 @@
 	    <item>LEGACY_PHONE</item>
 	    <item>TABLET</item>
 	</string-array>
+	
+	<!-- 1.8 -->
+	<string name="PreferenceDevelopersTitle">开发者</string>
+	
+	<string name="PreferenceJsLogOnLocatTitle">输出 JS 日志到 logcat</string>
+	<string name="PreferenceJsLogOnLocatSummary">重定向 JS 日志到 logcat 缓冲区。</string>
+	
+	<string name="ContextMenuViewImageInNewTab">在新标签中查看图片</string>
 	
 </resources>
