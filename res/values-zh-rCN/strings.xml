@@ -9,13 +9,13 @@
 	<string name="AboutUrlText">https://github.com/Anasthase/TintBrowser</string>
 	
 	<string name="PermissionReadBookmarksLabel">读取书签</string>
-	<string name="PermissionReadBookmarksDescription">允许其他应用读取导航历史或书签。</string>
+	<string name="PermissionReadBookmarksDescription">允许其他应用读取历史或书签。</string>
 	
 	<string name="PermissionWriteBookmarksLabel">写入书签</string>
-	<string name="PermissionWriteBookmarksDescription">允许其他应用写入导航历史或书签。</string>
+	<string name="PermissionWriteBookmarksDescription">允许其他应用写入历史或书签。</string>
 	
-	<string name="PermissionBindAddonServiceLabel">绑定扩展服务</string>
-	<string name="PermissionBindAddonServiceDescription">允许其他应用绑定扩展服务。</string>
+	<string name="PermissionBindAddonServiceLabel">绑定附加组件服务</string>
+	<string name="PermissionBindAddonServiceDescription">允许其他应用绑定到附加组件服务。</string>
 	
 	<string name="OK">确定</string>
 	<string name="Cancel">取消</string>
@@ -82,7 +82,7 @@
 	
 	<string name="CloseTab">关闭标签</string>
 	<string name="AddBookmark">添加书签</string>
-	<string name="SharePage">分享页面</string>
+	<string name="SharePage">分享网页</string>
 	<string name="Search">在网页上查找</string>
 	
 	<string name="BookmarksTitle">书签与历史</string>
@@ -110,11 +110,11 @@
 	<string name="PreferenceHeaderGeneralSettingsTitle">常规设置</string>
 	
 	<string name="PreferenceGeneralHomepageTitle">主页</string>
-	<string name="PreferenceGeneralHomepageSummary">更改新标签中显示的默认页面。</string>
+	<string name="PreferenceGeneralHomepageSummary">更改标签中默认加载的网页。</string>
 	<string name="PreferenceHomePageDialogTitle">主页</string>
 	
 	<string name="PreferenceGeneralSearchUrlTitle">搜索引擎</string>
-	<string name="PreferenceGeneralSearchUrlSummary">更改地址栏中的默认搜索引擎。</string>
+	<string name="PreferenceGeneralSearchUrlSummary">更改地址栏的默认搜索引擎。</string>
 	
 	<string name="PreferenceCategoryStartPageTitle">起始页</string>
 	<string name="PreferenceGeneralStartPageLimitTitle">快速拨号项数目</string>
@@ -171,7 +171,7 @@
 	<string name="PreferenceEnableImagesTitle">载入图片</string>
 	<string name="PreferenceEnableImagesSummary">显示网页中的图片。</string>
 	<string name="PreferenceUseWideViewportTitle">使用宽视口</string>
-	<string name="PreferenceUseWideViewportSummary">使用类似桌面浏览器的页面布局。</string>
+	<string name="PreferenceUseWideViewportSummary">使用类似桌面浏览器的网页布局。</string>
 	<string name="PreferenceLoadPagesWithOverviewTitle">以概览模式打开网页</string>
 	<string name="PreferenceLoadPagesWithOverviewSummary">显示新打开网页的概览。</string>
 	<string name="PreferencePluginsTitle">启用插件</string>
@@ -274,7 +274,7 @@
 	
 	<string name="SearchUrlGoogle">https://www.baidu.com/s?wd={searchTerms}</string>
 	
-	<string name="PreferenceHeaderAddonsTitle">扩展</string>
+	<string name="PreferenceHeaderAddonsTitle">附加组件</string>
 	
 	<string name="PreferenceHeaderAboutTitle">关于</string>
 	
@@ -305,7 +305,7 @@
 	<string name="HistoryBookmarksImportInitialMessage">导入历史和书签&#8230;</string>
 	<string name="HistoryBookmarksImportReadingFile">读取文件&#8230;</string>
 	<string name="HistoryBookmarksImportParsingFile">解析文件&#8230;</string>
-	<string name="HistoryBookmarksImportProgressMessage">读取项目(%1$s/%2$s)。</string>
+	<string name="HistoryBookmarksImportProgressMessage">读取条目(%1$s/%2$s)。</string>
 	<string name="HistoryBookmarksImportInsertMessage">插入内容&#8230;</string>
 	<string name="HistoryBookmarksImportErrorTitle">导入错误</string>
 	<string name="HistoryBookmarksImportErrorMessage">导入过程出现错误: %s</string>
@@ -313,7 +313,7 @@
 	<string name="HistoryBookmarksExportTitle">导出历史和书签</string>
 	<string name="HistoryBookmarksExportInitialMessage">导出历史和书签&#8230;</string>
 	<string name="HistoryBookmarksExportCheckCardMessage">检测外部存储&#8230;</string>
-	<string name="HistoryBookmarksExportProgressMessage">导出项目(%1$s/%2$s)。</string>
+	<string name="HistoryBookmarksExportProgressMessage">导出条目(%1$s/%2$s)。</string>
 	<string name="HistoryBookmarksExportErrorTitle">导出错误</string>
 	<string name="HistoryBookmarksExportErrorMessage">导出过程出现错误: %s</string>
 	
@@ -337,29 +337,29 @@
 	<string name="WebsitesSettingsGeolocationPageDialogTitle">撤销定位权限</string>
 	<string name="WebsitesSettingsGeolocationPageDialogMessage">撤销该网站获取位置信息的权限？</string>
 	
-	<string name="AddonsWarningText">请只安装来源可靠的扩展。\n如果浏览器行为异常，请停用所有扩展。</string>
-	<string name="AddonsGetAddons"><a href="">下载扩展</a></string>
+	<string name="AddonsWarningText">请只安装来源可靠的附加组件。\n如果浏览器行为异常，请停用所有组件。</string>
+	<string name="AddonsGetAddons"><a href="">获取组件</a></string>
 	<string name="AddonsMarketNotFoundTitle">Android 市场不可用</string>
 	<string name="AddonsMarketNotFoundMessage">设备中似乎没有 Android 市场。</string>
 	<string name="AddonsEnableAll">全部启用</string>
 	<string name="AddonsDisableAll">全部停用</string>
 	
-	<string name="AddonDetailsContact">联系: %s</string>
-	<string name="AddonDetailsUsedCallbacksTitle">当前扩展:</string>
+	<string name="AddonDetailsContact">支援: %s</string>
+	<string name="AddonDetailsUsedCallbacksTitle">特性:</string>
 	
-	<string name="AddonCallbackPageStarted">在页面开始加载时调用。</string>
-	<string name="AddonCallbackPageFinished">在页面完成加载时调用。</string>
+	<string name="AddonCallbackPageStarted">在网页开始加载时调用。</string>
+	<string name="AddonCallbackPageFinished">在网页完成加载时调用。</string>
 	<string name="AddonCallbackTabOpened">在标签打开时调用。</string>
 	<string name="AddonCallbackTabClosed">在标签关闭时调用。</string>
 	<string name="AddonCallbackTabSwitched">在标签切换时调用。</string>
-	<string name="AddonCallbackHasPreferencesPage">提供设置。</string>
+	<string name="AddonCallbackHasPreferencesPage">带有设置页。</string>
 	<string name="AddonCallbackContributeMainMenu">可以改动主菜单。</string>
 	<string name="AddonCallbackContributeLinkContextMenu">可以改动链接菜单。</string>
 	<string name="AddonCallbackContributeHistoryBookmarksMenu">可以改动书签和历史菜单。</string>
 	<string name="AddonCallbackContributeBookmarkContextMenu">可以改动书签菜单。</string>
 	<string name="AddonCallbackContributeHistoryContextMenu">可以改动历史菜单。</string>
 	
-	<string name="AddonDetailsUsedPermissionsTitle">具有下列权限:</string>
+	<string name="AddonDetailsUsedPermissionsTitle">权限:</string>
 	<string name="AddonDetailsPermissionsNone">无。</string>
 	<string name="AddonDetailsUnableToGetPermissions">无法获取权限。请检查您设备的应用管理器。</string>
 	
@@ -453,10 +453,10 @@
 	<string name="UnknownAutority">未知机构</string>
 	<string name="RememberMyChoice">记住我的选择</string>
 	<string name="SslExceptionAccessAllowedByUserToast">安全例外允许访问 %s</string>
-	<string name="SslExceptionAccessDisallowedByUserToast">安全例外禁止访问 %s</string>
+	<string name="SslExceptionAccessDisallowedByUserToast">安全例外阻止访问 %s</string>
 	
 	<string name="PreferenceSslExceptionsTitle">安全例外</string>
-	<string name="PreferenceSslExceptionsSummary">列入安全例外的网站清单。</string>
+	<string name="PreferenceSslExceptionsSummary">各网站的安全例外清单。</string>
 	<string name="SslExceptionWebsitesText"><i>点击移除例外。</i></string>
 	<string name="SslExceptionEmptyText">尚未设置。</string>
 	
@@ -489,7 +489,7 @@
 	<string name="HistoryBookmarksImportFoldersProgressMessage">读取文件夹(%1$s/%2$s)。</string>
 	<string name="HistoryBookmarksImportFoldersLinkMessage">文件夹连接中&#8230;</string>
 	<string name="HistoryBookmarksImportBookmarksProgressMessage">读取书签(%1$s/%2$s)。</string>
-	<string name="HistoryBookmarksImportHistoryProgressMessage">读取历史项(%1$s/%2$s)。</string>
+	<string name="HistoryBookmarksImportHistoryProgressMessage">读取历史(%1$s/%2$s)。</string>
 	
 	<string name="FullScreen">全屏</string>
 	<string name="ContentDescriptionExitFullScreen">退出全屏按钮</string>
@@ -502,7 +502,7 @@
 	
 	<string name="ContentDescriptionTabPreview">标签预览</string>
 	
-	<string name="PreferenceClosePanelOnNewTabTitle">在新标签中关闭侧面板</string>
+	<string name="PreferenceClosePanelOnNewTabTitle">自动关闭侧面板</string>
 	<string name="PreferenceClosePanelOnNewTabSummary">新建标签时自动关闭侧面板。</string>
 	
 	<string name="AboutChangelogTitle">更新日志</string>
@@ -531,7 +531,7 @@
 	    <item>NEVER</item>
 	</string-array>
 	
-	<string name="PreferenceUITypeTitle">用户界面</string>
+	<string name="PreferenceUITypeTitle">界面外观</string>
 	<string name="PreferenceUITypeSummary">选择用户界面的外观。</string>
 	
 	<string name="PreferenceUITypeAuto">自动</string>
