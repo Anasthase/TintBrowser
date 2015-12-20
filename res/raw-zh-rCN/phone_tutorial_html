@@ -1,0 +1,45 @@
+<!DOCTYPE html >
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<title>教程</title>
+	<style>
+		* {
+			font-size: 95%;
+		}
+		body {
+			font-family: sans-serif;
+		}
+		.details {
+			font-size: 90%;
+			background-color: #eee;
+			padding: 1em 1.5em 1em 1.5em;
+			margin: .5em 0 .5em 0;
+		}
+		.center {
+			text-align: center;
+		}
+		img {
+			display: block;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<h3 class="center">欢迎来到 Tint Browser</h3>
+	<ul>
+	<li>轻触左上角的图标可以在侧边栏中查看标签</li>
+	</ul>
+	<img src="button.png" />
+	<ul>
+	<li>拖动浏览器的左侧边缘同样可以打开侧边栏</li>
+	</ul>
+	<img src="slide_panel.png" />
+	<ul>
+	<li>点击关闭按钮或横向滑动标签可以关闭标签</li>
+	</ul>
+	<img src="close_tab.png" />
+	<p class="details">通过设置可以启用您可能错过了的旧版界面。</p>
+</body>
+</html>
