@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cmn-Hant">
 <head>
 	<meta charset="utf-8">
 	<style>
@@ -19,7 +19,6 @@
 			margin: .5em 0 .5em 0;
 		}
 		ul.details>li {
-			font-family: monospace;
 			white-space: pre-wrap;
 			margin: .2em 0 .2em 0;
 		}
@@ -29,44 +28,42 @@
 	<ul class="header">
 		<li>Dorian 'gravgun' Wouters
 			<ul class="details">
-				<li>Features &amp; fixes.</li>
+				<li>功能及修復。</li>
 			</ul>
 		</li>
 		<li>Rui
 			<ul class="details">
-				<li>Portuguese translation.</li>
+				<li>葡文翻譯。</li>
 			</ul>
 		</li>
 		<li>Lars-Dominik
 			<ul class="details">
-				<li>German translation.</li>
+				<li>德文翻譯。</li>
 			</ul>
 		</li>
 		<li>Anton
 			<ul class="details">
-				<li>Russian translation.</li>
+				<li>俄文翻譯。</li>
 			</ul>
 		</li>
 		<li>Xphnx
 			<ul class="details">
-				<li>Spanish translation.</li>
+				<li>西班牙文翻譯。</li>
 			</ul>
 		</li>
 		<li>Pikatenor
 			<ul class="details">
-				<li>Japanese translation.</li>
+				<li>日文翻譯。</li>
 			</ul>
 		</li>
 		<li>JingYunLiu
 			<ul class="details">
-				<li>Simplified Chinese translation.</li>
+				<li>簡體中文翻譯。</li>
 			</ul>
 		</li>
 		<li>939355898@qq.com
 			<ul class="details">
-				<li>Chinese (zh) translation.</li>
-				<li>Chinese (CN) translation.</li>
-				<li>Chinese (TW) translation.</li>
+				<li>簡體中文與繁體中文翻譯。</li>
 			</ul>
 		</li>
 	</ul>
