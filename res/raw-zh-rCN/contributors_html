@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hant">
+<head>
+	<meta charset="utf-8">
+	<style>
+		* {
+			font-size: 95%;
+		}
+		body {
+			font-family: sans-serif;
+		}
+		ul.header {
+			padding: 0 1em 0 1em ;
+			margin: 0 1em 0 1em;
+		}
+		ul.details {
+			background-color: #eee;
+			padding: 1em 2.5em 1em 2.5em;
+			margin: .5em 0 .5em 0;
+		}
+		ul.details>li {
+			white-space: pre-wrap;
+			margin: .2em 0 .2em 0;
+		}
+	</style>
+</head>
+<body>
+	<ul class="header">
+		<li>Dorian 'gravgun' Wouters
+			<ul class="details">
+				<li>功能及修复。</li>
+			</ul>
+		</li>
+		<li>Rui
+			<ul class="details">
+				<li>葡文翻译。</li>
+			</ul>
+		</li>
+		<li>Lars-Dominik
+			<ul class="details">
+				<li>德文翻译。</li>
+			</ul>
+		</li>
+		<li>Anton
+			<ul class="details">
+				<li>俄文翻译。</li>
+			</ul>
+		</li>
+		<li>Xphnx
+			<ul class="details">
+				<li>西班牙文翻译。</li>
+			</ul>
+		</li>
+		<li>Pikatenor
+			<ul class="details">
+				<li>日文翻译。</li>
+			</ul>
+		</li>
+		<li>JingYunLiu
+			<ul class="details">
+				<li>简体中文翻译。</li>
+			</ul>
+		</li>
+		<li>939355898@qq.com
+			<ul class="details">
+				<li>简体中文与繁体中文翻译。</li>
+			</ul>
+		</li>
+	</ul>
+</body>
+</html>
