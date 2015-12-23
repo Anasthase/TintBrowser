@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<style>
+		* {
+			font-size: 95%;
+		}
+		body {
+			font-family: sans-serif;
+		}
+		.details {
+			font-size: 90%;
+			background-color: #eee;
+			padding: 1em 1.5em 1em 1.5em;
+			margin: 1.5em 0 1.5em 0;
+		}
+		.center {
+			text-align: center;
+		}
+		li {
+			margin: 1em 0 1em 0;
+		}
+		img {
+			margin-left: 3em;
+		}
+	</style>
+	<script type="text/javascript">
+	<!--
+	function chk() {
+		var lang = navigator.language;
+		if (lang == "zh-CN") {
+				t01.innerHTML = "&#x6B22;&#x8FCE;&#x6765;&#x5230; Tint Browser";
+				t02.innerHTML = "&#x70B9;&#x5DE6;&#x4E0A;&#x89D2;&#x56FE;&#x6807;&#x53EF;&#x4EE5;&#x6253;&#x5F00;&#x4FA7;&#x9762;&#x677F;&#x6765;&#x7BA1;&#x7406;&#x6807;&#x7B7E;&#x3002;";
+				t03.innerHTML = "&#x62D6;&#x52A8;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x5DE6;&#x4FA7;&#x8FB9;&#x7F18;&#x4E5F;&#x53EF;&#x4EE5;&#x6253;&#x5F00;&#x4FA7;&#x9762;&#x677F;&#x3002;";
+				t04.innerHTML = "&#x6A2A;&#x5411;&#x6ED1;&#x52A8;&#x6807;&#x7B7E;&#x6216;&#x70B9;&#x5173;&#x95ED;&#x56FE;&#x6807;&#x53EF;&#x4EE5;&#x5173;&#x95ED;&#x6807;&#x7B7E;&#x3002;";
+				t05.innerHTML = "&#x60A8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;&#x542F;&#x7528;&#x60A8;&#x53EF;&#x80FD;&#x9519;&#x8FC7;&#x7684;&#x65E7;&#x7248;&#x754C;&#x9762;&#x3002;";
+		}
+		else if (lang == "zh-TW") {
+				t00.innerHTML = "&#x6559;&#x5B78;";
+				t02.innerHTML = "&#x9EDE;&#x5DE6;&#x4E0A;&#x89D2;&#x5716;&#x793A;&#x53EF;&#x4EE5;&#x958B;&#x555F;&#x5074;&#x9762;&#x677F;&#x4F86;&#x7BA1;&#x7406;&#x5206;&#x9801;&#x3002;";
+				t03.innerHTML = "&#x62D6;&#x52D5;&#x700F;&#x89BD;&#x5668;&#x7684;&#x5DE6;&#x5074;&#x908A;&#x7DE3;&#x4E5F;&#x53EF;&#x4EE5;&#x958B;&#x555F;&#x5074;&#x9762;&#x677F;&#x3002;";
+				t04.innerHTML = "&#x6A6B;&#x5411;&#x6ED1;&#x52D5;&#x5206;&#x9801;&#x6216;&#x9EDE;&#x95DC;&#x9589;&#x5716;&#x793A;&#x53EF;&#x4EE5;&#x95DC;&#x9589;&#x5206;&#x9801;&#x3002;";
+				t05.innerHTML = "&#x60A8;&#x53EF;&#x4EE5;&#x900F;&#x904E;&#x8A2D;&#x5B9A;&#x555F;&#x7528;&#x60A8;&#x53EF;&#x80FD;&#x932F;&#x904E;&#x7684;&#x820A;&#x7248;&#x4ECB;&#x9762;&#x3002;";
+		}
+	}
+	//-->
+	</script>
+	<title id="t00">&#x6559;&#x7A0B;</title>
+</head>
+<body onload="chk()">
+	<h3 class="center" id="t01">&#x6B61;&#x8FCE;&#x4F86;&#x5230;&nbsp;Tint&nbsp;Browser</h3>
+	<noscript>
+	<p class="center"><i>&#xFF08;&#x6559;&#x7A0B;&#x53EF;&#x80FD;&#x6703;&#x56E0;&#x8173;&#x672C;&#x57F7;&#x884C;&#x5931;&#x6557;&#x800C;&#x7121;&#x6CD5;&#x9069;&#x914D;&#x7CFB;&#x7D71;&#x8A9E;&#x8A00;&#xFF09;</i></p>
+	</noscript>
+	<ul>
+	<li id="t02">&#x9EDE;&#x5DE6;&#x4E0A;&#x89D2;&#x5716;&#x6A19;&#x53EF;&#x4EE5;&#x6253;&#x958B;&#x5074;&#x9762;&#x677F;&#x4F86;&#x7BA1;&#x7406;&#x6A19;&#x7C64;&#x3002;</li>
+	</ul>
+	<img src="button.png" />
+	<ul>
+	<li id="t03">&#x62D6;&#x52D5;&#x700F;&#x89BD;&#x5668;&#x7684;&#x5DE6;&#x5074;&#x908A;&#x7DE3;&#x4E5F;&#x53EF;&#x4EE5;&#x6253;&#x958B;&#x5074;&#x9762;&#x677F;&#x3002;</li>
+	</ul>
+	<img src="slide_panel.png" />
+	<ul>
+	<li id="t04">&#x6A6B;&#x5411;&#x6ED1;&#x52D5;&#x6A19;&#x7C64;&#x6216;&#x9EDE;&#x95DC;&#x9589;&#x5716;&#x6A19;&#x53EF;&#x4EE5;&#x95DC;&#x9589;&#x6A19;&#x7C64;&#x3002;</li>
+	</ul>
+	<img src="close_tab.png" />
+	<p class="details" id="t05">&#x60A8;&#x53EF;&#x4EE5;&#x901A;&#x904E;&#x8A2D;&#x7F6E;&#x555F;&#x7528;&#x60A8;&#x53EF;&#x80FD;&#x932F;&#x904E;&#x7684;&#x820A;&#x7248;&#x754C;&#x9762;&#x3002;</p>
+</body>
+</html>

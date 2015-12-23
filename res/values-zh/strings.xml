@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+	<string name="ApplicationName">Tint Browser</string>
+	<string name="ApplicationDescription">Tint 是一款開源的 Android 瀏覽器。</string>
+	
+	<string name="AboutVersionText">版本：%1$s (%2$s)</string>
+	<string name="AboutLicenseText">許可證：GPLv3</string>
+	<string name="AboutUrlText">https://github.com/Anasthase/TintBrowser</string>
+	
+	<string name="PermissionReadBookmarksLabel">讀取 Tint 書籤</string>
+	<string name="PermissionReadBookmarksDescription">允許應用讀取 Tint 歷史和書籤。</string>
+	
+	<string name="PermissionWriteBookmarksLabel">寫入 Tint 書籤</string>
+	<string name="PermissionWriteBookmarksDescription">允許應用寫入 Tint 歷史和書籤。</string>
+	
+	<string name="PermissionBindAddonServiceLabel">綁定 Tint 附加組件服務</string>
+	<string name="PermissionBindAddonServiceDescription">允許應用綁定到附加組件服務。</string>
+	
+	<string name="OK">確定</string>
+	<string name="Cancel">取消</string>
+	<string name="Yes">是</string>
+	<string name="No">否</string>
+	<string name="On">開</string>
+	<string name="Off">關</string>
+	<string name="Clear">清除</string>
+	<string name="Continue">繼續</string>
+	<string name="Proceed">繼續</string>
+	<string name="VideoLoading">加載視頻\u2026</string>
+	<string name="History">歷史</string>
+	<string name="All">全部</string>
+	<string name="Bookmarks">書籤</string>
+	<string name="Preferences">設置</string>
+	
+	<string name="UrlBarUrlDefaultSubTitle">點擊輸入網址或搜索。</string>
+	<string name="UrlBarUrlHint">搜索或輸入網址</string>
+	
+	<string name="ShareChooserTitle">分享途徑</string>
+	<string name="FileChooserPrompt">選擇要上傳的文件</string>
+	
+	<string name="Download">下載</string>
+	<string name="DownloadDialogTitle">下載</string>
+	<string name="DownloadInIncognito">無痕下載</string>
+	<string name="DownloadStart">開始下載 %1$s&#8230;</string>
+	<string name="DownloadComplete">下載完成。</string>
+	<string name="DownloadFailedWithErrorMessage">下載失敗：%1$s</string>
+	<string name="DownloadErrorDisk">介質錯誤，請檢查存儲介質的可用空間。</string>
+	<string name="DownloadErrorHttp">HTTP 錯誤</string>
+	<string name="DownloadErrorRedirection">重定向過多</string>
+	<string name="DownloadErrorUnknown">未知錯誤</string>
+	
+	<string name="ContextMenuOpen">打開</string>
+	<string name="ContextMenuOpenNewTab">在新標籤頁中打開</string>
+	<string name="ContextMenuCopyLinkUrl">複製鏈接地址</string>
+	<string name="ContextMenuDownload">保存鏈接</string>
+	<string name="ContextMenuShareLinkUrl">分享鏈接</string>
+	
+	<string name="ContextMenuViewImage">查看圖片</string>
+	<string name="ContextMenuCopyImageUrl">複製圖片地址</string>
+	<string name="ContextMenuDownloadImage">保存圖片</string>
+	<string name="ContextMenuShareImageUrl">分享圖片</string>
+	
+	<string name="ContextMenuSendEmail">發送郵件</string>
+	<string name="ContextMenuCopyEmailUrl">複製郵箱地址</string>
+	<string name="ContextMenuShareEmailUrl">分享郵箱</string>
+	
+	<string name="UrlCopyToastMessage">地址已複製到剪貼板。</string>
+	<string name="ContextMenuShareUrl">分享鏈接</string>
+	
+	<string name="JavaScriptAlertDialog">JavaScript 警告對話框</string>
+	<string name="JavaScriptConfirmDialog">JavaScript 確認對話框</string>
+	<string name="JavaScriptPromptDialog">JavaScript 提示對話框</string>
+	
+	<string name="SslWarning">安全警告</string>
+	<string name="SslWarningsHeader">此網站(%s)的安全證書有問題。</string>
+	<string name="SslUntrusted">證書不是來自可信的頒發機構。</string>
+	<string name="SslIDMismatch">網站名稱與證書上的名稱不符。</string>
+	<string name="SslExpired">證書已經過期。</string>
+	<string name="SslNotYetValid">證書尚未生效。</string>
+	
+	<string name="NewTab">新建標籤頁</string>
+	
+	<string name="CloseTab">關閉標籤頁</string>
+	<string name="AddBookmark">新增書籤</string>
+	<string name="SharePage">分享網頁</string>
+	<string name="Search">在網頁上查找</string>
+	
+	<string name="BookmarksTitle">書籤與歷史</string>
+	<string name="BookmarksTabTitle">書籤</string>
+	<string name="HistoryTabTitle">歷史</string>
+	
+	<string name="ImportHistoryBookmarks">導入</string>
+	<string name="ExportHistoryBookmarks">導出</string>
+	<string name="ClearHistoryBookmarks">清除</string>
+	
+	<string name="AddBookmarkTitle">編輯書籤</string>
+	<string name="BookmarkText">名稱</string>
+	<string name="UrlText">地址</string>
+	<string name="UrlHint">http://</string>
+	<string name="AddBookmarkLabelOrUrlEmpty">請提供有效的名稱和地址。</string>
+	
+	<string name="OpenInTab">在新標籤頁中打開</string>
+	<string name="EditBookmark">編輯書籤</string>
+	<string name="CopyUrl">複製鏈接地址</string>
+	<string name="DeleteBookmark">刪除書籤</string>
+	<string name="DeleteHistoryItem">從歷史中移除</string>
+	
+	<string name="PreferencesActivityTitle">設置</string>
+	
+	<string name="PreferenceHeaderGeneralSettingsTitle">常規設置</string>
+	
+	<string name="PreferenceGeneralHomepageTitle">主頁</string>
+	<string name="PreferenceGeneralHomepageSummary">設置標籤頁的默認主頁。</string>
+	<string name="PreferenceHomePageDialogTitle">主頁</string>
+	
+	<string name="PreferenceGeneralSearchUrlTitle">搜索引擎</string>
+	<string name="PreferenceGeneralSearchUrlSummary">設置地址欄的默認搜索。</string>
+	
+	<string name="PreferenceCategoryStartPageTitle">起始頁</string>
+	<string name="PreferenceGeneralStartPageLimitTitle">快速撥號項數目</string>
+	<string name="PreferenceGeneralStartPageLimitSummary">設置快速撥號項的數目。</string>
+	
+	<string name="PreferenceCategoryUITitle">用戶界面</string>
+	
+	<string name="PreferenceBubblePositionTitle">氣泡位置</string>
+	<string name="PreferenceBubblePositionSummary">設置工具欄氣泡的位置。</string>
+	
+	<string name="PreferenceBubblePositionRight">右側</string>
+	<string name="PreferenceBubblePositionLeft">左側</string>
+	<string name="PreferenceBubblePositionBoth">兩側</string>
+	
+	<string-array name="PreferenceBubblePositionEntries">
+	    <item>@string/PreferenceBubblePositionRight</item>
+	    <item>@string/PreferenceBubblePositionLeft</item>
+	    <item>@string/PreferenceBubblePositionBoth</item>
+	</string-array>
+	
+	<string-array name="PreferenceBubblePositionValues">
+	    <item>RIGHT</item>
+	    <item>LEFT</item>
+	    <item>BOTH</item>
+	</string-array>
+	
+	<string name="PreferenceToolbarsAutoHideDurationTitle">工具欄持續時間</string>
+	<string name="PreferenceToolbarsAutoHideDurationSummary">設置工具欄顯示多少秒。</string>
+	
+	<string name="PreferenceSwitchTabsMethodTitle">標籤頁切換方式</string>
+	<string name="PreferenceSwitchTabsMethodSummary">設置如何切換各標籤頁。</string>
+	
+	<string name="PreferenceSwitchTabsMethodButtons">按鈕</string>
+	<string name="PreferenceSwitchTabsMethodFling">滑動</string>
+	<string name="PreferenceSwitchTabsMethodBoth">按鈕/滑動</string>
+	
+	<string-array name="PreferenceSwitchTabsMethodEntries">
+	    <item>@string/PreferenceSwitchTabsMethodButtons</item>
+	    <item>@string/PreferenceSwitchTabsMethodFling</item>
+	    <item>@string/PreferenceSwitchTabsMethodBoth</item>
+	</string-array>
+	
+	<string-array name="PreferenceSwitchTabsMethodValues">
+	    <item>BUTTONS</item>
+	    <item>FLING</item>
+	    <item>BOTH</item>
+	</string-array>
+	
+	<string name="PreferenceHeaderBrowserSettingsTitle">瀏覽器設置</string>
+	
+	<string name="PreferenceEnableJavascriptTitle">啟用 JavaScript</string>
+	<string name="PreferenceEnableJavascriptSummaryOn">JavaScript 已啟用。</string>
+	<string name="PreferenceEnableJavascriptSummaryOff">JavaScript 已停用。</string>
+	<string name="PreferenceEnableImagesTitle">加載圖片</string>
+	<string name="PreferenceEnableImagesSummary">顯示網頁上的圖片。</string>
+	<string name="PreferenceUseWideViewportTitle">使用寬視口</string>
+	<string name="PreferenceUseWideViewportSummary">使用類似於桌面瀏覽器的視口。</string>
+	<string name="PreferenceLoadPagesWithOverviewTitle">以概覽模式打開網頁</string>
+	<string name="PreferenceLoadPagesWithOverviewSummary">顯示新打開網頁的概覽。</string>
+	<string name="PreferencePluginsTitle">啟用插件</string>
+	<string name="PreferencePluginsSummary">選擇如何管理插件。</string>
+	
+	<string name="PreferencePluginsAlwaysOff">關閉</string>
+	<string name="PreferencePluginsOnDemand">手動</string>
+	<string name="PreferencePluginsAlwaysOn">打開</string>
+	
+	<string-array name="PreferencePluginsEntries">
+	    <item>@string/PreferencePluginsAlwaysOff</item>
+	    <item>@string/PreferencePluginsOnDemand</item>
+	    <item>@string/PreferencePluginsAlwaysOn</item>
+	</string-array>
+	
+	<string-array name="PreferencePluginsValues">
+	    <item>OFF</item>
+	    <item>ON_DEMAND</item>
+	    <item>ON</item>
+	</string-array>
+	
+	<string name="PreferenceUserAgentTitle">用戶代理(UA)</string>
+	<string name="PreferenceUserAgentSummary">設置瀏覽器的用戶代理字符串。</string>
+	<string name="PreferenceUserAgentDialogTitle">用戶代理</string>
+	
+	<string name="PreferenceHeaderPrivacySettingsTitle">隱私與安全設置</string>
+	
+	<string name="PreferencePrivacyClearCacheTitle">清除緩存</string>
+	<string name="PreferencePrivacyClearCacheSummary">清除本地緩存內容和數據庫。</string>
+	
+	<string name="PreferenceCategoryHistoryTitle">歷史</string>
+	<string name="PreferencePrivacyHistorySizeTitle">歷史大小</string>
+	<string name="PreferencePrivacyHistorySizeSummary">以天數限定歷史大小。</string>
+	<string name="PreferencePrivacyClearHistoryTitle">清除歷史</string>
+	<string name="PreferencePrivacyClearHistorySummary">清除瀏覽器導航歷史。</string>
+	
+	<string name="PreferenceCategoryCookiesTitle">Cookie</string>
+	<string name="PreferencePrivacyAcceptCookiesTitle">接受 Cookie</string>
+	<string name="PreferencePrivacyAcceptCookiesSummary">允許網站存取 Cookie 數據。</string>
+	<string name="PreferencePrivacyClearCookiesTitle">清除 Cookie</string>
+	<string name="PreferencePrivacyClearCookiesSummary">清除所有 Cookie 數據。</string>
+	
+	<string name="PreferenceCategoryGeolocationTitle">位置</string>
+	<string name="PreferencePrivacyEnableGeolocationTitle">啟用定位功能</string>
+	<string name="PreferencePrivacyEnableGeolocationSummary">允許網站請求存取位置信息。</string>
+	<string name="PreferencePrivacyClearGeolocationTitle">清除位置信息</string>
+	<string name="PreferencePrivacyClearGeolocationSummary">清除所有網站的位置信息存取權。</string>
+	
+	<string name="PreferenceCategoryFormDataTitle">表單數據</string>
+	<string name="PreferencePrivacyRememberFormDataTitle">記住表單數據</string>
+	<string name="PreferencePrivacyRememberFormDataSummary">記住我輸入的表單數據以備用。</string>
+	<string name="PreferencePrivacyClearFormDataTitle">清除表單數據</string>
+	<string name="PreferencePrivacyClearFormDataSummary">清除所有保存的表單數據。</string>
+	
+	<string name="PreferenceCategoryPasswordsTitle">密碼</string>
+	<string name="PreferencePrivacyRememberPasswordsTitle">記住密碼</string>
+	<string name="PreferencePrivacyRememberPasswordsSummary">保存網站帳號和密碼。</string>
+	<string name="PreferencePrivacyClearPasswordsTitle">清除密碼</string>
+	<string name="PreferencePrivacyClearPasswordsSummary">清除所有保存的密碼。</string>
+	
+	<string name="PreferencePrivacyWebsitesSettingsTitle">網站設置</string>
+	<string name="PreferencePrivacyWebsitesSettingsSummary">各網站的高級設置。</string>
+	
+	<string name="PreferencePrivacyIncognitoTitle">隱身模式</string>
+	<string name="PreferencePrivacyIncognitoDefaultTitle">默認隱身</string>
+	<string name="PreferencePrivacyIncognitoDefaultSummary">以隱身模式打開新標籤頁。</string>
+	
+	<string name="HistoryToday">今天</string>
+	<string name="HistoryYesterday">昨天</string>
+	<string name="HistoryLastSevenDays">過去七天</string>
+	<string name="HistoryLastMonth">上個月</string>
+	<string name="HistoryOlder">更早</string>
+	
+	<string name="ClearCacheMessage">刪除本地緩存內容和數據庫？</string>
+	<string name="ClearHistoryMessage">刪除瀏覽器的導航歷史？</string>
+	<string name="ClearCookiesMessage">刪除所有 Cookie 數據？</string>
+	<string name="ClearGeolocationMessage">清除網站的位置信息存取權？</string>
+	<string name="ClearFormDataMessage">刪除所有保存的表單數據？</string>
+	<string name="ClearPasswordsMessage">刪除所有保存的密碼？</string>
+	
+	<string name="PreferenceHomepageStart">起始頁</string>
+	<string name="PreferenceHomepageBlank">空白頁</string>
+	<string name="PreferenceHomepageCustom">自定義</string>
+	
+	<string-array name="HomepageTitles">
+	    <item>@string/PreferenceHomepageStart</item>
+	    <item>@string/PreferenceHomepageBlank</item>
+	    <item>@string/PreferenceHomepageCustom</item>
+	</string-array>
+	
+	<string name="PreferenceUserAgentAndroid">Android</string>
+	<string name="PreferenceUserAgentDesktop">桌面</string>
+	<string name="PreferenceUserAgentOther">其他</string>
+	
+	<string-array name="UserAgentsTitles">
+	    <item>@string/PreferenceUserAgentAndroid</item>
+	    <item>@string/PreferenceUserAgentDesktop</item>
+	    <item>@string/PreferenceUserAgentOther</item>
+	</string-array>
+	
+	<string name="SearchUrlGoogle">https://www.google.com/search?q={searchTerms}</string>
+	
+	<string name="PreferenceHeaderAddonsTitle">附加組件</string>
+	
+	<string name="PreferenceHeaderAboutTitle">關於</string>
+	
+	<string name="HttpAuthenticationDialogDialogTitle">登錄到 %1$s - %2$s</string>
+	<string name="HttpAuthenticationDialogUserName">帳號</string>
+	<string name="HttpAuthenticationDialogPassword">密碼</string>
+	
+	<string name="FormResubmitTitle">重新提交表單</string>
+	<string name="FormResubmitMessage">您試圖查看的網頁包含已提交的數據(\"POSTDATA\")。如果您重新發送這些數據，該網頁表單上的操作(例如搜索或網購)都將重複執行。</string>
+	
+	<string name="BookmarkAdded">已加入書籤。</string>
+	<string name="BookmarkRemoved">已移出書籤。</string>
+	
+	<string name="SDCardErrorNoSDMsg">未發現存儲卡。</string>
+	<string name="SDCardErrorSDUnavailable">存儲卡不可用。</string>
+	
+	<string name="HistoryBookmarksClearTitle">清除</string>
+	
+	<string-array name="ClearHistoryBookmarksChoice">
+	    <item>@string/History</item>
+	    <item>@string/Bookmarks</item>
+	    <item>@string/All</item>
+	</string-array>
+	
+	<string name="HistoryBookmarksImportSourceTitle">導入文件</string>
+	<string name="HistoryBookmarksImportFileUnavailable">文件不存在或不可讀。</string>
+	<string name="HistoryBookmarksImportTitle">導入歷史和書籤</string>
+	<string name="HistoryBookmarksImportInitialMessage">導入歷史和書籤&#8230;</string>
+	<string name="HistoryBookmarksImportReadingFile">讀取文件&#8230;</string>
+	<string name="HistoryBookmarksImportParsingFile">解析文件&#8230;</string>
+	<string name="HistoryBookmarksImportProgressMessage">讀取項目(%1$s/%2$s)&#8230;</string>
+	<string name="HistoryBookmarksImportInsertMessage">插入內容&#8230;</string>
+	<string name="HistoryBookmarksImportErrorTitle">導入錯誤</string>
+	<string name="HistoryBookmarksImportErrorMessage">導入過程出錯：%s</string>
+	
+	<string name="HistoryBookmarksExportTitle">導出歷史和書籤</string>
+	<string name="HistoryBookmarksExportInitialMessage">導出歷史和書籤&#8230;</string>
+	<string name="HistoryBookmarksExportCheckCardMessage">檢查外部存儲&#8230;</string>
+	<string name="HistoryBookmarksExportProgressMessage">導出項目(%1$s/%2$s)&#8230;</string>
+	<string name="HistoryBookmarksExportErrorTitle">導出錯誤</string>
+	<string name="HistoryBookmarksExportErrorMessage">導出過程出錯：%s</string>
+	
+	<string name="GeolocationTitle">位置請求</string>
+	<string name="GeolocationMessage">%s 請求存取您的位置信息。</string>
+	<string name="GeolocationAccept">接受</string>
+	<string name="GeolocationDecline">拒絕</string>
+	
+	<string name="WebsitesSettingsEmpty">尚無設置。</string>
+	
+	<string name="WebsitesSettingsSiteTitle">設置 %s</string>
+	
+	<string name="WebsitesSettingsDataUsage">%s MB 數據存儲在您設備中。</string>
+	<string name="WebsitesSettingsDataClickToClear">點擊清除數據。</string>
+	<string name="WebsitesSettingsCleatDataDialogTitle">刪除數據</string>
+	<string name="WebsitesSettingsCleatDataDialogMessage">刪除該網站存儲的所有數據？</string>
+	
+	<string name="WebsitesSettingsGeolocationClickToClear">點擊清除該設置。</string>
+	<string name="WebsitesSettingsGeolocationAllowed">該網站有權存取您的位置信息。</string>
+	<string name="WebsitesSettingsGeolocationNotAllowed">該網站無權存取您的位置信息。</string>
+	<string name="WebsitesSettingsGeolocationPageDialogTitle">清除位置訪問設置</string>
+	<string name="WebsitesSettingsGeolocationPageDialogMessage">清除該網站的位置訪問設置？</string>
+	
+	<string name="AddonsWarningText">請僅安裝來源可靠的附加組件。\n如果瀏覽器行為異常，請停用所有組件。</string>
+	<string name="AddonsGetAddons"><a href="">獲取組件</a></string>
+	<string name="AddonsMarketNotFoundTitle">Play 商店不可用</string>
+	<string name="AddonsMarketNotFoundMessage">您設備中似乎沒有 Play 商店。</string>
+	<string name="AddonsEnableAll">全部啟用</string>
+	<string name="AddonsDisableAll">全部停用</string>
+	
+	<string name="AddonDetailsContact">反饋：%s</string>
+	<string name="AddonDetailsUsedCallbacksTitle">特性：</string>
+	
+	<string name="AddonCallbackPageStarted">網頁開始加載時收到通知。</string>
+	<string name="AddonCallbackPageFinished">網頁完成加載時收到通知。</string>
+	<string name="AddonCallbackTabOpened">標籤頁打開時收到通知。</string>
+	<string name="AddonCallbackTabClosed">標籤頁關閉時收到通知。</string>
+	<string name="AddonCallbackTabSwitched">標籤頁切換時收到通知。</string>
+	<string name="AddonCallbackHasPreferencesPage">配有設置頁。</string>
+	<string name="AddonCallbackContributeMainMenu">可以插入主菜單。</string>
+	<string name="AddonCallbackContributeLinkContextMenu">可以插入鏈接菜單。</string>
+	<string name="AddonCallbackContributeHistoryBookmarksMenu">可以插入書籤和歷史菜單。</string>
+	<string name="AddonCallbackContributeBookmarkContextMenu">可以插入書籤菜單。</string>
+	<string name="AddonCallbackContributeHistoryContextMenu">可以插入歷史菜單。</string>
+	
+	<string name="AddonDetailsUsedPermissionsTitle">權限：</string>
+	<string name="AddonDetailsPermissionsNone">無。</string>
+	<string name="AddonDetailsUnableToGetPermissions">無法獲取權限。請檢查您的應用管理器。</string>
+	
+	<string name="ContentDescriptionDivider">分割線</string>
+	<string name="ContentDescriptionApplicationIcon">應用圖標</string>
+	<string name="ContentDescriptionSuggestionIcon">建議圖標</string>
+	<string name="ContentDescriptionBookmarkThumbnail">書籤縮略圖</string>
+	<string name="ContentDescriptionFavicon">網站圖標</string>
+	<string name="ContentDescriptionGoStopReloadButton">前往/停止/刷新按鈕</string>
+	<string name="ContentDescriptionMenuButton">菜單按鈕</string>
+	<string name="ContentDescriptionPreviousTabButton">上一標籤頁按鈕</string>
+	<string name="ContentDescriptionNextTabButton">下一標籤頁按鈕</string>
+	<string name="ContentDescriptionLeftBubble">左氣泡</string>
+	<string name="ContentDescriptionRightBubble">右氣泡</string>
+	<string name="ContentDescriptionBackButton">後退按鈕</string>
+	<string name="ContentDescriptionCloseTabButton">關閉標籤頁按鈕</string>
+	<string name="ContentDescriptionBookmarksButton">書籤按鈕</string>
+	<string name="ContentDescriptionNewTabButton">新建標籤頁按鈕</string>
+	<string name="ContentDescriptionForwardButton">前進按鈕</string>
+	<string name="ContentDescriptionHomeButton">主頁按鈕</string>
+	<string name="ContentDescriptionWebsiteSettingsLocation">網站位置</string>
+	<string name="ContentDescriptionWebsiteSettingsUsage">網站使用</string>
+	<string name="ContentDescriptionWebsiteSettingsFeature">網站功能</string>
+	
+	<string-array name="DefaultBookmarksTitles">
+	    <item>Google</item>
+	    <item>Wikipedia</item>
+	    <item>YouTube</item>
+	    <item>Yahoo!</item>
+	    <item>BBC</item>
+	    <item>eBay</item>
+	</string-array>
+	
+	<string-array name="DefaultBookmarksUrls">
+	    <item>http://www.google.com/</item>
+	    <item>http://en.wikipedia.org/</item>
+	    <item>http://www.youtube.com/</item>
+	    <item>http://www.yahoo.com/</item>
+	    <item>http://www.bbc.co.uk/</item>
+	    <item>http://www.ebay.com/</item>
+	</string-array>
+	
+	<!-- 1.2 -->
+	<string name="IncognitoTab">隱身標籤頁</string>
+	<string name="ContextMenuOpenInBackground">在後台打開</string>
+	<string name="ContentDescriptionPrivateBrowsingIndicator">私密瀏覽指示器</string>
+	
+	<!-- 1.3 -->
+	<string name="Folder">文件夾</string>
+	<string name="NewFolder">新文件夾</string>
+	<string name="NewFolderHint">新文件夾的名稱</string>
+	<string name="ProvideNewFolderName">請給新文件夾命名，或選擇現有文件夾。</string>
+	
+	<string name="DeleteFolder">刪除文件夾</string>
+	<string name="ConfirmDeleteFolderMessage">刪除該文件夾及其所有內容？</string>
+	<string name="DeleteFolderTitle">刪除文件夾</string>
+	<string name="DeleteFolderMessage">刪除文件夾及其內容&#8230;</string>
+	
+	<string name="ContentDescriptionBookmarksFoldersBack">返回書籤文件夾</string>
+	
+	<!-- 1.4 -->
+	<string name="PreferenceHeaderAccessibilityTitle">輔助功能設置</string>
+	<string name="PreferenceCategoryTextSizeTitle">文字尺寸</string>
+	<string name="PreferenceAccessibilityTextSizePreviewTitle">預覽</string>
+	<string name="PreferenceAccessibilityTextScalingTitle">文字縮放</string>
+	<string name="PreferenceAccessibilityMinimumFontSizeTitle">字體尺寸下限</string>
+	<string name="PreferenceAccessibilityMinimumFontSizeSummary">調整網頁最小字體的大小。</string>
+	
+	<string name="FontPreviewTextTiny">超小</string>
+	<string name="FontPreviewTextSmall">小</string>
+	<string name="FontPreviewTextNormal">正常</string>
+	<string name="FontPreviewTextLarge">大</string>
+	<string name="FontPreviewTextHuge">超大</string>
+	
+	<string-array name="FontPreviewText">
+	    <item>@string/FontPreviewTextTiny</item>
+	    <item>@string/FontPreviewTextSmall</item>
+	    <item>@string/FontPreviewTextNormal</item>
+	    <item>@string/FontPreviewTextLarge</item>
+	    <item>@string/FontPreviewTextHuge</item>
+	</string-array>
+	
+	<string name="PreferenceCategoryInvertedScreenRenderingTitle">屏幕反色顯示</string>
+	<string name="PreferenceAccessibilityInvertedRenderingTitle">反色顯示</string>
+	<string name="PreferenceAccessibilityInvertedRenderingSummary">反轉屏幕顏色。部分設備無效。</string>
+	<string name="PreferenceAccessibilityInvertedRenderingContrastTitle">對比度</string>
+	
+	<string name="ContentDescriptionAutocompleteQueryBuilder">作為建議網址放到地址欄。</string>
+	
+	<!-- 1.5 -->
+	<string name="UnknownAutority">未知機構</string>
+	<string name="RememberMyChoice">記住我的選擇</string>
+	<string name="SslExceptionAccessAllowedByUserToast">安全例外允許訪問 %s</string>
+	<string name="SslExceptionAccessDisallowedByUserToast">安全例外禁止訪問 %s</string>
+	
+	<string name="PreferenceSslExceptionsTitle">安全例外</string>
+	<string name="PreferenceSslExceptionsSummary">各網站的安全例外。</string>
+	<string name="SslExceptionWebsitesText">點擊移除該例外。</string>
+	<string name="SslExceptionEmptyText">尚無任何安全例外。</string>
+	
+	<string name="RemoveSslExceptionTitle">移除例外</string>
+	<string name="RemoveSslExceptionMessage">您要移除該網站的安全例外嗎？</string>
+	
+	<string name="SslInvalid">證書無效。</string>
+	<string name="SslDateInvalid">證書日期無效。</string>
+	
+	<string name="Authorized">授權：</string>
+	<string name="Reasons">原因：</string>
+	
+	<string name="SearchUrlDialogText1">您的搜索引擎目前設置為：</string>
+	<string name="SearchUrlDialogText2">您可以通過選擇下列搜索引擎來定制它。</string>
+	<string name="SearchUrlGetOnline"><a href="">編輯搜索引擎</a></string>
+	<string name="SearchUrlConnecting">連接中&#8230;</string>
+	<string name="SearchUrlParsing">解析結果&#8230;</string>
+	<string name="SearchUrlBadResponseCodeMessage">無法連接到搜索引擎庫(返回碼：%s)。</string>
+	
+	<string name="SearchUrlDefault">Google</string>
+	<string name="SearchUrlCustom">定制搜索引擎</string>
+	
+	<string name="SortBookmarks">書籤排序</string>
+	<string name="MostUsedSortMode">最常訪問</string>
+	<string name="AlphaSortMode">字母順序</string>
+	<string name="RecentSortMode">最近訪問</string>
+	
+	<!-- 1.6 -->
+	<string name="HistoryBookmarksImportErrorInvalidFileFormat">文件格式無效</string>
+	<string name="HistoryBookmarksImportFoldersProgressMessage">讀取文件夾(%1$s/%2$s)&#8230;</string>
+	<string name="HistoryBookmarksImportFoldersLinkMessage">連接文件夾&#8230;</string>
+	<string name="HistoryBookmarksImportBookmarksProgressMessage">讀取書籤(%1$s/%2$s)&#8230;</string>
+	<string name="HistoryBookmarksImportHistoryProgressMessage">讀取歷史(%1$s/%2$s)&#8230;</string>
+	
+	<string name="FullScreen">全屏</string>
+	<string name="ContentDescriptionExitFullScreen">退出全屏按鈕</string>
+	
+	<!-- 1.7 -->
+	<string name="StartPageLabel">起始頁</string>
+	
+	<string name="RestartDialogTitle">需要重啟</string>
+	<string name="RestartDialogMessage">您想重啟應用以使更改生效嗎？</string>
+	
+	<string name="ContentDescriptionTabPreview">標籤頁預覽</string>
+	
+	<string name="PreferenceClosePanelOnNewTabTitle">自動關閉側面板</string>
+	<string name="PreferenceClosePanelOnNewTabSummary">打開新標籤頁時關閉側面板。</string>
+	
+	<string name="AboutChangelogTitle">更新日誌</string>
+	<string name="AboutContributorsTitle">貢獻者</string>
+	<string name="AboutLicensesTitle">其他許可</string>
+	
+	<string name="RestoreTabsDialogTitle">標籤頁恢復</string>
+	<string name="RestoreTabsDialogMessage">您想從上次會話恢復標籤頁嗎？</string>
+	
+	<string name="PreferenceRestoreTabsTitle">標籤頁恢復</string>
+	<string name="PreferenceRestoreTabsSummary">選擇如何恢復上次會話。</string>
+	
+	<string name="PreferenceRestoreTabsAsk">詢問</string>
+	<string name="PreferenceRestoreTabsAlways">恢復</string>
+	<string name="PreferenceRestoreTabsNever">放棄</string>
+	
+	<string-array name="PreferenceRestoreTabsEntries">
+	    <item>@string/PreferenceRestoreTabsAsk</item>
+	    <item>@string/PreferenceRestoreTabsAlways</item>
+	    <item>@string/PreferenceRestoreTabsNever</item>
+	</string-array>
+	
+	<string-array name="PreferenceRestoreTabsValues">
+	    <item>ASK</item>
+	    <item>ALWAYS</item>
+	    <item>NEVER</item>
+	</string-array>
+	
+	<string name="PreferenceUITypeTitle">界面外觀</string>
+	<string name="PreferenceUITypeSummary">選擇用戶界面的外觀。</string>
+	
+	<string name="PreferenceUITypeAuto">自動</string>
+	<string name="PreferenceUITypePhone">手機</string>
+	<string name="PreferenceUITypeLegacyPhone">手機(舊)</string>
+	<string name="PreferenceUITypeTablet">平板</string>
+	
+	<string-array name="PreferenceUITypeEntries">
+	    <item>@string/PreferenceUITypeAuto</item>
+	    <item>@string/PreferenceUITypePhone</item>
+	    <item>@string/PreferenceUITypeLegacyPhone</item>
+	    <item>@string/PreferenceUITypeTablet</item>
+	</string-array>
+	
+	<string-array name="PreferenceUITypeValues">
+	    <item>AUTO</item>
+	    <item>PHONE</item>
+	    <item>LEGACY_PHONE</item>
+	    <item>TABLET</item>
+	</string-array>
+	
+	<!-- 1.8 -->
+	<string name="PreferenceDevelopersTitle">開發者</string>
+	
+	<string name="PreferenceJsLogOnLocatTitle">輸出 JS 日誌到 logcat</string>
+	<string name="PreferenceJsLogOnLocatSummary">重定向 JS 日誌到 logcat 緩衝區。</string>
+	
+	<string name="ContextMenuViewImageInNewTab">在新標籤頁中查看</string>
+	
+</resources>
