@@ -27,6 +27,7 @@
 		}
 	</style>
 	<script type="text/javascript">
+	<!--
 	function chk() {
 		var lang = navigator.language;
 		if (lang == "zh-CN") {
@@ -44,11 +45,15 @@
 				t05.innerHTML = "&#x60A8;&#x53EF;&#x4EE5;&#x900F;&#x904E;&#x8A2D;&#x5B9A;&#x555F;&#x7528;&#x60A8;&#x53EF;&#x80FD;&#x932F;&#x904E;&#x7684;&#x820A;&#x7248;&#x4ECB;&#x9762;&#x3002;";
 		}
 	}
+	//-->
 	</script>
 	<title id="t00">&#x6559;&#x7A0B;</title>
 </head>
 <body onload="chk()">
-	<h3 class="center" id="t01">&#x6B61;&#x8FCE;&#x4F86;&#x5230; Tint Browser</h3>
+	<h3 class="center" id="t01">&#x6B61;&#x8FCE;&#x4F86;&#x5230;&nbsp;Tint&nbsp;Browser</h3>
+	<noscript>
+	<p class="center"><i>&#xFF08;&#x6559;&#x7A0B;&#x53EF;&#x80FD;&#x6703;&#x56E0;&#x8173;&#x672C;&#x57F7;&#x884C;&#x5931;&#x6557;&#x800C;&#x7121;&#x6CD5;&#x9069;&#x914D;&#x7CFB;&#x7D71;&#x8A9E;&#x8A00;&#xFF09;</i></p>
+	</noscript>
 	<ul>
 	<li id="t02">&#x9EDE;&#x5DE6;&#x4E0A;&#x89D2;&#x5716;&#x6A19;&#x53EF;&#x4EE5;&#x6253;&#x958B;&#x5074;&#x9762;&#x677F;&#x4F86;&#x7BA1;&#x7406;&#x6A19;&#x7C64;&#x3002;</li>
 	</ul>
@@ -61,7 +66,6 @@
 	<li id="t04">&#x6A6B;&#x5411;&#x6ED1;&#x52D5;&#x6A19;&#x7C64;&#x6216;&#x9EDE;&#x95DC;&#x9589;&#x5716;&#x6A19;&#x53EF;&#x4EE5;&#x95DC;&#x9589;&#x6A19;&#x7C64;&#x3002;</li>
 	</ul>
 	<img src="close_tab.png" />
-	</ul>
 	<p class="details" id="t05">&#x60A8;&#x53EF;&#x4EE5;&#x901A;&#x904E;&#x8A2D;&#x7F6E;&#x555F;&#x7528;&#x60A8;&#x53EF;&#x80FD;&#x932F;&#x904E;&#x7684;&#x820A;&#x7248;&#x754C;&#x9762;&#x3002;</p>
 </body>
 </html>
