@@ -331,11 +331,11 @@
 	<string name="WebsitesSettingsCleatDataDialogTitle">删除数据</string>
 	<string name="WebsitesSettingsCleatDataDialogMessage">删除该网站存储的所有数据？</string>
 	
-	<string name="WebsitesSettingsGeolocationClickToClear">点击清除位置信息。</string>
+	<string name="WebsitesSettingsGeolocationClickToClear">点击清除该设置。</string>
 	<string name="WebsitesSettingsGeolocationAllowed">该网站有权存取您的位置信息。</string>
 	<string name="WebsitesSettingsGeolocationNotAllowed">该网站无权存取您的位置信息。</string>
-	<string name="WebsitesSettingsGeolocationPageDialogTitle">清除位置信息</string>
-	<string name="WebsitesSettingsGeolocationPageDialogMessage">清除该网站的位置信息存取权？</string>
+	<string name="WebsitesSettingsGeolocationPageDialogTitle">清除位置访问设置</string>
+	<string name="WebsitesSettingsGeolocationPageDialogMessage">清除该网站的位置访问设置？</string>
 	
 	<string name="AddonsWarningText">请仅安装来源可靠的附加组件。\n如果浏览器行为异常，请停用所有组件。</string>
 	<string name="AddonsGetAddons"><a href="">获取组件</a></string>
