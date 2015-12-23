@@ -363,7 +363,7 @@
 	<string name="AddonDetailsPermissionsNone">无。</string>
 	<string name="AddonDetailsUnableToGetPermissions">无法获取权限。请检查您的应用管理器。</string>
 	
-	<string name="ContentDescriptionDivider">分隔符</string>
+	<string name="ContentDescriptionDivider">分割线</string>
 	<string name="ContentDescriptionApplicationIcon">应用图标</string>
 	<string name="ContentDescriptionSuggestionIcon">建议图标</string>
 	<string name="ContentDescriptionBookmarkThumbnail">书签缩略图</string>
