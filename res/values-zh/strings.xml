@@ -363,7 +363,7 @@
 	<string name="AddonDetailsPermissionsNone">無。</string>
 	<string name="AddonDetailsUnableToGetPermissions">無法獲取權限。請檢查您的應用管理器。</string>
 	
-	<string name="ContentDescriptionDivider">分隔符</string>
+	<string name="ContentDescriptionDivider">分割線</string>
 	<string name="ContentDescriptionApplicationIcon">應用圖標</string>
 	<string name="ContentDescriptionSuggestionIcon">建議圖標</string>
 	<string name="ContentDescriptionBookmarkThumbnail">書籤縮略圖</string>
