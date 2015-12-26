@@ -1,0 +1,45 @@
+<!DOCTYPE html >
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<title>&#x4F7F;&#x7528;&#x6307;&#x5357;</title>
+	<style>
+		* {
+			font-size: 95%;
+		}
+		body {
+			font-family: sans-serif;
+		}
+		.details {
+			font-size: 90%;
+			background-color: #eee;
+			padding: 1em 1.5em 1em 1.5em;
+			margin: 1.5em 0 1.5em 0;
+		}
+		.center {
+			text-align: center;
+		}
+		img {
+			display: block;
+			margin-left: 3em;
+		}
+	</style>
+</head>
+<body>
+	<h3 class="center">&#x6B61;&#x8FCE;&#x4F86;&#x5230;&nbsp;Tint&nbsp;Browser</h3>
+	<ul>
+	<li>&#x8F15;&#x89F8;&#x5DE6;&#x4E0A;&#x65B9;&#x5716;&#x793A;&#x53EF;&#x4EE5;&#x958B;&#x555F;&#x5074;&#x6B04;&#x4E26;&#x7BA1;&#x7406;&#x5206;&#x9801;&#x3002;</li>
+	</ul>
+	<img src="button.png" />
+	<ul>
+	<li>&#x6216;&#x8005;&#x53EF;&#x4EE5;&#x62D6;&#x52D5;&#x700F;&#x89BD;&#x5668;&#x5DE6;&#x5074;&#x908A;&#x7DE3;&#x4F86;&#x958B;&#x555F;&#x5074;&#x6B04;&#x3002;</li>
+	</ul>
+	<img src="slide_panel.png" />
+	<ul>
+	<li>&#x6A6B;&#x5237;&#x5206;&#x9801;&#x6216;&#x8005;&#x9EDE;&#x64CA;&#x95DC;&#x9589;&#x6309;&#x9215;&#x53EF;&#x4EE5;&#x95DC;&#x9589;&#x5206;&#x9801;&#x3002;</li>
+	</ul>
+	<img src="close_tab.png" />
+	<p class="details">&#x900F;&#x904E;&#x8A2D;&#x5B9A;&#x53EF;&#x4EE5;&#x555F;&#x7528;&#x60A8;&#x6216;&#x8A31;&#x932F;&#x904E;&#x4E86;&#x7684;&#x820A;&#x7248;&#x4ECB;&#x9762;&#x3002;</p>
+</body>
+</html>
