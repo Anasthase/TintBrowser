@@ -3,110 +3,110 @@
 <head>
 	<meta charset="utf-8">
 	<style>
+		html {
+			font-size: 20px;
+		}
+		@media (min-width: 400px) and (min-device-width: 800px) {
+			html {
+				font-size: 25px;
+			}
+		}
 		* {
-			font-size: 95%;
+			font-size: .6rem;
+			margin: 0;
+			padding: 0;
 		}
 		body {
+			background-color: #ccc;
 			font-family: sans-serif;
 		}
-		ul.header {
-			padding: 0 1em 0 1em ;
-			margin: 0 1em 0 1em;
+		.title {
+			background-color: #ddd;
+			padding: .5rem;
+			margin: .3rem .3rem 0;
 		}
 		ul.details {
 			background-color: #eee;
-			padding: 1em 2.5em 1em 2.5em;
-			margin: .5em 0 .5em 0;
+			padding: .3rem .3rem .3rem 1.3rem;
+			margin: 0 .3rem .3rem;
+			list-style: circle;
 		}
 		ul.details>li {
-			font-family: monospace;
 			white-space: pre-wrap;
-			margin: .2em 0 .2em 0;
+			margin: .2rem 0;
 		}
 	</style>
 </head>
 <body>
-	<ul class="header">
-		<li>Version 1.8
-			<ul class="details">
-				<li>Fix file select dialog not opening.</li>
-				<li>Added download confirmation dialog.</li>				
-				<li>"Incognito by default" option.</li>
-				<li>Cookies are now sent with download requests.</li>
-				<li>Ability to redirect JS logs to logcat.</li>
-				<li>Images can be opened in a new tab through the context menu.</li>
-				<li>Back key return to the start page if no browsing history (if the start page is used).</li>
-				<li>Spanish, Japanese, and Simplified Chinese translations.</li>
-			</ul>
-		</li>
-		<li>Version 1.7
-			<ul class="details">
-				<li>New user interface for phones. The legacy one is still available under preferences.</li>
-				<li>Opened tabs can now be restored at start-up.</li>
-				<li>New preference to choose user interface type.</li>
-				<li>Various bug fix.</li>
-			</ul>
-		</li>
-		<li>Version 1.6.1
-			<ul class="details">
-				<li>Fix FC when opening a tab in background on tablets.</li>
-				<li>Hide application instead of finishing it on back pressed.</li>
-			</ul>
-		</li>
-		<li>Version 1.6
-			<ul class="details">
-				<li>New export format for bookmarks and history; Bookmarks folders are now handled in export and import; Old format still supported for import.</li>
-				<li>Full screen mode.</li>
-				<li>UI improvements for 7in tablets.</li>
-				<li>German translation (thanks to Lars-Dominik).</li>
-				<li>Russian translation (thanks to Anton).</li>
-			</ul>
-		</li>
-		<li>Version 1.5
-			<ul class="details">
-				<li>User choice for SSL security exceptions can now be saved on a per-website basis.</li>
-				<li>Better search engine customization.</li>
-				<li>Handle search key on devices which has one.</li>
-				<li>Bookmarks can now be sorted in three ways (Most used, Alphabetically, Most recently visited).</li>
-				<li>Portuguese translation (thanks to Rui).</li>
-				<li>Various bug fixes.</li>
-			</ul>
-		</li>
-		<li>Version 1.4
-			<ul class="details">
-				<li>Add accessibility settings: minimum font size, text scaling, and inverted screen rendering.</li>
-				<li>Add progress bar when loading history and bookmarks.</li>
-				<li>On url suggestions, add a button to paste the suggested url in the url bar, without loading it.</li>
-				<li>On phones, tab switching use a quick fade in/out animation.</li>
-			</ul>
-		</li>
-		<li>Version 1.3
-			<ul class="details">
-				<li>Folders can be created in bookmarks.</li>
-				<li>Various minor improvements in layouts.</li>
-				<li>Fix some force close.</li>
-			</ul>
-		</li>
-		<li>Version 1.2
-			<ul class="details">
-				<li>Incognito mode.</li>
-				<li>Open links in background.</li>
-				<li>Various bug fixes (tabs are no longer lost when docking/undocking keyboard on Asus Transformer(s), ...).</li>
-			</ul>
-		</li>
-		<li>Version 1.1
-			<ul class="details">
-				<li>Long-click on image links now work as intended.</li>
-				<li>Stop plugins when closing a tab.</li>
-				<li>Keyboard no longer hide along with toolbar during a search in phone mode.</li>
-				<li>Deleting items in history no longer bring back to the first section.</li>
-			</ul>
-		</li>
-		<li>Version 1.0
-			<ul class="details">
-				<li>Initial release.</li>
-			</ul>
-		</li>
+	<h3 class="title">Version 1.8</h3>
+	<ul class="details">
+		<li>Fix file select dialog not opening.</li>
+		<li>Added download confirmation dialog.</li>
+		<li>"Incognito by default" option.</li>
+		<li>Cookies are now sent with download requests.</li>
+		<li>Ability to redirect JS logs to logcat.</li>
+		<li>Images can be opened in a new tab through the context menu.</li>
+		<li>Back key return to the start page if no browsing history (if the start page is used).</li>
+		<li>Spanish, Japanese, and Simplified Chinese translations.</li>
+	</ul>
+	<h3 class="title">Version 1.7</h3>
+	<ul class="details">
+		<li>New user interface for phones. The legacy one is still available under preferences.</li>
+		<li>Opened tabs can now be restored at start-up.</li>
+		<li>New preference to choose user interface type.</li>
+		<li>Various bug fix.</li>
+	</ul>
+	<h3 class="title">Version 1.6.1</h3>
+	<ul class="details">
+		<li>Fix FC when opening a tab in background on tablets.</li>
+		<li>Hide application instead of finishing it on back pressed.</li>
+	</ul>
+	<h3 class="title">Version 1.6</h3>
+	<ul class="details">
+		<li>New export format for bookmarks and history; Bookmarks folders are now handled in export and import; Old format still supported for import.</li>
+		<li>Full screen mode.</li>
+		<li>UI improvements for 7in tablets.</li>
+		<li>German translation (thanks to Lars-Dominik).</li>
+		<li>Russian translation (thanks to Anton).</li>
+	</ul>
+	<h3 class="title">Version 1.5</h3>
+	<ul class="details">
+		<li>User choice for SSL security exceptions can now be saved on a per-website basis.</li>
+		<li>Better search engine customization.</li>
+		<li>Handle search key on devices which has one.</li>
+		<li>Bookmarks can now be sorted in three ways (Most used, Alphabetically, Most recently visited).</li>
+		<li>Portuguese translation (thanks to Rui).</li>
+		<li>Various bug fixes.</li>
+	</ul>
+	<h3 class="title">Version 1.4</h3>
+	<ul class="details">
+		<li>Add accessibility settings: minimum font size, text scaling, and inverted screen rendering.</li>
+		<li>Add progress bar when loading history and bookmarks.</li>
+		<li>On url suggestions, add a button to paste the suggested url in the url bar, without loading it.</li>
+		<li>On phones, tab switching use a quick fade in/out animation.</li>
+	</ul>
+	<h3 class="title">Version 1.3</h3>
+	<ul class="details">
+		<li>Folders can be created in bookmarks.</li>
+		<li>Various minor improvements in layouts.</li>
+		<li>Fix some force close.</li>
+	</ul>
+	<h3 class="title">Version 1.2</h3>
+	<ul class="details">
+		<li>Incognito mode.</li>
+		<li>Open links in background.</li>
+		<li>Various bug fixes (tabs are no longer lost when docking/undocking keyboard on Asus Transformer(s), ...).</li>
+	</ul>
+	<h3 class="title">Version 1.1</h3>
+	<ul class="details">
+		<li>Long-click on image links now work as intended.</li>
+		<li>Stop plugins when closing a tab.</li>
+		<li>Keyboard no longer hide along with toolbar during a search in phone mode.</li>
+		<li>Deleting items in history no longer bring back to the first section.</li>
+	</ul>
+	<h3 class="title">Version 1.0</h3>
+	<ul class="details">
+		<li>Initial release.</li>
 	</ul>
 </body>
 </html>
