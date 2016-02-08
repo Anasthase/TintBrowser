@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>說明</title>
+	<style type="text/css">
+		html {
+			font-size: 20px;
+		}
+		@media (min-width: 480px) {
+			html {
+				font-size: 30px;
+			}
+		}
+		* {
+			font-size: .65rem;
+			margin: 0 auto;
+			padding: 0;
+		}
+		body {
+			background-color: #ccc;
+			font-family: sans-serif;
+		}
+		.main {
+			background-color: #eee;
+			max-width: 15rem;
+		}
+		.bar {
+			background-color: #ddd;
+			padding: .75rem;
+		}
+		.title {
+			text-align: center;
+		}
+		.tips {
+			padding: .1rem 0 1rem;
+		}
+		.tips>span {
+			display: list-item;
+			margin: .65rem .5rem .65rem 1.5rem;
+		}
+		img {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<h3 class="bar title">歡迎來到 Tint Browser</h3>
+		<p class="tips">
+			<span>輕觸左上方圖示可以開啟側欄並管理分頁。</span>
+			<img alt="" src="button.png">
+			<span>拖曳瀏覽器的左側邊緣同樣可以開啟側欄。</span>
+			<img alt="" src="slide_panel.png">
+			<span>橫撥分頁或是點選關閉按鈕可以關閉分頁。</span>
+			<img alt="" src="close_tab.png">
+		</p>
+		<p class="bar">透過設定可以啟用您或許錯過了的傳統介面。</p>
+	</div>
+</body>
+</html>
