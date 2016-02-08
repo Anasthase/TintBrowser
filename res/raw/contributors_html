@@ -3,71 +3,73 @@
 <head>
 	<meta charset="utf-8">
 	<style>
+		html {
+			font-size: 20px;
+		}
+		@media (min-width: 400px) and (min-device-width: 800px) {
+			html {
+				font-size: 25px;
+			}
+		}
 		* {
-			font-size: 95%;
+			font-size: .6rem;
+			margin: 0;
+			padding: 0;
 		}
 		body {
+			background-color: #ccc;
 			font-family: sans-serif;
 		}
-		ul.header {
-			padding: 0 1em 0 1em ;
-			margin: 0 1em 0 1em;
+		.name {
+			background-color: #ddd;
+			padding: .5rem;
+			margin: .3rem .3rem 0;
 		}
 		ul.details {
 			background-color: #eee;
-			padding: 1em 2.5em 1em 2.5em;
-			margin: .5em 0 .5em 0;
+			padding: .3rem .3rem .3rem 1.3rem;
+			margin: 0 .3rem .3rem;
+			list-style: circle;
 		}
 		ul.details>li {
-			font-family: monospace;
 			white-space: pre-wrap;
-			margin: .2em 0 .2em 0;
+			margin: .2rem 0;
 		}
 	</style>
 </head>
 <body>
-	<ul class="header">
-		<li>Dorian 'gravgun' Wouters
-			<ul class="details">
-				<li>Features &amp; fixes.</li>
-			</ul>
-		</li>
-		<li>Rui
-			<ul class="details">
-				<li>Portuguese translation.</li>
-			</ul>
-		</li>
-		<li>Lars-Dominik
-			<ul class="details">
-				<li>German translation.</li>
-			</ul>
-		</li>
-		<li>Anton
-			<ul class="details">
-				<li>Russian translation.</li>
-			</ul>
-		</li>
-		<li>Xphnx
-			<ul class="details">
-				<li>Spanish translation.</li>
-			</ul>
-		</li>
-		<li>Pikatenor
-			<ul class="details">
-				<li>Japanese translation.</li>
-			</ul>
-		</li>
-		<li>JingYunLiu
-			<ul class="details">
-				<li>Simplified Chinese translation.</li>
-			</ul>
-		</li>
-		<li>939355898@qq.com
-			<ul class="details">
-				<li>Simplified Chinese translation.</li>
-				<li>Traditional Chinese translation.</li>
-			</ul>
-		</li>
+	<h3 class="name">Dorian 'gravgun' Wouters</h3>
+	<ul class="details">
+		<li>Features &amp; fixes.</li>
+	</ul>
+	<h3 class="name">Rui</h3>
+	<ul class="details">
+		<li>Portuguese translation.</li>
+	</ul>
+	<h3 class="name">Lars-Dominik</h3>
+	<ul class="details">
+		<li>German translation.</li>
+	</ul>
+	<h3 class="name">Anton</h3>
+	<ul class="details">
+		<li>Russian translation.</li>
+	</ul>
+	<h3 class="name">Xphnx</h3>
+	<ul class="details">
+		<li>Spanish translation.</li>
+	</ul>
+	<h3 class="name">Pikatenor</h3>
+	<ul class="details">
+		<li>Japanese translation.</li>
+	</ul>
+	<h3 class="name">JingYunLiu</h3>
+	<ul class="details">
+		<li>Simplified Chinese translation.</li>
+	</ul>
+	<h3 class="name">939355898@qq.com</h3>
+	<ul class="details">
+		<li>Simplified Chinese translation.</li>
+		<li>Traditional Chinese translation.</li>
 	</ul>
 </body>
 </html>
