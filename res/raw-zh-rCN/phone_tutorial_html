@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>指南</title>
+	<style type="text/css">
+		html {
+			font-size: 20px;
+		}
+		@media (min-width: 480px) {
+			html {
+				font-size: 30px;
+			}
+		}
+		* {
+			font-size: .65rem;
+			margin: 0 auto;
+			padding: 0;
+		}
+		body {
+			background-color: #ccc;
+			font-family: sans-serif;
+		}
+		.main {
+			background-color: #eee;
+			max-width: 15rem;
+		}
+		.bar {
+			background-color: #ddd;
+			padding: .75rem;
+		}
+		.title {
+			text-align: center;
+		}
+		.tips {
+			padding: .1rem 0 1rem;
+		}
+		.tips>span {
+			display: list-item;
+			margin: .65rem .5rem .65rem 1.5rem;
+		}
+		img {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<h3 class="bar title">欢迎来到 Tint Browser</h3>
+		<p class="tips">
+			<span>轻触左上方图标可以打开面板并管理标签。</span>
+			<img alt="" src="button.png">
+			<span>拖动浏览器的左侧边缘同样可以打开面板。</span>
+			<img alt="" src="slide_panel.png">
+			<span>横刷标签或者点击关闭按钮可以关闭标签。</span>
+			<img alt="" src="close_tab.png">
+		</p>
+		<p class="bar">通过设置可以启用您或许错过了的传统界面。</p>
+	</div>
+</body>
+</html>
