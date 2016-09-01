@@ -422,10 +422,15 @@ public class BookmarksWrapper {
 	 * @param originalUrl The original url 
 	 */
 	public static void updateHistory(ContentResolver contentResolver, String title, String url, String originalUrl) {
-		String[] colums = new String[] { BookmarksProvider.Columns._ID, BookmarksProvider.Columns.URL, BookmarksProvider.Columns.BOOKMARK, BookmarksProvider.Columns.VISITS };
+		String[] colums = new String[] {
+				BookmarksProvider.Columns._ID,
+				BookmarksProvider.Columns.URL,
+				BookmarksProvider.Columns.BOOKMARK,
+				BookmarksProvider.Columns.VISITS
+		};
 		
-		String escapedUrl = url != null ? DatabaseUtils.sqlEscapeString(url) : "";
-		String escapedOriginalUrl = originalUrl != null ? DatabaseUtils.sqlEscapeString(originalUrl) : "";
+		String escapedUrl = url != null ? url : "";
+		String escapedOriginalUrl = originalUrl != null ? originalUrl : "";
 		
 		String whereClause = BookmarksProvider.Columns.URL + " = ? OR " + BookmarksProvider.Columns.URL + " = ?";
 
