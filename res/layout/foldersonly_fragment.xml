@@ -52,6 +52,15 @@
                 android:gravity="center_vertical|start"
                 android:layout_weight="1" />
 
+            <ImageView
+                android:id="@+id/BookmarksBreadCrumbAddFolder"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/NewFolder"
+                android:focusable="true"
+                android:src="@drawable/ic_add_folder" />
+
         </LinearLayout>
 
         <ImageView
@@ -72,7 +81,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <GridView
+        <ListView
             android:id="@+id/BookmarksGridView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"

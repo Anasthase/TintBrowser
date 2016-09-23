@@ -25,6 +25,7 @@ import org.tint.providers.BookmarksWrapper;
 import org.tint.tasks.HistoryBookmarksExportTask;
 import org.tint.tasks.HistoryBookmarksImportTask;
 import org.tint.ui.fragments.BookmarksFragment;
+import org.tint.ui.fragments.FoldersOnlyFragment;
 import org.tint.ui.fragments.HistoryFragment;
 import org.tint.ui.managers.UIManager;
 import org.tint.ui.preferences.IHistoryBookmaksExportListener;
@@ -50,7 +51,7 @@ import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class BookmarksActivity extends Activity implements IHistoryBookmaksExportListener, IHistoryBookmaksImportListener {
+public class BookmarksActivity extends Activity implements IHistoryBookmaksExportListener, IHistoryBookmaksImportListener, FoldersOnlyFragment.FoldersOnlyListener {
 	
 	private static final String EXTRA_SELECTED_TAB_INDEX = "EXTRA_SELECTED_TAB_INDEX";
 	
@@ -135,6 +136,8 @@ public class BookmarksActivity extends Activity implements IHistoryBookmaksExpor
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		BookmarksFragment bfg;
+
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			setResult(RESULT_CANCELED);
@@ -147,7 +150,12 @@ public class BookmarksActivity extends Activity implements IHistoryBookmaksExpor
 			startActivity(i);
 			
 			return true;
-			
+
+		case R.id.BookmarksActivityMenuAddFolder:
+			bfg = (BookmarksFragment)getFragmentManager().findFragmentByTag("bookmarks");
+			bfg.newFolder();
+			return true;
+
 		case R.id.BookmarksActivityMenuSortBookmarks:
 			changeSortMode();
 			return true;
@@ -370,5 +378,10 @@ public class BookmarksActivity extends Activity implements IHistoryBookmaksExpor
     	AlertDialog alert = builder.create();
     	alert.show();		
 	}
-	
+
+	@Override
+	public void onSelectFolder(long folder_id, String folder_name) {
+		BookmarksFragment bfg = (BookmarksFragment)getFragmentManager().findFragmentByTag("bookmarks");
+		bfg.onSelectFolder(folder_id, folder_name);
+	}
 }

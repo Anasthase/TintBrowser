@@ -22,7 +22,13 @@
 	    android:title="@string/AddBookmark"
 	    android:icon="@drawable/ic_add_bookmark"
 	    android:showAsAction="ifRoom|withText" />
-    
+
+    <item
+        android:id="@+id/BookmarksActivityMenuAddFolder"
+        android:title="@string/NewFolder"
+        android:icon="@drawable/ic_add_folder"
+        android:showAsAction="ifRoom|withText" />
+
     <item
 	    android:id="@+id/BookmarksActivityMenuSortBookmarks"
 	    android:title="@string/SortBookmarks" />
